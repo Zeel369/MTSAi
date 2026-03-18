@@ -1,0 +1,236 @@
+/* ============================================================
+   MTSAi — Premium Polish Layer
+   Fortune 500-grade micro-interactions, accessibility,
+   glass effects, and motion preferences.
+   Load AFTER all other design-system CSS.
+   ============================================================ */
+
+/* ── Focus visible — globally applied using token ─────────── */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring-offset);
+  border-radius: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring-offset);
+}
+
+/* ── Nav glass effect when scrolled ──────────────────────── */
+.mts-nav.scrolled {
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: rgba(255, 255, 255, 0.88) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark-hero pages — nav starts fully transparent-dark */
+[data-nav-dark] .mts-nav:not(.scrolled) {
+  background: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+[data-nav-dark] .mts-nav:not(.scrolled) .mts-nav__link {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-nav-dark] .mts-nav:not(.scrolled) .mts-nav__link:hover {
+  color: #fff;
+}
+[data-nav-dark] .mts-nav:not(.scrolled) .status-dot.active {
+  box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.30);
+}
+
+/* ── Button micro-states ──────────────────────────────────── */
+.mts-btn {
+  transition:
+    background var(--duration-fast-02) var(--ease-standard),
+    color var(--duration-fast-02) var(--ease-standard),
+    border-color var(--duration-fast-02) var(--ease-standard),
+    box-shadow var(--duration-fast-02) var(--ease-standard),
+    transform 80ms var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.mts-btn:active {
+  transform: translateY(1px);
+  box-shadow: none !important;
+}
+
+.mts-btn:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+/* Primary button — shimmer on hover */
+.mts-btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transform: skewX(-20deg);
+  transition: left 400ms var(--ease-smooth);
+  pointer-events: none;
+}
+.mts-btn--primary:hover::after {
+  left: 160%;
+}
+
+/* ── Card depth enhancement ───────────────────────────────── */
+.feature-card,
+.step-card,
+.partner-card,
+.insight-panel,
+.arch-layer,
+.control-item,
+.gov-control,
+.eco-cell,
+.engine-cell,
+.dark-card,
+.phase-item,
+.roadmap-phase {
+  will-change: transform;
+}
+
+/* ── Skip link — premium style ────────────────────────────── */
+.skip-link {
+  border-radius: 0 0 4px 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+/* ── Scroll progress bar — smooth repaint ─────────────────── */
+#scroll-progress {
+  will-change: transform;
+}
+
+/* ── Image hover zoom — global opt-in ─────────────────────── */
+.photo-strip img,
+.problem-photo__img,
+.arch-photo__img,
+.privacy-visual__img {
+  will-change: transform;
+}
+
+/* ── Link underline animation ─────────────────────────────── */
+.footer-col a {
+  display: inline-block;
+  position: relative;
+}
+.footer-col a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: #F4F4F4;
+  transition: width 200ms var(--ease-standard);
+}
+.footer-col a:hover::after {
+  width: 100%;
+}
+
+/* ── Nav dropdown links — arrow slide ─────────────────────── */
+.nav-dropdown li a::before {
+  content: '→';
+  font-size: 11px;
+  color: var(--interactive);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 100ms, transform 120ms var(--ease-standard);
+  display: inline-block;
+  margin-right: 6px;
+}
+.nav-dropdown li a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── KPI cell hover — lift ─────────────────────────────────── */
+.kpi-cell {
+  transition: background 150ms var(--ease-standard),
+              transform 200ms var(--ease-standard);
+}
+.kpi-cell:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Arch layer — richer transition ───────────────────────── */
+.arch-layer {
+  transition:
+    border-left-color 200ms var(--ease-standard),
+    background 200ms var(--ease-standard),
+    box-shadow 200ms var(--ease-standard),
+    transform 200ms var(--ease-standard);
+}
+.arch-layer:hover {
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+}
+
+/* ── Section eyebrow — tick animate on visibility ─────────── */
+.section-eyebrow::before {
+  transition: width 400ms var(--ease-smooth);
+  width: 18px;
+}
+.reveal.visible ~ * .section-eyebrow::before,
+.section-eyebrow.visible::before {
+  width: 28px;
+}
+
+/* ── Marquee pause on reduced-motion ─────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-content {
+    animation: marquee 28s linear infinite;
+  }
+}
+
+/* ── Reduced motion — master guard ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mts-btn--primary::after {
+    display: none;
+  }
+
+  .marquee-content {
+    animation: none !important;
+  }
+}
+
+/* ── Selection color — brand-aligned ─────────────────────── */
+::selection {
+  background: rgba(0, 82, 204, 0.18);
+  color: var(--text-primary);
+}
+
+/* ── Scrollbar — subtle brand tint (Webkit) ───────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--layer-01);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-30, #C6C6C6);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--interactive);
+}

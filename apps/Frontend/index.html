@@ -7,6 +7,18 @@
   <meta name="theme-color" content="#0052CC">
   <title>MTSAi — Urban Demand Management Platform</title>
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="MTSAi — Incentive-Based Urban Demand Management">
+  <meta property="og:description" content="A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MTSAi — Urban Demand Management Platform">
+  <meta name="twitter:description" content="Incentive-Based Urban Demand Management for modern cities. Privacy-first. Government-controlled. GIGW 3.0 compliant.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +42,7 @@
   <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
   <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
   <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
 
   <style>
     /* ====================================================
@@ -257,9 +270,9 @@
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(48px, 5.5vw, 88px);
-      font-weight: 700; line-height: 1.04;
-      letter-spacing: -0.03em;
+      font-size: clamp(52px, 6vw, 96px);
+      font-weight: 700; line-height: 0.98;
+      letter-spacing: -0.04em;
       color: #FFFFFF;
       margin: 0 0 var(--space-6);
     }
@@ -1211,6 +1224,60 @@
       .cta-actions, .hero-ctas { flex-direction: column; }
       .cta-actions .mts-btn, .hero-ctas .mts-btn { width: 100%; }
     }
+
+    /* ====================================================
+       TRUST STRIP — between hero and proposition
+    ==================================================== */
+    .trust-strip {
+      background: #fff;
+      border-bottom: 1px solid var(--blue-20);
+      padding: var(--space-4) 0;
+      overflow: hidden;
+    }
+    .trust-strip__inner {
+      display: flex; align-items: center;
+      gap: var(--space-8); flex-wrap: wrap;
+      justify-content: center;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-family: var(--font-mono); font-size: 10px;
+      font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .trust-item::before {
+      content: '';
+      display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--interactive);
+      flex-shrink: 0;
+    }
+    .trust-item--green::before { background: var(--brand-primary); }
+    .trust-item--saffron::before { background: var(--cta-primary); }
+    .trust-divider {
+      width: 1px; height: 18px;
+      background: var(--border-subtle); flex-shrink: 0;
+    }
+    @media (max-width: 768px) { .trust-divider { display: none; } .trust-strip__inner { gap: var(--space-5); } }
+
+    /* ====================================================
+       WATERMARK NUMERAL — entrance on scroll
+    ==================================================== */
+    .section-iudm::before,
+    .section-privacy::before,
+    .section-gov::before,
+    .section-roadmap::before {
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 800ms var(--ease-smooth), transform 800ms var(--ease-smooth);
+    }
+    .section-iudm.visible-section::before,
+    .section-privacy.visible-section::before,
+    .section-gov.visible-section::before,
+    .section-roadmap.visible-section::before {
+      opacity: 0.04;
+      transform: translateX(0);
+    }
   </style>
 </head>
 <body>
@@ -1453,6 +1520,25 @@
 
       <div class="hero-scroll-cue" aria-hidden="true">↓ SCROLL FOR PLATFORM LOGIC</div>
     </section>
+
+    <!-- =============================================
+         TRUST STRIP — credibility signals
+    ============================================= -->
+    <div class="trust-strip" aria-label="Platform credibility signals">
+      <div class="mts-container">
+        <div class="trust-strip__inner">
+          <span class="trust-item trust-item--green">GIGW 3.0 Compliant Design</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item">Privacy-First Architecture</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item trust-item--saffron">Pilot-Ready Q2 2026</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item">100% Government-Controlled Policy</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item trust-item--green">ISO 27001 Design Posture</span>
+        </div>
+      </div>
+    </div>
 
     <!-- =============================================
          PROPOSITION — #EDF5FF, decorative quote mark
@@ -1710,17 +1796,17 @@
         <div class="numbers-grid">
           <div class="number-item reveal">
             <span class="number-prefix">Est.</span>
-            <span class="number-val">2019</span>
+            <span class="number-val" data-counter data-target="2019" data-duration="1400">2019</span>
             <span class="number-label">Founded</span>
           </div>
           <div class="number-item reveal delay-1">
             <span class="number-prefix">Scope</span>
-            <span class="number-val">4</span>
+            <span class="number-val" data-counter data-target="4" data-duration="900">4</span>
             <span class="number-label">Global jurisdictions</span>
           </div>
           <div class="number-item reveal delay-2">
             <span class="number-prefix">System</span>
-            <span class="number-val">6+</span>
+            <span class="number-val" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</span>
             <span class="number-label">Platform modules</span>
           </div>
           <div class="number-item reveal delay-3">
@@ -1990,6 +2076,47 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Watermark numeral entrance
+    const sectionObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible-section');
+          sectionObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.section-iudm, .section-privacy, .section-gov, .section-roadmap')
+      .forEach(el => sectionObs.observe(el));
+
+    // Counter-up animation for number items
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.target || el.textContent.replace(/[^0-9.]/g, ''));
+      const suffix = el.dataset.suffix || (el.textContent.includes('%') ? '%' : (el.textContent.includes('+') ? '+' : ''));
+      const prefix = el.dataset.prefix || '';
+      const duration = parseInt(el.dataset.duration || 1200);
+      if (isNaN(target)) return;
+      const start = performance.now();
+      const isFloat = !Number.isInteger(target);
+      function step(now) {
+        const elapsed = Math.min(now - start, duration);
+        const progress = 1 - Math.pow(1 - elapsed / duration, 3);
+        const current = target * progress;
+        el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.floor(current)) + suffix;
+        if (elapsed < duration) requestAnimationFrame(step);
+        else el.textContent = prefix + (isFloat ? target.toFixed(1) : target) + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.number-val[data-counter], [data-counter]').forEach(animateCounter);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.numbers-grid, .kpi-strip').forEach(el => counterObs.observe(el));
 
     // Dropdown
     document.querySelectorAll('.nav-has-dropdown').forEach(item => {

@@ -6,7 +6,19 @@
   <meta name="description" content="Strategic partners — MTSAi: ecosystem structure, super app integration, infrastructure compatibility, and development-partner posture designed for integration with city programs.">
   <meta name="theme-color" content="#0052CC">
   <title>Strategic Partners | MTSAi</title>
-  <link rel="canonical" href="https://mtsai-website.vercel.app/Strategic_Partners.html">
+  <link rel="canonical" href="https://mtsai.in/Strategic_Partners.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Strategic Partners | MTSAi — Urban Demand Management">
+  <meta property="og:description" content="Ecosystem structure, super app integration, infrastructure compatibility, and development-partner posture for the MTSAi urban mobility platform.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/Strategic_Partners.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strategic Partners | MTSAi">
+  <meta name="twitter:description" content="Open integration model for digital mobility platforms, payment networks, infrastructure providers, and development partners.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +42,7 @@
   <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
   <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
   <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -68,7 +81,7 @@
     .hero-sp-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.07)'/%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.07)'/%3E%3C%2Fsvg%3E"); background-size: 60px 60px; pointer-events: none; }
     .hero-sp-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%); z-index: 10; }
     .hero-sp-inner { position: relative; z-index: 5; }
-    .hero-sp-headline { font-family: var(--font-display); font-size: clamp(36px,5vw,72px); font-weight: 700; line-height: 1.06; letter-spacing: -0.03em; color: #fff; margin: var(--space-6) 0; max-width: 780px; }
+    .hero-sp-headline { font-family: var(--font-display); font-size: clamp(40px,5.5vw,80px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; color: #fff; margin: var(--space-6) 0; max-width: 780px; }
     .headline-accent { color: var(--cta-primary); }
     .hero-sp-sub { font-size: clamp(15px,1.3vw,18px); color: rgba(255,255,255,0.78); max-width: 600px; line-height: 1.72; margin-bottom: var(--space-6); }
     .hero-sp-note { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; margin-top: var(--space-5); }
@@ -267,7 +280,7 @@
     <!-- KPI STRIP -->
     <div class="kpi-strip" role="list">
       <div class="kpi-cell" role="listitem">
-        <span class="kpi-val">4</span>
+        <span class="kpi-val" data-counter data-target="4" data-duration="900">4</span>
         <span class="kpi-label">Integration Categories</span>
       </div>
       <div class="kpi-cell" role="listitem">
@@ -275,7 +288,7 @@
         <span class="kpi-label">ANPR Installations (Global)</span>
       </div>
       <div class="kpi-cell" role="listitem">
-        <span class="kpi-val">3</span>
+        <span class="kpi-val" data-counter data-target="3" data-duration="800">3</span>
         <span class="kpi-label">Partner Types</span>
       </div>
       <div class="kpi-cell" role="listitem">
@@ -533,6 +546,32 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
     }, { threshold: 0.10 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Counter-up animation
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.target || el.textContent.replace(/[^0-9.]/g, ''));
+      const suffix = el.dataset.suffix || '';
+      const duration = parseInt(el.dataset.duration || 1200);
+      if (isNaN(target) || target === 0) return;
+      const start = performance.now();
+      function step(now) {
+        const elapsed = Math.min(now - start, duration);
+        const progress = 1 - Math.pow(1 - elapsed / duration, 3);
+        el.textContent = Math.floor(target * progress) + suffix;
+        if (elapsed < duration) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-counter]').forEach(animateCounter);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.kpi-strip').forEach(el => counterObs.observe(el));
 
     document.querySelectorAll('.nav-has-dropdown').forEach(item => {
       const btn = item.querySelector('button');
