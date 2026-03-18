@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Operations Command — Real-time traffic monitoring, analytics, and system audit dashboard.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Operations Dashboard | MTSAi</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/card.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: #0f1117; color: #F4F4F4; min-height: 100vh; }
+    * { box-sizing: border-box; }
+
+    /* TOP BAR */
+    .db-topbar { display: flex; align-items: center; justify-content: space-between; background: #161616; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 var(--space-6); height: 60px; position: sticky; top: 0; z-index: 100; }
+    .db-topbar-left { display: flex; align-items: center; gap: var(--space-5); }
+    .db-topbar-logo { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #F4F4F4; text-decoration: none; letter-spacing: -0.02em; }
+    .db-topbar-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: #F4F4F4; }
+    .db-topbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.12); }
+    .db-status { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+    .db-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #6FDC8C; box-shadow: 0 0 0 3px rgba(111,220,140,0.20); animation: pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(111,220,140,0.20); } 50% { box-shadow: 0 0 0 6px rgba(111,220,140,0.06); } }
+    .db-topbar-right { display: flex; align-items: center; gap: var(--space-4); }
+    .db-region { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.40); text-transform: uppercase; }
+    .db-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); }
+
+    /* LAYOUT */
+    .db-layout { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: calc(100vh - 60px); }
+    .db-sidebar { background: #161616; border-right: 1px solid rgba(255,255,255,0.06); padding: var(--space-5) 0; }
+    .db-main { padding: var(--space-6); }
+
+    /* SIDEBAR */
+    .sidebar-nav { list-style: none; }
+    .sidebar-nav-item { display: flex; align-items: center; gap: 10px; padding: var(--space-3) var(--space-6); font-size: 13px; color: rgba(255,255,255,0.55); cursor: pointer; transition: color 150ms, background 150ms; }
+    .sidebar-nav-item:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.85); }
+    .sidebar-nav-item.active { color: #fff; background: rgba(0,82,204,0.20); border-left: 2px solid #0052CC; padding-left: calc(var(--space-6) - 2px); }
+    .sidebar-section { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); padding: var(--space-5) var(--space-6) var(--space-2); }
+
+    /* METRIC CARDS */
+    .metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .metric-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); padding: var(--space-5); }
+    .metric-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.40); margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: space-between; }
+    .metric-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: #F4F4F4; line-height: 1; margin-bottom: var(--space-2); }
+    .metric-delta { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.40); }
+    .metric-delta.positive { color: #6FDC8C; }
+    .metric-bar { height: 3px; background: rgba(255,255,255,0.08); margin-top: var(--space-4); border-radius: 2px; overflow: hidden; }
+    .metric-bar-fill { height: 100%; border-radius: 2px; background: #0052CC; }
+    .metric-bar-fill.green { background: #6FDC8C; }
+
+    /* CHART AREA */
+    .chart-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); margin-bottom: var(--space-5); }
+    .chart-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-5); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .chart-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 8px; }
+    .chart-actions { display: flex; gap: var(--space-2); }
+    .chart-btn { font-family: var(--font-mono); font-size: 10px; padding: 3px 10px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.40); cursor: pointer; background: none; transition: border-color 150ms, color 150ms; }
+    .chart-btn.active { color: #fff; border-color: rgba(255,255,255,0.40); background: rgba(255,255,255,0.08); }
+    .chart-body { padding: var(--space-5); height: 280px; position: relative; display: flex; align-items: flex-end; gap: 3px; }
+    .chart-bar-wrap { flex: 1; height: 100%; display: flex; align-items: flex-end; flex-direction: column; justify-content: flex-end; gap: 4px; position: relative; }
+    .chart-bar { width: 100%; background: rgba(0,82,204,0.35); border-radius: 2px 2px 0 0; transition: background 150ms; cursor: pointer; position: relative; }
+    .chart-bar:hover { background: #0052CC; }
+    .chart-bar.peak { background: rgba(0,82,204,0.70); }
+    .chart-overlay { position: absolute; top: var(--space-4); right: var(--space-5); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); padding: var(--space-4) var(--space-5); }
+    .chart-overlay-label { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .chart-overlay-val { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: #F4F4F4; }
+
+    /* TERMINAL LOG */
+    .terminal-card { background: #0d0d0d; border: 1px solid rgba(255,255,255,0.08); }
+    .terminal-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) var(--space-4); background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .terminal-dots { display: flex; gap: 6px; }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .terminal-title { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.08em; }
+    .terminal-body { padding: var(--space-4) var(--space-5); font-family: var(--font-mono); font-size: 12px; height: 200px; overflow-y: auto; }
+    .log-line { margin-bottom: 6px; display: flex; gap: var(--space-3); line-height: 1.5; }
+    .log-time { color: rgba(255,255,255,0.30); flex-shrink: 0; }
+    .log-level { padding: 0 4px; font-size: 10px; font-weight: 700; border-radius: 2px; flex-shrink: 0; }
+    .log-level.ok { background: rgba(111,220,140,0.15); color: #6FDC8C; }
+    .log-level.info { background: rgba(0,82,204,0.20); color: #78A9FF; }
+    .log-level.warn { background: rgba(255,153,0,0.15); color: #FF9900; }
+    .log-text { color: rgba(255,255,255,0.70); }
+
+    /* TABLE */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: var(--space-5); }
+    .data-table th { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); padding: var(--space-3) var(--space-4); border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
+    .data-table td { font-size: 13px; color: rgba(255,255,255,0.70); padding: var(--space-4); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .status-badge { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 2px; }
+    .status-badge.active { background: rgba(111,220,140,0.15); color: #6FDC8C; }
+    .status-badge.monitoring { background: rgba(0,82,204,0.20); color: #78A9FF; }
+    .status-badge.paused { background: rgba(255,153,0,0.15); color: #FF9900; }
+
+    /* BOTTOM GRID */
+    .db-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+
+    /* DISCLOSURE BANNER */
+    .db-disclosure { padding: var(--space-5) var(--space-6); background: rgba(255,153,0,0.08); border-top: 1px solid rgba(255,153,0,0.20); font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .db-disclosure strong { color: rgba(255,153,0,0.85); }
+
+    @media (max-width: 1200px) { .db-layout { grid-template-columns: 1fr; } .db-sidebar { display: none; } .metric-grid { grid-template-columns: repeat(2,1fr); } .db-bottom-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .metric-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="db-topbar" role="banner">
+    <div class="db-topbar-left">
+      <a href="index.html" class="db-topbar-logo">MTSAi</a>
+      <div class="db-topbar-sep" aria-hidden="true"></div>
+      <div class="db-topbar-title">Operations Command</div>
+      <div class="db-status" aria-label="System operational">
+        <span class="db-status-dot" aria-hidden="true"></span>
+        System Operational
+      </div>
+    </div>
+    <div class="db-topbar-right">
+      <span class="db-region">REGION: IN-WEST-1</span>
+      <div class="db-avatar" aria-label="User avatar">AD</div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="db-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="db-sidebar" aria-label="Dashboard navigation">
+        <div class="sidebar-section">Operations</div>
+        <ul class="sidebar-nav" role="list">
+          <li class="sidebar-nav-item active">📊 Live Monitor</li>
+          <li class="sidebar-nav-item">🗺️ Corridor Map</li>
+          <li class="sidebar-nav-item">📋 Audit Log</li>
+        </ul>
+        <div class="sidebar-section">Analytics</div>
+        <ul class="sidebar-nav" role="list">
+          <li class="sidebar-nav-item">📈 Revenue</li>
+          <li class="sidebar-nav-item">🚗 Vehicle Flow</li>
+          <li class="sidebar-nav-item">🏆 Incentive Payouts</li>
+        </ul>
+        <div class="sidebar-section">Governance</div>
+        <ul class="sidebar-nav" role="list">
+          <li class="sidebar-nav-item">🔐 Policy Rules</li>
+          <li class="sidebar-nav-item">📁 Evidence Vault</li>
+          <li class="sidebar-nav-item">🔔 Alerts</li>
+        </ul>
+        <div class="sidebar-section">Admin</div>
+        <ul class="sidebar-nav" role="list">
+          <li class="sidebar-nav-item">⚙️ Settings</li>
+          <li class="sidebar-nav-item"><a href="index.html" style="color:inherit;text-decoration:none;">← Back to Site</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="db-main">
+
+        <!-- METRICS ROW -->
+        <div class="metric-grid" role="region" aria-label="Key metrics">
+          <div class="metric-card">
+            <div class="metric-label">Compliance Rate <span style="color:#6FDC8C;font-size:16px;">✓</span></div>
+            <div class="metric-value">99.8%</div>
+            <div class="metric-delta positive">+0.2% vs last week</div>
+            <div class="metric-bar"><div class="metric-bar-fill green" style="width:99.8%"></div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Active Corridors <span style="color:#78A9FF;font-size:16px;">⬡</span></div>
+            <div class="metric-value">12</div>
+            <div class="metric-delta">4 zones fully active</div>
+            <div class="metric-bar"><div class="metric-bar-fill" style="width:75%"></div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Audit Integrity <span style="color:rgba(255,255,255,0.35);font-size:14px;">🔐</span></div>
+            <div class="metric-value" style="font-size:22px;margin-top:8px;">Secure</div>
+            <div class="metric-delta" style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.30);word-break:break-all;margin-top:8px;">8f4a...e2b9 [VERIFIED]</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Throughput <span style="font-size:14px;">🚗</span></div>
+            <div class="metric-value">2,405</div>
+            <div class="metric-delta">vph · current</div>
+            <div class="metric-bar"><div class="metric-bar-fill" style="width:62%"></div></div>
+          </div>
+        </div>
+
+        <!-- CHART -->
+        <div class="chart-card" role="region" aria-label="Traffic and revenue monitor">
+          <div class="chart-header">
+            <div class="chart-title">📈 Real-time Traffic &amp; Revenue Monitor</div>
+            <div class="chart-actions">
+              <button class="chart-btn active">Live</button>
+              <button class="chart-btn">1H</button>
+              <button class="chart-btn">24H</button>
+            </div>
+          </div>
+          <div class="chart-body" aria-label="Bar chart simulation" role="img">
+            <div class="chart-bar" style="height:40%"></div>
+            <div class="chart-bar" style="height:45%"></div>
+            <div class="chart-bar" style="height:30%"></div>
+            <div class="chart-bar" style="height:55%"></div>
+            <div class="chart-bar" style="height:70%"></div>
+            <div class="chart-bar peak" style="height:85%"></div>
+            <div class="chart-bar peak" style="height:75%"></div>
+            <div class="chart-bar" style="height:60%"></div>
+            <div class="chart-bar peak" style="height:90%"></div>
+            <div class="chart-bar" style="height:65%"></div>
+            <div class="chart-bar" style="height:50%"></div>
+            <div class="chart-bar" style="height:40%"></div>
+            <div class="chart-bar" style="height:35%"></div>
+            <div class="chart-bar" style="height:45%"></div>
+            <div class="chart-bar" style="height:38%"></div>
+            <div class="chart-bar" style="height:42%"></div>
+            <div class="chart-overlay">
+              <div class="chart-overlay-label">Current Throughput</div>
+              <div class="chart-overlay-val">2,405 vph</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM GRID -->
+        <div class="db-bottom-grid">
+          <!-- CORRIDOR TABLE -->
+          <div class="chart-card" role="region" aria-label="Corridor status">
+            <div class="chart-header"><div class="chart-title">🛣️ Corridor Status</div></div>
+            <div style="padding:0 var(--space-5) var(--space-5);">
+              <table class="data-table" aria-label="Corridor status table">
+                <thead>
+                  <tr>
+                    <th>Corridor</th>
+                    <th>Zone</th>
+                    <th>Status</th>
+                    <th>Vol (vph)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>NH-48 Inner Ring</td><td>Central</td><td><span class="status-badge active">● Active</span></td><td>1,240</td></tr>
+                  <tr><td>Hosur Road Segment</td><td>South</td><td><span class="status-badge active">● Active</span></td><td>876</td></tr>
+                  <tr><td>Outer Ring Road E</td><td>East</td><td><span class="status-badge monitoring">◎ Monitor</span></td><td>604</td></tr>
+                  <tr><td>Tumkur Road</td><td>North</td><td><span class="status-badge paused">⏸ Paused</span></td><td>—</td></tr>
+                  <tr><td>Mysore Road Pilot</td><td>West</td><td><span class="status-badge monitoring">◎ Monitor</span></td><td>389</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TERMINAL -->
+          <div class="terminal-card" role="region" aria-label="System audit log">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot" style="background:#FF5F57;"></div>
+                <div class="terminal-dot" style="background:#FEBC2E;"></div>
+                <div class="terminal-dot" style="background:#28C840;"></div>
+              </div>
+              <div class="terminal-title">audit-log · live stream</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.25);">●REC</div>
+            </div>
+            <div class="terminal-body" id="terminal" aria-live="polite">
+              <div class="log-line"><span class="log-time">09:41:02</span><span class="log-level ok">OK</span><span class="log-text">Corridor NH-48 policy sync complete</span></div>
+              <div class="log-line"><span class="log-time">09:41:05</span><span class="log-level ok">OK</span><span class="log-text">Incentive batch dispatched — 1,204 UPI credits</span></div>
+              <div class="log-line"><span class="log-time">09:41:09</span><span class="log-level info">INFO</span><span class="log-text">FASTag reader Hosur-RD-03 reconnected</span></div>
+              <div class="log-line"><span class="log-time">09:41:14</span><span class="log-level ok">OK</span><span class="log-text">Audit hash 8f4a...e2b9 sealed and timestamped</span></div>
+              <div class="log-line"><span class="log-time">09:41:19</span><span class="log-level warn">WARN</span><span class="log-text">Tumkur Rd policy window pause — manual review pending</span></div>
+              <div class="log-line"><span class="log-time">09:41:23</span><span class="log-level ok">OK</span><span class="log-text">DPDP retention policy applied — 3 records purged</span></div>
+              <div class="log-line"><span class="log-time">09:41:27</span><span class="log-level info">INFO</span><span class="log-text">Policy rule v2.1.4 loaded — effective from 10:00 IST</span></div>
+              <div class="log-line"><span class="log-time">09:41:31</span><span class="log-level ok">OK</span><span class="log-text">ICCC sync IN-WEST-1 heartbeat — latency 12ms</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCLOSURE -->
+        <div class="db-disclosure" role="note">
+          <strong>Simulation Notice:</strong> This dashboard displays prototype data only. No live city deployments are currently operational. All metrics, corridors, and log entries are illustrative design specifications for government evaluation. Live data capabilities are subject to contract and GoI approval.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const chartBtns = document.querySelectorAll('.chart-btn');
+    chartBtns.forEach(btn => {
+      btn.addEventListener('click', () => { chartBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); });
+    });
+    const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => { sidebarItems.forEach(s => s.classList.remove('active')); if (!item.querySelector('a')) item.classList.add('active'); });
+    });
+    let logCount = 0;
+    const logMessages = [
+      { level: 'ok', text: 'Occupancy verified — carpooling incentive applied' },
+      { level: 'info', text: 'Peak hour window — 3 corridors elevated' },
+      { level: 'ok', text: 'Revenue reconciliation complete — ₹2.4L batch' },
+      { level: 'ok', text: 'Grievance ref GRV-1042 resolved' },
+      { level: 'info', text: 'Off-peak incentive window active — 23:00–05:00' },
+    ];
+    const terminal = document.getElementById('terminal');
+    setInterval(() => {
+      if (logCount >= logMessages.length) logCount = 0;
+      const msg = logMessages[logCount++];
+      const now = new Date();
+      const time = [now.getHours(),now.getMinutes(),now.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':');
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.innerHTML = `<span class="log-time">${time}</span><span class="log-level ${msg.level}">${msg.level.toUpperCase()}</span><span class="log-text">${msg.text}</span>`;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+    }, 3500);
+  </script>
+</body>
+</html>

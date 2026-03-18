@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Integration & Delivery Brief (Redacted Preview) — Public outline of the controlled brief. Request access for the full controlled version.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Integration & Delivery Brief (Redacted Preview) | MTSAi</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: var(--layer-bg); overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    .mts-container { max-width: 960px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    .brief-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+    .brief-header { background: #0A0A0A; border-bottom: 3px solid #393939; padding: var(--space-4) var(--space-6); display: flex; align-items: center; gap: var(--space-5); }
+    .brief-header-logo { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #F4F4F4; text-decoration: none; letter-spacing: -0.02em; }
+    .brief-header-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.10); }
+    .brief-header-title { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+    .brief-header-badge { margin-left: auto; font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.50); border: 1px solid rgba(255,255,255,0.10); }
+
+    .brief-main { flex: 1; padding: var(--space-10) 0 var(--space-12); }
+    .brief-meta-strip { background: var(--layer-01); border: 1px solid var(--blue-20); padding: var(--space-5) var(--space-7); margin-bottom: var(--space-8); display: flex; gap: var(--space-8); flex-wrap: wrap; }
+    .brief-meta-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); display: block; margin-bottom: 3px; }
+    .brief-meta-val { font-size: 13px; color: var(--text-primary); font-weight: 500; }
+
+    .doc-title { font-family: var(--font-display); font-size: clamp(28px,4vw,44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-6); }
+    .doc-section { margin-bottom: var(--space-9); padding-top: var(--space-6); border-top: 1px solid var(--blue-20); }
+    .doc-section-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-5); }
+    .doc-body { font-size: 16px; color: var(--text-secondary); line-height: 1.75; margin-bottom: var(--space-5); }
+    .doc-body a { color: var(--interactive); }
+
+    .redact-banner { background: var(--layer-01); border: 1px solid var(--border-subtle); border-left: 4px solid var(--interactive); padding: var(--space-6) var(--space-7); margin: var(--space-7) 0; }
+    .redact-banner-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
+    .redact-banner-title { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); }
+    .redact-banner-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+    .outline-list { list-style: none; margin: var(--space-5) 0; }
+    .outline-list li { display: flex; align-items: flex-start; gap: var(--space-4); padding: var(--space-4) 0; border-bottom: 1px solid var(--border-subtle); font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+    .outline-list li:last-child { border-bottom: none; }
+    .outline-list .num { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--interactive); flex-shrink: 0; min-width: 30px; }
+    .outline-list .redacted-text { background: #393939; color: transparent; border-radius: 2px; display: inline-block; height: 16px; width: 200px; vertical-align: middle; margin-left: var(--space-2); }
+    .outline-list .redacted-text.short { width: 120px; }
+
+    .access-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); margin: var(--space-7) 0; }
+    .access-step { padding: var(--space-6); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); }
+    .access-step-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--layer-01); line-height: 1; margin-bottom: var(--space-3); }
+    .access-step-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
+    .access-step p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    .access-cta { padding: var(--space-8) var(--space-9); background: #000C2E; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-5); margin-top: var(--space-8); }
+    .access-cta h3 { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: #fff; margin: 0; }
+    .access-cta p { font-size: 14px; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.6; }
+
+    .brief-footer { background: #161616; padding: var(--space-5) var(--space-6); border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.30); gap: var(--space-5); flex-wrap: wrap; }
+
+    @media (max-width: 768px) { .brief-meta-strip { flex-direction: column; gap: var(--space-4); } .access-steps { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="brief-wrapper">
+  <header class="brief-header" role="banner">
+    <a href="index.html" class="brief-header-logo">MTSAi</a>
+    <div class="brief-header-sep" aria-hidden="true"></div>
+    <div class="brief-header-title">Integration &amp; Delivery Brief</div>
+    <div class="brief-header-badge">📄 Public Redacted Preview</div>
+  </header>
+
+  <main id="main-content" class="brief-main">
+    <div class="mts-container">
+
+      <!-- META STRIP -->
+      <div class="brief-meta-strip">
+        <div><span class="brief-meta-label">Document</span><div class="brief-meta-val">Integration &amp; Delivery Brief (Redacted)</div></div>
+        <div><span class="brief-meta-label">Version</span><div class="brief-meta-val">v1.0 · Redacted Preview</div></div>
+        <div><span class="brief-meta-label">Distribution</span><div class="brief-meta-val">Public outline only · Full version gated</div></div>
+      </div>
+
+      <h1 class="doc-title">Integration &amp; Delivery Brief<br><small style="font-size:0.5em;font-weight:400;color:var(--text-secondary);">Redacted Preview</small></h1>
+
+      <div class="redact-banner">
+        <span class="redact-banner-label">📄 Public Redacted Preview</span>
+        <div class="redact-banner-title">This preview contains an outline only.</div>
+        <p class="redact-banner-body">Controlled annexes and full technical detail are shared after gated access approval. Technical specifications, interface contracts, acceptance criteria, and security documentation are redacted from this public preview.</p>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-title">Section Outline</div>
+        <p class="doc-body">The following sections are included in the full controlled brief. Redacted content is indicated by <span style="background:#D1D1D1;color:transparent;display:inline-block;height:14px;width:80px;vertical-align:middle;border-radius:2px;"></span> placeholders.</p>
+        <ul class="outline-list">
+          <li><span class="num">A</span><span>Interface catalog overview — <span class="redacted-text"></span></span></li>
+          <li><span class="num">B</span><span>Module map + ownership matrix — <span class="redacted-text short"></span></span></li>
+          <li><span class="num">C</span><span>Acceptance gates checklist — <span class="redacted-text"></span></span></li>
+          <li><span class="num">D</span><span>Security + privacy baseline summary — <span class="redacted-text"></span></span></li>
+          <li><span class="num">E</span><span>Pilot timeline template — <span class="redacted-text short"></span></span></li>
+          <li><span class="num">F</span><span>Evidence artifact map — <span class="redacted-text"></span></span></li>
+          <li><span class="num">G</span><span>Handover pack outline — <span class="redacted-text short"></span></span></li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-title">Accessing the Controlled Brief</div>
+        <p class="doc-body">Request access via the contact page to receive the controlled brief within 3 business days.</p>
+        <div class="access-steps">
+          <div class="access-step">
+            <div class="access-step-num">01</div>
+            <div class="access-step-title">Submit Request</div>
+            <p>Use the contact page to submit a Government or Strategic Partner request identifying yourself and your evaluation context.</p>
+          </div>
+          <div class="access-step">
+            <div class="access-step-num">02</div>
+            <div class="access-step-title">Access Review</div>
+            <p>MTSAi reviews the request and confirms eligibility within 2–3 business days. A reference ID is issued.</p>
+          </div>
+          <div class="access-step">
+            <div class="access-step-num">03</div>
+            <div class="access-step-title">Receive Brief</div>
+            <p>The controlled brief is shared via secure channel. Confirm receipt with your MTSAi contact and retain your reference ID.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="access-cta">
+        <h3>Request the Controlled Brief</h3>
+        <p>Submit a Government Evaluation or Strategic Partner request to receive the full Integration &amp; Delivery Brief within 3 business days.</p>
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="height:44px;padding:0 24px;">Contact MTSAi →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="brief-footer" role="contentinfo">
+    <span>© 2026 Miracle Traffic Solutions AI</span>
+    <span>Integration &amp; Delivery Brief · Redacted Preview</span>
+    <span>Public distribution</span>
+  </footer>
+</div>
+
+</body>
+</html>

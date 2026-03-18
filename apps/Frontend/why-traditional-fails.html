@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Traditional Congestion Pricing Struggles — Political resistance, limited behaviour change, and equal treatment of unequal vehicles. How MTSAi is framed differently.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Why Traditional Congestion Pricing Struggles | MTSAi</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Why Traditional Congestion Pricing Struggles — MTSAi">
+  <meta property="og:description" content="This page answers the political-risk question before it is asked: why conventional congestion pricing is vulnerable to backlash.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/card.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--cta-primary), #FFAD33); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--interactive); color: #fff; padding: 8px 16px; text-decoration: none; z-index: 10000; font-size: 13px; font-weight: 600; }
+    .skip-link:focus { top: 0; }
+    .mts-nav { background: var(--layer-bg); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; transition: box-shadow 200ms var(--ease-standard); }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner { display: flex; align-items: center; padding: 0 var(--space-6); height: 64px; max-width: 1440px; margin: 0 auto; }
+    .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
+    .mts-nav__logo img { height: 38px; width: auto; }
+    .mts-nav__links { display: flex; list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; transition: color var(--duration-fast-02) var(--ease-standard); font-family: var(--font-body); }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown { position: absolute; top: calc(100% + 16px); left: 0; background: #fff; border: 1px solid var(--border-subtle); box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px; list-style: none; padding: var(--space-2) 0; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard); z-index: 1000; border-radius: 2px; }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
+    .nav-dropdown li a:hover, .nav-dropdown li a.active { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
+    @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+
+    .article-hero { background: linear-gradient(150deg, #1A0000 0%, #120000 55%, #050000 100%); position: relative; overflow: hidden; padding: clamp(80px,12vw,140px) 0; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 12% 50%, rgba(218,30,40,0.25) 0%, transparent 65%); pointer-events: none; }
+    .article-hero-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #DA1E28 0%, var(--cta-primary) 60%, transparent 100%); }
+    .article-hero-inner { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 320px; gap: var(--space-12); align-items: start; }
+    .article-priority { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #FF8389; margin-bottom: var(--space-4); display: block; }
+    .article-headline { font-family: var(--font-display); font-size: clamp(36px,5.5vw,72px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; color: #fff; margin: var(--space-4) 0 var(--space-5); }
+    .article-lead { font-size: clamp(16px,1.4vw,20px); color: rgba(255,255,255,0.78); line-height: 1.72; max-width: 600px; }
+    .article-meta { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); padding: var(--space-6); }
+    .meta-row { padding: var(--space-4) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); margin-bottom: 4px; display: block; }
+    .meta-val { font-size: 13px; color: rgba(255,255,255,0.80); font-weight: 500; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.40); margin-bottom: var(--space-5); display: flex; gap: var(--space-2); align-items: center; }
+    .breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .breadcrumb .sep { opacity: 0.4; }
+
+    .article-body { padding: clamp(72px,10vw,120px) 0; }
+    .article-layout { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-12); align-items: start; }
+    .article-toc { position: sticky; top: 80px; }
+    .toc-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); margin-bottom: var(--space-5); }
+    .toc-list { list-style: none; border-left: 2px solid var(--border-subtle); }
+    .toc-list li a { display: block; padding: var(--space-3) var(--space-4); font-size: 12px; color: var(--text-secondary); text-decoration: none; transition: color 150ms, border-left-color 150ms; border-left: 2px solid transparent; margin-left: -2px; }
+    .toc-list li a:hover, .toc-list li a.active { color: var(--interactive); border-left-color: var(--interactive); }
+    .content-section { margin-bottom: var(--space-13); padding-top: var(--space-4); border-top: 1px solid var(--blue-20); }
+    .content-h2 { font-family: var(--font-display); font-size: clamp(22px,3vw,38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-6); }
+    .content-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.80; margin-bottom: var(--space-6); max-width: 700px; }
+    .content-body strong { color: var(--text-primary); font-weight: 600; }
+    .challenge-card { padding: var(--space-8); background: #FFF8F8; border: 1px solid rgba(218,30,40,0.15); border-left: 4px solid #DA1E28; margin-bottom: var(--space-5); transition: box-shadow 200ms; }
+    .challenge-card:hover { box-shadow: 0 6px 20px rgba(218,30,40,0.08); }
+    .challenge-num { font-family: var(--font-display); font-size: 48px; font-weight: 700; color: rgba(218,30,40,0.12); line-height: 1; margin-bottom: var(--space-4); }
+    .challenge-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-4); }
+    .challenge-body { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+    .approach-card { padding: var(--space-8); background: var(--layer-01); border: 1px solid var(--blue-20); border-left: 4px solid var(--interactive); margin-top: var(--space-7); }
+    .approach-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
+    .approach-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-4); }
+    .approach-body { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+    .policy-conclusion { background: #000C2E; padding: var(--space-8); margin: var(--space-7) 0; }
+    .policy-conclusion-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); margin-bottom: var(--space-4); display: block; }
+    .policy-conclusion p { font-family: var(--font-display); font-size: clamp(18px,2vw,26px); font-weight: 700; color: #fff; line-height: 1.4; margin: 0; }
+    .policy-conclusion p em { color: var(--cta-primary); font-style: normal; }
+    .policy-notice { background: var(--layer-01); border: 1px solid var(--blue-20); border-left: 3px solid var(--interactive); padding: var(--space-6) var(--space-7); margin-top: var(--space-10); }
+    .policy-notice-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
+    .policy-notice p { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+
+    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
+    .section-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    .cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-5); }
+    .cta-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+    .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: 0 0 var(--space-6); max-width: 720px; }
+    .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
+    .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
+    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+
+    .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
+    .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 50%); }
+    .footer-top { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-10); margin-bottom: var(--space-9); }
+    .footer-logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: #F4F4F4; text-decoration: none; margin-bottom: var(--space-5); display: block; }
+    .footer-tagline { font-size: 13px; color: #8D8D8D; line-height: 1.65; margin-bottom: var(--space-5); }
+    .footer-links { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-5); }
+    .footer-col-heading { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5); }
+    .footer-col a { display: block; font-size: 13px; color: #6F6F6F; text-decoration: none; margin-bottom: 10px; transition: color var(--duration-fast-02); }
+    .footer-col a:hover { color: #F4F4F4; }
+    .footer-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: var(--space-7); }
+    .footer-disclaimer { font-size: 12px; color: #525252; line-height: 1.65; max-width: 900px; margin-bottom: var(--space-7); padding: var(--space-5) var(--space-6); border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(255,255,255,0.12); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #525252; gap: var(--space-5); flex-wrap: wrap; }
+    .footer-bottom nav { display: flex; gap: var(--space-5); }
+    .footer-bottom nav a { color: #525252; font-size: 12px; text-decoration: none; }
+    .footer-bottom nav a:hover { color: #F4F4F4; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1024px) { .article-hero-inner { grid-template-columns: 1fr; } .article-layout { grid-template-columns: 1fr; } .article-toc { display: none; } }
+    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .footer-top { grid-template-columns: 1fr; } .footer-links { grid-template-columns: repeat(2,1fr); } .cta-actions { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage"><img src="img/mtsai-logo.png" alt="MTSAi"></a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link active" aria-expanded="false" aria-haspopup="true">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html" class="active" aria-current="page">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="nav-status"><span class="status-dot" aria-hidden="true"></span><span>System Online</span></span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="article-hero" aria-label="Why Traditional Congestion Pricing Struggles">
+      <div class="article-hero-accent" aria-hidden="true"></div>
+      <div class="mts-container article-hero-inner">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><span class="sep">/</span>
+            <span>How It Works</span><span class="sep">/</span>
+            <span>Why Traditional Fails</span>
+          </nav>
+          <span class="article-priority">Priority 1 · Minister Question 2</span>
+          <h1 class="article-headline">Why Traditional Congestion Pricing Struggles</h1>
+          <p class="article-lead">Cities around the world have experimented with congestion pricing to reduce traffic during peak hours. While these programmes can reduce traffic volumes, they often encounter three persistent challenges that limit their effectiveness and political sustainability.</p>
+        </div>
+        <div class="article-meta">
+          <div class="meta-row"><span class="meta-label">Document Type</span><div class="meta-val">Political risk briefing</div></div>
+          <div class="meta-row"><span class="meta-label">Audience</span><div class="meta-val">Ministers, senior policy advisors</div></div>
+          <div class="meta-row"><span class="meta-label">Purpose</span><div class="meta-val">Answer the political-risk question before it is asked</div></div>
+          <div class="meta-row"><span class="meta-label">Related</span>
+            <div style="margin-top:4px;display:flex;flex-direction:column;gap:4px;">
+              <a href="congestion-coordination.html" style="font-size:11px;color:#FF8389;text-decoration:none;">→ Coordination Problem</a>
+              <a href="iudm.html" style="font-size:11px;color:#FF8389;text-decoration:none;">→ IUDM Model</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <article class="article-body" id="article">
+      <div class="mts-container">
+        <div class="article-layout">
+          <aside class="article-toc" aria-label="Table of contents">
+            <div class="toc-label">Contents</div>
+            <ul class="toc-list">
+              <li><a href="#resistance">Political Resistance</a></li>
+              <li><a href="#behaviour">Limited Behaviour Change</a></li>
+              <li><a href="#equal-treatment">Equal Treatment Problem</a></li>
+              <li><a href="#different-approach">A Different Approach</a></li>
+            </ul>
+          </aside>
+
+          <div>
+            <div style="background:var(--layer-01);border:1px solid var(--blue-20);border-left:3px solid #DA1E28;padding:var(--space-6) var(--space-7);margin-bottom:var(--space-10);">
+              <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin:0;">This page is designed to <strong style="color:var(--text-primary);">answer the political-risk question before it is asked</strong>: why conventional congestion pricing is vulnerable to backlash, and why MTSAi is framed differently.</p>
+            </div>
+
+            <section id="resistance" class="content-section reveal">
+              <h2 class="content-h2">Challenge 1: Political Resistance</h2>
+              <div class="challenge-card">
+                <div class="challenge-num">01</div>
+                <div class="challenge-title">Political Resistance</div>
+                <p class="challenge-body">Many commuters experience congestion pricing as a penalty for mobility. Public debate shifts quickly from congestion management to fairness and affordability. Programmes that are technically effective can still fail politically because of how they are perceived.</p>
+              </div>
+            </section>
+
+            <section id="behaviour" class="content-section reveal">
+              <h2 class="content-h2">Challenge 2: Behaviour Change Is Often Limited</h2>
+              <div class="challenge-card">
+                <div class="challenge-num">02</div>
+                <div class="challenge-title">Limited Behaviour Change</div>
+                <p class="challenge-body">Charging for road access does not always change behaviour significantly. Many commuters absorb the cost and continue driving alone during peak hours. The pricing signal changes the cost of a trip, but not necessarily how or when people travel.</p>
+              </div>
+            </section>
+
+            <section id="equal-treatment" class="content-section reveal">
+              <h2 class="content-h2">Challenge 3: Systems Treat All Vehicles the Same</h2>
+              <div class="challenge-card">
+                <div class="challenge-num">03</div>
+                <div class="challenge-title">Equal Treatment of Unequal Vehicles</div>
+                <p class="challenge-body">Most congestion systems price vehicles, not people. A car carrying three people is charged the same as a car carrying one. But those vehicles do not contribute equally to congestion. A car carrying three people has already solved a coordination problem. Traditional systems do not recognise or reward that difference.</p>
+              </div>
+            </section>
+
+            <section id="different-approach" class="content-section reveal">
+              <h2 class="content-h2">A Different Approach</h2>
+              <p class="content-body">Addressing congestion effectively requires a system that does more than charge for road access. It requires a system that actively rewards behaviour that reduces congestion.</p>
+              <div class="approach-card">
+                <span class="approach-label">MTSAi Solution</span>
+                <div class="approach-title">Incentive-Based Urban Demand Management</div>
+                <p class="approach-body">MTSAi introduces Incentive-Based Urban Demand Management (IUDM) — a framework built on that principle. Instead of penalising drivers, IUDM rewards behaviour that benefits the transportation network.</p>
+              </div>
+              <div class="policy-conclusion">
+                <span class="policy-conclusion-label">Policy Conclusion</span>
+                <p>If congestion policy is framed as a driver penalty, <em>it becomes politically fragile before it becomes operationally durable.</em></p>
+              </div>
+              <div class="policy-notice">
+                <span class="policy-notice-label">Policy Instruments Notice</span>
+                <p>Policy instruments for congestion demand management are supported by operational infrastructure and public accountability. Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="section-cta" aria-label="Next steps">
+      <div class="mts-container">
+        <div class="reveal">
+          <div class="cta-eyebrow">Continue Reading</div>
+          <h2 class="cta-headline">How does congestion work as a coordination problem?</h2>
+          <p class="cta-body">Understanding the root cause of congestion — and why incentives outperform penalties — is essential context before evaluating the IUDM model.</p>
+          <div class="cta-actions">
+            <a href="congestion-coordination.html" class="mts-btn mts-btn--primary mts-btn--lg">Congestion as Coordination →</a>
+            <a href="iudm.html" class="mts-btn mts-btn--ghost mts-btn--lg">IUDM Model</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="footer-logo"><img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
+          <p class="footer-tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <div class="footer-col"><h3 class="footer-col-heading">How It Works</h3><a href="why-traditional-fails.html">Why Traditional Fails</a><a href="congestion-coordination.html">Congestion Problem</a><a href="iudm.html">IUDM Model</a><a href="deployment-roadmap.html">Deployment Roadmap</a><a href="india-advantage.html">India Advantage</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Platform</h3><a href="technology_platform.html">Technology</a><a href="Government.html">Government</a><a href="Strategic_Partners.html">Partners</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Governance</h3><a href="#">Trust Centre</a><a href="#">Privacy Policy</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Company</h3><a href="about.html">About</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="footer-bottom">
+        <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
+        <nav><a href="#">Terms</a><a href="#">Privacy Policy</a><a href="#">Hyperlinking Policy</a></nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Why Traditional Fails · Jan 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button'), dd = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+    const sections = document.querySelectorAll('.content-section[id]');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    const tocObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.toc-list a[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
+      });
+    }, { rootMargin: '-20% 0px -75% 0px' });
+    sections.forEach(s => tocObs.observe(s));
+  </script>
+</body>
+</html>

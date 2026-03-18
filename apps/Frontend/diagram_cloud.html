@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Cloud Deployment Model — Architecture diagram showing the platform's cloud-native deployment and integration layers.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Cloud Deployment Model | MTSAi</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #0A0E1A; color: #F4F4F4; overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    .page-header { background: #050810; border-bottom: 1px solid rgba(255,255,255,0.06); padding: var(--space-4) var(--space-6); display: flex; align-items: center; gap: var(--space-5); position: sticky; top: 0; z-index: 50; }
+    .page-header-back { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.40); text-decoration: none; transition: color 150ms; }
+    .page-header-back:hover { color: rgba(255,255,255,0.85); }
+    .page-header-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.10); }
+    .page-header-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .page-header-badge { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; background: rgba(0,82,204,0.20); color: #78A9FF; margin-left: auto; }
+
+    .diag-hero { padding: clamp(60px,9vw,100px) 0 var(--space-10); background: linear-gradient(180deg, #050810 0%, #0A0E1A 100%); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .diag-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #78A9FF; margin-bottom: var(--space-4); display: block; }
+    .diag-headline { font-family: var(--font-display); font-size: clamp(32px,5vw,60px); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: #fff; margin-bottom: var(--space-5); }
+    .diag-sub { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.60); max-width: 580px; line-height: 1.72; }
+
+    /* DIAGRAM */
+    .diag-section { padding: var(--space-10) 0; }
+    .layer-stack { display: flex; flex-direction: column; gap: var(--space-3); max-width: 960px; margin: 0 auto; }
+    .layer { border: 1px solid; border-radius: 0; padding: var(--space-6) var(--space-7); position: relative; transition: box-shadow 250ms; }
+    .layer:hover { box-shadow: 0 4px 32px rgba(0,82,204,0.20); }
+    .layer-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-3); display: block; }
+    .layer-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: var(--space-4); }
+    .layer-nodes { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .node { font-family: var(--font-mono); font-size: 11px; font-weight: 600; padding: var(--space-2) var(--space-4); border: 1px solid currentColor; border-radius: 0; text-transform: uppercase; letter-spacing: 0.06em; }
+    .node-desc { font-size: 13px; opacity: 0.65; line-height: 1.65; max-width: 700px; margin-top: var(--space-4); }
+
+    /* LAYER COLORS */
+    .layer-0 { background: rgba(0,82,204,0.06); border-color: rgba(0,82,204,0.35); }
+    .layer-0 .layer-label { color: #78A9FF; }
+    .layer-0 .layer-title { color: #fff; }
+    .layer-0 .node { color: #78A9FF; border-color: rgba(0,82,204,0.35); }
+
+    .layer-1 { background: rgba(83,170,0,0.06); border-color: rgba(83,170,0,0.30); }
+    .layer-1 .layer-label { color: #6FDC8C; }
+    .layer-1 .layer-title { color: #fff; }
+    .layer-1 .node { color: #6FDC8C; border-color: rgba(83,170,0,0.30); }
+
+    .layer-2 { background: rgba(255,153,0,0.06); border-color: rgba(255,153,0,0.25); }
+    .layer-2 .layer-label { color: #FFAD33; }
+    .layer-2 .layer-title { color: #fff; }
+    .layer-2 .node { color: #FFAD33; border-color: rgba(255,153,0,0.25); }
+
+    .layer-3 { background: rgba(218,30,40,0.06); border-color: rgba(218,30,40,0.25); }
+    .layer-3 .layer-label { color: #FF8389; }
+    .layer-3 .layer-title { color: #fff; }
+    .layer-3 .node { color: #FF8389; border-color: rgba(218,30,40,0.25); }
+
+    .layer-4 { background: rgba(120,169,255,0.06); border-color: rgba(120,169,255,0.20); }
+    .layer-4 .layer-label { color: rgba(120,169,255,0.7); }
+    .layer-4 .layer-title { color: #fff; }
+    .layer-4 .node { color: rgba(120,169,255,0.75); border-color: rgba(120,169,255,0.20); }
+
+    .layer-5 { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.10); }
+    .layer-5 .layer-label { color: rgba(255,255,255,0.45); }
+    .layer-5 .layer-title { color: #fff; }
+    .layer-5 .node { color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.12); }
+
+    /* CONNECTOR */
+    .layer-connector { text-align: center; font-size: 20px; color: rgba(255,255,255,0.12); padding: var(--space-1) 0; line-height: 1; }
+
+    /* INFO GRID */
+    .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-10); }
+    .info-card { padding: var(--space-6); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+    .info-card-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); margin-bottom: var(--space-3); display: block; }
+    .info-card-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: var(--space-3); }
+    .info-card p { font-size: 13px; color: rgba(255,255,255,0.50); line-height: 1.65; }
+
+    /* NOTICE */
+    .diag-notice { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid rgba(0,82,204,0.60); padding: var(--space-5) var(--space-6); margin-top: var(--space-8); font-size: 12px; color: rgba(255,255,255,0.40); line-height: 1.65; }
+    .diag-notice strong { color: rgba(255,255,255,0.65); }
+
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .layer-nodes { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <header class="page-header" role="banner">
+    <a href="index.html" class="page-header-back">← MTSAi</a>
+    <div class="page-header-sep" aria-hidden="true"></div>
+    <div class="page-header-title">Cloud Deployment Model</div>
+    <div class="page-header-badge">Architecture · Design Spec</div>
+  </header>
+
+  <main id="main-content">
+    <div class="diag-hero">
+      <div class="mts-container">
+        <span class="diag-eyebrow">Architecture · v1.0</span>
+        <h1 class="diag-headline">MTSAi Cloud Deployment Model</h1>
+        <p class="diag-sub">The MTSAi platform is designed for cloud-native deployment with India-resident data, integrating government digital infrastructure at every layer. This diagram illustrates the logical deployment architecture.</p>
+      </div>
+    </div>
+
+    <div class="diag-section">
+      <div class="mts-container">
+
+        <!-- LAYER STACK -->
+        <div class="layer-stack" role="img" aria-label="Cloud architecture diagram">
+
+          <!-- LAYER 1: GOVERNMENT ACCESS -->
+          <div class="layer layer-0">
+            <span class="layer-label">Layer 1 — Government Access</span>
+            <div class="layer-title">Policy Control &amp; Governance Portal</div>
+            <div class="layer-nodes">
+              <div class="node">Policy Rule Engine</div>
+              <div class="node">Audit Dashboard</div>
+              <div class="node">Evidence Vault</div>
+              <div class="node">Appeal Workflow</div>
+              <div class="node">Grievance Portal</div>
+            </div>
+            <p class="node-desc">Government officials access policy controls, set incentive parameters, review audit logs, and manage commuter appeals entirely through dedicated portals with role-based access controls.</p>
+          </div>
+
+          <div class="layer-connector" aria-hidden="true">↕</div>
+
+          <!-- LAYER 2: CORE PLATFORM -->
+          <div class="layer layer-1">
+            <span class="layer-label">Layer 2 — Core Platform Services</span>
+            <div class="layer-title">Demand Management Engine</div>
+            <div class="layer-nodes">
+              <div class="node">Incentive Calculator</div>
+              <div class="node">Occupancy Verifier</div>
+              <div class="node">Corridor Scheduler</div>
+              <div class="node">Payout Manager</div>
+              <div class="node">Peak Window Controller</div>
+            </div>
+            <p class="node-desc">The core engine processes vehicle data, verifies occupancy signals, applies policy rules, calculates incentive amounts, and queues payouts — all within auditable, timestamped transactions.</p>
+          </div>
+
+          <div class="layer-connector" aria-hidden="true">↕</div>
+
+          <!-- LAYER 3: DATA & AUDIT -->
+          <div class="layer layer-2">
+            <span class="layer-label">Layer 3 — Data &amp; Audit Layer</span>
+            <div class="layer-title">Immutable Audit Trail &amp; Data Residency</div>
+            <div class="layer-nodes">
+              <div class="node">Audit Hash Chain</div>
+              <div class="node">Event Ledger</div>
+              <div class="node">DPDP Retention Engine</div>
+              <div class="node">Data Residency (IN)</div>
+            </div>
+            <p class="node-desc">All transactions are written to an append-only audit log with cryptographic hashing. Data is retained on India-resident infrastructure in compliance with DPDP Act provisions.</p>
+          </div>
+
+          <div class="layer-connector" aria-hidden="true">↕</div>
+
+          <!-- LAYER 4: INTEGRATION -->
+          <div class="layer layer-3">
+            <span class="layer-label">Layer 4 — Government Infrastructure Integration</span>
+            <div class="layer-title">India Digital Public Infrastructure Connectors</div>
+            <div class="layer-nodes">
+              <div class="node">FASTag (NETC)</div>
+              <div class="node">UPI Disbursement</div>
+              <div class="node">Aadhaar eKYC</div>
+              <div class="node">ICCC API</div>
+              <div class="node">ANPR / LPR</div>
+            </div>
+            <p class="node-desc">MTSAi integrates with India's existing public digital infrastructure — FASTag for vehicle identification, UPI for incentive disbursement, Aadhaar eKYC for commuter verification, and ICCCs for real-time traffic data.</p>
+          </div>
+
+          <div class="layer-connector" aria-hidden="true">↕</div>
+
+          <!-- LAYER 5: SECURITY -->
+          <div class="layer layer-4">
+            <span class="layer-label">Layer 5 — Security &amp; Compliance</span>
+            <div class="layer-title">CERT-In &amp; ISO 27001 Baseline</div>
+            <div class="layer-nodes">
+              <div class="node">CERT-In Guidelines</div>
+              <div class="node">Penetration Testing</div>
+              <div class="node">Incident Response</div>
+              <div class="node">Access Controls (RBAC)</div>
+              <div class="node">Encryption at Rest</div>
+            </div>
+            <p class="node-desc">Security posture designed to CERT-In and ISO 27001 requirements, with encryption at rest and in transit, role-based access controls, and documented incident response procedures.</p>
+          </div>
+
+          <div class="layer-connector" aria-hidden="true">↕</div>
+
+          <!-- LAYER 6: DEPLOYMENT -->
+          <div class="layer layer-5">
+            <span class="layer-label">Layer 6 — Cloud Infrastructure</span>
+            <div class="layer-title">India-Resident Cloud Deployment</div>
+            <div class="layer-nodes">
+              <div class="node">MeitY Cloud Framework</div>
+              <div class="node">India Region (IN-WEST-1)</div>
+              <div class="node">Multi-AZ Failover</div>
+              <div class="node">Gov-Auditable Hosting</div>
+            </div>
+            <p class="node-desc">Deployed on MeitY-empanelled cloud infrastructure within India, with multi-availability-zone resilience and government-auditable hosting configurations.</p>
+          </div>
+        </div>
+
+        <!-- INFO GRID -->
+        <div class="info-grid">
+          <div class="info-card">
+            <span class="info-card-label">Data Residency</span>
+            <div class="info-card-title">India-Resident Storage</div>
+            <p>All personally identifiable data and transaction records stored within India. Compliant with DPDP Act data localisation provisions as designed.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-card-label">Integration Model</span>
+            <div class="info-card-title">API-First Architecture</div>
+            <p>All integrations with FASTag, UPI, ICCC, and ANPR systems use documented REST APIs with versioned contracts and government-controlled credentials.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-card-label">Deployment Model</span>
+            <div class="info-card-title">City-Specific Tenancy</div>
+            <p>Each city deployment operates as a separate logical tenant. Policy rules, data, and audit logs are fully isolated per procuring authority.</p>
+          </div>
+        </div>
+
+        <div class="diag-notice" role="note">
+          <strong>Architecture Notice:</strong> This diagram represents the intended deployment architecture as a design specification. Final hosting model, integration scope, and security certification are confirmed through the procuring entity's RFP and technical due diligence process. No live deployments are currently operational.
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

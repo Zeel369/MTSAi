@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact MTSAi — Reach the right team for government evaluation, strategic partnership, or public integrity enquiries.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Contact | MTSAi</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Contact MTSAi — Start an Evaluation">
+  <meta property="og:description" content="Choose your intent to reach the right intake team — Government, Strategic Partners, or Public Integrity.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/card.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--cta-primary), #FFAD33); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--interactive); color: #fff; padding: 8px 16px; text-decoration: none; z-index: 10000; font-size: 13px; font-weight: 600; }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav { background: var(--layer-bg); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; transition: box-shadow 200ms var(--ease-standard); }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner { display: flex; align-items: center; padding: 0 var(--space-6); height: 64px; max-width: 1440px; margin: 0 auto; }
+    .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
+    .mts-nav__logo img { height: 38px; width: auto; }
+    .mts-nav__links { display: flex; list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; transition: color var(--duration-fast-02) var(--ease-standard); font-family: var(--font-body); position: relative; }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link.active::after { content: ''; position: absolute; bottom: -22px; left: 0; right: 0; height: 2px; background: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown { position: absolute; top: calc(100% + 16px); left: 0; background: #fff; border: 1px solid var(--border-subtle); box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px; list-style: none; padding: var(--space-2) 0; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard); z-index: 1000; border-radius: 2px; }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gray-50); }
+    .status-dot.active { background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
+    @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+
+    /* HERO */
+    .hero-contact { background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%); position: relative; overflow: hidden; padding: clamp(72px,10vw,120px) 0; }
+    .hero-contact::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 50% 50%, rgba(0,82,204,0.30) 0%, transparent 65%); pointer-events: none; }
+    .hero-contact-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%); }
+    .hero-contact-inner { position: relative; z-index: 5; text-align: center; max-width: 760px; margin: 0 auto; }
+    .hero-contact-headline { font-family: var(--font-display); font-size: clamp(36px,5vw,68px); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: #fff; margin: var(--space-5) 0 var(--space-5); }
+    .headline-accent { color: var(--cta-primary); }
+    .hero-contact-sub { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 560px; margin: 0 auto; }
+
+    /* INTENT CARDS */
+    .intent-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-10); }
+    .intent-card { padding: var(--space-8); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); box-shadow: 0 2px 8px rgba(0,82,204,0.06); text-align: left; cursor: pointer; transition: box-shadow 200ms, transform 200ms, background 150ms, color 150ms; }
+    .intent-card:hover, .intent-card.active { box-shadow: 0 8px 24px rgba(0,82,204,0.14); transform: translateY(-3px); background: var(--interactive); color: #fff; border-top-color: var(--cta-primary); }
+    .intent-card--green { border-top-color: var(--brand-primary); }
+    .intent-card--green:hover, .intent-card--green.active { background: var(--brand-primary); border-top-color: var(--brand-primary); }
+    .intent-card--dark { border-top-color: #161616; }
+    .intent-card--dark:hover, .intent-card--dark.active { background: #161616; }
+    .intent-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--layer-01); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); font-size: 20px; transition: background 150ms; }
+    .intent-card:hover .intent-icon, .intent-card.active .intent-icon { background: rgba(255,255,255,0.15); }
+    .intent-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: var(--space-2); }
+    .intent-card p { font-size: 13px; line-height: 1.55; opacity: 0.75; margin-bottom: var(--space-5); }
+    .intent-cta { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--interactive); transition: color 150ms; }
+    .intent-card:hover .intent-cta, .intent-card.active .intent-cta { color: rgba(255,255,255,0.9); }
+    .intent-card--green .intent-cta { color: var(--brand-primary); }
+    .intent-card--dark .intent-cta { color: #161616; }
+
+    /* PROCESS STEPS */
+    .process-steps { display: grid; grid-template-columns: 1fr 32px 1fr 32px 1fr; align-items: center; gap: 0; margin: var(--space-10) 0; background: #fff; border: 1px solid var(--blue-20); }
+    .process-step { padding: var(--space-7); text-align: center; }
+    .process-connector { text-align: center; color: var(--interactive); font-size: 18px; }
+    .process-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--blue-20); margin-bottom: var(--space-2); display: block; line-height: 1; }
+    .process-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); display: block; margin-bottom: var(--space-2); }
+    .process-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
+    .process-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+
+    /* FORM */
+    .form-wrapper { max-width: 720px; margin: 0 auto; }
+    .form-card { background: #fff; border: 1px solid var(--blue-20); box-shadow: 0 8px 40px rgba(0,82,204,0.10); padding: var(--space-9); }
+    .form-card-header { border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-6); margin-bottom: var(--space-8); display: flex; justify-content: space-between; align-items: center; }
+    .form-card-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-primary); }
+    .form-card-sub { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+    .form-stepper { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-8); }
+    .form-step { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); transition: color 150ms; }
+    .form-step.active { color: var(--interactive); }
+    .form-step.done { color: var(--brand-primary); }
+    .form-step-num { width: 24px; height: 24px; border: 2px solid currentColor; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+    .form-step.active .form-step-num { background: var(--interactive); color: #fff; border-color: var(--interactive); }
+    .form-step.done .form-step-num { background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+    .form-sep { flex: 1; height: 1px; background: var(--border-subtle); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-bottom: var(--space-5); }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .form-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+    .form-required { color: var(--danger); }
+    .form-input, .form-select, .form-textarea { width: 100%; height: 40px; padding: 0 var(--space-4); border: 1px solid var(--border-subtle); background: #fff; font-size: 14px; font-family: var(--font-body); color: var(--text-primary); border-radius: 0; outline: none; transition: border-color 150ms, box-shadow 150ms; }
+    .form-textarea { height: auto; padding: var(--space-3) var(--space-4); resize: vertical; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--interactive); box-shadow: 0 0 0 3px rgba(0,82,204,0.12); }
+    .form-input.error, .form-select.error, .form-textarea.error { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(218,30,40,0.10); }
+    .form-error { font-size: 11px; color: var(--danger); font-family: var(--font-mono); }
+    .form-helper { font-size: 11px; color: var(--text-secondary); }
+    .form-checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .form-checkbox-item { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); cursor: pointer; }
+    .form-checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--interactive); }
+    .form-info-banner { background: var(--layer-01); border-left: 3px solid var(--interactive); padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); font-size: 13px; color: var(--text-secondary); }
+    .form-info-banner strong { color: var(--text-primary); }
+    .form-actions { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-6); border-top: 1px solid var(--border-subtle); margin-top: var(--space-7); }
+    .form-alt-channels { border-top: 1px dashed var(--border-subtle); margin-top: var(--space-8); padding-top: var(--space-6); }
+    .form-alt-title { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); margin-bottom: var(--space-4); }
+    .form-alt-cols { display: flex; gap: var(--space-9); flex-wrap: wrap; }
+    .form-alt-col dt { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-bottom: 4px; }
+    .form-alt-col dd a { font-family: var(--font-mono); font-size: 12px; color: var(--interactive); text-decoration: none; }
+    .form-alt-col dd a:hover { text-decoration: underline; }
+    .consent-row { padding: var(--space-5); background: var(--layer-01); border: 1px solid var(--border-subtle); margin-bottom: var(--space-5); }
+    .consent-label { display: flex; gap: var(--space-3); font-size: 13px; color: var(--text-secondary); cursor: pointer; }
+    .consent-label input[type="checkbox"] { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--interactive); flex-shrink: 0; }
+    .consent-label a { color: var(--interactive); }
+
+    /* SUCCESS STATE */
+    .success-card { background: #fff; border: 1px solid var(--blue-20); padding: var(--space-10); text-align: center; box-shadow: 0 8px 40px rgba(0,82,204,0.10); max-width: 720px; margin: 0 auto; }
+    .success-icon { width: 64px; height: 64px; background: var(--brand-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6); font-size: 30px; color: #fff; }
+    .success-title { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); }
+    .receipt-box { background: var(--layer-01); border: 1px solid var(--blue-20); padding: var(--space-6); text-align: left; margin: var(--space-6) 0; }
+    .receipt-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    .receipt-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 4px; display: block; }
+    .receipt-val { font-family: var(--font-mono); font-size: 17px; font-weight: 700; color: var(--text-primary); }
+
+    /* TRUST SHORTCUTS */
+    .shortcut-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-10); }
+    .shortcut-card { padding: var(--space-7); background: #fff; border: 1px solid var(--blue-20); transition: background 150ms, color 150ms, transform 200ms; }
+    .shortcut-card:hover { background: var(--interactive); color: #fff; transform: translateY(-2px); }
+    .shortcut-card h4 { font-family: var(--font-display); font-size: 14px; font-weight: 600; margin-bottom: var(--space-4); }
+    .shortcut-card a { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-decoration: none; margin-bottom: var(--space-2); }
+    .shortcut-card:hover a { color: rgba(255,255,255,0.85); }
+
+    /* FOOTER */
+    .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
+    .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 50%); }
+    .footer-top { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-10); margin-bottom: var(--space-9); }
+    .footer-logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: #F4F4F4; text-decoration: none; margin-bottom: var(--space-5); display: block; }
+    .footer-tagline { font-size: 13px; color: #8D8D8D; line-height: 1.65; margin-bottom: var(--space-5); }
+    .footer-links { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-5); }
+    .footer-col-heading { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5); }
+    .footer-col a { display: block; font-size: 13px; color: #6F6F6F; text-decoration: none; margin-bottom: 10px; transition: color var(--duration-fast-02); }
+    .footer-col a:hover { color: #F4F4F4; }
+    .footer-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: var(--space-7); }
+    .footer-disclaimer { font-size: 12px; color: #525252; line-height: 1.65; max-width: 900px; margin-bottom: var(--space-7); padding: var(--space-5) var(--space-6); border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(255,255,255,0.12); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #525252; gap: var(--space-5); flex-wrap: wrap; }
+    .footer-bottom nav { display: flex; gap: var(--space-5); }
+    .footer-bottom nav a { color: #525252; font-size: 12px; text-decoration: none; transition: color var(--duration-fast-02); }
+    .footer-bottom nav a:hover { color: #F4F4F4; }
+
+    /* REVEALS */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1.reveal { transition-delay: 80ms; }
+    .delay-2.reveal { transition-delay: 160ms; }
+
+    /* SECTION */
+    .section { padding: clamp(72px,10vw,120px) 0; }
+    .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-4); }
+    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--cta-primary); flex-shrink: 0; }
+    .section-h2 { font-family: var(--font-display); font-size: clamp(24px,3.5vw,44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-4); }
+    .hidden { display: none !important; }
+
+    @media (max-width: 1024px) { .intent-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: 1fr; } .process-connector { display: none; } .shortcut-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .form-row { grid-template-columns: 1fr; } .footer-top { grid-template-columns: 1fr; } .footer-links { grid-template-columns: repeat(2,1fr); } .receipt-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <img src="img/mtsai-logo.png" alt="MTSAi">
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="nav-status"><span class="status-dot active" aria-hidden="true"></span><span>System Online</span></span>
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="height:40px;padding:0 20px;font-size:13px;" aria-current="page">Contact →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero-contact" aria-label="Contact MTSAi">
+      <div class="hero-contact-accent" aria-hidden="true"></div>
+      <div class="mts-container">
+        <div class="hero-contact-inner">
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">GoI-ready evaluation support</span>
+          <h1 class="hero-contact-headline">Contact MTSAi<br><span class="headline-accent">for evaluation.</span></h1>
+          <p class="hero-contact-sub">Choose your intent to reach the right intake team — Government, Strategic Partners, or Public Integrity — using minimal fields and plain-language notices.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTACT SECTION -->
+    <section class="section" aria-label="Contact forms">
+      <div class="mts-container">
+
+        <!-- INTENT SELECTOR -->
+        <div id="intent-section" class="reveal">
+          <span class="section-eyebrow">Choose Your Path</span>
+          <div class="intent-grid">
+            <button class="intent-card" onclick="showForm('gov')" aria-label="Start Government request">
+              <div class="intent-icon">🏛️</div>
+              <h3>Government</h3>
+              <p>For departments, ULBs, and state agencies assessing feasibility, pilots, procurement routing, or due diligence.</p>
+              <span class="intent-cta">Start Government request →</span>
+            </button>
+            <button class="intent-card intent-card--green" onclick="showForm('sp')" aria-label="Start Strategic Partner request">
+              <div class="intent-icon">🤝</div>
+              <h3>Strategic Partners</h3>
+              <p>For territory-scale operators and conveners supporting long-horizon delivery and program continuity.</p>
+              <span class="intent-cta" style="color:var(--brand-primary);">Start SP request →</span>
+            </button>
+            <button class="intent-card intent-card--dark" onclick="showForm('integrity')" aria-label="Report a public integrity concern">
+              <div class="intent-icon">🛡️</div>
+              <h3>Public Integrity</h3>
+              <p>For integrity, privacy, security, or fairness concerns relating to program conduct and safeguards.</p>
+              <span class="intent-cta" style="color:#393939;">Report a concern →</span>
+            </button>
+          </div>
+
+          <!-- PROCESS STEPS -->
+          <div class="process-steps reveal delay-1">
+            <div class="process-step">
+              <span class="process-num">01</span>
+              <span class="process-label">You Submit</span>
+              <div class="process-title">Submit Your Request</div>
+              <p class="process-desc">We use your details only to respond and maintain an auditable intake log.</p>
+            </div>
+            <div class="process-connector">→</div>
+            <div class="process-step">
+              <span class="process-num">02</span>
+              <span class="process-label" style="color:var(--interactive);">We Triage</span>
+              <div class="process-title">Routed to Right Team</div>
+              <p class="process-desc">We route your request to the right team within 2–3 business days.</p>
+            </div>
+            <div class="process-connector">→</div>
+            <div class="process-step">
+              <span class="process-num">03</span>
+              <span class="process-label">You Receive</span>
+              <div class="process-title">Get Your Pack</div>
+              <p class="process-desc">A next-step checklist + the relevant pack (procurement / diligence / delivery).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div id="form-section" class="hidden" style="max-width:720px;margin:0 auto;">
+          <div class="form-card">
+            <div class="form-card-header">
+              <div>
+                <div class="form-card-title" id="form-title">Contact Request</div>
+                <div class="form-card-sub">Auditable Intake Flow</div>
+              </div>
+              <button onclick="closeForm()" class="mts-btn mts-btn--ghost" style="height:36px;padding:0 14px;font-size:12px;" aria-label="Cancel form">✕ Cancel</button>
+            </div>
+            <div class="form-stepper" aria-label="Form progress">
+              <div class="form-step active" id="step-ind-1"><span class="form-step-num">1</span> Basics</div>
+              <div class="form-sep"></div>
+              <div class="form-step" id="step-ind-2"><span class="form-step-num">2</span> Details</div>
+            </div>
+            <form id="main-form" novalidate>
+              <!-- Honeypot -->
+              <div style="display:none;"><input type="text" name="website" autocomplete="off" tabindex="-1"></div>
+
+              <!-- STEP 1 -->
+              <div id="step-1">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="full-name" class="form-label">Full Name <span class="form-required">*</span></label>
+                    <input type="text" id="full-name" name="full_name" required autocomplete="name" class="form-input" placeholder="e.g. Aditi Rao">
+                    <span class="form-error hidden" id="err-full-name">Name is required</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="org-name" class="form-label">Organization <span class="form-required">*</span></label>
+                    <input type="text" id="org-name" name="organization" required autocomplete="organization" class="form-input" placeholder="e.g. Department of Transport">
+                    <span class="form-error hidden" id="err-org-name">Organization is required</span>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div class="form-group">
+                    <label for="work-email" class="form-label">Work Email <span class="form-required">*</span></label>
+                    <input type="email" id="work-email" name="email" required autocomplete="email" class="form-input" placeholder="name@organization.com">
+                    <span class="form-helper">We'll send a receipt and reference ID here.</span>
+                    <span class="form-error hidden" id="err-work-email">Valid work email is required</span>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div class="form-group">
+                    <label for="intent-select" class="form-label">Intent <span class="form-required">*</span></label>
+                    <select id="intent-select" name="intent" required class="form-select">
+                      <option value="" disabled selected>Select your objective...</option>
+                      <option value="gov">Government: Evaluation / Packet request</option>
+                      <option value="sp">Strategic Partner: Territory / Long-horizon</option>
+                      <option value="integrity">Public Integrity: Report a concern</option>
+                    </select>
+                    <span class="form-error hidden" id="err-intent">Please select an intent</span>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div class="form-group">
+                    <label for="objective" class="form-label">One-sentence objective <span class="form-required">*</span></label>
+                    <textarea id="objective" name="objective" rows="2" required class="form-textarea" placeholder="Briefly describe what you are looking to achieve..."></textarea>
+                    <span class="form-error hidden" id="err-objective">Please provide a brief objective</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 2 -->
+              <div id="step-2" class="hidden">
+                <!-- GOV LANE -->
+                <div id="lane-gov" class="hidden">
+                  <div class="form-info-banner"><strong>Evaluation-only.</strong> Final scope, hosting model, and acceptance criteria are confirmed in the procuring entity's RFP and contract.</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="gov-dept" class="form-label">Department/Agency</label>
+                      <input type="text" id="gov-dept" name="gov_dept" class="form-input">
+                    </div>
+                    <div class="form-group">
+                      <label for="gov-city" class="form-label">City/State <span class="form-required">*</span></label>
+                      <input type="text" id="gov-city" name="gov_city" class="form-input lane-required" data-lane="gov">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="gov-stage" class="form-label">Procurement Stage</label>
+                      <select id="gov-stage" name="gov_stage" class="form-select">
+                        <option value="">Select...</option>
+                        <option>Exploring</option><option>Pre-RFP</option><option>Active RFP</option><option>Post-award planning</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="gov-route" class="form-label">Preferred Route</label>
+                      <select id="gov-route" name="gov_route" class="form-select">
+                        <option value="">Select...</option>
+                        <option>GeM (where eligible)</option><option>CPPP tender</option><option>Unsure</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row full form-group" style="margin-bottom:var(--space-5);">
+                    <span class="form-label">Security/Compliance reviews needed?</span>
+                    <div class="form-checkbox-grid">
+                      <label class="form-checkbox-item"><input type="checkbox" name="gov_sec_review[]" value="Audit"> Logging/Audit</label>
+                      <label class="form-checkbox-item"><input type="checkbox" name="gov_sec_review[]" value="Residency"> Hosting/Residency</label>
+                      <label class="form-checkbox-item"><input type="checkbox" name="gov_sec_review[]" value="IR"> IR Workflow</label>
+                      <label class="form-checkbox-item"><input type="checkbox" name="gov_sec_review[]" value="Privacy"> Privacy/DPDP</label>
+                    </div>
+                  </div>
+                  <div class="form-row full">
+                    <div class="form-group">
+                      <label for="gov-notes" class="form-label">Additional Notes</label>
+                      <textarea id="gov-notes" name="gov_notes" rows="2" class="form-textarea"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SP LANE -->
+                <div id="lane-sp" class="hidden">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="sp-role" class="form-label">Role <span class="form-required">*</span></label>
+                      <select id="sp-role" name="sp_role" class="form-select lane-required" data-lane="sp">
+                        <option value="">Select...</option>
+                        <option>Principal</option><option>Sponsor</option><option>Ops Lead</option><option>Legal</option><option>Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="sp-territory" class="form-label">Territory Interest <span class="form-required">*</span></label>
+                      <input type="text" id="sp-territory" name="sp_territory" class="form-input lane-required" data-lane="sp" placeholder="e.g. Pan-India, South East Asia">
+                    </div>
+                  </div>
+                  <div class="form-row full">
+                    <div class="form-group">
+                      <label for="sp-stage" class="form-label">Stage</label>
+                      <select id="sp-stage" name="sp_stage" class="form-select">
+                        <option value="">Select...</option>
+                        <option>Exploring</option><option>Ready for diligence call</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row full">
+                    <div class="form-group">
+                      <label for="sp-exp" class="form-label">Relevant Experience</label>
+                      <textarea id="sp-exp" name="sp_exp" rows="2" class="form-textarea" placeholder="Briefly describe similar large-scale programs..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- INTEGRITY LANE -->
+                <div id="lane-integrity" class="hidden">
+                  <div class="form-info-banner" style="border-left-color:#DA1E28;background:#FFF8F8;"><strong>Secure channel.</strong> Integrity reports are handled by a separate review track. Anonymous reports are accepted.</div>
+                  <div class="form-row full">
+                    <div class="form-group">
+                      <label for="concern-type" class="form-label">Concern Type <span class="form-required">*</span></label>
+                      <select id="concern-type" name="concern_type" class="form-select lane-required" data-lane="integrity">
+                        <option value="">Select...</option>
+                        <option>Data Privacy</option><option>Algorithmic Fairness</option><option>Security Vulnerability</option><option>Operational Conduct</option><option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row full">
+                    <div class="form-group">
+                      <label for="concern-detail" class="form-label">Describe Your Concern <span class="form-required">*</span></label>
+                      <textarea id="concern-detail" name="concern_detail" rows="4" class="form-textarea lane-required" data-lane="integrity" placeholder="Please describe the concern in as much detail as possible..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CONSENT -->
+                <div class="consent-row">
+                  <label class="consent-label">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <span>I acknowledge that submitted data is used only for intake triage and retained per MTSAi's <a href="privacy_policy.html">Privacy Notice</a>. I confirm I have authority to submit on behalf of the stated organisation.</span>
+                  </label>
+                  <span class="form-error hidden" id="err-consent">Consent is required to proceed</span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="btn-back" class="mts-btn mts-btn--ghost hidden" onclick="goBack()">← Back</button>
+                <button type="button" id="btn-next" class="mts-btn mts-btn--primary" style="margin-left:auto;" onclick="goNext()">Continue →</button>
+                <button type="submit" id="btn-submit" class="mts-btn mts-btn--primary hidden" style="margin-left:auto;">Submit Request →</button>
+              </div>
+              <div id="form-error-banner" class="hidden" style="margin-top:var(--space-4);padding:var(--space-4) var(--space-5);background:#FFF8F8;border:1px solid var(--danger);font-family:var(--font-mono);font-size:12px;color:var(--danger);"></div>
+
+              <div class="form-alt-channels">
+                <div class="form-alt-title">Alternate Channels</div>
+                <dl class="form-alt-cols">
+                  <div class="form-alt-col"><dt>Procurement / Due Diligence</dt><dd><a href="mailto:procurement@mtsai.co">procurement@mtsai.co</a></dd></div>
+                  <div class="form-alt-col"><dt>Partnerships</dt><dd><a href="mailto:partners@mtsai.co">partners@mtsai.co</a></dd></div>
+                </dl>
+                <p style="font-family:var(--font-mono);font-size:10px;color:var(--text-secondary);margin-top:var(--space-3);font-style:italic;">For formal procurement workflows, email is accepted; we'll issue a reference ID upon receipt.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div id="success-section" class="hidden">
+          <div class="success-card">
+            <div class="success-icon">✓</div>
+            <div class="success-title">Request Received</div>
+            <p style="color:var(--text-secondary);margin-bottom:var(--space-5);">Your intake reference ID has been generated.</p>
+            <div class="receipt-box">
+              <div class="receipt-row">
+                <div><span class="receipt-label">Reference ID</span><span class="receipt-val" id="receipt-id">MTSAI-…</span></div>
+                <div><span class="receipt-label">Timestamp</span><span class="receipt-val" id="receipt-time" style="font-size:14px;">…</span></div>
+              </div>
+              <div style="border-top:1px solid var(--border-subtle);margin-top:var(--space-5);padding-top:var(--space-5);">
+                <span class="receipt-label">Summary</span>
+                <p id="receipt-summary" style="font-size:14px;color:var(--text-primary);margin-top:4px;"></p>
+              </div>
+            </div>
+            <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+              <button onclick="downloadReceipt()" class="mts-btn mts-btn--ghost">↓ Download Receipt</button>
+              <a href="index.html" class="mts-btn mts-btn--primary">Return Home →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRUST SHORTCUTS -->
+        <div class="shortcut-grid reveal" id="shortcut-grid">
+          <div class="shortcut-card">
+            <h4>🏛️ Government fast lane</h4>
+            <a href="trust.html">→ Explore Trust Center</a>
+            <a href="resources.html">→ Download Procurement Pack</a>
+            <a href="technology_platform.html">→ Implementation overview</a>
+          </div>
+          <div class="shortcut-card">
+            <h4>⚙️ Delivery partner fast lane</h4>
+            <a href="technology_platform.html">→ Technology Platform</a>
+            <a href="resources.html">→ Download Technical Brief</a>
+          </div>
+          <div class="shortcut-card">
+            <h4>🛡️ Integrity fast lane</h4>
+            <a href="public_integrity.html">→ Public Integrity</a>
+            <a href="trust_privacy.html">→ Privacy Notice &amp; Grievance</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="footer-logo"><img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
+          <p class="footer-tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <div class="footer-col"><h3 class="footer-col-heading">Platform</h3><a href="technology_platform.html">Technology Platform</a><a href="iudm.html">IUDM Model</a><a href="deployment-roadmap.html">Deployment Roadmap</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Governance</h3><a href="#">Trust Centre</a><a href="#">Privacy Policy</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Company</h3><a href="about.html">About</a><a href="careers.html">Careers</a><a href="Strategic_Partners.html">Partners</a></div>
+          <div class="footer-col"><h3 class="footer-col-heading">Resources</h3><a href="#">Procurement Pack</a><a href="contact.html">Contact Us</a></div>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements.</p>
+      <div class="footer-bottom">
+        <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
+        <nav><a href="#">Terms</a><a href="#">Privacy Policy</a><a href="#">Hyperlinking Policy</a></nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Contact · Jan 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button'), dd = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+
+    let currentIntent = null;
+    function showForm(intent) {
+      currentIntent = intent;
+      document.getElementById('intent-section').classList.add('hidden');
+      document.getElementById('shortcut-grid').classList.add('hidden');
+      document.getElementById('form-section').classList.remove('hidden');
+      const titles = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Concern' };
+      document.getElementById('form-title').textContent = titles[intent];
+      const sel = document.getElementById('intent-select');
+      if (sel.value !== intent) sel.value = intent;
+      window.scrollTo({ top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth' });
+    }
+    function closeForm() {
+      document.getElementById('form-section').classList.add('hidden');
+      document.getElementById('intent-section').classList.remove('hidden');
+      document.getElementById('shortcut-grid').classList.remove('hidden');
+      resetForm();
+    }
+    function resetForm() {
+      document.getElementById('main-form').reset();
+      showStep(1);
+    }
+    function showStep(n) {
+      const s1 = document.getElementById('step-1');
+      const s2 = document.getElementById('step-2');
+      const i1 = document.getElementById('step-ind-1');
+      const i2 = document.getElementById('step-ind-2');
+      const btnNext = document.getElementById('btn-next');
+      const btnBack = document.getElementById('btn-back');
+      const btnSub = document.getElementById('btn-submit');
+      if (n === 1) {
+        s1.classList.remove('hidden'); s2.classList.add('hidden');
+        i1.classList.add('active'); i1.classList.remove('done');
+        i2.classList.remove('active', 'done');
+        btnNext.classList.remove('hidden'); btnSub.classList.add('hidden'); btnBack.classList.add('hidden');
+      } else {
+        s1.classList.add('hidden'); s2.classList.remove('hidden');
+        const intent = document.getElementById('intent-select').value || currentIntent;
+        ['gov','sp','integrity'].forEach(l => document.getElementById('lane-'+l).classList.add('hidden'));
+        if (intent) document.getElementById('lane-'+intent).classList.remove('hidden');
+        i1.classList.add('done'); i1.classList.remove('active');
+        i2.classList.add('active');
+        btnNext.classList.add('hidden'); btnSub.classList.remove('hidden'); btnBack.classList.remove('hidden');
+      }
+    }
+    function validateStep1() {
+      let ok = true;
+      const fields = [
+        { id: 'full-name', err: 'err-full-name', fn: v => v.trim().length > 0 },
+        { id: 'org-name', err: 'err-org-name', fn: v => v.trim().length > 0 },
+        { id: 'work-email', err: 'err-work-email', fn: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: 'intent-select', err: 'err-intent', fn: v => v !== '' },
+        { id: 'objective', err: 'err-objective', fn: v => v.trim().length > 0 },
+      ];
+      fields.forEach(f => {
+        const el = document.getElementById(f.id);
+        const err = document.getElementById(f.err);
+        if (!f.fn(el.value)) { el.classList.add('error'); err.classList.remove('hidden'); ok = false; }
+        else { el.classList.remove('error'); err.classList.add('hidden'); }
+      });
+      return ok;
+    }
+    function goNext() {
+      if (!validateStep1()) return;
+      if (!currentIntent) currentIntent = document.getElementById('intent-select').value;
+      showStep(2);
+    }
+    function goBack() { showStep(1); }
+    document.getElementById('main-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const consent = document.getElementById('consent');
+      const err = document.getElementById('err-consent');
+      if (!consent.checked) { err.classList.remove('hidden'); return; }
+      err.classList.add('hidden');
+      const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
+      document.getElementById('receipt-id').textContent = id;
+      document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+      const intent = document.getElementById('intent-select').value;
+      const name = document.getElementById('full-name').value;
+      const org = document.getElementById('org-name').value;
+      const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
+      document.getElementById('receipt-summary').textContent = `${summaryMap[intent] || 'Request'} — ${name}, ${org}`;
+      document.getElementById('form-section').classList.add('hidden');
+      document.getElementById('success-section').classList.remove('hidden');
+    });
+    function downloadReceipt() {
+      const id = document.getElementById('receipt-id').textContent;
+      const time = document.getElementById('receipt-time').textContent;
+      const summary = document.getElementById('receipt-summary').textContent;
+      const txt = `MTSAi Intake Receipt\n====================\nReference ID: ${id}\nTimestamp: ${time}\nSummary: ${summary}\n\nRetain for your records. MTSAi will contact you within 2-3 business days.\n`;
+      const a = document.createElement('a');
+      a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(txt);
+      a.download = id + '.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>

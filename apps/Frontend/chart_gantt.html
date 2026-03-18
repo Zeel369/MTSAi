@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Pilot-to-Scale Implementation Playbook — Phased Gantt chart for city deployment planning.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Implementation Playbook | MTSAi</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+  <link rel="stylesheet" href="../../packages/design-system/base/premium.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+    * { box-sizing: border-box; }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    /* PAGE HEADER */
+    .page-header { background: #000C2E; border-bottom: 1px solid rgba(255,255,255,0.08); padding: var(--space-4) var(--space-6); display: flex; align-items: center; gap: var(--space-5); }
+    .page-header-back { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 150ms; }
+    .page-header-back:hover { color: rgba(255,255,255,0.85); }
+    .page-header-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.12); }
+    .page-header-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #F4F4F4; }
+    .page-header-badge { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); margin-left: auto; }
+
+    /* HERO */
+    .gantt-hero { background: linear-gradient(150deg, #000C2E 0%, #001640 100%); padding: clamp(60px,9vw,100px) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .gantt-hero-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cta-primary); margin-bottom: var(--space-4); display: block; }
+    .gantt-hero-headline { font-family: var(--font-display); font-size: clamp(32px,5vw,64px); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: #fff; margin-bottom: var(--space-5); }
+    .gantt-hero-sub { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); max-width: 620px; line-height: 1.72; }
+
+    /* GANTT */
+    .gantt-section { padding: var(--space-10) 0; }
+    .gantt-header { display: flex; align-items: center; margin-bottom: var(--space-7); gap: var(--space-4); flex-wrap: wrap; }
+    .gantt-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--text-primary); }
+    .gantt-subtitle { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+    .gantt-wrapper { overflow-x: auto; }
+    .gantt-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    .gantt-table thead th { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--interactive); background: var(--layer-01); text-align: center; }
+    .gantt-table thead th.task-col { text-align: left; min-width: 220px; }
+    .gantt-table thead th.month-col { min-width: 80px; }
+    .gantt-table tbody tr { border-bottom: 1px solid var(--border-subtle); }
+    .gantt-table tbody tr:hover td { background: var(--layer-01); }
+    .gantt-table tbody td { padding: var(--space-3) var(--space-4); font-size: 13px; color: var(--text-secondary); vertical-align: middle; }
+    .gantt-table tbody td.task-name { font-weight: 600; color: var(--text-primary); }
+    .gantt-phase-row td { background: #F0F5FF; }
+    .gantt-phase-label { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--interactive); text-transform: uppercase; letter-spacing: 0.06em; }
+    .gantt-bar-cell { padding: var(--space-3) var(--space-3) !important; }
+    .gantt-bar { height: 20px; border-radius: 2px; background: var(--interactive); opacity: 0.85; transition: opacity 150ms; }
+    .gantt-bar:hover { opacity: 1; }
+    .gantt-bar.green { background: var(--brand-primary); }
+    .gantt-bar.amber { background: var(--cta-primary); }
+    .gantt-bar.light { background: rgba(0,82,204,0.25); }
+    .gantt-bar.milestone { width: 16px; height: 16px; border-radius: 0; transform: rotate(45deg); background: var(--cta-primary); margin: auto; }
+    .gantt-empty { height: 20px; }
+
+    /* LEGEND */
+    .gantt-legend { display: flex; gap: var(--space-7); margin: var(--space-7) 0; flex-wrap: wrap; }
+    .gantt-legend-item { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+    .legend-swatch { width: 24px; height: 8px; border-radius: 2px; }
+
+    /* KEY DELIVERABLES */
+    .deliverables-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-4); margin-top: var(--space-9); }
+    .deliverable-card { padding: var(--space-6); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); }
+    .deliverable-phase { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
+    .deliverable-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); }
+    .deliverable-list { list-style: none; }
+    .deliverable-list li { font-size: 12px; color: var(--text-secondary); padding: var(--space-2) 0; border-bottom: 1px solid var(--border-subtle); display: flex; gap: var(--space-2); }
+    .deliverable-list li::before { content: '→'; color: var(--interactive); font-size: 11px; flex-shrink: 0; }
+    .deliverable-list li:last-child { border-bottom: none; }
+
+    /* DISCLOSURE */
+    .gantt-notice { background: var(--layer-01); border: 1px solid var(--blue-20); border-left: 3px solid var(--cta-primary); padding: var(--space-5) var(--space-6); margin-top: var(--space-8); font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+    .gantt-notice strong { color: var(--text-primary); }
+
+    @media (max-width: 768px) { .deliverables-grid { grid-template-columns: repeat(2,1fr); } .gantt-hero-sub { max-width: 100%; } }
+    @media (max-width: 480px) { .deliverables-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="page-header" role="banner">
+    <a href="index.html" class="page-header-back">← MTSAi</a>
+    <div class="page-header-sep" aria-hidden="true"></div>
+    <div class="page-header-title">Pilot-to-Scale Implementation Playbook</div>
+    <div class="page-header-badge">Internal · Design Specification</div>
+  </header>
+
+  <main id="main-content">
+    <div class="gantt-hero">
+      <div class="mts-container">
+        <span class="gantt-hero-eyebrow">Implementation Playbook · v1.0</span>
+        <h1 class="gantt-hero-headline">Pilot-to-Scale<br>Implementation Playbook</h1>
+        <p class="gantt-hero-sub">A phased delivery schedule illustrating how a city moves from policy design through pilot launch to full corridor activation. All timelines are indicative and subject to procurement and regulatory approval.</p>
+      </div>
+    </div>
+
+    <div class="gantt-section">
+      <div class="mts-container">
+
+        <div class="gantt-header">
+          <div>
+            <div class="gantt-title">12-Month Indicative Timeline</div>
+            <div class="gantt-subtitle">Reference deployment schedule · Subject to RFP/contract</div>
+          </div>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="gantt-legend" aria-label="Chart legend">
+          <div class="gantt-legend-item"><div class="legend-swatch" style="background:var(--interactive);"></div>Core Workstream</div>
+          <div class="gantt-legend-item"><div class="legend-swatch" style="background:var(--brand-primary);"></div>Technical Integration</div>
+          <div class="gantt-legend-item"><div class="legend-swatch" style="background:var(--cta-primary);"></div>Governance / Audit</div>
+          <div class="gantt-legend-item"><div class="legend-swatch" style="background:rgba(0,82,204,0.25);"></div>Preparation / Setup</div>
+        </div>
+
+        <!-- GANTT TABLE -->
+        <div class="gantt-wrapper" role="region" aria-label="Gantt chart">
+          <table class="gantt-table" aria-label="Implementation timeline">
+            <thead>
+              <tr>
+                <th class="task-col">Workstream / Milestone</th>
+                <th class="month-col">M1</th>
+                <th class="month-col">M2</th>
+                <th class="month-col">M3</th>
+                <th class="month-col">M4</th>
+                <th class="month-col">M5</th>
+                <th class="month-col">M6</th>
+                <th class="month-col">M7</th>
+                <th class="month-col">M8</th>
+                <th class="month-col">M9</th>
+                <th class="month-col">M10</th>
+                <th class="month-col">M11</th>
+                <th class="month-col">M12</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- PHASE 1 -->
+              <tr class="gantt-phase-row"><td colspan="13" class="task-name"><span class="gantt-phase-label">Phase 1 — Policy Design &amp; System Integration</span></td></tr>
+              <tr>
+                <td class="task-name">Programme Goal Definition</td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"></td>
+                <td colspan="9"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Institutional Coordination</td>
+                <td class="gantt-bar-cell"><div class="gantt-bar light"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td colspan="9"></td>
+              </tr>
+              <tr>
+                <td class="task-name">FASTag &amp; UPI Integration</td>
+                <td></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td colspan="8"></td>
+              </tr>
+              <tr>
+                <td class="task-name">ICCC Integration</td>
+                <td></td>
+                <td></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td colspan="8"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Policy Rule Configuration</td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td colspan="9"></td>
+              </tr>
+
+              <!-- PHASE 2 -->
+              <tr class="gantt-phase-row"><td colspan="13"><span class="gantt-phase-label">Phase 2 — Pilot Launch</span></td></tr>
+              <tr>
+                <td class="task-name">Public Communication Campaign</td>
+                <td colspan="3"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td colspan="7"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Corridor 1 Go-Live</td>
+                <td colspan="3"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td colspan="6"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Incentive Distribution — Wave 1</td>
+                <td colspan="4"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td colspan="6"></td>
+              </tr>
+
+              <!-- PHASE 3 -->
+              <tr class="gantt-phase-row"><td colspan="13"><span class="gantt-phase-label">Phase 3 — Evaluation &amp; Policy Adjustment</span></td></tr>
+              <tr>
+                <td class="task-name">Pilot Metrics Review</td>
+                <td colspan="6"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td colspan="4"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Policy Parameter Adjustment</td>
+                <td colspan="7"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td class="task-name">Independent Audit Review</td>
+                <td colspan="6"></td>
+                <td></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+                <td colspan="3"></td>
+              </tr>
+
+              <!-- PHASE 4 -->
+              <tr class="gantt-phase-row"><td colspan="13"><span class="gantt-phase-label">Phase 4 — Expansion Planning</span></td></tr>
+              <tr>
+                <td class="task-name">Corridor 2–4 Onboarding</td>
+                <td colspan="9"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar"></div></td>
+              </tr>
+              <tr>
+                <td class="task-name">Shared Mobility Integration</td>
+                <td colspan="9"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar green"></div></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="task-name">Expansion Evaluation Report</td>
+                <td colspan="11"></td>
+                <td class="gantt-bar-cell"><div class="gantt-bar amber"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- KEY DELIVERABLES -->
+        <h2 style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary);margin:var(--space-9) 0 var(--space-5);">Key Deliverables by Phase</h2>
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <span class="deliverable-phase">Phase 1 · M1–M3</span>
+            <div class="deliverable-title">Policy Design</div>
+            <ul class="deliverable-list">
+              <li>Programme goals document</li>
+              <li>Integration specification</li>
+              <li>Policy rule v1.0</li>
+              <li>Audit framework</li>
+            </ul>
+          </div>
+          <div class="deliverable-card">
+            <span class="deliverable-phase">Phase 2 · M4–M6</span>
+            <div class="deliverable-title">Pilot Launch</div>
+            <ul class="deliverable-list">
+              <li>Commuter communication pack</li>
+              <li>Corridor 1 live</li>
+              <li>First incentive batch</li>
+              <li>Baseline traffic data</li>
+            </ul>
+          </div>
+          <div class="deliverable-card">
+            <span class="deliverable-phase">Phase 3 · M7–M9</span>
+            <div class="deliverable-title">Evaluation</div>
+            <ul class="deliverable-list">
+              <li>Pilot performance report</li>
+              <li>Policy adjustment memo</li>
+              <li>Independent audit report</li>
+              <li>Commuter feedback analysis</li>
+            </ul>
+          </div>
+          <div class="deliverable-card">
+            <span class="deliverable-phase">Phase 4 · M10–M12</span>
+            <div class="deliverable-title">Expansion</div>
+            <ul class="deliverable-list">
+              <li>3+ corridors activated</li>
+              <li>Shared mobility connected</li>
+              <li>Expansion decision report</li>
+              <li>Year-2 roadmap draft</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gantt-notice" role="note">
+          <strong>Timeline Notice:</strong> This Gantt chart is an indicative design specification. Actual timelines, scope, and milestones are subject to government procurement processes, regulatory approvals, local infrastructure readiness, and contract terms. MTSAi does not claim delivery timelines in advance of a signed agreement.
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
