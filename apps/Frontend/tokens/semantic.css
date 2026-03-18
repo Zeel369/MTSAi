@@ -1,0 +1,278 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Semantic Token Layer
+   Theme: Dark (Gray 100 base)
+   ============================================================ */
+
+:root {
+  /* --- BACKGROUND LAYERS (Carbon layer model) --- */
+  --layer-bg:        var(--gray-100);   /* base canvas: #161616 */
+  --layer-01:        var(--gray-90);    /* first elevation: #262626 */
+  --layer-02:        var(--gray-80);    /* second elevation: #393939 */
+  --layer-03:        var(--gray-70);    /* third elevation: #525252 */
+  --overlay:         rgba(0, 0, 0, 0.65);
+
+  /* --- TEXT --- */
+  --text-primary:    var(--gray-10);    /* #F4F4F4 */
+  --text-secondary:  var(--gray-30);    /* #C6C6C6 */
+  --text-placeholder: var(--gray-50);   /* #8D8D8D */
+  --text-disabled:   var(--gray-60);    /* #6F6F6F */
+  --text-on-color:   var(--white);
+  --text-on-saffron: var(--gray-100);   /* dark text on saffron bg */
+  --text-error:      var(--red-40);
+  --text-success:    var(--green-30);
+  --text-warning:    var(--yellow-30);
+  --text-info:       var(--cyan-30);
+  --text-brand:      var(--green-40);   /* brand green for labels */
+  --text-link:       var(--blue-40);
+
+  /* --- INTERACTIVE / PRIMARY (Blue) --- */
+  --interactive:           var(--blue-60);   /* #0F62FE */
+  --interactive-hover:     var(--blue-70);   /* #0043CE */
+  --interactive-active:    var(--blue-80);   /* #002D9C */
+  --interactive-selected:  var(--blue-90);   /* #001D6C */
+  --interactive-focus:     var(--blue-60);
+
+  /* --- BRAND GREEN (Secondary / Trust) --- */
+  --brand-primary:         var(--green-50);  /* #53AA00 */
+  --brand-hover:           var(--green-60);  /* #198038 */
+  --brand-active:          var(--green-70);  /* #0E6027 */
+  --brand-subtle:          rgba(83, 170, 0, 0.12);
+  --brand-border:          rgba(83, 170, 0, 0.3);
+
+  /* --- SAFFRON CTA (Accent — sparse) --- */
+  --cta-primary:           var(--saffron-50); /* #FF9933 — primary CTA button */
+  --cta-hover:             var(--saffron-60); /* #E36A00 */
+  --cta-active:            var(--saffron-70); /* #BA4E00 */
+  --cta-text:              var(--gray-100);   /* dark text on saffron */
+  --cta-focus:             var(--saffron-50);
+
+  /* --- BORDER --- */
+  --border-subtle:    rgba(255, 255, 255, 0.08);
+  --border-strong:    var(--gray-60);
+  --border-interactive: var(--interactive);
+  --border-error:     var(--red-50);
+  --border-brand:     var(--brand-primary);
+
+  /* --- ICON --- */
+  --icon-primary:     var(--gray-10);
+  --icon-secondary:   var(--gray-30);
+  --icon-disabled:    var(--gray-60);
+  --icon-interactive: var(--blue-40);
+  --icon-brand:       var(--green-40);
+  --icon-error:       var(--red-40);
+  --icon-success:     var(--green-30);
+  --icon-warning:     var(--yellow-30);
+  --icon-info:        var(--cyan-30);
+
+  /* --- SEMANTIC STATUS --- */
+  --status-active:    var(--green-50);
+  --status-warning:   var(--yellow-30);
+  --status-error:     var(--red-60);
+  --status-info:      var(--cyan-50);
+  --status-neutral:   var(--gray-50);
+  --status-pilot:     var(--saffron-50);   /* pilot/beta state — saffron */
+
+  /* --- BUTTON TOKENS --- */
+  --btn-primary-bg:     var(--cta-primary);   /* saffron — main CTA */
+  --btn-primary-text:   var(--cta-text);
+  --btn-primary-hover:  var(--cta-hover);
+  --btn-secondary-bg:   var(--interactive);   /* blue — secondary interactive */
+  --btn-secondary-text: var(--white);
+  --btn-secondary-hover: var(--interactive-hover);
+  --btn-ghost-text:     var(--interactive);
+  --btn-ghost-hover-bg: rgba(15, 98, 254, 0.12);
+  --btn-danger-bg:      var(--red-60);
+  --btn-danger-hover:   var(--red-70, #A2191F);
+  --btn-disabled-bg:    var(--gray-80);
+  --btn-disabled-text:  var(--gray-60);
+
+  /* --- INPUT TOKENS --- */
+  --input-bg:           var(--layer-01);
+  --input-border:       var(--gray-60);
+  --input-border-focus: var(--interactive);
+  --input-border-error: var(--red-50);
+  --input-text:         var(--text-primary);
+  --input-placeholder:  var(--text-placeholder);
+  --input-label:        var(--text-secondary);
+  --input-helper:       var(--gray-50);
+  --input-height:       48px;   /* 44px minimum + breathing room */
+
+  /* --- TAG TOKENS --- */
+  --tag-blue-bg:     rgba(15, 98, 254, 0.15);
+  --tag-blue-text:   var(--blue-30);
+  --tag-green-bg:    rgba(83, 170, 0, 0.15);
+  --tag-green-text:  var(--green-30);
+  --tag-saffron-bg:  rgba(255, 153, 51, 0.15);
+  --tag-saffron-text: var(--saffron-40);
+  --tag-red-bg:      rgba(218, 30, 40, 0.15);
+  --tag-red-text:    var(--red-30);
+  --tag-gray-bg:     var(--gray-80);
+  --tag-gray-text:   var(--gray-30);
+  --tag-cyan-bg:     rgba(17, 146, 232, 0.15);
+  --tag-cyan-text:   var(--cyan-30);
+
+  /* --- NOTIFICATION TOKENS --- */
+  --notif-error-bg:    rgba(218, 30, 40, 0.1);
+  --notif-error-border: var(--red-60);
+  --notif-warning-bg:  rgba(241, 194, 27, 0.1);
+  --notif-warning-border: var(--yellow-30);
+  --notif-success-bg:  rgba(83, 170, 0, 0.1);
+  --notif-success-border: var(--green-50);
+  --notif-info-bg:     rgba(17, 146, 232, 0.1);
+  --notif-info-border: var(--cyan-50);
+
+  /* --- ALPHA / TRANSPARENCY TOKENS --- */
+  /* Blue alpha */
+  --blue-alpha-08: rgba(15, 98, 254, 0.08);   /* ghost button hover bg */
+  --blue-alpha-12: rgba(15, 98, 254, 0.12);   /* interactive selection bg */
+  --blue-alpha-15: rgba(15, 98, 254, 0.15);   /* tag background */
+  --blue-alpha-20: rgba(15, 98, 254, 0.20);   /* active state overlay */
+  --blue-alpha-25: rgba(15, 98, 254, 0.25);   /* shadow tint */
+
+  /* Green alpha */
+  --green-alpha-08: rgba(83, 170, 0, 0.08);
+  --green-alpha-12: rgba(83, 170, 0, 0.12);
+  --green-alpha-15: rgba(83, 170, 0, 0.15);   /* tag background */
+  --green-alpha-20: rgba(83, 170, 0, 0.20);
+  --green-alpha-30: rgba(83, 170, 0, 0.30);   /* border on green elements */
+
+  /* Saffron alpha */
+  --saffron-alpha-05: rgba(255, 153, 51, 0.05);
+  --saffron-alpha-08: rgba(255, 153, 51, 0.08);
+  --saffron-alpha-15: rgba(255, 153, 51, 0.15);  /* tag background */
+  --saffron-alpha-20: rgba(255, 153, 51, 0.20);
+  --saffron-alpha-30: rgba(255, 153, 51, 0.30);  /* shadow tint */
+
+  /* Red alpha */
+  --red-alpha-08: rgba(218, 30, 40, 0.08);
+  --red-alpha-10: rgba(218, 30, 40, 0.10);   /* notification bg */
+  --red-alpha-15: rgba(218, 30, 40, 0.15);   /* tag background */
+  --red-alpha-20: rgba(218, 30, 40, 0.20);
+
+  /* Cyan alpha */
+  --cyan-alpha-10: rgba(17, 146, 232, 0.10);
+  --cyan-alpha-15: rgba(17, 146, 232, 0.15);  /* tag background */
+  --cyan-alpha-20: rgba(17, 146, 232, 0.20);
+
+  /* Yellow/Warning alpha */
+  --yellow-alpha-10: rgba(241, 194, 27, 0.10);
+  --yellow-alpha-20: rgba(241, 194, 27, 0.20);
+
+  /* White/Black alpha */
+  --white-alpha-04: rgba(255, 255, 255, 0.04);
+  --white-alpha-06: rgba(255, 255, 255, 0.06);
+  --white-alpha-08: rgba(255, 255, 255, 0.08);
+  --white-alpha-12: rgba(255, 255, 255, 0.12);
+  --black-alpha-50: rgba(0, 0, 0, 0.50);
+  --black-alpha-65: rgba(0, 0, 0, 0.65);
+}
+
+/* --- LIGHT THEME OVERRIDE --- */
+[data-theme="light"] {
+  /* Layers */
+  --layer-bg:       #FFFFFF;
+  --layer-01:       #F4F4F4;
+  --layer-02:       #E0E0E0;
+  --layer-03:       #C6C6C6;
+  --overlay:        rgba(0, 0, 0, 0.50);
+
+  /* Text */
+  --text-primary:    #161616;
+  --text-secondary:  #525252;
+  --text-placeholder: #8D8D8D;
+  --text-disabled:   #C6C6C6;
+  --text-on-color:   #FFFFFF;
+  --text-error:      var(--red-60);
+  --text-success:    var(--green-70);
+  --text-warning:    var(--yellow-70);
+  --text-info:       var(--cyan-70);
+  --text-brand:      var(--green-70);
+  --text-link:       var(--blue-70);
+
+  /* Interactive */
+  --interactive:           var(--blue-60);
+  --interactive-hover:     var(--blue-70);
+  --interactive-active:    var(--blue-80);
+  --interactive-selected:  var(--blue-10);
+  --interactive-focus:     var(--blue-60);
+
+  /* Brand */
+  --brand-primary:   var(--green-60);
+  --brand-hover:     var(--green-70);
+  --brand-subtle:    rgba(83, 170, 0, 0.08);
+  --brand-border:    rgba(83, 170, 0, 0.3);
+
+  /* CTA */
+  --cta-primary:  var(--saffron-60);
+  --cta-hover:    var(--saffron-70);
+  --cta-text:     #FFFFFF;
+
+  /* Borders */
+  --border-subtle:      #E0E0E0;
+  --border-strong:      #8D8D8D;
+  --border-interactive: var(--blue-60);
+  --border-error:       var(--red-60);
+  --border-brand:       var(--green-60);
+
+  /* Icons */
+  --icon-primary:     #161616;
+  --icon-secondary:   #525252;
+  --icon-disabled:    #C6C6C6;
+  --icon-interactive: var(--blue-60);
+  --icon-brand:       var(--green-60);
+
+  /* Inputs */
+  --input-bg:           #FFFFFF;
+  --input-border:       #8D8D8D;
+  --input-border-focus: var(--blue-60);
+  --input-border-error: var(--red-60);
+  --input-text:         #161616;
+  --input-placeholder:  #8D8D8D;
+  --input-label:        #525252;
+  --input-helper:       #6F6F6F;
+
+  /* Buttons */
+  --btn-primary-bg:      var(--saffron-60);
+  --btn-primary-text:    #FFFFFF;
+  --btn-primary-hover:   var(--saffron-70);
+  --btn-secondary-bg:    var(--blue-60);
+  --btn-secondary-text:  #FFFFFF;
+  --btn-secondary-hover: var(--blue-70);
+  --btn-ghost-text:      var(--blue-60);
+  --btn-ghost-hover-bg:  rgba(15, 98, 254, 0.08);
+  --btn-danger-bg:       var(--red-60);
+  --btn-danger-hover:    var(--red-70, #A2191F);
+  --btn-disabled-bg:     #E0E0E0;
+  --btn-disabled-text:   #8D8D8D;
+
+  /* Tags */
+  --tag-blue-bg:      rgba(15, 98, 254, 0.12);
+  --tag-blue-text:    var(--blue-70);
+  --tag-green-bg:     rgba(83, 170, 0, 0.12);
+  --tag-green-text:   var(--green-70);
+  --tag-saffron-bg:   rgba(255, 153, 51, 0.12);
+  --tag-saffron-text: var(--saffron-70);
+  --tag-red-bg:       rgba(218, 30, 40, 0.10);
+  --tag-red-text:     var(--red-70, #A2191F);
+  --tag-gray-bg:      #E0E0E0;
+  --tag-gray-text:    #525252;
+  --tag-cyan-bg:      rgba(17, 146, 232, 0.12);
+  --tag-cyan-text:    var(--cyan-70);
+
+  /* Notifications */
+  --notif-error-bg:       rgba(218, 30, 40, 0.08);
+  --notif-error-border:   var(--red-60);
+  --notif-warning-bg:     rgba(241, 194, 27, 0.10);
+  --notif-warning-border: var(--yellow-50, #B28600);
+  --notif-success-bg:     rgba(83, 170, 0, 0.08);
+  --notif-success-border: var(--green-60);
+  --notif-info-bg:        rgba(17, 146, 232, 0.08);
+  --notif-info-border:    var(--cyan-60, #0072C3);
+
+  /* Shadows (lighter for light bg) */
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-sm:  0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-md:  0 4px 8px rgba(0, 0, 0, 0.14);
+  --shadow-lg:  0 8px 16px rgba(0, 0, 0, 0.14);
+  --shadow-xl:  0 16px 32px rgba(0, 0, 0, 0.16);
+}

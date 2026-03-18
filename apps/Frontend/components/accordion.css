@@ -1,0 +1,45 @@
+/* MTSAi × IBM Carbon — Accordion / Details */
+
+.mts-accordion { display: flex; flex-direction: column; }
+.mts-accordion-item {
+  border-bottom: 1px solid var(--border-subtle);
+}
+.mts-accordion-item:first-child { border-top: 1px solid var(--border-subtle); }
+
+.mts-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-5) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--type-body-02);
+  font-weight: var(--weight-medium);
+  transition: color var(--duration-fast-02) var(--ease-standard);
+}
+.mts-accordion__trigger:hover { color: var(--interactive); }
+.mts-accordion__trigger:focus-visible { outline: 3px solid var(--interactive); outline-offset: 2px; }
+
+.mts-accordion__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--icon-secondary);
+  transition: transform var(--duration-moderate-01) var(--ease-standard);
+}
+.mts-accordion-item[open] .mts-accordion__icon,
+.mts-accordion-item.open .mts-accordion__icon { transform: rotate(180deg); }
+
+.mts-accordion__body {
+  padding-bottom: var(--space-5);
+  color: var(--text-secondary);
+  font-size: var(--type-body-01);
+  line-height: var(--lh-relaxed);
+  animation: fadeInUp var(--duration-moderate-01) var(--ease-entrance) both;
+}

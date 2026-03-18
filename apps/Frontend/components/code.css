@@ -1,0 +1,81 @@
+/* MTSAi × IBM Carbon — Code blocks, Kbd, Inline code */
+
+code, .mts-code-inline {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 2px 6px;
+  background: var(--layer-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  color: var(--green-30);
+}
+
+.mts-code-block {
+  position: relative;
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.mts-code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  background: var(--layer-02);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.mts-code-block__dots { display: flex; gap: var(--space-2); }
+.mts-code-block__dot {
+  width: 12px; height: 12px;
+  border-radius: var(--radius-full);
+}
+.mts-code-block__dot--red    { background: var(--red-50); }
+.mts-code-block__dot--yellow { background: var(--yellow-30); }
+.mts-code-block__dot--green  { background: var(--green-40); }
+.mts-code-block__lang {
+  font-family: var(--font-mono);
+  font-size: var(--type-label-01);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+}
+.mts-code-block__copy {
+  font-size: var(--type-label-01);
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color var(--duration-fast-02) var(--ease-standard);
+}
+.mts-code-block__copy:hover { color: var(--interactive); }
+.mts-code-block pre {
+  padding: var(--space-5);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0;
+}
+/* Syntax highlight tokens */
+.token-keyword  { color: var(--blue-40); }
+.token-string   { color: var(--green-30); }
+.token-comment  { color: var(--gray-50); font-style: italic; }
+.token-number   { color: var(--saffron-40); }
+.token-property { color: var(--cyan-30); }
+.token-function { color: var(--blue-30); }
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  background: var(--layer-02);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 3px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: var(--text-secondary);
+}

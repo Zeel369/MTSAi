@@ -1,0 +1,13 @@
+/* MTSAi × IBM Carbon — Breadcrumb & Navigation */
+
+.mts-breadcrumb { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.mts-breadcrumb__item { display: inline-flex; align-items: center; gap: var(--space-2); }
+.mts-breadcrumb__link {
+  font-size: var(--type-label-02);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast-02) var(--ease-standard);
+}
+.mts-breadcrumb__link:hover { color: var(--interactive); }
+.mts-breadcrumb__separator { color: var(--text-disabled); font-size: 12px; }
+.mts-breadcrumb__current { font-size: var(--type-label-02); color: var(--text-primary); font-weight: var(--weight-medium); }

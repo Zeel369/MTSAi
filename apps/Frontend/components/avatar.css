@@ -1,0 +1,87 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Avatar Component
+   ============================================================ */
+
+.mts-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  background: var(--layer-02);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-subtle);
+}
+
+/* Sizes */
+.mts-avatar--xs  { width: 24px; height: 24px; font-size: 10px; border-width: 1px; }
+.mts-avatar--sm  { width: 32px; height: 32px; font-size: 12px; }
+.mts-avatar--md  { width: 40px; height: 40px; font-size: 14px; } /* default */
+.mts-avatar--lg  { width: 56px; height: 56px; font-size: 18px; }
+.mts-avatar--xl  { width: 80px; height: 80px; font-size: 24px; }
+.mts-avatar--2xl { width: 112px; height: 112px; font-size: 32px; }
+
+/* Image variant */
+.mts-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Color variants (initials) */
+.mts-avatar--blue    { background: var(--blue-alpha-20); color: var(--blue-30); border-color: var(--blue-alpha-20); }
+.mts-avatar--green   { background: var(--green-alpha-15); color: var(--green-30); border-color: var(--green-alpha-20); }
+.mts-avatar--saffron { background: var(--saffron-alpha-15); color: var(--saffron-40); border-color: var(--saffron-alpha-20); }
+.mts-avatar--red     { background: var(--red-alpha-15); color: var(--red-30); border-color: var(--red-alpha-15); }
+
+/* Status indicator dot */
+.mts-avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--layer-bg);
+  background: var(--status-neutral);
+}
+
+.mts-avatar--md .mts-avatar__status { width: 12px; height: 12px; }
+.mts-avatar--lg .mts-avatar__status { width: 14px; height: 14px; }
+
+.mts-avatar__status--active   { background: var(--status-active); animation: statusPulse 2s ease infinite; }
+.mts-avatar__status--warning  { background: var(--status-warning); }
+.mts-avatar__status--error    { background: var(--status-error); }
+.mts-avatar__status--pilot    { background: var(--status-pilot); }
+
+/* Avatar group (stacked) */
+.mts-avatar-group {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mts-avatar-group .mts-avatar {
+  margin-left: -12px;
+  border: 2px solid var(--layer-bg);
+  transition: transform var(--motion-hover), z-index 0ms;
+}
+
+.mts-avatar-group .mts-avatar:last-child { margin-left: 0; }
+
+.mts-avatar-group .mts-avatar:hover {
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+/* Overflow indicator (+3 more) */
+.mts-avatar--overflow {
+  background: var(--layer-03);
+  color: var(--text-secondary);
+  font-size: var(--type-label-01);
+  font-weight: var(--weight-semibold);
+  cursor: default;
+}

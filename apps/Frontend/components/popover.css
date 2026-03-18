@@ -1,0 +1,91 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Popover Component
+   ============================================================ */
+
+.mts-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.mts-popover__content {
+  display: none;
+  position: absolute;
+  z-index: 500;
+  min-width: 240px;
+  max-width: 360px;
+  background: var(--layer-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-5);
+  animation: scaleIn var(--duration-moderate-01) var(--ease-entrance) both;
+}
+
+.mts-popover__content--open {
+  display: block;
+}
+
+/* Positioning */
+.mts-popover__content--bottom { top: calc(100% + var(--space-3)); left: 0; }
+.mts-popover__content--bottom-end { top: calc(100% + var(--space-3)); right: 0; }
+.mts-popover__content--top { bottom: calc(100% + var(--space-3)); left: 0; }
+.mts-popover__content--top-end { bottom: calc(100% + var(--space-3)); right: 0; }
+.mts-popover__content--right { left: calc(100% + var(--space-3)); top: 0; }
+.mts-popover__content--left { right: calc(100% + var(--space-3)); top: 0; }
+
+/* Arrow */
+.mts-popover__content--bottom::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: 16px;
+  width: 10px; height: 10px;
+  background: var(--layer-02);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
+  transform: rotate(45deg);
+}
+
+/* Header */
+.mts-popover__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mts-popover__title {
+  font-size: var(--type-body-02);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.mts-popover__close {
+  width: 24px; height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--icon-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--motion-hover);
+}
+
+.mts-popover__close:hover { background: var(--layer-03); color: var(--icon-primary); }
+
+.mts-popover__body {
+  font-size: var(--type-body-01);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.mts-popover__footer {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+  justify-content: flex-end;
+}

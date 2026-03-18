@@ -1,0 +1,73 @@
+/* MTSAi × IBM Carbon — Checkbox & Radio */
+
+.mts-checkbox, .mts-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--type-body-01);
+  color: var(--text-primary);
+  min-height: var(--size-touch-target);
+  padding: var(--space-2) 0;
+}
+
+.mts-checkbox__input, .mts-radio__input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--transition-color);
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.mts-radio__input { border-radius: var(--radius-full); }
+
+.mts-checkbox__input:hover { border-color: var(--interactive); }
+.mts-radio__input:hover { border-color: var(--interactive); }
+
+.mts-checkbox__input:checked {
+  background-color: var(--interactive);
+  border-color: var(--interactive);
+}
+.mts-checkbox__input:checked::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(-45deg) translateY(-1px);
+}
+.mts-radio__input:checked {
+  border-color: var(--interactive);
+}
+.mts-radio__input:checked::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--interactive);
+}
+.mts-checkbox__input:focus-visible,
+.mts-radio__input:focus-visible {
+  outline: 3px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+/* Indeterminate state */
+.mts-checkbox__input:indeterminate {
+  background-color: var(--interactive);
+  border-color: var(--interactive);
+}
+.mts-checkbox__input:indeterminate::after {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: var(--white);
+}
+
+.mts-checkbox--disabled, .mts-radio--disabled { opacity: 0.5; cursor: not-allowed; }

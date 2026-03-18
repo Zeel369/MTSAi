@@ -1,0 +1,137 @@
+/* ============================================================
+   MTSAi × IBM Carbon — File Upload Input
+   ============================================================ */
+
+.mts-file {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mts-file__label {
+  font-size: var(--type-body-01);
+  font-weight: var(--weight-medium);
+  color: var(--input-label, var(--text-secondary));
+}
+
+.mts-file__drop-zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  background: var(--layer-01);
+  cursor: pointer;
+  transition: var(--motion-hover);
+  text-align: center;
+}
+
+.mts-file__drop-zone:hover,
+.mts-file__drop-zone:focus-within {
+  border-color: var(--interactive);
+  background: var(--blue-alpha-08);
+}
+
+.mts-file__drop-zone--active,
+.mts-file__drop-zone[data-dragging="true"] {
+  border-color: var(--interactive);
+  background: var(--blue-alpha-12);
+  border-style: solid;
+}
+
+.mts-file__drop-zone--error {
+  border-color: var(--border-error);
+  background: var(--red-alpha-08);
+}
+
+/* Hidden actual file input */
+.mts-file__input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+
+.mts-file__icon {
+  width: 40px;
+  height: 40px;
+  color: var(--icon-secondary);
+}
+
+.mts-file__title {
+  font-size: var(--type-body-02);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.mts-file__title span {
+  color: var(--interactive);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mts-file__hint {
+  font-size: var(--type-label-02);
+  color: var(--text-secondary);
+}
+
+/* File list — uploaded files */
+.mts-file__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.mts-file__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.mts-file__item-name {
+  flex: 1;
+  font-size: var(--type-body-01);
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mts-file__item-size {
+  font-size: var(--type-label-01);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.mts-file__item-remove {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--icon-secondary);
+  cursor: pointer;
+  transition: var(--motion-hover);
+}
+
+.mts-file__item-remove:hover {
+  background: var(--red-alpha-10);
+  color: var(--text-error);
+}
+
+.mts-file__item--error .mts-file__item-name { color: var(--text-error); }
+.mts-file__item--success { border-color: var(--brand-border); }
+
+.mts-file__error {
+  font-size: var(--type-label-02);
+  color: var(--text-error);
+}

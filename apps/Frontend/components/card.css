@@ -1,0 +1,67 @@
+/* MTSAi × IBM Carbon — Card */
+
+.mts-card {
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--duration-fast-02) var(--ease-standard),
+              box-shadow var(--duration-fast-02) var(--ease-standard),
+              transform var(--duration-fast-02) var(--ease-standard);
+}
+.mts-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.mts-card--interactive { cursor: pointer; }
+.mts-card--interactive:hover {
+  border-color: var(--interactive);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-2px);
+}
+.mts-card--interactive:active { transform: translateY(0); }
+
+/* Brand accented card */
+.mts-card--brand {
+  border-left: 4px solid var(--brand-primary);
+}
+.mts-card--brand:hover { border-color: var(--brand-primary); box-shadow: var(--shadow-green); }
+
+/* Blue accented */
+.mts-card--blue { border-left: 4px solid var(--interactive); }
+
+/* Saffron CTA card */
+.mts-card--cta {
+  border: 1px solid var(--saffron-alpha-30);
+  background: var(--saffron-alpha-05);
+}
+.mts-card--cta:hover { border-color: var(--cta-primary); box-shadow: var(--shadow-saffron); }
+
+/* Elevated card */
+.mts-card--elevated { box-shadow: var(--shadow-lg); border-color: transparent; }
+
+.mts-card__header { padding: var(--space-6); border-bottom: 1px solid var(--border-subtle); }
+.mts-card__body   { padding: var(--space-6); }
+.mts-card__footer { padding: var(--space-5) var(--space-6); border-top: 1px solid var(--border-subtle); background: var(--layer-02); }
+.mts-card__media  { width: 100%; height: 200px; object-fit: cover; }
+
+/* Stat card */
+.mts-stat-card {
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+.mts-stat-card__value {
+  font-family: var(--font-display);
+  font-size: var(--type-display-01);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: var(--text-primary);
+}
+.mts-stat-card__value--blue    { color: var(--blue-40); }
+.mts-stat-card__value--green   { color: var(--green-40); }
+.mts-stat-card__value--saffron { color: var(--saffron-50); }
+.mts-stat-card__label { font-size: var(--type-label-01); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--text-secondary); margin-top: var(--space-2); }
+.mts-stat-card__sublabel { font-size: var(--type-label-02); color: var(--text-secondary); margin-top: var(--space-2); }

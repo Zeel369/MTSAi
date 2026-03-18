@@ -1,0 +1,139 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Utility Classes
+   ============================================================ */
+
+/* Display */
+.hidden { display: none !important; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.block { display: block; }
+
+/* Flex utils */
+.items-center    { align-items: center; }
+.items-start     { align-items: flex-start; }
+.items-end       { align-items: flex-end; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+.flex-wrap       { flex-wrap: wrap; }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-5  { gap: var(--space-5); }
+.gap-6  { gap: var(--space-6); }
+.gap-7  { gap: var(--space-7); }
+
+/* Text */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+.text-muted  { color: var(--text-secondary); }
+.text-brand  { color: var(--brand-primary); }
+.text-interactive { color: var(--interactive); }
+.text-saffron { color: var(--saffron-50); }
+.text-error  { color: var(--text-error); }
+.font-mono   { font-family: var(--font-mono); }
+.uppercase   { text-transform: uppercase; letter-spacing: var(--ls-wider); }
+.truncate    { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Backgrounds */
+.bg-base   { background-color: var(--layer-bg); }
+.bg-01     { background-color: var(--layer-01); }
+.bg-02     { background-color: var(--layer-02); }
+.bg-03     { background-color: var(--layer-03); }
+.bg-brand  { background-color: var(--brand-subtle); }
+.bg-blue   { background-color: var(--blue-alpha-12); }
+
+/* Border */
+.border        { border: 1px solid var(--border-subtle); }
+.border-strong { border: 1px solid var(--border-strong); }
+.border-brand  { border: 1px solid var(--border-brand); }
+.border-radius { border-radius: var(--radius-md); }
+.rounded-full  { border-radius: var(--radius-full); }
+
+/* Spacing */
+.p-3  { padding: var(--space-3); }
+.p-4  { padding: var(--space-4); }
+.p-5  { padding: var(--space-5); }
+.p-6  { padding: var(--space-6); }
+.p-7  { padding: var(--space-7); }
+.p-8  { padding: var(--space-8); }
+.p-9  { padding: var(--space-9); }
+.p-10 { padding: var(--space-10); }
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-5);
+  background: var(--interactive);
+  color: var(--white);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-semibold);
+  z-index: 9999;
+  transition: top var(--motion-hover);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+/* Status dot */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: var(--status-active);
+  animation: statusPulse 2s ease infinite;
+}
+
+.status-dot.warning {
+  background: var(--status-warning);
+}
+
+.status-dot.error {
+  background: var(--status-error);
+}
+
+.status-dot.neutral {
+  background: var(--status-neutral);
+}
+
+.status-dot.pilot {
+  background: var(--status-pilot);
+}
+
+/* Skeleton / shimmer */
+.skeleton {
+  background: linear-gradient(90deg, var(--layer-01) 25%, var(--layer-02) 50%, var(--layer-01) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Visually hidden (accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

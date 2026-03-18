@@ -1,0 +1,147 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Radio Button (Full Implementation)
+   ============================================================ */
+
+.mts-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mts-radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.mts-radio-group__label {
+  font-size: var(--type-body-01);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.mts-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  min-height: var(--size-touch-target);
+  padding: var(--space-2) 0;
+}
+
+/* Hide native input */
+.mts-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom radio circle */
+.mts-radio__control {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-strong);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: var(--motion-hover);
+  position: relative;
+}
+
+/* Inner dot */
+.mts-radio__control::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--interactive);
+  opacity: 0;
+  transform: scale(0);
+  transition: var(--motion-expand);
+}
+
+/* Checked state */
+.mts-radio input:checked + .mts-radio__control {
+  border-color: var(--interactive);
+  background: var(--blue-alpha-12);
+}
+
+.mts-radio input:checked + .mts-radio__control::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover */
+.mts-radio:hover .mts-radio__control {
+  border-color: var(--interactive);
+}
+
+/* Focus */
+.mts-radio input:focus-visible + .mts-radio__control {
+  box-shadow: var(--focus-ring);
+}
+
+/* Disabled */
+.mts-radio--disabled,
+.mts-radio input:disabled + .mts-radio__control {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Label text */
+.mts-radio__label {
+  font-size: var(--type-body-02);
+  color: var(--text-primary);
+  line-height: 1.5;
+  user-select: none;
+}
+
+.mts-radio__helper {
+  font-size: var(--type-label-01);
+  color: var(--text-secondary);
+  display: block;
+  margin-top: var(--space-1);
+}
+
+/* Error state */
+.mts-radio-group--error .mts-radio__control {
+  border-color: var(--border-error);
+}
+
+.mts-radio-group__error {
+  font-size: var(--type-label-02);
+  color: var(--text-error);
+  margin-top: var(--space-2);
+}
+
+/* Card-style radio */
+.mts-radio--card {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  background: var(--layer-01);
+  transition: var(--motion-hover);
+  min-height: auto;
+}
+
+.mts-radio--card:hover {
+  border-color: var(--interactive);
+  background: var(--blue-alpha-08);
+}
+
+.mts-radio--card input:checked ~ .mts-radio__label-wrap {
+  /* checked card styling applied via wrapper */
+}
+
+.mts-radio--card.is-checked {
+  border-color: var(--interactive);
+  background: var(--blue-alpha-12);
+}

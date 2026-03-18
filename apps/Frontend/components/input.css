@@ -1,0 +1,63 @@
+/* MTSAi × IBM Carbon — Input, Textarea, Label */
+
+.mts-form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.mts-label {
+  font-family: var(--font-ui);
+  font-size: var(--type-label-02);
+  font-weight: var(--weight-medium);
+  color: var(--input-label);
+  letter-spacing: 0.01em;
+}
+.mts-label .required { color: var(--red-50); margin-left: 2px; }
+
+.mts-input {
+  width: 100%;
+  height: var(--input-height-md);
+  padding: 0 var(--space-4);
+  background-color: var(--layer-01);
+  color: var(--text-primary);
+  border: 1px solid var(--input-border);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--type-body-01);
+  transition: var(--transition-color);
+  outline: none;
+}
+.mts-input::placeholder { color: var(--input-placeholder); }
+.mts-input:hover { border-color: var(--gray-40); }
+.mts-input:focus {
+  border-color: var(--input-border-focus);
+  background-color: var(--layer-02);
+}
+.mts-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Error state */
+.mts-form-group--error .mts-input { border-color: var(--input-border-error); }
+.mts-form-group--error .mts-label { color: var(--text-error); }
+
+/* Textarea */
+.mts-textarea {
+  resize: vertical;
+  min-height: 96px;
+  height: auto;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border-bottom-width: 2px;
+}
+
+/* Helper / error text */
+.mts-helper { font-size: var(--type-label-01); color: var(--input-helper); }
+.mts-error-msg { font-size: var(--type-label-01); color: var(--text-error); display: flex; align-items: center; gap: var(--space-2); }
+
+/* Inline input with icon */
+.mts-input-wrapper { position: relative; }
+.mts-input-wrapper .mts-input { padding-left: var(--space-9); }
+.mts-input-icon { position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--icon-secondary); pointer-events: none; }
+.mts-input-wrapper .mts-input--suffix { padding-right: var(--space-9); }
+.mts-input-suffix { position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--icon-secondary); }
+
+/* Sizes */
+.mts-input--sm { height: var(--input-height-sm); font-size: var(--type-label-02); }
+.mts-input--lg { height: var(--input-height-lg); font-size: var(--type-body-02); padding: 0 var(--space-5); }

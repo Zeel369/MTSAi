@@ -1,0 +1,85 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Skeleton / Loading Placeholder
+   ============================================================ */
+
+@keyframes skeleton-wave {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.mts-skeleton {
+  display: block;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--layer-01) 25%,
+    var(--layer-02) 50%,
+    var(--layer-01) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-wave 1.5s ease-in-out infinite;
+}
+
+/* Common skeleton shapes */
+.mts-skeleton--text  { height: 1em; width: 100%; }
+.mts-skeleton--text-sm { height: 0.875em; }
+.mts-skeleton--text-lg { height: 1.25em; }
+
+.mts-skeleton--circle { border-radius: var(--radius-full); }
+
+.mts-skeleton--button {
+  height: 48px;
+  border-radius: var(--radius-md);
+}
+
+.mts-skeleton--input {
+  height: 48px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.mts-skeleton--card {
+  height: 200px;
+  border-radius: var(--radius-lg);
+}
+
+.mts-skeleton--avatar-sm  { width: 32px; height: 32px; border-radius: var(--radius-full); }
+.mts-skeleton--avatar-md  { width: 40px; height: 40px; border-radius: var(--radius-full); }
+.mts-skeleton--avatar-lg  { width: 56px; height: 56px; border-radius: var(--radius-full); }
+
+/* Skeleton row pattern */
+.mts-skeleton-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+/* Skeleton card layout */
+.mts-skeleton-card {
+  padding: var(--space-6);
+  background: var(--layer-01);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Skeleton table */
+.mts-skeleton-table-row {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Width helpers */
+.mts-skeleton--w-25  { width: 25%; }
+.mts-skeleton--w-50  { width: 50%; }
+.mts-skeleton--w-75  { width: 75%; }
+.mts-skeleton--w-100 { width: 100%; }
+
+/* Disable animation for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mts-skeleton { animation: none; background: var(--layer-02); }
+}
