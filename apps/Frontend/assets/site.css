@@ -1,0 +1,685 @@
+/* ============================================================
+   MTSAi Site CSS — IBM Carbon Edition
+   Page-level component styles that complement the design system.
+   All colors via CSS custom properties from tokens/colors.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Root overrides — MTSAi brand tokens
+---------------------------------------------------------- */
+:root {
+  --ink:         #000000;
+  --paper:       #FFFFFF;
+  --brand-green: #53AA00;
+  --brand-blue:  #0052CC;
+  --alert-red:   #D82B2B;
+  --font-display: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+/* ----------------------------------------------------------
+   Accessibility
+---------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.2s;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.skip-link:focus { top: 0; }
+
+/* ----------------------------------------------------------
+   Scroll Progress
+---------------------------------------------------------- */
+.red-scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--brand-green);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 9999;
+  transition: transform 80ms linear;
+}
+
+/* ----------------------------------------------------------
+   Navigation
+---------------------------------------------------------- */
+.nav-item {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-item:hover { color: var(--brand-green); }
+.nav-active { color: var(--brand-green) !important; }
+
+.trust-dropdown-panel {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 1rem;
+  width: 420px;
+  transform: translateX(-50%);
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 200;
+}
+.trust-dropdown-panel.pointer-events-auto { pointer-events: auto; }
+
+.trust-dropdown-panel a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.trust-dropdown-panel a:hover {
+  background: rgba(0,0,0,0.04);
+  color: var(--brand-green);
+}
+
+.mobile-menu-panel {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+/* ----------------------------------------------------------
+   Hero accent strip
+---------------------------------------------------------- */
+.hero-accent-strip {
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-green) 0%, var(--brand-blue) 100%);
+  width: 100%;
+}
+
+/* ----------------------------------------------------------
+   Buttons (sh-btn system)
+---------------------------------------------------------- */
+.sh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+.sh-btn:active { transform: translate(2px, 2px); }
+
+.btn-primary-action,
+.btn-10 {
+  background: var(--brand-green);
+  color: #fff;
+  border-color: var(--brand-green);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn-primary-action:hover,
+.btn-10:hover {
+  background: #3d8500;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.btn-hard-shadow,
+.btn-2 {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn-hard-shadow:hover,
+.btn-2:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sh-btn-sm { padding: 0.4rem 0.9rem; font-size: 0.65rem; }
+
+/* ----------------------------------------------------------
+   Cards
+---------------------------------------------------------- */
+.magic-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.brutalist-border {
+  border: 2px solid var(--ink);
+}
+
+.shadow-brutal {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.shadow-brutal:hover,
+.shadow-brutal-hover:hover {
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: translate(-1px, -1px);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+/* ----------------------------------------------------------
+   Pulse badge
+---------------------------------------------------------- */
+.pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.pulse-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  animation: pulse-anim 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.pulse-dot-blue { background: var(--brand-blue); }
+
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* ----------------------------------------------------------
+   Stats
+---------------------------------------------------------- */
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  opacity: 0.5;
+  margin-top: 0.25rem;
+}
+
+.stat-block {
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+/* KPI strip */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  background: var(--ink);
+  color: var(--paper);
+}
+.kpi-cell {
+  padding: 1.25rem 1.5rem;
+  border-right: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.kpi-cell:last-child { border-right: none; }
+.kpi-val {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--brand-green);
+}
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ----------------------------------------------------------
+   Section label
+---------------------------------------------------------- */
+.swiss-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  opacity: 0.45;
+}
+
+/* ----------------------------------------------------------
+   Feature cards
+---------------------------------------------------------- */
+.feature-card {
+  padding: 1.5rem;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.feature-card-icon {
+  width: 2.5rem; height: 2.5rem;
+  background: var(--brand-green);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.feature-card.blue .feature-card-icon { background: var(--brand-blue); }
+.feature-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.feature-card-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(0,0,0,0.7);
+}
+
+/* ----------------------------------------------------------
+   Step grid (enforcement integrations etc.)
+---------------------------------------------------------- */
+.step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.step-item {
+  border: 2px solid var(--ink);
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.step-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.08;
+  margin-bottom: 0.5rem;
+}
+.step-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--brand-blue);
+  margin-bottom: 0.5rem;
+}
+.step-tag span {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--brand-blue);
+  border-radius: 50%;
+}
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.step-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(0,0,0,0.7);
+}
+
+/* ----------------------------------------------------------
+   Icon list
+---------------------------------------------------------- */
+.icon-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.icon-list-marker {
+  flex-shrink: 0;
+  width: 1.5rem; height: 1.5rem;
+  border: 2px solid var(--brand-green);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--brand-green);
+  margin-top: 1px;
+}
+.icon-list-marker.red {
+  border-color: var(--alert-red);
+  color: var(--alert-red);
+}
+.icon-list-marker.blue {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+
+/* ----------------------------------------------------------
+   Badge wireframe
+---------------------------------------------------------- */
+.badge-wireframe {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border: 1.5px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+/* ----------------------------------------------------------
+   Shimmer text
+---------------------------------------------------------- */
+.shimmer-text-green {
+  background: linear-gradient(90deg, var(--brand-green) 0%, #a3e635 50%, var(--brand-green) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ----------------------------------------------------------
+   Progress bars
+---------------------------------------------------------- */
+.progress-track {
+  height: 4px;
+  background: rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--brand-green);
+  transition: width 1s ease;
+}
+.progress-fill-red   { background: var(--alert-red); }
+.progress-fill-blue  { background: var(--brand-blue); }
+
+/* ----------------------------------------------------------
+   Diagrams
+---------------------------------------------------------- */
+.mtsai-diagram-frame {
+  border: 2px solid var(--ink);
+  background: #f7f8f5;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.mtsai-diagram-canvas {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ----------------------------------------------------------
+   Timeline
+---------------------------------------------------------- */
+.timeline-container {
+  position: relative;
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.timeline-line-fill {
+  position: absolute;
+  left: 0.9rem;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--brand-green) 0%, var(--brand-blue) 100%);
+}
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.timeline-dot {
+  position: absolute;
+  left: -1.65rem;
+  top: 0.75rem;
+  width: 10px; height: 10px;
+  background: var(--brand-green);
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+.timeline-dot-blue { background: var(--brand-blue); }
+
+/* ----------------------------------------------------------
+   Marquee
+---------------------------------------------------------- */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  animation: marquee-scroll var(--duration, 24s) linear infinite;
+  will-change: transform;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  white-space: nowrap;
+  background: var(--paper);
+}
+.marquee-item-green {
+  background: var(--brand-green);
+  color: #fff;
+  border-color: var(--brand-green);
+}
+
+/* ----------------------------------------------------------
+   State chip
+---------------------------------------------------------- */
+.state-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ----------------------------------------------------------
+   Scroll reveal animations
+---------------------------------------------------------- */
+.fade-section,
+.blur-fade-in,
+.blur-fade-left,
+.blur-fade-right {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-section          { transform: translateY(16px); }
+.blur-fade-left        { transform: translateX(-20px); }
+.blur-fade-right       { transform: translateX(20px); }
+.blur-fade-in          { transform: translateY(10px); }
+
+.fade-section.revealed,
+.fade-section.visible,
+.blur-fade-in.revealed,
+.blur-fade-in.visible,
+.blur-fade-left.revealed,
+.blur-fade-left.visible,
+.blur-fade-right.revealed,
+.blur-fade-right.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays via JS (--blur-delay custom prop) */
+.blur-fade-in,
+.blur-fade-left,
+.blur-fade-right {
+  transition-delay: var(--blur-delay, 0ms);
+}
+
+/* ----------------------------------------------------------
+   Hero animations
+---------------------------------------------------------- */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-animate-1 { animation: hero-fade-up 0.5s ease forwards; animation-delay: 0.1s; opacity: 0; }
+.hero-animate-2 { animation: hero-fade-up 0.6s ease forwards; animation-delay: 0.2s; opacity: 0; }
+.hero-animate-3 { animation: hero-fade-up 0.6s ease forwards; animation-delay: 0.35s; opacity: 0; }
+.hero-animate-4 { animation: hero-fade-up 0.6s ease forwards; animation-delay: 0.5s; opacity: 0; }
+
+/* ----------------------------------------------------------
+   Retro grid (subtle background pattern)
+---------------------------------------------------------- */
+.retro-grid-animated {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ----------------------------------------------------------
+   Halftone & overlay cleanup (neutralized)
+   These classes exist in old pages but we render them clean.
+---------------------------------------------------------- */
+.bg-halftone,
+.bg-halftone-sm,
+.noise-bg,
+.swiss-overlay,
+.bg-grid-lines,
+.halftone-animated-green {
+  display: none !important;
+}
+
+/* ----------------------------------------------------------
+   Footer marquee
+---------------------------------------------------------- */
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+.footer-marquee-item { color: rgba(255,255,255,0.5); }
+
+/* ----------------------------------------------------------
+   Error toast
+---------------------------------------------------------- */
+.state-alert {
+  background: var(--alert-red);
+  color: #fff;
+  border: 2px solid var(--ink);
+  font-family: var(--font-mono);
+}
+
+/* ----------------------------------------------------------
+   Misc utility classes used in pages
+---------------------------------------------------------- */
+.animate-stagger { opacity: 1; }
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+.bg-paper { background-color: var(--paper); }
+.bg-ink   { background-color: var(--ink); }
+.text-paper { color: var(--paper); }
+.text-ink   { color: var(--ink); }
+.text-brand-green { color: var(--brand-green); }
+.text-brand-blue  { color: var(--brand-blue); }
+.text-alert-red   { color: var(--alert-red); }
+.border-ink { border-color: var(--ink); }
+.border-brand-green { border-color: var(--brand-green); }
+
+/* Material Symbols used inline */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.icon-bounce {
+  animation: icon-bounce-anim 2s ease-in-out infinite;
+}
+@keyframes icon-bounce-anim {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-3px); }
+}

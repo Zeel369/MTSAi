@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html class="light" lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Platform Architecture | MTSAi</title>
+    <meta name="description" content="Platform architecture overview for the MTSAi incentive-based urban demand management platform, including policy operations, core engines, data processing, ecosystem integration, privacy, and deployment posture." />
+    <link rel="canonical" href="https://mtsai-website.vercel.app/technology_platform.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/brand-visual.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/card.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/dropdown.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <style type="text/css">
+        :root{--ink:#000000;--paper:#FFFFFF;--brand-green:#53AA00;--brand-blue:#0052CC;--alert-red:#D82B2B}
+        body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',sans-serif}
+        .skip-link{position:absolute;top:-40px;left:0;background:#000;color:#fff;padding:8px;z-index:10000;transition:top .3s}
+        .skip-link:focus{top:0}
+        .red-scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--brand-green);transform-origin:left;transform:scaleX(0);z-index:9999;transition:transform 80ms linear}
+    </style>
+</head>
+<body class="page-platform swiss-priority-page relative min-h-screen flex flex-col overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0 bg-grid-lines opacity-50"></div>
+<a href="#main-content" class="skip-link">Skip to Main Content</a>
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-paper">
+    <div class="absolute inset-0 bg-halftone bg-halftone-sm opacity-20 z-0"></div>
+</div>
+<div class="swiss-overlay" aria-hidden="true"></div>
+<div id="scroll-progress" class="red-scroll-progress" role="presentation" aria-hidden="true"></div>
+
+<header id="red-main-header" class="sticky top-0 z-[100] w-full bg-paper border-b-4 border-ink transition-all duration-300 font-display">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-12">
+            <a href="index.html" class="flex items-center group">
+                <img src="img/mtsai-logo.png" alt="MTSAi" class="h-10 w-auto object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none" class="text-2xl font-black tracking-tighter uppercase text-ink">MTSAi</span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+                <a class="nav-item animate-stagger delay-100 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="index.html">Home</a>
+                <a class="nav-item animate-stagger delay-300 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="Government.html">Government</a>
+                <div class="trust-dropdown-group relative animate-stagger delay-500">
+                    <button class="trust-dropdown-trigger inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" type="button" aria-expanded="false">
+                        <span>How the System Works</span>
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </button>
+                    <div class="trust-dropdown-panel absolute left-1/2 top-full mt-4 w-[420px] -translate-x-1/2 border-2 border-ink bg-paper shadow-brutal overflow-hidden pointer-events-none">
+                        <a href="why-traditional-fails.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Why Traditional Congestion Pricing Struggles</a>
+                        <a href="congestion-coordination.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Congestion Is a Coordination Problem</a>
+                        <a href="iudm.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Incentive-Based Demand Management</a>
+                        <a href="deployment-roadmap.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">How a City Deploys MTSAi</a>
+                        <a href="india-advantage.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Why India Can Deploy This at National Scale</a>
+                        <a href="governance.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Governance & Accountability</a>
+                        <a href="data-transparency.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Data Protection & Public Transparency</a>
+                    </div>
+                </div>
+                <a class="nav-item animate-stagger delay-200 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="Strategic_Partners.html">Strategic Partners</a>
+                <a class="nav-item animate-stagger delay-400 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="about.html">About</a>
+                <a class="nav-item animate-stagger delay-100 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="careers.html">Careers</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase font-bold text-ink/50 mr-4 state-chip state-verified" data-state-indicator="verified">
+                <span class="w-2 h-2 bg-alert-red rounded-none animate-pulse"></span>
+                System Online
+            </div>
+            <a href="contact.html" class="sh-btn sh-btn-sm btn-10 btn-primary-action px-6">Connect <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 border-2 border-ink flex items-center justify-center hover:bg-ink hover:text-paper transition-colors rounded-none">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="mobile-menu" class="fixed inset-0 z-50 lg:hidden hidden">
+    <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/80"></div>
+    <div id="mobile-menu-panel" class="mobile-menu-panel absolute top-0 right-0 bottom-0 w-[280px] bg-paper border-l-2 border-ink shadow-brutal transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto rounded-none">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-xl font-display font-bold uppercase tracking-tight text-ink">Menu</span>
+                <button id="mobile-menu-close" class="p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center border-2 border-ink hover:bg-ink hover:text-paper transition-colors rounded-none" aria-label="Close mobile menu">
+                    <span class="material-symbols-outlined text-[24px]">close</span>
+                </button>
+            </div>
+            <nav class="red-mobile-nav flex flex-col gap-1">
+                <a href="index.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Home</a>
+                <a href="Government.html" class="nav-item animate-stagger delay-300 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Government</a>
+                <div class="mt-2">
+                    <button id="mobile-system-toggle" class="w-full px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors flex items-center justify-between rounded-none" aria-expanded="false">
+                        <span>How the System Works</span>
+                        <span class="material-symbols-outlined text-[20px] transition-transform duration-200" id="mobile-system-icon">expand_more</span>
+                    </button>
+                    <div id="mobile-system-submenu" class="hidden flex-col gap-1 mt-1 ml-4">
+                        <a href="why-traditional-fails.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Why Traditional Congestion Pricing Struggles</a>
+                        <a href="congestion-coordination.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Congestion Is a Coordination Problem</a>
+                        <a href="iudm.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Incentive-Based Demand Management</a>
+                        <a href="deployment-roadmap.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">How a City Deploys MTSAi</a>
+                        <a href="india-advantage.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Why India Can Deploy This at National Scale</a>
+                        <a href="governance.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Governance & Accountability</a>
+                        <a href="data-transparency.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Data Protection & Public Transparency</a>
+                    </div>
+                </div>
+                <a href="Strategic_Partners.html" class="nav-item animate-stagger delay-200 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Strategic Partners</a>
+                <a href="about.html" class="nav-item animate-stagger delay-400 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">About</a>
+                <a href="careers.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Careers</a>
+                <a href="contact.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Contact</a>
+            </nav>
+            <div class="mt-6">
+                <a href="contact.html" class="magnetic-btn ripple-btn sh-btn btn-2 btn-hard-shadow w-full">Contact Us <span class="material-symbols-outlined">arrow_forward</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="relative z-20 border-b-2 border-ink bg-paper">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-3 flex flex-wrap items-center gap-3">
+        <span class="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-ink/70">Platform Documentation</span>
+        <a href="Government.html" class="sh-btn btn-3 btn-sweep-green inline-flex items-center border-2 border-ink bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink hover:bg-brand-green hover:text-white transition-colors rounded-none">Government Path</a>
+        <a href="resources.html" class="magnetic-btn ripple-btn sh-btn btn-2 btn-hard-shadow inline-flex items-center border-2 border-ink bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink hover:bg-brand-blue hover:text-white transition-colors rounded-none">Resources</a>
+    </div>
+</section>
+
+<main id="main-content" class="flex-grow z-10 relative">
+    <section class="min-h-[75vh] border-b-2 border-ink flex flex-col bg-paper">
+        <div data-particles data-particle-color="#53AA00" data-particle-count="38" data-particle-speed="0.22" data-particle-size="1.6" data-particle-opacity="0.28" class="absolute inset-0 pointer-events-none z-0"></div>
+        <div class="retro-grid-animated opacity-20 absolute inset-0 pointer-events-none z-0"></div>
+        <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+            <div class="max-w-[1400px] mx-auto w-full relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-16 items-start">
+                    <div>
+                        <span class="font-mono text-sm bg-brand-green text-paper px-2 py-1 mb-6 inline-block">Platform Documentation</span>
+                        <h1 class="font-display text-5xl md:text-6xl font-black tracking-tighter text-ink leading-[0.9] animate-slam mb-8">
+                            Architecture for <span class="shimmer-text text-brand-blue">government-controlled mobility programs</span>
+                        </h1>
+                        <p class="text-xl text-ink/70 max-w-2xl leading-relaxed mb-8 border-l-4 border-brand-green pl-6">
+                            The MTSAi platform is designed as a multi-tenant mobility management architecture supporting policy configuration, incentive systems, traffic event processing, and digital ecosystem integrations.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                            <a href="Government.html" class="sh-btn btn-7 btn-terminal">
+                                <span class="material-symbols-outlined">gavel</span>
+                                Explore the Government Platform
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                            <a href="contact.html?intent=government" class="magnetic-btn ripple-btn sh-btn btn-2 btn-hard-shadow">
+                                <span class="material-symbols-outlined">description</span>
+                                Request Government Briefing
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-2 font-mono text-xs text-ink/50 border-2 border-ink p-3">
+                            <span class="material-symbols-outlined text-[16px] text-brand-green">security</span>
+                            Multi-tenant design, deterministic policy engines, integration controls, and privacy governance architecture.
+                        </div>
+                    </div>
+                    <div class="brutalist-border">
+                        <div class="p-6 border-b-2 border-ink hover:bg-brand-green hover:text-paper transition-all group flex items-start gap-3">
+                            <div class="w-8 h-8 border-2 border-ink group-hover:border-paper flex items-center justify-center flex-shrink-0 transition-colors">
+                                <span class="material-symbols-outlined text-brand-green group-hover:text-paper text-sm">apartment</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-black uppercase text-xs group-hover:text-paper mb-1">City policy operations</h3>
+                                <p class="font-mono text-[10px] text-ink/60 group-hover:text-paper/70">Congestion policies, incentive budgets, exemptions, and enforcement thresholds remain under government control.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 border-b-2 border-ink hover:bg-brand-blue hover:text-paper transition-all group flex items-start gap-3">
+                            <div class="w-8 h-8 border-2 border-ink group-hover:border-paper flex items-center justify-center flex-shrink-0 transition-colors">
+                                <span class="material-symbols-outlined text-brand-blue group-hover:text-paper text-sm">precision_manufacturing</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-black uppercase text-xs group-hover:text-paper mb-1">Core platform engines</h3>
+                                <p class="font-mono text-[10px] text-ink/60 group-hover:text-paper/70">Incentive, pricing, and engagement services execute deterministic program logic with auditability.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 border-b-2 border-ink hover:bg-brand-green hover:text-paper transition-all group flex items-start gap-3">
+                            <div class="w-8 h-8 border-2 border-ink group-hover:border-paper flex items-center justify-center flex-shrink-0 transition-colors">
+                                <span class="material-symbols-outlined text-brand-green group-hover:text-paper text-sm">hub</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-black uppercase text-xs group-hover:text-paper mb-1">Ecosystem integration</h3>
+                                <p class="font-mono text-[10px] text-ink/60 group-hover:text-paper/70">ANPR networks, partner mobility apps, and payment systems feed the event and incentive pipeline.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 hover:bg-brand-blue hover:text-paper transition-all group flex items-start gap-3">
+                            <div class="w-8 h-8 border-2 border-ink group-hover:border-paper flex items-center justify-center flex-shrink-0 transition-colors">
+                                <span class="material-symbols-outlined text-brand-blue group-hover:text-paper text-sm">shield</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-black uppercase text-xs group-hover:text-paper mb-1">Privacy and deployment posture</h3>
+                                <p class="font-mono text-[10px] text-ink/60 group-hover:text-paper/70">No continuous GPS tracking, no biometrics, tenant isolation, and cloud deployment designed for regulated rollout.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t-2 border-ink p-4 flex justify-between font-mono text-xs uppercase bg-paper">
+            <span>Fig. 7.0 &mdash; Technology Platform</span>
+            <span>Scroll for Details &darr;</span>
+        </div>
+    </section>
+
+    <nav class="sticky top-20 z-40 bg-paper border-b-2 border-ink overflow-x-auto" aria-label="Page sections">
+        <div class="max-w-[1400px] mx-auto px-6 h-12 flex items-center gap-6 font-mono text-[10px] font-bold uppercase tracking-widest text-ink/50 whitespace-nowrap">
+            <a href="#overview" class="hover:text-brand-blue transition-colors">Overview</a>
+            <a href="#policy-operations" class="hover:text-brand-blue transition-colors">Policy Layer</a>
+            <a href="#core-engines" class="hover:text-brand-blue transition-colors">Core Engines</a>
+            <a href="#data-events" class="hover:text-brand-blue transition-colors">Data Processing</a>
+            <a href="#ecosystem-integration" class="hover:text-brand-blue transition-colors">Ecosystem</a>
+            <a href="#privacy-governance" class="hover:text-brand-blue transition-colors">Privacy</a>
+            <a href="#deployment" class="hover:text-brand-blue transition-colors">Deployment</a>
+        </div>
+    </nav>
+
+    <section id="overview" class="py-16 lg:py-24 border-b-2 border-ink bg-paper relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">Platform Architecture Overview</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">MULTI-TENANT IUDM PLATFORM</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 brutalist-border mb-10">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <h3 class="font-display text-2xl font-black uppercase mb-6">Incentive-Based Urban Demand Management Platform</h3>
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">Urban congestion management requires more than isolated tools. It requires an integrated system that connects policy configuration, traffic data, commuter engagement, and digital mobility ecosystems.</p>
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">The MTSAi platform is designed as a multi-tenant mobility management architecture that allows multiple cities to operate independent congestion management programs within a shared infrastructure environment.</p>
+                    <p class="text-lg text-ink/70 leading-relaxed">The platform combines deterministic policy engines, incentive management systems, and digital ecosystem integrations to support government-controlled traffic demand programs.</p>
+                </div>
+                <div class="p-10 bg-ink/5">
+                    <h3 class="font-display font-black uppercase text-sm mb-6">Architecture Focus</h3>
+                    <ul class="space-y-3 font-mono text-[10px] uppercase tracking-widest text-ink/70">
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Government-controlled policy configuration and audit logs</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Deterministic incentive and pricing services</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Event processing that leverages existing mobility infrastructure</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Super App integration pathways for incentive delivery</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Privacy and deployment posture designed for deployment, not live operation</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mtsai-diagram-frame">
+                <div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 980 620" width="100%" height="auto" role="img" aria-label="Full MTSAi system architecture" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .mtsai-svg-text {
+          font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          letter-spacing: -0.01em;
+        }
+        rect[fill="#FFFFFF"],
+        rect[fill="#f7f8f5"],
+        rect[fill="#FEE2E2"],
+        rect[fill="rgba(0,82,204,0.08)"],
+        rect[fill="rgba(83,170,0,0.08)"] {
+          stroke: #000000 !important;
+          stroke-width: 2.2px !important;
+        }
+        text[fill="#555555"] {
+          fill: #000000;
+          opacity: 0.58;
+        }
+        line {
+          stroke: #888888 !important;
+          stroke-width: 2.4px !important;
+        }
+        circle {
+          stroke: #000000;
+          stroke-width: 2px;
+        }
+      </style>
+      <rect width="980" height="620" fill="#f7f8f5" />
+      <text class="mtsai-svg-text" x="490" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#000000">Full MTSAi System Architecture</text>
+      <text class="mtsai-svg-text" x="490" y="62" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">A multi-tenant platform for government mobility demand programs, integrations, and operator control.</text>
+      <g><rect x="70" y="110" width="190" height="88" rx="0" fill="rgba(0,82,204,0.08)" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="165" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0052CC">Public Web Layer</text><text class="mtsai-svg-text" x="165" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">public pages • onboarding</text><text class="mtsai-svg-text" x="165" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">briefings • partner access</text></g>
+      <g><rect x="295" y="110" width="190" height="88" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="390" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#53AA00">Platform Application</text><text class="mtsai-svg-text" x="390" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">operator workflows</text><text class="mtsai-svg-text" x="390" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">city programs • admin tools</text></g>
+      <g><rect x="520" y="110" width="190" height="88" rx="0" fill="rgba(0,82,204,0.08)" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="615" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0052CC">API Services</text><text class="mtsai-svg-text" x="615" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">identity • payments</text><text class="mtsai-svg-text" x="615" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">events • policy APIs</text></g>
+      <g><rect x="745" y="110" width="170" height="88" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="830" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#53AA00">City Operations</text><text class="mtsai-svg-text" x="830" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">policy console</text><text class="mtsai-svg-text" x="830" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">oversight dashboard</text></g>
+      <line x1="260" y1="154" x2="295" y2="154" stroke="#cccccc" stroke-width="2" />
+      <line x1="485" y1="154" x2="520" y2="154" stroke="#cccccc" stroke-width="2" />
+      <line x1="710" y1="154" x2="745" y2="154" stroke="#cccccc" stroke-width="2" />
+      <g><rect x="220" y="265" width="230" height="108" rx="0" fill="rgba(83,170,0,0.08)" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="335" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#53AA00">Incentive Engine</text><text class="mtsai-svg-text" x="335" y="320" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">evaluate commuter behavior</text><text class="mtsai-svg-text" x="335" y="338" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">calculate rewards • issue credits</text></g>
+      <g><rect x="495" y="265" width="230" height="108" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="610" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#0052CC">Data Infrastructure</text><text class="mtsai-svg-text" x="610" y="320" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">event streams • audit records</text><text class="mtsai-svg-text" x="610" y="338" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">program metrics • retention controls</text></g>
+      <line x1="390" y1="198" x2="390" y2="265" stroke="#cccccc" stroke-width="2" />
+      <line x1="610" y1="198" x2="610" y2="265" stroke="#cccccc" stroke-width="2" />
+      <g><rect x="300" y="430" width="380" height="98" rx="0" fill="#f7f8f5" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="490" y="460" text-anchor="middle" font-size="15" font-weight="700" fill="#0052CC">AI Augmentation Layer</text><text class="mtsai-svg-text" x="490" y="484" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">assistive analytics • pattern detection</text><text class="mtsai-svg-text" x="490" y="502" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">decision support for policy operators</text></g>
+      <line x1="390" y1="373" x2="390" y2="430" stroke="#cccccc" stroke-width="2" />
+      <line x1="610" y1="373" x2="610" y2="430" stroke="#cccccc" stroke-width="2" />
+      <g><rect x="120" y="560" width="740" height="34" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="490" y="582" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</text></g>
+    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="policy-operations" class="py-16 border-b-2 border-ink bg-ink/5 relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-10 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">1. City Policy and Operations Layer</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">GOVERNMENT CONTROL</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 brutalist-border">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">At the top of the platform is the City Administration and Policy Layer. This is where government authorities manage congestion programs through a structured operational interface.</p>
+                    <p class="text-lg text-ink/70 leading-relaxed">City administrators can configure congestion pricing policies, peak and off-peak definitions, incentive programs and reward budgets, exemption categories and equity protections, and enforcement thresholds and escalation rules.</p>
+                </div>
+                <div class="p-10 bg-paper">
+                    <h3 class="font-display font-black uppercase text-sm mb-6">Operational Controls</h3>
+                    <ul class="space-y-3 font-mono text-[10px] uppercase tracking-widest text-ink/70">
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Congestion pricing policies</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Peak and off-peak definitions</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Reward budgets and incentive programs</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Exemptions and equity protections</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Enforcement thresholds and escalation rules with complete audit logs</span></li>
+                    </ul>
+                    <p class="mt-6 text-sm text-ink/70">This layer ensures that policy authority remains entirely with the government authority, not the technology provider.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="core-engines" class="py-16 border-b-2 border-ink bg-paper relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-10 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">2. Core Platform Engines</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">DETERMINISTIC POLICY SERVICES</span>
+            </div>
+            <p class="text-lg text-ink/70 mb-10 max-w-4xl">The operational core of the platform consists of several specialized services that execute congestion management policies.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 brutalist-border mb-10">
+                <div class="p-8 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <h3 class="font-display text-xl font-black uppercase mb-4">Incentive Engine</h3>
+                    <p class="text-sm text-ink/70 mb-4">The Incentive Engine evaluates commuter behavior against city-defined rules and calculates rewards when commuters adopt preferred travel behaviors.</p>
+                    <ul class="space-y-2 text-sm text-ink/70">
+                        <li>• off-peak travel</li>
+                        <li>• carpool participation</li>
+                        <li>• public transit usage</li>
+                        <li>• route optimization during congestion events</li>
+                    </ul>
+                    <p class="text-sm text-ink/70 mt-4">The engine distributes rewards through integrated digital mobility platforms.</p>
+                </div>
+                <div class="p-8 border-b-2 lg:border-b-0 lg:border-r-2 border-ink bg-ink/5">
+                    <h3 class="font-display text-xl font-black uppercase mb-4">Dynamic Pricing Engine</h3>
+                    <p class="text-sm text-ink/70">The pricing engine calculates congestion charges based on city-configured base rates, real-time congestion conditions, vehicle occupancy estimates, and policy rules such as caps, credits, and exemptions.</p>
+                    <p class="text-sm text-ink/70 mt-4">All calculations follow deterministic logic with full auditability, ensuring that operational decisions remain transparent and explainable.</p>
+                </div>
+                <div class="p-8">
+                    <h3 class="font-display text-xl font-black uppercase mb-4">Gamification and Engagement Layer</h3>
+                    <p class="text-sm text-ink/70">To support long-term commuter participation, the platform includes engagement systems such as leaderboard rankings, achievement badges, behavioral streak tracking, and community participation metrics.</p>
+                    <p class="text-sm text-ink/70 mt-4">These systems are designed to reinforce positive travel behavior without exposing personal identity data.</p>
+                </div>
+            </div>
+            <div class="mtsai-diagram-frame">
+                <div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 920 520" width="100%" height="auto" role="img" aria-label="Commuter incentive flow" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .mtsai-svg-text {
+          font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          letter-spacing: -0.01em;
+        }
+        rect[fill="#FFFFFF"],
+        rect[fill="#f7f8f5"],
+        rect[fill="#FEE2E2"],
+        rect[fill="rgba(0,82,204,0.08)"],
+        rect[fill="rgba(83,170,0,0.08)"] {
+          stroke: #000000 !important;
+          stroke-width: 2.2px !important;
+        }
+        text[fill="#555555"] {
+          fill: #000000;
+          opacity: 0.58;
+        }
+        line {
+          stroke: #888888 !important;
+          stroke-width: 2.4px !important;
+        }
+        circle {
+          stroke: #000000;
+          stroke-width: 2px;
+        }
+      </style>
+      <rect width="920" height="520" fill="#f7f8f5" />
+      <text class="mtsai-svg-text" x="460" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#000000">Commuter Incentive Flow</text>
+      <text class="mtsai-svg-text" x="460" y="64" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">How incentives, gamification, and platform logic reinforce better commuter behavior.</text>
+      <line x1="120" y1="215" x2="780" y2="215" stroke="#cccccc" stroke-width="4" />
+      <g><rect x="99" y="194" width="42" height="42" rx="0" fill="#0052CC" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="120" y="221" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">1</text><g><rect x="50" y="262" width="140" height="94" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="120" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Trip Intent</text><text class="mtsai-svg-text" x="120" y="318" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">commuter plans route</text></g></g>
+      <g><rect x="259" y="194" width="42" height="42" rx="0" fill="#0052CC" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="280" y="221" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">2</text><g><rect x="210" y="262" width="140" height="94" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="280" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Behavior Match</text><text class="mtsai-svg-text" x="280" y="318" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">rules evaluate trip</text></g></g>
+      <g><rect x="419" y="194" width="42" height="42" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="440" y="221" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">3</text><g><rect x="370" y="262" width="140" height="94" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="1.5" /><text class="mtsai-svg-text" x="440" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#53AA00">Reward Logic</text><text class="mtsai-svg-text" x="440" y="318" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">credits and incentives</text></g></g>
+      <g><rect x="579" y="194" width="42" height="42" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="600" y="221" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">4</text><g><rect x="530" y="262" width="140" height="94" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="1.5" /><text class="mtsai-svg-text" x="600" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#53AA00">Reward Issued</text><text class="mtsai-svg-text" x="600" y="318" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">partner delivery event</text></g></g>
+      <g><rect x="739" y="194" width="42" height="42" rx="0" fill="#0052CC" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="760" y="221" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">5</text><g><rect x="690" y="262" width="140" height="94" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="760" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Engagement Loop</text><text class="mtsai-svg-text" x="760" y="318" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">badges • streaks • repeat use</text></g></g>
+      <g><rect x="120" y="405" width="680" height="72" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="460" y="432" text-anchor="middle" font-size="13" font-weight="700" fill="#000000">Why It Matters</text><text class="mtsai-svg-text" x="460" y="454" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">The system creates a repeatable incentive loop that helps behavior change become visible, auditable, and sustainable.</text></g>
+    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data-events" class="py-16 border-b-2 border-ink bg-ink/5 relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-10 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">3. Data and Event Processing Layer</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">EVENT PIPELINE</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 brutalist-border">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">The platform processes mobility events from multiple sources. These include ANPR/LPR vehicle detection systems, partner mobility applications, and trip start and end signals from integrated platforms.</p>
+                    <p class="text-lg text-ink/70 leading-relaxed">Incoming events are normalized, validated, and processed through the platform’s event pipeline before being evaluated by the pricing and incentive engines.</p>
+                </div>
+                <div class="p-10 bg-paper">
+                    <h3 class="font-display font-black uppercase text-sm mb-6">Processing Objectives</h3>
+                    <ul class="space-y-3 font-mono text-[10px] uppercase tracking-widest text-ink/70">
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Normalize and validate events from multiple sources</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Support evaluation by pricing and incentive engines</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Leverage existing infrastructure rather than require new roadside hardware networks</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosystem-integration" class="py-16 border-b-2 border-ink bg-paper relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-10 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">4. Digital Mobility Ecosystem Integration</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">SUPER APP GATEWAY</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 brutalist-border mb-10">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">A central feature of the platform is its ability to operate within existing digital mobility ecosystems. Through the MTSAi Super App integration gateway, partner platforms can receive incentive distribution events, display commuter engagement status, provide trip data signals, and surface congestion alerts and route guidance.</p>
+                    <p class="text-lg text-ink/70 leading-relaxed">This allows commuter incentives to be delivered through platforms that citizens already use for mobility and payments.</p>
+                </div>
+                <div class="p-10 bg-ink/5">
+                    <h3 class="font-display font-black uppercase text-sm mb-6">Partner Interaction Model</h3>
+                    <ul class="space-y-3 font-mono text-[10px] uppercase tracking-widest text-ink/70">
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Incentive distribution events</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Commuter engagement status</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Trip data signals</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-green font-bold flex-shrink-0">&rarr;</span><span>Congestion alerts and route guidance</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mtsai-diagram-frame">
+                <div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 940 560" width="100%" height="auto" role="img" aria-label="Super app integration" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .mtsai-svg-text {
+          font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          letter-spacing: -0.01em;
+        }
+        rect[fill="#FFFFFF"],
+        rect[fill="#f7f8f5"],
+        rect[fill="#FEE2E2"],
+        rect[fill="rgba(0,82,204,0.08)"],
+        rect[fill="rgba(83,170,0,0.08)"] {
+          stroke: #000000 !important;
+          stroke-width: 2.2px !important;
+        }
+        text[fill="#555555"] {
+          fill: #000000;
+          opacity: 0.58;
+        }
+        line {
+          stroke: #888888 !important;
+          stroke-width: 2.4px !important;
+        }
+        circle {
+          stroke: #000000;
+          stroke-width: 2px;
+        }
+      </style>
+      <rect width="940" height="560" fill="#f7f8f5" />
+      <text class="mtsai-svg-text" x="470" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#000000">Super App Integration</text>
+      <text class="mtsai-svg-text" x="470" y="64" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">MTSAi is designed to deliver incentives through platforms commuters already use.</text>
+      <g><rect x="355" y="200" width="230" height="110" rx="0" fill="rgba(83,170,0,0.08)" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="470" y="232" text-anchor="middle" font-size="16" font-weight="700" fill="#53AA00">MTSAi Core Platform</text><text class="mtsai-svg-text" x="470" y="256" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">policy rules • incentive logic</text><text class="mtsai-svg-text" x="470" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">reward issuance • audit records</text></g>
+      <g><rect x="80" y="110" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="170" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#0052CC">Digital Mobility Apps</text><text class="mtsai-svg-text" x="170" y="166" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">trip planning • commuter UX</text></g>
+      <g><rect x="680" y="110" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="770" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#0052CC">Payment Networks</text><text class="mtsai-svg-text" x="770" y="166" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">UPI • FASTag-linked settlement</text></g>
+      <g><rect x="80" y="360" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="170" y="386" text-anchor="middle" font-size="13" font-weight="700" fill="#53AA00"><tspan x="170" dy="0">Transit &amp; Shared</tspan><tspan x="170" dy="15">Mobility</tspan></text><text class="mtsai-svg-text" x="170" y="424" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">mode-shift incentives</text></g>
+      <g><rect x="680" y="360" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="770" y="386" text-anchor="middle" font-size="13" font-weight="700" fill="#53AA00"><tspan x="770" dy="0">City Program</tspan><tspan x="770" dy="15">Interface</tspan></text><text class="mtsai-svg-text" x="770" y="424" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">program rules • budget control</text></g>
+      <line x1="260" y1="151" x2="355" y2="225" stroke="#cccccc" stroke-width="2" />
+      <line x1="680" y1="151" x2="585" y2="225" stroke="#cccccc" stroke-width="2" />
+      <line x1="260" y1="401" x2="355" y2="285" stroke="#cccccc" stroke-width="2" />
+      <line x1="680" y1="401" x2="585" y2="285" stroke="#cccccc" stroke-width="2" />
+      <g><rect x="150" y="485" width="640" height="40" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="470" y="510" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">The integration model reduces adoption friction by meeting commuters inside existing payment and mobility ecosystems.</text></g>
+    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="privacy-governance" class="bg-ink text-paper py-16 border-b-2 border-paper relative z-10 scroll-mt-32">
+        <div class="halftone-animated absolute inset-0 opacity-[0.07] pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex items-baseline justify-between mb-12 border-b border-white/20 pb-4">
+                <h2 class="font-display text-4xl font-black text-paper">5. Privacy and Data Governance Architecture</h2>
+                <span class="font-mono text-xs text-paper/50 uppercase tracking-widest">TENANT ISOLATION</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-2 border-white">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-white">
+                    <h3 class="font-display text-2xl font-black uppercase text-paper mb-6">Privacy Safeguards</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-green mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">No continuous GPS tracking:</strong> the platform does not require persistent location surveillance to operate.</span></li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-green mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">No biometric data collection:</strong> biometric capture is not part of the system design.</span></li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-green mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">Pseudonymized commuter identifiers:</strong> engagement and event flows are designed around minimized identity exposure.</span></li>
+                    </ul>
+                </div>
+                <div class="p-10">
+                    <h3 class="font-display text-2xl font-black uppercase text-paper mb-6">Governance Controls</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-blue mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">Tenant isolation:</strong> each city operates as an independent data tenant, ensuring that commuter data cannot be correlated across jurisdictions.</span></li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-blue mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">City authority control:</strong> city authorities maintain control over data retention policies and access permissions.</span></li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined text-brand-blue mt-0.5 text-sm">check_circle</span><span class="text-sm text-paper/80"><strong class="text-paper">Design posture:</strong> these controls describe intended governance architecture designed for deployment, not an already-operational environment.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deployment" class="py-16 border-b-2 border-ink bg-paper relative z-10 scroll-mt-32 scroll-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-baseline justify-between mb-10 border-b-2 border-ink pb-4">
+                <h2 class="font-display text-4xl font-black text-ink">6. Infrastructure and Deployment</h2>
+                <span class="font-mono text-sm text-ink/60 uppercase tracking-widest">CLOUD POSTURE</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 brutalist-border mb-10">
+                <div class="p-10 border-b-2 lg:border-b-0 lg:border-r-2 border-ink">
+                    <p class="text-lg text-ink/70 mb-6 leading-relaxed">The MTSAi platform is designed for deployment within cloud environments aligned with local regulatory requirements. For India deployments, the architecture supports data residency within the AWS Mumbai region, scalable cloud infrastructure, secure API integration with external systems, and infrastructure defined through version-controlled provisioning frameworks.</p>
+                    <p class="text-lg text-ink/70 leading-relaxed">This architecture supports both initial pilot deployments and long-term city expansion.</p>
+                </div>
+                <div class="p-10 bg-ink/5">
+                    <h3 class="font-display font-black uppercase text-sm mb-6">Deployment Posture</h3>
+                    <ul class="space-y-3 font-mono text-[10px] uppercase tracking-widest text-ink/70">
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>AWS Mumbai region data residency support</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Scalable cloud infrastructure</span></li>
+                        <li class="flex gap-3 items-start border-b border-ink/10 pb-3"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Secure API integration with external systems</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-blue font-bold flex-shrink-0">&rarr;</span><span>Infrastructure defined through version-controlled provisioning frameworks</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-2 border-ink p-8 bg-ink text-paper">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase mb-3">Government Evaluation Path</h3>
+                        <p class="text-paper/80 max-w-2xl">This platform architecture is designed to support evaluation, integration planning, and phased government deployment.</p>
+                    </div>
+                    <a href="contact.html?intent=government" class="sh-btn sh-btn-sm btn-10 btn-primary-action px-6 self-start lg:self-auto">Request Government Briefing <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-ink text-paper py-16 lg:py-24 border-t-2 border-paper relative z-10">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-16">
+            <div>
+                <h2 class="font-display text-4xl font-black uppercase tracking-tighter mb-6">MTSAi</h2>
+                <p class="text-base opacity-60 leading-relaxed max-w-md mb-6">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+                <p class="text-xs opacity-40 leading-relaxed max-w-md font-mono">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-10">
+                <div class="space-y-4">
+                    <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Explore</h5>
+                    <nav class="flex flex-col gap-3 font-mono text-[10px] font-bold uppercase tracking-widest">
+                        <a class="hover:text-brand-green transition-colors" href="index.html">Home</a>
+                        <a class="hover:text-brand-green transition-colors" href="Strategic_Partners.html">Strategic Partners</a>
+                        <a class="hover:text-brand-green transition-colors" href="Government.html">Government</a>
+                        <a class="hover:text-brand-green transition-colors" href="about.html">About</a>
+                        <a class="hover:text-brand-green transition-colors" href="solutions.html">Solutions</a>
+                        <a class="text-brand-blue" href="technology_platform.html">Technology</a>
+                    </nav>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Trust</h5>
+                    <nav class="flex flex-col gap-3 font-mono text-[10px] font-bold uppercase tracking-widest">
+                        <a class="hover:text-brand-blue transition-colors" href="trust.html">Trust Center</a>
+                        <a class="hover:text-brand-blue transition-colors" href="public_integrity.html">Public Integrity</a>
+                        <a class="hover:text-brand-blue transition-colors" href="trust_privacy.html">Privacy</a>
+                        <a class="hover:text-alert-red transition-colors" href="trust_security.html">Security</a>
+                        <a class="hover:text-brand-blue transition-colors" href="trust_data.html">Data Governance</a>
+                        <a class="hover:text-brand-blue transition-colors" href="trust_exit.html">Vendor Exit</a>
+                    </nav>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Resources</h5>
+                    <nav class="flex flex-col gap-3 font-mono text-[10px] font-bold uppercase tracking-widest">
+                        <a class="hover:text-brand-green transition-colors" href="resources.html">Procurement Pack</a>
+                        <a class="hover:text-brand-green transition-colors" href="contact.html">Contact Us</a>
+                        <a class="hover:text-brand-green transition-colors" href="sitemap.html">Sitemap</a>
+                        <a class="hover:text-brand-green transition-colors" href="help.html">Help</a>
+                        <a class="hover:text-brand-green transition-colors" href="feedback.html">Feedback</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+            <p>&copy; 2026 MTSAi Infrastructure. Advanced mobility for civic excellence.</p>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <a class="hover:text-white transition-colors" href="terms.html">Terms</a>
+                <a class="hover:text-white transition-colors" href="privacy_policy.html">Privacy Policy</a>
+                <a class="hover:text-white transition-colors" href="accessibility.html">Accessibility</a>
+            </div>
+            <span>Version: v1.0 &bull; Jan 2026</span>
+        </div>
+    </div>
+</footer>
+<div id="error-toast" class="hidden state-alert animate-slide fixed bottom-4 right-4 z-[1200] p-3 font-mono text-xs font-bold cursor-pointer">ALERT: ACTION REQUIRED</div>
+<div class="h-12 border-t-2 border-ink bg-ink text-paper flex items-center overflow-hidden whitespace-nowrap relative z-50 mt-auto">
+    <div class="animate-marquee flex gap-8 items-center font-mono text-sm font-bold tracking-widest uppercase px-4">
+        <span>/// Technology Platform</span><span>/// Configuration-Led</span><span>/// Evidence-First</span>
+        <span>/// Auditability</span><span>/// Due Process</span><span>/// Vendor Exit</span>
+        <span>/// Technology Platform</span><span>/// Configuration-Led</span>
+    </div>
+    <div class="animate-marquee flex gap-8 items-center font-mono text-sm font-bold tracking-widest uppercase px-4 absolute left-full top-0 h-full">
+        <span>/// Technology Platform</span><span>/// Configuration-Led</span><span>/// Evidence-First</span>
+        <span>/// Auditability</span><span>/// Due Process</span><span>/// Vendor Exit</span>
+        <span>/// Technology Platform</span>
+    </div>
+</div>
+
+<script>
+    (function(){
+        var mm=document.getElementById('mobile-menu'),mt=document.getElementById('mobile-menu-toggle'),mc=document.getElementById('mobile-menu-close'),mb=document.getElementById('mobile-menu-backdrop'),mp=document.getElementById('mobile-menu-panel');
+        function open(){mm.classList.remove('hidden');setTimeout(()=>mp.classList.remove('translate-x-full'),10);document.body.style.overflow='hidden';}
+        function close(){mp.classList.add('translate-x-full');setTimeout(()=>{mm.classList.add('hidden');document.body.style.overflow='';},300);}
+        if(mt)mt.addEventListener('click',open);if(mc)mc.addEventListener('click',close);if(mb)mb.addEventListener('click',close);
+        if(mm)mm.querySelectorAll('a').forEach(l=>l.addEventListener('click',close));
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mm&&!mm.classList.contains('hidden'))close();});
+    })();
+    (function(){
+        var p=document.getElementById('red-scroll-progress');
+        if(!p)return;
+        function u(){var s=window.scrollY||document.documentElement.scrollTop;var h=(document.documentElement.scrollHeight-document.documentElement.clientHeight)||1;p.style.transform='scaleX('+Math.min(s/h,1)+')';}
+        window.addEventListener('scroll',u,{passive:true});u();
+    })();
+</script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/transition.js"></script>
+</body>
+</html>

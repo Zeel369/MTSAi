@@ -1,2013 +1,1073 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html class="light" lang="en" data-theme="light">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MTSAi — Incentive-Based Urban Demand Management platform for cities managing congestion through fair, transparent, and governable systems.">
-  <meta name="theme-color" content="#0052CC">
-  <title>MTSAi — Urban Demand Management Platform</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Design System — ORDER MATTERS -->
-  <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
-  <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
-  <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
-  <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
-  <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
-  <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
-  <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
-  <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
-  <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
-  <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/button.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/card.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
-  <link rel="stylesheet" href="../../packages/design-system/components/table.css">
-
-  <style>
-    /* ====================================================
-       BASE
-    ==================================================== */
-    html { scroll-behavior: smooth; }
-    body { overflow-x: hidden; background: var(--layer-bg); }
-
-    .mts-container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-    }
-
-    /* ====================================================
-       SCROLL PROGRESS
-    ==================================================== */
-    #scroll-progress {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary), #FFAD33);
-      transform: scaleX(0);
-      transform-origin: left;
-      z-index: 9999;
-      transition: transform 80ms linear;
-    }
-
-    /* ====================================================
-       SKIP LINK
-    ==================================================== */
-    .skip-link {
-      position: absolute; top: -40px; left: 0;
-      background: var(--interactive); color: #FFFFFF;
-      padding: 8px 16px; text-decoration: none;
-      z-index: 10000; font-size: 13px; font-weight: 600;
-    }
-    .skip-link:focus { top: 0; }
-
-    /* ====================================================
-       LOGO MARK — 3×3 city-grid, saffron center hub
-    ==================================================== */
-    .logo-mark {
-      display: inline-flex;
-      flex-shrink: 0;
-    }
-
-    /* ====================================================
-       NAV
-    ==================================================== */
-    .mts-nav {
-      background: var(--layer-bg);
-      border-bottom: 1px solid var(--border-subtle);
-      position: sticky; top: 0; z-index: 100;
-      transition: box-shadow 200ms var(--ease-standard);
-    }
-    .mts-nav.scrolled {
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    }
-
-    .mts-nav__inner {
-      display: flex; align-items: center;
-      padding: 0 var(--space-6);
-      height: 64px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-
-    .mts-nav__logo {
-      display: flex; align-items: center;
-      text-decoration: none;
-      margin-right: var(--space-9);
-      flex-shrink: 0;
-    }
-    .mts-nav__logo img {
-      height: 38px; width: auto; display: block;
-    }
-
-    .mts-nav__links {
-      display: flex; list-style: none;
-      gap: var(--space-7); align-items: center; flex: 1;
-    }
-
-    .mts-nav__link {
-      font-size: 14px; font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none; background: none;
-      border: none; cursor: pointer; padding: 0;
-      transition: color var(--duration-fast-02) var(--ease-standard);
-      font-family: var(--font-body);
-      position: relative;
-    }
-    .mts-nav__link.active { color: var(--interactive); }
-    .mts-nav__link.active::after {
-      content: '';
-      position: absolute; bottom: -22px; left: 0; right: 0;
-      height: 2px; background: var(--interactive);
-    }
-    .mts-nav__link:hover { color: var(--text-primary); }
-
-    .nav-has-dropdown { position: relative; }
-
-    .nav-dropdown {
-      position: absolute; top: calc(100% + 16px); left: 0;
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
-      min-width: 280px; list-style: none;
-      padding: var(--space-2) 0;
-      opacity: 0; visibility: hidden;
-      transform: translateY(-6px);
-      transition: opacity 150ms var(--ease-standard),
-                  visibility 150ms, transform 150ms var(--ease-standard);
-      z-index: 1000;
-      border-radius: 2px;
-    }
-    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
-
-    .nav-dropdown li a {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px var(--space-5);
-      font-size: 13px; color: var(--text-secondary);
-      text-decoration: none;
-      transition: background var(--duration-fast-02), color var(--duration-fast-02);
-    }
-    .nav-dropdown li a::before {
-      content: '→';
-      font-size: 11px;
-      color: var(--interactive);
-      opacity: 0;
-      transition: opacity 100ms;
-    }
-    .nav-dropdown li a:hover {
-      background: var(--layer-01);
-      color: var(--interactive);
-    }
-    .nav-dropdown li a:hover::before { opacity: 1; }
-
-    .mts-nav__actions {
-      display: flex; align-items: center;
-      gap: var(--space-5); margin-left: auto;
-    }
-
-    .nav-status {
-      display: flex; align-items: center;
-      gap: var(--space-2); font-size: 12px;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-    }
-
-    .status-dot {
-      display: inline-block; width: 7px; height: 7px;
-      border-radius: 50%; background: var(--gray-50);
-    }
-    .status-dot.active {
-      background: var(--brand-primary);
-      box-shadow: 0 0 0 3px rgba(83,170,0,0.18);
-      animation: status-pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes status-pulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); }
-      50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); }
-    }
-
-    /* ====================================================
-       HERO — Deep Navy derived from brand Blue 60 (#0052CC)
-       #0052CC is the glow source — brand-true, not IBM's
-    ==================================================== */
-    .hero {
-      /* Dark base: same hue as brand Blue 60, pushed to near-black */
-      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      min-height: calc(100vh - 64px);
-    }
-
-    /* Trust Blue (#0052CC) as the atmospheric glow source */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 85% at 20% 52%, rgba(0, 82, 204, 0.52) 0%, transparent 65%),
-        radial-gradient(ellipse 38% 50% at 72% 12%, rgba(0, 82, 204, 0.16) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 50% at 95% 92%, rgba(0, 4, 15, 0.80) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* City-grid dot pattern */
-    .hero-pattern {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='0' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.15)'/%3E%3Ccircle cx='60' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3C%2Fsvg%3E");
-      background-size: 60px 60px;
-      pointer-events: none; z-index: 0;
-    }
-
-    /* Saffron top bar */
-    .hero-accent-line {
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%);
-      z-index: 10;
-    }
-
-    /* ── Hero left ── */
-    .hero-content {
-      padding: 80px var(--space-6) 80px 0;
-      max-width: 640px;
-      margin-left: auto;
-      position: relative; z-index: 5;
-    }
-
-    .hero-eyebrow { margin-bottom: var(--space-7); }
-
-    .hero .mts-tag--blue {
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.90);
-      border: 1px solid rgba(255,255,255,0.22);
-      backdrop-filter: blur(8px);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.06em;
-    }
-
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 5.5vw, 88px);
-      font-weight: 700; line-height: 1.04;
-      letter-spacing: -0.03em;
-      color: #FFFFFF;
-      margin: 0 0 var(--space-6);
-    }
-    .headline-accent { color: var(--cta-primary); }
-
-    .hero-subline {
-      font-family: var(--font-body);
-      font-size: clamp(15px, 1.3vw, 18px);
-      color: rgba(255,255,255,0.78);
-      max-width: 520px; line-height: 1.72;
-      margin-bottom: var(--space-8);
-    }
-
-    .hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-10); }
-
-    .hero .mts-btn--ghost {
-      color: #FFFFFF;
-      border-color: rgba(255,255,255,0.35);
-    }
-    .hero .mts-btn--ghost:hover {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.65);
-      color: #FFFFFF;
-    }
-
-    .hero-stats {
-      display: flex; align-items: center; gap: var(--space-7);
-      padding-top: var(--space-7);
-      border-top: 1px solid rgba(255,255,255,0.16);
-    }
-    .hero-stat { flex: 1; }
-    .hero-stat__number {
-      display: block; font-family: var(--font-display);
-      font-size: 32px; font-weight: 700;
-      color: #FFFFFF; letter-spacing: -0.02em;
-    }
-    .hero-stat__label {
-      display: block; font-family: var(--font-mono);
-      font-size: 11px; color: rgba(255,255,255,0.60);
-      text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
-    }
-    .hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.18); flex-shrink: 0; }
-
-    /* ── Hero right — visualization panel ── */
-    .hero-visual {
-      padding: 80px 0 80px var(--space-8);
-      display: flex; align-items: center; justify-content: flex-start;
-      position: relative; z-index: 5;
-    }
-
-    .hero-panel {
-      width: 100%;
-      max-width: 520px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      backdrop-filter: blur(4px);
-      overflow: hidden;
-    }
-
-    .hero-panel__header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-    }
-    .hero-panel__title {
-      font-family: var(--font-mono);
-      font-size: 10px; font-weight: 600;
-      color: rgba(255,255,255,0.70);
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .hero-panel__live {
-      display: flex; align-items: center; gap: 6px;
-      font-family: var(--font-mono); font-size: 10px;
-      color: var(--cta-primary);
-      letter-spacing: 0.08em;
-    }
-    .hero-panel__live-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--brand-primary);
-      animation: live-pulse 2s ease-in-out infinite;
-    }
-    @keyframes live-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero-panel__body { padding: 16px 18px; }
-
-    /* City grid within the panel */
-    .city-grid-svg {
-      width: 100%; height: auto;
-      display: block;
-    }
-
-    .hero-panel__metrics {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .panel-metric {
-      padding: 12px 14px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-    .panel-metric:last-child { border-right: none; }
-    .panel-metric__val {
-      display: block; font-family: var(--font-display);
-      font-size: 20px; font-weight: 700;
-      color: #FFFFFF; letter-spacing: -0.02em;
-    }
-    .panel-metric__val.saffron { color: var(--cta-primary); }
-    .panel-metric__val.green { color: #6FDC8C; }
-    .panel-metric__label {
-      display: block; font-family: var(--font-mono);
-      font-size: 9px; color: rgba(255,255,255,0.50);
-      text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;
-    }
-
-    /* Scroll cue */
-    .hero-scroll-cue {
-      position: absolute; bottom: var(--space-6); left: 50%;
-      transform: translateX(-50%); opacity: 0.5; z-index: 5;
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(255,255,255,0.70); letter-spacing: 0.1em;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
-
-    /* ====================================================
-       SECTION EYEBROW — global saffron tick
-    ==================================================== */
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 11px; color: var(--interactive);
-      text-transform: uppercase; letter-spacing: 0.12em;
-      margin-bottom: var(--space-5);
-    }
-    .section-eyebrow::before {
-      content: '';
-      display: inline-block; width: 18px; height: 2px;
-      background: var(--cta-primary);
-      flex-shrink: 0;
-    }
-
-    /* Override for green eyebrows */
-    .section-eyebrow--green { color: var(--brand-primary); }
-    .section-eyebrow--saffron { color: var(--cta-primary); }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
-
-    .section-h2 {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 4.5vw, 60px);
-      font-weight: 700; line-height: 1.08;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-      margin-bottom: var(--space-6); max-width: 720px;
-    }
-    .section-body {
-      font-size: clamp(15px, 1.4vw, 18px);
-      color: var(--text-secondary); line-height: 1.72;
-      max-width: 600px; margin-bottom: var(--space-8);
-    }
-    .section-header { margin-bottom: clamp(40px, 6vw, 72px); }
-
-    /* ====================================================
-       PROPOSITION SECTION — richer blue tint
-    ==================================================== */
-    .section-proposition {
-      padding: clamp(80px, 12vw, 140px) 0;
-      background: var(--blue-10); /* #E6F0FD — visible brand-blue tint */
-      border-top: 3px solid var(--blue-20);
-      border-bottom: 3px solid var(--blue-20);
-      position: relative; overflow: hidden;
-    }
-    /* Decorative giant quote mark */
-    .section-proposition::before {
-      content: '"';
-      position: absolute; top: -20px; right: 60px;
-      font-family: var(--font-display);
-      font-size: 320px; line-height: 1; font-weight: 700;
-      color: var(--interactive);
-      opacity: 0.06;
-      pointer-events: none; user-select: none;
-    }
-    /* Subtle dot-grid reinforcing the blue tint */
-    .section-proposition::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(0, 82, 204, 0.08) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-
-    .proposition-inner { max-width: 840px; position: relative; z-index: 1; }
-    .proposition-label { margin-bottom: var(--space-6); }
-    .proposition-statement {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 2.8vw, 38px);
-      font-weight: 600; line-height: 1.28;
-      color: var(--text-primary);
-      margin: var(--space-6) 0;
-      letter-spacing: -0.02em;
-      border-left: 3px solid var(--interactive);
-      padding-left: var(--space-7);
-    }
-    .proposition-body {
-      font-size: clamp(15px, 1.3vw, 17px);
-      color: var(--text-secondary); line-height: 1.78;
-      max-width: 680px;
-      margin-left: calc(var(--space-7) + 3px);
-    }
-
-    /* ====================================================
-       SECTION (generic white — with depth)
-    ==================================================== */
-    .section {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      position: relative; overflow: hidden;
-    }
-    /* Subtle dot-grid on white sections — felt, not seen */
-    .section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(0, 82, 204, 0.045) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-    }
-
-    /* ====================================================
-       PROBLEM SECTION
-    ==================================================== */
-    .problem-layout {
-      display: grid; grid-template-columns: 1fr 360px;
-      gap: var(--space-10); align-items: start;
-    }
-    .metric-item { margin-bottom: var(--space-8); }
-    .metric-header {
-      display: flex; justify-content: space-between;
-      margin-bottom: var(--space-3); align-items: baseline;
-    }
-    .metric-label {
-      font-size: 13px; font-weight: 600;
-      color: var(--text-primary);
-      font-family: var(--font-mono); letter-spacing: 0.03em;
-    }
-    .metric-value {
-      font-family: var(--font-display); font-size: 24px;
-      font-weight: 700; color: var(--text-primary);
-      letter-spacing: -0.02em;
-    }
-    .metric-note {
-      font-size: 13px; color: var(--text-secondary);
-      margin-top: var(--space-3); line-height: 1.55;
-    }
-    .insight-panel {
-      padding: var(--space-6);
-      background: #FFFFFF;
-      border: 1px solid var(--blue-20);
-      margin-bottom: var(--space-4);
-      box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06), 0 1px 2px rgba(0,0,0,0.04);
-      transition: box-shadow 200ms var(--ease-standard),
-                  transform 200ms var(--ease-standard);
-    }
-    .insight-panel:hover {
-      box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12), 0 2px 6px rgba(0,0,0,0.06);
-      transform: translateY(-3px);
-    }
-    .insight-title {
-      font-family: var(--font-display); font-size: 16px;
-      font-weight: 600; color: var(--text-primary);
-      margin-bottom: var(--space-3);
-    }
-    .insight-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* Progress bar animation */
-    .mts-progress__fill { transition: width 1s var(--ease-smooth); }
-    .mts-progress__fill.bar-animate { width: 0; }
-    .mts-progress__fill.bar-ready { width: var(--bar-w); }
-    .mts-progress__fill--red { background: var(--red-60); }
-    .mts-progress__fill--saffron { background: var(--cta-primary); }
-
-    /* ====================================================
-       IUDM SECTION — blue-tinted gray
-    ==================================================== */
-    .section-iudm {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      background: #F0F5FF; /* blue-tinted gray — not neutral */
-      position: relative; overflow: hidden;
-    }
-    /* Large watermark numeral */
-    .section-iudm::before {
-      content: '03';
-      position: absolute; top: -10px; right: 40px;
-      font-family: var(--font-display); font-size: clamp(160px, 20vw, 260px);
-      font-weight: 800; line-height: 1;
-      color: var(--interactive);
-      opacity: 0.04;
-      pointer-events: none; user-select: none; z-index: 0;
-    }
-    .iudm-layout {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: var(--space-12); align-items: start;
-    }
-    .iudm-desc p {
-      font-size: 16px; color: var(--text-secondary);
-      line-height: 1.72; margin-bottom: var(--space-5);
-    }
-    .iudm-features { list-style: none; }
-    .iudm-feature {
-      display: flex; gap: var(--space-5);
-      padding: var(--space-6) 0;
-      border-bottom: 1px solid var(--blue-20);
-      align-items: flex-start;
-      transition: background 150ms;
-    }
-    .iudm-feature:first-child { border-top: 1px solid var(--blue-20); }
-    .iudm-feature__num {
-      font-size: 11px; color: var(--interactive);
-      letter-spacing: 0.1em; min-width: 26px;
-      padding-top: 3px; font-family: var(--font-mono);
-      font-weight: 600;
-    }
-    .iudm-feature__title {
-      font-family: var(--font-display); font-size: 16px;
-      font-weight: 600; color: var(--text-primary);
-      margin-bottom: var(--space-2);
-    }
-    .iudm-feature__body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* ====================================================
-       ARCHITECTURE SECTION — white
-    ==================================================== */
-    .arch-layout {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: var(--space-12); align-items: start;
-    }
-    .arch-stats { display: flex; gap: var(--space-8); margin-top: var(--space-7); }
-    .arch-stats div { flex: 1; padding-top: var(--space-5); border-top: 2px solid var(--blue-20); }
-    .arch-stat-num {
-      display: block; font-family: var(--font-display);
-      font-size: 40px; font-weight: 700;
-      color: var(--interactive); letter-spacing: -0.03em;
-    }
-    .arch-stat-label {
-      display: block; font-size: 12px; color: var(--text-secondary);
-      text-transform: uppercase; letter-spacing: 0.08em; margin-top: var(--space-2);
-      font-family: var(--font-mono);
-    }
-    .arch-note { font-size: 12px; color: var(--text-muted, var(--gray-50)); letter-spacing: 0.04em; }
-
-    .arch-layer {
-      padding: var(--space-5) var(--space-6);
-      border: 1px solid var(--blue-20);
-      border-left: 3px solid var(--interactive);
-      background: #FFFFFF;
-      margin-bottom: 3px;
-      box-shadow: 0 1px 4px rgba(0, 82, 204, 0.06);
-      transition: border-left-color 200ms, background 200ms, box-shadow 200ms, transform 150ms;
-      cursor: default;
-    }
-    .arch-layer:hover {
-      background: var(--blue-10);
-      border-left-color: var(--brand-primary);
-      box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
-      transform: translateX(4px);
-    }
-    .arch-layer--engine {
-      border-left-color: var(--brand-primary);
-      background: rgba(83, 170, 0, 0.04);
-      border-color: rgba(83, 170, 0, 0.25);
-    }
-    .arch-layer--engine:hover { background: rgba(83, 170, 0, 0.08); border-left-color: var(--interactive); }
-    .arch-layer--ai { border-left-color: var(--gray-40, #A8A8A8); opacity: 0.60; box-shadow: none; }
-    .arch-layer__label {
-      display: block; font-size: 13px; font-weight: 600;
-      color: var(--text-primary); font-family: var(--font-mono);
-    }
-    .arch-layer__desc {
-      display: block; font-size: 12px; color: var(--text-secondary);
-      margin-top: 4px; font-family: var(--font-body);
-    }
-
-    /* ====================================================
-       PRIVACY SECTION — blue-tinted gray
-    ==================================================== */
-    .section-privacy {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      background: #F0F5FF;
-      position: relative; overflow: hidden;
-    }
-    .section-privacy::before {
-      content: '05';
-      position: absolute; top: -10px; right: 40px;
-      font-family: var(--font-display); font-size: clamp(160px, 20vw, 260px);
-      font-weight: 800; line-height: 1;
-      color: var(--interactive);
-      opacity: 0.04;
-      pointer-events: none; user-select: none;
-    }
-    .privacy-matrix {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--blue-20);
-      margin-top: var(--space-8);
-      background: #FFFFFF;
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .privacy-col {
-      padding: var(--space-7);
-      border-right: 1px solid var(--border-subtle);
-    }
-    .privacy-col:last-child { border-right: none; }
-    .privacy-col-header {
-      padding-bottom: var(--space-5); margin-bottom: var(--space-5);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .privacy-list { list-style: none; }
-    .privacy-list li {
-      font-size: 14px; color: var(--text-secondary);
-      padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--border-subtle);
-      line-height: 1.5; display: flex; align-items: flex-start; gap: 8px;
-    }
-    .privacy-list li::before {
-      content: '—';
-      color: var(--text-placeholder);
-      font-size: 12px; flex-shrink: 0; padding-top: 1px;
-    }
-    .privacy-list li:last-child { border-bottom: none; }
-
-    /* ====================================================
-       NUMBERS SECTION — IBM Blue band
-    ==================================================== */
-    .section-numbers {
-      padding: clamp(64px, 10vw, 112px) 0;
-      background: #0052CC; /* brand Blue 60 — your actual blue */
-      position: relative; overflow: hidden;
-    }
-    /* Subtle large grid texture */
-    .section-numbers::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='0' y='0' width='80' height='80' fill='none' stroke='rgba(255%2C255%2C255%2C0.04)' stroke-width='1'/%3E%3C%2Fsvg%3E");
-      background-size: 80px 80px;
-      pointer-events: none;
-    }
-
-    .numbers-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; position: relative; z-index: 1;
-    }
-    .number-item {
-      padding: var(--space-8) var(--space-7);
-      border-right: 1px solid rgba(255,255,255,0.12);
-      transition: background 200ms;
-    }
-    .number-item:first-child { border-left: 1px solid rgba(255,255,255,0.12); }
-    .number-item:hover { background: rgba(255,255,255,0.05); }
-
-    .number-prefix {
-      display: block;
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(255,255,255,0.45); letter-spacing: 0.12em;
-      text-transform: uppercase; margin-bottom: var(--space-2);
-    }
-    .number-val {
-      display: block; font-family: var(--font-display);
-      font-size: clamp(52px, 6.5vw, 88px);
-      font-weight: 700; color: #FFFFFF;
-      letter-spacing: -0.03em; line-height: 1;
-    }
-    .number-label {
-      display: block; font-size: 13px; font-family: var(--font-mono);
-      color: rgba(255,255,255,0.55);
-      text-transform: uppercase; letter-spacing: 0.08em;
-      margin-top: var(--space-3);
-    }
-
-    /* ====================================================
-       GOVERNMENT CONTROL SECTION — white with watermark
-    ==================================================== */
-    .section-gov {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      position: relative; overflow: hidden;
-    }
-    .section-gov::before {
-      content: '07';
-      position: absolute; top: -10px; right: 40px;
-      font-family: var(--font-display); font-size: clamp(160px, 20vw, 260px);
-      font-weight: 800; line-height: 1;
-      color: var(--interactive);
-      opacity: 0.035;
-      pointer-events: none; user-select: none;
-    }
-    .gov-controls {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; margin-top: var(--space-8);
-      border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .gov-control {
-      padding: var(--space-7);
-      border-right: 1px solid var(--border-subtle);
-      border-top: 3px solid var(--interactive);
-      transition: background 200ms, border-top-color 200ms;
-    }
-    .gov-control:hover { background: var(--layer-01); border-top-color: var(--brand-primary); }
-    .gov-control:last-child { border-right: none; }
-    .gov-num {
-      display: block; font-size: 11px;
-      color: var(--interactive); letter-spacing: 0.12em;
-      margin-bottom: var(--space-5); font-family: var(--font-mono);
-      font-weight: 600;
-    }
-    .gov-control h3 {
-      font-family: var(--font-display); font-size: 16px;
-      font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3);
-    }
-    .gov-control p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* ====================================================
-       ROADMAP SECTION — blue-tinted gray
-    ==================================================== */
-    .section-roadmap {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      background: #F0F5FF;
-      position: relative; overflow: hidden;
-    }
-    .section-roadmap::before {
-      content: '08';
-      position: absolute; top: -10px; right: 40px;
-      font-family: var(--font-display); font-size: clamp(160px, 20vw, 260px);
-      font-weight: 800; line-height: 1;
-      color: var(--interactive);
-      opacity: 0.04;
-      pointer-events: none; user-select: none;
-    }
-    .roadmap { position: relative; margin-top: var(--space-9); }
-    .roadmap-track {
-      position: absolute; top: 20px; left: 0; right: 0;
-      height: 1px; background: var(--blue-30);
-    }
-    .roadmap-phases { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-6); }
-    .roadmap-phase { padding-top: var(--space-8); }
-    .roadmap-node {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: var(--layer-01);
-      border: 2px solid var(--border-strong);
-      margin-bottom: var(--space-5);
-    }
-    .roadmap-phase--done .roadmap-node { background: var(--interactive); border-color: var(--interactive); }
-    .roadmap-phase--active .roadmap-node { background: var(--interactive); border-color: var(--interactive); }
-    .roadmap-phase--upcoming .roadmap-node { background: #F0F5FF; border-color: var(--cta-primary); }
-
-    .roadmap-phase-num {
-      display: block; font-size: 10px; font-weight: 600;
-      color: var(--interactive); letter-spacing: 0.12em;
-      margin-bottom: var(--space-3); font-family: var(--font-mono);
-    }
-    .roadmap-phase h3 {
-      font-family: var(--font-display); font-size: 15px;
-      font-weight: 600; color: var(--text-primary);
-      margin-bottom: var(--space-3); line-height: 1.3;
-    }
-    .animate-blue-glow { animation: blue-pulse 2s var(--ease-smooth) infinite; }
-    @keyframes blue-pulse {
-      0%, 100% { box-shadow: 0 0 0 0px rgba(0,82,204,0); }
-      50% { box-shadow: 0 0 0 6px rgba(0,82,204,0.22); }
-    }
-
-    /* ====================================================
-       MARQUEE
-    ==================================================== */
-    .marquee-section {
-      padding: var(--space-4) 0;
-      border-top: 1px solid var(--blue-20);
-      border-bottom: 1px solid var(--blue-20);
-      overflow: hidden;
-      background: #F0F5FF; /* same blue-tinted hue as alternating sections */
-    }
-    .marquee-track { overflow: hidden; }
-    .marquee-content {
-      display: flex; gap: var(--space-6);
-      white-space: nowrap;
-      animation: marquee 28s linear infinite;
-      font-family: var(--font-mono); font-size: 12px;
-      color: var(--text-secondary); letter-spacing: 0.05em;
-    }
-    .marquee-content:hover { animation-play-state: paused; }
-    .marquee-content .sep { color: var(--cta-primary); opacity: 0.5; margin: 0 2px; }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ====================================================
-       ECOSYSTEM SECTION — white with watermark
-    ==================================================== */
-    .section-ecosystem {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      position: relative; overflow: hidden;
-    }
-    .section-ecosystem::before {
-      content: '06';
-      position: absolute; top: -10px; right: 40px;
-      font-family: var(--font-display); font-size: clamp(160px, 20vw, 260px);
-      font-weight: 800; line-height: 1;
-      color: var(--interactive);
-      opacity: 0.035;
-      pointer-events: none; user-select: none;
-    }
-    .ecosystem-channels { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-7) 0; }
-    .ecosystem-rows {
-      border: 1px solid var(--blue-20);
-      margin-top: var(--space-7);
-      background: #FFFFFF;
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .ecosystem-row {
-      display: flex; gap: var(--space-6);
-      padding: var(--space-6) var(--space-7);
-      border-bottom: 1px solid var(--border-subtle);
-      align-items: flex-start;
-      transition: background 150ms;
-    }
-    .ecosystem-row:last-child { border-bottom: none; }
-    .ecosystem-row:hover { background: var(--layer-01); }
-    .ecosystem-row__num {
-      font-size: 11px; color: var(--interactive);
-      letter-spacing: 0.1em; min-width: 26px;
-      padding-top: 4px; font-family: var(--font-mono); font-weight: 600;
-    }
-    .ecosystem-row__content h3 {
-      font-family: var(--font-display); font-size: 16px;
-      font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);
-    }
-    .ecosystem-row__content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* ====================================================
-       CTA SECTION — Deepest blue + decorative geometry
-    ==================================================== */
-    .section-cta {
-      padding: clamp(100px, 14vw, 180px) 0;
-      background: #000C2E; /* deep navy derived from brand Blue 60 hue */
-      position: relative; overflow: hidden;
-    }
-    /* Large decorative arrow */
-    .section-cta::before {
-      content: '→';
-      position: absolute; right: 8%; top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: clamp(200px, 25vw, 360px);
-      font-weight: 700;
-      color: rgba(255,255,255,0.03);
-      pointer-events: none; user-select: none;
-      line-height: 1;
-    }
-    /* Top accent line */
-    .section-cta::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%);
-    }
-    /* Brand-blue radial glow from the left — depth on dark */
-    .cta-inner::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: -20%;
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0,82,204,0.22) 0%, transparent 70%);
-      transform: translateY(-50%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .cta-inner { position: relative; z-index: 1; }
-    .cta-headline {
-      font-family: var(--font-display);
-      font-size: clamp(34px, 5.5vw, 76px);
-      font-weight: 700; line-height: 1.06;
-      letter-spacing: -0.03em; color: #FFFFFF;
-      margin: var(--space-5) 0 var(--space-6); max-width: 800px;
-    }
-    .cta-body {
-      font-size: clamp(15px, 1.4vw, 18px);
-      color: rgba(255,255,255,0.72); line-height: 1.72;
-      max-width: 560px; margin-bottom: var(--space-8);
-    }
-    .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-
-    .section-cta .mts-btn--ghost {
-      color: #FFFFFF; border-color: rgba(255,255,255,0.30);
-    }
-    .section-cta .mts-btn--ghost:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.55); color: #FFFFFF;
-    }
-
-    /* ====================================================
-       FOOTER — Explicitly dark, premium feel
-    ==================================================== */
-    .site-footer {
-      background: #161616;
-      padding: var(--space-11) 0 var(--space-7);
-      position: relative;
-    }
-    /* Saffron top accent */
-    .site-footer::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 50%);
-    }
-
-    .footer-top {
-      display: grid; grid-template-columns: 300px 1fr;
-      gap: var(--space-10); margin-bottom: var(--space-9);
-    }
-    .footer-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 17px; color: #F4F4F4;
-      text-decoration: none; margin-bottom: var(--space-5);
-      letter-spacing: -0.02em;
-    }
-    .footer-tagline { font-size: 13px; color: #8D8D8D; line-height: 1.65; margin-bottom: var(--space-5); }
-    .footer-links { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-5); }
-    .footer-col-heading {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
-      color: #525252; text-transform: uppercase; letter-spacing: 0.12em;
-      margin-bottom: var(--space-5);
-    }
-    .footer-col a {
-      display: block; font-size: 13px; color: #6F6F6F;
-      text-decoration: none; margin-bottom: 10px;
-      transition: color var(--duration-fast-02); font-family: var(--font-body);
-    }
-    .footer-col a:hover { color: #F4F4F4; }
-    .footer-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: var(--space-7); }
-    .footer-disclaimer {
-      font-size: 12px; color: #525252; line-height: 1.65;
-      max-width: 900px; margin-bottom: var(--space-7);
-      padding: var(--space-5) var(--space-6);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-left: 2px solid rgba(255,255,255,0.12);
-    }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: var(--space-6);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px; color: #525252; gap: var(--space-5); flex-wrap: wrap;
-    }
-    .footer-bottom nav { display: flex; gap: var(--space-5); }
-    .footer-bottom nav a {
-      color: #525252; font-size: 12px; text-decoration: none;
-      transition: color var(--duration-fast-02);
-    }
-    .footer-bottom nav a:hover { color: #F4F4F4; }
-    .footer-mono-tag { font-size: 10px; color: #393939; font-family: var(--font-mono); }
-
-    /* ====================================================
-       CALLOUTS
-    ==================================================== */
-    .mts-callout {
-      padding: var(--space-6) var(--space-7);
-      border-left: 3px solid var(--border-strong);
-      background: var(--layer-01);
-      font-size: 15px; line-height: 1.72;
-      color: var(--text-secondary);
-    }
-    .mts-callout--blue {
-      border-left-color: var(--interactive);
-      background: rgba(0,82,204,0.05);
-      border: 1px solid var(--blue-20);
-      border-left: 3px solid var(--interactive);
-      color: var(--text-primary);
-      box-shadow: 0 2px 8px rgba(0,82,204,0.05);
-    }
-    .mts-callout--green {
-      border-left-color: var(--brand-primary);
-      background: rgba(83,170,0,0.05);
-      border: 1px solid rgba(83,170,0,0.18);
-      border-left: 3px solid var(--brand-primary);
-      color: var(--text-primary);
-      box-shadow: 0 2px 8px rgba(83,170,0,0.05);
-    }
-
-    /* ====================================================
-       PROBLEM SECTION — cinematic image strip
-    ==================================================== */
-    .problem-photo {
-      position: relative;
-      width: 100%; height: 360px;
-      overflow: hidden;
-      margin-bottom: var(--space-10);
-      border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 32px rgba(0,82,204,0.10);
-    }
-    .problem-photo__img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 35%;
-      display: block;
-      filter: contrast(1.08) saturate(0.96);
-      transition: transform 6s ease;
-    }
-    .problem-photo:hover .problem-photo__img { transform: scale(1.03); }
-    .problem-photo__caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 28px var(--space-6) var(--space-4);
-      background: linear-gradient(0deg, rgba(0,4,15,0.72) 0%, transparent 100%);
-      display: flex; align-items: flex-end; justify-content: space-between;
-    }
-    .problem-photo__label {
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(255,255,255,0.60); letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .problem-photo__tag {
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(83,170,0,0.85); letter-spacing: 0.10em;
-      text-transform: uppercase;
-      background: rgba(83,170,0,0.14);
-      border: 1px solid rgba(83,170,0,0.30);
-      padding: 3px 10px; border-radius: 2px;
-    }
-
-    /* ====================================================
-       PRIVACY SECTION — two-column header with image
-    ==================================================== */
-    .privacy-header-layout {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: var(--space-10);
-      align-items: center;
-      margin-bottom: var(--space-8);
-    }
-    .privacy-visual {
-      position: relative; overflow: hidden;
-      height: 280px;
-      border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 24px rgba(0,82,204,0.10);
-      flex-shrink: 0;
-    }
-    .privacy-visual__img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      display: block;
-      filter: brightness(0.92) contrast(1.05);
-    }
-    .privacy-visual__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg,
-        rgba(0,82,204,0.18) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .privacy-visual__badge {
-      position: absolute; top: var(--space-4); right: var(--space-4);
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.80);
-      background: rgba(0,4,15,0.65);
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 5px 10px; backdrop-filter: blur(4px);
-    }
-
-    /* ====================================================
-       ARCHITECTURE SECTION — cinematic image banner
-    ==================================================== */
-    .arch-photo {
-      position: relative;
-      width: 100%; height: 260px;
-      overflow: hidden;
-      margin-bottom: var(--space-10);
-      border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 32px rgba(0,82,204,0.10);
-    }
-    .arch-photo__img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 40%;
-      display: block;
-      filter: brightness(0.88) saturate(0.9) contrast(1.08);
-    }
-    .arch-photo__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg,
-        rgba(0,4,15,0.55) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .arch-photo__caption {
-      position: absolute; bottom: var(--space-4); left: var(--space-6);
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(255,255,255,0.55); letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* ====================================================
-       SCROLL REVEALS
-    ==================================================== */
-    .reveal {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .delay-1.reveal { transition-delay: 80ms; }
-    .delay-2.reveal { transition-delay: 160ms; }
-    .delay-3.reveal { transition-delay: 240ms; }
-
-    /* ====================================================
-       RESPONSIVE
-    ==================================================== */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-visual { display: none; }
-      .hero-content { max-width: 100%; margin: 0; padding: 80px var(--space-6); }
-    }
-
-    @media (max-width: 768px) {
-      .mts-nav__links, .mts-nav__actions .mts-btn { display: none; }
-      .nav-status { display: none; }
-      .problem-layout, .iudm-layout, .arch-layout, .footer-top { grid-template-columns: 1fr; }
-      .numbers-grid { grid-template-columns: repeat(2,1fr); }
-      .gov-controls, .privacy-matrix { grid-template-columns: 1fr; }
-      .gov-control, .privacy-col { border-right: none; }
-      .roadmap-phases { grid-template-columns: 1fr; }
-      .footer-links { grid-template-columns: repeat(2,1fr); }
-      .hero-stats { flex-direction: column; gap: var(--space-5); }
-      .hero-stat-divider { display: none; }
-      .mts-nav__inner { padding: 0 var(--space-5); }
-      .mts-nav__logo { margin-right: auto; }
-      .number-item { border-bottom: 1px solid rgba(255,255,255,0.10); }
-    }
-
-    @media (max-width: 480px) {
-      .numbers-grid { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .cta-actions, .hero-ctas { flex-direction: column; }
-      .cta-actions .mts-btn, .hero-ctas .mts-btn { width: 100%; }
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MTSAi | Incentive-Based Urban Demand Management for Modern Cities</title>
+    <meta name="description"
+        content="A mobility demand management platform designed for deployment through incentive systems, digital mobility integration, and privacy-first architecture." />
+    <link rel="canonical" href="https://mtsai-website.vercel.app/" />
+    <meta property="og:title" content="MTSAi | Incentive-Based Urban Demand Management for Modern Cities" />
+    <meta property="og:description"
+        content="A mobility demand management platform designed for deployment through incentive systems, digital mobility integration, and privacy-first architecture." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mtsai-website.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MTSAi | Incentive-Based Urban Demand Management for Modern Cities" />
+    <meta name="twitter:description"
+        content="A mobility demand management platform designed for deployment through incentive systems, digital mobility integration, and privacy-first architecture." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "MTSAi",
+            "url": "https://mtsai-website.vercel.app/",
+            "description": "A mobility platform company preparing for government deployment through policy control and integration readiness",
+            "sameAs": [
+                "https://mtsai-website.vercel.app/"
+            ]
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../packages/design-system/tokens/colors.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/semantic.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/typography.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/spacing.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/motion.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/elevation.css">
+    <link rel="stylesheet" href="../../packages/design-system/tokens/brand-visual.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/reset.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/grid.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/utilities.css">
+    <link rel="stylesheet" href="../../packages/design-system/base/animations.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/button.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/nav.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/card.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/tag.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/progress.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/notification.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/table.css">
+    <link rel="stylesheet" href="../../packages/design-system/components/dropdown.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <style type="text/css">
+        :root {
+            --ink: #000000;
+            --paper: #FFFFFF;
+            --brand-green: #53AA00;
+            --brand-blue: #0052CC;
+            --alert-red: #D82B2B;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* GIGW Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000000;
+            color: white;
+            padding: 8px;
+            z-index: 10000;
+            transition: top 0.3s;
+            border-radius: 0;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Scroll progress bar */
+        .red-scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--brand-green);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 9999;
+            transition: transform 80ms linear;
+        }
+    </style>
 </head>
-<body>
-  <div id="scroll-progress"></div>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- =============================================
-       NAV
-  ============================================= -->
-  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="mts-nav__inner">
+<body class="page-home swiss-priority-page relative min-h-screen flex flex-col overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0 bg-grid-lines opacity-50"></div>
+    <!-- GIGW Mandatory: Skip to Main Content -->
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
 
-      <!-- Logo — official MTSAi brand mark -->
-      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
-        <img src="img/mtsai-logo.png" alt="MTSAi">
-      </a>
-
-      <ul class="mts-nav__links" role="list">
-        <li><a href="index.html" class="mts-nav__link active" aria-current="page">Home</a></li>
-        <li><a href="government.html" class="mts-nav__link">Government</a></li>
-        <li class="nav-has-dropdown">
-          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true">How It Works <span aria-hidden="true">↓</span></button>
-          <ul class="nav-dropdown" role="menu">
-            <li role="menuitem"><a href="#">Why Traditional Pricing Struggles</a></li>
-            <li role="menuitem"><a href="#">Congestion as a Coordination Problem</a></li>
-            <li role="menuitem"><a href="#">Incentive-Based Demand Management</a></li>
-            <li role="menuitem"><a href="#">How a City Deploys MTSAi</a></li>
-            <li role="menuitem"><a href="#">Why India Can Lead at Scale</a></li>
-            <li role="menuitem"><a href="#">Governance &amp; Accountability</a></li>
-            <li role="menuitem"><a href="#">Data Protection &amp; Transparency</a></li>
-          </ul>
-        </li>
-        <li><a href="strategic-partners.html" class="mts-nav__link">Strategic Partners</a></li>
-        <li><a href="about.html" class="mts-nav__link">About</a></li>
-        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
-      </ul>
-
-      <div class="mts-nav__actions">
-        <span class="nav-status">
-          <span class="status-dot active" aria-hidden="true"></span>
-          <span>System Online</span>
-        </span>
-        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;letter-spacing:0.02em;">Start Evaluation →</a>
-      </div>
+    <!-- Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-paper">
+        <div class="absolute inset-0 bg-halftone bg-halftone-sm opacity-20 z-0"></div>
+        <div class="absolute w-[800px] h-[800px] bg-ink rounded-none blur-[100px] opacity-10 animate-[pulse_8s_ease-in-out_infinite] mix-blend-multiply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="noise-bg absolute inset-0 opacity-[0.03]"></div>
     </div>
-  </nav>
+    <div class="swiss-overlay" aria-hidden="true"></div>
 
-  <main id="main-content">
+    <!-- Scroll progress bar -->
+    <div id="red-scroll-progress" class="red-scroll-progress" role="presentation" aria-hidden="true"></div>
 
-    <!-- =============================================
-         HERO — IBM Deep Blue, two-column
-    ============================================= -->
-    <section class="hero" aria-label="Hero — MTSAi platform introduction">
-      <div class="hero-pattern" aria-hidden="true"></div>
-      <div class="hero-accent-line" aria-hidden="true"></div>
-
-      <!-- Left: content -->
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="mts-tag mts-tag--blue">Incentive-Based Urban Demand Management</span>
-        </div>
-
-        <h1 class="hero-headline">
-          Incentive-Based Urban Demand Management<br>
-          for <span class="headline-accent">Modern Cities.</span>
-        </h1>
-
-        <p class="hero-subline">
-          A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.
-        </p>
-
-        <div class="hero-ctas">
-          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Government Evaluation →</a>
-          <a href="technology.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform</a>
-        </div>
-
-        <div class="hero-stats" role="list">
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">4+</span>
-            <span class="hero-stat__label">Platform phases</span>
-          </div>
-          <div class="hero-stat-divider" aria-hidden="true"></div>
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">6+</span>
-            <span class="hero-stat__label">Ecosystem integrations</span>
-          </div>
-          <div class="hero-stat-divider" aria-hidden="true"></div>
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">100%</span>
-            <span class="hero-stat__label">Privacy-first design</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: IUDM Dashboard visualization -->
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-panel">
-          <div class="hero-panel__header">
-            <span class="hero-panel__title">IUDM · Corridor Status</span>
-            <span class="hero-panel__live">
-              <span class="hero-panel__live-dot"></span>
-              LIVE
-            </span>
-          </div>
-
-          <div class="hero-panel__body">
-            <!-- City grid SVG visualization -->
-            <svg class="city-grid-svg" viewBox="0 0 484 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-              <!-- Road grid lines (horizontal) -->
-              <line x1="0" y1="56"  x2="484" y2="56"  stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="112" x2="484" y2="112" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="168" x2="484" y2="168" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="224" x2="484" y2="224" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-
-              <!-- Road grid lines (vertical) -->
-              <line x1="80"  y1="0" x2="80"  y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="160" y1="0" x2="160" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="240" y1="0" x2="240" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="320" y1="0" x2="320" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="400" y1="0" x2="400" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-
-              <!-- City blocks — varying opacity for density -->
-              <!-- Row 0 (y=4 to 52) -->
-              <rect x="4"   y="4"  width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="84"  y="4"  width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <rect x="164" y="4"  width="72" height="48" rx="2" fill="rgba(255,255,255,0.14)"/>
-              <rect x="244" y="4"  width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <rect x="324" y="4"  width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="404" y="4"  width="76" height="48" rx="2" fill="rgba(255,255,255,0.04)"/>
-
-              <!-- Row 1 (y=60 to 108) -->
-              <rect x="4"   y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <!-- Highlighted: high-congestion block -->
-              <rect x="84"  y="60" width="72" height="48" rx="2" fill="rgba(218,30,40,0.22)" stroke="rgba(218,30,40,0.40)" stroke-width="1"/>
-              <rect x="164" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
-              <!-- Active IUDM block (saffron) -->
-              <rect x="244" y="60" width="72" height="48" rx="2" fill="rgba(255,153,51,0.20)" stroke="rgba(255,153,51,0.45)" stroke-width="1"/>
-              <rect x="324" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <rect x="404" y="60" width="76" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-
-              <!-- Row 2 (y=116 to 164) — central business district -->
-              <rect x="4"   y="116" width="72" height="48" rx="2" fill="rgba(255,255,255,0.14)"/>
-              <rect x="84"  y="116" width="72" height="48" rx="2" fill="rgba(218,30,40,0.18)" stroke="rgba(218,30,40,0.30)" stroke-width="1"/>
-              <!-- Core: green (managed, cleared) -->
-              <rect x="164" y="116" width="72" height="48" rx="2" fill="rgba(83,170,0,0.22)" stroke="rgba(83,170,0,0.45)" stroke-width="1"/>
-              <rect x="244" y="116" width="72" height="48" rx="2" fill="rgba(255,153,51,0.16)" stroke="rgba(255,153,51,0.30)" stroke-width="1"/>
-              <rect x="324" y="116" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
-              <rect x="404" y="116" width="76" height="48" rx="2" fill="rgba(255,255,255,0.08)"/>
-
-              <!-- Row 3 (y=172 to 220) -->
-              <rect x="4"   y="172" width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="84"  y="172" width="72" height="48" rx="2" fill="rgba(255,255,255,0.12)"/>
-              <!-- Green: incentive-cleared zone -->
-              <rect x="164" y="172" width="72" height="48" rx="2" fill="rgba(83,170,0,0.16)" stroke="rgba(83,170,0,0.30)" stroke-width="1"/>
-              <rect x="244" y="172" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <rect x="324" y="172" width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="404" y="172" width="76" height="48" rx="2" fill="rgba(255,255,255,0.04)"/>
-
-              <!-- Row 4 (y=228 to 276) -->
-              <rect x="4"   y="228" width="72" height="48" rx="2" fill="rgba(255,255,255,0.04)"/>
-              <rect x="84"  y="228" width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="164" y="228" width="72" height="48" rx="2" fill="rgba(255,255,255,0.08)"/>
-              <rect x="244" y="228" width="72" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="324" y="228" width="72" height="48" rx="2" fill="rgba(255,255,255,0.04)"/>
-              <rect x="404" y="228" width="76" height="48" rx="2" fill="rgba(255,255,255,0.03)"/>
-
-              <!-- Intersection dots (key junction nodes) -->
-              <circle cx="80"  cy="56"  r="3" fill="rgba(255,255,255,0.25)"/>
-              <circle cx="160" cy="56"  r="3" fill="rgba(255,255,255,0.25)"/>
-              <circle cx="240" cy="56"  r="3" fill="rgba(255,255,255,0.25)"/>
-              <circle cx="320" cy="56"  r="3" fill="rgba(255,255,255,0.25)"/>
-              <circle cx="400" cy="56"  r="3" fill="rgba(255,255,255,0.20)"/>
-
-              <circle cx="80"  cy="112" r="3" fill="rgba(218,30,40,0.70)"/>
-              <circle cx="160" cy="112" r="4" fill="rgba(255,153,51,0.90)">
-                <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="240" cy="112" r="3" fill="rgba(255,153,51,0.70)"/>
-              <circle cx="320" cy="112" r="3" fill="rgba(255,255,255,0.25)"/>
-              <circle cx="400" cy="112" r="3" fill="rgba(255,255,255,0.20)"/>
-
-              <circle cx="80"  cy="168" r="3" fill="rgba(255,255,255,0.20)"/>
-              <!-- Green cleared node — pulsing -->
-              <circle cx="160" cy="168" r="4" fill="rgba(83,170,0,0.90)">
-                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="240" cy="168" r="3" fill="rgba(255,153,51,0.55)"/>
-              <circle cx="320" cy="168" r="3" fill="rgba(255,255,255,0.20)"/>
-              <circle cx="400" cy="168" r="3" fill="rgba(255,255,255,0.15)"/>
-
-              <circle cx="80"  cy="224" r="3" fill="rgba(255,255,255,0.15)"/>
-              <circle cx="160" cy="224" r="3" fill="rgba(255,255,255,0.20)"/>
-              <circle cx="240" cy="224" r="3" fill="rgba(255,255,255,0.15)"/>
-              <circle cx="320" cy="224" r="3" fill="rgba(255,255,255,0.12)"/>
-
-              <!-- Flow arrows on main corridors -->
-              <!-- Horizontal flow on row 2 corridor (y=112 road) -->
-              <path d="M100 109 L108 112 L100 115" stroke="rgba(255,153,51,0.6)" stroke-width="1.5" fill="none"/>
-              <path d="M180 109 L188 112 L180 115" stroke="rgba(83,170,0,0.7)" stroke-width="1.5" fill="none"/>
-              <path d="M260 109 L268 112 L260 115" stroke="rgba(255,153,51,0.5)" stroke-width="1.5" fill="none"/>
-
-              <!-- Vertical flow on col 2 corridor (x=160 road) -->
-              <path d="M157 134 L160 142 L163 134" stroke="rgba(83,170,0,0.6)" stroke-width="1.5" fill="none"/>
-              <path d="M157 190 L160 198 L163 190" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
-
-              <!-- Data label floating over hot zone -->
-              <rect x="88" y="64" width="64" height="18" rx="2" fill="rgba(218,30,40,0.70)"/>
-              <text x="120" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">HIGH · 94%</text>
-
-              <!-- Data label over saffron zone -->
-              <rect x="248" y="64" width="64" height="18" rx="2" fill="rgba(255,153,51,0.70)"/>
-              <text x="280" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(0,0,0,0.85)" text-anchor="middle" letter-spacing="0.5">IUDM · ON</text>
-
-              <!-- Data label over green zone -->
-              <rect x="168" y="120" width="64" height="18" rx="2" fill="rgba(83,170,0,0.70)"/>
-              <text x="200" y="133" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">CLEAR · 23%</text>
-
-            </svg>
-          </div>
-
-          <!-- Panel metrics footer -->
-          <div class="hero-panel__metrics">
-            <div class="panel-metric">
-              <span class="panel-metric__val saffron">1,247</span>
-              <span class="panel-metric__label">Active incentives</span>
-            </div>
-            <div class="panel-metric">
-              <span class="panel-metric__val green">−31%</span>
-              <span class="panel-metric__label">Peak congestion</span>
-            </div>
-            <div class="panel-metric">
-              <span class="panel-metric__val">98.2%</span>
-              <span class="panel-metric__label">Policy compliance</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-scroll-cue" aria-hidden="true">↓ SCROLL FOR PLATFORM LOGIC</div>
-    </section>
-
-    <!-- =============================================
-         PROPOSITION — #EDF5FF, decorative quote mark
-    ============================================= -->
-    <section class="section-proposition" aria-label="Platform proposition">
-      <div class="mts-container">
-        <div class="proposition-inner">
-          <div class="proposition-label">
-            <span class="section-eyebrow" style="color:var(--interactive);">01 // Platform Philosophy</span>
-          </div>
-          <blockquote class="proposition-statement">
-            "Cities don't need another penalty-based toll system. They need a platform that makes the right commuting choice feel like the obvious one."
-          </blockquote>
-          <p class="proposition-body">
-            Traditional congestion pricing programs rely heavily on penalties and infrastructure deployment. Cities increasingly require tools that influence commuter behavior while maintaining public trust and policy transparency. Congestion is not only a road-capacity problem — it is a repeated coordination problem created by large numbers of commuters making similar route and timing decisions during peak periods.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         PROBLEM METRICS — white
-    ============================================= -->
-    <section class="section reveal-group" aria-label="The congestion problem">
-      <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">02 // Public Problem</span>
-          <h2 class="section-h2 reveal">02. The Urban Congestion Problem</h2>
-        </div>
-
-        <!-- Cinematic image — Indian city intersection with AI governance overlay -->
-        <div class="problem-photo reveal">
-          <img src="img/government.jpeg" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="problem-photo__img">
-          <div class="problem-photo__caption">
-            <span class="problem-photo__label">Urban Traffic Corridor · AI Governance Overlay · India</span>
-            <span class="problem-photo__tag">● System Active</span>
-          </div>
-        </div>
-
-        <div class="problem-layout">
-          <div class="problem-metrics reveal">
-            <div class="metric-item">
-              <div class="metric-header">
-                <span class="metric-label">Public trust gap</span>
-                <span class="metric-value">82%</span>
-              </div>
-              <div class="mts-progress">
-                <div class="mts-progress__track">
-                  <div class="mts-progress__fill mts-progress__fill--red bar-animate" style="--bar-w:82%"></div>
+    <!-- DS_PHASE2: Explicit Swiss_Halftone classes (nav/buttons/states/motion), fonts unchanged -->
+    <!-- Header -->
+    <header id="red-main-header" class="sticky top-0 z-[100] w-full bg-paper border-b-4 border-ink transition-all duration-300 font-display">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="flex items-center group">
+                <img src="img/mtsai-logo.png" alt="MTSAi" class="h-10 w-auto object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none" class="text-2xl font-black tracking-tighter uppercase text-ink">MTSAi</span>
+            </a>
+                <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+                <a class="nav-active nav-item animate-stagger delay-100 text-xs font-bold uppercase tracking-widest text-brand-green transition-colors" href="index.html">Home</a>
+                <a class="nav-item animate-stagger delay-300 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="Government.html">Government</a>
+                <div class="trust-dropdown-group relative animate-stagger delay-500">
+                    <button class="trust-dropdown-trigger inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" type="button" aria-expanded="false">
+                        <span>How the System Works</span>
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </button>
+                    <div class="trust-dropdown-panel absolute left-1/2 top-full mt-4 w-[420px] -translate-x-1/2 border-2 border-ink bg-paper shadow-brutal shadow-brutal-hover overflow-hidden pointer-events-none">
+                        <a href="why-traditional-fails.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Why Traditional Congestion Pricing Struggles</a><a href="congestion-coordination.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Congestion Is a Coordination Problem</a><a href="iudm.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Incentive-Based Demand Management</a><a href="deployment-roadmap.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">How a City Deploys MTSAi</a><a href="india-advantage.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Why India Can Deploy This at National Scale</a><a href="governance.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Governance & Accountability</a><a href="data-transparency.html" class="block px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-ink hover:bg-ink/5 hover:text-brand-green">Data Protection & Public Transparency</a>
+                    </div>
                 </div>
-              </div>
-              <p class="metric-note">Governments need a congestion approach that remains understandable and governable.</p>
+                <a class="nav-item animate-stagger delay-200 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="Strategic_Partners.html">Strategic Partners</a>
+                <a class="nav-item animate-stagger delay-400 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="about.html">About</a>
+                <a class="nav-item animate-stagger delay-100 text-xs font-bold uppercase tracking-widest text-ink hover:text-brand-green transition-colors" href="careers.html">Careers</a>
+            </nav>
             </div>
-
-            <div class="metric-item">
-              <div class="metric-header">
-                <span class="metric-label">Infrastructure cost pressure</span>
-                <span class="metric-value">91%</span>
-              </div>
-              <div class="mts-progress">
-                <div class="mts-progress__track">
-                  <div class="mts-progress__fill mts-progress__fill--saffron bar-animate" style="--bar-w:91%"></div>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase font-bold text-ink/50 mr-4 state-chip state-verified" data-state-indicator="verified">
+                    <span class="w-2 h-2 bg-alert-red rounded-full animate-pulse"></span>
+                    System Online
                 </div>
-              </div>
-              <p class="metric-note">Traditional pricing relies on costly physical infrastructure that developing cities can't always deploy.</p>
+                <a href="contact.html" class="sh-btn sh-btn-sm btn-10 btn-primary-action px-6">
+                    Connect
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 border-2 border-ink flex items-center justify-center hover:bg-ink hover:text-paper transition-colors rounded-none">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
+        </div>
+    </header>
+    <!-- Animated accent strip -->
+    <div class="hero-accent-strip" aria-hidden="true"></div>
 
-            <div class="metric-item">
-              <div class="metric-header">
-                <span class="metric-label">Policy complexity</span>
-                <span class="metric-value">64%</span>
-              </div>
-              <div class="mts-progress">
-                <div class="mts-progress__track">
-                  <div class="mts-progress__fill bar-animate" style="--bar-w:64%"></div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 lg:hidden hidden">
+        <!-- Backdrop -->
+        <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/80"></div>
+
+        <!-- Menu Panel -->
+        <div id="mobile-menu-panel" class="mobile-menu-panel absolute top-0 right-0 bottom-0 w-[280px] bg-paper border-l-2 border-ink shadow-brutal transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto rounded-none">
+            <div class="p-6">
+                <!-- Close Button -->
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-display font-bold uppercase tracking-tight text-ink">Menu</span>
+                    <button id="mobile-menu-close" class="p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center border-2 border-ink hover:bg-ink hover:text-paper transition-colors rounded-none" aria-label="Close mobile menu">
+                        <span class="material-symbols-outlined text-[24px]">close</span>
+                    </button>
                 </div>
-              </div>
-              <p class="metric-note">Congestion policy must remain governable, auditable, and explainable to the public.</p>
-            </div>
-          </div>
 
-          <div class="problem-insights reveal delay-2">
-            <div class="insight-panel" style="border-top:3px solid var(--interactive);">
-              <h3 class="insight-title">What cities need</h3>
-              <p class="insight-body">A policy instrument that can influence commuter behavior without relying only on punitive charging.</p>
+                <!-- Navigation Links -->
+                <nav class="red-mobile-nav flex flex-col gap-1">
+                <a href="index.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-brand-green bg-ink/5 transition-colors rounded-none">Home</a>
+                <a href="Government.html" class="nav-item animate-stagger delay-300 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Government</a>
+                <div class="mt-2">
+                        <button id="mobile-system-toggle" class="w-full px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors flex items-center justify-between rounded-none" aria-expanded="false">
+                            <span>How the System Works</span>
+                            <span class="material-symbols-outlined text-[20px] transition-transform duration-200" id="mobile-system-icon">expand_more</span>
+                        </button>
+                        <div id="mobile-system-submenu" class="hidden flex-col gap-1 mt-1 ml-4">
+                            <a href="why-traditional-fails.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Why Traditional Congestion Pricing Struggles</a>
+                        <a href="congestion-coordination.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Congestion Is a Coordination Problem</a>
+                        <a href="iudm.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Incentive-Based Demand Management</a>
+                        <a href="deployment-roadmap.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">How a City Deploys MTSAi</a>
+                        <a href="india-advantage.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Why India Can Deploy This at National Scale</a>
+                        <a href="governance.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Governance & Accountability</a>
+                        <a href="data-transparency.html" class="px-4 py-2 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Data Protection & Public Transparency</a>
+                        </div>
+                    </div>
+                <a href="Strategic_Partners.html" class="nav-item animate-stagger delay-200 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Strategic Partners</a>
+                <a href="about.html" class="nav-item animate-stagger delay-400 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">About</a>
+                <a href="careers.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Careers</a>
+                <a href="contact.html" class="nav-item animate-stagger delay-100 px-4 py-3 text-base font-medium text-ink hover:bg-ink/5 hover:text-brand-green transition-colors rounded-none">Contact</a>
+            </nav>
+
+                <!-- Contact Button -->
+                <div class="mt-6">
+                    <a href="contact.html" class="sh-btn btn-2 btn-hard-shadow w-full rounded-none">Contact Us <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+                </div>
             </div>
-            <div class="insight-panel" style="border-top:3px solid var(--brand-primary);">
-              <h3 class="insight-title">Why this matters</h3>
-              <p class="insight-body">Governments need a congestion approach that remains understandable, governable, and privacy-conscious from the beginning.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         IUDM — light gray
-    ============================================= -->
-    <section class="section-iudm reveal-group" aria-label="The IUDM Model">
-      <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">03 // Core Differentiator</span>
-          <h2 class="section-h2 reveal">03. The IUDM Model</h2>
-        </div>
-
-        <div class="iudm-layout">
-          <div class="iudm-desc reveal">
-            <p>Incentive-Based Urban Demand Management allows cities to reward off-peak travel, encourage carpooling, support transit usage, and influence route choices.</p>
-            <p>Gamification and digital incentives create sustained commuter engagement. The model is designed to shift behavior through participation rather than rely only on deterrence.</p>
-            <div style="margin-top:var(--space-6);">
-              <span class="mts-tag mts-tag--green">IUDM Active</span>
-            </div>
-          </div>
-
-          <ol class="iudm-features reveal delay-2" role="list">
-            <li class="iudm-feature">
-              <span class="iudm-feature__num">01</span>
-              <div>
-                <h3 class="iudm-feature__title">Off-Peak Travel</h3>
-                <p class="iudm-feature__body">Reward windows can encourage demand to move outside the most congested periods.</p>
-              </div>
-            </li>
-            <li class="iudm-feature">
-              <span class="iudm-feature__num">02</span>
-              <div>
-                <h3 class="iudm-feature__title">Carpooling</h3>
-                <p class="iudm-feature__body">Higher-occupancy travel can be recognized as a more efficient use of limited corridor capacity.</p>
-              </div>
-            </li>
-            <li class="iudm-feature">
-              <span class="iudm-feature__num">03</span>
-              <div>
-                <h3 class="iudm-feature__title">Transit Usage</h3>
-                <p class="iudm-feature__body">Transit participation can be included in the reward framework rather than treated as a separate system.</p>
-              </div>
-            </li>
-            <li class="iudm-feature">
-              <span class="iudm-feature__num">04</span>
-              <div>
-                <h3 class="iudm-feature__title">Route Choice</h3>
-                <p class="iudm-feature__body">Cities can influence corridor behavior by rewarding lower-pressure route decisions when appropriate.</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         ARCHITECTURE — white
-    ============================================= -->
-    <section class="section reveal-group" aria-label="Platform Architecture">
-      <div class="mts-container">
-
-        <!-- Cinematic image — data infrastructure / partner network -->
-        <div class="arch-photo reveal">
-          <img src="img/partners.jpeg" alt="Enterprise data infrastructure — interconnected platform nodes representing MTSAi's partner integration architecture" class="arch-photo__img">
-          <div class="arch-photo__overlay" aria-hidden="true"></div>
-          <span class="arch-photo__caption">Enterprise Integration Layer · Multi-Party Data Infrastructure</span>
-        </div>
-
-        <div class="arch-layout">
-          <div class="arch-intro reveal">
-            <span class="section-eyebrow">04 // System Credibility</span>
-            <h2 class="section-h2">04. Platform Architecture Overview</h2>
-            <p class="section-body">The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.</p>
-            <div class="arch-stats">
-              <div><span class="arch-stat-num">6+</span><span class="arch-stat-label">Core modules</span></div>
-              <div><span class="arch-stat-num">4</span><span class="arch-stat-label">Integration types</span></div>
-            </div>
-            <p class="arch-note" style="margin-top:var(--space-7);">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</p>
-          </div>
-
-          <div class="arch-stack reveal delay-3" role="img" aria-label="MTSAi 4-layer platform architecture diagram">
-            <div class="arch-layer arch-layer--public">
-              <span class="arch-layer__label">Public Web Layer</span>
-              <span class="arch-layer__desc">public pages · onboarding · partner access</span>
-            </div>
-            <div class="arch-layer arch-layer--platform">
-              <span class="arch-layer__label">Platform Application</span>
-              <span class="arch-layer__desc">operator workflows · city programs · admin tools</span>
-            </div>
-            <div class="arch-layer arch-layer--api">
-              <span class="arch-layer__label">API &amp; Policy Services</span>
-              <span class="arch-layer__desc">identity · payments · events · policy APIs</span>
-            </div>
-            <div class="arch-layer arch-layer--engine">
-              <span class="arch-layer__label">Incentive Engine + Data</span>
-              <span class="arch-layer__desc">evaluate behavior · calculate rewards · audit records</span>
-              <span class="mts-tag mts-tag--blue mts-tag--sm" style="margin-top:8px;display:inline-flex;">Core</span>
-            </div>
-            <div class="arch-layer arch-layer--ai">
-              <span class="arch-layer__label">AI Augmentation</span>
-              <span class="arch-layer__desc">assistive analytics · pattern detection · decision support</span>
-              <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         PRIVACY — light gray
-    ============================================= -->
-    <section class="section-privacy reveal-group" aria-label="Privacy by Design">
-      <div class="mts-container">
-        <span class="section-eyebrow section-eyebrow--green">05 // Trust Foundation</span>
-        <h2 class="section-h2 reveal">05. Privacy by Design</h2>
-        <p class="section-body reveal">MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
-
-        <div class="privacy-matrix reveal delay-2" role="table" aria-label="Privacy data classification">
-          <div class="privacy-col" role="columnheader">
-            <div class="privacy-col-header" style="border-top:3px solid var(--red-60);">
-              <span class="font-mono uppercase" style="font-size:11px;letter-spacing:0.1em;color:var(--red-60);">Not Collected</span>
-            </div>
-            <ul class="privacy-list">
-              <li>No continuous GPS tracking</li>
-              <li>No biometric data</li>
-              <li>No cross-city identity correlation</li>
-            </ul>
-          </div>
-          <div class="privacy-col" role="columnheader">
-            <div class="privacy-col-header" style="border-top:3px solid var(--cta-primary);">
-              <span class="font-mono uppercase" style="font-size:11px;letter-spacing:0.1em;color:var(--cta-primary);">Collected Minimally</span>
-            </div>
-            <ul class="privacy-list">
-              <li>Eligibility signals only</li>
-              <li>Reward distribution records</li>
-              <li>Aggregated program metrics</li>
-            </ul>
-          </div>
-          <div class="privacy-col" role="columnheader">
-            <div class="privacy-col-header" style="border-top:3px solid var(--brand-primary);">
-              <span class="font-mono uppercase" style="font-size:11px;letter-spacing:0.1em;color:var(--brand-primary);">Government Control</span>
-            </div>
-            <ul class="privacy-list">
-              <li>City authority is controller</li>
-              <li>MTSAi acts as processor</li>
-              <li>Retention defined by policy</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mts-callout mts-callout--green reveal delay-3" style="margin-top:var(--space-7);">
-          Privacy assurance comes from limiting collection, separating roles clearly, and keeping the city in control of policy and data governance.
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         NUMBERS — IBM Blue band
-    ============================================= -->
-    <section class="section-numbers reveal-group" aria-label="Platform key facts">
-      <div class="mts-container">
-        <div class="numbers-grid">
-          <div class="number-item reveal">
-            <span class="number-prefix">Est.</span>
-            <span class="number-val">2019</span>
-            <span class="number-label">Founded</span>
-          </div>
-          <div class="number-item reveal delay-1">
-            <span class="number-prefix">Scope</span>
-            <span class="number-val">4</span>
-            <span class="number-label">Global jurisdictions</span>
-          </div>
-          <div class="number-item reveal delay-2">
-            <span class="number-prefix">System</span>
-            <span class="number-val">6+</span>
-            <span class="number-label">Platform modules</span>
-          </div>
-          <div class="number-item reveal delay-3">
-            <span class="number-prefix">Target</span>
-            <span class="number-val" style="color:var(--cta-primary);">Q2 '26</span>
-            <span class="number-label">Pilot deployment</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         GOVERNMENT CONTROL — white
-    ============================================= -->
-    <section class="section-gov reveal-group" aria-label="Government Control">
-      <div class="mts-container">
-        <span class="section-eyebrow">07 // Policy Governance</span>
-        <h2 class="section-h2 reveal">07. Government Control</h2>
-        <div class="gov-controls reveal delay-2">
-          <div class="gov-control">
-            <span class="gov-num">01</span>
-            <h3>Pricing Rules</h3>
-            <p>City authorities configure programme rules, corridor logic, and decision thresholds.</p>
-          </div>
-          <div class="gov-control">
-            <span class="gov-num">02</span>
-            <h3>Incentive Structures</h3>
-            <p>Reward categories, budgets, and eligibility thresholds are set through policy, not consumer defaults.</p>
-          </div>
-          <div class="gov-control">
-            <span class="gov-num">03</span>
-            <h3>Exemptions</h3>
-            <p>Equity protections and programme exclusions remain part of public policy control.</p>
-          </div>
-          <div class="gov-control">
-            <span class="gov-num">04</span>
-            <h3>Enforcement Thresholds</h3>
-            <p>Operational thresholds and response rules remain under city-level oversight.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         ROADMAP — light gray
-    ============================================= -->
-    <section class="section-roadmap reveal-group" aria-label="Platform Roadmap">
-      <div class="mts-container">
-        <span class="section-eyebrow">08 // Phased Implementation</span>
-        <h2 class="section-h2 reveal">08. Platform Development Roadmap</h2>
-        <p class="section-body reveal">The platform development model is phased to reduce implementation risk.</p>
-
-        <div class="roadmap reveal delay-2">
-          <div class="roadmap-track" aria-hidden="true"></div>
-          <div class="roadmap-phases">
-            <div class="roadmap-phase roadmap-phase--done">
-              <div class="roadmap-node" aria-hidden="true"></div>
-              <span class="roadmap-phase-num">Phase 1</span>
-              <h3>Core Platform Architecture</h3>
-            </div>
-            <div class="roadmap-phase roadmap-phase--done">
-              <div class="roadmap-node" aria-hidden="true"></div>
-              <span class="roadmap-phase-num">Phase 2</span>
-              <h3>Incentive &amp; Pricing Engines</h3>
-            </div>
-            <div class="roadmap-phase roadmap-phase--active">
-              <div class="roadmap-node animate-blue-glow" aria-hidden="true"></div>
-              <span class="roadmap-phase-num">Phase 3</span>
-              <h3>Integration with External Systems</h3>
-              <span class="mts-tag mts-tag--blue mts-tag--sm">In Progress</span>
-            </div>
-            <div class="roadmap-phase roadmap-phase--upcoming">
-              <div class="roadmap-node" aria-hidden="true"></div>
-              <span class="roadmap-phase-num">Phase 4</span>
-              <h3>Pilot Deployment</h3>
-              <span class="mts-tag mts-tag--saffron mts-tag--sm">Q2 2026</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mts-callout mts-callout--blue reveal delay-3" style="margin-top:var(--space-9);">
-          Each phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         MARQUEE
-    ============================================= -->
-    <div class="marquee-section" aria-hidden="true">
-      <div class="marquee-track">
-        <div class="marquee-content">
-          <span>Incentive Engine</span><span class="sep">///</span>
-          <span>Dynamic Pricing</span><span class="sep">///</span>
-          <span>ANPR Integration</span><span class="sep">///</span>
-          <span>Super App Connect</span><span class="sep">///</span>
-          <span>Gamification Layer</span><span class="sep">///</span>
-          <span>Policy Console</span><span class="sep">///</span>
-          <span>Privacy by Design</span><span class="sep">///</span>
-          <span>Audit Trail</span><span class="sep">///</span>
-          <span>City Dashboard</span><span class="sep">///</span>
-          <span>FASTag-Ready</span><span class="sep">///</span>
-          <span>UPI Settlement</span><span class="sep">///</span>
-          <span>GIGW Compliant</span><span class="sep">///</span>
-          <span>Incentive Engine</span><span class="sep">///</span>
-          <span>Dynamic Pricing</span><span class="sep">///</span>
-          <span>ANPR Integration</span><span class="sep">///</span>
-          <span>Super App Connect</span><span class="sep">///</span>
-          <span>Gamification Layer</span><span class="sep">///</span>
-          <span>Policy Console</span><span class="sep">///</span>
-          <span>Privacy by Design</span><span class="sep">///</span>
-          <span>Audit Trail</span><span class="sep">///</span>
-        </div>
-      </div>
     </div>
 
-    <!-- =============================================
-         ECOSYSTEM — white
-    ============================================= -->
-    <section class="section-ecosystem reveal-group" aria-label="Super App Ecosystem">
-      <div class="mts-container">
-        <span class="section-eyebrow section-eyebrow--saffron">06 // India Deployment Strategy</span>
-        <h2 class="section-h2 reveal">06. Super App Ecosystem</h2>
-        <p class="section-body reveal">Incentives are delivered through partner platforms where commuters already transact. This integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.</p>
-
-        <div class="ecosystem-channels reveal delay-1">
-          <span class="mts-tag mts-tag--blue">UPI</span>
-          <span class="mts-tag mts-tag--blue">FASTag</span>
-          <span class="mts-tag mts-tag--blue">ONDC</span>
-          <span class="mts-tag mts-tag--blue">Ride Apps</span>
-          <span class="mts-tag mts-tag--blue">Metro Pass</span>
+    <section class="red-start-links relative z-20 border-b-2 border-ink bg-paper rounded-none">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-3 flex flex-wrap items-center gap-3">
+            <span class="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-ink/70">01 // Start Here</span>
+            <a href="Government.html" class="sh-btn btn-10 btn-primary-action">Government Path</a>
+            <a href="Strategic_Partners.html" class="sh-btn btn-2 btn-hard-shadow">Strategic Partner Path</a>
         </div>
-
-        <div class="ecosystem-rows reveal delay-2">
-          <div class="ecosystem-row">
-            <span class="ecosystem-row__num">01</span>
-            <div class="ecosystem-row__content">
-              <h3>Digital Mobility Platforms</h3>
-              <p>Trip interfaces can surface eligibility, incentives, and commuter guidance.</p>
-            </div>
-          </div>
-          <div class="ecosystem-row">
-            <span class="ecosystem-row__num">02</span>
-            <div class="ecosystem-row__content">
-              <h3>Payment Networks</h3>
-              <p>Reward issuance can be linked to digital settlement infrastructure already in use.</p>
-            </div>
-          </div>
-          <div class="ecosystem-row">
-            <span class="ecosystem-row__num">03</span>
-            <div class="ecosystem-row__content">
-              <h3>Transit &amp; Shared Mobility</h3>
-              <p>Mode-shift incentives can be aligned with shared mobility and transit participation.</p>
-            </div>
-          </div>
-          <div class="ecosystem-row">
-            <span class="ecosystem-row__num">04</span>
-            <div class="ecosystem-row__content">
-              <h3>City Program Interface</h3>
-              <p>Authorities retain control over budgets, rulebooks, and operational scope.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- =============================================
-         CTA — Deepest blue + large arrow watermark
-    ============================================= -->
-    <section class="section-cta" aria-label="Call to action">
-      <div class="mts-container">
-        <div class="cta-inner reveal">
-          <span class="section-eyebrow section-eyebrow--white">Next Steps</span>
-          <h2 class="cta-headline">Ready to explore what<br>MTSAi can do for your city?</h2>
-          <p class="cta-body">Whether you're a government decision-maker, a technology partner, or an investor — there's a path for you.</p>
-          <div class="cta-actions">
-            <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Government Evaluation →</a>
-            <a href="government.html" class="mts-btn mts-btn--ghost mts-btn--lg">Government Overview</a>
-            <a href="strategic-partners.html" class="mts-btn mts-btn--ghost mts-btn--lg">Partner Paths</a>
-          </div>
+    <main id="main-content" class="flex-grow z-10 relative">
+        <section class="min-h-[80vh] border-b-2 border-ink flex flex-col bg-paper" id="hero">
+            <!-- Particles Background -->
+            <div data-particles data-particle-color="#53AA00" data-particle-count="55" data-particle-speed="0.25" data-particle-size="1.8" data-particle-opacity="0.35" class="absolute inset-0 pointer-events-none z-0"></div>
+            <!-- Animated retro grid -->
+            <div class="retro-grid-animated opacity-30 absolute inset-0 pointer-events-none z-0"></div>
+            
+            <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-1/2 h-full hidden lg:block pointer-events-none overflow-hidden">
+                    <img src="img/globe-hero.avif" alt="" class="absolute inset-0 object-cover w-full h-full opacity-60 mix-blend-luminosity grayscale contrast-125 transition-transform duration-1000 scale-105" style="mask-image: linear-gradient(to left, black 40%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);" data-parallax="0.08" />
+                    <div class="absolute inset-0 bg-brand-green mix-blend-color opacity-20"></div>
+                    <div class="absolute inset-0 bg-brand-green/10"></div>
+                    <div class="absolute inset-0 halftone-animated-green opacity-[0.06]"></div>
+                </div>
+                <div class="max-w-4xl relative z-10">
+                    <span class="pulse-badge hero-animate-1 mb-6 inline-flex">
+                        <span class="pulse-dot"></span>
+                        01 // Home — System Online
+                    </span>
+                    <h1 class="font-display text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.85] text-ink hero-animate-2">
+                        Incentive-Based Urban Demand Management<br />
+                        for <span class="shimmer-text-green">Modern Cities</span>.
+                    </h1>
+                    <p class="text-xl md:text-2xl max-w-3xl font-medium leading-relaxed border-l-4 border-brand-green pl-6 text-ink hero-animate-3">
+                        A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.
+                    </p>
+                    <div class="mt-10 flex flex-wrap gap-4 hero-animate-4">
+                        <a href="technology_platform.html" class="sh-btn btn-10 btn-primary-action transition-all duration-200 flex items-center gap-2 magnetic-btn ripple-btn shiny-btn">
+                            Explore the Platform
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                        <a href="Government.html" class="sh-btn btn-2 btn-hard-shadow magnetic-btn ripple-btn">Government Solutions</a>
+                    </div>
+                    <!-- Stat strip -->
+                    <div class="mt-12 flex flex-wrap gap-8 hero-animate-4 stat-group" style="animation-delay:0.5s">
+                        <div class="flex flex-col">
+                            <span class="stat-number text-ink"><span data-counter data-target="4" data-suffix="+" data-duration="1200">4+</span></span>
+                            <span class="stat-label">Platform phases</span>
+                        </div>
+                        <div class="w-px bg-ink/20 self-stretch"></div>
+                        <div class="flex flex-col">
+                            <span class="stat-number text-ink"><span data-counter data-target="6" data-suffix="+" data-duration="1400">6+</span></span>
+                            <span class="stat-label">Ecosystem integrations</span>
+                        </div>
+                        <div class="w-px bg-ink/20 self-stretch"></div>
+                        <div class="flex flex-col">
+                            <span class="stat-number text-ink"><span data-counter data-target="100" data-suffix="%" data-duration="1600">100%</span></span>
+                            <span class="stat-label">Privacy-first design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t-2 border-ink p-4 flex justify-between font-mono text-xs uppercase bg-paper z-10">
+                <span>Fig. 1.0 — MTSAi Home</span>
+                <div class="flex items-center gap-2">
+                    <span class="animate-bounce">↓</span>
+                    <span>Scroll for Platform Logic</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-b-2 border-ink bg-paper ed-soft ed-accent-green py-16 px-6 lg:py-24 lg:px-12 relative z-10 fade-section" id="problem">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">02. The Urban Congestion Problem</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">PUBLIC PROBLEM</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_0.95fr] gap-8">
+                    <div class="magic-card brutalist-border bg-paper p-8 shadow-brutal blur-fade-left" data-spotlight-color="rgba(81,168,0,0.07)" style="--blur-delay:100ms">
+                        <div class="magic-card-spotlight"></div>
+                        <p class="text-lg md:text-xl leading-relaxed text-ink/85">Traditional congestion pricing programs rely heavily on penalties and infrastructure deployment. Cities increasingly require tools that influence commuter behavior while maintaining public trust and policy transparency.</p>
+                        <p class="mt-6 text-sm leading-relaxed text-ink/70">Congestion is not only a road-capacity problem. It is a repeated coordination problem created by large numbers of commuters making similar route and timing decisions during peak periods.</p>
+                        <div class="mt-8 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-ink/50 uppercase tracking-wider mb-1">
+                                <span>Public trust gap</span><span>High</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="--progress:82%"></div></div>
+                            <div class="flex items-center justify-between text-xs font-mono text-ink/50 uppercase tracking-wider mb-1">
+                                <span>Infrastructure cost</span><span>Very High</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill progress-fill-red" style="--progress:91%"></div></div>
+                            <div class="flex items-center justify-between text-xs font-mono text-ink/50 uppercase tracking-wider mb-1">
+                                <span>Policy complexity</span><span>Medium</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill progress-fill-blue" style="--progress:64%"></div></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 blur-fade-right" style="--blur-delay:200ms">
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.08)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50 mb-3 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-brand-green rounded-none inline-block"></span>
+                                What cities need
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/80">A policy instrument that can influence commuter behavior without relying only on punitive charging.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.08)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50 mb-3 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-brand-blue rounded-none inline-block"></span>
+                                Why this matters
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/80">Governments need a congestion approach that remains understandable, governable, and privacy-conscious from the beginning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-b-2 border-ink bg-paper py-16 px-6 lg:py-24 lg:px-12 relative z-10 fade-section" id="iudm-model">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">03. The IUDM Model</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">CORE DIFFERENTIATOR</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8">
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-8 shadow-brutal blur-fade-left" data-spotlight-color="rgba(81,168,0,0.08)">
+                        <div class="magic-card-spotlight"></div>
+                        <p class="text-lg leading-relaxed text-ink/85">Incentive-Based Urban Demand Management allows cities to reward off-peak travel, encourage carpooling, support transit usage, and influence route choices.</p>
+                        <p class="mt-6 text-sm leading-relaxed text-ink/70">Gamification and digital incentives create sustained commuter engagement. The model is designed to shift behavior through participation rather than rely only on deterrence.</p>
+                        <div class="mt-8 pt-6 border-t border-ink/10 flex items-center gap-3">
+                            <span class="pulse-badge">
+                                <span class="pulse-dot"></span>
+                                IUDM Active
+                            </span>
+                            <a href="iudm.html" class="font-mono text-xs text-ink/50 hover:text-brand-green transition-colors underline-sweep">Learn more →</a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-grid blur-fade-right" style="--blur-delay:100ms">
+                        <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)" data-tilt="4">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-display text-xl font-black uppercase text-ink mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 bg-brand-green inline-block flex-shrink-0"></span>
+                                Off-Peak Travel
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/75">Reward windows can encourage demand to move outside the most congested periods.</p>
+                        </div>
+                        <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)" data-tilt="4">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-display text-xl font-black uppercase text-ink mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 bg-brand-green inline-block flex-shrink-0"></span>
+                                Carpooling
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/75">Higher-occupancy travel can be recognized as a more efficient use of limited corridor capacity.</p>
+                        </div>
+                        <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)" data-tilt="4">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-display text-xl font-black uppercase text-ink mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 bg-brand-blue inline-block flex-shrink-0"></span>
+                                Transit Usage
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/75">Transit participation can be included in the reward framework rather than treated as a separate system.</p>
+                        </div>
+                        <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)" data-tilt="4">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="font-display text-xl font-black uppercase text-ink mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 bg-brand-blue inline-block flex-shrink-0"></span>
+                                Route Choice
+                            </div>
+                            <p class="text-sm leading-relaxed text-ink/75">Cities can influence corridor behavior by rewarding lower-pressure route decisions when appropriate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-b-2 border-ink bg-ink text-paper py-16 px-6 lg:py-24 lg:px-12 relative z-10 fade-section" id="architecture">
+            <!-- Particles on dark background -->
+            <div data-particles data-particle-color="#53AA00" data-particle-count="30" data-particle-speed="0.2" data-particle-size="1.5" data-particle-opacity="0.2" class="absolute inset-0 pointer-events-none z-0"></div>
+            <div class="max-w-[1400px] mx-auto relative z-10">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-white/20 pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-paper word-reveal">04. Platform Architecture Overview</h3>
+                    <span class="font-mono text-sm text-paper/60">SYSTEM CREDIBILITY</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.95fr] gap-8 mb-10">
+                    <div class="blur-fade-left">
+                        <p class="text-lg md:text-xl leading-relaxed text-paper/85">The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.</p>
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="stat-block bg-white/5 border-white/20" style="border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);box-shadow:4px 4px 0 0 rgba(255,255,255,0.15);">
+                                <div class="stat-number text-paper"><span data-counter data-target="6" data-suffix="+" data-duration="1200">6+</span></div>
+                                <div class="stat-label text-paper/50">Core modules</div>
+                            </div>
+                            <div class="stat-block bg-white/5 border-white/20" style="border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);box-shadow:4px 4px 0 0 rgba(255,255,255,0.15);">
+                                <div class="stat-number text-paper"><span data-counter data-target="4" data-duration="1000">4</span></div>
+                                <div class="stat-label text-paper/50">Integration types</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-[10px] font-bold uppercase tracking-widest stagger-grid blur-fade-right" style="--blur-delay:100ms">
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-brand-green hover:text-white hover:border-brand-green transition-colors duration-200 cursor-default" data-spotlight-color="rgba(81,168,0,0.2)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-brand-green text-lg mb-2 block icon-bounce">bolt</span>
+                            Incentive Engine
+                        </div>
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-brand-green hover:text-white hover:border-brand-green transition-colors duration-200 cursor-default" data-spotlight-color="rgba(81,168,0,0.2)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-brand-green text-lg mb-2 block icon-bounce">trending_up</span>
+                            Dynamic Pricing Engine
+                        </div>
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors duration-200 cursor-default" data-spotlight-color="rgba(0,82,204,0.2)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-brand-blue text-lg mb-2 block icon-bounce">sports_esports</span>
+                            Gamification Services
+                        </div>
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors duration-200 cursor-default" data-spotlight-color="rgba(0,82,204,0.2)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-brand-blue text-lg mb-2 block icon-bounce">apps</span>
+                            Super App Integration
+                        </div>
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-white/20 transition-colors duration-200 cursor-default" data-spotlight-color="rgba(255,255,255,0.1)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-paper/60 text-lg mb-2 block icon-bounce">camera</span>
+                            ANPR Integration
+                        </div>
+                        <div class="magic-card brutalist-border border-white/20 p-4 bg-white/5 text-paper/80 hover:bg-white/20 transition-colors duration-200 cursor-default" data-spotlight-color="rgba(255,255,255,0.1)" style="border:1px solid rgba(255,255,255,0.2)">
+                            <span class="material-symbols-outlined text-paper/60 text-lg mb-2 block icon-bounce">dashboard</span>
+                            City Operations Platform
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mtsai-diagram-band border-b-2 border-ink bg-paper relative z-10">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div class="mtsai-diagram-frame"><div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 980 620" width="100%" height="auto" role="img" aria-label="Full MTSAi system architecture" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                          .mtsai-svg-text {
+                            font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+                            letter-spacing: -0.01em;
+                          }
+                          rect[fill="#FFFFFF"],
+                          rect[fill="#f7f8f5"],
+                          rect[fill="#FEE2E2"],
+                          rect[fill="rgba(0,82,204,0.08)"],
+                          rect[fill="rgba(83,170,0,0.08)"] {
+                            stroke: #000000 !important;
+                            stroke-width: 2.2px !important;
+                          }
+                          text[fill="#555555"] {
+                            fill: #000000;
+                            opacity: 0.58;
+                          }
+                          line {
+                            stroke: #888888 !important;
+                            stroke-width: 2.4px !important;
+                          }
+                          circle {
+                            stroke: #000000;
+                            stroke-width: 2px;
+                          }
+                        </style>
+                        <rect width="980" height="620" fill="#f7f8f5" />
+                        <text class="mtsai-svg-text" x="490" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#000000">Full MTSAi System Architecture</text>
+                        <text class="mtsai-svg-text" x="490" y="62" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">A multi-tenant platform for government mobility demand programs, integrations, and operator control.</text>
+                        <g><rect x="70" y="110" width="190" height="88" rx="0" fill="rgba(0,82,204,0.08)" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="165" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0052CC">Public Web Layer</text><text class="mtsai-svg-text" x="165" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">public pages • onboarding</text><text class="mtsai-svg-text" x="165" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">briefings • partner access</text></g>
+                        <g><rect x="295" y="110" width="190" height="88" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="390" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#53AA00">Platform Application</text><text class="mtsai-svg-text" x="390" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">operator workflows</text><text class="mtsai-svg-text" x="390" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">city programs • admin tools</text></g>
+                        <g><rect x="520" y="110" width="190" height="88" rx="0" fill="rgba(0,82,204,0.08)" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="615" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0052CC">API Services</text><text class="mtsai-svg-text" x="615" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">identity • payments</text><text class="mtsai-svg-text" x="615" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">events • policy APIs</text></g>
+                        <g><rect x="745" y="110" width="170" height="88" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="830" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#53AA00">City Operations</text><text class="mtsai-svg-text" x="830" y="162" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">policy console</text><text class="mtsai-svg-text" x="830" y="178" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">oversight dashboard</text></g>
+                        <line x1="260" y1="154" x2="295" y2="154" stroke="#cccccc" stroke-width="2" />
+                        <line x1="485" y1="154" x2="520" y2="154" stroke="#cccccc" stroke-width="2" />
+                        <line x1="710" y1="154" x2="745" y2="154" stroke="#cccccc" stroke-width="2" />
+                        <g><rect x="220" y="265" width="230" height="108" rx="0" fill="rgba(83,170,0,0.08)" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="335" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#53AA00">Incentive Engine</text><text class="mtsai-svg-text" x="335" y="320" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">evaluate commuter behavior</text><text class="mtsai-svg-text" x="335" y="338" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">calculate rewards • issue credits</text></g>
+                        <g><rect x="495" y="265" width="230" height="108" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="610" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#0052CC">Data Infrastructure</text><text class="mtsai-svg-text" x="610" y="320" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">event streams • audit records</text><text class="mtsai-svg-text" x="610" y="338" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">program metrics • retention controls</text></g>
+                        <line x1="390" y1="198" x2="390" y2="265" stroke="#cccccc" stroke-width="2" />
+                        <line x1="610" y1="198" x2="610" y2="265" stroke="#cccccc" stroke-width="2" />
+                        <g><rect x="300" y="430" width="380" height="98" rx="0" fill="#f7f8f5" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="490" y="460" text-anchor="middle" font-size="15" font-weight="700" fill="#0052CC">AI Augmentation Layer</text><text class="mtsai-svg-text" x="490" y="484" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">assistive analytics • pattern detection</text><text class="mtsai-svg-text" x="490" y="502" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">decision support for policy operators</text></g>
+                        <line x1="390" y1="373" x2="390" y2="430" stroke="#cccccc" stroke-width="2" />
+                        <line x1="610" y1="373" x2="610" y2="430" stroke="#cccccc" stroke-width="2" />
+                        <g><rect x="120" y="560" width="740" height="34" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="490" y="582" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</text></g>
+                    </svg>
+                </div></div>
+            </div>
+        </section>
+
+        <section class="border-b-2 border-ink bg-paper py-16 px-6 lg:py-24 lg:px-12 relative z-10 fade-section" id="privacy">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">05. Privacy by Design</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">TRUST FOUNDATION</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.95fr] gap-8 mb-10">
+                    <div class="magic-card brutalist-border bg-paper p-8 shadow-brutal blur-fade-left" data-spotlight-color="rgba(0,82,204,0.07)">
+                        <div class="magic-card-spotlight"></div>
+                        <p class="text-lg leading-relaxed text-ink/85">Government readers care deeply about data governance and surveillance concerns. MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
+                        <div class="mt-6 flex items-center gap-2">
+                            <span class="pulse-badge">
+                                <span class="pulse-dot pulse-dot-blue"></span>
+                                Privacy-first architecture
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-grid blur-fade-right" style="--blur-delay:100ms">
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(216,43,43,0.06)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="w-6 h-6 bg-alert-red mb-3 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-sm">close</span>
+                            </div>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">No GPS Tracking</div>
+                            <p class="text-sm leading-relaxed text-ink/75">The platform is not designed as a continuous commuter tracking system.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(216,43,43,0.06)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="w-6 h-6 bg-alert-red mb-3 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-sm">close</span>
+                            </div>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">No Biometric Data</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Biometric collection is outside the intended operating model.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.09)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="w-6 h-6 bg-brand-green mb-3 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-sm">check</span>
+                            </div>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">City-level Control</div>
+                            <p class="text-sm leading-relaxed text-ink/75">The city authority defines governance, access, and retention rules.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.09)">
+                            <div class="magic-card-spotlight"></div>
+                            <div class="w-6 h-6 bg-brand-green mb-3 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-sm">check</span>
+                            </div>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">Pseudonymized Data</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Program processing is designed around minimization and role separation.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mtsai-diagram-band border-b-2 border-ink bg-paper relative z-10">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div class="mtsai-diagram-frame"><div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 940 560" width="100%" height="auto" role="img" aria-label="Privacy architecture" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                          .mtsai-svg-text {
+                            font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+                            letter-spacing: -0.01em;
+                          }
+                          rect[fill="#FFFFFF"],
+                          rect[fill="#f7f8f5"],
+                          rect[fill="#FEE2E2"],
+                          rect[fill="rgba(0,82,204,0.08)"],
+                          rect[fill="rgba(83,170,0,0.08)"] {
+                            stroke: #000000 !important;
+                            stroke-width: 2.2px !important;
+                          }
+                          text[fill="#555555"] {
+                            fill: #000000;
+                            opacity: 0.58;
+                          }
+                          line {
+                            stroke: #888888 !important;
+                            stroke-width: 2.4px !important;
+                          }
+                          circle {
+                            stroke: #000000;
+                            stroke-width: 2px;
+                          }
+                        </style>
+                        <rect width="940" height="560" fill="#f7f8f5" />
+                        <text class="mtsai-svg-text" x="470" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#000000">Privacy Architecture</text>
+                        <text class="mtsai-svg-text" x="470" y="64" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">Purpose-limited data handling, city-level governance, and minimization by design.</text>
+                        <g><rect x="85" y="120" width="240" height="112" rx="0" fill="#FEE2E2" stroke="#D82B2B" stroke-width="2" /><text class="mtsai-svg-text" x="205" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#D82B2B">Not Collected</text><text class="mtsai-svg-text" x="105" y="182" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• No continuous GPS tracking</text><text class="mtsai-svg-text" x="105" y="202" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• No biometric data</text><text class="mtsai-svg-text" x="105" y="222" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• No cross-city identity correlation</text></g>
+                        <g><rect x="350" y="120" width="240" height="112" rx="0" fill="rgba(83,170,0,0.08)" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="470" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#53AA00">Collected Minimally</text><text class="mtsai-svg-text" x="370" y="182" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• Eligibility signals only</text><text class="mtsai-svg-text" x="370" y="202" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• Reward distribution records</text><text class="mtsai-svg-text" x="370" y="222" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• Aggregated program metrics</text></g>
+                        <g><rect x="615" y="120" width="240" height="112" rx="0" fill="rgba(0,82,204,0.08)" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="735" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#0052CC">Government Control</text><text class="mtsai-svg-text" x="635" y="182" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• City authority is controller</text><text class="mtsai-svg-text" x="635" y="202" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• MTSAi acts as processor</text><text class="mtsai-svg-text" x="635" y="222" text-anchor="start" font-size="11" font-weight="400" fill="#000000">• Retention and access are defined by policy</text></g>
+                        <line x1="205" y1="232" x2="205" y2="300" stroke="#cccccc" stroke-width="2" />
+                        <line x1="470" y1="232" x2="470" y2="300" stroke="#cccccc" stroke-width="2" />
+                        <line x1="735" y1="232" x2="735" y2="300" stroke="#cccccc" stroke-width="2" />
+                        <line x1="205" y1="300" x2="735" y2="300" stroke="#cccccc" stroke-width="2" />
+                        <g><rect x="230" y="320" width="480" height="114" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="470" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#0052CC">Privacy-by-Design Processing Layer</text><text class="mtsai-svg-text" x="470" y="378" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">pseudonymized identifiers • consent-based participation • auditable access controls</text><text class="mtsai-svg-text" x="470" y="398" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">data minimization • city-level governance • no commercial data sharing</text></g>
+                        <g><rect x="120" y="470" width="700" height="40" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="470" y="495" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">Privacy assurance comes from limiting collection, separating roles clearly, and keeping the city in control of policy and data governance.</text></g>
+                    </svg>
+                </div></div>
+            </div>
+        </section>
+
+        <section class="border-b-2 border-ink bg-paper py-16 lg:py-24 px-6 lg:px-12 relative z-10 fade-section" id="ecosystem">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">06. Super App Ecosystem</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">INDIA DEPLOYMENT STRATEGY</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.95fr] gap-8 mb-10">
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-8 shadow-brutal blur-fade-left" data-spotlight-color="rgba(0,82,204,0.07)">
+                        <div class="magic-card-spotlight"></div>
+                        <p class="text-lg leading-relaxed text-ink/85">Incentives are delivered through partner platforms where commuters already transact. This planned integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.</p>
+                        <div class="mt-6 pt-6 border-t border-ink/10">
+                            <div class="font-mono text-[10px] uppercase tracking-widest text-ink/40 mb-3">Planned integration channels</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge-wireframe">UPI</span>
+                                <span class="badge-wireframe">FASTag</span>
+                                <span class="badge-wireframe">ONDC</span>
+                                <span class="badge-wireframe">Ride Apps</span>
+                                <span class="badge-wireframe">Metro Pass</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-grid blur-fade-right" style="--blur-delay:100ms">
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)">
+                            <div class="magic-card-spotlight"></div>
+                            <span class="material-symbols-outlined text-brand-green text-2xl mb-3 block icon-bounce">directions_car</span>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">Digital Mobility Platforms</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Trip interfaces can surface eligibility, incentives, and commuter guidance.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)">
+                            <div class="magic-card-spotlight"></div>
+                            <span class="material-symbols-outlined text-brand-blue text-2xl mb-3 block icon-bounce">payments</span>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">Payment Networks</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Reward issuance can be linked to digital settlement infrastructure already in use.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)">
+                            <div class="magic-card-spotlight"></div>
+                            <span class="material-symbols-outlined text-brand-green text-2xl mb-3 block icon-bounce">train</span>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">Transit &amp; Shared Mobility</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Mode-shift incentives can be aligned with shared mobility and transit participation.</p>
+                        </div>
+                        <div class="magic-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)">
+                            <div class="magic-card-spotlight"></div>
+                            <span class="material-symbols-outlined text-brand-blue text-2xl mb-3 block icon-bounce">account_balance</span>
+                            <div class="font-display text-base font-black uppercase text-ink mb-3">City Program Interface</div>
+                            <p class="text-sm leading-relaxed text-ink/75">Authorities retain control over budgets, rulebooks, and operational scope.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mtsai-diagram-band border-b-2 border-ink bg-paper relative z-10">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div class="mtsai-diagram-frame"><div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 940 560" width="100%" height="auto" role="img" aria-label="Super app integration" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                          .mtsai-svg-text {
+                            font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+                            letter-spacing: -0.01em;
+                          }
+                          rect[fill="#FFFFFF"],
+                          rect[fill="#f7f8f5"],
+                          rect[fill="#FEE2E2"],
+                          rect[fill="rgba(0,82,204,0.08)"],
+                          rect[fill="rgba(83,170,0,0.08)"] {
+                            stroke: #000000 !important;
+                            stroke-width: 2.2px !important;
+                          }
+                          text[fill="#555555"] {
+                            fill: #000000;
+                            opacity: 0.58;
+                          }
+                          line {
+                            stroke: #888888 !important;
+                            stroke-width: 2.4px !important;
+                          }
+                          circle {
+                            stroke: #000000;
+                            stroke-width: 2px;
+                          }
+                        </style>
+                        <rect width="940" height="560" fill="#f7f8f5" />
+                        <text class="mtsai-svg-text" x="470" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#000000">Super App Integration</text>
+                        <text class="mtsai-svg-text" x="470" y="64" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">MTSAi is designed to deliver incentives through platforms commuters already use.</text>
+                        <g><rect x="355" y="200" width="230" height="110" rx="0" fill="rgba(83,170,0,0.08)" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="470" y="232" text-anchor="middle" font-size="16" font-weight="700" fill="#53AA00">MTSAi Core Platform</text><text class="mtsai-svg-text" x="470" y="256" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">policy rules • incentive logic</text><text class="mtsai-svg-text" x="470" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">reward issuance • audit records</text></g>
+                        <g><rect x="80" y="110" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="170" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#0052CC">Digital Mobility Apps</text><text class="mtsai-svg-text" x="170" y="166" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">trip planning • commuter UX</text></g>
+                        <g><rect x="680" y="110" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="2" /><text class="mtsai-svg-text" x="770" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#0052CC">Payment Networks</text><text class="mtsai-svg-text" x="770" y="166" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">UPI • FASTag-linked settlement</text></g>
+                        <g><rect x="80" y="360" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="170" y="386" text-anchor="middle" font-size="13" font-weight="700" fill="#53AA00"><tspan x="170" dy="0">Transit &amp; Shared</tspan><tspan x="170" dy="15">Mobility</tspan></text><text class="mtsai-svg-text" x="170" y="424" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">mode-shift incentives</text></g>
+                        <g><rect x="680" y="360" width="180" height="82" rx="0" fill="#FFFFFF" stroke="#53AA00" stroke-width="2" /><text class="mtsai-svg-text" x="770" y="386" text-anchor="middle" font-size="13" font-weight="700" fill="#53AA00"><tspan x="770" dy="0">City Program</tspan><tspan x="770" dy="15">Interface</tspan></text><text class="mtsai-svg-text" x="770" y="424" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">program rules • budget control</text></g>
+                        <line x1="260" y1="151" x2="355" y2="225" stroke="#cccccc" stroke-width="2" />
+                        <line x1="680" y1="151" x2="585" y2="225" stroke="#cccccc" stroke-width="2" />
+                        <line x1="260" y1="401" x2="355" y2="285" stroke="#cccccc" stroke-width="2" />
+                        <line x1="680" y1="401" x2="585" y2="285" stroke="#cccccc" stroke-width="2" />
+                        <g><rect x="150" y="485" width="640" height="40" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="470" y="510" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">The integration model reduces adoption friction by meeting commuters inside existing payment and mobility ecosystems.</text></g>
+                    </svg>
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Platform Capabilities Marquee Band -->
+        <div class="border-b-2 border-ink bg-paper py-8 overflow-hidden relative z-10">
+            <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/40 text-center mb-4">Platform Capabilities</div>
+            <div class="marquee-container" style="--duration:28s">
+                <div class="marquee-track items-center">
+                    <span class="marquee-item marquee-item-green">Incentive Engine</span>
+                    <span class="marquee-item">Dynamic Pricing</span>
+                    <span class="marquee-item marquee-item-green">ANPR Integration</span>
+                    <span class="marquee-item">Super App Connect</span>
+                    <span class="marquee-item marquee-item-green">Gamification Layer</span>
+                    <span class="marquee-item">Policy Console</span>
+                    <span class="marquee-item marquee-item-green">Privacy by Design</span>
+                    <span class="marquee-item">Audit Trail</span>
+                    <span class="marquee-item marquee-item-green">City Dashboard</span>
+                    <span class="marquee-item">FASTag-Ready</span>
+                    <span class="marquee-item marquee-item-green">UPI Settlement</span>
+                    <span class="marquee-item">GIGW Compliant</span>
+                </div>
+                <div class="marquee-track items-center" aria-hidden="true">
+                    <span class="marquee-item marquee-item-green">Incentive Engine</span>
+                    <span class="marquee-item">Dynamic Pricing</span>
+                    <span class="marquee-item marquee-item-green">ANPR Integration</span>
+                    <span class="marquee-item">Super App Connect</span>
+                    <span class="marquee-item marquee-item-green">Gamification Layer</span>
+                    <span class="marquee-item">Policy Console</span>
+                    <span class="marquee-item marquee-item-green">Privacy by Design</span>
+                    <span class="marquee-item">Audit Trail</span>
+                    <span class="marquee-item marquee-item-green">City Dashboard</span>
+                    <span class="marquee-item">FASTag-Ready</span>
+                    <span class="marquee-item marquee-item-green">UPI Settlement</span>
+                    <span class="marquee-item">GIGW Compliant</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
 
-  </main>
+                <section class="border-b-2 border-ink bg-paper py-16 lg:py-24 px-6 lg:px-12 relative z-10 fade-section" id="government-control">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">07. Government Control</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">POLICY GOVERNANCE</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 stagger-grid">
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.09)" data-tilt="3">
+                        <div class="magic-card-spotlight"></div>
+                        <div class="w-8 h-1 bg-brand-green mb-4"></div>
+                        <div class="font-display text-lg font-black uppercase text-ink mb-3">Pricing Rules</div>
+                        <p class="text-sm leading-relaxed text-ink/75">City authorities configure programme rules, corridor logic, and decision thresholds.</p>
+                    </div>
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.09)" data-tilt="3">
+                        <div class="magic-card-spotlight"></div>
+                        <div class="w-8 h-1 bg-brand-green mb-4"></div>
+                        <div class="font-display text-lg font-black uppercase text-ink mb-3">Incentive Structures</div>
+                        <p class="text-sm leading-relaxed text-ink/75">Reward categories, budgets, and eligibility thresholds are set through policy, not consumer defaults.</p>
+                    </div>
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.09)" data-tilt="3">
+                        <div class="magic-card-spotlight"></div>
+                        <div class="w-8 h-1 bg-brand-blue mb-4"></div>
+                        <div class="font-display text-lg font-black uppercase text-ink mb-3">Exemptions</div>
+                        <p class="text-sm leading-relaxed text-ink/75">Equity protections and programme exclusions remain part of public policy control.</p>
+                    </div>
+                    <div class="magic-card tilt-card brutalist-border bg-paper p-6 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.09)" data-tilt="3">
+                        <div class="magic-card-spotlight"></div>
+                        <div class="w-8 h-1 bg-brand-blue mb-4"></div>
+                        <div class="font-display text-lg font-black uppercase text-ink mb-3">Enforcement Thresholds</div>
+                        <p class="text-sm leading-relaxed text-ink/75">Operational thresholds and response rules remain under city-level oversight.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- =============================================
-       FOOTER — explicitly dark, premium
-  ============================================= -->
-  <footer class="site-footer" aria-label="Site footer">
-    <div class="mts-container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="MTSAi">
-            <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
-          </a>
-          <p class="footer-tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
-          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+        <section class="border-b-2 border-ink bg-paper py-16 lg:py-24 px-6 lg:px-12 relative z-10 fade-section" id="roadmap">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b-2 border-ink pb-4 blur-fade-in">
+                    <h3 class="font-display text-4xl font-black text-ink word-reveal">08. Platform Development Roadmap</h3>
+                    <span class="font-mono text-sm text-ink/60 section-label-animated">PHASED IMPLEMENTATION</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.95fr] gap-8 mb-10">
+                    <div class="magic-card brutalist-border bg-paper p-8 shadow-brutal blur-fade-left" data-spotlight-color="rgba(81,168,0,0.07)">
+                        <div class="magic-card-spotlight"></div>
+                        <p class="text-lg leading-relaxed text-ink/85">The platform development model is phased to reduce implementation risk. The sequence is designed to move from core architecture to engines, from integrations to pilot deployment, rather than imply an already-operational city system.</p>
+                    </div>
+                    <!-- Timeline version of the phases -->
+                    <div class="blur-fade-right" style="--blur-delay:100ms">
+                        <div class="timeline-container" style="padding-left:2.5rem">
+                            <div class="timeline-line-fill"></div>
+                            <div class="timeline-item" style="--item-index:0">
+                                <div class="timeline-dot"></div>
+                                <div class="magic-card brutalist-border bg-paper p-4 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)">
+                                    <div class="magic-card-spotlight"></div>
+                                    <div class="font-mono text-[10px] font-bold uppercase tracking-widest text-brand-green mb-1">Phase 1</div>
+                                    <div class="font-display text-base font-black uppercase text-ink">Core Platform Architecture</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" style="--item-index:1">
+                                <div class="timeline-dot"></div>
+                                <div class="magic-card brutalist-border bg-paper p-4 shadow-brutal-sm" data-spotlight-color="rgba(81,168,0,0.1)">
+                                    <div class="magic-card-spotlight"></div>
+                                    <div class="font-mono text-[10px] font-bold uppercase tracking-widest text-brand-green mb-1">Phase 2</div>
+                                    <div class="font-display text-base font-black uppercase text-ink">Incentive &amp; Pricing Engines</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" style="--item-index:2">
+                                <div class="timeline-dot timeline-dot-blue"></div>
+                                <div class="magic-card brutalist-border bg-paper p-4 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)">
+                                    <div class="magic-card-spotlight"></div>
+                                    <div class="font-mono text-[10px] font-bold uppercase tracking-widest text-brand-blue mb-1">Phase 3</div>
+                                    <div class="font-display text-base font-black uppercase text-ink">Integration with External Systems</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" style="--item-index:3">
+                                <div class="timeline-dot timeline-dot-blue"></div>
+                                <div class="magic-card brutalist-border bg-paper p-4 shadow-brutal-sm" data-spotlight-color="rgba(0,82,204,0.1)">
+                                    <div class="magic-card-spotlight"></div>
+                                    <div class="font-mono text-[10px] font-bold uppercase tracking-widest text-brand-blue mb-1">Phase 4</div>
+                                    <div class="font-display text-base font-black uppercase text-ink">Pilot Deployment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mtsai-diagram-band border-b-2 border-ink bg-paper relative z-10">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div class="mtsai-diagram-frame"><div class="mtsai-diagram-canvas">
+                    <svg viewBox="0 0 920 500" width="100%" height="auto" role="img" aria-label="Phase-gated platform development roadmap" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                          .mtsai-svg-text {
+                            font-family: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+                            letter-spacing: -0.01em;
+                          }
+                          rect[fill="#FFFFFF"],
+                          rect[fill="#f7f8f5"],
+                          rect[fill="#FEE2E2"],
+                          rect[fill="rgba(0,82,204,0.08)"],
+                          rect[fill="rgba(83,170,0,0.08)"] {
+                            stroke: #000000 !important;
+                            stroke-width: 2.2px !important;
+                          }
+                          text[fill="#555555"] {
+                            fill: #000000;
+                            opacity: 0.58;
+                          }
+                          line {
+                            stroke: #888888 !important;
+                            stroke-width: 2.4px !important;
+                          }
+                          circle {
+                            stroke: #000000;
+                            stroke-width: 2px;
+                          }
+                        </style>
+                        <rect width="920" height="500" fill="#f7f8f5" />
+                        <text class="mtsai-svg-text" x="460" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#000000">Phase-Gated Platform Development Roadmap</text>
+                        <text class="mtsai-svg-text" x="460" y="64" text-anchor="middle" font-size="12" font-weight="400" fill="#555555">A disciplined progression from core platform architecture to pilot deployment.</text>
+                        <line x1="140" y1="180" x2="780" y2="180" stroke="#cccccc" stroke-width="4" />
+                        <g><rect x="100" y="160" width="40" height="40" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="120" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">1</text><g><rect x="50" y="228" width="140" height="96" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="120" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Core Platform</text><text class="mtsai-svg-text" x="120" y="284" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">multi-tenant architecture</text></g></g>
+                        <g><rect x="290" y="160" width="40" height="40" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="310" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">2</text><g><rect x="240" y="228" width="140" height="96" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="310" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Engines</text><text class="mtsai-svg-text" x="310" y="284" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">incentive and pricing logic</text></g></g>
+                        <g><rect x="480" y="160" width="40" height="40" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="500" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">3</text><g><rect x="430" y="228" width="140" height="96" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="500" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Integrations</text><text class="mtsai-svg-text" x="500" y="284" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">payments, ANPR, partner systems</text></g></g>
+                        <g><rect x="670" y="160" width="40" height="40" rx="0" fill="#53AA00" stroke="#000000" stroke-width="2" />
+          <text class="mtsai-svg-text" x="690" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">4</text><g><rect x="620" y="228" width="140" height="96" rx="0" fill="#FFFFFF" stroke="#0052CC" stroke-width="1.5" /><text class="mtsai-svg-text" x="690" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="#0052CC">Pilot Deployment</text><text class="mtsai-svg-text" x="690" y="284" text-anchor="middle" font-size="10" font-weight="400" fill="#000000">bounded city evaluation</text></g></g>
+                        <g><rect x="110" y="385" width="700" height="54" rx="0" fill="#f7f8f5" stroke="#f7f8f5" stroke-width="1" /><text class="mtsai-svg-text" x="460" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">Implementation Principle</text><text class="mtsai-svg-text" x="460" y="430" text-anchor="middle" font-size="11" font-weight="400" fill="#000000">Each phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.</text></g>
+                    </svg>
+                </div></div>
+                <div class="mt-10 flex flex-wrap gap-4 justify-center pb-6">
+                    <a href="technology_platform.html" class="sh-btn btn-10 btn-primary-action">Explore the Platform</a>
+                    <a href="Government.html" class="sh-btn btn-2 btn-hard-shadow">Government Solutions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-paper py-16 lg:py-24 border-t-2 border-paper relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20">
+                <div>
+                    <h2 class="font-display text-4xl font-black uppercase tracking-tighter mb-8">MTSAi</h2>
+                    <p class="font-display text-lg opacity-60 leading-relaxed max-w-md mb-8">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+                    <p class="text-xs opacity-40 leading-relaxed max-w-md">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+                    <div class="space-y-6">
+                        <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Explore</h5>
+                        <nav class="flex flex-col gap-4 font-mono text-[10px] font-bold uppercase tracking-widest">
+                            <a class="hover:text-brand-green transition-colors" href="index.html">Home</a>
+                            <a class="hover:text-brand-green transition-colors" href="Strategic_Partners.html">Strategic Partners</a>
+                            <a class="hover:text-brand-green transition-colors" href="Government.html">Government</a>
+                            <a class="hover:text-brand-green transition-colors" href="about.html">About</a>
+                            <a class="hover:text-brand-green transition-colors" href="solutions.html">Solutions</a>
+                        </nav>
+                    </div>
+                    <div class="space-y-6">
+                        <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Trust</h5>
+                        <nav class="flex flex-col gap-4 font-mono text-[10px] font-bold uppercase tracking-widest">
+                            <a class="hover:text-brand-blue transition-colors" href="trust.html">Trust Center</a>
+                            <a class="hover:text-brand-blue transition-colors" href="public_integrity.html">Public Integrity</a>
+                            <a class="hover:text-brand-blue transition-colors" href="trust_privacy.html">Privacy</a>
+                            <a class="hover:text-alert-red transition-colors" href="trust_security.html">Security</a>
+                            <a class="hover:text-brand-blue transition-colors" href="trust_exit.html">Vendor Exit</a>
+                            <a class="hover:text-brand-blue transition-colors" href="help.html">Help</a>
+                            <a class="hover:text-brand-blue transition-colors" href="feedback.html">Feedback</a>
+                        </nav>
+                    </div>
+                    <div class="space-y-6">
+                        <h5 class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/40">Resources</h5>
+                        <nav class="flex flex-col gap-4 font-mono text-[10px] font-bold uppercase tracking-widest">
+                            <a class="hover:text-brand-green transition-colors" href="resources.html">Procurement Pack</a>
+                            <a class="hover:text-brand-green transition-colors" href="resources.html">Implementation Playbook</a>
+                            <a class="hover:text-brand-green transition-colors" href="contact.html">Contact Us</a>
+                            <a class="hover:text-brand-green transition-colors" href="sitemap.html">Sitemap</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12 p-6 brutalist-border border-white/10 font-mono text-[10px] uppercase tracking-widest leading-relaxed text-white/40">
+                <strong class="text-white/60">Evaluation Environment:</strong> Capabilities shown reflect current design and documented controls. Final scope and acceptance criteria are defined per SOW/SLA and verification. MTSAi is in pilot-ready phase as of January 2026.
+            </div>
+
+            <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                <p>© 2026 MTSAi Infrastructure. Advanced mobility for civic excellence.</p>
+                <div class="flex flex-wrap gap-8 justify-center">
+                    <a class="hover:text-white transition-colors" href="terms.html">Terms of Service</a>
+                    <a class="hover:text-white transition-colors" href="privacy_policy.html">Privacy Policy</a>
+                    <a class="hover:text-white transition-colors" href="hyperlinking_policy.html">Hyperlinking Policy</a>
+                    <a class="hover:text-white transition-colors" href="copyright_policy.html">Copyright Policy</a>
+                </div>
+                <div class="flex gap-8">
+                    <span>Last Updated: January 22, 2026</span>
+                    <span>Version: v1.0 (Review Ready)</span>
+                </div>
+            </div>
         </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <div class="footer-col">
-            <h3 class="footer-col-heading">Platform</h3>
-            <a href="technology.html">Technology Platform</a>
-            <a href="#">IUDM Model</a>
-            <a href="#">Deployment Roadmap</a>
-            <a href="#">India Advantage</a>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-heading">Governance</h3>
-            <a href="#">Trust Centre</a>
-            <a href="#">Governance</a>
-            <a href="#">Data Transparency</a>
-            <a href="#">Privacy Policy</a>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-heading">Company</h3>
-            <a href="about.html">About</a>
-            <a href="careers.html">Careers</a>
-            <a href="strategic-partners.html">Strategic Partners</a>
-            <a href="contact.html">Contact</a>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-heading">Resources</h3>
-            <a href="#">Procurement Pack</a>
-            <a href="#">Implementation Playbook</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="#">Sitemap</a>
-          </div>
-        </nav>
-      </div>
+    </footer>
+    <div id="error-toast" class="hidden state-alert animate-slide fixed bottom-4 right-4 z-[1200] p-3 font-mono text-xs font-bold cursor-pointer">ALERT: ACTION REQUIRED</div>
 
-      <div class="footer-divider"></div>
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        (function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+            const mobileTrustToggle = document.getElementById('mobile-trust-toggle');
+            const mobileTrustSubmenu = document.getElementById('mobile-trust-submenu');
+            const mobileTrustIcon = document.getElementById('mobile-trust-icon');
 
-      <p class="footer-disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+            // Open mobile menu
+            function openMobileMenu() {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenuPanel.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            }
 
-      <div class="footer-bottom">
-        <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
-        <nav aria-label="Legal links">
-          <a href="#">Terms</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Hyperlinking Policy</a>
-          <a href="#">Copyright Policy</a>
-        </nav>
-        <span class="footer-mono-tag">v1.0 · Jan 2026</span>
-      </div>
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileMenuPanel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            // Toggle Trust Center submenu
+            function toggleTrustSubmenu() {
+                mobileTrustSubmenu.classList.toggle('hidden');
+                mobileTrustSubmenu.classList.toggle('flex');
+                mobileTrustIcon.style.transform = mobileTrustSubmenu.classList.contains('hidden')
+                    ? 'rotate(0deg)'
+                    : 'rotate(180deg)';
+            }
+
+            // Event listeners
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', openMobileMenu);
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileMenuBackdrop) {
+                mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileTrustToggle) {
+                mobileTrustToggle.addEventListener('click', toggleTrustSubmenu);
+            }
+
+            // Close menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenu();
+                }
+            });
+        })();
+    </script>
+    <!-- REDESIGN: scroll progress and scroll reveal -->
+    <script>
+        (function() {
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* Scroll progress bar */
+            var progressEl = document.getElementById('red-scroll-progress');
+            if (progressEl && !prefersReducedMotion) {
+                function updateProgress() {
+                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    var scrollHeight = (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 1;
+                    var pct = Math.min(scrollTop / scrollHeight, 1);
+                    progressEl.style.transform = 'scaleX(' + pct + ')';
+                }
+                window.addEventListener('scroll', updateProgress, { passive: true });
+                updateProgress();
+            }
+
+            /* Scroll reveal: add .revealed when .reveal-group enters viewport */
+            var revealGroups = document.querySelectorAll('.reveal-group');
+            if (revealGroups.length && !prefersReducedMotion) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
+                revealGroups.forEach(function(el) { observer.observe(el); });
+            } else if (revealGroups.length) {
+                revealGroups.forEach(function(el) { el.classList.add('revealed'); });
+            }
+        })();
+    </script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <!-- Scrolling Marquee Footer -->
+    <div class="h-12 border-t-2 border-ink bg-ink text-paper flex items-center overflow-hidden whitespace-nowrap relative z-50 mt-auto">
+        <div class="animate-marquee flex gap-8 items-center font-mono text-sm font-bold tracking-widest uppercase px-4">
+            <span class="footer-marquee-item">System Ready</span>
+            <span class="footer-marquee-item">MTSAi Protocol</span>
+            <span class="footer-marquee-item">Awaiting Input</span>
+            <span class="footer-marquee-item">Institutional AI</span>
+            <span class="footer-marquee-item">Urban Mobility</span>
+            <span class="footer-marquee-item">Civic Governance</span>
+            <span class="footer-marquee-item">System Ready</span>
+            <span class="footer-marquee-item">MTSAi Protocol</span>
+            <span class="footer-marquee-item">Awaiting Input</span>
+            <span class="footer-marquee-item">Institutional AI</span>
+            <span class="footer-marquee-item">Urban Mobility</span>
+            <span class="footer-marquee-item">Civic Governance</span>
+        </div>
+        <div class="animate-marquee flex gap-8 items-center font-mono text-sm font-bold tracking-widest uppercase px-4 absolute left-full top-0 h-full">
+            <span class="footer-marquee-item">System Ready</span>
+            <span class="footer-marquee-item">MTSAi Protocol</span>
+            <span class="footer-marquee-item">Awaiting Input</span>
+            <span class="footer-marquee-item">Institutional AI</span>
+            <span class="footer-marquee-item">Urban Mobility</span>
+            <span class="footer-marquee-item">Civic Governance</span>
+            <span class="footer-marquee-item">System Ready</span>
+            <span class="footer-marquee-item">MTSAi Protocol</span>
+            <span class="footer-marquee-item">Awaiting Input</span>
+            <span class="footer-marquee-item">Institutional AI</span>
+            <span class="footer-marquee-item">Urban Mobility</span>
+            <span class="footer-marquee-item">Civic Governance</span>
+        </div>
     </div>
-  </footer>
-
-  <script>
-    const scrollBar = document.getElementById('scroll-progress');
-    const siteNav  = document.getElementById('site-nav');
-
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
-      siteNav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // Scroll reveals
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          e.target.querySelectorAll('.bar-animate').forEach(b => b.classList.add('bar-ready'));
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    // Dropdown
-    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
-      const btn = item.querySelector('button');
-      const dd  = item.querySelector('.nav-dropdown');
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !open);
-        dd.classList.toggle('open');
-      });
-      document.addEventListener('click', e => {
-        if (!item.contains(e.target)) {
-          btn.setAttribute('aria-expanded', 'false');
-          dd.classList.remove('open');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
