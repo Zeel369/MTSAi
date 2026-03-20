@@ -1,0 +1,132 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Pagination Component
+   ============================================================ */
+
+.mts-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+}
+
+/* Individual page button */
+.mts-pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: var(--type-body-01);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: var(--motion-hover);
+  text-decoration: none;
+}
+
+.mts-pagination__btn:hover {
+  background: var(--layer-02);
+  border-color: var(--border-subtle);
+}
+
+.mts-pagination__btn:focus-visible {
+  outline: 3px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+/* Active / current page */
+.mts-pagination__btn--active {
+  background: var(--interactive);
+  color: var(--white, #FFFFFF);
+  border-color: var(--interactive);
+  font-weight: var(--weight-semibold);
+}
+
+.mts-pagination__btn--active:hover {
+  background: var(--interactive-hover);
+  border-color: var(--interactive-hover);
+}
+
+/* Disabled */
+.mts-pagination__btn--disabled,
+.mts-pagination__btn[disabled] {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Prev / Next arrows */
+.mts-pagination__prev,
+.mts-pagination__next {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--layer-01);
+  color: var(--icon-primary);
+  cursor: pointer;
+  transition: var(--motion-hover);
+}
+
+.mts-pagination__prev:hover,
+.mts-pagination__next:hover {
+  background: var(--layer-02);
+  border-color: var(--border-strong);
+}
+
+/* Ellipsis */
+.mts-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--text-secondary);
+  font-size: var(--type-body-01);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Page info (e.g. "Page 3 of 12") */
+.mts-pagination__info {
+  font-size: var(--type-body-01);
+  color: var(--text-secondary);
+  margin-left: var(--space-3);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Compact variant */
+.mts-pagination--compact .mts-pagination__btn {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--type-label-01);
+}
+
+/* Items per page selector */
+.mts-pagination__per-page {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
+  font-size: var(--type-body-01);
+  color: var(--text-secondary);
+}
+
+.mts-pagination__per-page select {
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--type-body-01);
+  font-family: var(--font-body);
+  cursor: pointer;
+}

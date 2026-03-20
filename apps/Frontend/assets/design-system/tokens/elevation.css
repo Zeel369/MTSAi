@@ -1,0 +1,26 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Elevation & Shadow Tokens
+   ============================================================ */
+
+:root {
+  /* --- Shadows (Carbon elevation model) --- */
+  --shadow-none:  none;
+  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm:    0 2px 4px rgba(0, 0, 0, 0.45);
+  --shadow-md:    0 4px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg:    0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-xl:    0 16px 32px rgba(0, 0, 0, 0.55);
+  --shadow-2xl:   0 24px 48px rgba(0, 0, 0, 0.6);
+
+  /* --- Brand-tinted shadows --- */
+  --shadow-blue:    0 4px 24px rgba(15, 98, 254, 0.25);
+  --shadow-green:   0 4px 24px rgba(83, 170, 0, 0.2);
+  --shadow-saffron: 0 4px 24px rgba(255, 153, 51, 0.3);
+  --shadow-red:     0 4px 24px rgba(218, 30, 40, 0.25);
+
+  /* --- Focus Ring --- */
+  --focus-ring: 0 0 0 3px var(--blue-60);
+  --focus-ring-offset: 0 0 0 5px var(--layer-bg), 0 0 0 8px var(--blue-60);
+  --focus-ring-brand: 0 0 0 3px var(--brand-primary);
+  --focus-ring-saffron: 0 0 0 3px var(--saffron-50);
+}

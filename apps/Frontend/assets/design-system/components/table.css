@@ -1,0 +1,46 @@
+/* MTSAi × IBM Carbon — Data Table */
+
+.mts-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.mts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--type-body-01);
+}
+.mts-table thead {
+  background-color: var(--layer-02);
+  border-bottom: 2px solid var(--border-subtle);
+}
+.mts-table th {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  font-size: var(--type-label-01);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.mts-table th.sortable { cursor: pointer; user-select: none; }
+.mts-table th.sortable:hover { color: var(--text-primary); }
+.mts-table td {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+.mts-table tbody tr:last-child td { border-bottom: none; }
+.mts-table tbody tr:hover { background-color: var(--layer-01); }
+.mts-table tbody tr.selected { background-color: var(--blue-alpha-08); }
+
+/* Table variants */
+.mts-table--zebra tbody tr:nth-child(even) { background-color: var(--layer-01); }
+.mts-table--compact th, .mts-table--compact td { padding: var(--space-3) var(--space-4); }
+
+/* Cell types */
+.mts-table .cell-mono  { font-family: var(--font-mono); font-size: 0.85em; color: var(--green-30); }
+.mts-table .cell-right { text-align: right; }
+.mts-table .cell-center { text-align: center; }

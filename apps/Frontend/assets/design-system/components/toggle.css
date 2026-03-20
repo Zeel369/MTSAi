@@ -1,0 +1,55 @@
+/* MTSAi × IBM Carbon — Toggle Switch */
+
+.mts-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  min-height: var(--size-touch-target);
+}
+.mts-toggle__track {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: var(--layer-03);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  transition: background-color var(--duration-moderate-01) var(--ease-standard),
+              border-color var(--duration-moderate-01) var(--ease-standard);
+  flex-shrink: 0;
+}
+.mts-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--gray-40);
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-moderate-01) var(--ease-expressive),
+              background-color var(--duration-moderate-01) var(--ease-standard);
+}
+.mts-toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.mts-toggle__input:checked ~ .mts-toggle__track {
+  background-color: var(--interactive);
+  border-color: var(--interactive);
+}
+.mts-toggle__input:checked ~ .mts-toggle__track .mts-toggle__thumb {
+  transform: translateX(24px);
+  background-color: var(--white);
+}
+.mts-toggle__input:focus-visible ~ .mts-toggle__track {
+  outline: 3px solid var(--interactive);
+  outline-offset: 2px;
+}
+/* Brand green variant */
+.mts-toggle--brand .mts-toggle__input:checked ~ .mts-toggle__track {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.mts-toggle__label { font-size: var(--type-body-01); color: var(--text-primary); }

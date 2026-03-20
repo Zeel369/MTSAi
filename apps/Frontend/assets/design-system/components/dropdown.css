@@ -1,0 +1,41 @@
+/* MTSAi × IBM Carbon — Dropdown Menu */
+
+.mts-dropdown { position: relative; display: inline-block; }
+.mts-dropdown__menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  min-width: 200px;
+  background: var(--layer-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  z-index: 6000;
+  overflow: hidden;
+  animation: scaleIn var(--duration-moderate-01) var(--ease-entrance) both;
+  transform-origin: top left;
+}
+.mts-dropdown__menu--right { left: auto; right: 0; transform-origin: top right; }
+.mts-dropdown__menu--up    { top: auto; bottom: calc(100% + var(--space-2)); }
+
+.mts-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--type-body-01);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast-02) var(--ease-standard);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+}
+.mts-dropdown__item:hover { background: var(--layer-03); }
+.mts-dropdown__item:focus-visible { background: var(--layer-03); outline: 2px solid var(--interactive); outline-offset: -2px; }
+.mts-dropdown__item--danger { color: var(--red-40); }
+.mts-dropdown__item--danger:hover { background: var(--red-alpha-10); }
+.mts-dropdown__separator { height: 1px; background: var(--border-subtle); margin: var(--space-2) 0; }
+.mts-dropdown__label { padding: var(--space-2) var(--space-4); font-size: var(--type-label-01); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--text-secondary); }

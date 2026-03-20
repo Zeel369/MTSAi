@@ -1,0 +1,221 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Data Grid (Advanced Table)
+   Supports: sorting, filtering, selection, sticky header
+   ============================================================ */
+
+.mts-data-grid {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--type-body-01);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Toolbar */
+.mts-data-grid__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: var(--layer-01);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.mts-data-grid__title {
+  font-family: var(--font-display);
+  font-size: var(--type-heading-02);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.mts-data-grid__toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Search input in toolbar */
+.mts-data-grid__search {
+  display: flex;
+  align-items: center;
+  background: var(--layer-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+  height: 40px;
+}
+
+.mts-data-grid__search input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--type-body-01);
+  font-family: var(--font-body);
+  outline: none;
+  width: 200px;
+}
+
+.mts-data-grid__search input::placeholder { color: var(--text-placeholder); }
+
+/* Table wrapper (scrollable) */
+.mts-data-grid__wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table */
+.mts-data-grid__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+.mts-data-grid__head {
+  background: var(--layer-01);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.mts-data-grid__th {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-size: var(--type-label-01);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border-subtle);
+  user-select: none;
+}
+
+/* Sortable column header */
+.mts-data-grid__th--sortable {
+  cursor: pointer;
+}
+
+.mts-data-grid__th--sortable:hover {
+  color: var(--text-primary);
+  background: var(--layer-02);
+}
+
+.mts-data-grid__th--sorted {
+  color: var(--interactive);
+}
+
+.mts-data-grid__sort-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+  opacity: 0.4;
+}
+
+.mts-data-grid__th--sorted .mts-data-grid__sort-icon { opacity: 1; }
+
+/* Rows */
+.mts-data-grid__row {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--motion-hover);
+}
+
+.mts-data-grid__row:last-child { border-bottom: none; }
+
+.mts-data-grid__row:hover {
+  background: var(--layer-01);
+}
+
+/* Selected row */
+.mts-data-grid__row--selected {
+  background: var(--blue-alpha-08);
+  border-bottom-color: var(--blue-alpha-15);
+}
+
+/* Cells */
+.mts-data-grid__td {
+  padding: var(--space-4) var(--space-5);
+  vertical-align: middle;
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.mts-data-grid__td:last-child { border-right: none; }
+
+/* Checkbox column */
+.mts-data-grid__th--check,
+.mts-data-grid__td--check {
+  width: 48px;
+  padding: var(--space-4);
+  text-align: center;
+  border-right: 1px solid var(--border-subtle);
+}
+
+/* Numeric cell */
+.mts-data-grid__td--numeric {
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+/* Status cell */
+.mts-data-grid__td--status { white-space: nowrap; }
+
+/* Actions cell */
+.mts-data-grid__td--actions {
+  white-space: nowrap;
+  width: 1%;
+}
+
+.mts-data-grid__row-actions {
+  display: flex;
+  gap: var(--space-2);
+  opacity: 0;
+  transition: opacity var(--motion-hover);
+}
+
+.mts-data-grid__row:hover .mts-data-grid__row-actions { opacity: 1; }
+
+/* Footer */
+.mts-data-grid__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: var(--layer-01);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mts-data-grid__count {
+  font-size: var(--type-body-01);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+/* Loading state */
+.mts-data-grid--loading .mts-data-grid__wrapper {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Empty state */
+.mts-data-grid__empty {
+  padding: var(--space-10);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Column pin / freeze */
+.mts-data-grid__td--pinned,
+.mts-data-grid__th--pinned {
+  position: sticky;
+  left: 0;
+  background: inherit;
+  z-index: 5;
+  box-shadow: 2px 0 4px var(--black-alpha-20, rgba(0,0,0,0.2));
+}

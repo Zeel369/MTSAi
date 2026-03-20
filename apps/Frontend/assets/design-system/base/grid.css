@@ -1,0 +1,63 @@
+/* ============================================================
+   MTSAi × IBM Carbon — 16-Column Grid System
+   Breakpoints: sm 320, md 672, lg 1056, xl 1312, 2xl 1584
+   ============================================================ */
+
+:root {
+  --breakpoint-sm:  320px;
+  --breakpoint-md:  672px;
+  --breakpoint-lg:  1056px;
+  --breakpoint-xl:  1312px;
+  --breakpoint-2xl: 1584px;
+}
+
+.mts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  padding: 0 var(--space-5);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+}
+
+@media (min-width: 672px) {
+  .mts-grid {
+    grid-template-columns: repeat(8, 1fr);
+    padding: 0 var(--space-6);
+  }
+}
+
+@media (min-width: 1056px) {
+  .mts-grid {
+    grid-template-columns: repeat(16, 1fr);
+    padding: 0 var(--space-7);
+  }
+}
+
+/* Span helpers */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-6  { grid-column: span 6; }
+.col-8  { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+.col-16 { grid-column: span 16; }
+
+@media (max-width: 671px) {
+  [class*="col-"] {
+    grid-column: span 4;
+  }
+}
+
+/* Container utility */
+.mts-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Section spacing */
+.section    { padding: var(--space-10) 0; }
+.section-sm { padding: var(--space-7) 0; }
+.section-lg { padding: var(--space-12) 0; }

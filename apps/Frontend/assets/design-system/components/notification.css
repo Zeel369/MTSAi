@@ -1,0 +1,73 @@
+/* MTSAi × IBM Carbon — Notifications, Alerts, Toasts */
+
+.mts-notification {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-left-width: 4px;
+  font-size: var(--type-body-01);
+  line-height: var(--lh-relaxed);
+  position: relative;
+}
+
+.mts-notification--error   { background: var(--notif-error-bg);   border-color: var(--notif-error-border);   color: var(--red-30); }
+.mts-notification--warning { background: var(--notif-warning-bg); border-color: var(--notif-warning-border); color: var(--yellow-20); }
+.mts-notification--success { background: var(--notif-success-bg); border-color: var(--notif-success-border); color: var(--green-20); }
+.mts-notification--info    { background: var(--notif-info-bg);    border-color: var(--notif-info-border);    color: var(--cyan-20); }
+
+.mts-notification__icon { flex-shrink: 0; margin-top: 2px; }
+.mts-notification__body { flex: 1; }
+.mts-notification__title { font-weight: var(--weight-semibold); margin-bottom: var(--space-1); color: var(--text-primary); }
+.mts-notification__text { color: var(--text-secondary); }
+.mts-notification__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-color);
+}
+.mts-notification__close:hover { color: var(--text-primary); background: var(--layer-02); }
+
+/* Inline callout (no icon) */
+.mts-callout {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  font-size: var(--type-body-01);
+}
+.mts-callout--blue    { background: var(--blue-alpha-08); border-color: var(--interactive); color: var(--blue-20); }
+.mts-callout--green   { background: var(--brand-subtle); border-color: var(--brand-primary); color: var(--green-20); }
+.mts-callout--saffron { background: var(--saffron-alpha-08); border-color: var(--cta-primary); color: var(--saffron-30); }
+
+/* Toast */
+.mts-toast {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 400px;
+}
+.mts-toast__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--layer-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  animation: slideInRight var(--duration-moderate-02) var(--ease-entrance) both;
+}

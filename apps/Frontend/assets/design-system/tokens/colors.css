@@ -1,0 +1,88 @@
+/* ============================================================
+   MTSAi Brand Color Palette
+   Trust Blue:  #0052CC  (primary interactive)
+   Trust Green: #53AA00  (brand / secondary)
+   Saffron:     #FF9933  (CTA accent — max 1 per view)
+   Alert Red:   #D82B2B  (danger / error)
+   ============================================================ */
+
+:root {
+  /* === BLUE (Primary Interactive — MTSAi Trust Blue) === */
+  --blue-100: #00112E;
+  --blue-90:  #001A4D;
+  --blue-80:  #002B80;
+  --blue-70:  #0040AA;  /* dark interactive — hover states */
+  --blue-60:  #0052CC;  /* MTSAi Trust Blue — primary brand */
+  --blue-50:  #1A6ADB;  /* medium interactive */
+  --blue-40:  #4D8FE8;  /* lighter interactive */
+  --blue-30:  #80B3F2;
+  --blue-20:  #B3D1F9;
+  --blue-10:  #E6F0FD;
+
+  /* === GREEN (Brand Secondary / Trust) === */
+  --green-90: #071908;
+  --green-80: #022D0D;
+  --green-70: #0E6027;
+  --green-60: #198038;
+  --green-50: #53AA00;   /* MTSAi Trust Green */
+  --green-40: #42BE65;
+  --green-30: #6FDC8C;
+  --green-20: #A7F0BA;
+  --green-10: #DEFBE6;
+
+  /* === SAFFRON (Accent — VERY SPARSE) === */
+  --saffron-100: #3D1500;
+  --saffron-90:  #5E1F00;
+  --saffron-80:  #8A3800;
+  --saffron-70:  #BA4E00;
+  --saffron-60:  #E36A00;
+  --saffron-50:  #FF9933;   /* Indian flag saffron — primary CTA */
+  --saffron-40:  #FFB366;
+  --saffron-30:  #FFCC99;
+  --saffron-20:  #FFE5CC;
+  --saffron-10:  #FFF5EB;
+
+  /* === RED (Alert — MTSAi Alert Red) === */
+  --red-100: #2D0709;
+  --red-90:  #520408;
+  --red-80:  #750E13;
+  --red-70:  #A82020;
+  --red-60:  #D82B2B;  /* MTSAi Alert Red */
+  --red-50:  #E85555;
+  --red-40:  #F28080;
+  --red-30:  #F8ADAD;
+  --red-20:  #FBCFCF;
+  --red-10:  #FEF0F0;
+
+  /* === GRAY (Neutral) === */
+  --gray-100: #161616;
+  --gray-90:  #262626;
+  --gray-80:  #393939;
+  --gray-70:  #525252;
+  --gray-60:  #6F6F6F;
+  --gray-50:  #8D8D8D;
+  --gray-40:  #A8A8A8;
+  --gray-30:  #C6C6C6;
+  --gray-20:  #E0E0E0;
+  --gray-10:  #F4F4F4;
+  --white:    #FFFFFF;
+  --black:    #000000;
+
+  /* === CYAN (Informational) === */
+  --cyan-70: #00539A;
+  --cyan-60: #0072C3;
+  --cyan-50: #1192E8;
+  --cyan-40: #33B1FF;
+  --cyan-30: #82CFFF;
+  --cyan-20: #BAE6FF;
+  --cyan-10: #E5F6FF;
+
+  /* === YELLOW (Warning) === */
+  --yellow-70: #684E00;
+  --yellow-60: #8E6A00;
+  --yellow-50: #B28600;
+  --yellow-40: #D4A017;
+  --yellow-30: #F1C21B;
+  --yellow-20: #FDDC69;
+  --yellow-10: #FCF4D6;
+}

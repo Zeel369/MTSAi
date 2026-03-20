@@ -1,0 +1,293 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Motion System v2
+
+   Philosophy: Functional motion only. Every animation has purpose.
+   Sources: Carbon productive motion + Linear, Stripe, Vercel,
+            Framer Motion, Apple — all filtered through the
+            GOV.UK constraint: no decoration for decoration's sake.
+   ============================================================ */
+
+:root {
+  /* ─── DURATION SCALE ────────────────────────────────────── */
+  /* Micro — imperceptible state change */
+  --duration-instant:      0ms;
+  --duration-micro:        50ms;    /* icon color swap, dot pulse */
+
+  /* Fast — hover, focus, chip toggle */
+  --duration-fast-01:      70ms;    /* Carbon fast-01 */
+  --duration-fast-02:     110ms;    /* Carbon fast-02 */
+
+  /* Moderate — expand, reveal, slide */
+  --duration-moderate-01: 150ms;   /* Carbon moderate-01 */
+  --duration-moderate-02: 240ms;   /* Carbon moderate-02 */
+  --duration-moderate-03: 320ms;   /* Extended moderate */
+
+  /* Slow — page-level, hero, modal */
+  --duration-slow-01:     400ms;   /* Carbon slow-01 */
+  --duration-slow-02:     700ms;   /* Carbon slow-02 */
+  --duration-slow-03:    1000ms;   /* Long reveal sequences */
+
+  /* Spring — physics-based overshoot */
+  --duration-spring-sm:   350ms;   /* Small spring (dialog) */
+  --duration-spring-md:   500ms;   /* Medium spring (card, panel) */
+  --duration-spring-lg:   700ms;   /* Large spring (page hero) */
+
+  /* ─── EASING CURVES ─────────────────────────────────────── */
+  /* Carbon standard */
+  --ease-standard:    cubic-bezier(0.2, 0, 0.38, 0.9);
+  --ease-entrance:    cubic-bezier(0, 0, 0.38, 0.9);
+  --ease-exit:        cubic-bezier(0.2, 0, 1, 0.9);
+  --ease-expressive:  cubic-bezier(0.4, 0.14, 0.3, 1);
+  --ease-linear:      linear;
+
+  /* Spring / Overshoot (Framer Motion style) */
+  --ease-spring:         cubic-bezier(0.34, 1.56, 0.64, 1);    /* overshoot ~6% */
+  --ease-spring-gentle:  cubic-bezier(0.25, 1.25, 0.5, 1);     /* subtle overshoot */
+  --ease-spring-bouncy:  cubic-bezier(0.34, 1.8, 0.64, 1);     /* noticeable bounce */
+
+  /* Smooth / Decelerate (Apple style) */
+  --ease-smooth:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate:     cubic-bezier(0, 0, 0.2, 1);           /* Material decel */
+  --ease-accelerate:     cubic-bezier(0.4, 0, 1, 1);           /* Material accel */
+
+  /* Ease variants */
+  --ease-in-out-soft: cubic-bezier(0.45, 0, 0.55, 1);          /* smooth in-out */
+  --ease-out-back:    cubic-bezier(0.175, 0.885, 0.32, 1.275);  /* slight snap-back */
+
+  /* ─── SHORTHAND TRANSITIONS ────────────────────────────── */
+  --transition-color:     color var(--duration-fast-02) var(--ease-standard),
+                          background-color var(--duration-fast-02) var(--ease-standard),
+                          border-color var(--duration-fast-02) var(--ease-standard);
+  --transition-shadow:    box-shadow var(--duration-moderate-01) var(--ease-smooth);
+  --transition-transform: transform var(--duration-moderate-01) var(--ease-spring-gentle);
+  --transition-opacity:   opacity var(--duration-moderate-01) var(--ease-entrance);
+  --transition-all:       all var(--duration-fast-02) var(--ease-standard);
+  --transition-card:      transform var(--duration-moderate-01) var(--ease-smooth),
+                          box-shadow var(--duration-moderate-01) var(--ease-smooth);
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-micro:        0ms;
+    --duration-fast-01:      0ms;
+    --duration-fast-02:      0ms;
+    --duration-moderate-01:  0ms;
+    --duration-moderate-02:  0ms;
+    --duration-moderate-03:  0ms;
+    --duration-slow-01:      0ms;
+    --duration-slow-02:      0ms;
+    --duration-slow-03:      0ms;
+    --duration-spring-sm:    0ms;
+    --duration-spring-md:    0ms;
+    --duration-spring-lg:    0ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAME LIBRARY
+   ════════════════════════════════════════════════════════════ */
+
+/* ─── ENTRANCE: Fade variants ────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── ENTRANCE: Scale variants (Vercel / Framer style) ───── */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes springIn {
+  0%   { opacity: 0; transform: scale(0.92) translateY(8px); }
+  60%  { opacity: 1; transform: scale(1.02) translateY(-2px); }
+  80%  { transform: scale(0.99) translateY(1px); }
+  100% { transform: scale(1)    translateY(0); }
+}
+@keyframes springInSmall {
+  0%   { opacity: 0; transform: scale(0.96); }
+  65%  { opacity: 1; transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* ─── ENTRANCE: Clip-path reveals (Linear / Stripe style) ── */
+@keyframes clipRevealUp {
+  from { clip-path: inset(100% 0 0 0); opacity: 0.6; }
+  to   { clip-path: inset(0% 0 0 0);   opacity: 1; }
+}
+@keyframes clipRevealDown {
+  from { clip-path: inset(0 0 100% 0); opacity: 0.6; }
+  to   { clip-path: inset(0 0 0% 0);   opacity: 1; }
+}
+@keyframes clipRevealLeft {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* ─── ENTRANCE: Blur reveal (Apple style) ────────────────── */
+@keyframes blurReveal {
+  from { opacity: 0; filter: blur(6px);  transform: translateY(6px); }
+  to   { opacity: 1; filter: blur(0px);  transform: translateY(0); }
+}
+@keyframes blurRevealSubtle {
+  from { opacity: 0; filter: blur(3px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* ─── SLIDE (Toast, Notification, Drawer) ────────────────── */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+
+/* ─── STATUS / PULSE indicators ─────────────────────────── */
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(83, 170, 0, 0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(83, 170, 0, 0); }
+}
+@keyframes saffronGlow {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(255, 153, 51, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(255, 153, 51, 0); }
+}
+@keyframes blueGlow {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(15, 98, 254, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(15, 98, 254, 0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+@keyframes dotBlink {
+  0%, 80%, 100% { transform: scale(1);   opacity: 1; }
+  40%           { transform: scale(0.6); opacity: 0.5; }
+}
+
+/* ─── LOADING states ─────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  from { background-position: -400% 0; }
+  to   { background-position: 400% 0; }
+}
+@keyframes skeletonWave {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes progressBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ─── GRADIENT FLOW (Stripe CTA style) ───────────────────── */
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* ─── TEXT effects ───────────────────────────────────────── */
+@keyframes textShimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes cursorBlink {
+  0%, 100% { border-color: transparent; }
+  50%      { border-color: currentColor; }
+}
+
+/* ─── UI-SPECIFIC ────────────────────────────────────────── */
+@keyframes underlineExpand {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.35; }
+  to   { transform: scale(4); opacity: 0; }
+}
+@keyframes checkDraw {
+  from { stroke-dashoffset: 24; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 1; }
+}
+@keyframes successCircle {
+  from { stroke-dashoffset: 157; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes counterUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes flipIn {
+  0%   { transform: rotateX(-90deg); opacity: 0; transform-origin: bottom; }
+  100% { transform: rotateX(0deg);   opacity: 1; }
+}
+@keyframes accordionOpen {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes focusRingExpand {
+  0%   { outline-offset: 1px; outline-width: 2px; }
+  100% { outline-offset: 3px; outline-width: 3px; }
+}
+@keyframes modalBackdrop {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(4px); }
+}

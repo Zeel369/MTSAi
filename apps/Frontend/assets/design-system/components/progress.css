@@ -1,0 +1,83 @@
+/* MTSAi × IBM Carbon — Progress, Loading, Steps */
+
+/* Progress Bar */
+.mts-progress { display: flex; flex-direction: column; gap: var(--space-2); }
+.mts-progress__track {
+  height: 6px;
+  background: var(--layer-02);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.mts-progress__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--interactive);
+  transition: width var(--duration-slow-01) var(--ease-standard);
+}
+.mts-progress__fill--green   { background: var(--brand-primary); }
+.mts-progress__fill--saffron { background: var(--cta-primary); }
+.mts-progress__fill--red     { background: var(--red-60); }
+
+.mts-progress__header { display: flex; justify-content: space-between; align-items: center; }
+.mts-progress__label  { font-size: var(--type-label-01); color: var(--text-secondary); }
+.mts-progress__value  { font-size: var(--type-label-01); font-family: var(--font-mono); color: var(--text-primary); }
+
+/* Thin scroll-style */
+.mts-progress--thin .mts-progress__track { height: 3px; }
+
+/* Loading Spinner */
+.mts-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--interactive);
+  border-radius: var(--radius-full);
+  animation: spin 0.7s linear infinite;
+}
+.mts-spinner--sm { width: 16px; height: 16px; border-width: 2px; }
+.mts-spinner--lg { width: 40px; height: 40px; border-width: 4px; }
+.mts-spinner--green { border-top-color: var(--brand-primary); }
+.mts-spinner--saffron { border-top-color: var(--cta-primary); }
+
+/* Step Indicator */
+.mts-steps { display: flex; gap: 0; position: relative; }
+.mts-steps::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-subtle);
+  z-index: 0;
+}
+.mts-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.mts-step__indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--layer-02);
+  border: 2px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--type-label-02);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  transition: var(--transition-color);
+}
+.mts-step--complete .mts-step__indicator { background: var(--brand-primary); border-color: var(--brand-primary); color: var(--white); }
+.mts-step--active .mts-step__indicator   { background: var(--interactive); border-color: var(--interactive); color: var(--white); }
+.mts-step__label { font-size: var(--type-label-01); color: var(--text-secondary); }
+.mts-step--active .mts-step__label { color: var(--text-primary); font-weight: var(--weight-semibold); }

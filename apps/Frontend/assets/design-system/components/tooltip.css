@@ -1,0 +1,33 @@
+/* MTSAi × IBM Carbon — Tooltip */
+
+.mts-tooltip-wrapper { position: relative; display: inline-flex; }
+.mts-tooltip {
+  position: absolute;
+  z-index: 7000;
+  padding: var(--space-2) var(--space-3);
+  background: var(--gray-90);
+  color: var(--text-primary);
+  font-size: var(--type-label-02);
+  line-height: var(--lh-snug);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  max-width: 256px;
+  white-space: normal;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--duration-fast-02) var(--ease-standard),
+              transform var(--duration-fast-02) var(--ease-standard);
+}
+.mts-tooltip--visible { opacity: 1; transform: translateY(0); }
+/* Placement */
+.mts-tooltip--top    { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); }
+.mts-tooltip--bottom { top: calc(100% + 8px);    left: 50%; transform: translateX(-50%) translateY(-4px); }
+.mts-tooltip--left   { right: calc(100% + 8px);  top: 50%;  transform: translateY(-50%) translateX(4px); }
+.mts-tooltip--right  { left: calc(100% + 8px);   top: 50%;  transform: translateY(-50%) translateX(-4px); }
+
+.mts-tooltip--top.mts-tooltip--visible    { transform: translateX(-50%) translateY(0); }
+.mts-tooltip--bottom.mts-tooltip--visible { transform: translateX(-50%) translateY(0); }
+.mts-tooltip--left.mts-tooltip--visible   { transform: translateY(-50%) translateX(0); }
+.mts-tooltip--right.mts-tooltip--visible  { transform: translateY(-50%) translateX(0); }

@@ -1,0 +1,75 @@
+/* MTSAi × IBM Carbon — Tags, Chips, Badges */
+
+.mts-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  height: 24px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui);
+  font-size: var(--type-label-01);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+/* Color variants */
+.mts-tag--blue     { background: var(--tag-blue-bg);    color: var(--tag-blue-text);    border-color: var(--blue-alpha-20); }
+.mts-tag--green    { background: var(--tag-green-bg);   color: var(--tag-green-text);   border-color: var(--green-alpha-20); }
+.mts-tag--saffron  { background: var(--tag-saffron-bg); color: var(--tag-saffron-text); border-color: var(--saffron-alpha-20); }
+.mts-tag--red      { background: var(--tag-red-bg);     color: var(--tag-red-text);     border-color: var(--red-alpha-20); }
+.mts-tag--gray     { background: var(--tag-gray-bg);    color: var(--tag-gray-text); }
+.mts-tag--cyan     { background: var(--tag-cyan-bg);    color: var(--tag-cyan-text);    border-color: var(--cyan-alpha-20); }
+.mts-tag--outline  { background: transparent; color: var(--text-secondary); border-color: var(--border-subtle); }
+
+/* Sizes */
+.mts-tag--sm  { height: 20px; font-size: 10px; padding: 0 var(--space-2); }
+.mts-tag--lg  { height: 32px; font-size: var(--type-label-02); padding: 0 var(--space-4); }
+
+/* Interactive tag (chip) */
+.mts-chip {
+  cursor: pointer;
+  transition: var(--transition-color), transform var(--duration-fast-01) var(--ease-standard);
+  min-height: var(--size-touch-target);
+  height: 36px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--type-label-02);
+  border: 1px solid var(--border-subtle);
+  background: var(--layer-01);
+  color: var(--text-secondary);
+}
+.mts-chip:hover { border-color: var(--interactive); color: var(--text-primary); }
+.mts-chip.active { background: var(--blue-alpha-15); border-color: var(--interactive); color: var(--blue-30); }
+
+/* Dot indicator in tag */
+.mts-tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  opacity: 0.8;
+}
+
+/* Badge (numeric) */
+.mts-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  line-height: 1;
+}
+.mts-badge--blue    { background: var(--interactive); color: var(--white); }
+.mts-badge--green   { background: var(--brand-primary); color: var(--white); }
+.mts-badge--saffron { background: var(--cta-primary); color: var(--cta-text); }
+.mts-badge--red     { background: var(--red-60); color: var(--white); }
+.mts-badge--gray    { background: var(--gray-60); color: var(--white); }

@@ -1,0 +1,59 @@
+/* MTSAi × IBM Carbon — Tabs */
+
+.mts-tabs { display: flex; flex-direction: column; }
+.mts-tabs__list {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mts-tabs__list::-webkit-scrollbar { display: none; }
+.mts-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-ui);
+  font-size: var(--type-body-01);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: var(--transition-color);
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.mts-tab:hover { color: var(--text-primary); background: var(--layer-01); }
+.mts-tab.active {
+  color: var(--interactive);
+  border-bottom-color: var(--interactive);
+  font-weight: var(--weight-semibold);
+}
+.mts-tab:focus-visible { outline: 3px solid var(--interactive); outline-offset: -3px; }
+.mts-tab__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--layer-02);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+}
+.mts-tab.active .mts-tab__count { background: rgba(15, 98, 254, 0.2); color: var(--blue-30); }
+.mts-tab-panel { padding: var(--space-6) 0; animation: fadeIn var(--duration-moderate-01) var(--ease-entrance) both; }
+.mts-tab-panel[hidden] { display: none; }
+
+/* Vertical tabs */
+.mts-tabs--vertical { flex-direction: row; }
+.mts-tabs--vertical .mts-tabs__list { flex-direction: column; border-bottom: none; border-right: 2px solid var(--border-subtle); min-width: 200px; }
+.mts-tabs--vertical .mts-tab { border-bottom: none; border-right: 2px solid transparent; margin-bottom: 0; margin-right: -2px; }
+.mts-tabs--vertical .mts-tab.active { border-right-color: var(--interactive); }
+.mts-tabs--vertical .mts-tab-panel { padding: 0 var(--space-6); }

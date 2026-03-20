@@ -1,0 +1,335 @@
+/* ============================================================
+   MTSAi × IBM Carbon — Animation Utility Library
+   Apply these classes to elements to trigger named animations.
+   All respect prefers-reduced-motion via tokens/motion.css.
+   ============================================================ */
+
+/* ─── BASE ANIMATION CLASS ───────────────────────────────── */
+/* Add .is-animated to trigger, use with .animate-* */
+[class*="animate-"] {
+  animation-fill-mode: both;
+}
+
+/* ─── FADE ANIMATIONS ─────────────────────────────────────── */
+.animate-fade-in       { animation: fadeIn      var(--duration-moderate-01) var(--ease-entrance); }
+.animate-fade-in-up    { animation: fadeInUp    var(--duration-moderate-02) var(--ease-expressive); }
+.animate-fade-in-down  { animation: fadeInDown  var(--duration-moderate-02) var(--ease-expressive); }
+.animate-fade-in-left  { animation: fadeInLeft  var(--duration-moderate-02) var(--ease-expressive); }
+.animate-fade-in-right { animation: fadeInRight var(--duration-moderate-02) var(--ease-expressive); }
+
+/* ─── SCALE / SPRING ANIMATIONS ─────────────────────────── */
+.animate-scale-in      { animation: scaleIn       var(--duration-moderate-01) var(--ease-spring-gentle); }
+.animate-spring-in     { animation: springIn      var(--duration-spring-sm)   var(--ease-standard); }
+.animate-spring-in-sm  { animation: springInSmall var(--duration-moderate-02) var(--ease-spring-gentle); }
+
+/* ─── BLUR REVEAL (Apple / Stripe style) ─────────────────── */
+.animate-blur-reveal        { animation: blurReveal       var(--duration-moderate-03) var(--ease-smooth); }
+.animate-blur-reveal-subtle { animation: blurRevealSubtle var(--duration-moderate-02) var(--ease-smooth); }
+
+/* ─── CLIP-PATH REVEALS (Linear style) ──────────────────── */
+.animate-clip-up   { animation: clipRevealUp   var(--duration-moderate-02) var(--ease-entrance); }
+.animate-clip-down { animation: clipRevealDown var(--duration-moderate-02) var(--ease-entrance); }
+.animate-clip-left { animation: clipRevealLeft var(--duration-moderate-02) var(--ease-entrance); }
+
+/* ─── SLIDE ANIMATIONS ───────────────────────────────────── */
+.animate-slide-right { animation: slideInRight var(--duration-moderate-02) var(--ease-entrance); }
+.animate-slide-left  { animation: slideInLeft  var(--duration-moderate-02) var(--ease-entrance); }
+.animate-slide-up    { animation: slideInUp    var(--duration-moderate-02) var(--ease-entrance); }
+
+/* ─── STATUS / FEEDBACK ANIMATIONS ──────────────────────── */
+.animate-status-pulse  { animation: statusPulse  2.4s ease infinite; }
+.animate-saffron-glow  { animation: saffronGlow  2.4s ease infinite; }
+.animate-blue-glow     { animation: blueGlow     2.4s ease infinite; }
+.animate-pulse         { animation: pulse        2s var(--ease-standard) infinite; }
+.animate-float         { animation: float        3s var(--ease-in-out-soft) infinite; }
+.animate-shake         { animation: shake        var(--duration-moderate-02) var(--ease-standard); }
+
+/* ─── LOADING ANIMATIONS ─────────────────────────────────── */
+.animate-spin { animation: spin   0.7s var(--ease-linear) infinite; }
+.animate-spin-slow { animation: spin 1.4s var(--ease-linear) infinite; }
+
+/* Shimmer skeleton */
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--layer-01) 25%,
+    var(--layer-02) 50%,
+    var(--layer-01) 75%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.6s var(--ease-linear) infinite;
+}
+
+/* Skeleton wave overlay */
+.animate-skeleton-wave::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  animation: skeletonWave 1.6s var(--ease-standard) infinite;
+}
+
+/* ─── TEXT EFFECTS ───────────────────────────────────────── */
+/* Shimmer text — for hero numbers, highlight text */
+.animate-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary) 0%,
+    var(--blue-40) 30%,
+    var(--brand-primary) 50%,
+    var(--blue-40) 70%,
+    var(--text-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s var(--ease-linear) infinite;
+}
+
+/* Gradient flow text — for saffron CTA highlights */
+.animate-gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--saffron-50) 0%,
+    var(--saffron-40) 50%,
+    var(--saffron-50) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 2s var(--ease-standard) infinite;
+}
+
+/* ─── BUTTON EFFECTS ─────────────────────────────────────── */
+/* Gradient flow on saffron CTA (Stripe style) */
+.btn-gradient-flow {
+  background: linear-gradient(
+    135deg,
+    var(--saffron-60) 0%,
+    var(--saffron-50) 30%,
+    var(--saffron-40) 60%,
+    var(--saffron-50) 100%
+  );
+  background-size: 250% 250%;
+  animation: gradientFlow 4s var(--ease-standard) infinite;
+  transition: box-shadow var(--duration-moderate-01) var(--ease-smooth);
+}
+.btn-gradient-flow:hover {
+  animation-duration: 1.5s;
+  box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
+}
+
+/* Ripple container */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ripple .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  animation: ripple var(--duration-slow-01) var(--ease-exit) forwards;
+}
+
+/* ─── CARD HOVER LIFT (Vercel / Linear style) ─────────────── */
+.card-lift {
+  transition: var(--transition-card);
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Blue card lift */
+.card-lift-blue:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-blue);
+}
+
+/* Saffron card lift (CTA cards) */
+.card-lift-saffron:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-saffron);
+}
+
+/* ─── NAVIGATION EFFECTS ─────────────────────────────────── */
+/* Underline slide for nav links */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--interactive);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-moderate-01) var(--ease-spring-gentle);
+}
+.nav-underline:hover::after,
+.nav-underline.active::after {
+  transform: scaleX(1);
+}
+
+/* Tab indicator slide */
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--interactive);
+  transition: left var(--duration-moderate-02) var(--ease-spring-gentle),
+              width var(--duration-moderate-02) var(--ease-spring-gentle);
+}
+
+/* ─── STAGGER HELPERS ────────────────────────────────────── */
+/* Apply to parent, children stagger automatically */
+.stagger-children > * { opacity: 0; animation-fill-mode: forwards; }
+.stagger-children.is-visible > *:nth-child(1)  { animation-delay:   0ms; }
+.stagger-children.is-visible > *:nth-child(2)  { animation-delay:  60ms; }
+.stagger-children.is-visible > *:nth-child(3)  { animation-delay: 120ms; }
+.stagger-children.is-visible > *:nth-child(4)  { animation-delay: 180ms; }
+.stagger-children.is-visible > *:nth-child(5)  { animation-delay: 240ms; }
+.stagger-children.is-visible > *:nth-child(6)  { animation-delay: 300ms; }
+.stagger-children.is-visible > *:nth-child(7)  { animation-delay: 360ms; }
+.stagger-children.is-visible > *:nth-child(8)  { animation-delay: 420ms; }
+.stagger-children.is-visible > *:nth-child(n+9){ animation-delay: 480ms; }
+
+.stagger-children.is-visible > * {
+  animation: fadeInUp var(--duration-moderate-02) var(--ease-expressive) forwards;
+}
+
+/* ─── SCROLL REVEAL (IntersectionObserver triggered) ───────── */
+/* Add .scroll-reveal to elements, JS adds .is-visible */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow-01) var(--ease-smooth),
+              transform var(--duration-slow-01) var(--ease-smooth);
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Blur scroll reveal */
+.scroll-reveal-blur {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(8px);
+  transition: opacity    var(--duration-slow-01) var(--ease-smooth),
+              filter     var(--duration-moderate-03) var(--ease-smooth),
+              transform  var(--duration-slow-01) var(--ease-smooth);
+}
+.scroll-reveal-blur.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Scale scroll reveal */
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity   var(--duration-moderate-03) var(--ease-smooth),
+              transform var(--duration-moderate-03) var(--ease-spring-gentle);
+}
+.scroll-reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── ACCORDION ANIMATION ────────────────────────────────── */
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-moderate-02) var(--ease-standard),
+              opacity    var(--duration-moderate-01) var(--ease-entrance);
+  opacity: 0;
+}
+.accordion-content.is-open {
+  opacity: 1;
+  /* max-height set via JS */
+}
+.accordion-content-inner {
+  animation: accordionOpen var(--duration-moderate-01) var(--ease-entrance);
+}
+
+/* ─── MODAL ANIMATIONS ───────────────────────────────────── */
+.modal-backdrop-enter {
+  animation: modalBackdrop var(--duration-moderate-02) var(--ease-entrance) forwards;
+}
+.modal-panel-enter {
+  animation: springIn var(--duration-spring-sm) var(--ease-standard) forwards;
+}
+.modal-panel-exit {
+  animation: scaleIn var(--duration-fast-02) var(--ease-exit) reverse forwards;
+}
+
+/* ─── TOAST / NOTIFICATION ───────────────────────────────── */
+.toast-enter {
+  animation: slideInRight var(--duration-moderate-02) var(--ease-spring-gentle);
+}
+.toast-exit {
+  animation: slideOutRight var(--duration-moderate-01) var(--ease-accelerate) forwards;
+}
+
+/* ─── FOCUS RING ANIMATION ───────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--interactive-focus);
+  outline-offset: 2px;
+  animation: focusRingExpand var(--duration-fast-02) var(--ease-standard) forwards;
+}
+
+/* ─── TIMING / DELAY UTILITIES ───────────────────────────── */
+.delay-0   { animation-delay: 0ms; }
+.delay-1   { animation-delay: 50ms; }
+.delay-2   { animation-delay: 100ms; }
+.delay-3   { animation-delay: 150ms; }
+.delay-4   { animation-delay: 200ms; }
+.delay-5   { animation-delay: 250ms; }
+.delay-6   { animation-delay: 300ms; }
+.delay-8   { animation-delay: 400ms; }
+.delay-10  { animation-delay: 500ms; }
+.delay-12  { animation-delay: 600ms; }
+.delay-16  { animation-delay: 800ms; }
+
+/* Duration overrides */
+.duration-fast     { animation-duration: var(--duration-fast-02) !important; }
+.duration-moderate { animation-duration: var(--duration-moderate-02) !important; }
+.duration-slow     { animation-duration: var(--duration-slow-01) !important; }
+
+/* ─── EASING OVERRIDES ───────────────────────────────────── */
+.ease-spring     { animation-timing-function: var(--ease-spring) !important; }
+.ease-smooth     { animation-timing-function: var(--ease-smooth) !important; }
+.ease-expressive { animation-timing-function: var(--ease-expressive) !important; }
+
+/* ─── ITERATION ──────────────────────────────────────────── */
+.loop  { animation-iteration-count: infinite; }
+.once  { animation-iteration-count: 1; }
+.twice { animation-iteration-count: 2; }
+
+/* ─── MARQUEE ────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+.marquee-content {
+  display: flex;
+  gap: var(--space-6);
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: marquee var(--duration-slow-03) var(--ease-linear) infinite;
+}
+.marquee-content:hover { animation-play-state: paused; }

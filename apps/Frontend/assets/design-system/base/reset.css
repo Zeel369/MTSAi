@@ -1,0 +1,64 @@
+/* ============================================================
+   MTSAi × IBM Carbon — CSS Reset
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--layer-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: var(--lh-normal);
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+fieldset {
+  border: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--interactive-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}

@@ -1,0 +1,25 @@
+/* MTSAi × IBM Carbon — Select / Dropdown */
+
+.mts-select {
+  appearance: none;
+  width: 100%;
+  height: var(--input-height-md);
+  padding: 0 var(--space-8) 0 var(--space-4);
+  background-color: var(--layer-01);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238D8D8D' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  color: var(--text-primary);
+  border: 1px solid var(--input-border);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--type-body-01);
+  cursor: pointer;
+  transition: var(--transition-color);
+  outline: none;
+}
+.mts-select:hover { border-color: var(--gray-40); }
+.mts-select:focus { border-color: var(--input-border-focus); background-color: var(--layer-02); }
+.mts-select:disabled { opacity: 0.5; cursor: not-allowed; }
+.mts-select option { background-color: var(--layer-02); color: var(--text-primary); }
