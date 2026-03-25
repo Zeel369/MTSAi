@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About — MTSAi | Team & Mission</title>
+<meta name="description" content="MTSAi is building India's incentive-based urban mobility platform. Learn about the team, mission, and our approach to government-grade technology."/>
+<meta property="og:title" content="About — MTSAi | Team & Mission"/>
+<meta property="og:description" content="Building India's incentive-based urban mobility platform — government-grade technology designed for sustainable, equitable city movement."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://miracletraffic.ai/about.html"/>
+<meta property="og:image" content="https://miracletraffic.ai/assets/og-cover.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="About — MTSAi | Team & Mission"/>
+<meta name="twitter:description" content="Building India's incentive-based urban mobility platform — government-grade technology designed for sustainable, equitable city movement."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23FF7A00'/><text x='16' y='21' text-anchor='middle' font-size='16' font-family='sans-serif' fill='white'>M</text></svg>"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="assets/ds.css"/>
+<script>
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{
+      colors:{
+        "surface":"#F4F4F4","on-surface-variant":"#434654","on-primary-fixed":"#001848",
+        "primary-container":"#0052CC","background":"#F4F4F4","on-primary":"#ffffff",
+        "primary":"#0052CC","outline":"#737685","on-surface":"#1a1c1c",
+        "brand-orange":"#FF9933","brand-navy":"#161616","brand-green":"#53AA00","brand-red":"#D82B2B","outline-variant":"#c3c6d6"
+      },
+      fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],"label":["Inter"],"mono":["JetBrains Mono"]},
+      borderRadius:{"DEFAULT":"0rem","lg":"0rem","xl":"0rem","full":"9999px"},
+    }}
+  }
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #FF9933; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; vertical-align:middle; line-height:1; display:inline-block; }
+#scroll-bar { position:fixed; top:0; left:0; height:2px; z-index:200; background:linear-gradient(90deg,#FF9933,#FF9933); width:0%; transition:width .08s linear; pointer-events:none; }
+.nav-dropdown { position:relative; }
+.nav-dropdown-menu { position:absolute; top:100%;padding-top:12px; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(22,22,22,.95); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.06); min-width:260px; padding:8px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-dropdown-item { display:block; padding:8px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.4); transition:color .15s,background .15s; }
+.nav-dropdown-item:hover { color:#FF9933; background:rgba(255,153,51,.06); }
+.aurora { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.ab { position:absolute; border-radius:50%; filter:blur(90px); will-change:transform; }
+@keyframes ab1 { 0%,100%{transform:translate(0,0) scale(1)} 30%{transform:translate(60px,-70px) scale(1.07)} 65%{transform:translate(-35px,45px) scale(.95)} }
+@keyframes ab3 { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(35px,65px) scale(.97)} 70%{transform:translate(-55px,-38px) scale(1.05)} }
+.shimmer { background:linear-gradient(105deg,#fff 15%,rgba(255,153,51,.9) 35%,#FF9933 50%,rgba(255,154,60,.8) 65%,#fff 85%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sh 4s linear infinite; }
+@keyframes sh { 0%{background-position:200% center} 100%{background-position:-200% center} }
+.tg-gold { background:linear-gradient(to right,#FF9933,#FFB347,#FF9933); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.tg-blue { background:linear-gradient(135deg,#0052CC,#3385FF,#b2c5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+@property --ba { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+.beam { position:relative; overflow:hidden; }
+.beam::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.5px; background:conic-gradient(from var(--ba),transparent 0deg,#FF9933 60deg,#0052CC 120deg,transparent 180deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:beam-r 3s linear infinite; pointer-events:none; }
+@keyframes beam-r { to{--ba:360deg} }
+.spot { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.4,0,.2,1); }
+.spot::after { content:''; position:absolute; inset:0; background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),rgba(255,153,51,.08) 0%,transparent 70%); opacity:0; transition:opacity .2s; pointer-events:none; }
+.spot:hover::after { opacity:1; }
+.spot:hover { transform:translateY(-4px); }
+.fu { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1); }
+.fu.in { opacity:1; transform:translateY(0); }
+.glow-o { box-shadow:0 0 36px rgba(255,153,51,.25),0 0 72px rgba(255,153,51,.08); }
+.card-dk { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); }
+.pulse-dot::before { content:''; position:absolute; inset:0; background:inherit; border-radius:inherit; animation:ping .8s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%,100%{transform:scale(2);opacity:0} }
+.accent-line { display:block; width:32px; height:2px; background:#FF9933; margin-bottom:24px; }
+.noise::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"); opacity:.4; pointer-events:none; }
+.ani-grad { background:linear-gradient(160deg,#161616 0%,#0d1f40 50%,#161616 100%); }
+.mob-overlay { position:fixed; inset:0; z-index:40; background:rgba(22,22,22,.98); display:flex; flex-direction:column; padding:80px 24px 40px; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+.mob-overlay.open { transform:translateX(0); }
+
+/* Marquee */
+.mq-wrap { overflow:hidden; -webkit-mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent); mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent); }
+.mq { display:flex; width:max-content; animation:mq 30s linear infinite; }
+@keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* Timeline */
+.timeline-item { display:flex; gap:0; }
+.timeline-track { display:flex; flex-direction:column; align-items:center; }
+.timeline-dot { width:12px; height:12px; border-radius:50%; background:#FF9933; flex-shrink:0; position:relative; z-index:1; }
+.timeline-dot.future { background:transparent; border:1.5px solid rgba(255,255,255,.2); }
+.timeline-line { flex:1; width:1.5px; background:rgba(255,255,255,.08); }
+
+/* Jurisdiction cards */
+.jur-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:24px; }
+.jur-flag { font-size:2rem; display:block; margin-bottom:12px; }
+</style>
+</head>
+<body class="bg-brand-navy text-white" style="font-family:'Inter',sans-serif">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript>
+  <style>body { opacity: 1 !important; } .fu { opacity: 1 !important; transform: none !important; }</style>
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161616;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
+    This site uses JavaScript for navigation and interactive features. Please enable JavaScript for the best experience.
+  </div>
+</noscript>
+<div id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(22,22,22,.02)">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+        <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+      </div>
+      <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Home</a>
+      <a href="government.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Government</a>
+      <div class="nav-dropdown">
+        <button class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1">How It Works <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="why-traditional-fails.html" class="nav-dropdown-item">Why Traditional Congestion Pricing Struggles</a>
+          <a href="congestion-coordination.html" class="nav-dropdown-item">Congestion Is a Coordination Problem</a>
+          <a href="iudm.html" class="nav-dropdown-item">Incentive-Based Demand Management</a>
+          <a href="deployment-roadmap.html" class="nav-dropdown-item">How a City Deploys MTSAi</a>
+          <a href="india-advantage.html" class="nav-dropdown-item">Why India Can Deploy This at Scale</a>
+          <a href="governance.html" class="nav-dropdown-item">Governance &amp; Accountability</a>
+          <a href="data-transparency.html" class="nav-dropdown-item">Data Protection &amp; Public Transparency</a>
+        </div>
+      </div>
+      <a href="about.html" class="font-mono text-[11px] uppercase tracking-widest text-brand-orange">About</a>
+      <a href="strategic_partners.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Strategic Partners</a>
+      <a href="solutions.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Solutions</a>
+      <a href="careers.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Careers</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green pulse-dot"></span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-white/30">System Online</span>
+      </div>
+      <button data-dialog="evaluation" class="group relative px-6 py-2.5 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center gap-1.5">
+        <span class="relative z-10">Connect</span>
+        <span class="material-symbols-outlined relative z-10" style="font-size:14px">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </button>
+    </div>
+    <button id="mob-toggle" class="md:hidden text-white/60 hover:text-white" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mob-menu">
+  <button id="mob-close" class="absolute top-5 right-6 text-white/50 hover:text-white"><span class="material-symbols-outlined">close</span></button>
+  <a href="index.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Home</a>
+  <a href="government.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Government</a>
+  <a href="about.html" class="font-headline font-bold text-2xl text-brand-orange mb-6">About</a>
+  <a href="careers.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Careers</a>
+  <button data-dialog="evaluation" class="mt-auto w-full py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-wider text-sm text-center">Connect →</button>
+</div>
+
+<main id="main-content">
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="relative min-h-[60vh] flex items-end pb-20 px-6 md:px-10 overflow-hidden ani-grad noise" style="padding-top:96px">
+  <!-- Hero background: Bangalore city aerial -->
+  <div class="absolute inset-0 z-0" style="background-image:url('https://images.pexels.com/photos/2846217/pexels-photo-2846217.jpeg?auto=compress&cs=tinysrgb&w=1800&h=900&dpr=1');background-size:cover;background-position:center"></div>
+  <div class="absolute inset-0 z-0" style="background:linear-gradient(180deg,rgba(22,22,22,.93) 0%,rgba(22,22,22,.72) 40%,rgba(22,22,22,.97) 100%)"></div>
+  <div class="aurora" style="z-index:1">
+    <div class="ab" style="width:700px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.4),transparent 70%);top:-120px;left:-80px;animation:ab1 22s ease-in-out infinite;opacity:.45;"></div>
+    <div class="ab" style="width:500px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.18),transparent 70%);bottom:-60px;right:-100px;animation:ab3 28s ease-in-out infinite;opacity:.35;"></div>
+  </div>
+  <div class="max-w-7xl mx-auto w-full relative z-10" style="position:relative;z-index:2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange/70 block mb-5">About MTSAi</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tighter leading-[.88] mb-8 fu">
+          Transforming Cities Through<br/><span class="shimmer">AI-Powered Mobility.</span>
+        </h1>
+        <p class="text-white/45 text-xl leading-relaxed max-w-xl mb-10 fu" style="transition-delay:.1s">
+          MTSAi brings international best practices to Indian cities through procurement-ready architecture, audit-grade transparency, and equity-by-design controls that put citizens first.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 fu" style="transition-delay:.2s">
+          <a href="government.html" class="group relative px-9 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center gap-2">
+            <span class="relative z-10">Government Solutions →</span>
+            <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          </a>
+          <a href="#partners" class="px-9 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/60 hover:text-white transition-colors flex items-center gap-2" style="border:1px solid rgba(255,255,255,.12)">
+            Strategic Partners
+          </a>
+        </div>
+      </div>
+
+      <!-- Company Status Panel -->
+      <div class="fu float beam" style="transition-delay:.15s; max-width:400px">
+        <div class="flex items-center justify-between px-5 py-3 card-dk" style="border-bottom:1px solid rgba(255,255,255,.07)">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-white/50">Company Status</span>
+          <div class="flex items-center gap-1.5">
+            <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green pulse-dot"></span>
+            <span class="font-mono text-[9px] text-brand-green uppercase tracking-widest">ACTIVE</span>
+          </div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex items-start gap-3 card-dk p-3">
+            <span class="material-symbols-outlined text-brand-orange mt-0.5" style="font-size:16px">rocket_launch</span>
+            <div><span class="text-white text-xs font-semibold block">Pilot Ready</span><span class="text-white/30 text-xs">Fully prepared for city-wide implementation partnerships.</span></div>
+          </div>
+          <div class="flex items-start gap-3 card-dk p-3">
+            <span class="material-symbols-outlined text-brand-orange mt-0.5" style="font-size:16px">location_city</span>
+            <div><span class="text-white text-xs font-semibold block">Focus Market: Tier-2 Cities</span><span class="text-white/30 text-xs">Launch Target: Q2 2026</span></div>
+          </div>
+          <div class="flex items-start gap-3 card-dk p-3">
+            <span class="material-symbols-outlined text-brand-orange mt-0.5" style="font-size:16px">verified_user</span>
+            <div><span class="text-white text-xs font-semibold block">Compliance Design</span><span class="text-white/30 text-xs">Designed for DPDP, CERT-In, and GIGW compliance.</span></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-0" style="border-top:1px solid rgba(255,255,255,.06)">
+          <div class="text-center p-3">
+            <span class="text-brand-orange font-headline font-bold text-lg block" data-counter="2019" data-counter-format="plain">2019</span>
+            <span class="text-white/25 text-[8px] font-mono uppercase tracking-widest">Founded</span>
+          </div>
+          <div class="text-center p-3">
+            <span class="text-brand-orange font-headline font-bold text-lg block" data-counter="4" data-counter-format="plain">4</span>
+            <span class="text-white/25 text-[8px] font-mono uppercase tracking-widest">Jurisdictions</span>
+          </div>
+          <div class="text-center p-3">
+            <span class="text-brand-orange font-headline font-bold text-lg block" data-counter="3" data-counter-suffix="+">3+</span>
+            <span class="text-white/25 text-[8px] font-mono uppercase tracking-widest">R&D Partners</span>
+          </div>
+          <div class="text-center p-3">
+            <span class="text-white font-headline font-bold text-lg block" style="-webkit-text-fill-color:initial">Q2 '26</span>
+            <span class="text-white/25 text-[8px] font-mono uppercase tracking-widest">Pilot Target</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="py-4 ani-grad" style="border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)">
+  <div class="mq-wrap">
+    <div class="mq gap-16" aria-hidden="true">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Pilot Ready 2026</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">DPDP Compliant Design</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">4 Global Jurisdictions</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">EU R&amp;D Partnership</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Procurement Ready</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Privacy by Design</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Government-First Platform</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Pilot Ready 2026</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">DPDP Compliant Design</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">4 Global Jurisdictions</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">EU R&amp;D Partnership</span>
+      <span class="text-brand-orange">///</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">Procurement Ready</span>
+      <span class="text-brand-orange">///</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     JOURNEY TIMELINE
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-white" id="journey">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-16 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">Our Journey</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">From vision to<br/><span class="tg-blue">pilot-ready.</span></h2>
+    </div>
+
+    <div class="space-y-0 fu" style="transition-delay:.1s">
+      <!-- 2019 -->
+      <div class="timeline-item gap-8 pb-0">
+        <div class="timeline-track pt-1.5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:64px"></div>
+        </div>
+        <div class="pb-10 pl-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-1">2019</span>
+          <h3 class="text-xl font-headline font-bold text-on-surface tracking-tighter mb-1">Company Founded</h3>
+          <p class="text-outline text-sm leading-relaxed">Vision established in Vancouver, Canada. The core thesis: cities need an incentive-based, not penalty-based, approach to congestion management.</p>
+        </div>
+      </div>
+      <!-- 2021 -->
+      <div class="timeline-item gap-8 pb-0">
+        <div class="timeline-track pt-1.5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:64px"></div>
+        </div>
+        <div class="pb-10 pl-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-1">2021</span>
+          <h3 class="text-xl font-headline font-bold text-on-surface tracking-tighter mb-1">R&D Partnerships</h3>
+          <p class="text-outline text-sm leading-relaxed">Budapest University of Technology (BME) collaboration begins — occupancy detection innovation using Bluetooth/WiFi signals to support equity-focused pricing models.</p>
+        </div>
+      </div>
+      <!-- 2023 -->
+      <div class="timeline-item gap-8 pb-0">
+        <div class="timeline-track pt-1.5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:64px"></div>
+        </div>
+        <div class="pb-10 pl-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-1">2023</span>
+          <h3 class="text-xl font-headline font-bold text-on-surface tracking-tighter mb-1">India Operations</h3>
+          <p class="text-outline text-sm leading-relaxed">Bangalore HQ established. India becomes the primary operational hub — government contract entity, India-based team, and GeM/tender compliance framework put in place.</p>
+        </div>
+      </div>
+      <!-- 2024 -->
+      <div class="timeline-item gap-8 pb-0">
+        <div class="timeline-track pt-1.5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" style="min-height:64px"></div>
+        </div>
+        <div class="pb-10 pl-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-1">2024</span>
+          <h3 class="text-xl font-headline font-bold text-on-surface tracking-tighter mb-1">GoI Alignment</h3>
+          <p class="text-outline text-sm leading-relaxed">Smart Cities Mission integration work begins. Platform architecture aligned to GIGW 3.0, DPDPA 2023, and CERT-In design standards.</p>
+        </div>
+      </div>
+      <!-- 2026 -->
+      <div class="timeline-item gap-8">
+        <div class="timeline-track pt-1.5">
+          <div class="timeline-dot future"></div>
+        </div>
+        <div class="pb-0 pl-6">
+          <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline block mb-1">2026 · Target</span>
+          <h3 class="text-xl font-headline font-bold text-on-surface/50 tracking-tighter mb-1">Pilot Ready</h3>
+          <p class="text-outline/60 text-sm leading-relaxed">Deployment partnerships active. Live corridor trial with a government partner city — the last step, not the first claim.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MISSION / APPROACH / OUTCOME
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 ani-grad noise" id="mission">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 fu">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/40 block mb-4">Foundation</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter leading-none">Mission, Approach<br/><span class="tg-gold">&amp; Outcome.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
+      <div class="spot p-10 bg-brand-navy" data-spotlight>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-4">Mission</span>
+        <h3 class="text-2xl font-headline font-bold text-white mb-4 tracking-tighter">Accountable Mobility</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Deliver policy-led road pricing with verifiable governance and public integrity controls that build lasting trust.</p>
+      </div>
+      <div class="spot p-10 bg-brand-navy" data-spotlight>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-4">Approach</span>
+        <h3 class="text-2xl font-headline font-bold text-white mb-4 tracking-tighter">Procurement-Ready</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Frameworks aligned to government evaluation cycles, audit expectations, and competitive procurement processes.</p>
+      </div>
+      <div class="spot p-10 bg-brand-navy" data-spotlight>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange block mb-4">Outcome</span>
+        <h3 class="text-2xl font-headline font-bold text-white mb-4 tracking-tighter">Equity by Design</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Built-in exemptions, hardship pathways, and reinvestment frameworks to support inclusive urban mobility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOUNDER
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-white" id="leadership">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">Founder &amp; Leadership</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">The team<br/><span class="tg-blue">behind MTSAi.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div class="fu">
+        <div class="flex items-start gap-6 mb-8">
+          <div class="w-20 h-20 bg-primary flex items-center justify-center text-white font-headline font-bold text-2xl flex-shrink-0">SS</div>
+          <div>
+            <h3 class="text-2xl font-headline font-bold text-on-surface tracking-tighter">Steven Simonyi-Gindele</h3>
+            <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline block mt-1">Founder &amp; CEO</span>
+          </div>
+        </div>
+        <blockquote class="text-lg text-on-surface/70 leading-relaxed italic mb-8 pl-5" style="border-left:2px solid #FF9933">
+          "Our mission is to demonstrate that technology and governance can work together to create cities that are not just smarter, but fundamentally more equitable and livable for all citizens."
+        </blockquote>
+        <p class="text-outline text-base leading-relaxed mb-8">Steven founded MTSAi in 2019 to bring transparent congestion pricing to cities facing mobility challenges. With over 15 years of experience spanning infrastructure development, government procurement, and stakeholder engagement across four continents, he has built MTSAi into a procurement-ready platform.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-4" style="background:#EBEBEB">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-1">International Presence</span>
+            <span class="text-on-surface text-sm font-semibold">Hungarian citizenship with EU R&amp;D access</span>
+          </div>
+          <div class="p-4" style="background:#EBEBEB">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-1">India Commitment</span>
+            <span class="text-on-surface text-sm font-semibold">50% operational presence in Bangalore</span>
+          </div>
+          <div class="p-4" style="background:#EBEBEB">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-1">Industry Expertise</span>
+            <span class="text-on-surface text-sm font-semibold">Government procurement &amp; infrastructure</span>
+          </div>
+          <div class="p-4" style="background:#EBEBEB">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-1">Global Operations</span>
+            <span class="text-on-surface text-sm font-semibold">Canada, USA, Hungary, India</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital Structure -->
+      <div class="fu" style="transition-delay:.1s">
+        <div class="mb-8 p-6" style="background:#161616">
+          <span class="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-4">Capital Structure &amp; Funding</span>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">Founder-backed with committed capital for initial pilots, R&amp;D partnerships, and platform development. All timelines subject to government procurement and operational proof.</p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-2 h-2 rounded-full bg-brand-orange flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="flex justify-between mb-1">
+                  <span class="text-white/60 text-xs font-mono uppercase tracking-wider">Current: Pre-seed / Founder</span>
+                  <span class="text-brand-orange text-xs font-mono">Active</span>
+                </div>
+                <div class="h-px bg-brand-orange/30" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-2 h-2 rounded-full border border-white/20 flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="flex justify-between mb-1">
+                  <span class="text-white/30 text-xs font-mono uppercase tracking-wider">Target Strategic Partner: 2026–27</span>
+                  <span class="text-white/20 text-xs font-mono">Planned</span>
+                </div>
+                <div class="h-px bg-white/10" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-2 h-2 rounded-full border border-white/10 flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="flex justify-between mb-1">
+                  <span class="text-white/20 text-xs font-mono uppercase tracking-wider">Series A: 2027–28</span>
+                  <span class="text-white/10 text-xs font-mono">Future</span>
+                </div>
+                <div class="h-px bg-white/5" style="width:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Team collaboration image -->
+        <div class="relative overflow-hidden mb-6" style="border:1px solid rgba(0,0,0,.06)">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80&auto=format&fit=crop&h=200" alt="Technology team collaboration at laptop" class="w-full h-40 object-cover" style="filter:brightness(.85)" loading="lazy"/>
+          <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(249,249,249,.0),rgba(249,249,249,.7) 100%)"></div>
+          <div class="absolute bottom-3 right-4">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline">Bangalore, India · HQ Operations</span>
+          </div>
+        </div>
+        <a href="careers.html" class="group relative px-9 py-4 bg-primary text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden flex items-center gap-2">
+          <span class="relative z-10">Join the Team →</span>
+          <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STRATEGIC PARTNERSHIPS
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 ani-grad noise" id="partners">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 fu">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/40 block mb-4">Strategic Partnerships &amp; R&amp;D</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter leading-none">Backed by<br/><span class="tg-gold">world-class research.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="beam card-dk p-8 fu spot" data-spotlight>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-3">R&amp;D Partner</span>
+        <h3 class="text-lg font-headline font-bold text-white tracking-tighter mb-3">Budapest University of Technology (BME)</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">Occupancy detection innovation using Bluetooth/WiFi signals to support equity-focused pricing models. Feasibility study completed (2025).</p>
+        <div class="pt-4" style="border-top:1px solid rgba(255,255,255,.06)">
+          <span class="font-mono text-[9px] uppercase tracking-widest text-white/20">Feasibility Study Completed · 2025</span>
+        </div>
+      </div>
+
+      <div class="beam card-dk p-8 fu spot" data-spotlight style="transition-delay:.1s">
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-3">Technology Partner</span>
+        <h3 class="text-lg font-headline font-bold text-white tracking-tighter mb-3">Adaptive Recognition</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">Integration access to global ANPR/LPR infrastructure with 50,000+ installations worldwide. Supports India deployment readiness.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(255,255,255,.06)">
+          <span class="font-mono text-[9px] uppercase tracking-widest text-white/20">50,000+ Global Installations</span>
+        </div>
+      </div>
+
+      <div class="beam card-dk p-8 fu spot" data-spotlight style="transition-delay:.2s">
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-3">EU Program</span>
+        <h3 class="text-lg font-headline font-bold text-white tracking-tighter mb-3">EU Inference Chip Lab</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">Multi-year project developing next-gen AI inference chips for real-time ANPR processing. 2026–2028 R&amp;D phase.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(255,255,255,.06)">
+          <span class="font-mono text-[9px] uppercase tracking-widest text-white/20">R&amp;D Phase · 2026–2028</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     RECOGNITION & PRESS
+══════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-10 bg-white" id="press">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">Recognition &amp; Press</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">Coverage &amp;<br/><span class="tg-blue">acknowledgements.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="spot p-8 fu" style="background:#EBEBEB;border:1px solid rgba(0,0,0,.05);transition-delay:.05s">
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-3">Media</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3">Government Technology Focus</h3>
+        <p class="text-outline text-sm leading-relaxed">MTSAi recognized for its procurement-ready approach to urban mobility — applying incentive-based models to the Indian mobility market.</p>
+      </div>
+      <div class="spot p-8 fu" style="background:#EBEBEB;border:1px solid rgba(0,0,0,.05);transition-delay:.1s">
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-3">Research</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3">BME Feasibility Study</h3>
+        <p class="text-outline text-sm leading-relaxed">Budapest University of Technology &amp; Economics completed a feasibility study on occupancy detection methodology for MTSAi's equity pricing model (2025).</p>
+      </div>
+      <div class="spot p-8 fu" style="background:#EBEBEB;border:1px solid rgba(0,0,0,.05);transition-delay:.15s">
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-3">Program</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3">EU Inference Chip Lab</h3>
+        <p class="text-outline text-sm leading-relaxed">Selected for multi-year EU R&amp;D program developing next-generation AI inference chips for real-time ANPR and urban mobility processing (2026–2028).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     JURISDICTION STRUCTURE
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-white" id="jurisdictions">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">Multi-Jurisdiction Structure</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">Built across<br/><span class="tg-blue">four jurisdictions.</span></h2>
+      <p class="text-outline text-lg max-w-xl leading-relaxed mt-4">MTSAi operates across four jurisdictions to optimize IP protection, R&D partnerships, market access, and procurement delivery.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="jur-card fu">
+        <span class="jur-flag">🇨🇦</span>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">Canada</span>
+        <h3 class="text-lg font-headline font-bold text-on-surface tracking-tighter mb-3">Holding Company &amp; IP</h3>
+        <ul class="space-y-1.5 text-outline text-sm">
+          <li>Primary incorporation</li>
+          <li>IP holdco</li>
+          <li>R&amp;D tax credits</li>
+          <li>US-Canada treaty benefits</li>
+        </ul>
+      </div>
+      <div class="jur-card fu" style="transition-delay:.08s">
+        <span class="jur-flag">🇺🇸</span>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">United States</span>
+        <h3 class="text-lg font-headline font-bold text-on-surface tracking-tighter mb-3">Partnerships &amp; Investors</h3>
+        <ul class="space-y-1.5 text-outline text-sm">
+          <li>Partnership development</li>
+          <li>Institutional investor access</li>
+          <li>Series A readiness</li>
+        </ul>
+      </div>
+      <div class="jur-card fu" style="transition-delay:.16s">
+        <span class="jur-flag">🇮🇳</span>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">India</span>
+        <h3 class="text-lg font-headline font-bold text-on-surface tracking-tighter mb-3">Operations &amp; Govt Contracts</h3>
+        <ul class="space-y-1.5 text-outline text-sm">
+          <li>Primary operational hub</li>
+          <li>Government contract entity</li>
+          <li>India-based team</li>
+          <li>GeM/tender compliance</li>
+        </ul>
+      </div>
+      <div class="jur-card fu" style="transition-delay:.24s">
+        <span class="jur-flag">🇭🇺</span>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">Hungary</span>
+        <h3 class="text-lg font-headline font-bold text-on-surface tracking-tighter mb-3">R&amp;D &amp; EU Market</h3>
+        <ul class="space-y-1.5 text-outline text-sm">
+          <li>R&amp;D entity (Kft.)</li>
+          <li>BME partnership domicile</li>
+          <li>EU market pathway</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PLATFORM STATUS DISCLOSURE
+══════════════════════════════════════ -->
+<section class="py-20 px-6 md:px-10 ani-grad">
+  <div class="max-w-4xl mx-auto">
+    <div class="card-dk p-8 fu">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-white/40 block mb-6">Platform Status Disclosure</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">Pre-Deployment Status</span>
+          <p class="text-white/40 text-sm leading-relaxed">MTSAi is a pre-deployment platform as of January 2026. No live city implementations are currently operational. All deployment references are design specifications subject to government procurement.</p>
+        </div>
+        <div>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">Compliance Status</span>
+          <p class="text-white/40 text-sm leading-relaxed">All references to regulatory frameworks (CERT-In, DPDP, GIGW) represent design intent and readiness posture. Final compliance is verified through government audit per contract scope.</p>
+        </div>
+        <div>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2">International References</span>
+          <p class="text-white/40 text-sm leading-relaxed">Case study outcomes cited from London, Singapore, Stockholm, and other cities are external examples from independent transportation authorities, not MTSAi deployments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 ani-grad relative overflow-hidden noise">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:400px;background:radial-gradient(circle,rgba(0,82,204,.35),transparent 70%);top:-80px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.5;"></div>
+    <div class="ab" style="width:400px;height:350px;background:radial-gradient(circle,rgba(255,153,51,.2),transparent 70%);bottom:0;right:-60px;animation:ab3 26s ease-in-out infinite;opacity:.4;"></div>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-10 fu">
+    <span class="accent-line mx-auto"></span>
+    <h2 class="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter leading-none mb-6">Engage MTSAi</h2>
+    <p class="text-xl font-headline font-bold text-white/60 mb-4">Explore procurement pathways &amp; pilot readiness.</p>
+    <p class="text-white/40 max-w-xl mx-auto mb-12 leading-relaxed">Engage with a structured, audit-ready process. No RFP required for initial feasibility and pilot evaluations.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="government.html" class="group relative px-10 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center justify-center gap-2">
+        <span class="relative z-10">Government Solutions →</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </a>
+      <button data-dialog="evaluation" class="px-10 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/70 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,.15)">
+        Strategic Partners
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+</main>
+<footer class="bg-brand-navy pt-20 pb-8 px-6 md:px-10" style="border-top:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+            <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+          </div>
+          <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+        </div>
+        <p class="text-white/25 text-sm leading-relaxed max-w-xs mb-6">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10" style="border:1px solid rgba(0,82,204,.3)">
+          <span class="material-symbols-outlined text-primary" style="font-size:12px">verified</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-primary/80">GIGW 3.0 Compliant</span>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Platform</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html#platform" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Technology Platform</a></li>
+          <li><a href="index.html#iudm" class="text-white/25 hover:text-brand-orange transition-colors text-sm">IUDM Model</a></li>
+          <li><a href="index.html#roadmap" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Deployment Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Governance</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Trust Centre</a></li>
+          <li><a href="government.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Governance</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Company</h3>
+        <ul class="space-y-3">
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="careers.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Careers</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Resources</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Procurement Pack</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact Us</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-5 bg-white/2 mb-10" style="border:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/18 text-[10px] leading-relaxed font-mono">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style="border-top:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/20 text-[10px] font-mono">© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Terms</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Privacy Policy</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Hyperlinking Policy</a>
+      </div>
+      <p class="text-white/10 font-mono text-[9px]">v1.0 · About · Last Updated Mar 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- EVALUATION DIALOG -->
+<div class="ds-dialog-wrap" id="dialog-evaluation" role="dialog" aria-modal="true" aria-labelledby="dlg-about-title">
+  <div class="ds-dialog-backdrop"></div>
+  <div class="ds-dialog" style="max-width:560px">
+    <button class="ds-dialog-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <div class="mb-6">
+      <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline/60 block mb-2">Government Evaluation Request</span>
+      <h3 class="text-2xl font-headline font-bold tracking-tighter text-on-surface" id="dlg-about-title">Start Your City's Evaluation</h3>
+      <p class="text-outline text-sm mt-2 leading-relaxed">Tell us about your city and objectives — our team will respond within 48 hours.</p>
+    </div>
+    <form class="ds-form space-y-4" id="evaluation-form-about" novalidate>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="ds-field"><label class="ds-label" for="ev-name-ab">Full Name</label><input class="ds-input" id="ev-name-ab" type="text" placeholder="Your full name" required/></div>
+        <div class="ds-field"><label class="ds-label" for="ev-email-ab">Official Email</label><input class="ds-input" id="ev-email-ab" type="email" placeholder="name@gov.in" required/></div>
+      </div>
+      <div class="ds-field"><label class="ds-label" for="ev-org-ab">Department / Organisation</label><input class="ds-input" id="ev-org-ab" type="text" placeholder="e.g. Smart City SPV" required/></div>
+      <div class="ds-field"><label class="ds-label" for="ev-msg-ab">Message</label><textarea class="ds-input ds-textarea" id="ev-msg-ab" rows="3" placeholder="How can MTSAi help your city?"></textarea></div>
+      <div class="pt-2 flex gap-3">
+        <button type="submit" class="flex-1 py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Send Request</button>
+        <button type="button" class="ds-dialog-close px-5 py-3 font-headline font-bold uppercase tracking-widest text-[11px] text-outline" style="border:1px solid var(--outline-v)">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  scrollBar.style.width = p + '%';
+}, { passive: true });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 60 ? 'rgba(22,22,22,.92)' : 'rgba(22,22,22,.02)';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 1px 0 rgba(255,153,51,.08)' : 'none';
+}, { passive: true });
+const mobToggle = document.getElementById('mob-toggle'); const mobMenu = document.getElementById('mob-menu'); mobToggle.addEventListener('click', () => { const isOpen = mobMenu.classList.toggle('open'); mobToggle.setAttribute('aria-expanded', isOpen); mobToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu'); });
+document.getElementById('mob-close').addEventListener('click', () => document.getElementById('mob-menu').classList.remove('open'));
+const fuIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => e.target.classList.add('in'), parseFloat(e.target.style.transitionDelay || '0') * 1000);
+    fuIO.unobserve(e.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fu').forEach(el => fuIO.observe(el));
+document.querySelectorAll('[data-spotlight]').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+</script>
+<script src="assets/ds.js"></script>
+<script>
+document.getElementById('evaluation-form-about').addEventListener('submit', e => {
+  e.preventDefault();
+  DS.Dialog.close();
+  DS.Toast.success('Request Sent', 'Our team will respond within 48 hours.', 5000);
+  e.target.reset();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MTSAi | Incentive-Based Urban Demand Management</title>
+<meta name="description" content="MTSAi is India's incentive-based urban demand management platform — helping cities reduce peak congestion by rewarding better commuter behaviour through privacy-first digital incentives."/>
+<meta property="og:title" content="MTSAi | Incentive-Based Urban Demand Management"/>
+<meta property="og:description" content="A platform enabling governments to manage congestion by rewarding better commuter behaviour through incentive systems, digital mobility platforms, and privacy-first architecture."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://miracletraffic.ai/"/>
+<meta property="og:image" content="https://miracletraffic.ai/assets/og-cover.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="MTSAi | Incentive-Based Urban Demand Management"/>
+<meta name="twitter:description" content="Helping cities reduce peak congestion through incentive-based demand management — privacy-first, government-controlled, pilot-ready Q2 2026."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23FF7A00'/><text x='16' y='21' text-anchor='middle' font-size='16' font-family='sans-serif' fill='white'>M</text></svg>"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="assets/ds.css"/>
+<script>
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{
+      colors:{
+        "on-error":"#ffffff","surface-bright":"#F4F4F4","outline-variant":"#c3c6d6",
+        "tertiary-container":"#8a4b00","surface":"#F4F4F4","secondary":"#326b00",
+        "on-surface-variant":"#434654","tertiary":"#683700","on-primary-container":"#c4d2ff",
+        "primary-fixed":"#dae2ff","primary-fixed-dim":"#b2c5ff","secondary-fixed-dim":"#82dd40",
+        "surface-container-lowest":"#ffffff","on-secondary":"#ffffff",
+        "on-primary-fixed-variant":"#0040a2","inverse-primary":"#b2c5ff",
+        "error":"#ba1a1a","surface-container-high":"#e8e8e8","on-primary-fixed":"#001848",
+        "surface-container-low":"#EBEBEB","surface-container-highest":"#e2e2e2",
+        "inverse-surface":"#2f3131","inverse-on-surface":"#f1f1f1","surface-dim":"#dadada",
+        "outline":"#737685","on-secondary-fixed":"#0b2000","on-background":"#1a1c1c",
+        "primary-container":"#0052CC","surface-variant":"#e2e2e2","surface-tint":"#0c56d0",
+        "background":"#F4F4F4","on-secondary-fixed-variant":"#245100","on-primary":"#ffffff",
+        "on-error-container":"#93000a","on-tertiary":"#ffffff","secondary-fixed":"#9cfa5a",
+        "secondary-container":"#9cfa5a","on-secondary-container":"#367200","primary":"#0052CC",
+        "tertiary-fixed":"#ffdcc2","on-tertiary-fixed":"#2e1500","on-tertiary-container":"#ffc99d",
+        "surface-container":"#eeeeee","on-tertiary-fixed-variant":"#6d3a00",
+        "on-surface":"#1a1c1c","error-container":"#ffdad6",
+        "brand-orange":"#FF9933","brand-navy":"#161616","brand-green":"#53AA00","brand-red":"#D82B2B"
+      },
+      fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],"label":["Inter"],"mono":["JetBrains Mono"]},
+      borderRadius:{"DEFAULT":"0rem","lg":"0rem","xl":"0rem","full":"9999px"},
+    }}
+  }
+</script>
+<style>
+/* ─────────────────────────────────────────
+   BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #FF9933; }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle; line-height: 1; display: inline-block;
+}
+
+/* ─────────────────────────────────────────
+   SCROLL PROGRESS
+───────────────────────────────────────── */
+#scroll-bar {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 200;
+  background: linear-gradient(90deg, #FF9933, #FF9933);
+  width: 0%; transition: width .08s linear; pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   NAV DROPDOWN
+───────────────────────────────────────── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22,22,22,0.95); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.06);
+  min-width: 260px; padding: 8px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-item {
+  display: block; padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: .15em;
+  color: rgba(255,255,255,0.4); transition: color .15s, background .15s;
+}
+.nav-dropdown-item:hover { color: #FF9933; background: rgba(255,153,51,0.06); }
+
+/* ─────────────────────────────────────────
+   AURORA BLOBS
+───────────────────────────────────────── */
+.aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ab { position: absolute; border-radius: 50%; filter: blur(90px); will-change: transform; }
+@keyframes ab1 { 0%,100%{transform:translate(0,0) scale(1)} 30%{transform:translate(60px,-70px) scale(1.07)} 65%{transform:translate(-35px,45px) scale(.95)} }
+@keyframes ab2 { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-70px,55px) scale(1.1)} 70%{transform:translate(45px,-28px) scale(.93)} }
+@keyframes ab3 { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(35px,65px) scale(.97)} 70%{transform:translate(-55px,-38px) scale(1.05)} }
+
+/* ─────────────────────────────────────────
+   SHIMMER TEXT
+───────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(105deg,#fff 15%,rgba(255,153,51,.9) 35%,#FF9933 50%,rgba(255,154,60,.8) 65%,#fff 85%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: sh 4s linear infinite;
+}
+@keyframes sh { 0%{background-position:200% center} 100%{background-position:-200% center} }
+
+/* ─────────────────────────────────────────
+   GRADIENT TEXT
+───────────────────────────────────────── */
+.tg-gold { background:linear-gradient(to right,#FF9933,#FFB347,#FF9933); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.tg-blue { background:linear-gradient(135deg,#0052CC,#3385FF,#b2c5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* ─────────────────────────────────────────
+   BORDER BEAM
+───────────────────────────────────────── */
+@property --ba { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+.beam { position:relative; overflow:hidden; }
+.beam::before {
+  content:''; position:absolute; inset:0; border-radius:inherit; padding:1.5px;
+  background:conic-gradient(from var(--ba),transparent 0deg,#FF9933 60deg,#0052CC 120deg,transparent 180deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  animation:beam-r 3s linear infinite; pointer-events:none;
+}
+@keyframes beam-r { to{--ba:360deg} }
+
+/* ─────────────────────────────────────────
+   SPOTLIGHT CARDS
+───────────────────────────────────────── */
+.spot { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.4,0,.2,1); }
+.spot::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),rgba(255,153,51,.08) 0%,transparent 70%);
+  opacity:0; transition:opacity .2s; pointer-events:none;
+}
+.spot:hover::after { opacity:1; }
+.spot:hover { transform:translateY(-4px); }
+
+/* ─────────────────────────────────────────
+   METEORS
+───────────────────────────────────────── */
+@keyframes met { 0%{transform:rotate(-45deg) translateX(0);opacity:1} 70%{opacity:.6} 100%{transform:rotate(-45deg) translateX(-150vmax);opacity:0} }
+.meteor { position:absolute; border-radius:9999px; background:linear-gradient(to right,#fff,transparent); box-shadow:0 0 6px 1px rgba(255,255,255,.3); pointer-events:none; animation:met linear infinite; opacity:0; }
+
+/* ─────────────────────────────────────────
+   MARQUEE
+───────────────────────────────────────── */
+.mq-wrap { overflow:hidden; -webkit-mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent); mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent); }
+.mq { display:flex; width:max-content; animation:mq 28s linear infinite; }
+@keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ticker */
+.tick { display:flex; width:max-content; animation:mq 22s linear infinite; }
+
+/* ─────────────────────────────────────────
+   FADE UP
+───────────────────────────────────────── */
+.fu { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1); }
+.fu.in { opacity:1; transform:translateY(0); }
+
+/* ─────────────────────────────────────────
+   PROGRESS BARS
+───────────────────────────────────────── */
+.pb { width:0%; transition:width 1.6s cubic-bezier(.4,0,.2,1); }
+.pb.go { width:var(--w); }
+
+/* ─────────────────────────────────────────
+   TERMINAL
+───────────────────────────────────────── */
+.tl { opacity:0; transform:translateX(-5px); transition:opacity .3s,transform .3s; }
+.tl.on { opacity:1; transform:translateX(0); }
+.cursor { display:inline-block; width:2px; height:.9em; background:#FF9933; margin-left:2px; vertical-align:middle; animation:blink .8s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ─────────────────────────────────────────
+   PATTERNS
+───────────────────────────────────────── */
+.dot-bg { background-image:radial-gradient(circle,rgba(0,82,204,.12) 1px,transparent 1px); background-size:24px 24px; }
+.grid-bg { background-image:linear-gradient(rgba(255,153,51,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,153,51,.04) 1px,transparent 1px); background-size:60px 60px; }
+.grid-bg-lt { background-image:linear-gradient(rgba(0,82,204,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,82,204,.04) 1px,transparent 1px); background-size:50px 50px; }
+
+/* ─────────────────────────────────────────
+   GLOW
+───────────────────────────────────────── */
+.glow-o { box-shadow:0 0 36px rgba(255,153,51,.25),0 0 72px rgba(255,153,51,.08); }
+.glow-b { box-shadow:0 0 36px rgba(0,82,204,.3); }
+
+/* ─────────────────────────────────────────
+   MISC
+───────────────────────────────────────── */
+.hover-lift { transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s; }
+.hover-lift:hover { transform:translateY(-5px); box-shadow:0 24px 48px rgba(22,22,22,.15); }
+
+@keyframes ping { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(2.2);opacity:0} }
+.pulse-dot::before { content:''; position:absolute; inset:0; border-radius:50%; background:inherit; animation:ping 1.6s cubic-bezier(0,0,.2,1) infinite; }
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.float { animation:float 4s ease-in-out infinite; }
+
+@keyframes grad-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.ani-grad { background:linear-gradient(270deg,#161616,#0d1f40,#0052CC,#161616); background-size:400% 400%; animation:grad-shift 12s ease infinite; }
+
+.gb { background:linear-gradient(#161616,#161616) padding-box, linear-gradient(135deg,rgba(255,153,51,.35),rgba(0,82,204,.35)) border-box; border:1px solid transparent; }
+
+.counter { font-variant-numeric:tabular-nums; }
+
+/* mobile menu */
+#mob-menu { transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+#mob-menu.open { transform:translateX(0); }
+
+/* section accent line */
+.accent-line { width:32px; height:2px; background:#FF9933; display:block; margin-bottom:1.5rem; }
+
+/* noise */
+.noise::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.02; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px; }
+
+/* card inner surface */
+.card-dk { background:rgba(255,255,255,.04); }
+.card-dk-hi { background:rgba(255,255,255,.07); }
+
+/* ── Eyebrow label upgrade ── */
+.accent-line + span {
+  font-size: 11px !important;
+  font-weight: 500;
+  letter-spacing: .22em !important;
+}
+
+/* ── Form loading state ── */
+.btn-loading { position:relative; pointer-events:none; }
+.btn-loading > * { opacity:0; }
+.btn-loading::after {
+  content:''; position:absolute; inset:0; margin:auto;
+  width:16px; height:16px; border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff; border-radius:50%;
+  animation:spin .6s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+
+<body class="bg-brand-navy font-body text-on-surface selection:bg-brand-orange/30">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript>
+  <style>body { opacity: 1 !important; } .fu { opacity: 1 !important; transform: none !important; }</style>
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161616;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
+    This site uses JavaScript for navigation and interactive features. Please enable JavaScript for the best experience.
+  </div>
+</noscript>
+
+<!-- Scroll progress -->
+<div id="scroll-bar"></div>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(22,22,22,.02);">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+        <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+      </div>
+      <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">Home</a>
+      <a href="government.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">Government</a>
+
+      <!-- Dropdown -->
+      <div class="nav-dropdown">
+        <button class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors flex items-center gap-1">
+          How It Works
+          <span class="material-symbols-outlined" style="font-size:14px">expand_more</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="why-traditional-fails.html" class="nav-dropdown-item">Why Traditional Congestion Pricing Struggles</a>
+          <a href="congestion-coordination.html" class="nav-dropdown-item">Congestion Is a Coordination Problem</a>
+          <a href="iudm.html" class="nav-dropdown-item">Incentive-Based Demand Management</a>
+          <a href="deployment-roadmap.html" class="nav-dropdown-item">How a City Deploys MTSAi</a>
+          <a href="india-advantage.html" class="nav-dropdown-item">Why India Can Deploy This at Scale</a>
+          <a href="governance.html" class="nav-dropdown-item">Governance &amp; Accountability</a>
+          <a href="data-transparency.html" class="nav-dropdown-item">Data Protection &amp; Public Transparency</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">About</a>
+      <a href="strategic_partners.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">Strategic Partners</a>
+      <a href="solutions.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">Solutions</a>
+      <a href="careers.html" class="font-mono text-[10px] uppercase tracking-widest text-white/60 hover:text-brand-orange transition-colors">Careers</a>
+    </div>
+
+    <!-- Right -->
+    <div class="hidden md:flex items-center gap-4">
+      <div class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-white/30">
+        <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green pulse-dot"></span>
+        System Online
+      </div>
+      <a data-dialog="evaluation" href="#" class="group relative px-6 py-2.5 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center gap-1.5">
+        <span class="relative z-10">Connect</span>
+        <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="hbg" class="md:hidden p-2 flex flex-col gap-1.5" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+      <span id="hb1" class="w-6 h-px bg-white transition-all duration-300 origin-center"></span>
+      <span id="hb2" class="w-6 h-px bg-white transition-all duration-300"></span>
+      <span id="hb3" class="w-6 h-px bg-white transition-all duration-300 origin-center"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mob-menu" class="fixed inset-y-0 right-0 w-72 bg-brand-navy z-50 p-8 flex flex-col gap-6 shadow-2xl" style="border-left:1px solid rgba(255,255,255,.06)">
+  <button id="mob-close" class="self-end text-white/40 hover:text-white">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <a href="index.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">Home</a>
+  <a href="government.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">Government</a>
+  <a href="about.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">About</a>
+  <a href="strategic_partners.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">Strategic Partners</a>
+  <a href="solutions.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">Solutions</a>
+  <a href="careers.html" class="font-headline text-white text-lg uppercase tracking-widest mob-l">Careers</a>
+  <button data-dialog="evaluation" class="mt-auto w-full py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-wider text-sm text-center mob-l">Connect →</button>
+</div>
+
+<main id="main-content">
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-brand-navy noise">
+  <!-- Background photo -->
+  <div class="absolute inset-0 z-0" style="background-image:url('https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=1800&q=80&auto=format&fit=crop');background-size:cover;background-position:center bottom"></div>
+  <div class="absolute inset-0 z-0" style="background:linear-gradient(180deg,rgba(22,22,22,.94) 0%,rgba(22,22,22,.78) 50%,rgba(22,22,22,.96) 100%)"></div>
+  <!-- Aurora -->
+  <div class="aurora" style="z-index:1">
+    <div class="ab" style="width:700px;height:600px;background:radial-gradient(circle,rgba(0,82,204,.4),transparent 70%);top:-120px;left:-180px;animation:ab1 22s ease-in-out infinite;opacity:.35;"></div>
+    <div class="ab" style="width:550px;height:500px;background:radial-gradient(circle,rgba(255,153,51,.18),transparent 70%);top:30%;right:-150px;animation:ab2 27s ease-in-out infinite;opacity:.28;"></div>
+    <div class="ab" style="width:480px;height:580px;background:radial-gradient(circle,rgba(0,40,120,.45),transparent 70%);bottom:-80px;left:30%;animation:ab3 30s ease-in-out infinite;opacity:.32;"></div>
+  </div>
+  <!-- Grid -->
+  <div class="absolute inset-0 grid-bg opacity-25 pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-36 pb-20 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+
+      <!-- Left: headline + CTAs -->
+      <div class="lg:pt-8">
+        <!-- Eyebrow -->
+        <div class="inline-flex items-center gap-2 mb-8 px-3 py-1.5 bg-brand-orange/10" style="border:1px solid rgba(255,153,51,.2)">
+          <span class="relative w-1.5 h-1.5 rounded-full bg-brand-orange pulse-dot"></span>
+          <span class="font-mono text-[10px] text-brand-orange uppercase tracking-[.25em]">Incentive-Based Urban Demand Management</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tighter leading-[.88] mb-8">
+          <span class="text-white block fu">Incentive-Based</span>
+          <span class="text-white block fu" style="transition-delay:.09s">Urban Demand</span>
+          <span class="shimmer block fu" style="transition-delay:.18s">Management</span>
+          <span class="text-white text-4xl md:text-5xl lg:text-6xl block fu" style="transition-delay:.28s">for Modern Cities.</span>
+        </h1>
+
+        <p class="text-white/45 text-lg leading-relaxed max-w-xl mb-10 fu" style="transition-delay:.1s">
+          A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 fu" style="transition-delay:.2s">
+          <button data-dialog="evaluation" class="group relative px-9 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center justify-center gap-2">
+            <span class="relative z-10">Explore the Platform</span>
+            <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          </button>
+          <a href="government.html" class="group relative px-9 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/70 hover:text-white flex items-center justify-center gap-2 transition-colors overflow-hidden" style="border:1px solid rgba(255,255,255,.12)">
+            <span class="relative z-10 material-symbols-outlined text-sm">account_balance</span>
+            <span class="relative z-10">Government Solutions</span>
+            <div class="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="flex gap-8 mt-12 pt-12 fu" style="transition-delay:.3s;border-top:1px solid rgba(255,255,255,.06)">
+          <div>
+            <span class="text-2xl font-headline font-bold text-white block">4+</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-white/30">Platform phases</span>
+          </div>
+          <div>
+            <span class="text-2xl font-headline font-bold text-white block">6+</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-white/30">Ecosystem integrations</span>
+          </div>
+          <div>
+            <span class="text-2xl font-headline font-bold text-white block">100%</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-white/30">Privacy-first design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: IUDM Live Panel -->
+      <div class="flex justify-end">
+      <div class="fu float w-full" style="transition-delay:.15s;max-width:480px">
+        <div class="beam gb relative">
+
+          <!-- Header -->
+          <div class="flex items-center justify-between px-6 py-4" style="border-bottom:1px solid rgba(255,255,255,.07)">
+            <div class="flex items-center gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-orange block shrink-0"></span>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-white/50">IUDM · Corridor Status</span>
+            </div>
+            <div class="flex items-center gap-2 px-2.5 py-1" style="background:rgba(83,170,0,.07);border:1px solid rgba(83,170,0,.18)">
+              <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green shrink-0 pulse-dot"></span>
+              <span class="font-mono text-[9px] text-brand-green uppercase tracking-widest">Live</span>
+            </div>
+          </div>
+
+          <!-- Status trio -->
+          <div class="grid grid-cols-3 px-6 pt-6 pb-5">
+            <div class="flex flex-col gap-1.5 pr-6" style="border-right:1px solid rgba(255,255,255,.06)">
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">Demand Level</span>
+              <span class="font-headline font-bold text-xl text-brand-orange leading-none">HIGH</span>
+              <span class="font-mono text-[8px] text-white/20">Peak window active</span>
+            </div>
+            <div class="flex flex-col gap-1.5 px-6" style="border-right:1px solid rgba(255,255,255,.06)">
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">IUDM Active</span>
+              <span class="font-headline font-bold text-xl text-brand-green leading-none">94%</span>
+              <span class="font-mono text-[8px] text-white/20">Corridors managed</span>
+            </div>
+            <div class="flex flex-col gap-1.5 pl-6">
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">Alt Route</span>
+              <span class="font-headline font-bold text-xl text-white/65 leading-none">CLEAR</span>
+              <span class="font-mono text-[8px] text-white/20">23% capacity left</span>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="px-6 pb-5">
+            <canvas id="hero-chart" height="90" class="w-full"></canvas>
+          </div>
+
+          <!-- Key metrics -->
+          <div class="grid grid-cols-3" style="border-top:1px solid rgba(255,255,255,.06)">
+            <div class="flex flex-col gap-1.5 px-6 py-5" style="border-right:1px solid rgba(255,255,255,.06)">
+              <span class="font-headline font-bold text-2xl text-white counter leading-none">1,247</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">Active incentives</span>
+            </div>
+            <div class="flex flex-col gap-1.5 px-6 py-5" style="border-right:1px solid rgba(255,255,255,.06)">
+              <span class="font-headline font-bold text-2xl text-brand-orange counter leading-none">−31%</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">Peak congestion</span>
+            </div>
+            <div class="flex flex-col gap-1.5 px-6 py-5">
+              <span class="font-headline font-bold text-2xl text-white counter leading-none">98.2%</span>
+              <span class="font-mono text-[8px] uppercase tracking-widest text-white/25">Policy compliance</span>
+            </div>
+          </div>
+
+          <!-- Terminal -->
+          <div class="px-6 pb-6">
+            <div class="px-4 py-3 font-mono text-[9px] text-white/25 leading-relaxed" style="background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.04)">
+              &gt;_ EVALUATING CORRIDOR_3 DEMAND_INDEX... INCENTIVE_WEIGHT: 0.74 · COMPLIANCE_HASH: 0x4f2a<span class="cursor"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div><!-- /flex justify-end -->
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/20 animate-bounce">
+    <span class="font-mono text-[9px] uppercase tracking-widest">Scroll</span>
+    <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+  </div>
+</section>
+
+<!-- Trust strip removed -->
+
+<!-- ══════════════════════════════════════
+     01 — PLATFORM PHILOSOPHY
+══════════════════════════════════════ -->
+<span id="platform" style="position:absolute;top:-80px;pointer-events:none" aria-hidden="true"></span>
+<section class="py-32 px-6 md:px-10 bg-surface relative overflow-hidden" id="philosophy" data-chapter="§01" data-chapter-title="Platform Philosophy">
+  <div class="dot-bg absolute inset-0 opacity-50 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+      <!-- Label -->
+      <div class="lg:col-span-3 fu">
+        <span class="accent-line"></span>
+        <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline">01 // Platform Philosophy</span>
+      </div>
+
+      <!-- Quote + body -->
+      <div class="lg:col-span-9">
+        <blockquote class="text-3xl md:text-4xl lg:text-5xl font-headline font-bold tracking-tighter leading-tight text-on-surface mb-12 fu" style="transition-delay:.05s">
+          "Cities don't need another penalty-based toll system. They need a platform that makes the right commuting choice feel like the obvious one."
+        </blockquote>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 fu" style="transition-delay:.1s">
+          <p class="text-outline leading-relaxed text-base">
+            Traditional congestion pricing programs rely heavily on penalties and infrastructure deployment. Cities increasingly require tools that influence commuter behavior while maintaining public trust and policy transparency.
+          </p>
+          <p class="text-outline leading-relaxed text-base">
+            Congestion is not only a road-capacity problem — it is a repeated coordination problem created by large numbers of commuters making similar route and timing decisions during peak periods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 — THE URBAN CONGESTION PROBLEM
+══════════════════════════════════════ -->
+<span id="coordination" style="position:absolute;top:-80px;pointer-events:none" aria-hidden="true"></span>
+<section class="py-32 px-6 md:px-10 bg-white relative overflow-hidden" id="problem" data-chapter="§02" data-chapter-title="The Urban Congestion Problem">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16 fu">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Public Problem</span>
+      <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-on-surface leading-none">02. The Urban<br/>Congestion Problem</h2>
+    </div>
+
+    <!-- Bento -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+
+      <!-- Main image card — col 8 -->
+      <div class="md:col-span-8 spot beam bg-white relative overflow-hidden group fu">
+        <div class="absolute top-0 left-0 w-1 h-0 bg-brand-orange group-hover:h-full transition-all duration-700 z-10"></div>
+        <img src="https://images.pexels.com/photos/3573383/pexels-photo-3573383.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=1" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="w-full h-64 md:h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" loading="lazy"/>
+        <div class="p-8">
+          <p class="text-[10px] font-mono uppercase tracking-widest text-outline">AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection</p>
+        </div>
+      </div>
+
+      <!-- Right col 4 -->
+      <div class="md:col-span-4 flex flex-col gap-5">
+        <!-- What cities need -->
+        <div class="spot bg-brand-navy text-white p-8 flex flex-col gap-4 hover-lift fu" style="transition-delay:.05s">
+          <div class="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">hub</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg">What cities need</h3>
+          <p class="text-white/45 text-sm leading-relaxed">A policy instrument that can influence commuter behavior without relying only on punitive charging.</p>
+        </div>
+        <!-- Why this matters -->
+        <div class="spot bg-brand-orange text-white p-8 flex flex-col gap-4 hover-lift glow-o fu" style="transition-delay:.1s">
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white" style="font-size:18px">security</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg">Why this matters</h3>
+          <p class="text-white/70 text-sm leading-relaxed">Governments need a congestion approach that remains understandable, governable, and privacy-conscious from the beginning.</p>
+        </div>
+      </div>
+
+      <!-- Three insight cards -->
+      <div class="md:col-span-4 spot bg-white p-8 flex flex-col justify-between hover-lift fu" style="transition-delay:.05s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="material-symbols-outlined text-primary" style="font-size:22px">warning</span>
+          <span class="font-mono text-xs font-bold text-brand-orange">82%</span>
+        </div>
+        <div>
+          <h3 class="font-headline font-bold text-lg mb-2">Public trust gap</h3>
+          <p class="text-sm text-outline leading-relaxed">Governments need a congestion approach that remains understandable and governable.</p>
+        </div>
+        <div class="mt-6 h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+          <div class="pb h-full bg-primary rounded-full" style="--w:82%" data-p="82"></div>
+        </div>
+      </div>
+
+      <div class="md:col-span-4 spot bg-white p-8 flex flex-col justify-between hover-lift fu" style="transition-delay:.1s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="material-symbols-outlined text-primary" style="font-size:22px">trending_down</span>
+          <span class="font-mono text-xs font-bold text-brand-orange">91%</span>
+        </div>
+        <div>
+          <h3 class="font-headline font-bold text-lg mb-2">Infrastructure cost pressure</h3>
+          <p class="text-sm text-outline leading-relaxed">Traditional pricing relies on costly physical infrastructure that developing cities can't always deploy.</p>
+        </div>
+        <div class="mt-6 h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+          <div class="pb h-full bg-brand-orange rounded-full" style="--w:91%" data-p="91"></div>
+        </div>
+      </div>
+
+      <div class="md:col-span-4 spot bg-white p-8 flex flex-col justify-between hover-lift fu" style="transition-delay:.15s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="material-symbols-outlined text-primary" style="font-size:22px">policy</span>
+          <span class="font-mono text-xs font-bold text-brand-orange">64%</span>
+        </div>
+        <div>
+          <h3 class="font-headline font-bold text-lg mb-2">Policy complexity</h3>
+          <p class="text-sm text-outline leading-relaxed">Congestion policy must remain governable, auditable, and explainable to the public.</p>
+        </div>
+        <div class="mt-6 h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+          <div class="pb h-full bg-primary rounded-full" style="--w:64%" data-p="64"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     03 — THE IUDM MODEL
+══════════════════════════════════════ -->
+<section class="py-44 px-6 md:px-10 bg-brand-navy relative overflow-hidden noise" id="iudm" data-chapter="§03" data-chapter-title="The IUDM Model">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.3),transparent 70%);top:-100px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.4;"></div>
+    <div class="ab" style="width:400px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.12),transparent 70%);bottom:0;right:0;animation:ab3 26s ease-in-out infinite;opacity:.35;"></div>
+  </div>
+  <div class="grid-bg absolute inset-0 opacity-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+      <!-- Left -->
+      <div class="fu">
+        <span class="accent-line"></span>
+        <span class="font-mono text-[10px] uppercase tracking-[.25em] text-white/30 block mb-4">Core Differentiator</span>
+        <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-white leading-none mb-8">03. The IUDM<br/>Model</h2>
+        <p class="text-white/40 text-lg leading-relaxed max-w-lg mb-8">
+          Incentive-Based Urban Demand Management allows cities to reward off-peak travel, encourage carpooling, support transit usage, and influence route choices. Gamification and digital incentives create sustained commuter engagement. The model is designed to shift behavior through participation rather than rely only on deterrence.
+        </p>
+        <!-- City aerial visual -->
+        <div class="relative overflow-hidden" style="border:1px solid rgba(255,153,51,.15)">
+          <img src="https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?auto=compress&cs=tinysrgb&w=800&h=300&dpr=1" alt="Aerial view of urban city infrastructure" class="w-full h-44 object-cover" style="filter:brightness(.55) saturate(1.3)" loading="lazy"/>
+          <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(22,22,22,.6),transparent)"></div>
+          <div class="absolute bottom-3 left-4">
+            <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange/80">Urban Scale · AI-Managed Corridors</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: feature list -->
+      <div class="space-y-4 fu" style="transition-delay:.1s">
+        <div class="spot card-dk border border-white/5 p-8 flex gap-6 hover:card-dk-hi transition-colors group">
+          <span class="font-mono text-brand-orange text-4xl font-bold opacity-20 leading-none flex-shrink-0">01</span>
+          <div>
+            <h3 class="font-headline font-bold text-white text-xl mb-2">Off-Peak Travel</h3>
+            <p class="text-white/40 text-sm leading-relaxed">Reward windows can encourage demand to move outside the most congested periods.</p>
+          </div>
+        </div>
+        <div class="spot card-dk border border-white/5 p-8 flex gap-6 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange text-4xl font-bold opacity-20 leading-none flex-shrink-0">02</span>
+          <div>
+            <h3 class="font-headline font-bold text-white text-xl mb-2">Carpooling</h3>
+            <p class="text-white/40 text-sm leading-relaxed">Higher-occupancy travel can be recognized as a more efficient use of limited corridor capacity.</p>
+          </div>
+        </div>
+        <div class="spot card-dk border border-white/5 p-8 flex gap-6 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange text-4xl font-bold opacity-20 leading-none flex-shrink-0">03</span>
+          <div>
+            <h3 class="font-headline font-bold text-white text-xl mb-2">Transit Usage</h3>
+            <p class="text-white/40 text-sm leading-relaxed">Transit participation can be included in the reward framework rather than treated as a separate system.</p>
+          </div>
+        </div>
+        <div class="spot card-dk border border-white/5 p-8 flex gap-6 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange text-4xl font-bold opacity-20 leading-none flex-shrink-0">04</span>
+          <div>
+            <h3 class="font-headline font-bold text-white text-xl mb-2">Route Choice</h3>
+            <p class="text-white/40 text-sm leading-relaxed">Cities can influence corridor behavior by rewarding lower-pressure route decisions when appropriate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     04 — PLATFORM ARCHITECTURE
+══════════════════════════════════════ -->
+<span id="deploy" style="position:absolute;top:-80px;pointer-events:none" aria-hidden="true"></span>
+<section class="py-32 px-6 md:px-10 bg-surface relative overflow-hidden" id="architecture" data-chapter="§04" data-chapter-title="Platform Architecture">
+  <div class="grid-bg-lt absolute inset-0 opacity-60 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <!-- Left -->
+      <div class="fu">
+        <span class="accent-line"></span>
+        <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">System Credibility</span>
+        <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-6">04. Platform<br/>Architecture Overview</h2>
+        <p class="text-outline text-lg leading-relaxed mb-8 max-w-md">
+          The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.
+        </p>
+        <div class="flex gap-12 mb-10">
+          <div>
+            <span class="text-4xl font-headline font-bold tg-blue block">6+</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-outline">Core modules</span>
+          </div>
+          <div>
+            <span class="text-4xl font-headline font-bold tg-gold block">4</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-outline">Integration types</span>
+          </div>
+        </div>
+        <div class="p-5 bg-primary/5 mb-6" style="border-left:3px solid #0052CC">
+          <p class="text-sm text-outline leading-relaxed">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</p>
+        </div>
+        <!-- Dashboard preview -->
+        <div class="relative overflow-hidden" style="border:1px solid rgba(0,82,204,.2)">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop&h=280" alt="Platform analytics and operations dashboard" class="w-full h-48 object-cover object-top" style="filter:brightness(.8)" loading="lazy"/>
+          <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 40%,rgba(249,249,249,.95) 100%)"></div>
+          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+            <span class="font-mono text-[9px] uppercase tracking-widest text-primary">City Dashboard · Live Analytics</span>
+            <div class="flex items-center gap-1.5">
+              <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green" style="display:inline-block"></span>
+              <span class="font-mono text-[9px] text-brand-green uppercase tracking-widest">Live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Layered architecture stack -->
+      <div class="space-y-3 fu" style="transition-delay:.1s">
+        <!-- Layer 1 — top (public) -->
+        <div class="spot beam bg-brand-navy text-white p-6 flex items-center gap-5 hover-lift">
+          <div class="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">language</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-bold text-white">Public Web Layer</h3>
+              <span class="font-mono text-[9px] text-white/20 uppercase">Top</span>
+            </div>
+            <p class="text-xs text-white/35">public pages · onboarding · partner access</p>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green pulse-dot"></span>
+            <span class="font-mono text-[9px] text-brand-green">Active</span>
+          </div>
+        </div>
+
+        <div class="w-px h-4 bg-gradient-to-b from-brand-orange/40 to-transparent mx-auto"></div>
+
+        <div class="spot card-dk-hi border border-white/8 p-6 flex items-center gap-5 hover-lift">
+          <div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-primary-fixed-dim" style="font-size:18px">apps</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-bold text-white">Platform Application</h3>
+              <span class="font-mono text-[9px] text-white/20 uppercase">Layer 2</span>
+            </div>
+            <p class="text-xs text-white/35">operator workflows · city programs · admin tools</p>
+          </div>
+        </div>
+
+        <div class="w-px h-4 bg-gradient-to-b from-white/15 to-transparent mx-auto"></div>
+
+        <div class="spot card-dk border border-white/5 p-6 flex items-center gap-5 hover-lift">
+          <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-white/40" style="font-size:18px">api</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-bold text-white/70">API &amp; Policy Services</h3>
+              <span class="font-mono text-[9px] text-white/20 uppercase">Layer 3</span>
+            </div>
+            <p class="text-xs text-white/25">identity · payments · events · policy APIs</p>
+          </div>
+        </div>
+
+        <div class="w-px h-4 bg-gradient-to-b from-white/10 to-transparent mx-auto"></div>
+
+        <div class="spot border p-6 flex items-center gap-5 hover-lift" style="background:linear-gradient(135deg,rgba(255,153,51,.08),rgba(0,82,204,.08));border-color:rgba(255,153,51,.15)">
+          <div class="w-10 h-10 rounded-full bg-brand-orange/15 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">psychology</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-bold text-white">Incentive Engine + Data</h3>
+              <span class="font-mono text-[9px] text-brand-orange uppercase">Core</span>
+            </div>
+            <p class="text-xs text-white/35">evaluate behavior · calculate rewards · audit records</p>
+          </div>
+        </div>
+
+        <div class="w-px h-4 bg-gradient-to-b from-white/8 to-transparent mx-auto"></div>
+
+        <div class="spot card-dk border border-white/5 p-6 flex items-center gap-5 hover-lift opacity-60">
+          <div class="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-white/25" style="font-size:18px">smart_toy</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-bold text-white/50">AI Augmentation</h3>
+              <span class="font-mono text-[9px] text-white/15 uppercase">Under Development</span>
+            </div>
+            <p class="text-xs text-white/20">assistive analytics · pattern detection · decision support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     05 — PRIVACY BY DESIGN
+══════════════════════════════════════ -->
+<section class="py-40 px-6 md:px-10 bg-white relative overflow-hidden" id="privacy" data-chapter="§05" data-chapter-title="Privacy by Design">
+  <div class="max-w-7xl mx-auto">
+    <div class="fu mb-16">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Trust Foundation</span>
+      <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-on-surface leading-none">05. Privacy<br/>by Design</h2>
+      <p class="text-outline text-lg mt-6 max-w-xl leading-relaxed">MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
+    </div>
+
+    <!-- Three-column privacy matrix -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+      <!-- Not Collected -->
+      <div class="spot bg-on-surface/95 text-white p-8 hover-lift fu" style="transition-delay:.05s">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-red" style="font-size:16px">block</span>
+          </div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-white/40">Not Collected</span>
+        </div>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-red mt-0.5">×</span> No continuous GPS tracking</li>
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-red mt-0.5">×</span> No biometric data</li>
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-red mt-0.5">×</span> No cross-city identity correlation</li>
+        </ul>
+      </div>
+
+      <!-- Collected Minimally -->
+      <div class="spot bg-brand-navy text-white p-8 hover-lift fu" style="transition-delay:.1s">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-brand-orange/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:16px">tune</span>
+          </div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-white/40">Collected Minimally</span>
+        </div>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-orange mt-0.5">→</span> Eligibility signals only</li>
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-orange mt-0.5">→</span> Reward distribution records</li>
+          <li class="flex items-start gap-3 text-sm text-white/60"><span class="text-brand-orange mt-0.5">→</span> Aggregated program metrics</li>
+        </ul>
+      </div>
+
+      <!-- Government Control -->
+      <div class="spot beam bg-white p-8 hover-lift fu" style="transition-delay:.15s">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:16px">account_balance</span>
+          </div>
+          <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline">Government Control</span>
+        </div>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-sm text-outline"><span class="text-brand-green mt-0.5">✓</span> City authority is controller</li>
+          <li class="flex items-start gap-3 text-sm text-outline"><span class="text-brand-green mt-0.5">✓</span> MTSAi acts as processor</li>
+          <li class="flex items-start gap-3 text-sm text-outline"><span class="text-brand-green mt-0.5">✓</span> Retention defined by policy</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Summary + Stats -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fu" style="transition-delay:.2s">
+      <p class="text-outline text-lg leading-relaxed max-w-xl">
+        Privacy assurance comes from limiting collection, separating roles clearly, and keeping the city in control of policy and data governance.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <span class="text-3xl font-headline font-bold text-on-surface block">2019</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-outline block mt-1">Est. · Founded</span>
+        </div>
+        <div class="text-center">
+          <span class="text-3xl font-headline font-bold text-on-surface block">4</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-outline block mt-1">Global jurisdictions</span>
+        </div>
+        <div class="text-center">
+          <span class="text-3xl font-headline font-bold text-on-surface block">6+</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-outline block mt-1">Platform modules</span>
+        </div>
+        <div class="text-center">
+          <span class="text-3xl font-headline font-bold tg-gold block">Q2 '26</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-outline block mt-1">Pilot deployment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     06 — SUPER APP ECOSYSTEM
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 bg-brand-navy relative overflow-hidden noise" id="india" data-chapter="§06" data-chapter-title="Super App Ecosystem">
+  <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
+  <div class="aurora">
+    <div class="ab" style="width:500px;height:400px;background:radial-gradient(circle,rgba(0,82,204,.25),transparent 70%);top:0;right:-100px;animation:ab2 24s ease-in-out infinite;opacity:.4;"></div>
+  </div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div class="fu">
+        <span class="accent-line"></span>
+        <span class="font-mono text-[10px] uppercase tracking-[.25em] text-white/30 block mb-4">India Deployment Strategy</span>
+        <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-white leading-none mb-6">06. Super App<br/>Ecosystem</h2>
+        <p class="text-white/40 text-lg leading-relaxed max-w-md mb-10">
+          Incentives are delivered through partner platforms where commuters already transact. This integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.
+        </p>
+
+        <!-- Partner chips -->
+        <div class="flex flex-wrap gap-3" data-stagger="60">
+          <span class="px-4 py-2 card-dk border border-white/8 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-brand-orange hover:border-brand-orange/30 transition-colors cursor-pointer">UPI</span>
+          <span class="px-4 py-2 card-dk border border-white/8 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-brand-orange hover:border-brand-orange/30 transition-colors cursor-pointer">FASTag</span>
+          <span class="px-4 py-2 card-dk border border-white/8 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-brand-orange hover:border-brand-orange/30 transition-colors cursor-pointer">ONDC</span>
+          <span class="px-4 py-2 card-dk border border-white/8 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-brand-orange hover:border-brand-orange/30 transition-colors cursor-pointer">Ride Apps</span>
+          <span class="px-4 py-2 card-dk border border-white/8 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-brand-orange hover:border-brand-orange/30 transition-colors cursor-pointer">Metro Pass</span>
+        </div>
+      </div>
+
+      <!-- Integration points -->
+      <div class="space-y-4 fu" style="transition-delay:.1s">
+        <div class="spot card-dk border border-white/5 p-6 flex gap-5 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange font-bold text-2xl opacity-25 leading-none flex-shrink-0">01</span>
+          <div>
+            <h3 class="font-headline font-bold text-white mb-1">Digital Mobility Platforms</h3>
+            <p class="text-white/35 text-sm leading-relaxed">Trip interfaces can surface eligibility, incentives, and commuter guidance.</p>
+          </div>
+        </div>
+        <div class="spot card-dk border border-white/5 p-6 flex gap-5 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange font-bold text-2xl opacity-25 leading-none flex-shrink-0">02</span>
+          <div>
+            <h3 class="font-headline font-bold text-white mb-1">Payment Networks</h3>
+            <p class="text-white/35 text-sm leading-relaxed">Reward issuance can be linked to digital settlement infrastructure already in use.</p>
+          </div>
+        </div>
+        <div class="spot card-dk border border-white/5 p-6 flex gap-5 hover:card-dk-hi transition-colors">
+          <span class="font-mono text-brand-orange font-bold text-2xl opacity-25 leading-none flex-shrink-0">03</span>
+          <div>
+            <h3 class="font-headline font-bold text-white mb-1">Transit &amp; Shared Mobility</h3>
+            <p class="text-white/35 text-sm leading-relaxed">Mode-shift incentives can be aligned with shared mobility and transit participation.</p>
+          </div>
+        </div>
+        <div class="spot beam card-dk border border-brand-orange/15 p-6 flex gap-5">
+          <span class="font-mono text-brand-orange font-bold text-2xl opacity-25 leading-none flex-shrink-0">04</span>
+          <div>
+            <h3 class="font-headline font-bold text-white mb-1">City Program Interface</h3>
+            <p class="text-white/35 text-sm leading-relaxed">Authorities retain control over budgets, rulebooks, and operational scope.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     06b — PLATFORM CAPABILITIES
+══════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-10 bg-surface relative overflow-hidden" id="capabilities" data-chapter="§07" data-chapter-title="Platform Capabilities">
+  <div class="dot-bg absolute inset-0 opacity-30 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-12">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Platform Capabilities</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">What the Platform Does</h2>
+    </div>
+    <div class="flex flex-wrap gap-3" data-stagger="45">
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Demand Forecasting</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Incentive Engine</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Corridor Management</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Policy Rule Engine</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Reward Distribution</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Government Dashboard</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Privacy Layer</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">API Integration</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">FASTag Compatibility</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">UPI Reward Rails</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">Audit Trail</span>
+      <span class="px-5 py-2.5 bg-white border border-outline-variant/30 font-mono text-[10px] uppercase tracking-widest text-outline hover:border-brand-orange/40 hover:text-brand-orange transition-colors cursor-default">DPDPA Compliance</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     07 — GOVERNMENT CONTROL
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 bg-surface relative overflow-hidden" id="governance" data-chapter="§08" data-chapter-title="Government Control">
+  <div class="dot-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-16">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Policy Governance</span>
+      <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-on-surface leading-none">07. Government<br/>Control</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="spot bg-white p-10 hover-lift fu" style="transition-delay:.05s">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="font-mono text-brand-orange font-bold text-3xl opacity-20 leading-none">01</span>
+          <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:18px">tune</span>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-xl mb-3">Pricing Rules</h3>
+        <p class="text-outline text-sm leading-relaxed">City authorities configure programme rules, corridor logic, and decision thresholds.</p>
+      </div>
+
+      <div class="spot bg-white p-10 hover-lift fu" style="transition-delay:.1s">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="font-mono text-brand-orange font-bold text-3xl opacity-20 leading-none">02</span>
+          <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:18px">payments</span>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-xl mb-3">Incentive Structures</h3>
+        <p class="text-outline text-sm leading-relaxed">Reward categories, budgets, and eligibility thresholds are set through policy, not consumer defaults.</p>
+      </div>
+
+      <div class="spot bg-brand-navy text-white p-10 hover-lift fu" style="transition-delay:.15s">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="font-mono text-brand-orange font-bold text-3xl opacity-20 leading-none">03</span>
+          <div class="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">balance</span>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-xl mb-3 text-white">Exemptions</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Equity protections and programme exclusions remain part of public policy control.</p>
+      </div>
+
+      <div class="spot bg-brand-orange text-white p-10 hover-lift glow-o fu" style="transition-delay:.2s">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="font-mono text-white/30 font-bold text-3xl opacity-40 leading-none">04</span>
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white" style="font-size:18px">security</span>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-xl mb-3">Enforcement Thresholds</h3>
+        <p class="text-white/65 text-sm leading-relaxed">Operational thresholds and response rules remain under city-level oversight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     08 — PLATFORM ROADMAP
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 bg-surface-container-low relative overflow-hidden" id="roadmap" data-chapter="§09" data-chapter-title="Platform Roadmap">
+  <div class="max-w-5xl mx-auto">
+    <div class="fu mb-16">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Phased Implementation</span>
+      <h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-4">08. Platform Development<br/>Roadmap</h2>
+      <p class="text-outline text-lg max-w-xl leading-relaxed">The platform development model is phased to reduce implementation risk.</p>
+    </div>
+
+    <div class="space-y-0 border-l-2 border-outline-variant/30 ml-4">
+      <!-- Phase 1 -->
+      <div class="relative pl-10 pb-14 fu">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-green border-4 border-surface-container-low">
+          <div class="absolute inset-0 rounded-full bg-brand-green/40 animate-ping"></div>
+        </div>
+        <div class="absolute left-0 -translate-x-full top-1 h-px w-8 bg-outline-variant/40"></div>
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-green font-bold block mb-2">Phase 1 · Complete</span>
+          <h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Core Platform Architecture</h3>
+          <div class="mt-4 space-y-1.5">
+            <div class="flex justify-between text-xs font-mono text-outline"><span>Progress</span><span>100%</span></div>
+            <div class="h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+              <div class="pb h-full bg-brand-green rounded-full" style="--w:100%" data-p="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="relative pl-10 pb-14 fu" style="transition-delay:.08s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-green border-4 border-surface-container-low">
+          <div class="absolute inset-0 rounded-full bg-brand-green/40 animate-ping" style="animation-delay:.3s"></div>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-brand-green font-bold block mb-2">Phase 2 · Complete</span>
+          <h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Incentive &amp; Pricing Engines</h3>
+          <div class="mt-4 space-y-1.5">
+            <div class="flex justify-between text-xs font-mono text-outline"><span>Progress</span><span>100%</span></div>
+            <div class="h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+              <div class="pb h-full bg-brand-green rounded-full" style="--w:100%" data-p="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="relative pl-10 pb-14 fu" style="transition-delay:.16s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface-container-low glow-o">
+          <div class="absolute inset-0 rounded-full bg-brand-orange/40 animate-ping" style="animation-delay:.6s"></div>
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange font-bold">Phase 3 · In Progress</span>
+            <span class="px-2 py-0.5 bg-brand-orange/10 text-brand-orange font-mono text-[9px] uppercase tracking-widest">Active</span>
+          </div>
+          <h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Integration with External Systems</h3>
+          <div class="mt-4 space-y-1.5">
+            <div class="flex justify-between text-xs font-mono text-outline"><span>Progress</span><span>62%</span></div>
+            <div class="h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+              <div class="pb h-full bg-gradient-to-r from-brand-orange to-yellow-400 rounded-full" style="--w:62%" data-p="62"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="relative pl-10 fu" style="transition-delay:.24s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface-container-low"></div>
+        <div>
+          <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-2">Phase 4 · Planned</span>
+          <h3 class="text-2xl font-headline font-bold text-on-surface/50 mb-2">Pilot Deployment</h3>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/8 text-primary font-mono text-[9px] uppercase tracking-widest">
+            <span class="material-symbols-outlined" style="font-size:12px">schedule</span> Q2 2026
+          </span>
+          <p class="text-outline/60 text-sm mt-3 max-w-md leading-relaxed">Each phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ ACCORDION
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-white" id="faq" data-chapter="§10" data-chapter-title="Frequently Asked">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-16 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">§09 · Frequently Asked</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-4">Common questions,<br/><span class="tg-blue">direct answers.</span></h2>
+      <p class="text-outline text-lg max-w-xl leading-relaxed">Straightforward answers about the IUDM platform, deployment approach, and partnership options.</p>
+    </div>
+
+    <div class="ds-acc ds-acc--light fu" data-single style="transition-delay:.1s">
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>What exactly is the Incentive-Based Urban Demand Management (IUDM) model?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>IUDM is a demand-shaping mechanism that uses real-time digital incentives — such as rewards, cashbacks, and preferential routing — to redistribute mobility demand across corridors and time windows. Unlike pricing-based systems, IUDM works within a <strong>zero-revenue-extraction</strong> model: the government does not charge citizens; instead, behavioural shifts are rewarded. The goal is to reduce peak congestion by 25–40% without coercive measures.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>How does MTSAi handle citizen data and privacy?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>MTSAi is built on a <strong>Privacy-by-Design</strong> foundation. All personally identifiable information (PII) is anonymised at the edge before it enters the analytics layer. The platform is fully compliant with the Digital Personal Data Protection Act (DPDPA) 2023 and aligns with GIGW 3.0 standards. No citizen data is sold, profiled, or monetised. Government retains full data sovereignty with audit-ready logs accessible via a dedicated Trust Centre dashboard.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>What are the four deployment phases and their timelines?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>The platform follows a <strong>phased risk-reduction approach</strong>:</p>
+            <ul style="margin:.75rem 0 0 1rem; list-style:disc; line-height:1.9">
+              <li><strong>Phase 1 · Mapping &amp; Baselining</strong> — Data ingestion, corridor identification, demand baseline (Completed)</li>
+              <li><strong>Phase 2 · Model Validation</strong> — IUDM simulation on synthetic and anonymised historical data (In Progress)</li>
+              <li><strong>Phase 3 · Regulatory Alignment</strong> — DPDPA compliance audit, procurement documentation, MoU preparation</li>
+              <li><strong>Phase 4 · Pilot Deployment</strong> — Live corridor trial with selected government partner (Target: Q2 2026)</li>
+            </ul>
+            <p style="margin-top:.75rem">Each phase must be signed off before the next begins. No deployment claims are made before Phase 4 is completed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>Who can partner with MTSAi, and what does partnership look like?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>MTSAi has three distinct partnership tracks:</p>
+            <ul style="margin:.75rem 0 0 1rem; list-style:disc; line-height:1.9">
+              <li><strong>Government Bodies</strong> — Municipal corporations, State Transport Departments, Smart City SPVs. Engagement typically begins with an MoU followed by a funded pilot under the city's existing IT procurement framework.</li>
+              <li><strong>Technology Partners</strong> — ERP integrators, ride-hailing platforms, payment aggregators, and urban data providers wishing to integrate with the IUDM API layer.</li>
+              <li><strong>Strategic Investors</strong> — Impact investors and infrastructure funds aligned with sustainable urban mobility. Investment structuring is handled via formal due diligence and NDA.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>Is MTSAi compatible with existing city infrastructure and apps?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>Yes. MTSAi is designed as an <strong>integration-first platform</strong>. It exposes RESTful APIs and webhook streams compatible with state-run mobility apps (e.g., ONDC, city bus apps, metro apps), existing ERP/EIS systems, and NPCI-aligned payment rails. The Super App layer can be deployed as a white-label module within a city's existing app — no new citizen-facing app download is required. The platform also supports data ingestion from IoT traffic sensors, GPS transponders, and FASTag infrastructure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>What makes this different from traditional congestion pricing or tolling?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>Traditional congestion pricing is a <strong>punitive, revenue-extraction model</strong> — citizens are charged more to use roads during peak hours. This generates political resistance and disproportionately impacts lower-income commuters. IUDM inverts this logic: instead of penalising peak usage, it rewards off-peak or alternative route choices. The government spends on incentives rather than collecting penalties, making the model politically viable, socially equitable, and behaviourally more effective.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.ds-acc -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EVALUATION DIALOG
+══════════════════════════════════════ -->
+<div class="ds-dialog-wrap" id="dialog-evaluation" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+  <div class="ds-dialog-backdrop"></div>
+  <div class="ds-dialog" style="max-width:560px">
+    <button class="ds-dialog-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <div class="mb-6">
+      <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline/60 block mb-2">Government Evaluation Request</span>
+      <h3 class="text-2xl font-headline font-bold tracking-tighter text-on-surface" id="dlg-title">Start Your City's Evaluation</h3>
+      <p class="text-outline text-sm mt-2 leading-relaxed">Tell us about your city and objectives — our team will respond within 48 hours with a tailored briefing pack.</p>
+    </div>
+    <form class="ds-form space-y-4" id="evaluation-form" novalidate>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="ds-field">
+          <label class="ds-label" for="ev-name">Full Name</label>
+          <input class="ds-input" id="ev-name" type="text" placeholder="Your full name" required/>
+        </div>
+        <div class="ds-field">
+          <label class="ds-label" for="ev-role">Designation</label>
+          <input class="ds-input" id="ev-role" type="text" placeholder="e.g. Commissioner, IAS" required/>
+        </div>
+      </div>
+      <div class="ds-field">
+        <label class="ds-label" for="ev-org">Department / Organisation</label>
+        <input class="ds-input" id="ev-org" type="text" placeholder="e.g. Bengaluru Smart City Ltd." required/>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="ds-field">
+          <label class="ds-label" for="ev-city">City</label>
+          <input class="ds-input" id="ev-city" type="text" placeholder="City name" required/>
+        </div>
+        <div class="ds-field">
+          <label class="ds-label" for="ev-email">Official Email</label>
+          <input class="ds-input" id="ev-email" type="email" placeholder="name@gov.in" required/>
+        </div>
+      </div>
+      <div class="ds-field">
+        <label class="ds-label" for="ev-message">What problem are you trying to solve?</label>
+        <textarea class="ds-input ds-textarea" id="ev-message" rows="3" placeholder="Describe your corridor congestion challenge or mobility goal..."></textarea>
+      </div>
+      <div class="pt-2 flex gap-3">
+        <button type="submit" class="flex-1 py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Send Evaluation Request</button>
+        <button type="button" class="ds-dialog-close px-5 py-3 font-headline font-bold uppercase tracking-widest text-[11px] text-outline" style="border:1px solid var(--outline-v)">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     COMMAND PALETTE
+══════════════════════════════════════ -->
+<div id="ds-cmd" role="dialog" aria-label="Command palette" aria-modal="true">
+  <div class="ds-cmd-backdrop"></div>
+  <div class="ds-cmd-box">
+    <div class="ds-cmd-input-wrap">
+      <svg class="ds-cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="1.5"/></svg>
+      <input class="ds-cmd-input" id="ds-cmd-input" type="text" placeholder="Search pages, sections&hellip;" autocomplete="off" spellcheck="false"/>
+      <span class="ds-cmd-shortcut">Esc</span>
+    </div>
+    <div style="max-height:320px;overflow-y:auto;">
+      <div class="ds-cmd-section">
+        <span class="ds-cmd-group-label">Pages</span>
+        <a class="ds-cmd-item" href="index.html" data-cmd-label="Home — Platform Overview">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Home — Platform Overview
+        </a>
+        <a class="ds-cmd-item" href="government.html" data-cmd-label="Government — Control & Governance">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11M8 14v3m4-3v3m4-3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Government — Control &amp; Governance
+        </a>
+        <a class="ds-cmd-item" href="about.html" data-cmd-label="About — Team & Mission">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          About — Team &amp; Mission
+        </a>
+        <a class="ds-cmd-item" href="careers.html" data-cmd-label="Careers — Join the Team">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="currentColor" stroke-width="1.5"/></svg>
+          Careers — Join the Team
+        </a>
+      </div>
+      <div class="ds-cmd-section">
+        <span class="ds-cmd-group-label">Sections</span>
+        <a class="ds-cmd-item" href="#platform" data-cmd-label="Platform Philosophy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Platform Philosophy
+        </a>
+        <a class="ds-cmd-item" href="#iudm" data-cmd-label="IUDM Model">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          IUDM Model
+        </a>
+        <a class="ds-cmd-item" href="#architecture" data-cmd-label="Platform Architecture">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="14" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="14" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+          Platform Architecture
+        </a>
+        <a class="ds-cmd-item" href="#privacy" data-cmd-label="Privacy by Design">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Privacy by Design
+        </a>
+        <a class="ds-cmd-item" href="#roadmap" data-cmd-label="Deployment Roadmap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 9m0 8V9m0 0L9 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Deployment Roadmap
+        </a>
+        <a class="ds-cmd-item" href="#faq" data-cmd-label="FAQ">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          FAQ
+        </a>
+      </div>
+      <div class="ds-cmd-section">
+        <span class="ds-cmd-group-label">Actions</span>
+        <button class="ds-cmd-item" data-dialog="evaluation" data-cmd-label="Request Government Evaluation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Request Government Evaluation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 ani-grad relative overflow-hidden noise" id="cta">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:400px;background:radial-gradient(circle,rgba(0,82,204,.35),transparent 70%);top:-80px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.5;"></div>
+    <div class="ab" style="width:400px;height:350px;background:radial-gradient(circle,rgba(255,153,51,.2),transparent 70%);bottom:0;right:-60px;animation:ab3 26s ease-in-out infinite;opacity:.4;"></div>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-10 fu">
+    <span class="accent-line mx-auto"></span>
+    <h2 class="text-5xl md:text-6xl lg:text-7xl font-headline font-bold text-white tracking-tighter leading-none mb-8">
+      Ready to explore what<br/>
+      <span class="shimmer">MTSAi can do</span><br/>
+      for your city?
+    </h2>
+    <p class="text-white/40 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+      Whether you're a government decision-maker, a technology partner, or an investor — there's a path for you.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button data-dialog="evaluation" class="group relative px-10 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center justify-center gap-2">
+        <span class="relative z-10">Connect</span>
+        <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </button>
+      <a href="government.html" class="px-10 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/70 hover:text-white transition-colors flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">
+        Government Solutions
+      </a>
+      <a href="strategic_partners.html" class="px-10 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/70 hover:text-white transition-colors flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">
+        Partner Paths
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+</main>
+<footer class="bg-brand-navy pt-20 pb-8 px-6 md:px-10" style="border-top:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-7xl mx-auto">
+    <!-- Top: brand + 4 cols -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+      <!-- Brand -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+            <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+          </div>
+          <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+        </div>
+        <p class="text-white/25 text-sm leading-relaxed max-w-xs mb-6">
+          A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.
+        </p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10" style="border:1px solid rgba(0,82,204,.3)">
+          <span class="material-symbols-outlined text-primary" style="font-size:12px">verified</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-primary/80">GIGW 3.0 Compliant</span>
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Explore</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Home</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+          <li><a href="government.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Government</a></li>
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="solutions.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Solutions</a></li>
+        </ul>
+      </div>
+
+      <!-- Trust -->
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Trust</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Trust Centre</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Public Integrity</a></li>
+          <li><a href="government.html#privacy" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Privacy</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Security</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Company</h3>
+        <ul class="space-y-3">
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="careers.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Careers</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Resources</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Procurement Pack</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact Us</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="p-5 bg-white/2 mb-10" style="border:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/18 text-[10px] leading-relaxed font-mono">
+        Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.
+      </p>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style="border-top:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/20 text-[10px] font-mono">© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Terms</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Privacy Policy</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Hyperlinking Policy</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Copyright Policy</a>
+      </div>
+      <p class="text-white/10 font-mono text-[9px]">v1.0 · Last Updated Mar 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+// Scroll progress
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  scrollBar.style.width = p + '%';
+}, { passive: true });
+
+// Nav opacity on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.style.background = 'rgba(22,22,22,.92)';
+    nav.style.boxShadow = '0 1px 0 rgba(255,153,51,.08)';
+  } else {
+    nav.style.background = 'rgba(22,22,22,.02)';
+    nav.style.boxShadow = 'none';
+  }
+}, { passive: true });
+
+// Mobile menu
+const hbg = document.getElementById('hbg');
+const mobMenu = document.getElementById('mob-menu');
+const mobClose = document.getElementById('mob-close');
+const hb1 = document.getElementById('hb1'), hb2 = document.getElementById('hb2'), hb3 = document.getElementById('hb3');
+
+hbg.addEventListener('click', () => {
+  mobMenu.classList.add('open');
+  hb1.style.transform = 'rotate(45deg) translateY(7px)';
+  hb2.style.opacity = '0';
+  hb3.style.transform = 'rotate(-45deg) translateY(-7px)';
+});
+const closeMenu = () => {
+  mobMenu.classList.remove('open');
+  hb1.style.transform = ''; hb2.style.opacity = ''; hb3.style.transform = '';
+};
+mobClose.addEventListener('click', closeMenu);
+document.querySelectorAll('.mob-l').forEach(l => l.addEventListener('click', closeMenu));
+
+
+// Spotlight
+document.querySelectorAll('.spot').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+// Intersection Observer: fade-up
+const fuIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const delay = parseFloat(e.target.style.transitionDelay || '0') * 1000;
+    setTimeout(() => e.target.classList.add('in'), delay);
+    fuIO.unobserve(e.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fu').forEach(el => fuIO.observe(el));
+
+// Progress bars
+const pbIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('go'); pbIO.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('.pb').forEach(el => pbIO.observe(el));
+
+// Hero area chart
+(function drawHeroChart() {
+  const canvas = document.getElementById('hero-chart');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.offsetWidth || 360, H = 80;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Demand data (before IUDM) and managed data (after IUDM)
+  const raw  = [88,92,95,90,94,88,85,80,75,70,68,72,76,80,84,88,92,95,91,88,85,82,78,75,72,70,74,78,82,86];
+  const mgd  = [55,58,54,60,56,52,50,48,52,55,58,54,50,52,56,54,50,48,52,55,58,54,50,48,52,54,56,50,52,54];
+  const max = 100;
+  const tx = (i, len) => (i / (len - 1)) * W;
+  const ty = v => H - 8 - (v / max) * (H - 20);
+
+  let prog = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const n = Math.max(2, Math.floor(prog * raw.length));
+
+    // Raw demand area
+    ctx.beginPath();
+    ctx.moveTo(tx(0, raw.length), H);
+    raw.slice(0, n).forEach((v, i) => ctx.lineTo(tx(i, raw.length), ty(v)));
+    ctx.lineTo(tx(n - 1, raw.length), H);
+    const gr = ctx.createLinearGradient(0, 0, 0, H);
+    gr.addColorStop(0, 'rgba(255,255,255,.06)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = gr; ctx.fill();
+    ctx.beginPath();
+    raw.slice(0, n).forEach((v, i) => i ? ctx.lineTo(tx(i, raw.length), ty(v)) : ctx.moveTo(tx(0, raw.length), ty(v)));
+    ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.lineWidth = 1; ctx.setLineDash([3,3]); ctx.stroke(); ctx.setLineDash([]);
+
+    // Managed demand area
+    ctx.beginPath();
+    ctx.moveTo(tx(0, mgd.length), H);
+    mgd.slice(0, n).forEach((v, i) => ctx.lineTo(tx(i, mgd.length), ty(v)));
+    ctx.lineTo(tx(n - 1, mgd.length), H);
+    const gm = ctx.createLinearGradient(0, 0, 0, H);
+    gm.addColorStop(0, 'rgba(255,153,51,.3)'); gm.addColorStop(1, 'rgba(255,153,51,0)');
+    ctx.fillStyle = gm; ctx.fill();
+    ctx.beginPath();
+    mgd.slice(0, n).forEach((v, i) => i ? ctx.lineTo(tx(i, mgd.length), ty(v)) : ctx.moveTo(tx(0, mgd.length), ty(v)));
+    ctx.strokeStyle = '#FF9933'; ctx.lineWidth = 1.5; ctx.stroke();
+
+    // Live dot
+    const lx = tx(n - 1, mgd.length), ly = ty(mgd[n - 1]);
+    ctx.beginPath(); ctx.arc(lx, ly, 3, 0, Math.PI * 2);
+    ctx.fillStyle = '#FF9933'; ctx.fill();
+
+    prog = Math.min(prog + 0.02, 1);
+    if (prog < 1) requestAnimationFrame(draw);
+    else {
+      // Animate a live dot blinking
+      let t = 0;
+      setInterval(() => {
+        t += 0.1;
+        ctx.clearRect(lx - 8, ly - 8, 16, 16);
+        ctx.beginPath(); ctx.arc(lx, ly, 3 + Math.sin(t) * 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#FF9933'; ctx.fill();
+      }, 50);
+    }
+  }
+  draw();
+})();
+</script>
+<script src="assets/ds.js"></script>
+<script>
+// Evaluation form → Formspree
+// REPLACE the endpoint below with your Formspree form ID: https://formspree.io/forms
+const EVAL_ENDPOINT = 'https://formspree.io/f/xpzgrrzj'; // ← replace xpzgrrzj with your form ID
+const evalForm = document.getElementById('evaluation-form');
+if (evalForm) {
+  evalForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = evalForm.querySelector('[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true; btn.classList.add('btn-loading');
+    try {
+      const res = await fetch(EVAL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(evalForm)
+      });
+      if (res.ok) {
+        DS.Dialog.close();
+        DS.Toast.success('Evaluation Request Sent', 'Our team will respond within 48 hours with a briefing pack.', 6000);
+        evalForm.reset();
+      } else {
+        DS.Toast.error('Submission Failed', 'Please try again or email ssg@miracletraffic.ai directly.', 6000);
+      }
+    } catch {
+      DS.Toast.error('Network Error', 'Please check your connection and try again.', 6000);
+    } finally {
+      btn.disabled = false; btn.classList.remove('btn-loading');
+    }
+  });
+}
+// ⌘K / Ctrl+K hint in nav
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    DS.Command && DS.Command.open();
+  }
+});
+</script>
+
+<!-- Chapter wayfinding indicator -->
+<div id="chapter-nav">
+  <div class="chapter-label">
+    <span class="chapter-id"></span>
+    <span class="chapter-sep">·</span>
+    <span class="chapter-name"></span>
+  </div>
+</div>
+</body>
+</html>

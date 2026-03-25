@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Congestion Is a Coordination Problem | MTSAi</title>
+<meta name="description" content="A policy-first explanation of why congestion is a coordination problem, why road expansion alone is insufficient, and how IUDM changes the logic of intervention."/>
+<meta property="og:title" content="Congestion Is a Coordination Problem | MTSAi"/>
+<meta property="og:description" content="Congestion is not caused only by a shortage of road capacity. It is caused by millions of commuters making similar travel decisions at the same time."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://miracletraffic.ai/congestion-coordination.html"/>
+<meta property="og:image" content="https://miracletraffic.ai/assets/og-cover.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Congestion Is a Coordination Problem | MTSAi"/>
+<meta name="twitter:description" content="Why road expansion is insufficient and how incentive-based coordination changes the logic of urban mobility."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23FF9933'/><text x='16' y='21' text-anchor='middle' font-size='16' font-family='sans-serif' fill='white'>M</text></svg>"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="assets/ds.css"/>
+<script>
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{
+      colors:{
+        "surface":"#F4F4F4","on-surface-variant":"#434654","on-primary-fixed":"#001848",
+        "primary-container":"#0052CC","background":"#F4F4F4","on-primary":"#ffffff",
+        "primary":"#0052CC","outline":"#737685","on-surface":"#1a1c1c",
+        "brand-orange":"#FF9933","brand-navy":"#161616","brand-green":"#53AA00","brand-red":"#D82B2B","outline-variant":"#c3c6d6"
+      },
+      fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],"label":["Inter"],"mono":["JetBrains Mono"]},
+      borderRadius:{"DEFAULT":"0rem","lg":"0rem","xl":"0rem","full":"9999px"},
+    }}
+  }
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #FF9933; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; vertical-align:middle; line-height:1; display:inline-block; }
+#scroll-bar { position:fixed; top:0; left:0; height:2px; z-index:200; background:#FF9933; width:0%; transition:width .08s linear; pointer-events:none; }
+.nav-dropdown { position:relative; }
+.nav-dropdown-menu { position:absolute; top:100%;padding-top:12px; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(22,22,22,.97); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.06); min-width:300px; padding:8px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-dropdown-item { display:block; padding:8px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.4); transition:color .15s,background .15s; }
+.nav-dropdown-item:hover { color:#FF9933; background:rgba(255,153,51,.06); }
+.nav-dropdown-item.active { color:#FF9933; background:rgba(255,153,51,.06); }
+.fu { opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1); }
+.fu.in { opacity:1; transform:translateY(0); }
+.mob-overlay { position:fixed; inset:0; z-index:40; background:rgba(22,22,22,.98); display:flex; flex-direction:column; padding:80px 24px 40px; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+.mob-overlay.open { transform:translateX(0); }
+.accent-line { display:block; width:32px; height:2px; background:#FF9933; margin-bottom:24px; }
+.article-body p { font-size:1.0625rem; line-height:1.8; color:rgba(26,28,28,.8); margin-bottom:1.25rem; }
+.article-body p:last-child { margin-bottom:0; }
+.pull-quote { border-left:3px solid #FF9933; padding:20px 28px; background:rgba(255,153,51,.04); margin:0; }
+.pull-quote p { font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; color:#161616; margin:0; }
+.series-nav-pill { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.5); }
+.series-nav-pill.active { border-color:#FF9933; color:#FF9933; }
+</style>
+</head>
+<body class="bg-brand-navy font-body text-on-surface selection:bg-brand-orange/30">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript>
+  <style>body { opacity: 1 !important; } .fu { opacity: 1 !important; transform: none !important; }</style>
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161616;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
+    This site uses JavaScript for navigation and interactive features. Please enable JavaScript for the best experience.
+  </div>
+</noscript>
+<div id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(22,22,22,.02)">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-brand-orange flex items-center justify-center" style="box-shadow:0 0 36px rgba(255,153,51,.25)">
+        <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+      </div>
+      <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Home</a>
+      <a href="government.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Government</a>
+      <div class="nav-dropdown">
+        <button class="font-mono text-[11px] uppercase tracking-widest text-brand-orange transition-colors flex items-center gap-1">How the System Works <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="why-traditional-fails.html" class="nav-dropdown-item">Why Traditional Congestion Pricing Struggles</a>
+          <a href="congestion-coordination.html" class="nav-dropdown-item active">Congestion Is a Coordination Problem</a>
+          <a href="iudm.html" class="nav-dropdown-item">Incentive-Based Demand Management</a>
+          <a href="deployment-roadmap.html" class="nav-dropdown-item">How a City Deploys MTSAi</a>
+          <a href="india-advantage.html" class="nav-dropdown-item">Why India Can Deploy This at Scale</a>
+          <a href="governance.html" class="nav-dropdown-item">Governance &amp; Accountability</a>
+          <a href="data-transparency.html" class="nav-dropdown-item">Data Protection &amp; Public Transparency</a>
+        </div>
+      </div>
+      <a href="strategic_partners.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Strategic Partners</a>
+      <a href="about.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">About</a>
+      <a href="careers.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Careers</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green" style="animation:none"></span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-white/30">System Online</span>
+      </div>
+      <button data-dialog="evaluation" class="group relative px-6 py-2.5 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden flex items-center gap-1.5" style="box-shadow:0 0 36px rgba(255,153,51,.25)">
+        <span class="relative z-10">Connect</span>
+        <span class="material-symbols-outlined relative z-10 text-sm">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </button>
+    </div>
+    <button id="mob-toggle" class="md:hidden text-white/60 hover:text-white" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mob-menu">
+  <button id="mob-close" class="absolute top-5 right-6 text-white/50 hover:text-white"><span class="material-symbols-outlined">close</span></button>
+  <a href="index.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Home</a>
+  <a href="government.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Government</a>
+  <span class="font-headline font-bold text-2xl text-brand-orange mb-3">How the System Works</span>
+  <a href="why-traditional-fails.html" class="font-mono text-[11px] uppercase tracking-widest text-white/50 mb-3 ml-4">Why Traditional Pricing Struggles</a>
+  <a href="congestion-coordination.html" class="font-mono text-[11px] uppercase tracking-widest text-brand-orange mb-3 ml-4">Congestion Is a Coordination Problem</a>
+  <a href="iudm.html" class="font-mono text-[11px] uppercase tracking-widest text-white/50 mb-3 ml-4">Incentive-Based Demand Management</a>
+  <a href="deployment-roadmap.html" class="font-mono text-[11px] uppercase tracking-widest text-white/50 mb-3 ml-4">How a City Deploys MTSAi</a>
+  <a href="india-advantage.html" class="font-mono text-[11px] uppercase tracking-widest text-white/50 mb-6 ml-4">Why India Can Deploy at Scale</a>
+  <a href="about.html" class="font-headline font-bold text-2xl text-white/60 mb-6">About</a>
+  <a href="careers.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Careers</a>
+  <button data-dialog="evaluation" class="mt-auto w-full py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-wider text-sm text-center">Connect →</button>
+</div>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section class="relative min-h-[60vh] flex items-end pb-20 px-6 md:px-10 overflow-hidden noise" style="padding-top:96px;background:linear-gradient(160deg,#161616 0%,#0d1f40 60%,#161616 100%)">
+  <div class="aurora" aria-hidden="true">
+    <div class="ab" style="width:600px;height:600px;background:radial-gradient(circle,rgba(83,170,0,.12),transparent 70%);top:-100px;right:-100px;animation:ab1 18s ease-in-out infinite"></div>
+    <div class="ab" style="width:400px;height:400px;background:radial-gradient(circle,rgba(0,82,204,.1),transparent 70%);bottom:0;left:10%;animation:ab3 14s ease-in-out infinite"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full">
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-3 mb-8">
+      <a href="index.html" class="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors">Home</a>
+      <span class="text-white/20 font-mono text-[10px]">/</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange">How the System Works</span>
+    </div>
+    <!-- Series pills -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <a href="why-traditional-fails.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">01 · Why Pricing Struggles</a>
+      <span class="series-nav-pill active">02 · Coordination Problem</span>
+      <a href="iudm.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">03 · IUDM</a>
+      <a href="deployment-roadmap.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">04 · Deployment</a>
+      <a href="india-advantage.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">05 · India Advantage</a>
+      <a href="governance.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">06 · Governance</a>
+      <a href="data-transparency.html" class="series-nav-pill hover:border-white/30 hover:text-white/60 transition-colors">07 · Data Protection</a>
+    </div>
+    <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-white/30 block mb-4">Policy Framework · Coordination Logic</span>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-headline font-bold tracking-tighter text-white leading-[1.05] mb-6 fu" style="max-width:820px">Congestion Is a Coordination Problem</h1>
+    <p class="font-mono text-sm uppercase tracking-[.18em] text-white/40 mb-8">Not Just a Road Capacity Problem</p>
+    <div class="max-w-3xl space-y-5">
+      <p class="text-lg text-white/70 leading-relaxed fu" style="transition-delay:.1s">For decades, cities have tried to solve traffic congestion by building more roads. Yet congestion continues to grow in major cities around the world.</p>
+      <p class="text-lg text-white/70 leading-relaxed fu" style="transition-delay:.2s">The reason is simple: congestion is not caused only by a shortage of road capacity. It is caused by millions of commuters making similar travel decisions at the same time. When large numbers of people choose the same routes during the same peak hours, traffic systems become overloaded.</p>
+    </div>
+    <!-- Pull quote -->
+    <div class="mt-10 max-w-2xl fu" style="transition-delay:.3s">
+      <blockquote style="border-left:3px solid #FF9933;padding:20px 28px;background:rgba(255,153,51,.06)">
+        <p class="font-headline text-2xl font-bold text-white leading-snug">Congestion is fundamentally a coordination problem.</p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<section class="bg-white px-6 md:px-10 py-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mx-auto space-y-16">
+
+      <!-- Article 1 -->
+      <article>
+        <span class="accent-line"></span>
+        <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface tracking-tight mb-6 fu">Why Building More Roads Is Not Enough</h2>
+        <div class="article-body">
+          <p>Expanding road infrastructure can provide temporary relief, but it rarely solves congestion permanently. As new road capacity becomes available, more drivers begin using the network. This phenomenon — induced demand — means that congestion frequently returns even after large infrastructure investments.</p>
+          <p>Cities eventually reach a point where building additional roads becomes extremely expensive, politically difficult, and physically constrained. At that stage, managing demand becomes just as important as expanding supply.</p>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="p-8 bg-surface fu" style="border:1px solid rgba(0,0,0,.06)">
+        <span class="accent-line"></span>
+        <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface tracking-tight mb-6">The Coordination Challenge</h2>
+        <div class="article-body">
+          <p>Traffic congestion occurs when too many commuters attempt to use the same infrastructure at the same time. But many of those commuters could reduce congestion if their behaviour were coordinated differently — through carpooling, travelling outside peak hours, using alternative routes or transport modes.</p>
+          <p>The challenge is not that these options do not exist. The challenge is that commuters lack incentives and coordination tools to adopt them consistently.</p>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article>
+        <span class="accent-line"></span>
+        <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface tracking-tight mb-6 fu">Why Traditional Congestion Pricing Is Only a Partial Solution</h2>
+        <div class="article-body">
+          <p>Some cities have introduced congestion pricing systems that charge drivers for entering busy areas. While these programmes can reduce traffic volumes, they also create political resistance because they are perceived as penalties for mobility.</p>
+          <p>In addition, traditional systems typically treat all vehicles equally. A car carrying three people is charged the same as a car carrying one. But those vehicles do not contribute equally to congestion.</p>
+        </div>
+        <div class="mt-6 pull-quote">
+          <p>Penalising mobility without rewarding coordination is only half the solution.</p>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="p-8 bg-surface fu" style="border:1px solid rgba(0,0,0,.06)">
+        <span class="accent-line"></span>
+        <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface tracking-tight mb-6">A System Designed for Coordination</h2>
+        <div class="article-body">
+          <p>MTSAi introduces a different approach. Instead of focusing only on charging drivers for using roads, the system focuses on coordinating behaviour across the transportation network — rewarding carpooling, off-peak travel, shared mobility, and alternative routing.</p>
+          <p>These incentives create signals that help commuters coordinate their travel decisions. When enough commuters shift their behaviour, the entire network becomes less congested — not through restriction, but through alignment.</p>
+        </div>
+        <!-- Three coordination mechanisms -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 bg-white" style="border:1px solid rgba(0,82,204,.12)">
+            <span class="material-symbols-outlined text-primary mb-3 block" style="font-size:20px">directions_car</span>
+            <h3 class="font-headline font-bold text-sm text-on-surface mb-2">Carpooling Rewards</h3>
+            <p class="font-mono text-[11px] text-outline leading-relaxed">Vehicles with multiple occupants receive incentive credits, aligning individual choices with network efficiency.</p>
+          </div>
+          <div class="p-5 bg-white" style="border:1px solid rgba(0,82,204,.12)">
+            <span class="material-symbols-outlined text-primary mb-3 block" style="font-size:20px">schedule</span>
+            <h3 class="font-headline font-bold text-sm text-on-surface mb-2">Off-Peak Shifting</h3>
+            <p class="font-mono text-[11px] text-outline leading-relaxed">Time-of-day incentives reward travel outside peak hours, distributing demand across the day.</p>
+          </div>
+          <div class="p-5 bg-white" style="border:1px solid rgba(0,82,204,.12)">
+            <span class="material-symbols-outlined text-primary mb-3 block" style="font-size:20px">directions_transit</span>
+            <h3 class="font-headline font-bold text-sm text-on-surface mb-2">Modal Shift</h3>
+            <p class="font-mono text-[11px] text-outline leading-relaxed">Shared mobility and transit usage earn rewards, encouraging alternatives to single-occupancy vehicle trips.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article>
+        <span class="accent-line"></span>
+        <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface tracking-tight mb-6 fu">Aligning Individual Choices With the Public Good</h2>
+        <div class="article-body">
+          <p>When commuters receive incentives for congestion-reducing behaviour, individual travel decisions begin to align with the broader efficiency of the road network. Over time, these small behavioural adjustments across thousands of commuters can significantly reduce peak-hour congestion.</p>
+          <p>The goal is not to restrict mobility. The goal is to make the transportation system work better for everyone.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="bg-brand-navy px-6 md:px-10 py-20 noise">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl">
+      <blockquote class="mb-8 fu" style="border-left:3px solid #FF9933;padding:24px 32px;background:rgba(255,153,51,.06)">
+        <p class="font-headline text-2xl md:text-3xl font-bold text-white leading-snug">Congestion is not just a road capacity problem. It is a coordination problem — and coordination can be solved through well-designed incentives.</p>
+      </blockquote>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 fu" style="transition-delay:.1s">When cities begin to address congestion through coordination and incentives, they gain a new set of tools for managing urban mobility. MTSAi provides the operational platform that makes those tools possible.</p>
+      <div class="flex flex-wrap gap-4 fu" style="transition-delay:.2s">
+        <a href="iudm.html" class="group relative px-8 py-3.5 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden flex items-center gap-2">
+          <span class="relative z-10">See How IUDM Works</span>
+          <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+          <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+        </a>
+        <a href="why-traditional-fails.html" class="px-8 py-3.5 font-headline font-bold uppercase tracking-widest text-[11px] text-white/60 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,.15)">Why Traditional Pricing Struggles</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM STATUS DISCLOSURE -->
+<section class="bg-surface px-6 md:px-10 py-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="p-8 bg-white" style="border:1px solid rgba(0,0,0,.06)">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="material-symbols-outlined text-outline" style="font-size:16px">info</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold">Platform Status Disclosure</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-on-surface font-bold block mb-2">Pre-Deployment Status (Jan 2026)</span>
+          <p class="font-mono text-[11px] text-outline leading-relaxed">No live city implementations are currently operational. All deployment, outcome, and operational capability references are design specifications subject to government procurement, contract execution, and implementation.</p>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-on-surface font-bold block mb-2">Compliance Status</span>
+          <p class="font-mono text-[11px] text-outline leading-relaxed">All references to regulatory frameworks represent design intent and readiness posture. Final compliance is verified through government audit per contract scope.</p>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-on-surface font-bold block mb-2">International References</span>
+          <p class="font-mono text-[11px] text-outline leading-relaxed">Case study outcomes cited from London, Singapore, Stockholm, and other cities are external examples from independent transportation authorities, not MTSAi deployments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-brand-navy pt-20 pb-8 px-6 md:px-10" style="border-top:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full bg-brand-orange flex items-center justify-center" style="box-shadow:0 0 36px rgba(255,153,51,.25)">
+            <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+          </div>
+          <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+        </div>
+        <p class="text-white/25 text-sm leading-relaxed max-w-xs mb-6">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10" style="border:1px solid rgba(0,82,204,.3)">
+          <span class="material-symbols-outlined text-primary" style="font-size:12px">verified</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-primary/80">GIGW 3.0 Compliant</span>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Explore</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Home</a></li>
+          <li><a href="government.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Government</a></li>
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="careers.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Careers</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">How It Works</h3>
+        <ul class="space-y-3">
+          <li><a href="why-traditional-fails.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Why Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html" class="text-brand-orange text-sm">Coordination Problem</a></li>
+          <li><a href="iudm.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Deployment Roadmap</a></li>
+          <li><a href="india-advantage.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">India Advantage</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Trust</h3>
+        <ul class="space-y-3">
+          <li><a href="trust.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Trust Centre</a></li>
+          <li><a href="public_integrity.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Public Integrity</a></li>
+          <li><a href="data-transparency.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Data Transparency</a></li>
+          <li><a href="trust_security.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Security</a></li>
+          <li><a href="trust_exit.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Vendor Exit</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Resources</h3>
+        <ul class="space-y-3">
+          <li><a href="resources.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Procurement Pack</a></li>
+          <li><a href="contact.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact Us</a></li>
+          <li><a href="sitemap.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-5 bg-white/2 mb-10" style="border:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/18 text-[10px] leading-relaxed font-mono">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style="border-top:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/20 text-[10px] font-mono">© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</p>
+      <div class="flex items-center gap-6">
+        <a href="terms.html" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Terms</a>
+        <a href="privacy_policy.html" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Privacy Policy</a>
+        <a href="hyperlinking_policy.html" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Hyperlinking Policy</a>
+      </div>
+      <p class="text-white/10 font-mono text-[9px]">v1.0 · Coordination · Last Updated Mar 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- EVALUATION DIALOG -->
+<div class="ds-dialog-wrap" id="dialog-evaluation" role="dialog" aria-modal="true" aria-labelledby="dlg-coord-title">
+  <div class="ds-dialog-backdrop"></div>
+  <div class="ds-dialog" style="max-width:560px">
+    <button class="ds-dialog-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <div class="mb-6">
+      <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline/60 block mb-2">Government Evaluation Request</span>
+      <h3 class="text-2xl font-headline font-bold tracking-tighter text-on-surface" id="dlg-coord-title">Start Your City's Evaluation</h3>
+      <p class="text-outline text-sm mt-2 leading-relaxed">Tell us about your city and objectives — our team will respond within 48 hours.</p>
+    </div>
+    <form class="ds-form space-y-4" id="evaluation-form-coord" novalidate>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="ds-field"><label class="ds-label" for="ev-name-co">Full Name</label><input class="ds-input" id="ev-name-co" type="text" placeholder="Your full name" required/></div>
+        <div class="ds-field"><label class="ds-label" for="ev-email-co">Official Email</label><input class="ds-input" id="ev-email-co" type="email" placeholder="name@gov.in" required/></div>
+      </div>
+      <div class="ds-field"><label class="ds-label" for="ev-org-co">Department / Organisation</label><input class="ds-input" id="ev-org-co" type="text" placeholder="e.g. Smart City SPV" required/></div>
+      <div class="ds-field"><label class="ds-label" for="ev-msg-co">Message</label><textarea class="ds-input ds-textarea" id="ev-msg-co" rows="3" placeholder="How can MTSAi help your city?"></textarea></div>
+      <div class="pt-2 flex gap-3">
+        <button type="submit" class="flex-1 py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Send Request</button>
+        <button type="button" class="ds-dialog-close px-5 py-3 font-headline font-bold uppercase tracking-widest text-[11px] text-outline" style="border:1px solid var(--outline-v)">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  scrollBar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+}, { passive: true });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 60 ? 'rgba(22,22,22,.92)' : 'rgba(22,22,22,.02)';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 1px 0 rgba(255,153,51,.08)' : 'none';
+}, { passive: true });
+const mobToggle = document.getElementById('mob-toggle');
+const mobMenu = document.getElementById('mob-menu');
+mobToggle.addEventListener('click', () => {
+  const isOpen = mobMenu.classList.toggle('open');
+  mobToggle.setAttribute('aria-expanded', isOpen);
+  mobToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+});
+document.getElementById('mob-close').addEventListener('click', () => mobMenu.classList.remove('open'));
+const fuIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => e.target.classList.add('in'), parseFloat(e.target.style.transitionDelay || '0') * 1000);
+    fuIO.unobserve(e.target);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fu').forEach(el => fuIO.observe(el));
+</script>
+<script src="assets/ds.js" defer></script>
+</body>
+</html>

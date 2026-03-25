@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solutions — MTSAi | Policy-Led Congestion Management</title>
+<meta name="description" content="MTSAi Solutions: policy-configurable congestion management with audit trails, equity guardrails, and procurement-ready architecture for government deployment."/>
+<meta property="og:title" content="Solutions — MTSAi | Policy-Led Congestion Management"/>
+<meta property="og:description" content="Policy-led congestion management designed for auditability — configurable rules, due process workflows, equity protections, and trust center evidence."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://miracletraffic.ai/solutions.html"/>
+<meta property="og:image" content="https://miracletraffic.ai/assets/og-cover.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Solutions — MTSAi | Policy-Led Congestion Management"/>
+<meta name="twitter:description" content="Policy-led congestion management designed for auditability — configurable rules, due process workflows, equity protections."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23FF7A00'/><text x='16' y='21' text-anchor='middle' font-size='16' font-family='sans-serif' fill='white'>M</text></svg>"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="assets/ds.css"/>
+<script>
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{
+      colors:{
+        "surface":"#F4F4F4","on-surface-variant":"#434654","on-primary-fixed":"#001848",
+        "primary-container":"#0052CC","background":"#F4F4F4","on-primary":"#ffffff",
+        "primary":"#0052CC","outline":"#737685","on-surface":"#1a1c1c",
+        "outline-variant":"#c3c6d6","surface-container-low":"#EBEBEB",
+        "brand-orange":"#FF9933","brand-navy":"#161616","brand-green":"#53AA00","brand-red":"#D82B2B"
+      },
+      fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],"label":["Inter"],"mono":["JetBrains Mono"]},
+      borderRadius:{"DEFAULT":"0rem","lg":"0rem","xl":"0rem","full":"9999px"},
+    }}
+  }
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #FF9933; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; vertical-align:middle; line-height:1; display:inline-block; }
+#scroll-bar { position:fixed; top:0; left:0; height:2px; z-index:200; background:linear-gradient(90deg,#FF9933,#FF9933); width:0%; transition:width .08s linear; pointer-events:none; }
+.nav-dropdown { position:relative; }
+.nav-dropdown-menu { position:absolute; top:100%;padding-top:12px; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(22,22,22,.95); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.06); min-width:260px; padding:8px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-dropdown-item { display:block; padding:8px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.4); transition:color .15s,background .15s; }
+.nav-dropdown-item:hover { color:#FF9933; background:rgba(255,153,51,.06); }
+.aurora { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.ab { position:absolute; border-radius:50%; filter:blur(90px); will-change:transform; }
+@keyframes ab1 { 0%,100%{transform:translate(0,0) scale(1)} 30%{transform:translate(60px,-70px) scale(1.07)} 65%{transform:translate(-35px,45px) scale(.95)} }
+@keyframes ab3 { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(35px,65px) scale(.97)} 70%{transform:translate(-55px,-38px) scale(1.05)} }
+.shimmer { background:linear-gradient(105deg,#fff 15%,rgba(255,153,51,.9) 35%,#FF9933 50%,rgba(255,154,60,.8) 65%,#fff 85%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sh 4s linear infinite; }
+@keyframes sh { 0%{background-position:200% center} 100%{background-position:-200% center} }
+.tg-gold { background:linear-gradient(to right,#FF9933,#FFB347,#FF9933); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.tg-blue { background:linear-gradient(135deg,#0052CC,#3385FF,#b2c5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+@property --ba { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+.beam { position:relative; overflow:hidden; }
+.beam::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.5px; background:conic-gradient(from var(--ba),transparent 0deg,#FF9933 60deg,#0052CC 120deg,transparent 180deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:beam-r 3s linear infinite; pointer-events:none; }
+@keyframes beam-r { to{--ba:360deg} }
+.spot { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.4,0,.2,1); }
+.spot::after { content:''; position:absolute; inset:0; background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),rgba(255,153,51,.08) 0%,transparent 70%); opacity:0; transition:opacity .2s; pointer-events:none; }
+.spot:hover::after { opacity:1; }
+.spot:hover { transform:translateY(-4px); }
+.fu { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1); }
+.fu.in { opacity:1; transform:translateY(0); }
+.glow-o { box-shadow:0 0 36px rgba(255,153,51,.25),0 0 72px rgba(255,153,51,.08); }
+.card-dk { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); }
+.pulse-dot { position:relative; }
+.pulse-dot::before { content:''; position:absolute; inset:0; background:inherit; border-radius:inherit; animation:ping .8s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%,100%{transform:scale(2);opacity:0} }
+.accent-line { display:block; width:32px; height:2px; background:#FF9933; margin-bottom:24px; }
+.noise::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"); opacity:.4; pointer-events:none; }
+.ani-grad { background:linear-gradient(160deg,#161616 0%,#0d1f40 50%,#161616 100%); }
+.mob-overlay { position:fixed; inset:0; z-index:40; background:rgba(22,22,22,.98); display:flex; flex-direction:column; padding:80px 24px 40px; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+.mob-overlay.open { transform:translateX(0); }
+.dot-bg { background-image:radial-gradient(rgba(0,82,204,.1) 1px,transparent 1px); background-size:32px 32px; }
+.grid-bg-lt { background-image:linear-gradient(rgba(0,82,204,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,82,204,.04) 1px,transparent 1px); background-size:40px 40px; }
+.hover-lift { transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s; }
+.hover-lift:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.12); }
+
+/* Status badges */
+.status-badge { display:inline-flex; align-items:center; gap:6px; padding:3px 10px; font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:.12em; }
+.status-designed { background:rgba(0,82,204,.08); color:#0052CC; border:1px solid rgba(0,82,204,.2); }
+.status-build { background:rgba(255,153,51,.08); color:#FF9933; border:1px solid rgba(255,153,51,.2); }
+.status-verifiable { background:rgba(83,170,0,.08); color:#16a34a; border:1px solid rgba(83,170,0,.2); }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-brand-orange/30">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript>
+  <style>body { opacity: 1 !important; } .fu { opacity: 1 !important; transform: none !important; }</style>
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161616;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
+    This site uses JavaScript for navigation and interactive features. Please enable JavaScript for the best experience.
+  </div>
+</noscript>
+<div id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(22,22,22,.02)">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+        <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+      </div>
+      <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Home</a>
+      <a href="government.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Government</a>
+      <div class="nav-dropdown">
+        <button class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1">How It Works <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="why-traditional-fails.html" class="nav-dropdown-item">Why Traditional Congestion Pricing Struggles</a>
+          <a href="congestion-coordination.html" class="nav-dropdown-item">Congestion Is a Coordination Problem</a>
+          <a href="iudm.html" class="nav-dropdown-item">Incentive-Based Demand Management</a>
+          <a href="deployment-roadmap.html" class="nav-dropdown-item">How a City Deploys MTSAi</a>
+          <a href="india-advantage.html" class="nav-dropdown-item">Why India Can Deploy This at Scale</a>
+          <a href="governance.html" class="nav-dropdown-item">Governance &amp; Accountability</a>
+          <a href="data-transparency.html" class="nav-dropdown-item">Data Protection &amp; Public Transparency</a>
+        </div>
+      </div>
+      <a href="strategic_partners.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Strategic Partners</a>
+      <a href="about.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">About</a>
+      <a href="solutions.html" class="font-mono text-[11px] uppercase tracking-widest text-brand-orange">Solutions</a>
+      <a href="careers.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Careers</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="relative w-1.5 h-1.5 rounded-full bg-brand-green pulse-dot"></span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-white/30">System Online</span>
+      </div>
+      <button data-dialog="evaluation" class="group relative px-6 py-2.5 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center gap-1.5">
+        <span class="relative z-10">Connect</span>
+        <span class="material-symbols-outlined relative z-10" style="font-size:14px">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </button>
+    </div>
+    <button id="mob-toggle" class="md:hidden text-white/60 hover:text-white" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div class="mob-overlay" id="mob-menu">
+  <button id="mob-close" class="absolute top-5 right-6 text-white/50 hover:text-white"><span class="material-symbols-outlined">close</span></button>
+  <a href="index.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Home</a>
+  <a href="government.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Government</a>
+  <a href="about.html" class="font-headline font-bold text-2xl text-white/60 mb-6">About</a>
+  <a href="strategic_partners.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Strategic Partners</a>
+  <a href="solutions.html" class="font-headline font-bold text-2xl text-brand-orange mb-6">Solutions</a>
+  <a href="careers.html" class="font-headline font-bold text-2xl text-white/60 mb-6">Careers</a>
+  <button data-dialog="evaluation" class="mt-auto w-full py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-wider text-sm text-center">Connect →</button>
+</div>
+
+<main id="main-content">
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="relative min-h-[65vh] flex items-end pb-20 px-6 md:px-10 overflow-hidden ani-grad noise" style="padding-top:96px">
+  <div class="absolute inset-0 z-0" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80&auto=format&fit=crop');background-size:cover;background-position:center"></div>
+  <div class="absolute inset-0 z-0" style="background:linear-gradient(180deg,rgba(22,22,22,.94) 0%,rgba(22,22,22,.78) 40%,rgba(22,22,22,.97) 100%)"></div>
+  <div class="aurora" style="z-index:1">
+    <div class="ab" style="width:700px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.4),transparent 70%);top:-120px;left:-80px;animation:ab1 22s ease-in-out infinite;opacity:.45;"></div>
+    <div class="ab" style="width:500px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.18),transparent 70%);bottom:-60px;right:-100px;animation:ab3 28s ease-in-out infinite;opacity:.35;"></div>
+  </div>
+  <div class="max-w-7xl mx-auto w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange/70 block mb-5">Solutions</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tighter leading-[.88] mb-8 fu">
+          Policy-led<br/>congestion management,<br/><span class="shimmer">designed for auditability.</span>
+        </h1>
+        <div class="space-y-3 mb-10 fu" style="transition-delay:.1s">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0 mt-0.5" style="font-size:16px">check_circle</span>
+            <span class="text-white/60 text-sm leading-relaxed">Policy-configurable rules across corridors, zones, and peak scenarios</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0 mt-0.5" style="font-size:16px">check_circle</span>
+            <span class="text-white/60 text-sm leading-relaxed">Audit trails + due process for exceptions, disputes, and refunds</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0 mt-0.5" style="font-size:16px">check_circle</span>
+            <span class="text-white/60 text-sm leading-relaxed">Equity guardrails + incentives to support adoption and fairness</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0 mt-0.5" style="font-size:16px">check_circle</span>
+            <span class="text-white/60 text-sm leading-relaxed">Security/privacy posture supported by Trust Center evidence</span>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 fu" style="transition-delay:.2s">
+          <button data-dialog="evaluation" class="group relative px-9 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center gap-2">
+            <span class="relative z-10">Request Feasibility Assessment</span>
+            <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          </button>
+          <a href="#modules" class="px-9 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/60 hover:text-white transition-colors flex items-center gap-2" style="border:1px solid rgba(255,255,255,.12)">
+            View Modules
+          </a>
+        </div>
+      </div>
+
+      <!-- Procurement Brief panel -->
+      <div class="fu beam card-dk p-6" style="transition-delay:.15s; max-width:400px">
+        <div class="flex items-center justify-between px-0 pb-4 mb-4" style="border-bottom:1px solid rgba(255,255,255,.07)">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-white/50">Inside the Procurement Brief</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 card-dk p-3 hover-lift">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0" style="font-size:18px">architecture</span>
+            <div class="flex-1">
+              <span class="text-white text-xs font-semibold block">Architecture Overview</span>
+              <span class="text-white/30 text-[10px] font-mono">3 min read</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 card-dk p-3 hover-lift">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0" style="font-size:18px">schema</span>
+            <div class="flex-1">
+              <span class="text-white text-xs font-semibold block">Data Flows &amp; Governance</span>
+              <span class="text-white/30 text-[10px] font-mono">3 min read</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 card-dk p-3 hover-lift">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0" style="font-size:18px">security</span>
+            <div class="flex-1">
+              <span class="text-white text-xs font-semibold block">Privacy / DPDP Templates</span>
+              <span class="text-white/30 text-[10px] font-mono">2 min read</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 card-dk p-3 hover-lift">
+            <span class="material-symbols-outlined text-brand-orange flex-shrink-0" style="font-size:18px">checklist</span>
+            <div class="flex-1">
+              <span class="text-white text-xs font-semibold block">Pilot Acceptance Checklist</span>
+              <span class="text-white/30 text-[10px] font-mono">3 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.07)">
+          <p class="text-white/25 text-[10px] font-mono leading-relaxed">Target response time: 2–3 business days</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     OVERVIEW GRID
+══════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-10 bg-surface relative overflow-hidden" id="overview">
+  <div class="dot-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-14">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Overview</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">Who, what, evidence,<br/><span class="tg-blue">and what happens next.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.04s">
+        <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-primary" style="font-size:18px">group</span>
+        </div>
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-2">Who it's for</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Government &amp; Partners</h3>
+        <p class="text-outline text-sm leading-relaxed">Evaluating governed road pricing with policy-led rules and procurement-ready architecture.</p>
+      </div>
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.08s">
+        <div class="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">tune</span>
+        </div>
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-2">What it does</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Configurable Pricing</h3>
+        <p class="text-outline text-sm leading-relaxed">Policy-led rules configurable by government authorities — not consumer defaults or vendor-set parameters.</p>
+      </div>
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.12s">
+        <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-primary" style="font-size:18px">description</span>
+        </div>
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline block mb-2">Evidence available</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Briefs &amp; Packs</h3>
+        <p class="text-outline text-sm leading-relaxed">Versioned documentation — architecture briefs, data flow diagrams, compliance templates, and pilot checklists.</p>
+      </div>
+      <div class="spot bg-brand-navy text-white p-8 hover-lift fu" style="transition-delay:.16s">
+        <div class="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">rocket_launch</span>
+        </div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-white/40 block mb-2">What happens next</span>
+        <h3 class="font-headline font-bold text-white text-lg mb-3 tracking-tight">Feasibility → Pilot</h3>
+        <p class="text-white/45 text-sm leading-relaxed">Feasibility assessment → pilot scoping → procurement. No RFP required for initial evaluation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOLUTION MODULES
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-surface-container-low relative overflow-hidden" id="modules">
+  <div class="grid-bg-lt absolute inset-0 opacity-50 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-14">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Solution Modules</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-4">Every module maps<br/><span class="tg-blue">to an audit artifact.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Policy Rules Engine -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.04s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:18px">rule</span>
+          </div>
+          <span class="status-badge status-designed">Designed</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Policy Rules Engine</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Configures pricing and policy rules as explicit, versioned program parameters.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Keeps programs governable and reviewable.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-primary/6 text-primary font-mono text-[9px] uppercase tracking-widest">Config Spec available</span>
+        </div>
+      </div>
+
+      <!-- Equity & Exemptions -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.08s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:18px">balance</span>
+          </div>
+          <span class="status-badge status-designed">Designed</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Equity &amp; Exemptions</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Supports exemptions, caps, hardship pathways, and role-based approvals.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Protects fairness and political survivability.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-primary/6 text-primary font-mono text-[9px] uppercase tracking-widest">Workflows available</span>
+        </div>
+      </div>
+
+      <!-- Incentives & Credits -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.12s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">card_giftcard</span>
+          </div>
+          <span class="status-badge status-build">In Build</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Incentives &amp; Credits</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Supports credits/rewards structures aligned to policy objectives.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Helps shift behavior without coercion.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-brand-orange/6 text-brand-orange font-mono text-[9px] uppercase tracking-widest">Logic Spec available</span>
+        </div>
+      </div>
+
+      <!-- Payments & Settlement -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.16s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-orange" style="font-size:18px">payments</span>
+          </div>
+          <span class="status-badge status-build">In Build</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Payments &amp; Settlement</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Supports payment integrations where applicable and contracted.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Enables practical rollout with admin controls.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-brand-orange/6 text-brand-orange font-mono text-[9px] uppercase tracking-widest">Integration Brief available</span>
+        </div>
+      </div>
+
+      <!-- Due Process Workflows -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.2s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" style="font-size:18px">gavel</span>
+          </div>
+          <span class="status-badge status-designed">Designed</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Due Process Workflows</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Supports exceptions, disputes, appeals, refunds, and evidence capture.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Reduces backlash and improves legitimacy.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-primary/6 text-primary font-mono text-[9px] uppercase tracking-widest">Workflows available</span>
+        </div>
+      </div>
+
+      <!-- Audit Trails & Reporting -->
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.24s">
+        <div class="flex items-start justify-between mb-5">
+          <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-brand-green" style="font-size:18px">verified</span>
+          </div>
+          <span class="status-badge status-verifiable">Verifiable</span>
+        </div>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-2 tracking-tight">Audit Trails &amp; Reporting</h3>
+        <p class="text-outline text-sm leading-relaxed mb-4">Produces audit logs and exportable reporting for oversight.</p>
+        <div class="pt-4" style="border-top:1px solid rgba(0,0,0,.06)">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-outline uppercase tracking-wider">Why: Enables defensible decision-making.</span>
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 bg-brand-green/8 text-green-700 font-mono text-[9px] uppercase tracking-widest">Sample Log (Redacted) available</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INTEGRATION SURFACES
+══════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-10 bg-brand-navy relative overflow-hidden noise" id="integrations">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.3),transparent 70%);top:-100px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.4;"></div>
+    <div class="ab" style="width:400px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.12),transparent 70%);bottom:0;right:0;animation:ab3 26s ease-in-out infinite;opacity:.35;"></div>
+  </div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-14">
+      <span class="accent-line"></span>
+      <span class="font-mono text-[10px] uppercase tracking-[.25em] text-white/30 block mb-4">Integration Surfaces</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-white leading-none">High-level<br/>integration points.</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="spot card-dk border border-white/5 p-6 hover:bg-white/5 transition-colors fu" style="transition-delay:.04s">
+        <span class="material-symbols-outlined text-brand-orange mb-4 block" style="font-size:24px">manage_accounts</span>
+        <h3 class="font-headline font-bold text-white text-sm mb-2">Identity &amp; Access</h3>
+        <p class="text-white/30 text-xs leading-relaxed">RBAC / SSO / Parichay</p>
+      </div>
+      <div class="spot card-dk border border-white/5 p-6 hover:bg-white/5 transition-colors fu" style="transition-delay:.08s">
+        <span class="material-symbols-outlined text-brand-orange mb-4 block" style="font-size:24px">payments</span>
+        <h3 class="font-headline font-bold text-white text-sm mb-2">Payments</h3>
+        <p class="text-white/30 text-xs leading-relaxed">Tolling / Gateway Interfaces</p>
+      </div>
+      <div class="spot card-dk border border-white/5 p-6 hover:bg-white/5 transition-colors fu" style="transition-delay:.12s">
+        <span class="material-symbols-outlined text-brand-orange mb-4 block" style="font-size:24px">gavel</span>
+        <h3 class="font-headline font-bold text-white text-sm mb-2">Enforcement</h3>
+        <p class="text-white/30 text-xs leading-relaxed">Challan / Evidence Workflow</p>
+      </div>
+      <div class="spot card-dk border border-white/5 p-6 hover:bg-white/5 transition-colors fu" style="transition-delay:.16s">
+        <span class="material-symbols-outlined text-brand-orange mb-4 block" style="font-size:24px">file_download</span>
+        <h3 class="font-headline font-bold text-white text-sm mb-2">Data Export</h3>
+        <p class="text-white/30 text-xs leading-relaxed">Reporting / Audit Dumps</p>
+      </div>
+      <div class="spot card-dk border border-white/5 p-6 hover:bg-white/5 transition-colors fu" style="transition-delay:.2s">
+        <span class="material-symbols-outlined text-brand-orange mb-4 block" style="font-size:24px">monitor_heart</span>
+        <h3 class="font-headline font-bold text-white text-sm mb-2">Observability</h3>
+        <p class="text-white/30 text-xs leading-relaxed">Logs / Metrics / Traces</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW SOLUTIONS WORK TOGETHER
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-surface relative overflow-hidden" id="how-it-works">
+  <div class="dot-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="fu mb-16">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">How Solutions Work Together</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">Six steps from<br/><span class="tg-blue">objectives to operation.</span></h2>
+    </div>
+
+    <div class="space-y-0 border-l-2 border-outline-variant/30 ml-4">
+      <div class="relative pl-10 pb-12 fu">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface"></div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold block mb-1">Step 01</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface mb-2 tracking-tight">Define Objectives</h3>
+        <p class="text-outline text-sm leading-relaxed max-w-lg">Agree outcomes, constraints, and governance. Establish which corridors, policies, and equity guardrails apply.</p>
+      </div>
+      <div class="relative pl-10 pb-12 fu" style="transition-delay:.06s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface"></div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold block mb-1">Step 02</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface mb-2 tracking-tight">Configure Policy</h3>
+        <p class="text-outline text-sm leading-relaxed max-w-lg">Encode rules explicitly — corridor logic, time-of-day windows, exemption categories, and incentive parameters.</p>
+      </div>
+      <div class="relative pl-10 pb-12 fu" style="transition-delay:.12s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface"></div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold block mb-1">Step 03</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface mb-2 tracking-tight">Run Pilot</h3>
+        <p class="text-outline text-sm leading-relaxed max-w-lg">Bounded scope operations — single corridor or zone with full audit trail and evidence capture from day one.</p>
+      </div>
+      <div class="relative pl-10 pb-12 fu" style="transition-delay:.18s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface"></div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold block mb-1">Step 04</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface mb-2 tracking-tight">Measure &amp; Report</h3>
+        <p class="text-outline text-sm leading-relaxed max-w-lg">Review-ready evidence — exportable audit logs, demand shift metrics, and compliance reports for public oversight.</p>
+      </div>
+      <div class="relative pl-10 pb-12 fu" style="transition-delay:.24s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-orange border-4 border-surface"></div>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold block mb-1">Step 05</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface mb-2 tracking-tight">Adjust Governance</h3>
+        <p class="text-outline text-sm leading-relaxed max-w-lg">Iterate guardrails — update exemption rules, revise pricing windows, respond to due process outcomes.</p>
+      </div>
+      <div class="relative pl-10 fu" style="transition-delay:.30s">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface"></div>
+        <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-1">Step 06</span>
+        <h3 class="text-xl font-headline font-bold text-on-surface/60 mb-2 tracking-tight">Scale &amp; Operate</h3>
+        <p class="text-outline/60 text-sm leading-relaxed max-w-lg">Citywide expansion with validated governance, documented equity outcomes, and procurement record.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     USE CASE LIBRARY
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-surface-container-low relative overflow-hidden" id="use-cases">
+  <div class="max-w-7xl mx-auto">
+    <div class="fu mb-14">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Use Case Library</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">Four deployment<br/><span class="tg-blue">scenarios.</span></h2>
+    </div>
+
+    <div class="ds-acc ds-acc--light fu" data-single style="transition-delay:.1s">
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span class="flex items-center gap-4">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline shrink-0">Scenario 01</span>
+            <span class="font-headline font-bold text-on-surface">Corridor Pilot (Commuter Artery)</span>
+          </span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p class="text-outline text-sm leading-relaxed mb-4"><strong>Scenario:</strong> High-congestion corridor affecting service delivery and travel reliability.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Objectives</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Reduce bottlenecks</li>
+                  <li>Improve reliability</li>
+                  <li>Create defensible reporting</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Policy Controls</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Time-of-day pricing</li>
+                  <li>Occupancy/eligibility rules</li>
+                  <li>Exception approvals</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Equity</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Hardship pathway</li>
+                  <li>Essential services rules</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Due Process</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Dispute + refund workflow</li>
+                  <li>Evidence capture</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span class="flex items-center gap-4">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline shrink-0">Scenario 02</span>
+            <span class="font-headline font-bold text-on-surface">School-Zone Congestion Management</span>
+          </span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p class="text-outline text-sm leading-relaxed mb-4"><strong>Scenario:</strong> Peak bursts around schools with safety and access considerations.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Objectives</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Reduce unsafe congestion</li>
+                  <li>Support parent options</li>
+                  <li>Preserve fairness</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Policy Controls</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Limited-time windows</li>
+                  <li>Exemption logic</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Equity</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Exemptions for essential transport</li>
+                  <li>Low-income protections</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span class="flex items-center gap-4">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline shrink-0">Scenario 03</span>
+            <span class="font-headline font-bold text-on-surface">CBD Zone Pilot</span>
+          </span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p class="text-outline text-sm leading-relaxed mb-4"><strong>Scenario:</strong> Central business district congestion affecting freight, public services, and commuter travel.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Objectives</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Manage demand</li>
+                  <li>Improve reliability</li>
+                  <li>Establish governance</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Policy Controls</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Zone entry rules</li>
+                  <li>Tiered policies by vehicle class</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Equity</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Caps + hardship pathways</li>
+                  <li>Essential worker protections</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span class="flex items-center gap-4">
+            <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline shrink-0">Scenario 04</span>
+            <span class="font-headline font-bold text-on-surface">Event Surge Management</span>
+          </span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p class="text-outline text-sm leading-relaxed mb-4"><strong>Scenario:</strong> Stadium/festival events cause temporary spikes and emergency access concerns.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Objectives</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Maintain access</li>
+                  <li>Support public safety</li>
+                  <li>Reduce gridlock risk</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Policy Controls</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Temporary event policies</li>
+                  <li>Emergency overrides</li>
+                </ul>
+              </div>
+              <div>
+                <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline font-bold block mb-2">Due Process</span>
+                <ul class="space-y-1 text-outline text-sm">
+                  <li>Post-event dispute handling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     VERIFY IN 5 MINUTES
+══════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-10 bg-surface relative overflow-hidden" id="verify">
+  <div class="dot-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-12">
+      <span class="accent-line"></span>
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-[.25em] text-outline block mb-4">Verify: Trust + Procurement</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none">In 5 minutes,<br/><span class="tg-blue">you can verify.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.04s">
+        <span class="material-symbols-outlined text-primary mb-4 block" style="font-size:28px">storefront</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Procurement Path</h3>
+        <p class="text-outline text-sm leading-relaxed">GeM when applicable; tenders via eProc where required. Full procurement route documentation available.</p>
+      </div>
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.08s">
+        <span class="material-symbols-outlined text-primary mb-4 block" style="font-size:28px">privacy_tip</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Privacy Posture</h3>
+        <p class="text-outline text-sm leading-relaxed">DPDP-aligned notices, rights, grievance contact. Privacy architecture documentation and templates available.</p>
+      </div>
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.12s">
+        <span class="material-symbols-outlined text-primary mb-4 block" style="font-size:28px">shield</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Security Posture</h3>
+        <p class="text-outline text-sm leading-relaxed">Audit logging, incident readiness expectations. Security design documentation aligned to CERT-In standards.</p>
+      </div>
+      <div class="spot bg-white p-8 hover-lift fu" style="transition-delay:.16s">
+        <span class="material-symbols-outlined text-primary mb-4 block" style="font-size:28px">exit_to_app</span>
+        <h3 class="font-headline font-bold text-on-surface text-lg mb-3 tracking-tight">Vendor Exit</h3>
+        <p class="text-outline text-sm leading-relaxed">Portability and long-horizon survivability. Exit provisions and data portability documented in contract templates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHO THIS IS FOR
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-brand-navy relative overflow-hidden noise" id="pathways">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.3),transparent 70%);top:-100px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.4;"></div>
+    <div class="ab" style="width:400px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.12),transparent 70%);bottom:0;right:0;animation:ab3 26s ease-in-out infinite;opacity:.35;"></div>
+  </div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fu mb-14">
+      <span class="accent-line"></span>
+      <span class="font-mono text-[10px] uppercase tracking-[.25em] text-white/30 block mb-4">Who This Is For</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-white leading-none">Three partner<br/><span class="tg-gold">pathways.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="spot card-dk border border-white/5 p-10 fu hover:bg-white/4 transition-colors" style="transition-delay:.04s">
+        <span class="material-symbols-outlined text-brand-orange mb-5 block" style="font-size:32px">account_balance</span>
+        <h3 class="font-headline font-bold text-white text-2xl mb-4 tracking-tight">Government</h3>
+        <p class="text-white/45 text-sm leading-relaxed mb-6">Understand program options, verify trust posture, and procure/deploy with clear governance.</p>
+        <a href="government.html" class="group flex items-center gap-2 text-brand-orange font-mono text-[10px] uppercase tracking-widest hover:gap-3 transition-all">
+          Enter Government path
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="spot card-dk border border-white/5 p-10 fu hover:bg-white/4 transition-colors" style="transition-delay:.08s">
+        <span class="material-symbols-outlined text-brand-orange mb-5 block" style="font-size:32px">handshake</span>
+        <h3 class="font-headline font-bold text-white text-2xl mb-4 tracking-tight">Strategic Partners</h3>
+        <p class="text-white/45 text-sm leading-relaxed mb-6">Support stakeholder convening, procurement success, rollout discipline, and continuity.</p>
+        <a href="strategic_partners.html" class="group flex items-center gap-2 text-brand-orange font-mono text-[10px] uppercase tracking-widest hover:gap-3 transition-all">
+          Enter Strategic Partners path
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="spot card-dk border border-white/5 p-10 fu hover:bg-white/4 transition-colors" style="transition-delay:.12s">
+        <span class="material-symbols-outlined text-brand-orange mb-5 block" style="font-size:32px">code</span>
+        <h3 class="font-headline font-bold text-white text-2xl mb-4 tracking-tight">Delivery Integrations</h3>
+        <p class="text-white/45 text-sm leading-relaxed mb-4">Build and integrate greenfield modules with portability, security-by-design, and evidence.</p>
+        <p class="text-white/25 text-[10px] font-mono uppercase tracking-widest mb-5">Includes: module map, acceptance gates, evidence checklist.</p>
+        <div class="flex flex-col gap-3">
+          <button data-dialog="evaluation" class="px-5 py-2.5 bg-brand-orange text-white font-mono text-[10px] uppercase tracking-widest font-bold hover:bg-orange-600 transition-colors text-left">Propose Integration</button>
+          <button class="px-5 py-2.5 text-white/40 font-mono text-[10px] uppercase tracking-widest hover:text-white transition-colors text-left" style="border:1px solid rgba(255,255,255,.1)">Download Delivery Standards</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="py-28 px-6 md:px-10 bg-white" id="faq">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-14 fu">
+      <span aria-hidden="true" class="font-mono text-[10px] uppercase tracking-widest text-outline font-bold block mb-4">Common Questions</span>
+      <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-4">Straight answers<br/><span class="tg-blue">on governance.</span></h2>
+    </div>
+
+    <div class="ds-acc ds-acc--light fu" data-single style="transition-delay:.1s">
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>Is this surveillance?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>MTSAi is positioned as a governed policy program with minimization, due process, and documented oversight. Use cases must remain defensible under public integrity review. The platform does not support continuous location tracking, biometric collection, or cross-city identity correlation. Every collection decision maps to a stated policy purpose with documented retention and deletion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>Who owns the data?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>Government ownership is expected. MTSAi operates per contract-defined processing and access controls. The city authority acts as data controller; MTSAi acts as data processor. Data retention, deletion schedules, and access permissions are defined through policy, not vendor defaults. Full data portability and exit provisions are documented in contract templates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-acc-item">
+        <button class="ds-acc-trigger" aria-expanded="false">
+          <span>How do we procure?</span>
+          <span class="ds-acc-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="ds-acc-body" role="region">
+          <div class="ds-acc-inner">
+            <p>Procurement can route via GeM when applicable/available, and via tender/eProc routes where required. No RFP is required for an initial feasibility assessment or pilot evaluation. Engagement typically begins with a feasibility conversation → pilot scoping → formal procurement under the city's existing IT procurement framework. Full procurement documentation is available on request.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EVALUATION DIALOG
+══════════════════════════════════════ -->
+<div class="ds-dialog-wrap" id="dialog-evaluation" role="dialog" aria-modal="true" aria-labelledby="dlg-sol-title">
+  <div class="ds-dialog-backdrop"></div>
+  <div class="ds-dialog" style="max-width:560px">
+    <button class="ds-dialog-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <div class="mb-6">
+      <span aria-hidden="true" class="font-mono text-[9px] uppercase tracking-widest text-outline/60 block mb-2">Government Evaluation Request</span>
+      <h3 class="text-2xl font-headline font-bold tracking-tighter text-on-surface" id="dlg-sol-title">Request Feasibility Assessment</h3>
+      <p class="text-outline text-sm mt-2 leading-relaxed">Tell us about your city and objectives — our team will respond within 2–3 business days with a tailored briefing pack.</p>
+    </div>
+    <form class="ds-form space-y-4" id="evaluation-form-sol" novalidate>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="ds-field"><label class="ds-label" for="ev-name-sol">Full Name</label><input class="ds-input" id="ev-name-sol" type="text" placeholder="Your full name" required/></div>
+        <div class="ds-field"><label class="ds-label" for="ev-email-sol">Official Email</label><input class="ds-input" id="ev-email-sol" type="email" placeholder="name@gov.in" required/></div>
+      </div>
+      <div class="ds-field"><label class="ds-label" for="ev-org-sol">Department / Organisation</label><input class="ds-input" id="ev-org-sol" type="text" placeholder="e.g. Smart City SPV" required/></div>
+      <div class="ds-field"><label class="ds-label" for="ev-msg-sol">What are you evaluating?</label><textarea class="ds-input ds-textarea" id="ev-msg-sol" rows="3" placeholder="Describe your corridor or programme context..."></textarea></div>
+      <div class="pt-2 flex gap-3">
+        <button type="submit" class="flex-1 py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Send Request</button>
+        <button type="button" class="ds-dialog-close px-5 py-3 font-headline font-bold uppercase tracking-widest text-[11px] text-outline" style="border:1px solid var(--outline-v)">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-10 ani-grad relative overflow-hidden noise">
+  <div class="aurora">
+    <div class="ab" style="width:600px;height:400px;background:radial-gradient(circle,rgba(0,82,204,.35),transparent 70%);top:-80px;left:-100px;animation:ab1 20s ease-in-out infinite;opacity:.5;"></div>
+    <div class="ab" style="width:400px;height:350px;background:radial-gradient(circle,rgba(255,153,51,.2),transparent 70%);bottom:0;right:-60px;animation:ab3 26s ease-in-out infinite;opacity:.4;"></div>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-10 fu">
+    <span class="accent-line mx-auto"></span>
+    <h2 class="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter leading-none mb-6">Ready to proceed?</h2>
+    <p class="text-white/40 text-xl max-w-xl mx-auto mb-12 leading-relaxed">Request a feasibility assessment or download the procurement pack to start your evaluation.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button data-dialog="evaluation" class="group relative px-10 py-4 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] overflow-hidden glow-o flex items-center justify-center gap-2">
+        <span class="relative z-10">Request Feasibility Assessment</span>
+        <span class="material-symbols-outlined relative z-10 text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        <div class="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+      </button>
+      <a href="government.html" class="px-10 py-4 font-headline font-bold uppercase tracking-widest text-[11px] text-white/70 hover:text-white transition-colors flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">
+        View Procurement Pack
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+</main>
+<footer class="bg-brand-navy pt-20 pb-8 px-6 md:px-10" style="border-top:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
+            <span class="material-symbols-outlined text-white" style="font-size:16px">hub</span>
+          </div>
+          <span class="font-headline font-black tracking-tighter text-white text-xl uppercase">MTSAi</span>
+        </div>
+        <p class="text-white/25 text-sm leading-relaxed max-w-xs mb-6">Defining the standard for government-grade AI in urban mobility. Built for public trust and operational excellence.</p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10" style="border:1px solid rgba(0,82,204,.3)">
+          <span class="material-symbols-outlined text-primary" style="font-size:12px">verified</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-primary/80">GIGW 3.0 Compliant</span>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Explore</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Home</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+          <li><a href="government.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Government</a></li>
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="solutions.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Solutions</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Trust</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Trust Centre</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Public Integrity</a></li>
+          <li><a href="government.html#privacy" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Privacy</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Security</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Company</h3>
+        <ul class="space-y-3">
+          <li><a href="about.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">About</a></li>
+          <li><a href="careers.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Careers</a></li>
+          <li><a href="strategic_partners.html" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Strategic Partners</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="font-headline font-bold text-[10px] uppercase tracking-widest text-white/60 mb-6">Resources</h3>
+        <ul class="space-y-3">
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Procurement Pack</a></li>
+          <li><a href="mailto:ssg@miracletraffic.ai" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Contact Us</a></li>
+          <li><a href="#" aria-disabled="true" tabindex="-1" class="text-white/25 hover:text-brand-orange transition-colors text-sm">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-5 bg-white/2 mb-10" style="border:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/18 text-[10px] leading-relaxed font-mono">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style="border-top:1px solid rgba(255,255,255,.04)">
+      <p class="text-white/20 text-[10px] font-mono">© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Terms</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Privacy Policy</a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="text-white/15 hover:text-white/40 transition-colors font-mono text-[10px]">Accessibility</a>
+      </div>
+      <p class="text-white/10 font-mono text-[9px]">v1.0 · Solutions · Last Updated Mar 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  scrollBar.style.width = p + '%';
+}, { passive: true });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 60 ? 'rgba(22,22,22,.92)' : 'rgba(22,22,22,.02)';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 1px 0 rgba(255,153,51,.08)' : 'none';
+}, { passive: true });
+const mobToggle = document.getElementById('mob-toggle'); const mobMenu = document.getElementById('mob-menu'); mobToggle.addEventListener('click', () => { const isOpen = mobMenu.classList.toggle('open'); mobToggle.setAttribute('aria-expanded', isOpen); mobToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu'); });
+document.getElementById('mob-close').addEventListener('click', () => document.getElementById('mob-menu').classList.remove('open'));
+const fuIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => e.target.classList.add('in'), parseFloat(e.target.style.transitionDelay || '0') * 1000);
+    fuIO.unobserve(e.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fu').forEach(el => fuIO.observe(el));
+document.querySelectorAll('.spot').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+</script>
+<script src="assets/ds.js"></script>
+<script>
+document.getElementById('evaluation-form-sol').addEventListener('submit', e => {
+  e.preventDefault();
+  DS.Dialog.close();
+  DS.Toast.success('Request Sent', 'Our team will respond within 2–3 business days.', 5000);
+  e.target.reset();
+});
+</script>
+</body>
+</html>
