@@ -1,7 +1,7 @@
 /*
  * MTSAi Design System — Component Library v1.0
  * Sourced from: shadcn/ui New York style, MagicUI, Aceternity UI
- * Customised for: brand-navy #161616 · brand-orange #FF9933 · primary #0052CC · brand-green #53AA00 · brand-red #D82B2B
+ * Customised for: brand-navy #050505 · brand-orange #FF9933 · primary #0052CC · brand-green #53AA00 · brand-red #D82B2B
  * Sharp corners (border-radius:0) · Dark-first · Inter/Space Grotesk/JetBrains Mono
  */
 
@@ -9,7 +9,7 @@
    CSS CUSTOM PROPERTIES
 ═══════════════════════════════════════ */
 :root {
-  --navy:        #161616;
+  --navy:        #050505;
   --navy-hi:     #0d1f40;
   --navy-med:    rgba(255,255,255,.06);
   --navy-lo:     rgba(255,255,255,.03);
@@ -35,6 +35,70 @@
   --trans-fast:  150ms cubic-bezier(.4,0,.2,1);
   --trans-base:  250ms cubic-bezier(.4,0,.2,1);
   --trans-slow:  400ms cubic-bezier(.23,1,.32,1);
+}
+
+/* ═══════════════════════════════════════
+   GLASSMORPHISM UTILITIES
+═══════════════════════════════════════ */
+
+/* Dark glass — use on dark/navy backgrounds */
+.glass {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.glass:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+}
+
+/* Light glass — use on white/surface backgrounds */
+.glass-lt {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(0,0,0,.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Orange-tinted glass — for CTA accent panels */
+.glass-o {
+  background: rgba(255,153,51,.06);
+  border: 1px solid rgba(255,153,51,.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Blue-tinted glass — for trust/governance panels */
+.glass-b {
+  background: rgba(0,82,204,.08);
+  border: 1px solid rgba(0,82,204,.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient mesh background — AI company style */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 20%, rgba(0,82,204,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(255,153,51,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,40,120,.15) 0%, transparent 65%),
+    #050505;
+}
+
+/* Animated gradient mesh — for hero/CTA sections */
+.mesh-bg-animated {
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 20%, rgba(0,82,204,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(255,153,51,.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,40,120,.18) 0%, transparent 65%),
+    #050505;
+  background-size: 200% 200%;
+  animation: mesh-drift 18s ease-in-out infinite alternate;
+}
+@keyframes mesh-drift {
+  0%   { background-position: 0% 0%, 100% 100%, 50% 50%, 0 0; }
+  100% { background-position: 30% 20%, 70% 60%, 60% 40%, 0 0; }
 }
 
 /* ═══════════════════════════════════════
@@ -242,7 +306,7 @@
 
 .ds-carousel-btn {
   position:absolute; top:50%; transform:translateY(-50%);
-  width:40px; height:40px; background:rgba(22,22,22,.8);
+  width:40px; height:40px; background:rgba(5,5,5,.8);
   border:1px solid var(--white-10); color:#fff;
   display:flex; align-items:center; justify-content:center;
   cursor:pointer; z-index:10;
@@ -276,7 +340,7 @@
 
 .ds-cmd-backdrop {
   position:absolute; inset:0;
-  background:rgba(22,22,22,.7); backdrop-filter:blur(8px);
+  background:rgba(5,5,5,.7); backdrop-filter:blur(8px);
 }
 .ds-cmd-box {
   position:relative; width:92%; max-width:560px;
@@ -356,7 +420,7 @@
 }
 .ds-dialog-backdrop {
   position:absolute; inset:0;
-  background:rgba(22,22,22,.75); backdrop-filter:blur(10px);
+  background:rgba(5,5,5,.75); backdrop-filter:blur(10px);
 }
 .ds-dialog {
   position:relative; width:92%; max-width:520px;
@@ -1198,7 +1262,7 @@
 .chapter-label {
   display: flex; align-items: center; gap: 10px;
   padding: 7px 12px;
-  background: rgba(22,22,22,.72); backdrop-filter: blur(12px);
+  background: rgba(5,5,5,.72); backdrop-filter: blur(12px);
   border: 1px solid rgba(255,153,51,.15);
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px; text-transform: uppercase; letter-spacing: .18em;

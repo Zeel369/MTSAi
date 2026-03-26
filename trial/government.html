@@ -30,7 +30,7 @@
         "primary-container":"#0052CC","surface-variant":"#e2e2e2",
         "background":"#F4F4F4","on-primary":"#ffffff",
         "primary":"#0052CC","outline":"#737685",
-        "on-surface":"#1a1c1c","brand-orange":"#FF9933","brand-navy":"#161616","brand-green":"#53AA00","brand-red":"#D82B2B"
+        "on-surface":"#1a1c1c","brand-orange":"#FF9933","brand-navy":"#050505","brand-green":"#53AA00","brand-red":"#D82B2B"
       },
       fontFamily:{"headline":["Space Grotesk"],"body":["Inter"],"label":["Inter"],"mono":["JetBrains Mono"]},
       borderRadius:{"DEFAULT":"0rem","lg":"0rem","xl":"0rem","full":"9999px"},
@@ -42,12 +42,12 @@
 html { scroll-behavior: smooth; }
 body { overflow-x: hidden; }
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb { background: #FF9933; }
 .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; vertical-align:middle; line-height:1; display:inline-block; }
 #scroll-bar { position:fixed; top:0; left:0; height:2px; z-index:200; background:linear-gradient(90deg,#FF9933,#FF9933); width:0%; transition:width .08s linear; pointer-events:none; }
 .nav-dropdown { position:relative; }
-.nav-dropdown-menu { position:absolute; top:100%;padding-top:12px; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(22,22,22,.95); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.06); min-width:260px; padding:8px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
+.nav-dropdown-menu { position:absolute; top:100%;padding-top:12px; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(5,5,5,.95); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.06); min-width:260px; padding:8px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
 .nav-dropdown:hover .nav-dropdown-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
 .nav-dropdown-item { display:block; padding:8px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.4); transition:color .15s,background .15s; }
 .nav-dropdown-item:hover { color:#FF9933; background:rgba(255,153,51,.06); }
@@ -73,13 +73,13 @@ body { overflow-x: hidden; }
 .pb { width:0%; transition:width 1.6s cubic-bezier(.4,0,.2,1); }
 .pb.go { width:var(--w); }
 .glow-o { box-shadow:0 0 36px rgba(255,153,51,.25),0 0 72px rgba(255,153,51,.08); }
-.card-dk { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); }
+.card-dk { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .pulse-dot::before { content:''; position:absolute; inset:0; background:inherit; border-radius:inherit; animation:ping .8s cubic-bezier(0,0,.2,1) infinite; }
 @keyframes ping { 75%,100%{transform:scale(2);opacity:0} }
 .accent-line { display:block; width:32px; height:2px; background:#FF9933; margin-bottom:24px; }
 .noise::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"); opacity:.4; pointer-events:none; }
-.ani-grad { background:linear-gradient(160deg,#161616 0%,#0d1f40 50%,#161616 100%); }
-.mob-overlay { position:fixed; inset:0; z-index:40; background:rgba(22,22,22,.98); display:flex; flex-direction:column; padding:80px 24px 40px; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+.ani-grad { background:linear-gradient(160deg,#050505 0%,#0d1f40 50%,#050505 100%); }
+.mob-overlay { position:fixed; inset:0; z-index:40; background:rgba(5,5,5,.98); display:flex; flex-direction:column; padding:80px 24px 40px; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); }
 .mob-overlay.open { transform:translateX(0); }
 .mob-l { display:none; }
 @media(max-width:768px) { .mob-l { display:block; } }
@@ -87,7 +87,7 @@ body { overflow-x: hidden; }
 /* Comparison table */
 .cmp-table { width:100%; border-collapse:collapse; }
 .cmp-table th, .cmp-table td { padding:14px 18px; text-align:left; }
-.cmp-table thead th { background:#161616; color:rgba(255,255,255,.5); font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; border-bottom:1px solid rgba(255,255,255,.06); }
+.cmp-table thead th { background:#050505; color:rgba(255,255,255,.5); font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; border-bottom:1px solid rgba(255,255,255,.06); }
 .cmp-table thead th.col-iudm { color:#FF9933; }
 .cmp-table tbody tr { border-bottom:1px solid rgba(255,255,255,.04); transition:background .15s; }
 .cmp-table tbody tr:hover { background:rgba(255,153,51,.03); }
@@ -102,7 +102,7 @@ body { overflow-x: hidden; }
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <noscript>
   <style>body { opacity: 1 !important; } .fu { opacity: 1 !important; transform: none !important; }</style>
-  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161616;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#050505;border-top:2px solid #FF9933;padding:12px 20px;font-family:monospace;font-size:12px;color:#fff;text-align:center">
     This site uses JavaScript for navigation and interactive features. Please enable JavaScript for the best experience.
   </div>
 </noscript>
@@ -111,7 +111,7 @@ body { overflow-x: hidden; }
 <!-- ══════════════════════════════════════
      NAV
 ══════════════════════════════════════ -->
-<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(22,22,22,.02)">
+<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300" style="backdrop-filter:blur(20px);background:rgba(5,5,5,.02)">
   <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-full bg-brand-orange glow-o flex items-center justify-center">
@@ -174,18 +174,20 @@ body { overflow-x: hidden; }
 <section class="relative min-h-[60vh] flex items-end pb-20 px-6 md:px-10 overflow-hidden ani-grad noise" style="padding-top:96px">
   <!-- Hero background -->
   <div class="absolute inset-0 z-0" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1800&q=80&auto=format&fit=crop');background-size:cover;background-position:center"></div>
-  <div class="absolute inset-0 z-0" style="background:linear-gradient(180deg,rgba(22,22,22,.92) 0%,rgba(22,22,22,.75) 40%,rgba(22,22,22,.97) 100%)"></div>
+  <div class="absolute inset-0 z-0" style="background:linear-gradient(180deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.75) 40%,rgba(5,5,5,.97) 100%)"></div>
   <div class="aurora" style="z-index:1">
-    <div class="ab" style="width:700px;height:500px;background:radial-gradient(circle,rgba(0,82,204,.4),transparent 70%);top:-120px;left:-80px;animation:ab1 22s ease-in-out infinite;opacity:.45;"></div>
-    <div class="ab" style="width:500px;height:400px;background:radial-gradient(circle,rgba(255,153,51,.18),transparent 70%);bottom:-60px;right:-100px;animation:ab3 28s ease-in-out infinite;opacity:.35;"></div>
+    <div class="ab" style="width:900px;height:650px;background:radial-gradient(circle,rgba(0,82,204,.55),transparent 65%);top:-150px;left:-120px;animation:ab1 22s ease-in-out infinite;opacity:.5;"></div>
+    <div class="ab" style="width:600px;height:500px;background:radial-gradient(circle,rgba(255,153,51,.2),transparent 65%);bottom:-80px;right:-120px;animation:ab3 28s ease-in-out infinite;opacity:.4;"></div>
+    <div class="ab" style="width:500px;height:500px;background:radial-gradient(circle,rgba(0,40,140,.5),transparent 65%);top:30%;right:20%;animation:ab2 24s ease-in-out infinite;opacity:.35;"></div>
   </div>
   <div class="max-w-7xl mx-auto w-full relative z-10" style="position:relative;z-index:2">
-    <div class="max-w-3xl">
-      <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange/70 block mb-5">07 // Policy Governance</span>
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tighter leading-[.88] mb-8 fu">
-        07. <span class="shimmer">Government Control</span>
+    <div class="max-w-4xl">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange/70 block mb-5 fu">07 // Policy Governance</span>
+      <h1 class="text-6xl md:text-7xl lg:text-8xl font-headline font-bold tracking-tighter leading-[.85] mb-8">
+        <span class="text-white block fu">Government</span>
+        <span class="block fu" style="transition-delay:.09s;background:linear-gradient(95deg,#FF9933 0%,#FFD580 60%,#FF9933 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Control.</span>
       </h1>
-      <p class="text-white/45 text-xl leading-relaxed max-w-2xl mb-10 fu" style="transition-delay:.1s">
+      <p class="text-white/50 text-xl leading-relaxed max-w-2xl mb-10 fu" style="transition-delay:.18s">
         City authorities configure programme rules, corridor logic, and decision thresholds. Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.
       </p>
       <div class="flex flex-wrap gap-3 fu" style="transition-delay:.2s">
@@ -245,7 +247,7 @@ body { overflow-x: hidden; }
               </li>
             </ul>
           </div>
-          <div class="beam" style="background:#161616; padding:32px">
+          <div class="beam" style="background:#050505; padding:32px">
             <span class="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-6">Central Touchpoints</span>
             <div class="space-y-4">
               <div class="card-dk p-4 flex items-center gap-4">
@@ -295,7 +297,7 @@ body { overflow-x: hidden; }
               </li>
             </ul>
           </div>
-          <div class="beam" style="background:#161616; padding:32px">
+          <div class="beam" style="background:#050505; padding:32px">
             <span class="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-6">State Engagement Steps</span>
             <div class="ds-progress-steps space-y-0">
               <div class="flex items-start gap-4 pb-8 relative">
@@ -348,7 +350,7 @@ body { overflow-x: hidden; }
               </li>
             </ul>
           </div>
-          <div class="beam" style="background:#161616; padding:32px">
+          <div class="beam" style="background:#050505; padding:32px">
             <span class="font-mono text-[9px] uppercase tracking-widest text-white/30 block mb-6">City Dashboard Modules</span>
             <div class="grid grid-cols-2 gap-3">
               <div class="card-dk p-4">
@@ -457,7 +459,7 @@ body { overflow-x: hidden; }
     <!-- Visual context image -->
     <div class="relative overflow-hidden mb-10 fu" style="transition-delay:.05s; border:1px solid rgba(0,82,204,.2)">
       <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1200&h=280&dpr=1" alt="Smart city technology grid" class="w-full h-44 object-cover" style="filter:brightness(.5) saturate(1.4)" loading="lazy"/>
-      <div class="absolute inset-0 flex items-center justify-center" style="background:rgba(22,22,22,.45)">
+      <div class="absolute inset-0 flex items-center justify-center" style="background:rgba(5,5,5,.45)">
         <div class="text-center">
           <span class="block font-headline font-bold text-white text-3xl tracking-tighter">IUDM vs Traditional Pricing</span>
           <span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange/80 mt-1 block">10-Point Comparison · Policy Architecture</span>
@@ -466,7 +468,7 @@ body { overflow-x: hidden; }
     </div>
 
     <div class="overflow-x-auto fu" style="transition-delay:.1s">
-      <div style="background:#161616; border:1px solid rgba(255,255,255,.06)">
+      <div style="background:#050505; border:1px solid rgba(255,255,255,.06)">
         <table class="cmp-table">
           <thead>
             <tr>
@@ -819,10 +821,10 @@ window.addEventListener('scroll', () => {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 60) {
-    nav.style.background = 'rgba(22,22,22,.92)';
+    nav.style.background = 'rgba(5,5,5,.92)';
     nav.style.boxShadow = '0 1px 0 rgba(255,153,51,.08)';
   } else {
-    nav.style.background = 'rgba(22,22,22,.02)';
+    nav.style.background = 'rgba(5,5,5,.02)';
     nav.style.boxShadow = 'none';
   }
 }, { passive: true });
