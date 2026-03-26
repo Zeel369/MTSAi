@@ -40,6 +40,8 @@
   <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
   <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -189,10 +191,10 @@
     .delay-2.reveal { transition-delay: 160ms; }
 
     /* SECTION */
-    .section { padding: clamp(72px,10vw,120px) 0; }
-    .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-4); }
-    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--cta-primary); flex-shrink: 0; }
-    .section-h2 { font-family: var(--font-display); font-size: clamp(24px,3.5vw,44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-4); }
+    
+    
+    
+    
     .hidden { display: none !important; }
 
     @media (max-width: 1024px) { .intent-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: 1fr; } .process-connector { display: none; } .shortcut-grid { grid-template-columns: 1fr; } }
@@ -247,12 +249,12 @@
     </section>
 
     <!-- MAIN CONTACT SECTION -->
-    <section class="section" aria-label="Contact forms">
+    <section class="mts-section" aria-label="Contact forms">
       <div class="mts-container">
 
         <!-- INTENT SELECTOR -->
         <div id="intent-section" class="reveal">
-          <span class="section-eyebrow">Choose Your Path</span>
+          <span class="mts-section__eyebrow">Choose Your Path</span>
           <div class="intent-grid">
             <button class="intent-card" onclick="showForm('gov')" aria-label="Start Government request">
               <div class="intent-icon">🏛️</div>

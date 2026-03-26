@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -90,12 +92,12 @@
     .content-h2 { font-family: var(--font-display); font-size: clamp(22px,3vw,38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-6); }
     .content-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.80; margin-bottom: var(--space-6); max-width: 700px; }
     .content-body strong { color: var(--text-primary); font-weight: 600; }
-    .challenge-card { padding: var(--space-8); background: #FFF8F8; border: 1px solid rgba(218,30,40,0.15); border-left: 4px solid #DA1E28; margin-bottom: var(--space-5); transition: box-shadow 200ms; }
-    .challenge-card:hover { box-shadow: 0 6px 20px rgba(218,30,40,0.08); }
+    
+    
     .challenge-num { font-family: var(--font-display); font-size: 48px; font-weight: 700; color: rgba(218,30,40,0.12); line-height: 1; margin-bottom: var(--space-4); }
     .challenge-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-4); }
     .challenge-body { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
-    .approach-card { padding: var(--space-8); background: var(--layer-01); border: 1px solid var(--blue-20); border-left: 4px solid var(--interactive); margin-top: var(--space-7); }
+    
     .approach-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
     .approach-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-4); }
     .approach-body { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
@@ -107,15 +109,15 @@
     .policy-notice-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
     .policy-notice p { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
 
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
-    .section-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    
+    
     .cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-5); }
     .cta-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: 0 0 var(--space-6); max-width: 720px; }
     .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    
+    
 
     .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
     .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 50%); }
@@ -218,7 +220,7 @@
 
             <section id="resistance" class="content-section reveal">
               <h2 class="content-h2">Challenge 1: Political Resistance</h2>
-              <div class="challenge-card">
+              <div class="mts-card--challenge">
                 <div class="challenge-num">01</div>
                 <div class="challenge-title">Political Resistance</div>
                 <p class="challenge-body">Many commuters experience congestion pricing as a penalty for mobility. Public debate shifts quickly from congestion management to fairness and affordability. Programmes that are technically effective can still fail politically because of how they are perceived.</p>
@@ -227,7 +229,7 @@
 
             <section id="behaviour" class="content-section reveal">
               <h2 class="content-h2">Challenge 2: Behaviour Change Is Often Limited</h2>
-              <div class="challenge-card">
+              <div class="mts-card--challenge">
                 <div class="challenge-num">02</div>
                 <div class="challenge-title">Limited Behaviour Change</div>
                 <p class="challenge-body">Charging for road access does not always change behaviour significantly. Many commuters absorb the cost and continue driving alone during peak hours. The pricing signal changes the cost of a trip, but not necessarily how or when people travel.</p>
@@ -236,7 +238,7 @@
 
             <section id="equal-treatment" class="content-section reveal">
               <h2 class="content-h2">Challenge 3: Systems Treat All Vehicles the Same</h2>
-              <div class="challenge-card">
+              <div class="mts-card--challenge">
                 <div class="challenge-num">03</div>
                 <div class="challenge-title">Equal Treatment of Unequal Vehicles</div>
                 <p class="challenge-body">Most congestion systems price vehicles, not people. A car carrying three people is charged the same as a car carrying one. But those vehicles do not contribute equally to congestion. A car carrying three people has already solved a coordination problem. Traditional systems do not recognise or reward that difference.</p>
@@ -246,7 +248,7 @@
             <section id="different-approach" class="content-section reveal">
               <h2 class="content-h2">A Different Approach</h2>
               <p class="content-body">Addressing congestion effectively requires a system that does more than charge for road access. It requires a system that actively rewards behaviour that reduces congestion.</p>
-              <div class="approach-card">
+              <div class="mts-card--approach">
                 <span class="approach-label">MTSAi Solution</span>
                 <div class="approach-title">Incentive-Based Urban Demand Management</div>
                 <p class="approach-body">MTSAi introduces Incentive-Based Urban Demand Management (IUDM) — a framework built on that principle. Instead of penalising drivers, IUDM rewards behaviour that benefits the transportation network.</p>
@@ -265,7 +267,7 @@
       </div>
     </article>
 
-    <section class="section-cta" aria-label="Next steps">
+    <section class="mts-mts-section-cta" aria-label="Next steps">
       <div class="mts-container">
         <div class="reveal">
           <div class="cta-eyebrow">Continue Reading</div>

@@ -1,0 +1,183 @@
+/* ============================================================
+   MTSAi Design System — Content Card Variants
+   Provides: feature-card, step-card, insight-panel, dark-card,
+             challenge-card, approach-card, list-item patterns
+   Replaces: .feature-card, .step-card, .dark-card,
+             .partner-card, .mission-card, .challenge-card,
+             .approach-card, .insight-panel, .control-item,
+             .phase-item
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   FEATURE CARD
+   White card with coloured top border + lift hover
+   (was: .feature-card, .partner-card, .mission-card)
+════════════════════════════════════════════════════════════════ */
+.mts-card--feature {
+  padding: var(--space-8);
+  background: #fff;
+  border: 1px solid var(--blue-20);
+  border-top: 3px solid var(--interactive);
+  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06);
+  transition: box-shadow 200ms, transform 200ms;
+}
+.mts-card--feature:hover {
+  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Green top-border variant */
+.mts-card--feature--green {
+  border-top-color: var(--brand-primary);
+}
+.mts-card--feature--green .mts-card__label {
+  color: var(--brand-primary);
+}
+
+/* Saffron top-border variant */
+.mts-card--feature--saffron {
+  border-top-color: var(--cta-primary);
+}
+.mts-card--feature--saffron .mts-card__label {
+  color: var(--cta-primary);
+}
+
+/* ── Card anatomy ────────────────────────────────────────────── */
+.mts-card__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--interactive);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.mts-card__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.mts-card--feature .mts-card__num { color: var(--interactive); }
+
+.mts-card__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.mts-card__body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INSIGHT PANEL
+   Subtle card used for inline stat/insight callouts
+════════════════════════════════════════════════════════════════ */
+.mts-card--insight {
+  padding: var(--space-7);
+  background: var(--layer-01);
+  border: 1px solid var(--blue-20);
+  border-top: 3px solid var(--interactive);
+  transition: box-shadow 200ms, background 150ms;
+}
+.mts-card--insight:hover {
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+}
+
+.mts-card--insight--green { border-top-color: var(--brand-primary); }
+
+/* ══════════════════════════════════════════════════════════════
+   DARK CARD
+   Semi-transparent card for use on dark section backgrounds
+════════════════════════════════════════════════════════════════ */
+.mts-card--dark {
+  padding: var(--space-8);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: background 200ms;
+}
+.mts-card--dark:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.mts-card--dark .mts-card__num   { color: var(--cta-primary); }
+.mts-card--dark .mts-card__title { color: #fff; }
+.mts-card--dark .mts-card__body  { color: rgba(255, 255, 255, 0.65); }
+
+/* ══════════════════════════════════════════════════════════════
+   CHALLENGE CARD
+   Red-accented card for problem statements
+════════════════════════════════════════════════════════════════ */
+.mts-card--challenge {
+  padding: var(--space-8);
+  background: #FFF8F8;
+  border: 1px solid rgba(218, 30, 40, 0.15);
+  border-left: 4px solid var(--red-50);
+  margin-bottom: var(--space-5);
+  transition: box-shadow 200ms;
+}
+.mts-card--challenge:hover {
+  box-shadow: 0 6px 20px rgba(218, 30, 40, 0.08);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   APPROACH CARD
+   Blue-left-border card for solution/approach content
+════════════════════════════════════════════════════════════════ */
+.mts-card--approach {
+  padding: var(--space-8);
+  background: var(--layer-01);
+  border: 1px solid var(--blue-20);
+  border-left: 4px solid var(--interactive);
+  margin-top: var(--space-7);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIST ITEM CARD (control-item / phase-item)
+   Border-bottom row pattern for listed items
+════════════════════════════════════════════════════════════════ */
+.mts-list-item {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 150ms;
+}
+.mts-list-item:hover     { background: var(--layer-01); }
+.mts-list-item:last-child { border-bottom: none; }
+
+.mts-list-item__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--interactive);
+  letter-spacing: 0.12em;
+  display: block;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.mts-list-item__content h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.mts-list-item__content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

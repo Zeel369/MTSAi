@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -104,23 +106,23 @@
     .page-nav a:hover { color: var(--interactive); }
 
     /* SECTIONS */
-    .section { padding: clamp(80px,12vw,140px) 0; border-top: 1px solid var(--blue-20); position: relative; overflow: hidden; scroll-margin-top: 112px; }
+    
     .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-    .section-alt { background: #F0F5FF; }
-    .section-dark { background: #0D1B40; }
+    
+    
 
-    .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5); }
-    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--cta-primary); flex-shrink: 0; }
-    .section-eyebrow--green { color: var(--brand-primary); }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
+    
+    
+    
+    
+    
 
-    .section-h2 { font-family: var(--font-display); font-size: clamp(28px,4vw,52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-6); max-width: 720px; }
-    .section-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.72; max-width: 600px; margin-bottom: var(--space-8); }
-    .section-header { margin-bottom: clamp(40px,6vw,72px); }
+    
+    
+    
 
     /* TWO COL */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+    
 
     /* ARCH LAYERS */
     .arch-stack { }
@@ -187,14 +189,14 @@
     .deploy-banner p { font-size: 15px; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.65; }
 
     /* CTA */
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
-    .section-cta::before { content: '→'; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-family: var(--font-display); font-size: clamp(200px,25vw,360px); font-weight: 700; color: rgba(255,255,255,0.03); pointer-events: none; line-height: 1; }
-    .section-cta::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    
+    
+    
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: var(--space-5) 0 var(--space-6); max-width: 720px; }
     .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    
+    
 
     /* MARQUEE */
     .marquee-section { padding: var(--space-4) 0; border-top: 1px solid var(--blue-20); border-bottom: 1px solid var(--blue-20); overflow: hidden; background: #F0F5FF; }
@@ -331,14 +333,14 @@
     <!-- OVERVIEW -->
     <section class="section reveal-group" id="overview" aria-label="Platform Architecture Overview">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">01 // Multi-Tenant IUDM Platform</span>
-          <h2 class="section-h2 reveal">Platform Architecture Overview</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">01 // Multi-Tenant IUDM Platform</span>
+          <h2 class="mts-section__h2 reveal">Platform Architecture Overview</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
             <h3 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:var(--space-5);">Incentive-Based Urban Demand Management Platform</h3>
-            <p class="section-body">Urban congestion management requires more than isolated tools. It requires an integrated system that connects policy configuration, traffic data, commuter engagement, and digital mobility ecosystems.</p>
+            <p class="mts-section__body">Urban congestion management requires more than isolated tools. It requires an integrated system that connects policy configuration, traffic data, commuter engagement, and digital mobility ecosystems.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-5);">The MTSAi platform is designed as a multi-tenant mobility management architecture that allows multiple cities to operate independent congestion management programmes within a shared infrastructure environment.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">The platform combines deterministic policy engines, incentive management systems, and digital ecosystem integrations to support government-controlled traffic demand programmes.</p>
           </div>
@@ -380,13 +382,13 @@
     <!-- POLICY LAYER -->
     <section class="section section-alt reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">02 // Government Control</span>
-          <h2 class="section-h2 reveal">City Policy and Operations Layer</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Government Control</span>
+          <h2 class="mts-section__h2 reveal">City Policy and Operations Layer</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">At the top of the platform is the City Administration and Policy Layer. This is where government authorities manage congestion programmes through a structured operational interface.</p>
+            <p class="mts-section__body">At the top of the platform is the City Administration and Policy Layer. This is where government authorities manage congestion programmes through a structured operational interface.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">City administrators can configure congestion pricing policies, peak and off-peak definitions, incentive programmes and reward budgets, exemption categories and equity protections, and enforcement thresholds and escalation rules.</p>
             <div style="margin-top:var(--space-7);">
               <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;font-style:italic;">This layer ensures that policy authority remains entirely with the government authority, not the technology provider.</p>
@@ -421,10 +423,10 @@
     <!-- CORE ENGINES -->
     <section class="section reveal-group" id="core-engines" aria-label="Core Platform Engines">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">03 // Deterministic Policy Services</span>
-          <h2 class="section-h2 reveal">Core Platform Engines</h2>
-          <p class="section-body reveal">The operational core of the platform consists of several specialized services that execute congestion management policies.</p>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">03 // Deterministic Policy Services</span>
+          <h2 class="mts-section__h2 reveal">Core Platform Engines</h2>
+          <p class="mts-section__body reveal">The operational core of the platform consists of several specialized services that execute congestion management policies.</p>
         </div>
         <div class="engine-grid reveal delay-2">
           <div class="engine-cell">
@@ -488,13 +490,13 @@
     <!-- DATA EVENTS -->
     <section class="section section-alt reveal-group" id="data-events" aria-label="Data and Event Processing Layer">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">04 // Event Pipeline</span>
-          <h2 class="section-h2 reveal">Data and Event Processing Layer</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">04 // Event Pipeline</span>
+          <h2 class="mts-section__h2 reveal">Data and Event Processing Layer</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">The platform processes mobility events from multiple sources. These include ANPR/LPR vehicle detection systems, partner mobility applications, and trip start and end signals from integrated platforms.</p>
+            <p class="mts-section__body">The platform processes mobility events from multiple sources. These include ANPR/LPR vehicle detection systems, partner mobility applications, and trip start and end signals from integrated platforms.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">Incoming events are normalized, validated, and processed through the platform's event pipeline before being evaluated by the pricing and incentive engines.</p>
           </div>
           <div class="attr-rows reveal delay-2">
@@ -518,13 +520,13 @@
     <!-- ECOSYSTEM -->
     <section class="section reveal-group" id="ecosystem" aria-label="Digital Mobility Ecosystem Integration">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">05 // Super App Gateway</span>
-          <h2 class="section-h2 reveal">Digital Mobility Ecosystem Integration</h2>
-          <p class="section-body reveal">A central feature of the platform is its ability to operate within existing digital mobility ecosystems. Partner platforms can receive incentive distribution events, display commuter engagement status, provide trip data signals, and surface congestion alerts.</p>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">05 // Super App Gateway</span>
+          <h2 class="mts-section__h2 reveal">Digital Mobility Ecosystem Integration</h2>
+          <p class="mts-section__body reveal">A central feature of the platform is its ability to operate within existing digital mobility ecosystems. Partner platforms can receive incentive distribution events, display commuter engagement status, provide trip data signals, and surface congestion alerts.</p>
         </div>
 
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-6);">Through the MTSAi Super App integration gateway, commuter incentives are delivered through platforms that citizens already use for mobility and payments — reducing the need for a separate consumer platform rollout.</p>
             <div class="mts-callout mts-callout--blue">
@@ -577,9 +579,9 @@
     <!-- PRIVACY -->
     <section class="section reveal-group" id="privacy" style="background:#0D1B40;" aria-label="Privacy and Data Governance">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--white">06 // Tenant Isolation</span>
-          <h2 class="section-h2 reveal" style="color:#fff;">Privacy and Data Governance Architecture</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">06 // Tenant Isolation</span>
+          <h2 class="mts-section__h2 reveal" style="color:#fff;">Privacy and Data Governance Architecture</h2>
         </div>
         <div class="privacy-matrix reveal delay-2" role="table" aria-label="Privacy and governance controls">
           <div class="privacy-col" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.10);">
@@ -619,13 +621,13 @@
     <!-- DEPLOYMENT -->
     <section class="section section-alt reveal-group" id="deployment" aria-label="Infrastructure and Deployment">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">07 // Cloud Posture</span>
-          <h2 class="section-h2 reveal">Infrastructure and Deployment</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Cloud Posture</span>
+          <h2 class="mts-section__h2 reveal">Infrastructure and Deployment</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">The MTSAi platform is designed for deployment within cloud environments aligned with local regulatory requirements. For India deployments, the architecture supports data residency within the AWS Mumbai region.</p>
+            <p class="mts-section__body">The MTSAi platform is designed for deployment within cloud environments aligned with local regulatory requirements. For India deployments, the architecture supports data residency within the AWS Mumbai region.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-6);">This architecture supports both initial pilot deployments and long-term city programme expansion.</p>
             <div class="mts-callout mts-callout--green">
               Each deployment phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.
@@ -662,10 +664,10 @@
     </section>
 
     <!-- CTA -->
-    <section class="section-cta" aria-label="Call to action">
+    <section class="mts-mts-section-cta" aria-label="Call to action">
       <div class="mts-container">
         <div class="reveal">
-          <span class="section-eyebrow section-eyebrow--white">Next Steps</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
           <h2 class="cta-headline">Ready to explore what<br>MTSAi can do for your city?</h2>
           <p class="cta-body">Whether you're a government decision-maker, a technology partner, or an investor — the platform architecture is designed to support a structured evaluation path.</p>
           <div class="cta-actions">

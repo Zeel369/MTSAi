@@ -1,0 +1,184 @@
+/* ============================================================
+   MTSAi Design System — Section Component
+   Provides: base section, colour variants, eyebrow, heading,
+             body copy, CTA sections, grid layouts, two-col.
+   Replaces inline: .section, .section-alt, .section-dark,
+   .section-cta, .section-eyebrow, .section-h2, .section-body,
+   .two-col, .feature-grid, .step-grid, .section-header
+   ============================================================ */
+
+/* ── Base ───────────────────────────────────────────────────── */
+.mts-section {
+  padding: clamp(80px, 12vw, 140px) 0;
+  border-top: 1px solid var(--blue-20);
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 112px;
+}
+
+/* Light blue tint */
+.mts-section--alt {
+  background: #F0F5FF;
+}
+
+/* Dark navy */
+.mts-section--dark {
+  background: #000C2E;
+}
+
+/* Dark green */
+.mts-section--dark-green {
+  background: #001A00;
+}
+
+/* No top border (first section after hero, etc.) */
+.mts-section--borderless {
+  border-top: none;
+}
+
+/* ── Section header block ────────────────────────────────────── */
+.mts-section__header {
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+/* ── Eyebrow ─────────────────────────────────────────────────── */
+.mts-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--interactive);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-4);
+}
+.mts-section__eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* Colour variants */
+.mts-section__eyebrow--saffron { color: var(--cta-primary); }
+.mts-section__eyebrow--green   { color: var(--brand-primary); }
+.mts-section__eyebrow--white   { color: rgba(255,255,255,0.70); }
+
+/* ── Heading ─────────────────────────────────────────────────── */
+.mts-section__h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+
+.mts-section__h2--white { color: #FFFFFF; }
+
+/* ── Body copy ───────────────────────────────────────────────── */
+.mts-section__body {
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: var(--text-secondary);
+  line-height: 1.72;
+  max-width: 640px;
+  margin-bottom: var(--space-8);
+}
+
+.mts-section__body--white { color: rgba(255,255,255,0.72); }
+
+/* ── CTA section (dark full-bleed with accent line) ──────────── */
+.mts-section-cta {
+  padding: clamp(100px, 14vw, 160px) 0;
+  background: #000C2E;
+  position: relative;
+  overflow: hidden;
+}
+
+.mts-section-cta::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%);
+}
+
+/* Decorative large arrow watermark */
+.mts-section-cta::after {
+  content: '→';
+  position: absolute;
+  right: -40px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 280px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.02);
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* Green CTA variant (careers page) */
+.mts-section-cta--green {
+  background: #001500;
+}
+.mts-section-cta--green::before {
+  background: linear-gradient(90deg, var(--brand-primary) 0%, transparent 60%);
+}
+
+/* ── Grid layouts ────────────────────────────────────────────── */
+
+/* 2-column content layout */
+.mts-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* Feature card grid (2-col, tight gap) */
+.mts-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* Step card grid (3-col) */
+.mts-step-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+/* Dark card grid (2-col, tighter) */
+.mts-dark-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* Ecosystem / integration bordered grid */
+.mts-eco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--blue-20);
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mts-step-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .mts-two-col,
+  .mts-feature-grid,
+  .mts-dark-grid,
+  .mts-eco-grid    { grid-template-columns: 1fr; }
+  .mts-step-grid   { grid-template-columns: 1fr; }
+}

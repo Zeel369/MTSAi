@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -100,18 +102,18 @@
     .kpi-label { display: block; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-2); }
 
     /* SECTIONS */
-    .section { padding: clamp(80px,12vw,140px) 0; border-top: 1px solid var(--blue-20); position: relative; overflow: hidden; }
+    
     .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-    .section-alt { background: #F0F5FF; }
+    
 
-    .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5); }
-    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--cta-primary); flex-shrink: 0; }
-    .section-eyebrow--green { color: var(--brand-primary); }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
-    .section-h2 { font-family: var(--font-display); font-size: clamp(28px,4vw,52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-6); max-width: 720px; }
-    .section-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.72; max-width: 600px; margin-bottom: var(--space-8); }
-    .section-header { margin-bottom: clamp(40px,6vw,72px); }
+    
+    
+    
+    
+    
+    
+    
+    
 
     /* TIMELINE */
     .timeline { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; border: 1px solid var(--blue-20); background: #fff; }
@@ -130,13 +132,13 @@
 
     /* MISSION CARDS */
     .mission-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); }
-    .mission-card { padding: var(--space-8); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); box-shadow: 0 2px 8px rgba(0,82,204,0.06); transition: box-shadow 200ms, transform 200ms; }
-    .mission-card:hover { box-shadow: 0 8px 24px rgba(0,82,204,0.12); transform: translateY(-3px); }
-    .mission-card--green { border-top-color: var(--brand-primary); }
-    .mission-card-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--interactive); margin-bottom: var(--space-4); display: block; }
-    .mission-card--green .mission-card-label { color: var(--brand-primary); }
-    .mission-card h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-4); }
-    .mission-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    
+    
+    
+    
+    
+    
+    
 
     /* FOUNDER */
     .founder-grid { display: grid; grid-template-columns: 260px 1fr; gap: 0; border: 1px solid var(--blue-20); background: #fff; box-shadow: 0 4px 24px rgba(0,82,204,0.08); }
@@ -201,14 +203,14 @@
     .disclosure-cell p { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
 
     /* CTA */
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
-    .section-cta::before { content: '→'; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-family: var(--font-display); font-size: clamp(200px,25vw,360px); font-weight: 700; color: rgba(255,255,255,0.03); pointer-events: none; line-height: 1; }
-    .section-cta::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    
+    
+    
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: var(--space-5) 0 var(--space-6); max-width: 720px; }
     .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    
+    
 
     /* FOOTER */
     .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
@@ -321,9 +323,9 @@
     <!-- TIMELINE -->
     <section class="section reveal-group" aria-label="Company Journey">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">02 // Building the Foundation</span>
-          <h2 class="section-h2 reveal">Our Journey</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">02 // Building the Foundation</span>
+          <h2 class="mts-section__h2 reveal">Our Journey</h2>
         </div>
         <div class="timeline reveal delay-2">
           <div class="timeline-item">
@@ -358,23 +360,23 @@
     <!-- MISSION -->
     <section class="section section-alt reveal-group" aria-label="Mission and Approach">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">03 // What We Stand For</span>
-          <h2 class="section-h2 reveal">Mission, Approach &amp; Outcome</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">03 // What We Stand For</span>
+          <h2 class="mts-section__h2 reveal">Mission, Approach &amp; Outcome</h2>
         </div>
         <div class="mission-grid reveal delay-2">
-          <div class="mission-card">
-            <span class="mission-card-label">Mission</span>
+          <div class="mts-card--feature">
+            <span class="mts-card__label">Mission</span>
             <h3>Accountable Mobility</h3>
             <p>Deliver policy-led road pricing with verifiable governance and public integrity controls that build lasting trust.</p>
           </div>
-          <div class="mission-card mission-card--green">
-            <span class="mission-card-label" style="color:var(--brand-primary);">Approach</span>
+          <div class="mts-card--feature mts-card--feature--green">
+            <span class="mts-card__label" style="color:var(--brand-primary);">Approach</span>
             <h3>Procurement-Ready</h3>
             <p>Frameworks aligned to government evaluation cycles, audit expectations, and competitive procurement processes.</p>
           </div>
-          <div class="mission-card">
-            <span class="mission-card-label">Outcome</span>
+          <div class="mts-card--feature">
+            <span class="mts-card__label">Outcome</span>
             <h3>Equity by Design</h3>
             <p>Built-in exemptions, hardship pathways, and reinvestment frameworks to support inclusive urban mobility.</p>
           </div>
@@ -385,9 +387,9 @@
     <!-- FOUNDER -->
     <section class="section reveal-group" aria-label="Founder and Leadership">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">04 // Leadership</span>
-          <h2 class="section-h2 reveal">Founder &amp; Leadership</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">04 // Leadership</span>
+          <h2 class="mts-section__h2 reveal">Founder &amp; Leadership</h2>
         </div>
         <div class="founder-grid reveal delay-2">
           <div class="founder-portrait">
@@ -412,10 +414,10 @@
     <!-- CAPITAL STRUCTURE -->
     <section class="section section-alt reveal-group" aria-label="Capital Structure">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">05 // Financing Posture</span>
-          <h2 class="section-h2 reveal">Capital Structure &amp; Funding</h2>
-          <p class="section-body reveal">Founder-backed with committed capital for initial pilots, R&amp;D partnerships, and platform development.</p>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Financing Posture</span>
+          <h2 class="mts-section__h2 reveal">Capital Structure &amp; Funding</h2>
+          <p class="mts-section__body reveal">Founder-backed with committed capital for initial pilots, R&amp;D partnerships, and platform development.</p>
         </div>
         <div class="funding-grid reveal delay-2">
           <div class="funding-card">
@@ -438,9 +440,9 @@
     <!-- R&D PARTNERSHIPS -->
     <section class="section reveal-group" aria-label="Strategic Partnerships and R&D">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">06 // Research Network</span>
-          <h2 class="section-h2 reveal">Strategic Partnerships &amp; R&amp;D</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">06 // Research Network</span>
+          <h2 class="mts-section__h2 reveal">Strategic Partnerships &amp; R&amp;D</h2>
         </div>
         <div class="partner-rows reveal delay-2">
           <div class="partner-row">
@@ -494,10 +496,10 @@
     <!-- MULTI-JURISDICTION -->
     <section class="section section-alt reveal-group" aria-label="Multi-Jurisdiction Structure">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">07 // Global Operations</span>
-          <h2 class="section-h2 reveal">Multi-Jurisdiction Structure</h2>
-          <p class="section-body reveal">MTSAi operates across four jurisdictions to optimize IP protection, R&amp;D partnerships, market access, and procurement delivery.</p>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Global Operations</span>
+          <h2 class="mts-section__h2 reveal">Multi-Jurisdiction Structure</h2>
+          <p class="mts-section__body reveal">MTSAi operates across four jurisdictions to optimize IP protection, R&amp;D partnerships, market access, and procurement delivery.</p>
         </div>
         <div class="jurisdiction-grid reveal delay-2">
           <div class="jurisdiction-cell">
@@ -545,9 +547,9 @@
     <!-- STATUS DISCLOSURE -->
     <section class="section reveal-group" aria-label="Platform Status Disclosure">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">08 // Transparency</span>
-          <h2 class="section-h2 reveal">Platform Status Disclosure</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">08 // Transparency</span>
+          <h2 class="mts-section__h2 reveal">Platform Status Disclosure</h2>
         </div>
         <div class="disclosure-grid reveal delay-2">
           <div class="disclosure-cell">
@@ -567,10 +569,10 @@
     </section>
 
     <!-- CTA -->
-    <section class="section-cta" aria-label="Call to action">
+    <section class="mts-mts-section-cta" aria-label="Call to action">
       <div class="mts-container">
         <div class="reveal">
-          <span class="section-eyebrow section-eyebrow--white">Engage MTSAi</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Engage MTSAi</span>
           <h2 class="cta-headline">Explore procurement pathways &amp; pilot readiness.</h2>
           <p class="cta-body">Engage with a structured, audit-ready process. No RFP required for initial feasibility and pilot evaluations.</p>
           <div class="cta-actions">

@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     /* ====================================================
@@ -283,40 +285,18 @@
     /* ====================================================
        SECTION EYEBROW — global saffron tick
     ==================================================== */
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 11px; color: var(--interactive);
-      text-transform: uppercase; letter-spacing: 0.12em;
-      margin-bottom: var(--space-5);
-    }
-    .section-eyebrow::before {
-      content: '';
-      display: inline-block; width: 18px; height: 2px;
-      background: var(--cta-primary);
-      flex-shrink: 0;
-    }
+    
+    
 
     /* Override for green eyebrows */
-    .section-eyebrow--green { color: var(--brand-primary); }
-    .section-eyebrow--saffron { color: var(--cta-primary); }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
+    
+    
+    
+    
 
-    .section-h2 {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 4.5vw, 60px);
-      font-weight: 700; line-height: 1.08;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-      margin-bottom: var(--space-6); max-width: 720px;
-    }
-    .section-body {
-      font-size: clamp(15px, 1.4vw, 18px);
-      color: var(--text-secondary); line-height: 1.72;
-      max-width: 600px; margin-bottom: var(--space-8);
-    }
-    .section-header { margin-bottom: clamp(40px, 6vw, 72px); }
+    
+    
+    
 
     /* ====================================================
        PROPOSITION SECTION — richer blue tint
@@ -369,11 +349,7 @@
     /* ====================================================
        SECTION (generic white — with depth)
     ==================================================== */
-    .section {
-      padding: clamp(80px, 12vw, 140px) 0;
-      border-top: 1px solid var(--blue-20);
-      position: relative; overflow: hidden;
-    }
+    
     /* Subtle dot-grid on white sections — felt, not seen */
     .section::before {
       content: '';
@@ -409,19 +385,8 @@
       font-size: 13px; color: var(--text-secondary);
       margin-top: var(--space-3); line-height: 1.55;
     }
-    .insight-panel {
-      padding: var(--space-6);
-      background: #FFFFFF;
-      border: 1px solid var(--blue-20);
-      margin-bottom: var(--space-4);
-      box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06), 0 1px 2px rgba(0,0,0,0.04);
-      transition: box-shadow 200ms var(--ease-standard),
-                  transform 200ms var(--ease-standard);
-    }
-    .insight-panel:hover {
-      box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12), 0 2px 6px rgba(0,0,0,0.06);
-      transform: translateY(-3px);
-    }
+    
+    
     .insight-title {
       font-family: var(--font-display); font-size: 16px;
       font-weight: 600; color: var(--text-primary);
@@ -801,30 +766,11 @@
     /* ====================================================
        CTA SECTION — Deepest blue + decorative geometry
     ==================================================== */
-    .section-cta {
-      padding: clamp(100px, 14vw, 180px) 0;
-      background: #000C2E; /* deep navy derived from brand Blue 60 hue */
-      position: relative; overflow: hidden;
-    }
+    
     /* Large decorative arrow */
-    .section-cta::before {
-      content: '→';
-      position: absolute; right: 8%; top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: clamp(200px, 25vw, 360px);
-      font-weight: 700;
-      color: rgba(255,255,255,0.03);
-      pointer-events: none; user-select: none;
-      line-height: 1;
-    }
+    
     /* Top accent line */
-    .section-cta::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%);
-    }
+    
     /* Brand-blue radial glow from the left — depth on dark */
     .cta-inner::before {
       content: '';
@@ -852,13 +798,8 @@
     }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 
-    .section-cta .mts-btn--ghost {
-      color: #FFFFFF; border-color: rgba(255,255,255,0.30);
-    }
-    .section-cta .mts-btn--ghost:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.55); color: #FFFFFF;
-    }
+    
+    
 
     /* ====================================================
        FOOTER — Explicitly dark, premium feel
@@ -1423,7 +1364,7 @@
       <div class="mts-container">
         <div class="proposition-inner">
           <div class="proposition-label">
-            <span class="section-eyebrow" style="color:var(--interactive);">01 // Platform Philosophy</span>
+            <span class="mts-section__eyebrow" style="color:var(--interactive);">01 // Platform Philosophy</span>
           </div>
           <blockquote class="proposition-statement">
             "Cities don't need another penalty-based toll system. They need a platform that makes the right commuting choice feel like the obvious one."
@@ -1440,9 +1381,9 @@
     ============================================= -->
     <section class="section reveal-group" aria-label="The congestion problem">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">02 // Public Problem</span>
-          <h2 class="section-h2 reveal">02. The Urban Congestion Problem</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">02 // Public Problem</span>
+          <h2 class="mts-section__h2 reveal">02. The Urban Congestion Problem</h2>
         </div>
 
         <!-- Cinematic image — Indian city intersection with AI governance overlay -->
@@ -1497,11 +1438,11 @@
           </div>
 
           <div class="problem-insights reveal delay-2">
-            <div class="insight-panel" style="border-top:3px solid var(--interactive);">
+            <div class="mts-card--insight" style="border-top:3px solid var(--interactive);">
               <h3 class="insight-title">What cities need</h3>
               <p class="insight-body">A policy instrument that can influence commuter behavior without relying only on punitive charging.</p>
             </div>
-            <div class="insight-panel" style="border-top:3px solid var(--brand-primary);">
+            <div class="mts-card--insight" style="border-top:3px solid var(--brand-primary);">
               <h3 class="insight-title">Why this matters</h3>
               <p class="insight-body">Governments need a congestion approach that remains understandable, governable, and privacy-conscious from the beginning.</p>
             </div>
@@ -1515,9 +1456,9 @@
     ============================================= -->
     <section class="section-iudm reveal-group" aria-label="The IUDM Model">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">03 // Core Differentiator</span>
-          <h2 class="section-h2 reveal">03. The IUDM Model</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">03 // Core Differentiator</span>
+          <h2 class="mts-section__h2 reveal">03. The IUDM Model</h2>
         </div>
 
         <div class="iudm-layout">
@@ -1578,9 +1519,9 @@
 
         <div class="arch-layout">
           <div class="arch-intro reveal">
-            <span class="section-eyebrow">04 // System Credibility</span>
-            <h2 class="section-h2">04. Platform Architecture Overview</h2>
-            <p class="section-body">The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.</p>
+            <span class="mts-section__eyebrow">04 // System Credibility</span>
+            <h2 class="mts-section__h2">04. Platform Architecture Overview</h2>
+            <p class="mts-section__body">The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.</p>
             <div class="arch-stats">
               <div><span class="arch-stat-num">6+</span><span class="arch-stat-label">Core modules</span></div>
               <div><span class="arch-stat-num">4</span><span class="arch-stat-label">Integration types</span></div>
@@ -1621,9 +1562,9 @@
     ============================================= -->
     <section class="section-privacy reveal-group" aria-label="Privacy by Design">
       <div class="mts-container">
-        <span class="section-eyebrow section-eyebrow--green">05 // Trust Foundation</span>
-        <h2 class="section-h2 reveal">05. Privacy by Design</h2>
-        <p class="section-body reveal">MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
+        <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Trust Foundation</span>
+        <h2 class="mts-section__h2 reveal">05. Privacy by Design</h2>
+        <p class="mts-section__body reveal">MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
 
         <div class="privacy-matrix reveal delay-2" role="table" aria-label="Privacy data classification">
           <div class="privacy-col" role="columnheader">
@@ -1699,8 +1640,8 @@
     ============================================= -->
     <section class="section-gov reveal-group" aria-label="Government Control">
       <div class="mts-container">
-        <span class="section-eyebrow">07 // Policy Governance</span>
-        <h2 class="section-h2 reveal">07. Government Control</h2>
+        <span class="mts-section__eyebrow">07 // Policy Governance</span>
+        <h2 class="mts-section__h2 reveal">07. Government Control</h2>
         <div class="gov-controls reveal delay-2">
           <div class="gov-control">
             <span class="gov-num">01</span>
@@ -1731,9 +1672,9 @@
     ============================================= -->
     <section class="section-roadmap reveal-group" aria-label="Platform Roadmap">
       <div class="mts-container">
-        <span class="section-eyebrow">08 // Phased Implementation</span>
-        <h2 class="section-h2 reveal">08. Platform Development Roadmap</h2>
-        <p class="section-body reveal">The platform development model is phased to reduce implementation risk.</p>
+        <span class="mts-section__eyebrow">08 // Phased Implementation</span>
+        <h2 class="mts-section__h2 reveal">08. Platform Development Roadmap</h2>
+        <p class="mts-section__body reveal">The platform development model is phased to reduce implementation risk.</p>
 
         <div class="roadmap reveal delay-2">
           <div class="roadmap-track" aria-hidden="true"></div>
@@ -1804,9 +1745,9 @@
     ============================================= -->
     <section class="section-ecosystem reveal-group" aria-label="Super App Ecosystem">
       <div class="mts-container">
-        <span class="section-eyebrow section-eyebrow--saffron">06 // India Deployment Strategy</span>
-        <h2 class="section-h2 reveal">06. Super App Ecosystem</h2>
-        <p class="section-body reveal">Incentives are delivered through partner platforms where commuters already transact. This integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.</p>
+        <span class="mts-section__eyebrow mts-section__eyebrow--saffron">06 // India Deployment Strategy</span>
+        <h2 class="mts-section__h2 reveal">06. Super App Ecosystem</h2>
+        <p class="mts-section__body reveal">Incentives are delivered through partner platforms where commuters already transact. This integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.</p>
 
         <div class="ecosystem-channels reveal delay-1">
           <span class="mts-tag mts-tag--blue">UPI</span>
@@ -1852,10 +1793,10 @@
     <!-- =============================================
          CTA — Deepest blue + large arrow watermark
     ============================================= -->
-    <section class="section-cta" aria-label="Call to action">
+    <section class="mts-mts-section-cta" aria-label="Call to action">
       <div class="mts-container">
         <div class="cta-inner reveal">
-          <span class="section-eyebrow section-eyebrow--white">Next Steps</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
           <h2 class="cta-headline">Ready to explore what<br>MTSAi can do for your city?</h2>
           <p class="cta-body">Whether you're a government decision-maker, a technology partner, or an investor — there's a path for you.</p>
           <div class="cta-actions">

@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -117,15 +119,15 @@
     .breadcrumb .sep { opacity: 0.4; }
 
     /* CTA */
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
-    .section-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    
+    
     .cta-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-5); }
     .cta-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: 0 0 var(--space-6); max-width: 720px; }
     .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    
+    
 
     /* FOOTER */
     .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
@@ -301,7 +303,7 @@
     </article>
 
     <!-- CTA -->
-    <section class="section-cta" aria-label="Next steps">
+    <section class="mts-mts-section-cta" aria-label="Next steps">
       <div class="mts-container">
         <div class="reveal">
           <div class="cta-eyebrow">Continue Reading</div>

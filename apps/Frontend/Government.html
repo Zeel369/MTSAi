@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -152,59 +154,43 @@
     .kpi-label { display: block; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-2); }
 
     /* SECTION BASE */
-    .section { padding: clamp(80px,12vw,140px) 0; border-top: 1px solid var(--blue-20); position: relative; overflow: hidden; }
+    
     .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-    .section-alt { background: #F0F5FF; }
-    .section-dark { background: #000C2E; }
+    
+    
 
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--font-mono); font-size: 11px; color: var(--interactive);
-      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5);
-    }
-    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--cta-primary); flex-shrink: 0; }
-    .section-eyebrow--green { color: var(--brand-primary); }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
+    
+    
+    
+    
+    
 
-    .section-h2 {
-      font-family: var(--font-display); font-size: clamp(28px,4vw,52px);
-      font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
-      color: var(--text-primary); margin-bottom: var(--space-6); max-width: 720px;
-    }
-    .section-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.72; max-width: 600px; margin-bottom: var(--space-8); }
-    .section-header { margin-bottom: clamp(40px,6vw,72px); }
+    
+    
+    
 
     /* TWO COL LAYOUT */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+    
 
     /* CONTROL FRAMEWORK */
     .control-list { border: 1px solid var(--blue-20); background: #fff; box-shadow: 0 4px 24px rgba(0,82,204,0.08); }
-    .control-item {
-      padding: var(--space-6); border-bottom: 1px solid var(--border-subtle);
-      transition: background 150ms;
-    }
-    .control-item:last-child { border-bottom: none; }
-    .control-item:hover { background: var(--layer-01); }
-    .control-item-num { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--interactive); letter-spacing: 0.12em; margin-bottom: var(--space-3); display: block; }
-    .control-item h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
-    .control-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    
+    
+    
+    
+    
+    
 
     /* FEATURE CARDS */
-    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-    .feature-card {
-      padding: var(--space-7); background: #fff;
-      border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive);
-      box-shadow: 0 2px 8px rgba(0,82,204,0.06);
-      transition: box-shadow 200ms, transform 200ms;
-    }
-    .feature-card:hover { box-shadow: 0 8px 24px rgba(0,82,204,0.12); transform: translateY(-3px); }
-    .feature-card--green { border-top-color: var(--brand-primary); }
-    .feature-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); }
-    .feature-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    
+    
+    
+    
+    
+    
 
     /* STEP GRID */
-    .step-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-8); }
+    
     .step-card {
       padding: var(--space-7); background: #fff;
       border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive);
@@ -235,16 +221,12 @@
 
     /* PHASE LIST */
     .phase-list { border: 1px solid var(--blue-20); background: #fff; box-shadow: 0 4px 24px rgba(0,82,204,0.08); }
-    .phase-item {
-      display: flex; gap: var(--space-6); padding: var(--space-6);
-      border-bottom: 1px solid var(--border-subtle); align-items: flex-start;
-      transition: background 150ms;
-    }
-    .phase-item:last-child { border-bottom: none; }
-    .phase-item:hover { background: var(--layer-01); }
+    
+    
+    
     .phase-num { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--interactive); min-width: 30px; padding-top: 2px; letter-spacing: 0.08em; }
-    .phase-item h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
-    .phase-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    
+    
 
     /* CALLOUT */
     .mts-callout { padding: var(--space-6) var(--space-7); font-size: 15px; line-height: 1.72; color: var(--text-secondary); }
@@ -260,14 +242,14 @@
     .photo-strip-tag { font-family: var(--font-mono); font-size: 10px; color: rgba(83,170,0,0.9); letter-spacing: 0.10em; text-transform: uppercase; background: rgba(83,170,0,0.14); border: 1px solid rgba(83,170,0,0.30); padding: 3px 10px; }
 
     /* CTA SECTION */
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #000C2E; position: relative; overflow: hidden; }
-    .section-cta::before { content: '→'; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-family: var(--font-display); font-size: clamp(200px,25vw,360px); font-weight: 700; color: rgba(255,255,255,0.03); pointer-events: none; line-height: 1; }
-    .section-cta::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%); }
+    
+    
+    
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: var(--space-5) 0 var(--space-6); max-width: 720px; }
     .cta-body { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    
+    
 
     /* FOOTER */
     .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
@@ -294,11 +276,11 @@
     .delay-3.reveal { transition-delay: 240ms; }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) { .two-col { grid-template-columns: 1fr; } .step-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1024px) {   }
     @media (max-width: 768px) {
       .mts-nav__links, .nav-status { display: none; }
       .kpi-strip { grid-template-columns: repeat(2,1fr); }
-      .feature-grid { grid-template-columns: 1fr; }
+      
       .footer-top { grid-template-columns: 1fr; }
       .footer-links { grid-template-columns: repeat(2,1fr); }
       .cta-actions { flex-direction: column; }
@@ -403,34 +385,34 @@
           </div>
         </div>
 
-        <div class="section-header">
-          <span class="section-eyebrow">01 // Governance</span>
-          <h2 class="section-h2 reveal">Government Control Framework</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">01 // Governance</span>
+          <h2 class="mts-section__h2 reveal">Government Control Framework</h2>
         </div>
 
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">Government authorities retain control over the public policy parameters of the system. MTSAi is designed to operate as infrastructure supporting those decisions, not as a substitute for them.</p>
+            <p class="mts-section__body">Government authorities retain control over the public policy parameters of the system. MTSAi is designed to operate as infrastructure supporting those decisions, not as a substitute for them.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">Authorities define how congestion pricing rules, incentive budgets, exemptions, equity protections, and enforcement thresholds are configured within a city programme.</p>
           </div>
           <div class="control-list reveal delay-2">
-            <div class="control-item">
-              <span class="control-item-num">Control Area 01</span>
+            <div class="mts-list-item">
+              <span class="mts-list-item__num">Control Area 01</span>
               <h3>Congestion Pricing Rules</h3>
               <p>Zones, time bands, charging logic, and pricing conditions remain under government control.</p>
             </div>
-            <div class="control-item">
-              <span class="control-item-num">Control Area 02</span>
+            <div class="mts-list-item">
+              <span class="mts-list-item__num">Control Area 02</span>
               <h3>Incentive Budgets</h3>
               <p>Authorities determine which incentive programmes run, their budget constraints, and how rewards are structured.</p>
             </div>
-            <div class="control-item">
-              <span class="control-item-num">Control Area 03</span>
+            <div class="mts-list-item">
+              <span class="mts-list-item__num">Control Area 03</span>
               <h3>Exemptions and Equity Protections</h3>
               <p>Any exemptions, hardship controls, or equity protections remain policy decisions made by the city or state authority.</p>
             </div>
-            <div class="control-item">
-              <span class="control-item-num">Control Area 04</span>
+            <div class="mts-list-item">
+              <span class="mts-list-item__num">Control Area 04</span>
               <h3>Enforcement Thresholds</h3>
               <p>Authorities set the thresholds and conditions under which enforcement-linked actions are triggered inside the programme design.</p>
             </div>
@@ -442,25 +424,25 @@
     <!-- AUDITABILITY -->
     <section class="section section-alt reveal-group" aria-label="Transparency and Auditability">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">02 // Auditability</span>
-          <h2 class="section-h2 reveal">Transparency and Auditability</h2>
-          <p class="section-body reveal">This auditability posture is intended to support government accountability, procurement review, and the ability to explain programme operation in public-sector terms.</p>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Auditability</span>
+          <h2 class="mts-section__h2 reveal">Transparency and Auditability</h2>
+          <p class="mts-section__body reveal">This auditability posture is intended to support government accountability, procurement review, and the ability to explain programme operation in public-sector terms.</p>
         </div>
-        <div class="feature-grid reveal delay-2">
-          <div class="feature-card">
+        <div class="mts-feature-grid reveal delay-2">
+          <div class="mts-card--feature">
             <h3>Pricing Calculations</h3>
             <p>Pricing calculations are generated as traceable records rather than opaque outputs. This allows review against the underlying policy rules.</p>
           </div>
-          <div class="feature-card feature-card--green">
+          <div class="mts-card--feature mts-card--feature--green">
             <h3>Enforcement Actions</h3>
             <p>Enforcement-linked actions are designed to create auditable records showing which rule was applied, under what condition, and through which operational process.</p>
           </div>
-          <div class="feature-card">
+          <div class="mts-card--feature">
             <h3>Reward Distributions</h3>
             <p>Reward distributions are recorded with enough detail for programme review, audit, and reconciliation against incentive policy settings.</p>
           </div>
-          <div class="feature-card feature-card--green">
+          <div class="mts-card--feature mts-card--feature--green">
             <h3>Public Accountability</h3>
             <p>The auditability posture is intended to support government accountability, procurement review, and the ability to explain programme operation.</p>
           </div>
@@ -471,13 +453,13 @@
     <!-- PRIVACY SAFEGUARDS -->
     <section class="section reveal-group" aria-label="Privacy Safeguards">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">03 // Privacy</span>
-          <h2 class="section-h2 reveal">Privacy Safeguards</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">03 // Privacy</span>
+          <h2 class="mts-section__h2 reveal">Privacy Safeguards</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">The platform is designed around architectural protections intended to reduce surveillance risk and align public-sector mobility policy with data minimization principles.</p>
+            <p class="mts-section__body">The platform is designed around architectural protections intended to reduce surveillance risk and align public-sector mobility policy with data minimization principles.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-6);">No biometric data is collected. No continuous location tracking is required. Data collection is limited to what is needed to determine eligibility, distribute rewards, and support aggregated programme oversight.</p>
             <div class="mts-callout mts-callout--green">
               Privacy assurance comes from limiting collection, separating roles clearly, and keeping the city in control of policy and data governance.
@@ -508,11 +490,11 @@
     <!-- ENFORCEMENT INTEGRATION -->
     <section class="section section-alt reveal-group" aria-label="Enforcement Integration">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow">04 // Operations</span>
-          <h2 class="section-h2 reveal">Enforcement Integration</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">04 // Operations</span>
+          <h2 class="mts-section__h2 reveal">Enforcement Integration</h2>
         </div>
-        <div class="step-grid reveal delay-2">
+        <div class="mts-step-grid reveal delay-2">
           <div class="step-card">
             <span class="step-num">Integration 01</span>
             <h3>Existing ANPR Networks</h3>
@@ -535,41 +517,41 @@
     <!-- PHASED IMPLEMENTATION -->
     <section class="section reveal-group" aria-label="Phased Implementation">
       <div class="mts-container">
-        <div class="section-header">
-          <span class="section-eyebrow section-eyebrow--green">05 // Delivery Model</span>
-          <h2 class="section-h2 reveal">Phased Implementation</h2>
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Delivery Model</span>
+          <h2 class="mts-section__h2 reveal">Phased Implementation</h2>
         </div>
-        <div class="two-col">
+        <div class="mts-two-col">
           <div class="reveal">
-            <p class="section-body">The deployment model is designed to reduce perceived risk by moving through a phased structure rather than an immediate citywide programme launch.</p>
+            <p class="mts-section__body">The deployment model is designed to reduce perceived risk by moving through a phased structure rather than an immediate citywide programme launch.</p>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-6);">The phases cover architecture development, system integration, pilot deployment, and city programme expansion. Each step is intended to make the next step more evidence-based and more manageable for the authority.</p>
             <div class="mts-callout mts-callout--blue">
               Each phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.
             </div>
           </div>
           <div class="phase-list reveal delay-2">
-            <div class="phase-item">
+            <div class="mts-list-item">
               <span class="phase-num">01</span>
               <div>
                 <h3>Architecture Development</h3>
                 <p>Establish the policy and technical foundation.</p>
               </div>
             </div>
-            <div class="phase-item">
+            <div class="mts-list-item">
               <span class="phase-num">02</span>
               <div>
                 <h3>System Integration</h3>
                 <p>Connect the platform to city and ecosystem interfaces.</p>
               </div>
             </div>
-            <div class="phase-item">
+            <div class="mts-list-item">
               <span class="phase-num">03</span>
               <div>
                 <h3>Pilot Deployment</h3>
                 <p>Run a bounded programme before scale.</p>
               </div>
             </div>
-            <div class="phase-item">
+            <div class="mts-list-item">
               <span class="phase-num">04</span>
               <div>
                 <h3>City Programme Expansion</h3>
@@ -582,10 +564,10 @@
     </section>
 
     <!-- CTA -->
-    <section class="section-cta" id="government-cta" aria-label="Request Government Briefing">
+    <section class="mts-mts-section-cta" id="government-cta" aria-label="Request Government Briefing">
       <div class="mts-container">
         <div class="reveal">
-          <span class="section-eyebrow section-eyebrow--white">Government Evaluation Path</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Government Evaluation Path</span>
           <h2 class="cta-headline">Request Government Briefing</h2>
           <p class="cta-body">If your authority is evaluating demand-management tools, MTSAi can provide the current government briefing materials and platform architecture documentation for structured review.</p>
           <div class="cta-actions">

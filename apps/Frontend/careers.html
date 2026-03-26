@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -94,11 +96,11 @@
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* SECTIONS */
-    .section { padding: clamp(72px,10vw,120px) 0; }
-    .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--brand-primary); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-5); }
-    .section-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--brand-primary); flex-shrink: 0; }
-    .section-h2 { font-family: var(--font-display); font-size: clamp(28px,4vw,52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-5); }
-    .section-body { font-size: clamp(15px,1.3vw,17px); color: var(--text-secondary); line-height: 1.72; max-width: 640px; margin-bottom: var(--space-8); }
+    
+    
+    
+    
+    
 
     /* ROLES */
     .roles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-bottom: var(--space-9); }
@@ -110,7 +112,7 @@
     .role-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
     /* TWO COL */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    
     .info-card { padding: var(--space-8); background: #fff; border: 1px solid var(--blue-20); box-shadow: 0 2px 8px rgba(0,82,204,0.06); }
     .info-card h2 { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-5); }
     .check-list { list-style: none; }
@@ -125,15 +127,15 @@
     .stage-notice p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
 
     /* CTA */
-    .section-cta { padding: clamp(100px,14vw,160px) 0; background: #001500; position: relative; overflow: hidden; }
-    .section-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #53AA00 0%, transparent 60%); }
+    
+    
     .cta-headline { font-family: var(--font-display); font-size: clamp(30px,5vw,64px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: var(--space-5) 0 var(--space-6); max-width: 720px; }
     .cta-sub { font-size: clamp(15px,1.3vw,17px); color: rgba(255,255,255,0.72); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-8); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .section-cta .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); }
-    .section-cta .mts-btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
-    .section-eyebrow--white { color: rgba(255,255,255,0.55); }
-    .section-eyebrow--white::before { background: rgba(255,255,255,0.3); }
+    
+    
+    
+    
 
     /* FOOTER */
     .site-footer { background: #161616; padding: var(--space-11) 0 var(--space-7); position: relative; }
@@ -157,7 +159,7 @@
     .delay-1.reveal { transition-delay: 80ms; }
     .delay-2.reveal { transition-delay: 160ms; }
 
-    @media (max-width: 1024px) {  .roles-grid, .two-col { grid-template-columns: 1fr; } }
+    @media (max-width: 1024px) {  .roles-grid,  }
     @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .footer-top { grid-template-columns: 1fr; } .footer-links { grid-template-columns: repeat(2,1fr); }  }
   </style>
 </head>
@@ -239,12 +241,12 @@
     </div>
 
     <!-- OPEN ROLES -->
-    <section class="section" aria-label="Open Roles">
+    <section class="mts-section" aria-label="Open Roles">
       <div class="mts-container">
         <div style="margin-bottom:var(--space-9);">
-          <span class="section-eyebrow">Open Roles</span>
-          <h2 class="section-h2 reveal">Founding Team Positions</h2>
-          <p class="section-body reveal">Three founding team roles across Engineering, Government Relations, and Product. Full descriptions are in progress — reach out now to register your interest.</p>
+          <span class="mts-section__eyebrow">Open Roles</span>
+          <h2 class="mts-section__h2 reveal">Founding Team Positions</h2>
+          <p class="mts-section__body reveal">Three founding team roles across Engineering, Government Relations, and Product. Full descriptions are in progress — reach out now to register your interest.</p>
         </div>
         <div class="roles-grid reveal delay-1">
           <div class="role-card">
@@ -268,7 +270,7 @@
         </div>
 
         <!-- APPLICATION + WHY MTSAI -->
-        <div class="two-col reveal delay-2">
+        <div class="mts-two-col reveal delay-2">
           <div class="info-card">
             <h2>Application Contact</h2>
             <p style="font-size:14px;color:var(--text-secondary);margin-bottom:var(--space-5);">Please email your profile, role interest, and location preference to:</p>
@@ -294,10 +296,10 @@
     </section>
 
     <!-- CTA -->
-    <section class="section-cta" aria-label="Join the team">
+    <section class="mts-mts-section-cta" aria-label="Join the team">
       <div class="mts-container">
         <div class="reveal">
-          <span class="section-eyebrow section-eyebrow--white">Join MTSAi</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Join MTSAi</span>
           <h2 class="cta-headline">Build the future of Indian urban mobility.</h2>
           <p class="cta-sub">Founding team equity. Government-grade platform. Global R&amp;D backing. Apply now to register your interest.</p>
           <div class="cta-actions">
