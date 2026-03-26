@@ -467,11 +467,13 @@ DS.Nav = {
   init() {
     const nav = document.getElementById('nav');
     if (!nav) return;
-    // Scroll opacity
-    window.addEventListener('scroll', () => {
-      nav.style.background  = window.scrollY > 60 ? 'rgba(3,17,51,.92)' : 'rgba(3,17,51,.02)';
-      nav.style.boxShadow   = window.scrollY > 60 ? '0 1px 0 rgba(255,122,0,.08)' : 'none';
-    }, { passive:true });
+    // Scroll opacity — authoritative handler (overrides any inline version)
+    const onNavScroll = () => {
+      nav.style.background = window.scrollY > 60 ? 'rgba(5,5,5,.92)' : 'rgba(5,5,5,.02)';
+      nav.style.boxShadow  = window.scrollY > 60 ? '0 1px 0 rgba(255,153,51,.08)' : 'none';
+    };
+    window.addEventListener('scroll', onNavScroll, { passive:true });
+    onNavScroll(); // apply immediately on load
 
     // Hamburger
     const hbg = document.getElementById('hbg');
