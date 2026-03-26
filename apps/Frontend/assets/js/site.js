@@ -67,21 +67,36 @@
      Scroll Reveal
   ---------------------------------------------------------- */
   function initScrollReveal() {
-    const selectors = ['.fade-section', '.blur-fade-in', '.blur-fade-left', '.blur-fade-right', '.reveal-group'];
-    const elements = document.querySelectorAll(selectors.join(','));
-    if (!elements.length) return;
+    // Group observer — adds .visible to parent, CSS cascades to .reveal children
+    const groupSelectors = ['.fade-section', '.blur-fade-in', '.blur-fade-left', '.blur-fade-right', '.reveal-group'];
+    const groups = document.querySelectorAll(groupSelectors.join(','));
+
+    // Individual element observer — .reveal / .scroll-reveal / .scroll-reveal-blur / .scroll-reveal-scale
+    const itemSelectors = ['.reveal:not(.reveal-group)', '.scroll-reveal', '.scroll-reveal-blur', '.scroll-reveal-scale'];
+    const items = document.querySelectorAll(itemSelectors.join(','));
+
     if (prefersReducedMotion) {
-      elements.forEach(el => el.classList.add('revealed', 'visible'));
+      groups.forEach(el => el.classList.add('revealed', 'visible'));
+      items.forEach(el => el.classList.add('visible', 'is-visible'));
       return;
     }
-    const observer = new IntersectionObserver(entries => {
+
+    const groupObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed', 'visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('revealed', 'visible');
       });
     }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
-    elements.forEach(el => observer.observe(el));
+    groups.forEach(el => groupObs.observe(el));
+
+    const itemObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible', 'is-visible');
+          itemObs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.08 });
+    items.forEach(el => itemObs.observe(el));
   }
 
   /* ----------------------------------------------------------

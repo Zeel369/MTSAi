@@ -210,17 +210,27 @@
 }
 
 /* ─── SCROLL REVEAL (IntersectionObserver triggered) ───────── */
-/* Add .scroll-reveal to elements, JS adds .is-visible */
-.scroll-reveal {
+/* Two equivalent APIs:
+   - .scroll-reveal  → JS adds .is-visible  (DS canonical)
+   - .reveal         → JS adds .visible     (page shorthand, same effect)
+   Both supported; site.js observes both. */
+
+.scroll-reveal,
+.reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity var(--duration-slow-01) var(--ease-smooth),
               transform var(--duration-slow-01) var(--ease-smooth);
 }
-.scroll-reveal.is-visible {
+.scroll-reveal.is-visible,
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* reveal-group: parent container — children with .reveal animate in
+   when the group scrolls into view (JS adds .visible to the group) */
+.reveal-group.visible .reveal { opacity: 1; transform: translateY(0); }
 
 /* Blur scroll reveal */
 .scroll-reveal-blur {
