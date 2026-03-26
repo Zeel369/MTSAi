@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -66,19 +67,19 @@
     @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
 
     /* HERO */
-    .hero-careers { background: linear-gradient(150deg, #001A00 0%, #001500 55%, #000800 100%); position: relative; overflow: hidden; padding: clamp(80px,12vw,140px) 0; }
-    .hero-careers::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 12% 50%, rgba(83,170,0,0.38) 0%, transparent 65%); pointer-events: none; }
-    .hero-careers-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3C%2Fsvg%3E"); background-size: 60px 60px; pointer-events: none; }
-    .hero-careers-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #53AA00 0%, #FFAD33 60%, transparent 100%); }
-    .hero-careers-inner { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 360px; gap: var(--space-12); align-items: center; }
-    .hero-careers-headline { font-family: var(--font-display); font-size: clamp(40px,5.5vw,80px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; color: #fff; margin: var(--space-6) 0; }
+    
+    
+    
+    
+    
+    
     .headline-green { color: #6FDC8C; }
-    .hero-careers-sub { font-size: clamp(15px,1.3vw,18px); color: rgba(255,255,255,0.78); max-width: 520px; line-height: 1.72; border-left: 3px solid #53AA00; padding-left: var(--space-5); margin-bottom: var(--space-8); }
-    .hero-careers-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    
+    
     .btn-green { background: #53AA00; color: #fff; border: none; }
     .btn-green:hover { background: #3D7A00; }
-    .hero-careers .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.35); }
-    .hero-careers .mts-btn--ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.65); color: #fff; }
+    
+    
 
     /* HIRING BADGE */
     .hiring-panel { background: rgba(83,170,0,0.12); border: 1px solid rgba(83,170,0,0.30); padding: var(--space-6); }
@@ -156,8 +157,8 @@
     .delay-1.reveal { transition-delay: 80ms; }
     .delay-2.reveal { transition-delay: 160ms; }
 
-    @media (max-width: 1024px) { .hero-careers-inner { grid-template-columns: 1fr; } .roles-grid, .two-col { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .footer-top { grid-template-columns: 1fr; } .footer-links { grid-template-columns: repeat(2,1fr); } .hero-careers-ctas, .cta-actions { flex-direction: column; } }
+    @media (max-width: 1024px) {  .roles-grid, .two-col { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .footer-top { grid-template-columns: 1fr; } .footer-links { grid-template-columns: repeat(2,1fr); }  }
   </style>
 </head>
 <body>
@@ -196,17 +197,17 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero-careers" aria-label="Careers at MTSAi">
-      <div class="hero-careers-pattern" aria-hidden="true"></div>
-      <div class="hero-careers-accent" aria-hidden="true"></div>
-      <div class="mts-container hero-careers-inner">
+    <section class="mts-hero mts-hero--split mts-hero--green" aria-label="Careers at MTSAi">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
         <div>
           <div style="margin-bottom:var(--space-5);">
             <span class="mts-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.20);font-family:var(--font-mono);font-size:11px;">Careers · Placeholder</span>
           </div>
-          <h1 class="hero-careers-headline">Careers:<br><span class="headline-green">Founding Team<br>Hiring in India.</span></h1>
-          <p class="hero-careers-sub">MTSAi is actively hiring founding team members in India. This is a temporary careers page while full role descriptions and hiring content are being finalized.</p>
-          <div class="hero-careers-ctas">
+          <h1 class="mts-hero__headline">Careers:<br><span class="headline-green">Founding Team<br>Hiring in India.</span></h1>
+          <p class="mts-hero__subline mts-hero__subline--bordered">MTSAi is actively hiring founding team members in India. This is a temporary careers page while full role descriptions and hiring content are being finalized.</p>
+          <div class="mts-hero__ctas">
             <a href="mailto:ssg@miracletraffic.ai" class="mts-btn btn-green mts-btn--lg">Apply via Email →</a>
             <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Contact MTSAi</a>
           </div>

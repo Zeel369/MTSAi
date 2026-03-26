@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
 
   <style>
     html { scroll-behavior: smooth; }
@@ -121,51 +122,19 @@
     }
 
     /* HERO */
-    .hero-gov {
-      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
-      position: relative; overflow: hidden;
-      padding: clamp(80px, 12vw, 140px) 0;
-      min-height: 520px; display: flex; align-items: center;
-    }
-    .hero-gov::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 55% 80% at 15% 50%, rgba(0,82,204,0.45) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 50% at 80% 10%, rgba(0,82,204,0.12) 0%, transparent 55%);
-      pointer-events: none;
-    }
-    .hero-gov-pattern {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='0' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='30' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='60' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='0' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.12)'/%3E%3Ccircle cx='60' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='0' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='30' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.08)'/%3E%3C%2Fsvg%3E");
-      background-size: 60px 60px; pointer-events: none; z-index: 0;
-    }
-    .hero-gov-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%); z-index: 10; }
-    .hero-gov-inner { position: relative; z-index: 5; }
-    .hero-gov-eyebrow { margin-bottom: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap; }
-    .hero-gov-headline {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 80px);
-      font-weight: 700; line-height: 0.98; letter-spacing: -0.04em;
-      color: #fff; margin: 0 0 var(--space-6); max-width: 780px;
-    }
-    .headline-accent { color: var(--cta-primary); }
-    .hero-gov-sub {
-      font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.78);
-      max-width: 600px; line-height: 1.72; margin-bottom: var(--space-6);
-    }
-    .hero-gov-callout {
-      background: rgba(0,82,204,0.15);
-      border: 1px solid rgba(0,82,204,0.35);
-      border-left: 3px solid var(--interactive);
-      padding: var(--space-5) var(--space-6);
-      font-size: 14px; line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      max-width: 600px; margin-bottom: var(--space-8);
-    }
-    .hero-gov-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .hero-gov .mts-btn--ghost { color: #fff; border-color: rgba(255,255,255,0.35); }
-    .hero-gov .mts-btn--ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.65); color: #fff; }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /* KPI STRIP */
     .kpi-strip {
@@ -378,24 +347,24 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero-gov" aria-label="Government path introduction">
-      <div class="hero-gov-pattern" aria-hidden="true"></div>
-      <div class="hero-gov-accent" aria-hidden="true"></div>
-      <div class="mts-container hero-gov-inner">
-        <div class="hero-gov-eyebrow">
+    <section class="mts-hero mts-hero--standard" aria-label="Government path introduction">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <div class="mts-hero__eyebrow">
           <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Government Policy Path</span>
         </div>
-        <h1 class="hero-gov-headline">
+        <h1 class="mts-hero__headline">
           A Policy Platform for Managing<br>
           <span class="headline-accent">Urban Traffic Demand.</span>
         </h1>
-        <p class="hero-gov-sub">
+        <p class="mts-hero__subline">
           The platform provides tools enabling governments to manage congestion through incentive programs and configurable pricing policies. Designed for deployment in a phased, auditable public-sector environment.
         </p>
-        <div class="hero-gov-callout">
+        <div class="mts-hero__callout">
           MTSAi is currently in a pre-deployment evaluation stage. The platform architecture is designed for phased implementation, controlled pilot deployment, and government-defined policy oversight.
         </div>
-        <div class="hero-gov-ctas">
+        <div class="mts-hero__ctas">
           <a href="#government-cta" class="mts-btn mts-btn--primary mts-btn--lg">Request Government Briefing →</a>
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">Review Platform Architecture</a>
         </div>

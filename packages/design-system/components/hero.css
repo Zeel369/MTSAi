@@ -1,0 +1,381 @@
+/* ============================================================
+   MTSAi Design System — Hero Component
+   Replaces: .hero, .hero-gov, .hero-sp, .hero-tp,
+             .hero-careers, .article-hero, .diag-hero
+   ============================================================ */
+
+/* ── Base ───────────────────────────────────────────────────── */
+.mts-hero {
+  background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 12vw, 140px) 0;
+}
+
+/* Blue atmospheric glow (default) */
+.mts-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(0, 82, 204, 0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 38% 50% at 80%  8%, rgba(0, 82, 204, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ── Sub-elements ────────────────────────────────────────────── */
+
+/* City-grid dot pattern */
+.mts-hero__pattern {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='0'  cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0'  cy='30' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.15)'/%3E%3Ccircle cx='60' cy='30' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0'  cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3C%2Fsvg%3E");
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Saffron top accent bar */
+.mts-hero__accent {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%);
+  z-index: 10;
+}
+
+/* Content wrapper — sits above pattern/glow */
+.mts-hero__inner {
+  position: relative;
+  z-index: 5;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+.mts-hero__eyebrow {
+  margin-bottom: var(--space-7);
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Tag override — glass style on dark bg */
+.mts-hero .mts-tag--blue,
+.mts-hero .mts-tag--white {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mts-hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin: var(--space-6) 0;
+  max-width: 820px;
+}
+
+.mts-hero__headline--xl {
+  font-size: clamp(52px, 6vw, 96px);
+  max-width: 640px;
+}
+
+/* Saffron accent word/phrase within headline */
+.mts-hero__headline .headline-accent,
+.headline-accent { color: var(--cta-primary); }
+.headline-green   { color: var(--brand-primary); }
+
+.mts-hero__subline {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.3vw, 18px);
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 600px;
+  line-height: 1.72;
+  margin-bottom: var(--space-8);
+}
+
+.mts-hero__subline--bordered {
+  border-left: 3px solid var(--brand-primary);
+  padding-left: var(--space-5);
+}
+
+.mts-hero__ctas {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-10);
+}
+
+/* Ghost button always white on dark hero bg */
+.mts-hero .mts-btn--ghost {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.mts-hero .mts-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #FFFFFF;
+}
+
+/* Fine-print / disclaimer below CTAs */
+.mts-hero__note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: var(--space-5);
+}
+
+/* ── Stat strip ──────────────────────────────────────────────── */
+.mts-hero__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  padding-top: var(--space-7);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.mts-hero__stat { flex: 1; }
+
+.mts-hero__stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.mts-hero__stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.60);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.mts-hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+}
+
+/* ── Callout box (gov-style inline pull-quote) ───────────────── */
+.mts-hero__callout {
+  padding: var(--space-5) var(--space-6);
+  border-left: 3px solid var(--cta-primary);
+  background: rgba(255, 153, 51, 0.06);
+  margin-bottom: var(--space-8);
+}
+
+/* ── Scroll cue ──────────────────────────────────────────────── */
+.mts-hero__scroll-cue {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.5;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.70);
+  letter-spacing: 0.1em;
+  animation: mts-hero-float 3s ease-in-out infinite;
+}
+
+@keyframes mts-hero-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── Visual panel (split layout right column) ────────────────── */
+.mts-hero__visual {
+  padding: 80px 0 80px var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 5;
+}
+
+.mts-hero__panel {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+
+.mts-hero__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mts-hero__panel-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.70);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mts-hero__panel-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cta-primary);
+  letter-spacing: 0.08em;
+}
+
+.mts-hero__panel-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  animation: mts-hero-live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mts-hero-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.mts-hero__panel-body { padding: 16px 18px; }
+
+.mts-hero__panel-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mts-hero__panel-metric {
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.mts-hero__panel-metric:last-child { border-right: none; }
+
+.mts-hero__panel-metric-val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+.mts-hero__panel-metric-val.saffron { color: var(--cta-primary); }
+.mts-hero__panel-metric-val.green   { color: #6FDC8C; }
+
+.mts-hero__panel-metric-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.50);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+/* ── Layout modifiers ────────────────────────────────────────── */
+
+/* Split: 2-column grid with right visual panel (index.html) */
+.mts-hero--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: 0;
+}
+
+.mts-hero--split .mts-hero__inner {
+  padding: 80px var(--space-6) 80px 0;
+  max-width: 640px;
+  margin-left: auto;
+}
+
+/* Standard: single column, left-aligned (gov, sp, tp) */
+.mts-hero--standard {
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+}
+
+/* Article: structured content + aside (iudm, roadmap, etc.) */
+.mts-hero--article {
+  /* default padding applies; inner grid controlled by .mts-hero__article-layout */
+}
+
+.mts-hero__article-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* Diagram: minimal dark (diagram_cloud.html) */
+.mts-hero--diagram {
+  background: linear-gradient(180deg, #050810 0%, #0A0E1A 100%);
+  padding: clamp(60px, 9vw, 100px) 0 var(--space-10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.mts-hero--diagram::before { display: none; }
+
+/* ── Color modifiers ─────────────────────────────────────────── */
+
+/* Green theme (careers.html) */
+.mts-hero--green {
+  background: linear-gradient(150deg, #001A00 0%, #001500 55%, #000800 100%);
+}
+.mts-hero--green::before {
+  background:
+    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(83, 170, 0, 0.38) 0%, transparent 65%);
+}
+.mts-hero--green .mts-hero__accent {
+  background: linear-gradient(90deg, #53AA00 0%, #FFAD33 60%, transparent 100%);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mts-hero__article-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mts-hero--split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .mts-hero--split .mts-hero__inner {
+    max-width: 100%;
+    margin: 0;
+    padding: 80px var(--space-6);
+  }
+  .mts-hero__visual { display: none; }
+  .mts-hero__stats  { flex-direction: column; gap: var(--space-5); }
+  .mts-hero__stat-divider { display: none; }
+  .mts-hero__ctas   { flex-direction: column; }
+  .mts-hero__ctas .mts-btn { width: 100%; }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .mts-hero__scroll-cue     { animation: none; }
+  .mts-hero__panel-live-dot { animation: none; }
+}

@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
 
   <style>
     /* ====================================================
@@ -210,158 +211,54 @@
        HERO — Deep Navy derived from brand Blue 60 (#0052CC)
        #0052CC is the glow source — brand-true, not IBM's
     ==================================================== */
-    .hero {
-      /* Dark base: same hue as brand Blue 60, pushed to near-black */
-      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      min-height: calc(100vh - 64px);
-    }
+    
 
     /* Trust Blue (#0052CC) as the atmospheric glow source */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 85% at 20% 52%, rgba(0, 82, 204, 0.52) 0%, transparent 65%),
-        radial-gradient(ellipse 38% 50% at 72% 12%, rgba(0, 82, 204, 0.16) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 50% at 95% 92%, rgba(0, 4, 15, 0.80) 0%, transparent 60%);
-      pointer-events: none;
-    }
+    
 
     /* City-grid dot pattern */
-    .hero-pattern {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='0' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.15)'/%3E%3Ccircle cx='60' cy='30' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3C%2Fsvg%3E");
-      background-size: 60px 60px;
-      pointer-events: none; z-index: 0;
-    }
+    
 
     /* Saffron top bar */
-    .hero-accent-line {
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%);
-      z-index: 10;
-    }
+    
 
     /* ── Hero left ── */
-    .hero-content {
-      padding: 80px var(--space-6) 80px 0;
-      max-width: 640px;
-      margin-left: auto;
-      position: relative; z-index: 5;
-    }
+    
 
-    .hero-eyebrow { margin-bottom: var(--space-7); }
+    
 
-    .hero .mts-tag--blue {
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.90);
-      border: 1px solid rgba(255,255,255,0.22);
-      backdrop-filter: blur(8px);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.06em;
-    }
+    
 
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(52px, 6vw, 96px);
-      font-weight: 700; line-height: 0.98;
-      letter-spacing: -0.04em;
-      color: #FFFFFF;
-      margin: 0 0 var(--space-6);
-    }
-    .headline-accent { color: var(--cta-primary); }
+    
+    
 
-    .hero-subline {
-      font-family: var(--font-body);
-      font-size: clamp(15px, 1.3vw, 18px);
-      color: rgba(255,255,255,0.78);
-      max-width: 520px; line-height: 1.72;
-      margin-bottom: var(--space-8);
-    }
+    
 
-    .hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-10); }
+    
 
-    .hero .mts-btn--ghost {
-      color: #FFFFFF;
-      border-color: rgba(255,255,255,0.35);
-    }
-    .hero .mts-btn--ghost:hover {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.65);
-      color: #FFFFFF;
-    }
+    
+    
 
-    .hero-stats {
-      display: flex; align-items: center; gap: var(--space-7);
-      padding-top: var(--space-7);
-      border-top: 1px solid rgba(255,255,255,0.16);
-    }
-    .hero-stat { flex: 1; }
-    .hero-stat__number {
-      display: block; font-family: var(--font-display);
-      font-size: 32px; font-weight: 700;
-      color: #FFFFFF; letter-spacing: -0.02em;
-    }
-    .hero-stat__label {
-      display: block; font-family: var(--font-mono);
-      font-size: 11px; color: rgba(255,255,255,0.60);
-      text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
-    }
-    .hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.18); flex-shrink: 0; }
+    
+    
+    
+    
+    
 
     /* ── Hero right — visualization panel ── */
-    .hero-visual {
-      padding: 80px 0 80px var(--space-8);
-      display: flex; align-items: center; justify-content: flex-start;
-      position: relative; z-index: 5;
-    }
+    
 
-    .hero-panel {
-      width: 100%;
-      max-width: 520px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      backdrop-filter: blur(4px);
-      overflow: hidden;
-    }
+    
 
-    .hero-panel__header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-    }
-    .hero-panel__title {
-      font-family: var(--font-mono);
-      font-size: 10px; font-weight: 600;
-      color: rgba(255,255,255,0.70);
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .hero-panel__live {
-      display: flex; align-items: center; gap: 6px;
-      font-family: var(--font-mono); font-size: 10px;
-      color: var(--cta-primary);
-      letter-spacing: 0.08em;
-    }
-    .hero-panel__live-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--brand-primary);
-      animation: live-pulse 2s ease-in-out infinite;
-    }
-    @keyframes live-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
+    
+    
+    
+    
+    
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    .hero-panel__body { padding: 16px 18px; }
+    
 
     /* City grid within the panel */
     .city-grid-svg {
@@ -369,38 +266,17 @@
       display: block;
     }
 
-    .hero-panel__metrics {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .panel-metric {
-      padding: 12px 14px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-    .panel-metric:last-child { border-right: none; }
-    .panel-metric__val {
-      display: block; font-family: var(--font-display);
-      font-size: 20px; font-weight: 700;
-      color: #FFFFFF; letter-spacing: -0.02em;
-    }
-    .panel-metric__val.saffron { color: var(--cta-primary); }
-    .panel-metric__val.green { color: #6FDC8C; }
-    .panel-metric__label {
-      display: block; font-family: var(--font-mono);
-      font-size: 9px; color: rgba(255,255,255,0.50);
-      text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;
-    }
+    
+    
+    
+    
+    
+    
+    
 
     /* Scroll cue */
-    .hero-scroll-cue {
-      position: absolute; bottom: var(--space-6); left: 50%;
-      transform: translateX(-50%); opacity: 0.5; z-index: 5;
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(255,255,255,0.70); letter-spacing: 0.1em;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
+    
+    
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
@@ -1197,9 +1073,9 @@
        RESPONSIVE
     ==================================================== */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-visual { display: none; }
-      .hero-content { max-width: 100%; margin: 0; padding: 80px var(--space-6); }
+      
+      
+      
     }
 
     @media (max-width: 768px) {
@@ -1211,8 +1087,8 @@
       .gov-control, .privacy-col { border-right: none; }
       .roadmap-phases { grid-template-columns: 1fr; }
       .footer-links { grid-template-columns: repeat(2,1fr); }
-      .hero-stats { flex-direction: column; gap: var(--space-5); }
-      .hero-stat-divider { display: none; }
+      
+      
       .mts-nav__inner { padding: 0 var(--space-5); }
       .mts-nav__logo { margin-right: auto; }
       .number-item { border-bottom: 1px solid rgba(255,255,255,0.10); }
@@ -1221,8 +1097,8 @@
     @media (max-width: 480px) {
       .numbers-grid { grid-template-columns: 1fr 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .cta-actions, .hero-ctas { flex-direction: column; }
-      .cta-actions .mts-btn, .hero-ctas .mts-btn { width: 100%; }
+      .cta-actions, 
+      .cta-actions .mts-btn, .mts-hero__ctas .mts-btn { width: 100%; }
     }
 
     /* ====================================================
@@ -1330,60 +1206,60 @@
     <!-- =============================================
          HERO — IBM Deep Blue, two-column
     ============================================= -->
-    <section class="hero" aria-label="Hero — MTSAi platform introduction">
-      <div class="hero-pattern" aria-hidden="true"></div>
-      <div class="hero-accent-line" aria-hidden="true"></div>
+    <section class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
 
       <!-- Left: content -->
-      <div class="hero-content">
-        <div class="hero-eyebrow">
+      <div class="mts-hero__inner">
+        <div class="mts-hero__eyebrow">
           <span class="mts-tag mts-tag--blue">Incentive-Based Urban Demand Management</span>
         </div>
 
-        <h1 class="hero-headline">
+        <h1 class="mts-hero__headline mts-hero__headline--xl">
           Incentive-Based Urban Demand Management<br>
           for <span class="headline-accent">Modern Cities.</span>
         </h1>
 
-        <p class="hero-subline">
+        <p class="mts-hero__subline">
           A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.
         </p>
 
-        <div class="hero-ctas">
+        <div class="mts-hero__ctas">
           <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Government Evaluation →</a>
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform</a>
         </div>
 
-        <div class="hero-stats" role="list">
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">4+</span>
-            <span class="hero-stat__label">Platform phases</span>
+        <div class="mts-hero__stats" role="list">
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">4+</span>
+            <span class="mts-hero__stat-label">Platform phases</span>
           </div>
-          <div class="hero-stat-divider" aria-hidden="true"></div>
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">6+</span>
-            <span class="hero-stat__label">Ecosystem integrations</span>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">6+</span>
+            <span class="mts-hero__stat-label">Ecosystem integrations</span>
           </div>
-          <div class="hero-stat-divider" aria-hidden="true"></div>
-          <div class="hero-stat" role="listitem">
-            <span class="hero-stat__number">100%</span>
-            <span class="hero-stat__label">Privacy-first design</span>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">100%</span>
+            <span class="mts-hero__stat-label">Privacy-first design</span>
           </div>
         </div>
       </div>
 
       <!-- Right: IUDM Dashboard visualization -->
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-panel">
-          <div class="hero-panel__header">
-            <span class="hero-panel__title">IUDM · Corridor Status</span>
-            <span class="hero-panel__live">
-              <span class="hero-panel__live-dot"></span>
+      <div class="mts-hero__visual" aria-hidden="true">
+        <div class="mts-hero__panel">
+          <div class="mts-hero__panel-header">
+            <span class="mts-hero__panel-title">IUDM · Corridor Status</span>
+            <span class="mts-hero__panel-live">
+              <span class="mts-hero__panel-live-dot"></span>
               LIVE
             </span>
           </div>
 
-          <div class="hero-panel__body">
+          <div class="mts-hero__panel-body">
             <!-- City grid SVG visualization -->
             <svg class="city-grid-svg" viewBox="0 0 484 280" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -1501,24 +1377,24 @@
           </div>
 
           <!-- Panel metrics footer -->
-          <div class="hero-panel__metrics">
-            <div class="panel-metric">
-              <span class="panel-metric__val saffron">1,247</span>
-              <span class="panel-metric__label">Active incentives</span>
+          <div class="mts-hero__panel-metrics">
+            <div class="mts-hero__panel-metric">
+              <span class="mts-hero__panel-metric-val saffron">1,247</span>
+              <span class="mts-hero__panel-metric-label">Active incentives</span>
             </div>
-            <div class="panel-metric">
-              <span class="panel-metric__val green">−31%</span>
-              <span class="panel-metric__label">Peak congestion</span>
+            <div class="mts-hero__panel-metric">
+              <span class="mts-hero__panel-metric-val green">−31%</span>
+              <span class="mts-hero__panel-metric-label">Peak congestion</span>
             </div>
-            <div class="panel-metric">
-              <span class="panel-metric__val">98.2%</span>
-              <span class="panel-metric__label">Policy compliance</span>
+            <div class="mts-hero__panel-metric">
+              <span class="mts-hero__panel-metric-val">98.2%</span>
+              <span class="mts-hero__panel-metric-label">Policy compliance</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="hero-scroll-cue" aria-hidden="true">↓ SCROLL FOR PLATFORM LOGIC</div>
+      <div class="mts-hero__scroll-cue" aria-hidden="true">↓ SCROLL FOR PLATFORM LOGIC</div>
     </section>
 
     <!-- =============================================
