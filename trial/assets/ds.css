@@ -916,9 +916,9 @@
   padding:10px 20px; font-family:'Space Grotesk',sans-serif;
   font-weight:700; font-size:.8125rem; text-transform:uppercase;
   letter-spacing:.1em; cursor:pointer; border:none; position:relative; overflow:hidden;
-  transition:transform var(--trans-fast), opacity var(--trans-fast);
+  transition:transform var(--trans-fast), opacity var(--trans-fast), box-shadow var(--trans-fast);
 }
-.ds-btn:hover { opacity:.9; }
+.ds-btn:hover  { opacity:.9; transform:scale(1.04); }
 .ds-btn:active { transform:scale(.97); }
 .ds-btn--primary   { background:var(--orange); color:#fff; }
 .ds-btn--secondary { background:var(--navy-med); color:#fff; border:1px solid var(--white-10); }
@@ -1271,3 +1271,39 @@
 .chapter-sep  { color: rgba(255,255,255,.15); }
 .chapter-name { color: rgba(255,255,255,.35); }
 @media (max-width: 768px) { #chapter-nav { display: none; } }
+
+/* ═══════════════════════════════════════
+   PREFERS-REDUCED-MOTION
+   WCAG 2.1 §2.3.3 — disable non-essential motion
+═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill all CSS animations and transitions */
+  *, *::before, *::after {
+    animation-duration:      .01ms !important;
+    animation-iteration-count: 1   !important;
+    transition-duration:     .01ms !important;
+    scroll-behavior:         auto  !important;
+  }
+
+  /* Page-level fade-up — just reveal immediately */
+  .fu, .fu.in { opacity:1; transform:none; }
+
+  /* Aurora blobs — static */
+  .aurora > div { animation:none; }
+
+  /* Noise shimmer — static */
+  .noise::before { animation:none; }
+
+  /* Mesh background drift — static */
+  .mesh-bg-animated { animation:none; }
+
+  /* Button scale — no motion on hover/active */
+  .ds-btn:hover  { transform:none; }
+  .ds-btn:active { transform:none; }
+
+  /* DS component keyframe animations */
+  .ds-badge-dot--pulse { animation:none; }
+  .ds-skeleton         { animation:none; }
+  .ds-toast            { animation:none; }
+  .ds-carousel-track   { transition:none; }
+}
