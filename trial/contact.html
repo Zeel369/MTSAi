@@ -94,6 +94,7 @@ body { overflow-x: hidden; }
           <a href="data-transparency.html" class="nav-dropdown-item">Data Protection &amp; Public Transparency</a>
         </div>
       </div>
+      <a href="solutions.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Solutions</a>
       <a href="strategic_partners.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Strategic Partners</a>
       <a href="about.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">About</a>
       <a href="careers.html" class="font-mono text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Careers</a>
@@ -184,24 +185,25 @@ body { overflow-x: hidden; }
     <!-- Contact Form -->
     <div class="bg-surface p-8 fu" style="border:1px solid rgba(0,0,0,.06)" id="contact-form">
       <h2 class="font-headline font-bold text-2xl text-on-surface mb-6">Send a Request</h2>
-      <form class="space-y-5" novalidate>
+      <!-- ★ Replace YOUR_FORMSPREE_ID with your ID from formspree.io/forms -->
+      <form id="contact-form-el" class="space-y-5" novalidate>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-mono text-[10px] uppercase tracking-widest text-outline mb-2" for="cf-name">Full Name <span class="text-brand-orange">*</span></label>
-            <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-name" type="text" placeholder="Your full name" required/>
+            <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-name" name="name" type="text" placeholder="Your full name" required/>
           </div>
           <div>
             <label class="block font-mono text-[10px] uppercase tracking-widest text-outline mb-2" for="cf-org">Organisation <span class="text-brand-orange">*</span></label>
-            <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-org" type="text" placeholder="Your organisation" required/>
+            <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-org" name="organisation" type="text" placeholder="Your organisation" required/>
           </div>
         </div>
         <div>
           <label class="block font-mono text-[10px] uppercase tracking-widest text-outline mb-2" for="cf-email">Work Email <span class="text-brand-orange">*</span></label>
-          <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-email" type="email" placeholder="name@organisation.in" required/>
+          <input class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-email" name="email" type="email" placeholder="name@organisation.in" required/>
         </div>
         <div>
           <label class="block font-mono text-[10px] uppercase tracking-widest text-outline mb-2" for="cf-intent">Intent</label>
-          <select class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-intent">
+          <select class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange" style="border:1px solid rgba(0,0,0,.12)" id="cf-intent" name="intent">
             <option value="">Select intent...</option>
             <option value="government">Government</option>
             <option value="partner">Strategic Partner</option>
@@ -210,10 +212,17 @@ body { overflow-x: hidden; }
         </div>
         <div>
           <label class="block font-mono text-[10px] uppercase tracking-widest text-outline mb-2" for="cf-objective">One-sentence objective</label>
-          <textarea class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange resize-none" style="border:1px solid rgba(0,0,0,.12)" id="cf-objective" rows="3" placeholder="Briefly describe your objective..."></textarea>
+          <textarea class="w-full px-4 py-3 bg-white font-body text-on-surface text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange resize-none" style="border:1px solid rgba(0,0,0,.12)" id="cf-objective" name="objective" rows="3" placeholder="Briefly describe your objective..."></textarea>
         </div>
-        <button type="submit" class="w-full py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Submit Request</button>
+        <div id="cf-error" class="hidden p-3 font-mono text-[11px] text-brand-red" style="border:1px solid rgba(216,43,43,.2);background:rgba(216,43,43,.05)">Please fill in all required fields correctly.</div>
+        <button type="submit" id="cf-submit" class="w-full py-3 bg-brand-orange text-white font-headline font-bold uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-colors">Submit Request</button>
       </form>
+      <!-- Success state (hidden until submitted) -->
+      <div id="cf-success" class="hidden p-8 text-center" style="border:1px solid rgba(83,170,0,.2);background:rgba(83,170,0,.05)">
+        <span class="material-symbols-outlined text-brand-green block mb-3" style="font-size:36px">check_circle</span>
+        <h3 class="font-headline font-bold text-xl text-on-surface mb-2">Request Received</h3>
+        <p class="text-outline text-sm">We'll route your request to the right team within 2–3 business days.</p>
+      </div>
     </div>
 
     <!-- What Happens Next -->
@@ -359,6 +368,53 @@ function selectIntent(intent, card) {
   const select = document.getElementById('cf-intent');
   if (select) select.value = intent;
   document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+<script>
+// ★ Replace YOUR_FORMSPREE_ID below with your ID from formspree.io/forms
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+const form = document.getElementById('contact-form-el');
+const submitBtn = document.getElementById('cf-submit');
+const errorBox = document.getElementById('cf-error');
+const successBox = document.getElementById('cf-success');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.classList.add('hidden');
+
+    // Basic validation
+    const name = document.getElementById('cf-name').value.trim();
+    const org = document.getElementById('cf-org').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    if (!name || !org || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorBox.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.classList.add('hidden');
+        successBox.classList.remove('hidden');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorBox.textContent = 'Submission failed — please email us directly at contact@mtsai.co';
+      errorBox.classList.remove('hidden');
+      submitBtn.textContent = 'Submit Request';
+      submitBtn.disabled = false;
+    }
+  });
 }
 </script>
 <script src="assets/ds.js" defer></script>
