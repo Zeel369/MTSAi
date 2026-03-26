@@ -1,0 +1,212 @@
+/* ============================================================
+   MTSAi Design System — Form Layout Component
+   Provides: card container, grid rows, stepper, info banner,
+             required marker, alt-channels, checkbox grid,
+             consent row, form actions bar.
+   ============================================================ */
+
+/* ── Wrapper ─────────────────────────────────────────────────── */
+.mts-form-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Card ────────────────────────────────────────────────────── */
+.mts-form-card {
+  background: #fff;
+  border: 1px solid var(--blue-20);
+  box-shadow: 0 8px 40px rgba(0, 82, 204, 0.10);
+  padding: var(--space-9);
+}
+
+.mts-form-card__header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mts-form-card__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mts-form-card__subtitle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* ── Progress stepper ────────────────────────────────────────── */
+.mts-form-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.mts-form-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: color 150ms;
+}
+
+.mts-form-step.active { color: var(--interactive); }
+.mts-form-step.done   { color: var(--brand-primary); }
+
+.mts-form-step__num {
+  width: 24px; height: 24px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+}
+
+.mts-form-step.active .mts-form-step__num {
+  background: var(--interactive);
+  color: #fff;
+  border-color: var(--interactive);
+}
+.mts-form-step.done .mts-form-step__num {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: var(--brand-primary);
+}
+
+.mts-form-sep {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* ── Grid rows ───────────────────────────────────────────────── */
+.mts-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.mts-form-row--full { grid-template-columns: 1fr; }
+
+/* ── Required asterisk ───────────────────────────────────────── */
+.mts-form-required { color: var(--red-50); }
+
+/* ── Info banner ─────────────────────────────────────────────── */
+.mts-form-info-banner {
+  background: var(--layer-01);
+  border-left: 3px solid var(--interactive);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.mts-form-info-banner strong { color: var(--text-primary); }
+
+/* ── Checkbox grid ───────────────────────────────────────────── */
+.mts-form-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.mts-form-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.mts-form-checkbox-item input[type="checkbox"] {
+  width: 16px; height: 16px;
+  accent-color: var(--interactive);
+}
+
+/* ── Consent row ─────────────────────────────────────────────── */
+.mts-form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.mts-form-consent input[type="checkbox"] {
+  margin-top: 2px;
+  width: 16px; height: 16px;
+  accent-color: var(--interactive);
+  flex-shrink: 0;
+}
+
+/* ── Actions bar ─────────────────────────────────────────────── */
+.mts-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-7);
+}
+
+/* ── Alt channels ────────────────────────────────────────────── */
+.mts-form-alt {
+  border-top: 1px dashed var(--border-subtle);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+}
+
+.mts-form-alt__title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.mts-form-alt__cols {
+  display: flex;
+  gap: var(--space-9);
+  flex-wrap: wrap;
+}
+
+.mts-form-alt__col dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.mts-form-alt__col dd a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--interactive);
+  text-decoration: none;
+}
+.mts-form-alt__col dd a:hover { text-decoration: underline; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mts-form-row          { grid-template-columns: 1fr; }
+  .mts-form-checkbox-grid { grid-template-columns: 1fr; }
+  .mts-form-card         { padding: var(--space-6); }
+}
