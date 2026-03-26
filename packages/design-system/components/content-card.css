@@ -181,3 +181,38 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   ICON LIST
+   Bordered list of items with a leading icon marker
+════════════════════════════════════════════════════════════════ */
+.mts-icon-list {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+
+.mts-icon-list li {
+  display: flex;
+  gap: var(--space-5);
+  align-items: flex-start;
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.mts-icon-list li:last-child { border-bottom: none; }
+
+.mts-icon-list li strong { color: var(--text-primary); }
+.mts-icon-list li p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+/* Icon marker — coloured circle with icon/emoji */
+.mts-icon-marker {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--interactive);
+  color: var(--interactive);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+
+.mts-icon-marker--green { border-color: var(--brand-primary); color: var(--brand-primary); }
+.mts-icon-marker--red   { border-color: var(--red-50);        color: var(--red-50); }
+.mts-icon-marker--saffron { border-color: var(--cta-primary); color: var(--cta-primary); }

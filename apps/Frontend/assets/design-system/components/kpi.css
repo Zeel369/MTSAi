@@ -1,0 +1,52 @@
+/* ============================================================
+   MTSAi Design System — KPI Strip
+   Full-width blue band of key metrics, used between hero + content.
+   ============================================================ */
+
+.mts-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--interactive);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Colour variants */
+.mts-kpi-strip--navy   { background: #000C2E; }
+.mts-kpi-strip--green  { background: var(--brand-primary); }
+
+.mts-kpi-cell {
+  padding: var(--space-7);
+  border-right: 1px solid rgba(255,255,255,0.12);
+  transition: background 150ms, transform 200ms;
+}
+.mts-kpi-cell:last-child { border-right: none; }
+.mts-kpi-cell:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+.mts-kpi-val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.mts-kpi-val.saffron { color: var(--cta-primary); }
+
+.mts-kpi-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .mts-kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .mts-kpi-cell:nth-child(2) { border-right: none; }
+}

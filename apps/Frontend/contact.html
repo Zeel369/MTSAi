@@ -40,6 +40,11 @@
   <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
   <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
   <link rel="stylesheet" href="assets/design-system/components/footer.css">
   <link rel="stylesheet" href="assets/design-system/components/section.css">
   <link rel="stylesheet" href="assets/design-system/components/content-card.css">
@@ -69,10 +74,10 @@
     .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
     .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
     .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
-    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
-    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gray-50); }
-    .status-dot.active { background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
-    @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+    
+    
+    
+     50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
 
     /* HERO */
     .hero-contact { background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%); position: relative; overflow: hidden; padding: clamp(72px,10vw,120px) 0; }
@@ -85,27 +90,27 @@
 
     /* INTENT CARDS */
     .intent-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-10); }
-    .intent-card { padding: var(--space-8); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); box-shadow: 0 2px 8px rgba(0,82,204,0.06); text-align: left; cursor: pointer; transition: box-shadow 200ms, transform 200ms, background 150ms, color 150ms; }
-    .intent-card:hover, .intent-card.active { box-shadow: 0 8px 24px rgba(0,82,204,0.14); transform: translateY(-3px); background: var(--interactive); color: #fff; border-top-color: var(--cta-primary); }
-    .intent-card--green { border-top-color: var(--brand-primary); }
-    .intent-card--green:hover, .intent-card--green.active { background: var(--brand-primary); border-top-color: var(--brand-primary); }
-    .intent-card--dark { border-top-color: #161616; }
-    .intent-card--dark:hover, .intent-card--dark.active { background: #161616; }
+    
+    
+    
+    
+    
+    
     .intent-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--layer-01); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); font-size: 20px; transition: background 150ms; }
-    .intent-card:hover .intent-icon, .intent-card.active .intent-icon { background: rgba(255,255,255,0.15); }
-    .intent-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: var(--space-2); }
-    .intent-card p { font-size: 13px; line-height: 1.55; opacity: 0.75; margin-bottom: var(--space-5); }
-    .intent-cta { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--interactive); transition: color 150ms; }
-    .intent-card:hover .intent-cta, .intent-card.active .intent-cta { color: rgba(255,255,255,0.9); }
-    .intent-card--green .intent-cta { color: var(--brand-primary); }
-    .intent-card--dark .intent-cta { color: #161616; }
+    
+    
+    
+    
+    
+    
+    
 
     /* PROCESS STEPS */
     .process-steps { display: grid; grid-template-columns: 1fr 32px 1fr 32px 1fr; align-items: center; gap: 0; margin: var(--space-10) 0; background: #fff; border: 1px solid var(--blue-20); }
     .process-step { padding: var(--space-7); text-align: center; }
     .process-connector { text-align: center; color: var(--interactive); font-size: 18px; }
     .process-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--blue-20); margin-bottom: var(--space-2); display: block; line-height: 1; }
-    .process-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); display: block; margin-bottom: var(--space-2); }
+    
     .process-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
     .process-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
 
@@ -155,18 +160,18 @@
     .success-card { background: #fff; border: 1px solid var(--blue-20); padding: var(--space-10); text-align: center; box-shadow: 0 8px 40px rgba(0,82,204,0.10); max-width: 720px; margin: 0 auto; }
     .success-icon { width: 64px; height: 64px; background: var(--brand-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6); font-size: 30px; color: #fff; }
     .success-title { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); }
-    .receipt-box { background: var(--layer-01); border: 1px solid var(--blue-20); padding: var(--space-6); text-align: left; margin: var(--space-6) 0; }
-    .receipt-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
-    .receipt-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 4px; display: block; }
-    .receipt-val { font-family: var(--font-mono); font-size: 17px; font-weight: 700; color: var(--text-primary); }
+    
+    
+    
+    
 
     /* TRUST SHORTCUTS */
     .shortcut-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); margin-top: var(--space-10); }
-    .shortcut-card { padding: var(--space-7); background: #fff; border: 1px solid var(--blue-20); transition: background 150ms, color 150ms, transform 200ms; }
-    .shortcut-card:hover { background: var(--interactive); color: #fff; transform: translateY(-2px); }
-    .shortcut-card h4 { font-family: var(--font-display); font-size: 14px; font-weight: 600; margin-bottom: var(--space-4); }
-    .shortcut-card a { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--interactive); text-decoration: none; margin-bottom: var(--space-2); }
-    .shortcut-card:hover a { color: rgba(255,255,255,0.85); }
+    
+    
+    
+    
+    
 
     /* FOOTER */
     
@@ -199,7 +204,7 @@
     .hidden { display: none !important; }
 
     @media (max-width: 1024px) { .intent-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: 1fr; } .process-connector { display: none; } .shortcut-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; }    .receipt-row { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .mts-nav__links,      }
   </style>
 </head>
 <body>
@@ -229,7 +234,7 @@
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
       <div class="mts-nav__actions">
-        <span class="nav-status"><span class="status-dot active" aria-hidden="true"></span><span>System Online</span></span>
+        <span class="mts-nav-status"><span class="mts-status-dot active" aria-hidden="true"></span><span>System Online</span></span>
         <a href="contact.html" class="mts-btn mts-btn--primary" style="height:40px;padding:0 20px;font-size:13px;" aria-current="page">Contact →</a>
       </div>
     </div>
@@ -257,23 +262,23 @@
         <div id="intent-section" class="reveal">
           <span class="mts-section__eyebrow">Choose Your Path</span>
           <div class="intent-grid">
-            <button class="intent-card" onclick="showForm('gov')" aria-label="Start Government request">
+            <button class="mts-intent-card" onclick="showForm('gov')" aria-label="Start Government request">
               <div class="intent-icon">🏛️</div>
               <h3>Government</h3>
               <p>For departments, ULBs, and state agencies assessing feasibility, pilots, procurement routing, or due diligence.</p>
-              <span class="intent-cta">Start Government request →</span>
+              <span class="mts-intent-cta">Start Government request →</span>
             </button>
-            <button class="intent-card intent-card--green" onclick="showForm('sp')" aria-label="Start Strategic Partner request">
+            <button class="mts-intent-card mts-mts-intent-card--green" onclick="showForm('sp')" aria-label="Start Strategic Partner request">
               <div class="intent-icon">🤝</div>
               <h3>Strategic Partners</h3>
               <p>For territory-scale operators and conveners supporting long-horizon delivery and program continuity.</p>
-              <span class="intent-cta" style="color:var(--brand-primary);">Start SP request →</span>
+              <span class="mts-intent-cta" style="color:var(--brand-primary);">Start SP request →</span>
             </button>
-            <button class="intent-card intent-card--dark" onclick="showForm('integrity')" aria-label="Report a public integrity concern">
+            <button class="mts-intent-card mts-mts-intent-card--dark" onclick="showForm('integrity')" aria-label="Report a public integrity concern">
               <div class="intent-icon">🛡️</div>
               <h3>Public Integrity</h3>
               <p>For integrity, privacy, security, or fairness concerns relating to program conduct and safeguards.</p>
-              <span class="intent-cta" style="color:#393939;">Report a concern →</span>
+              <span class="mts-intent-cta" style="color:#393939;">Report a concern →</span>
             </button>
           </div>
 
@@ -281,21 +286,21 @@
           <div class="process-steps reveal delay-1">
             <div class="process-step">
               <span class="process-num">01</span>
-              <span class="process-label">You Submit</span>
+              <span class="mts-process-label">You Submit</span>
               <div class="process-title">Submit Your Request</div>
               <p class="process-desc">We use your details only to respond and maintain an auditable intake log.</p>
             </div>
             <div class="process-connector">→</div>
             <div class="process-step">
               <span class="process-num">02</span>
-              <span class="process-label" style="color:var(--interactive);">We Triage</span>
+              <span class="mts-process-label" style="color:var(--interactive);">We Triage</span>
               <div class="process-title">Routed to Right Team</div>
               <p class="process-desc">We route your request to the right team within 2–3 business days.</p>
             </div>
             <div class="process-connector">→</div>
             <div class="process-step">
               <span class="process-num">03</span>
-              <span class="process-label">You Receive</span>
+              <span class="mts-process-label">You Receive</span>
               <div class="process-title">Get Your Pack</div>
               <p class="process-desc">A next-step checklist + the relevant pack (procurement / diligence / delivery).</p>
             </div>
@@ -499,13 +504,13 @@
             <div class="success-icon">✓</div>
             <div class="success-title">Request Received</div>
             <p style="color:var(--text-secondary);margin-bottom:var(--space-5);">Your intake reference ID has been generated.</p>
-            <div class="receipt-box">
-              <div class="receipt-row">
-                <div><span class="receipt-label">Reference ID</span><span class="receipt-val" id="receipt-id">MTSAI-…</span></div>
-                <div><span class="receipt-label">Timestamp</span><span class="receipt-val" id="receipt-time" style="font-size:14px;">…</span></div>
+            <div class="mts-receipt-box">
+              <div class="mts-receipt-row">
+                <div><span class="mts-receipt-label">Reference ID</span><span class="mts-receipt-val" id="receipt-id">MTSAI-…</span></div>
+                <div><span class="mts-receipt-label">Timestamp</span><span class="mts-receipt-val" id="receipt-time" style="font-size:14px;">…</span></div>
               </div>
               <div style="border-top:1px solid var(--border-subtle);margin-top:var(--space-5);padding-top:var(--space-5);">
-                <span class="receipt-label">Summary</span>
+                <span class="mts-receipt-label">Summary</span>
                 <p id="receipt-summary" style="font-size:14px;color:var(--text-primary);margin-top:4px;"></p>
               </div>
             </div>
@@ -518,18 +523,18 @@
 
         <!-- TRUST SHORTCUTS -->
         <div class="shortcut-grid reveal" id="shortcut-grid">
-          <div class="shortcut-card">
+          <div class="mts-shortcut-card">
             <h4>🏛️ Government fast lane</h4>
             <a href="trust.html">→ Explore Trust Center</a>
             <a href="resources.html">→ Download Procurement Pack</a>
             <a href="technology_platform.html">→ Implementation overview</a>
           </div>
-          <div class="shortcut-card">
+          <div class="mts-shortcut-card">
             <h4>⚙️ Delivery partner fast lane</h4>
             <a href="technology_platform.html">→ Technology Platform</a>
             <a href="resources.html">→ Download Technical Brief</a>
           </div>
-          <div class="shortcut-card">
+          <div class="mts-shortcut-card">
             <h4>🛡️ Integrity fast lane</h4>
             <a href="public_integrity.html">→ Public Integrity</a>
             <a href="trust_privacy.html">→ Privacy Notice &amp; Grievance</a>

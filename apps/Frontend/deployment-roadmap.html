@@ -36,6 +36,11 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
   <link rel="stylesheet" href="assets/design-system/components/footer.css">
   <link rel="stylesheet" href="assets/design-system/components/section.css">
   <link rel="stylesheet" href="assets/design-system/components/content-card.css">
@@ -62,9 +67,9 @@
     .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
     .nav-dropdown li a:hover, .nav-dropdown li a.active { background: var(--layer-01); color: var(--interactive); }
     .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
-    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
-    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
-    @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+    
+    
+     50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
 
     
     
@@ -73,8 +78,8 @@
     .article-priority { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cta-primary); margin-bottom: var(--space-4); display: block; }
     .article-headline { font-family: var(--font-display); font-size: clamp(36px,5.5vw,72px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; color: #fff; margin: var(--space-4) 0 var(--space-5); }
     .article-sub { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); margin-bottom: var(--space-6); }
-    .article-lead { font-size: clamp(16px,1.4vw,20px); color: rgba(255,255,255,0.78); line-height: 1.72; max-width: 600px; }
-    .article-meta { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); padding: var(--space-6); }
+    
+    
     .meta-row { padding: var(--space-4) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .meta-row:last-child { border-bottom: none; }
     .meta-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); margin-bottom: 4px; display: block; }
@@ -136,7 +141,7 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 1024px) {  .article-layout { grid-template-columns: 1fr; } .article-toc { display: none; } }
-    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; }   .cta-actions { flex-direction: column; } }
+    @media (max-width: 768px) { .mts-nav__links,    .cta-actions { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -164,7 +169,7 @@
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
       <div class="mts-nav__actions">
-        <span class="nav-status"><span class="status-dot" aria-hidden="true"></span><span>System Online</span></span>
+        <span class="mts-nav-status"><span class="mts-status-dot" aria-hidden="true"></span><span>System Online</span></span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
       </div>
     </div>
@@ -183,9 +188,9 @@
           <span class="article-priority">Priority 2 · Minister Question 3</span>
           <h1 class="article-headline">How a City Deploys MTSAi</h1>
           <p class="article-sub">A phased approach designed for public accountability, from policy design to pilot evaluation in 12 months.</p>
-          <p class="article-lead">Urban mobility systems affect millions of residents and require careful policy design, transparent governance, and measured rollout. MTSAi is designed for deployment through a phased implementation process that allows cities to evaluate outcomes and adjust policy settings before expanding.</p>
+          <p class="mts-article-lead">Urban mobility systems affect millions of residents and require careful policy design, transparent governance, and measured rollout. MTSAi is designed for deployment through a phased implementation process that allows cities to evaluate outcomes and adjust policy settings before expanding.</p>
         </div>
-        <div class="article-meta">
+        <div class="mts-article-meta">
           <div class="meta-row"><span class="meta-label">Document Type</span><div class="meta-val">Implementation roadmap</div></div>
           <div class="meta-row"><span class="meta-label">Audience</span><div class="meta-val">Government procurement, technical teams</div></div>
           <div class="meta-row"><span class="meta-label">Duration</span><div class="meta-val">12-month reference timeline</div></div>
@@ -202,8 +207,8 @@
 
     <article class="article-body" id="article">
       <div class="mts-container">
-        <div class="article-layout">
-          <aside class="article-toc" aria-label="Table of contents">
+        <div class="mts-article-layout">
+          <aside class="mts-article-toc" aria-label="Table of contents">
             <div class="toc-label">Contents</div>
             <ul class="toc-list">
               <li><a href="#phase-1">Phase 1: Policy Design</a></li>

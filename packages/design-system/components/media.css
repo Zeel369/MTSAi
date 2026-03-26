@@ -1,0 +1,79 @@
+/* ============================================================
+   MTSAi Design System — Media / Photo Strip
+   Full-width image with caption overlay.
+   ============================================================ */
+
+.mts-photo-strip {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--blue-20);
+  box-shadow: 0 4px 32px rgba(0, 82, 204, 0.10);
+  margin-bottom: var(--space-10);
+}
+
+.mts-photo-strip--tall { height: 380px; }
+.mts-photo-strip--short { height: 200px; }
+
+.mts-photo-strip img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: contrast(1.06) saturate(0.95);
+  transition: transform 6s ease;
+}
+
+.mts-photo-strip:hover img { transform: scale(1.03); }
+
+/* Caption gradient overlay */
+.mts-photo-strip__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px var(--space-6) var(--space-4);
+  background: linear-gradient(0deg, rgba(0,4,15,0.70) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.mts-photo-strip__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.60);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Coloured badge pill */
+.mts-photo-strip__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+}
+
+.mts-photo-strip__tag--saffron {
+  color: rgba(255,153,51,0.9);
+  background: rgba(255,153,51,0.14);
+  border: 1px solid rgba(255,153,51,0.30);
+}
+
+.mts-photo-strip__tag--green {
+  color: rgba(83,170,0,0.9);
+  background: rgba(83,170,0,0.14);
+  border: 1px solid rgba(83,170,0,0.30);
+}
+
+.mts-photo-strip__tag--blue {
+  color: rgba(0,82,204,0.9);
+  background: rgba(0,82,204,0.10);
+  border: 1px solid rgba(0,82,204,0.25);
+}
+
+/* Reduced motion — disable the hover zoom */
+@media (prefers-reduced-motion: reduce) {
+  .mts-photo-strip img { transition: none; }
+  .mts-photo-strip:hover img { transform: none; }
+}

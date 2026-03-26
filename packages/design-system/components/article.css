@@ -1,0 +1,94 @@
+/* ============================================================
+   MTSAi Design System — Article Layout
+   For long-form pages: iudm, roadmap, congestion, india-advantage,
+   why-traditional-fails.
+   ============================================================ */
+
+/* Lead paragraph — large intro text in dark hero */
+.mts-article-lead {
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.72;
+  max-width: 600px;
+}
+
+/* Meta panel — glass panel alongside headline (article hero aside) */
+.mts-article-meta {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: var(--space-6);
+}
+
+/* Article body layout: prose column + sticky TOC */
+.mts-article-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.mts-article-toc {
+  position: sticky;
+  top: 80px;
+}
+
+.mts-article-toc-heading {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.mts-article-toc a {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--space-2) 0;
+  border-left: 2px solid var(--border-subtle);
+  padding-left: var(--space-4);
+  transition: color var(--duration-fast-02), border-color var(--duration-fast-02);
+}
+.mts-article-toc a:hover,
+.mts-article-toc a.active {
+  color: var(--interactive);
+  border-left-color: var(--interactive);
+}
+
+/* Prose content */
+.mts-article-prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: var(--space-10) 0 var(--space-5);
+  padding-top: var(--space-9);
+  border-top: 1px solid var(--border-subtle);
+}
+.mts-article-prose h2:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+
+.mts-article-prose h3 {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--space-8) 0 var(--space-3);
+}
+
+.mts-article-prose p {
+  font-size: clamp(15px, 1.2vw, 16px);
+  color: var(--text-secondary);
+  line-height: 1.78;
+  margin-bottom: var(--space-5);
+}
+
+.mts-article-prose strong { color: var(--text-primary); }
+
+@media (max-width: 1024px) {
+  .mts-article-layout { grid-template-columns: 1fr; }
+  .mts-article-toc { display: none; }
+}

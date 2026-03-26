@@ -44,6 +44,11 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
   <link rel="stylesheet" href="assets/design-system/components/footer.css">
   <link rel="stylesheet" href="assets/design-system/components/section.css">
   <link rel="stylesheet" href="assets/design-system/components/content-card.css">
@@ -116,11 +121,10 @@
     }
     .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
     .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
-    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
-    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gray-50); }
-    .status-dot.active { background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
-    @keyframes status-pulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); }
+    
+    
+    
+    
       50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); }
     }
 
@@ -140,19 +144,13 @@
     
 
     /* KPI STRIP */
-    .kpi-strip {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      background: #0052CC; border-bottom: 1px solid rgba(255,255,255,0.12);
-    }
-    .kpi-cell {
-      padding: var(--space-7); border-right: 1px solid rgba(255,255,255,0.12);
-      transition: background 150ms;
-    }
-    .kpi-cell:last-child { border-right: none; }
-    .kpi-cell:hover { background: rgba(255,255,255,0.05); }
-    .kpi-val { display: block; font-family: var(--font-display); font-size: clamp(36px,5vw,56px); font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1; }
-    .kpi-val.saffron { color: var(--cta-primary); }
-    .kpi-label { display: block; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-2); }
+    
+    
+    
+    
+    
+    
+    
 
     /* SECTION BASE */
     
@@ -204,21 +202,14 @@
     .step-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
     /* ICON LIST */
-    .icon-list { list-style: none; }
-    .icon-list li {
-      display: flex; gap: var(--space-5); padding: var(--space-5) 0;
-      border-bottom: 1px solid var(--border-subtle); align-items: flex-start;
-    }
-    .icon-list li:last-child { border-bottom: none; }
-    .icon-marker {
-      flex-shrink: 0; width: 24px; height: 24px;
-      border: 1.5px solid var(--interactive); display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--interactive);
-    }
-    .icon-marker--red { border-color: var(--red-60); color: var(--red-60); }
-    .icon-marker--green { border-color: var(--brand-primary); color: var(--brand-primary); }
-    .icon-list li p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-    .icon-list li strong { color: var(--text-primary); }
+    
+    
+    
+    
+    
+    
+    
+    
 
     /* PHASE LIST */
     .phase-list { border: 1px solid var(--blue-20); background: #fff; box-shadow: 0 4px 24px rgba(0,82,204,0.08); }
@@ -230,17 +221,17 @@
     
 
     /* CALLOUT */
-    .mts-callout { padding: var(--space-6) var(--space-7); font-size: 15px; line-height: 1.72; color: var(--text-secondary); }
-    .mts-callout--blue { background: rgba(0,82,204,0.05); border: 1px solid var(--blue-20); border-left: 3px solid var(--interactive); color: var(--text-primary); }
-    .mts-callout--green { background: rgba(83,170,0,0.05); border: 1px solid rgba(83,170,0,0.18); border-left: 3px solid var(--brand-primary); color: var(--text-primary); }
+    
+    
+    
 
     /* PHOTO STRIP */
-    .photo-strip { position: relative; width: 100%; height: 320px; overflow: hidden; border: 1px solid var(--blue-20); box-shadow: 0 4px 32px rgba(0,82,204,0.10); margin-bottom: var(--space-10); }
-    .photo-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: contrast(1.06) saturate(0.95); transition: transform 6s ease; }
-    .photo-strip:hover img { transform: scale(1.03); }
-    .photo-strip-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px var(--space-6) var(--space-4); background: linear-gradient(0deg, rgba(0,4,15,0.70) 0%, transparent 100%); display: flex; align-items: flex-end; justify-content: space-between; }
-    .photo-strip-label { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.60); letter-spacing: 0.12em; text-transform: uppercase; }
-    .photo-strip-tag { font-family: var(--font-mono); font-size: 10px; color: rgba(83,170,0,0.9); letter-spacing: 0.10em; text-transform: uppercase; background: rgba(83,170,0,0.14); border: 1px solid rgba(83,170,0,0.30); padding: 3px 10px; }
+    
+    
+    
+    
+    
+    
 
     /* CTA SECTION */
     
@@ -279,8 +270,8 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {   }
     @media (max-width: 768px) {
-      .mts-nav__links, .nav-status { display: none; }
-      .kpi-strip { grid-template-columns: repeat(2,1fr); }
+      .mts-nav__links, 
+      
       
       
       
@@ -318,8 +309,8 @@
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
       <div class="mts-nav__actions">
-        <span class="nav-status">
-          <span class="status-dot active" aria-hidden="true"></span>
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
           <span>System Online</span>
         </span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
@@ -355,22 +346,22 @@
     </section>
 
     <!-- KPI STRIP -->
-    <div class="kpi-strip" role="list" aria-label="Key platform facts">
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val" data-counter data-target="4" data-suffix="+" data-duration="900">4+</span>
-        <span class="kpi-label">Implementation Phases</span>
+    <div class="mts-kpi-strip" role="list" aria-label="Key platform facts">
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val" data-counter data-target="4" data-suffix="+" data-duration="900">4+</span>
+        <span class="mts-kpi-label">Implementation Phases</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val saffron" data-counter data-target="100" data-suffix="%" data-duration="1200">100%</span>
-        <span class="kpi-label">Government-Controlled Policy</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val saffron" data-counter data-target="100" data-suffix="%" data-duration="1200">100%</span>
+        <span class="mts-kpi-label">Government-Controlled Policy</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</span>
-        <span class="kpi-label">Ecosystem Integrations</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</span>
+        <span class="mts-kpi-label">Ecosystem Integrations</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val">0</span>
-        <span class="kpi-label">Biometric Data Collected</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val">0</span>
+        <span class="mts-kpi-label">Biometric Data Collected</span>
       </div>
     </div>
 
@@ -378,11 +369,11 @@
     <section class="section reveal-group" aria-label="Government Control Framework">
       <div class="mts-container">
 
-        <div class="photo-strip reveal">
+        <div class="mts-photo-strip reveal">
           <img src="img/government.jpeg" alt="Government urban traffic management operations">
-          <div class="photo-strip-caption">
-            <span class="photo-strip-label">Policy Control Framework · Urban Traffic Authority</span>
-            <span class="photo-strip-tag">● Government Path</span>
+          <div class="mts-photo-strip__caption">
+            <span class="mts-photo-strip__label">Policy Control Framework · Urban Traffic Authority</span>
+            <span class="mts-photo-strip__tag">● Government Path</span>
           </div>
         </div>
 
@@ -466,21 +457,21 @@
               Privacy assurance comes from limiting collection, separating roles clearly, and keeping the city in control of policy and data governance.
             </div>
           </div>
-          <ul class="icon-list reveal delay-2">
+          <ul class="mts-icon-list reveal delay-2">
             <li>
-              <span class="icon-marker icon-marker--red">✗</span>
+              <span class="mts-icon-marker mts-mts-icon-marker--red">✗</span>
               <p><strong>No biometric data:</strong> the platform is not designed around biometric identity systems.</p>
             </li>
             <li>
-              <span class="icon-marker icon-marker--red">✗</span>
+              <span class="mts-icon-marker mts-mts-icon-marker--red">✗</span>
               <p><strong>No continuous tracking:</strong> the system does not depend on continuous location surveillance.</p>
             </li>
             <li>
-              <span class="icon-marker icon-marker--green">✓</span>
+              <span class="mts-icon-marker mts-mts-icon-marker--green">✓</span>
               <p><strong>Data minimization:</strong> collection is limited to purpose-specific operational signals.</p>
             </li>
             <li>
-              <span class="icon-marker">✓</span>
+              <span class="mts-icon-marker">✓</span>
               <p><strong>Government as controller:</strong> city or state authority retains controller responsibility for programme data governance.</p>
             </li>
           </ul>

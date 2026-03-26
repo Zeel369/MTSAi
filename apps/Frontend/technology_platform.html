@@ -44,6 +44,11 @@
   <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
   <link rel="stylesheet" href="assets/design-system/components/footer.css">
   <link rel="stylesheet" href="assets/design-system/components/section.css">
   <link rel="stylesheet" href="assets/design-system/components/content-card.css">
@@ -74,10 +79,10 @@
     .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
     .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
     .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
-    .nav-status { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
-    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gray-50); }
-    .status-dot.active { background: var(--brand-primary); box-shadow: 0 0 0 3px rgba(83,170,0,0.18); animation: status-pulse 2.5s ease-in-out infinite; }
-    @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(83,170,0,0.18); } 50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+    
+    
+    
+     50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
 
     /* HERO */
     
@@ -93,12 +98,12 @@
     
 
     /* KPI STRIP */
-    .kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); background: #0052CC; border-bottom: 1px solid rgba(255,255,255,0.12); }
-    .kpi-cell { padding: var(--space-7); border-right: 1px solid rgba(255,255,255,0.12); transition: background 150ms; }
-    .kpi-cell:last-child { border-right: none; }
-    .kpi-val { display: block; font-family: var(--font-display); font-size: clamp(32px,4.5vw,52px); font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1; }
-    .kpi-val.saffron { color: var(--cta-primary); }
-    .kpi-label { display: block; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-2); }
+    
+    
+    
+    
+    
+    
 
     /* PAGE NAV (sticky sub-nav) */
     .page-nav { position: sticky; top: 64px; z-index: 90; background: #fff; border-bottom: 1px solid var(--blue-20); overflow-x: auto; }
@@ -180,9 +185,9 @@
     .privacy-list li:last-child { border-bottom: none; }
 
     /* CALLOUT */
-    .mts-callout { padding: var(--space-6) var(--space-7); font-size: 15px; line-height: 1.72; }
-    .mts-callout--blue { background: rgba(0,82,204,0.05); border: 1px solid var(--blue-20); border-left: 3px solid var(--interactive); color: var(--text-primary); }
-    .mts-callout--green { background: rgba(83,170,0,0.05); border: 1px solid rgba(83,170,0,0.18); border-left: 3px solid var(--brand-primary); color: var(--text-primary); }
+    
+    
+    
 
     /* DEPLOYMENT BANNER */
     .deploy-banner { background: #000C2E; padding: var(--space-9) var(--space-8); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; margin-top: var(--space-8); }
@@ -232,7 +237,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 1024px) { .two-col, .engine-grid, .flow-steps, .privacy-matrix { grid-template-columns: 1fr; } .arch-stats { gap: var(--space-5); } }
-    @media (max-width: 768px) { .mts-nav__links, .nav-status { display: none; } .kpi-strip { grid-template-columns: repeat(2,1fr); }   .cta-actions { flex-direction: column; } .deploy-banner { flex-direction: column; } }
+    @media (max-width: 768px) { .mts-nav__links,     .cta-actions { flex-direction: column; } .deploy-banner { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -265,8 +270,8 @@
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
       <div class="mts-nav__actions">
-        <span class="nav-status">
-          <span class="status-dot active" aria-hidden="true"></span>
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
           <span>System Online</span>
         </span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
@@ -299,22 +304,22 @@
     </section>
 
     <!-- KPI STRIP -->
-    <div class="kpi-strip" role="list">
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</span>
-        <span class="kpi-label">Platform Modules</span>
+    <div class="mts-kpi-strip" role="list">
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</span>
+        <span class="mts-kpi-label">Platform Modules</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val saffron" data-counter data-target="4" data-duration="900">4</span>
-        <span class="kpi-label">Integration Types</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val saffron" data-counter data-target="4" data-duration="900">4</span>
+        <span class="mts-kpi-label">Integration Types</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val" data-counter data-target="100" data-suffix="%" data-duration="1200">100%</span>
-        <span class="kpi-label">Govt-Controlled Policy</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val" data-counter data-target="100" data-suffix="%" data-duration="1200">100%</span>
+        <span class="mts-kpi-label">Govt-Controlled Policy</span>
       </div>
-      <div class="kpi-cell" role="listitem">
-        <span class="kpi-val">Q2 '26</span>
-        <span class="kpi-label">Target Pilot</span>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val">Q2 '26</span>
+        <span class="mts-kpi-label">Target Pilot</span>
       </div>
     </div>
 

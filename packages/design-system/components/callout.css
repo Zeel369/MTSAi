@@ -1,0 +1,64 @@
+/* ============================================================
+   MTSAi Design System — Callout Box
+   Left-bordered pull-quote / info box. Used inline in content.
+   ============================================================ */
+
+.mts-callout {
+  padding: var(--space-6) var(--space-7);
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+}
+
+/* Blue — trust / governance */
+.mts-callout--blue {
+  background: rgba(0, 82, 204, 0.05);
+  border: 1px solid var(--blue-20);
+  border-left: 3px solid var(--interactive);
+  color: var(--text-primary);
+}
+
+/* Green — sustainability / compliance */
+.mts-callout--green {
+  background: rgba(83, 170, 0, 0.05);
+  border: 1px solid rgba(83, 170, 0, 0.18);
+  border-left: 3px solid var(--brand-primary);
+  color: var(--text-primary);
+}
+
+/* Saffron — CTA / highlight */
+.mts-callout--saffron {
+  background: rgba(255, 153, 51, 0.05);
+  border: 1px solid rgba(255, 153, 51, 0.18);
+  border-left: 3px solid var(--cta-primary);
+  color: var(--text-primary);
+}
+
+/* Red — warning / caution */
+.mts-callout--red {
+  background: rgba(218, 30, 40, 0.04);
+  border: 1px solid rgba(218, 30, 40, 0.15);
+  border-left: 3px solid var(--red-50);
+  color: var(--text-primary);
+}
+
+/* Dark (for use inside .mts-section--dark) */
+.mts-callout--dark {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-left: 3px solid var(--cta-primary);
+  color: rgba(255,255,255,0.72);
+}
+
+.mts-callout strong { color: inherit; font-weight: 600; }
+
+.mts-callout__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: var(--space-2);
+  opacity: 0.65;
+}

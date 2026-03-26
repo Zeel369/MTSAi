@@ -204,9 +204,99 @@
 }
 .mts-form-alt__col dd a:hover { text-decoration: underline; }
 
+/* ── Intent card (intake selector) ──────────────────────────── */
+.mts-intent-card {
+  padding: var(--space-8);
+  background: #fff;
+  border: 1px solid var(--blue-20);
+  border-top: 3px solid var(--interactive);
+  box-shadow: 0 2px 8px rgba(0,82,204,0.06);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 200ms, transform 200ms, background 150ms, color 150ms;
+}
+.mts-intent-card:hover,
+.mts-intent-card.active {
+  box-shadow: 0 8px 24px rgba(0,82,204,0.14);
+  transform: translateY(-3px);
+  background: var(--interactive);
+  color: #fff;
+  border-top-color: var(--cta-primary);
+}
+.mts-intent-card h3 {
+  font-family: var(--font-display); font-size: 16px; font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.mts-intent-card p { font-size: 13px; line-height: 1.55; opacity: 0.75; margin-bottom: var(--space-5); }
+
+.mts-intent-card--green { border-top-color: var(--brand-primary); }
+.mts-intent-card--green:hover, .mts-intent-card--green.active { background: var(--brand-primary); border-top-color: var(--brand-primary); }
+.mts-intent-card--dark { border-top-color: #161616; }
+.mts-intent-card--dark:hover, .mts-intent-card--dark.active { background: #161616; }
+
+.mts-intent-cta {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--interactive); transition: color 150ms;
+}
+.mts-intent-card:hover .mts-intent-cta,
+.mts-intent-card.active .mts-intent-cta { color: rgba(255,255,255,0.9); }
+
+/* ── Process label (inline step/instruction label) ───────────── */
+.mts-process-label {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--interactive);
+  display: block; margin-bottom: var(--space-2);
+}
+
+/* ── Receipt box (confirmation panel) ───────────────────────── */
+.mts-receipt-box {
+  background: var(--layer-01);
+  border: 1px solid var(--blue-20);
+  padding: var(--space-6);
+  text-align: left;
+  margin: var(--space-6) 0;
+}
+.mts-receipt-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+.mts-receipt-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-secondary); margin-bottom: 4px; display: block;
+}
+.mts-receipt-val {
+  font-family: var(--font-mono); font-size: 17px; font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Shortcut card (quick-nav tile) ──────────────────────────── */
+.mts-shortcut-card {
+  padding: var(--space-7);
+  background: #fff;
+  border: 1px solid var(--blue-20);
+  transition: background 150ms, color 150ms, transform 200ms;
+}
+.mts-shortcut-card:hover {
+  background: var(--interactive); color: #fff; transform: translateY(-2px);
+}
+.mts-shortcut-card h4 {
+  font-family: var(--font-display); font-size: 14px; font-weight: 600; margin-bottom: var(--space-4);
+}
+.mts-shortcut-card a {
+  display: block; font-family: var(--font-mono); font-size: 11px;
+  color: var(--interactive); text-decoration: none; margin-bottom: var(--space-2);
+}
+.mts-shortcut-card:hover a { color: rgba(255,255,255,0.85); }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .mts-form-row          { grid-template-columns: 1fr; }
   .mts-form-checkbox-grid { grid-template-columns: 1fr; }
   .mts-form-card         { padding: var(--space-6); }
+  .mts-receipt-row       { grid-template-columns: 1fr; }
 }
