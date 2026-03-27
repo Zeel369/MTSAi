@@ -1,0 +1,267 @@
+/* ============================================================
+   MTSAi Design System — Data Visualisation Tokens
+   Colour palettes for charts, graphs, and maps.
+   Designed for WCAG 2.1 AA contrast on both light and dark
+   backgrounds, and distinguishable for the most common forms
+   of colour blindness (deuteranopia, protanopia, tritanopia).
+   Reference: IBM Carbon Data Visualization, Polaris charts
+   ============================================================ */
+
+:root {
+
+  /* ── Categorical palette (up to 14 series) ─────────────── */
+  /* Use in order: cat-01 → cat-02 → ... for sequential series */
+  --viz-cat-01: #0052CC;   /* MTSAi Blue   — primary data series */
+  --viz-cat-02: #53AA00;   /* MTSAi Green  — secondary series */
+  --viz-cat-03: #FF9933;   /* MTSAi Saffron — third series */
+  --viz-cat-04: #1192E8;   /* Cyan         — fourth series */
+  --viz-cat-05: #9B59B6;   /* Purple       — fifth series */
+  --viz-cat-06: #E74C3C;   /* Coral Red    — sixth series */
+  --viz-cat-07: #2ECC71;   /* Emerald      — seventh series */
+  --viz-cat-08: #F39C12;   /* Amber        — eighth series */
+  --viz-cat-09: #1ABC9C;   /* Teal         — ninth series */
+  --viz-cat-10: #E67E22;   /* Orange       — tenth series */
+  --viz-cat-11: #3498DB;   /* Sky Blue     — eleventh series */
+  --viz-cat-12: #27AE60;   /* Forest Green — twelfth series */
+  --viz-cat-13: #8E44AD;   /* Violet       — thirteenth series */
+  --viz-cat-14: #D35400;   /* Burnt Orange — fourteenth series */
+
+  /* Semantic shorthand arrays (for JS charting libs) */
+  --viz-palette-3:  var(--viz-cat-01), var(--viz-cat-02), var(--viz-cat-03);
+  --viz-palette-5:  var(--viz-cat-01), var(--viz-cat-02), var(--viz-cat-03), var(--viz-cat-04), var(--viz-cat-05);
+
+  /* ── Sequential palettes (single-hue intensity scales) ─── */
+  /* Blue sequential (low → high intensity) */
+  --viz-seq-blue-01: #E6F0FD;
+  --viz-seq-blue-02: #B3D1F9;
+  --viz-seq-blue-03: #80B3F2;
+  --viz-seq-blue-04: #4D8FE8;
+  --viz-seq-blue-05: #1A6ADB;
+  --viz-seq-blue-06: #0052CC;
+  --viz-seq-blue-07: #0040AA;
+  --viz-seq-blue-08: #002B80;
+
+  /* Green sequential */
+  --viz-seq-green-01: #DEFBE6;
+  --viz-seq-green-02: #A7F0BA;
+  --viz-seq-green-03: #6FDC8C;
+  --viz-seq-green-04: #42BE65;
+  --viz-seq-green-05: #53AA00;
+  --viz-seq-green-06: #198038;
+  --viz-seq-green-07: #0E6027;
+  --viz-seq-green-08: #022D0D;
+
+  /* Saffron/Orange sequential */
+  --viz-seq-saffron-01: #FFF5EB;
+  --viz-seq-saffron-02: #FFE5CC;
+  --viz-seq-saffron-03: #FFCC99;
+  --viz-seq-saffron-04: #FFB366;
+  --viz-seq-saffron-05: #FF9933;
+  --viz-seq-saffron-06: #E36A00;
+  --viz-seq-saffron-07: #BA4E00;
+  --viz-seq-saffron-08: #8A3800;
+
+  /* ── Diverging palettes (negative ↔ neutral ↔ positive) ── */
+  /* Blue–Red (performance below/above target) */
+  --viz-div-neg-strong: #A82020;
+  --viz-div-neg-mid:    #E85555;
+  --viz-div-neg-light:  #F28080;
+  --viz-div-neutral:    #E0E0E0;
+  --viz-div-pos-light:  #6FDC8C;
+  --viz-div-pos-mid:    #53AA00;
+  --viz-div-pos-strong: #0E6027;
+
+  /* Blue–Orange (for maps, heatmaps) */
+  --viz-div2-neg-strong: #002B80;
+  --viz-div2-neg-mid:    #0052CC;
+  --viz-div2-neg-light:  #80B3F2;
+  --viz-div2-neutral:    #F4F4F4;
+  --viz-div2-pos-light:  #FFB366;
+  --viz-div2-pos-mid:    #FF9933;
+  --viz-div2-pos-strong: #BA4E00;
+
+  /* ── Status / traffic-light colours (for KPI charts) ───── */
+  --viz-status-good:    #53AA00;
+  --viz-status-warning: #FF9933;
+  --viz-status-critical: #D82B2B;
+  --viz-status-neutral: #8D8D8D;
+  --viz-status-info:    #0052CC;
+
+  /* ── Chart UI tokens ────────────────────────────────────── */
+  --viz-axis-line:      var(--border-subtle);
+  --viz-axis-label:     var(--text-secondary);
+  --viz-grid-line:      rgba(0, 0, 0, 0.06);
+  --viz-grid-line-dark: rgba(255, 255, 255, 0.06);
+  --viz-tooltip-bg:     #161616;
+  --viz-tooltip-text:   #F4F4F4;
+  --viz-tooltip-border: rgba(255,255,255,0.08);
+  --viz-legend-text:    var(--text-secondary);
+  --viz-highlight:      rgba(0, 82, 204, 0.15);   /* hover highlight overlay */
+  --viz-selection:      rgba(0, 82, 204, 0.25);   /* selected region overlay */
+
+  /* ── Chart sizing tokens ────────────────────────────────── */
+  --viz-bar-min-width:  4px;
+  --viz-bar-max-width:  48px;
+  --viz-dot-size:       6px;
+  --viz-dot-size-lg:    10px;
+  --viz-stroke-width:   2px;
+  --viz-stroke-width-lg: 3px;
+
+  /* ── Light theme overrides ──────────────────────────────── */
+}
+
+[data-theme="light"] {
+  --viz-axis-line:     #E0E0E0;
+  --viz-grid-line:     rgba(0, 0, 0, 0.06);
+  --viz-tooltip-bg:    #161616;      /* tooltip stays dark for contrast */
+}
+
+/* ── Chart container patterns ─────────────────────────────
+   Utility classes for wrapping charting library canvases.
+   ─────────────────────────────────────────────────────── */
+
+/* Responsive wrapper — maintains 16:9 aspect by default */
+.mts-chart {
+  position: relative;
+  width: 100%;
+}
+.mts-chart--16-9  { aspect-ratio: 16 / 9; }
+.mts-chart--4-3   { aspect-ratio: 4 / 3; }
+.mts-chart--sq    { aspect-ratio: 1 / 1; }
+.mts-chart--fixed { height: 320px; }
+.mts-chart--sm    { height: 200px; }
+.mts-chart--lg    { height: 480px; }
+
+.mts-chart canvas,
+.mts-chart svg {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Chart card wrapper */
+.mts-chart-card {
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-6);
+}
+
+.mts-chart-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  gap: var(--space-5);
+}
+
+.mts-chart-card__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mts-chart-card__subtitle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+/* Legend row */
+.mts-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.mts-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--viz-legend-text);
+}
+
+.mts-chart-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mts-chart-legend__line {
+  width: 20px;
+  height: 3px;
+  flex-shrink: 0;
+}
+
+/* Colour swatch helpers for legend dots */
+.mts-chart-legend__dot--01 { background: var(--viz-cat-01); }
+.mts-chart-legend__dot--02 { background: var(--viz-cat-02); }
+.mts-chart-legend__dot--03 { background: var(--viz-cat-03); }
+.mts-chart-legend__dot--04 { background: var(--viz-cat-04); }
+.mts-chart-legend__dot--05 { background: var(--viz-cat-05); }
+.mts-chart-legend__dot--06 { background: var(--viz-cat-06); }
+
+/* Donut / pie centre label */
+.mts-chart-donut-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.mts-chart-donut-label__val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.mts-chart-donut-label__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+/* Mini sparkline container */
+.mts-sparkline {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  min-width: 80px;
+}
+.mts-sparkline canvas,
+.mts-sparkline svg { display: block; }
+
+/* ── Colour reference table (used in design docs) ──────── */
+.mts-viz-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.mts-viz-palette__swatch {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,0.08);
+  position: relative;
+}
+.mts-viz-palette__swatch::after {
+  content: attr(data-name);
+  position: absolute;
+  top: 44px;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}

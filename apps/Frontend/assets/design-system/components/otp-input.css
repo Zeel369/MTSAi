@@ -1,0 +1,117 @@
+/* ============================================================
+   MTSAi Design System — OTP / PIN Input
+   Provides: 4, 6, and 8-digit code entry fields.
+   Each digit is a separate <input type="text"> inside
+   .mts-otp; JS in site.js auto-advances focus.
+   Usage:
+     <div class="mts-otp" data-otp>
+       <input class="mts-otp__cell" type="text" maxlength="1" inputmode="numeric">
+       ... × 6
+     </div>
+   ============================================================ */
+
+/* ── Container ───────────────────────────────────────────── */
+.mts-otp {
+  display: inline-flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* Gap variants */
+.mts-otp--tight { gap: var(--space-2); }
+.mts-otp--loose { gap: var(--space-4); }
+
+/* ── Cell ─────────────────────────────────────────────────── */
+.mts-otp__cell {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  outline: none;
+  caret-color: var(--interactive);
+  transition: border-color 150ms, box-shadow 150ms;
+  /* Remove browser spinners */
+  -moz-appearance: textfield;
+}
+.mts-otp__cell::-webkit-outer-spin-button,
+.mts-otp__cell::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.mts-otp__cell:focus {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.14);
+  z-index: 1;
+}
+
+.mts-otp__cell.filled {
+  border-color: var(--border-strong);
+  background: var(--layer-01);
+}
+
+/* ── States ──────────────────────────────────────────────── */
+.mts-otp--error   .mts-otp__cell { border-color: var(--red-50); }
+.mts-otp--error   .mts-otp__cell:focus { box-shadow: 0 0 0 3px rgba(218, 30, 40, 0.12); }
+.mts-otp--success .mts-otp__cell { border-color: var(--brand-primary); }
+.mts-otp--success .mts-otp__cell:focus { box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.14); }
+
+/* ── Separator (e.g. dash between groups) ─────────────────── */
+.mts-otp__sep {
+  color: var(--text-secondary);
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 var(--space-1);
+  user-select: none;
+}
+
+/* ── Sizes ───────────────────────────────────────────────── */
+.mts-otp--sm .mts-otp__cell {
+  width: 36px;
+  height: 44px;
+  font-size: 17px;
+}
+
+.mts-otp--lg .mts-otp__cell {
+  width: 60px;
+  height: 68px;
+  font-size: 28px;
+}
+
+/* ── Dark variant ────────────────────────────────────────── */
+.mts-otp--dark .mts-otp__cell {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.mts-otp--dark .mts-otp__cell:focus {
+  border-color: var(--blue-40);
+  box-shadow: 0 0 0 3px rgba(77, 143, 232, 0.20);
+}
+.mts-otp--dark .mts-otp__cell.filled {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Status message below field ──────────────────────────── */
+.mts-otp-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+.mts-otp-wrap__hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.mts-otp-wrap__error {
+  font-size: 12px;
+  color: var(--red-50);
+  text-align: center;
+  display: none;
+}
+.mts-otp--error ~ .mts-otp-wrap__error,
+.mts-otp-wrap.has-error .mts-otp-wrap__error { display: block; }

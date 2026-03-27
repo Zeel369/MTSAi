@@ -1,0 +1,86 @@
+/* ============================================================
+   MTSAi Design System — Density Tokens
+   Controls: compact / comfortable / spacious modes
+   Apply .mts-density--compact or .mts-density--spacious
+   to <html> or any container to shift component scale.
+   Reference: IBM Carbon, Material M3 density
+   ============================================================ */
+
+/* ── Default (comfortable) — same as current token values ── */
+:root {
+  --density-input-height:    var(--input-height-md);     /* 48px */
+  --density-btn-height:      var(--btn-height-md);        /* 48px */
+  --density-row-padding-y:   var(--space-4);              /* 12px */
+  --density-cell-padding-y:  var(--space-4);
+  --density-cell-padding-x:  var(--space-5);
+  --density-gap:             var(--space-5);              /* 16px */
+  --density-card-padding:    var(--space-8);              /* 40px */
+  --density-nav-item-height: 44px;
+  --density-icon-size:       var(--size-icon-md);         /* 20px */
+}
+
+/* ── Compact density — tighter spacing for data-dense UIs ── */
+.mts-density--compact {
+  --density-input-height:    var(--input-height-sm);     /* 32px */
+  --density-btn-height:      var(--btn-height-sm);        /* 32px */
+  --density-row-padding-y:   var(--space-2);              /* 4px */
+  --density-cell-padding-y:  var(--space-2);
+  --density-cell-padding-x:  var(--space-4);
+  --density-gap:             var(--space-3);              /* 8px */
+  --density-card-padding:    var(--space-5);              /* 16px */
+  --density-nav-item-height: 32px;
+  --density-icon-size:       var(--size-icon-sm);         /* 16px */
+}
+
+/* ── Spacious density — airy layout for content/marketing ── */
+.mts-density--spacious {
+  --density-input-height:    var(--input-height-lg);     /* 64px */
+  --density-btn-height:      var(--btn-height-lg);        /* 64px */
+  --density-row-padding-y:   var(--space-6);              /* 24px */
+  --density-cell-padding-y:  var(--space-6);
+  --density-cell-padding-x:  var(--space-7);
+  --density-gap:             var(--space-7);              /* 32px */
+  --density-card-padding:    var(--space-10);             /* 64px */
+  --density-nav-item-height: 56px;
+  --density-icon-size:       var(--size-icon-lg);         /* 24px */
+}
+
+/* ── Apply density tokens to components ───────────────────── */
+
+/* Inputs */
+.mts-density--compact input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.mts-density--compact select,
+.mts-density--compact textarea,
+.mts-density--spacious input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.mts-density--spacious select {
+  height: var(--density-input-height);
+}
+
+/* Buttons */
+.mts-density--compact .mts-btn,
+.mts-density--spacious .mts-btn {
+  height: var(--density-btn-height);
+}
+
+/* Table rows */
+.mts-density--compact .mts-table td,
+.mts-density--compact .mts-table th {
+  padding-top: var(--density-cell-padding-y);
+  padding-bottom: var(--density-cell-padding-y);
+  padding-left: var(--density-cell-padding-x);
+  padding-right: var(--density-cell-padding-x);
+}
+
+/* Cards */
+.mts-density--compact .mts-card--feature,
+.mts-density--compact .mts-card--dark,
+.mts-density--compact .mts-card--challenge,
+.mts-density--compact .mts-card--approach {
+  padding: var(--density-card-padding);
+}
+
+/* Nav items */
+.mts-density--compact .mts-side-nav__item {
+  padding-top: var(--density-row-padding-y);
+  padding-bottom: var(--density-row-padding-y);
+}

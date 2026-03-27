@@ -19,6 +19,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -26,11 +29,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -73,14 +104,12 @@
     
     
     
-     50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
-
     /* HERO */
-    .hero-about { background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%); position: relative; overflow: hidden; padding: clamp(80px,12vw,140px) 0; min-height: 540px; display: flex; align-items: center; }
-    .hero-about::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 12% 50%, rgba(0,82,204,0.42) 0%, transparent 65%); pointer-events: none; }
+    .hero-about { background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%); position: relative; overflow: hidden; padding: clamp(100px,13vw,160px) 0; min-height: 600px; display: flex; align-items: center; }
+    .hero-about::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 85% at 8% 50%, rgba(0,82,204,0.38) 0%, transparent 65%); pointer-events: none; }
     .hero-about-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0' cy='0' r='1' fill='rgba(255%2C255%2C255%2C0.07)'/%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(255%2C255%2C255%2C0.07)'/%3E%3C%2Fsvg%3E"); background-size: 60px 60px; pointer-events: none; }
     .hero-about-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%); z-index: 10; }
-    .hero-about-inner { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 380px; gap: var(--space-12); align-items: center; }
+    .hero-about-inner { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 400px; gap: clamp(40px,6vw,96px); align-items: center; }
     .hero-about-headline { font-family: var(--font-display); font-size: clamp(40px,5.5vw,80px); font-weight: 700; line-height: 0.98; letter-spacing: -0.04em; color: #fff; margin: var(--space-6) 0; }
     
     .hero-about-sub { font-size: clamp(15px,1.3vw,18px); color: rgba(255,255,255,0.78); max-width: 560px; line-height: 1.72; margin-bottom: var(--space-8); }
@@ -89,7 +118,7 @@
     .hero-about .mts-btn--ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.65); color: #fff; }
 
     /* STATUS PANEL */
-    .status-panel { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
+    .status-panel { background: rgba(0,0,0,0.40); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .status-cell { padding: var(--space-6); border-bottom: 1px solid rgba(255,255,255,0.08); transition: background 150ms; }
     .status-cell:last-child { border-bottom: none; }
     .status-cell:hover { background: rgba(255,255,255,0.06); }
@@ -109,7 +138,7 @@
 
     /* SECTIONS */
     
-    .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .mts-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
     
 
     
@@ -122,18 +151,24 @@
     
 
     /* TIMELINE */
-    .timeline { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; border: 1px solid var(--blue-20); background: #fff; }
-    .timeline-item { padding: var(--space-7); border-right: 1px solid var(--border-subtle); position: relative; transition: background 150ms; }
+    .timeline { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; border: 1px solid var(--blue-20); box-shadow: 0 4px 32px rgba(0,82,204,0.10); }
+    .timeline-item { padding: var(--space-7) var(--space-6); border-right: 1px solid var(--border-subtle); position: relative; transition: background 200ms; background: #fff; }
     .timeline-item:last-child { border-right: none; }
     .timeline-item:hover { background: var(--layer-01); }
-    .timeline-item--active { background: var(--brand-primary); }
-    .timeline-item--active:hover { background: var(--brand-primary); }
-    .timeline-year { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--interactive); margin-bottom: var(--space-3); display: block; }
+    .timeline-item--active { background: var(--interactive); }
+    .timeline-item--active:hover { background: #0043a8; }
+    /* Progress indicator at top of each completed item */
+    .timeline-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue-20); }
+    .timeline-item--active::before { background: linear-gradient(90deg, #6FDC8C, #42be65); }
+    /* Step number badge */
+    .timeline-step { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-4); display: block; }
+    .timeline-item--active .timeline-step { color: rgba(255,255,255,0.65); }
+    .timeline-year { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--interactive); margin-bottom: var(--space-3); display: block; line-height: 1; }
     .timeline-item--active .timeline-year { color: #fff; }
-    .timeline-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
+    .timeline-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); }
     .timeline-item--active .timeline-title { color: #fff; }
-    .timeline-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-    .timeline-item--active .timeline-desc { color: rgba(255,255,255,0.80); }
+    .timeline-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+    .timeline-item--active .timeline-desc { color: rgba(255,255,255,0.82); }
     .timeline-connector { position: absolute; top: 20px; right: -1px; width: 2px; height: 2px; background: var(--interactive); }
 
     /* MISSION CARDS */
@@ -243,8 +278,9 @@
     .delay-3.reveal { transition-delay: 240ms; }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) { .hero-about-inner, .founder-grid { grid-template-columns: 1fr; } .timeline { grid-template-columns: 1fr 1fr; } .jurisdiction-grid, .mission-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { .mts-nav__links,     .cta-actions, .hero-about-ctas { flex-direction: column; } .mission-grid, .jurisdiction-grid, .timeline { grid-template-columns: 1fr; } }
+    @media (max-width: 1200px) { .timeline { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 1024px) { .hero-about-inner, .founder-grid { grid-template-columns: 1fr; } .timeline { grid-template-columns: 1fr 1fr; } .jurisdiction-grid, .mission-grid { grid-template-columns: 1fr 1fr; } .hero-about-inner { gap: var(--space-10); } }
+    @media (max-width: 768px) { .mts-nav__links, .cta-actions, .hero-about-ctas { flex-direction: column; } .mission-grid, .jurisdiction-grid, .timeline { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -283,15 +319,22 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero-about" aria-label="About MTSAi">
+    <section class="hero-about" aria-label="About MTSAi" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.58) 0%, rgba(0,7,32,0.68) 50%, rgba(0,4,15,0.82) 100%), url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center top;">
       <div class="hero-about-pattern" aria-hidden="true"></div>
       <div class="hero-about-accent" aria-hidden="true"></div>
       <div class="mts-container hero-about-inner">
         <div>
-          <div style="margin-bottom:var(--space-5);"><span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">About MTSAi</span></div>
+          <div style="margin-bottom:var(--space-5);"><span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.28);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;">About MTSAi</span></div>
           <h1 class="hero-about-headline">Transforming Cities Through<br><span class="headline-accent">AI-Powered Mobility.</span></h1>
           <p class="hero-about-sub">MTSAi brings international best practices to Indian cities through procurement-ready architecture, audit-grade transparency, and equity-by-design controls that put citizens first.</p>
-          <div class="hero-about-ctas">
+          <div style="display:flex;gap:var(--space-5);margin-top:var(--space-4);flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Founded</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">2019</span></div>
+            <div style="width:1px;background:rgba(255,255,255,0.18);"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Jurisdictions</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">4</span></div>
+            <div style="width:1px;background:rgba(255,255,255,0.18);"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Pilot Target</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--cta-primary);">Q2 2026</span></div>
+          </div>
+          <div class="hero-about-ctas" style="margin-top:var(--space-8);">
             <a href="Government.html" class="mts-btn mts-btn--primary mts-btn--lg">Government Solutions →</a>
             <a href="Strategic_Partners.html" class="mts-btn mts-btn--ghost mts-btn--lg">Strategic Partners</a>
           </div>
@@ -305,10 +348,12 @@
           <div class="status-cell">
             <span class="status-cell-label">Focus Market</span>
             <div class="status-cell-val">Tier-2 Cities</div>
+            <p class="status-cell-desc">India's 300+ rapidly urbanising mid-size cities.</p>
           </div>
           <div class="status-cell status-cell--saffron">
             <span class="status-cell-label">Launch Target</span>
             <div class="status-cell-val">Q2 2026</div>
+            <p class="status-cell-desc">First pilot city procurement in progress.</p>
           </div>
           <div class="status-cell">
             <span class="status-cell-label">Compliance Design</span>
@@ -327,44 +372,50 @@
     </div>
 
     <!-- TIMELINE -->
-    <section class="section reveal-group" aria-label="Company Journey">
+    <section class="mts-section reveal-group" aria-label="Company Journey">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">02 // Building the Foundation</span>
           <h2 class="mts-section__h2 reveal">Our Journey</h2>
+          <p class="mts-section__body reveal">From a single vision in Vancouver to a procurement-ready platform serving Indian cities — seven years of deliberate, verifiable progress.</p>
         </div>
         <div class="timeline reveal delay-2">
           <div class="timeline-item">
+            <span class="timeline-step">01 / Founded</span>
             <span class="timeline-year">2019</span>
             <div class="timeline-title">Company Founded</div>
-            <div class="timeline-desc">Vision established in Vancouver, Canada.</div>
+            <p class="timeline-desc">Vision established in Vancouver, Canada. Research into congestion pricing models and government procurement cycles begins.</p>
           </div>
           <div class="timeline-item">
+            <span class="timeline-step">02 / R&amp;D</span>
             <span class="timeline-year">2021</span>
             <div class="timeline-title">R&amp;D Partnerships</div>
-            <div class="timeline-desc">Budapest University collaboration begins.</div>
+            <p class="timeline-desc">Budapest University of Technology collaboration begins. Occupancy detection feasibility study using Bluetooth and WiFi signals.</p>
           </div>
           <div class="timeline-item">
+            <span class="timeline-step">03 / Expansion</span>
             <span class="timeline-year">2023</span>
             <div class="timeline-title">India Operations</div>
-            <div class="timeline-desc">Bangalore HQ established.</div>
+            <p class="timeline-desc">Bangalore HQ established. 50% operational presence committed. ANPR partner Adaptive Recognition integration scoped for India.</p>
           </div>
           <div class="timeline-item">
+            <span class="timeline-step">04 / Alignment</span>
             <span class="timeline-year">2024</span>
             <div class="timeline-title">GoI Alignment</div>
-            <div class="timeline-desc">Smart Cities Mission integration.</div>
+            <p class="timeline-desc">Smart Cities Mission integration mapped. DPDP, CERT-In, and GIGW compliance frameworks embedded into platform architecture.</p>
           </div>
           <div class="timeline-item timeline-item--active">
+            <span class="timeline-step">05 / Now</span>
             <span class="timeline-year">2026</span>
             <div class="timeline-title">Pilot Ready</div>
-            <div class="timeline-desc">Deployment partnerships active.</div>
+            <p class="timeline-desc">Platform ready for city-wide deployment. Procurement partnerships active. First Tier-2 city evaluation underway.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- MISSION -->
-    <section class="section section-alt reveal-group" aria-label="Mission and Approach">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Mission and Approach">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">03 // What We Stand For</span>
@@ -391,7 +442,7 @@
     </section>
 
     <!-- FOUNDER -->
-    <section class="section reveal-group" aria-label="Founder and Leadership">
+    <section class="mts-section reveal-group" aria-label="Founder and Leadership">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">04 // Leadership</span>
@@ -418,7 +469,7 @@
     </section>
 
     <!-- CAPITAL STRUCTURE -->
-    <section class="section section-alt reveal-group" aria-label="Capital Structure">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Capital Structure">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Financing Posture</span>
@@ -444,7 +495,7 @@
     </section>
 
     <!-- R&D PARTNERSHIPS -->
-    <section class="section reveal-group" aria-label="Strategic Partnerships and R&D">
+    <section class="mts-section reveal-group" aria-label="Strategic Partnerships and R&D">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">06 // Research Network</span>
@@ -500,7 +551,7 @@
     </div>
 
     <!-- MULTI-JURISDICTION -->
-    <section class="section section-alt reveal-group" aria-label="Multi-Jurisdiction Structure">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Multi-Jurisdiction Structure">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Global Operations</span>
@@ -551,7 +602,7 @@
     </section>
 
     <!-- STATUS DISCLOSURE -->
-    <section class="section reveal-group" aria-label="Platform Status Disclosure">
+    <section class="mts-section reveal-group" aria-label="Platform Status Disclosure">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">08 // Transparency</span>
@@ -575,7 +626,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="mts-mts-section-cta" aria-label="Call to action">
+    <section class="mts-section-cta" aria-label="Call to action">
       <div class="mts-container">
         <div class="reveal">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">Engage MTSAi</span>
@@ -651,5 +702,6 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

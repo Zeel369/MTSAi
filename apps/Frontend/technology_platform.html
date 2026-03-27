@@ -27,6 +27,9 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -34,11 +37,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -113,7 +144,7 @@
 
     /* SECTIONS */
     
-    .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .mts-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
     
     
 
@@ -282,7 +313,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard" aria-label="Technology Platform introduction">
+    <section class="mts-hero mts-hero--standard" aria-label="Technology Platform introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
@@ -299,6 +330,22 @@
         <div class="mts-hero__ctas">
           <a href="Government.html" class="mts-btn mts-btn--primary mts-btn--lg">Explore the Government Platform →</a>
           <a href="contact.html?intent=government" class="mts-btn mts-btn--ghost mts-btn--lg">Request Government Briefing</a>
+        </div>
+        <div class="mts-hero__stats" role="list" style="margin-top:var(--space-10);">
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">6+</span>
+            <span class="mts-hero__stat-label">Platform modules</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">5</span>
+            <span class="mts-hero__stat-label">Architecture layers</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">100%</span>
+            <span class="mts-hero__stat-label">Govt-controlled config</span>
+          </div>
         </div>
       </div>
     </section>
@@ -324,20 +371,18 @@
     </div>
 
     <!-- PAGE SUB-NAV -->
-    <nav class="page-nav" aria-label="Platform sections">
-      <div class="page-nav__inner">
-        <a href="#overview">Overview</a>
-        <a href="#policy-layer">Policy Layer</a>
-        <a href="#core-engines">Core Engines</a>
-        <a href="#data-events">Data Processing</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#deployment">Deployment</a>
-      </div>
+    <nav class="mts-tab-bar" aria-label="Platform sections" style="position:sticky;top:64px;z-index:90;background:#fff;border-bottom:1px solid var(--blue-20);">
+      <a href="#overview" class="mts-tab-bar__item active">Overview</a>
+      <a href="#policy-layer" class="mts-tab-bar__item">Policy Layer</a>
+      <a href="#core-engines" class="mts-tab-bar__item">Core Engines</a>
+      <a href="#data-events" class="mts-tab-bar__item">Data Processing</a>
+      <a href="#ecosystem" class="mts-tab-bar__item">Ecosystem</a>
+      <a href="#privacy" class="mts-tab-bar__item">Privacy</a>
+      <a href="#deployment" class="mts-tab-bar__item">Deployment</a>
     </nav>
 
     <!-- OVERVIEW -->
-    <section class="section reveal-group" id="overview" aria-label="Platform Architecture Overview">
+    <section class="mts-section reveal-group" id="overview" aria-label="Platform Architecture Overview">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">01 // Multi-Tenant IUDM Platform</span>
@@ -375,9 +420,15 @@
                 <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
               </div>
             </div>
-            <div class="arch-stats">
-              <div><span class="arch-stat-num">6+</span><span class="arch-stat-label">Core modules</span></div>
-              <div><span class="arch-stat-num">4</span><span class="arch-stat-label">Integration types</span></div>
+            <div style="display:flex;gap:var(--space-5);margin-top:var(--space-7);">
+              <div class="mts-metric-card mts-metric-card--blue">
+                <div class="mts-metric-card__label">Core Modules</div>
+                <div class="mts-metric-card__val">6+</div>
+              </div>
+              <div class="mts-metric-card mts-metric-card--green">
+                <div class="mts-metric-card__label">Integration Types</div>
+                <div class="mts-metric-card__val">4</div>
+              </div>
             </div>
             <p style="font-size:12px;color:var(--text-secondary);letter-spacing:0.04em;margin-top:var(--space-5);">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</p>
           </div>
@@ -386,7 +437,7 @@
     </section>
 
     <!-- POLICY LAYER -->
-    <section class="section section-alt reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
+    <section class="mts-section mts-section--alt reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Government Control</span>
@@ -427,7 +478,7 @@
     </section>
 
     <!-- CORE ENGINES -->
-    <section class="section reveal-group" id="core-engines" aria-label="Core Platform Engines">
+    <section class="mts-section reveal-group" id="core-engines" aria-label="Core Platform Engines">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">03 // Deterministic Policy Services</span>
@@ -494,7 +545,7 @@
     </section>
 
     <!-- DATA EVENTS -->
-    <section class="section section-alt reveal-group" id="data-events" aria-label="Data and Event Processing Layer">
+    <section class="mts-section mts-section--alt reveal-group" id="data-events" aria-label="Data and Event Processing Layer">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">04 // Event Pipeline</span>
@@ -524,7 +575,7 @@
     </section>
 
     <!-- ECOSYSTEM -->
-    <section class="section reveal-group" id="ecosystem" aria-label="Digital Mobility Ecosystem Integration">
+    <section class="mts-section reveal-group" id="ecosystem" aria-label="Digital Mobility Ecosystem Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">05 // Super App Gateway</span>
@@ -583,7 +634,7 @@
     </div>
 
     <!-- PRIVACY -->
-    <section class="section reveal-group" id="privacy" style="background:#0D1B40;" aria-label="Privacy and Data Governance">
+    <section class="mts-section reveal-group" id="privacy" style="background:#0D1B40;" aria-label="Privacy and Data Governance">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">06 // Tenant Isolation</span>
@@ -625,7 +676,15 @@
     </section>
 
     <!-- DEPLOYMENT -->
-    <section class="section section-alt reveal-group" id="deployment" aria-label="Infrastructure and Deployment">
+    <div class="mts-photo-strip reveal">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80&auto=format&fit=crop" alt="Data centre server infrastructure — interconnected rack systems powering cloud-native urban mobility platform" loading="lazy">
+      <div class="mts-photo-strip__caption">
+        <span class="mts-photo-strip__label">Cloud Infrastructure · AWS Mumbai Region · Data Residency Compliant</span>
+        <span class="mts-photo-strip__tag">● Infrastructure</span>
+      </div>
+    </div>
+
+    <section class="mts-section mts-section--alt reveal-group" id="deployment" aria-label="Infrastructure and Deployment">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Cloud Posture</span>
@@ -670,7 +729,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="mts-mts-section-cta" aria-label="Call to action">
+    <section class="mts-section-cta" aria-label="Call to action">
       <div class="mts-container">
         <div class="reveal">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
@@ -791,5 +850,6 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

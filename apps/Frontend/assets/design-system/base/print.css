@@ -1,0 +1,202 @@
+/* ============================================================
+   MTSAi Design System — Print Styles
+   Hides interactive UI; optimises typography for paper/PDF.
+   Reference: HTML5 Boilerplate (MIT), Gutenberg CSS (MIT)
+   ============================================================ */
+
+@media print {
+
+  /* ── Page setup ────────────────────────────────────────── */
+  @page {
+    margin: 2cm;
+    size: A4 portrait;
+  }
+
+  @page :first {
+    margin-top: 3cm;
+  }
+
+  /* ── Hide interactive / decorative elements ────────────── */
+  .mts-nav,
+  .mts-footer,
+  .mts-side-nav,
+  .mts-nav-rail,
+  .mts-announce-bar,
+  .mts-modal,
+  .mts-drawer,
+  .mts-bottom-sheet,
+  .mts-command-palette,
+  .mts-spotlight,
+  .mts-tooltip,
+  .mts-popover,
+  .mts-context-menu,
+  .mts-btn--icon,
+  [data-particles],
+  [data-parallax],
+  .scroll-progress,
+  #red-scroll-progress,
+  #scroll-progress,
+  .mobile-menu-toggle,
+  #mobile-menu,
+  .mts-hero__scroll-cue,
+  .no-print {
+    display: none !important;
+  }
+
+  /* ── Base resets ────────────────────────────────────────── */
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html, body {
+    font-size: 12pt;
+    line-height: 1.5;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  /* ── Links ──────────────────────────────────────────────── */
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  /* Show href after links (not for navigation, anchors, or javascript) */
+  a[href]:not([href^="#"]):not([href^="javascript"]):not([class*="btn"]):not([class*="mts-btn"])::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    font-style: italic;
+    word-break: break-all;
+  }
+
+  /* ── Typography ─────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h1 { font-size: 22pt; }
+  h2 { font-size: 18pt; }
+  h3 { font-size: 14pt; }
+  h4 { font-size: 12pt; }
+
+  p, blockquote, ul, ol, dl, table {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ── Page breaks ────────────────────────────────────────── */
+  .mts-hero        { page-break-after: avoid; }
+  .mts-section     { page-break-inside: avoid; }
+  .mts-card--feature,
+  .mts-card--dark,
+  .mts-card--insight { page-break-inside: avoid; }
+  .page-break      { page-break-before: always; break-before: always; }
+  .no-page-break   { page-break-inside: avoid; break-inside: avoid; }
+
+  /* ── Container / layout ─────────────────────────────────── */
+  .mts-container,
+  .mts-center {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Collapse grids to single column */
+  .mts-grid--2,
+  .mts-grid--3,
+  .mts-grid--4,
+  .mts-grid--auto-sm,
+  .mts-grid--auto-md,
+  .mts-feature-grid,
+  .mts-dark-grid,
+  .mts-two-col {
+    display: block !important;
+  }
+  .mts-grid--2 > *,
+  .mts-grid--3 > *,
+  .mts-grid--4 > * {
+    break-inside: avoid;
+    margin-bottom: 1em;
+  }
+
+  /* ── Cards ──────────────────────────────────────────────── */
+  .mts-card--feature,
+  .mts-card--insight,
+  .mts-card--dark,
+  .mts-card--challenge,
+  .mts-card--approach {
+    border: 1pt solid #999 !important;
+    padding: 12pt !important;
+    margin-bottom: 12pt;
+    break-inside: avoid;
+  }
+  /* Remove decorative borders */
+  .mts-card--feature { border-top-width: 1pt !important; }
+  .mts-card--challenge { border-left-width: 1pt !important; }
+
+  /* ── KPI strip ──────────────────────────────────────────── */
+  .mts-kpi-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12pt;
+    border: 1pt solid #ccc !important;
+    padding: 12pt !important;
+  }
+
+  /* ── Tables ─────────────────────────────────────────────── */
+  table {
+    border-collapse: collapse !important;
+    width: 100%;
+  }
+  th, td {
+    border: 0.5pt solid #ccc !important;
+    padding: 4pt 8pt !important;
+    text-align: left;
+  }
+  thead {
+    display: table-header-group;
+    background: #f0f0f0 !important;
+  }
+  tr { page-break-inside: avoid; }
+
+  /* ── Images ─────────────────────────────────────────────── */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* ── Code ───────────────────────────────────────────────── */
+  pre, code {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 10pt;
+    border: 0.5pt solid #ccc;
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    padding: 4pt 6pt;
+    page-break-inside: avoid;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* ── Footer disclaimer (keep in print) ─────────────────── */
+  .mts-footer__disclaimer {
+    display: block !important;
+    border: 0.5pt solid #ccc !important;
+    font-size: 9pt;
+    page-break-before: always;
+  }
+
+  /* ── Print-only content ─────────────────────────────────── */
+  .print-only {
+    display: block !important;
+  }
+
+}

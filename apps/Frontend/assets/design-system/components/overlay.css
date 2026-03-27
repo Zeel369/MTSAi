@@ -1,0 +1,541 @@
+/* ============================================================
+   MTSAi Design System — Overlay Components
+   Provides: bottom sheet, hover card, spotlight/onboarding,
+             command palette, drawer, context menu
+   Reference: Radix UI Primitives, IBM Carbon, Material M3
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   BOTTOM SHEET
+   Mobile-native panel that slides up from bottom.
+   JS should toggle .open class + set aria-hidden.
+════════════════════════════════════════════════════════════════ */
+.mts-bottom-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+}
+.mts-bottom-sheet.open { pointer-events: auto; }
+
+.mts-bottom-sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.mts-bottom-sheet.open .mts-bottom-sheet__backdrop { opacity: 1; }
+
+.mts-bottom-sheet__panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: var(--space-7) var(--space-6);
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 350ms cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.15);
+}
+.mts-bottom-sheet.open .mts-bottom-sheet__panel {
+  transform: translateY(0);
+}
+
+.mts-bottom-sheet__handle {
+  width: 40px;
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  margin: 0 auto var(--space-6);
+}
+
+.mts-bottom-sheet__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DRAWER
+   Side panel overlay for settings, filters, detail views.
+════════════════════════════════════════════════════════════════ */
+.mts-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+.mts-drawer.open { pointer-events: auto; }
+
+.mts-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 250ms;
+}
+.mts-drawer.open .mts-drawer__backdrop { opacity: 1; }
+
+.mts-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  max-width: 90vw;
+  background: #fff;
+  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+}
+.mts-drawer.open .mts-drawer__panel { transform: translateX(0); }
+
+/* Left-side drawer */
+.mts-drawer--left .mts-drawer__panel {
+  left: 0;
+  right: auto;
+  box-shadow: 4px 0 32px rgba(0, 0, 0, 0.12);
+  transform: translateX(-100%);
+}
+.mts-drawer--left.open .mts-drawer__panel { transform: translateX(0); }
+
+.mts-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-7);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+.mts-drawer__title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.mts-drawer__close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 150ms, background 150ms;
+}
+.mts-drawer__close:hover { color: var(--text-primary); background: var(--layer-01); }
+
+.mts-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-7);
+}
+
+.mts-drawer__footer {
+  padding: var(--space-5) var(--space-7);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HOVER CARD (Radix-style)
+   Rich preview popup on hover, e.g. user profile, link preview.
+════════════════════════════════════════════════════════════════ */
+.mts-hover-card {
+  position: relative;
+  display: inline-block;
+}
+
+.mts-hover-card__content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 150;
+  width: 300px;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: var(--space-5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 150ms, transform 150ms;
+}
+.mts-hover-card:hover .mts-hover-card__content,
+.mts-hover-card__content:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Arrow */
+.mts-hover-card__content::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-left: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+  transform: rotate(45deg);
+}
+
+.mts-hover-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.mts-hover-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--blue-alpha-12);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.mts-hover-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.mts-hover-card__sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.mts-hover-card__body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CONTEXT MENU
+   Right-click or overflow menu with action items.
+════════════════════════════════════════════════════════════════ */
+.mts-context-menu {
+  position: fixed;
+  z-index: 500;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: var(--space-2) 0;
+  animation: mts-menu-in 120ms ease;
+}
+
+@keyframes mts-menu-in {
+  from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.mts-context-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 9px var(--space-5);
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 100ms, color 100ms;
+}
+.mts-context-menu__item:hover { background: var(--layer-01); color: var(--text-primary); }
+.mts-context-menu__item--danger:hover { background: rgba(218,30,40,0.06); color: var(--red-50); }
+.mts-context-menu__item--disabled { opacity: 0.4; pointer-events: none; }
+
+.mts-context-menu__separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-2) 0;
+}
+
+.mts-context-menu__label {
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.mts-context-menu__shortcut {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COMMAND PALETTE
+   Full-screen search + command launcher (Linear / VS Code style).
+════════════════════════════════════════════════════════════════ */
+.mts-command-palette {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 120ms ease;
+}
+
+.mts-command-palette__dialog {
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: mts-scale-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes mts-scale-in {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.mts-command-palette__input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mts-command-palette__search-icon {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+.mts-command-palette__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  background: transparent;
+}
+.mts-command-palette__input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+.mts-command-palette__results {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+}
+
+.mts-command-palette__group-label {
+  padding: var(--space-3) var(--space-6) var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.mts-command-palette__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 10px var(--space-6);
+  cursor: pointer;
+  transition: background 100ms;
+}
+.mts-command-palette__item:hover,
+.mts-command-palette__item[aria-selected="true"] {
+  background: var(--blue-alpha-12);
+}
+.mts-command-palette__item-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+.mts-command-palette__item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.mts-command-palette__item-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.mts-command-palette__item-shortcut {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 3px;
+}
+
+.mts-command-palette__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SPOTLIGHT / ONBOARDING OVERLAY
+   Highlights a specific element with a dimmed backdrop.
+════════════════════════════════════════════════════════════════ */
+.mts-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  pointer-events: none;
+}
+.mts-spotlight.active { pointer-events: auto; }
+
+.mts-spotlight__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.mts-spotlight.active .mts-spotlight__backdrop { opacity: 1; }
+
+/* Cut-out hole is created via clip-path in JS */
+.mts-spotlight__hole {
+  position: absolute;
+  background: transparent;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  transition: all 300ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.mts-spotlight__callout {
+  position: absolute;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  padding: var(--space-6);
+  max-width: 300px;
+  z-index: 1;
+}
+.mts-spotlight__callout-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+.mts-spotlight__callout-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+.mts-spotlight__callout-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mts-spotlight__step-indicator {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   POPOVER MENU (upgraded from basic popover.css)
+   For dropdown menus attached to trigger buttons.
+   Uses CSS positioning; JS handles open/close state.
+════════════════════════════════════════════════════════════════ */
+.mts-popover-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 200;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  padding: var(--space-2) 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 150ms, transform 150ms;
+}
+.mts-popover-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Align to right edge of trigger */
+.mts-popover-menu--right { left: auto; right: 0; }
+
+/* Upward direction */
+.mts-popover-menu--up {
+  top: auto;
+  bottom: calc(100% + 4px);
+  transform: translateY(4px);
+}
+.mts-popover-menu--up.open { transform: translateY(0); }
+
+.mts-popover-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 9px var(--space-5);
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  transition: background 100ms, color 100ms;
+}
+.mts-popover-menu__item:hover { background: var(--layer-01); color: var(--text-primary); }
+.mts-popover-menu__item--active {
+  background: var(--blue-alpha-12);
+  color: var(--interactive);
+  font-weight: 600;
+}
+.mts-popover-menu__item--danger:hover { background: rgba(218,30,40,0.06); color: var(--red-50); }
+.mts-popover-menu__separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-2) 0;
+}

@@ -14,6 +14,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -21,11 +24,42 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
+  <link rel="stylesheet" href="assets/design-system/components/progress.css">
+  <link rel="stylesheet" href="assets/design-system/components/notification.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
   <link rel="stylesheet" href="assets/design-system/base/premium.css">
   <link rel="stylesheet" href="assets/design-system/components/hero.css">
   <link rel="stylesheet" href="assets/design-system/components/status.css">
@@ -154,29 +188,26 @@
 
       <!-- SIDEBAR -->
       <aside class="db-sidebar" aria-label="Dashboard navigation">
-        <div class="sidebar-section">Operations</div>
-        <ul class="sidebar-nav" role="list">
-          <li class="sidebar-nav-item active">📊 Live Monitor</li>
-          <li class="sidebar-nav-item">🗺️ Corridor Map</li>
-          <li class="sidebar-nav-item">📋 Audit Log</li>
-        </ul>
-        <div class="sidebar-section">Analytics</div>
-        <ul class="sidebar-nav" role="list">
-          <li class="sidebar-nav-item">📈 Revenue</li>
-          <li class="sidebar-nav-item">🚗 Vehicle Flow</li>
-          <li class="sidebar-nav-item">🏆 Incentive Payouts</li>
-        </ul>
-        <div class="sidebar-section">Governance</div>
-        <ul class="sidebar-nav" role="list">
-          <li class="sidebar-nav-item">🔐 Policy Rules</li>
-          <li class="sidebar-nav-item">📁 Evidence Vault</li>
-          <li class="sidebar-nav-item">🔔 Alerts</li>
-        </ul>
-        <div class="sidebar-section">Admin</div>
-        <ul class="sidebar-nav" role="list">
-          <li class="sidebar-nav-item">⚙️ Settings</li>
-          <li class="sidebar-nav-item"><a href="index.html" style="color:inherit;text-decoration:none;">← Back to Site</a></li>
-        </ul>
+        <nav class="mts-side-nav mts-side-nav--dark">
+          <div class="mts-side-nav__category">Operations</div>
+          <a href="#" class="mts-side-nav__item active">Live Monitor</a>
+          <a href="#" class="mts-side-nav__item">Corridor Map</a>
+          <a href="#" class="mts-side-nav__item">Audit Log</a>
+          <div class="mts-side-nav__divider"></div>
+          <div class="mts-side-nav__category">Analytics</div>
+          <a href="#" class="mts-side-nav__item">Revenue</a>
+          <a href="#" class="mts-side-nav__item">Vehicle Flow</a>
+          <a href="#" class="mts-side-nav__item">Incentive Payouts</a>
+          <div class="mts-side-nav__divider"></div>
+          <div class="mts-side-nav__category">Governance</div>
+          <a href="#" class="mts-side-nav__item">Policy Rules</a>
+          <a href="#" class="mts-side-nav__item">Evidence Vault</a>
+          <a href="#" class="mts-side-nav__item">Alerts</a>
+          <div class="mts-side-nav__divider"></div>
+          <div class="mts-side-nav__category">Admin</div>
+          <a href="#" class="mts-side-nav__item">Settings</a>
+          <a href="index.html" class="mts-side-nav__item">← Back to Site</a>
+        </nav>
       </aside>
 
       <!-- MAIN -->
@@ -331,5 +362,6 @@
       terminal.scrollTop = terminal.scrollHeight;
     }, 3500);
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

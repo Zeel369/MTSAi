@@ -1,0 +1,441 @@
+/* ============================================================
+   MTSAi Design System — Advanced Form Inputs
+   Provides: combobox/autocomplete, number stepper,
+             tag input / token field, search field,
+             character count, form group with hint,
+             color swatch picker, date range display
+   Reference: IBM Carbon, Radix UI, Headless UI
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   COMBOBOX / AUTOCOMPLETE
+   Text input with a dropdown results panel.
+════════════════════════════════════════════════════════════════ */
+.mts-combobox {
+  position: relative;
+  display: block;
+}
+
+.mts-combobox__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mts-combobox__input {
+  width: 100%;
+  height: var(--input-height-md);
+  padding: 0 var(--space-8) 0 var(--space-5);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+  appearance: none;
+}
+.mts-combobox__input:focus {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
+
+.mts-combobox__chevron {
+  position: absolute;
+  right: var(--space-4);
+  pointer-events: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  transition: transform 200ms;
+}
+.mts-combobox.open .mts-combobox__chevron { transform: rotate(180deg); }
+
+.mts-combobox__clear {
+  position: absolute;
+  right: var(--space-8);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  display: none;
+  padding: var(--space-2);
+}
+.mts-combobox.has-value .mts-combobox__clear { display: flex; align-items: center; }
+
+/* Results dropdown */
+.mts-combobox__results {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  max-height: 280px;
+  overflow-y: auto;
+  display: none;
+}
+.mts-combobox.open .mts-combobox__results { display: block; }
+
+.mts-combobox__group-label {
+  padding: var(--space-3) var(--space-5) var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mts-combobox__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 10px var(--space-5);
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 100ms, color 100ms;
+}
+.mts-combobox__option:hover,
+.mts-combobox__option[aria-selected="true"] {
+  background: var(--blue-alpha-12);
+  color: var(--text-primary);
+}
+.mts-combobox__option--selected { font-weight: 600; color: var(--interactive); }
+.mts-combobox__option--disabled { opacity: 0.4; pointer-events: none; }
+
+/* Highlight matched text */
+.mts-combobox__match { background: rgba(0,82,204,0.12); font-weight: 600; }
+
+.mts-combobox__empty {
+  padding: var(--space-5);
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NUMBER STEPPER
+   Input with +/- increment buttons.
+════════════════════════════════════════════════════════════════ */
+.mts-number-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  height: var(--input-height-md);
+}
+.mts-number-stepper:focus-within {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
+
+.mts-number-stepper__btn {
+  width: 44px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--layer-01);
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 18px;
+  transition: background 150ms, color 150ms;
+  user-select: none;
+  flex-shrink: 0;
+}
+.mts-number-stepper__btn:hover:not(:disabled) {
+  background: var(--layer-02);
+  color: var(--text-primary);
+}
+.mts-number-stepper__btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.mts-number-stepper__btn--dec { border-right: 1px solid var(--border-subtle); }
+.mts-number-stepper__btn--inc { border-left: 1px solid var(--border-subtle); }
+
+.mts-number-stepper__input {
+  width: 64px;
+  height: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: transparent;
+  -moz-appearance: textfield;
+}
+.mts-number-stepper__input::-webkit-outer-spin-button,
+.mts-number-stepper__input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* Compact size */
+.mts-number-stepper--sm {
+  height: var(--input-height-sm);
+}
+.mts-number-stepper--sm .mts-number-stepper__btn { width: 32px; font-size: 14px; }
+.mts-number-stepper--sm .mts-number-stepper__input { width: 48px; font-size: 13px; }
+
+/* ══════════════════════════════════════════════════════════════
+   TAG INPUT / TOKEN FIELD
+   Free-form text input that creates removable tags.
+════════════════════════════════════════════════════════════════ */
+.mts-tag-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--input-height-md);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  cursor: text;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.mts-tag-input:focus-within {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
+
+.mts-tag-input__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px var(--space-3);
+  background: var(--blue-alpha-12);
+  border: 1px solid rgba(0,82,204,0.2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--interactive);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mts-tag-input__tag-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1px;
+  color: var(--interactive);
+  opacity: 0.7;
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.mts-tag-input__tag-remove:hover { opacity: 1; }
+
+.mts-tag-input__text {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: transparent;
+  padding: 4px 0;
+}
+.mts-tag-input__text::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+/* Colour variants */
+.mts-tag-input__tag--green   { background: rgba(83,170,0,0.1); border-color: rgba(83,170,0,0.25); color: var(--brand-primary); }
+.mts-tag-input__tag--saffron { background: rgba(255,153,51,0.12); border-color: rgba(255,153,51,0.3); color: #CC6600; }
+.mts-tag-input__tag--red     { background: rgba(218,30,40,0.08); border-color: rgba(218,30,40,0.2); color: var(--red-50); }
+
+/* ══════════════════════════════════════════════════════════════
+   SEARCH FIELD
+   Styled search input with icon and clear button.
+════════════════════════════════════════════════════════════════ */
+.mts-search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mts-search-field__icon {
+  position: absolute;
+  left: var(--space-4);
+  color: var(--text-secondary);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.mts-search-field__input {
+  width: 100%;
+  height: var(--input-height-md);
+  padding-left: calc(var(--space-4) + 16px + var(--space-3));
+  padding-right: var(--space-9);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.mts-search-field__input:focus {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
+.mts-search-field__input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+.mts-search-field__clear {
+  position: absolute;
+  right: var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  display: none;
+  padding: var(--space-2);
+  transition: color 150ms;
+}
+.mts-search-field.has-value .mts-search-field__clear { display: flex; align-items: center; }
+.mts-search-field__clear:hover { color: var(--text-primary); }
+
+/* Pill / rounded variant */
+.mts-search-field--pill .mts-search-field__input {
+  border-radius: var(--radius-full);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FORM GROUP WITH HELPER TEXT & CHARACTER COUNT
+════════════════════════════════════════════════════════════════ */
+.mts-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mts-form-group__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mts-form-group__hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.mts-form-group__error {
+  font-size: 11px;
+  color: var(--red-50);
+  display: none;
+}
+.mts-form-group.has-error .mts-form-group__error { display: block; }
+.mts-form-group.has-error input,
+.mts-form-group.has-error textarea,
+.mts-form-group.has-error select {
+  border-color: var(--red-50) !important;
+  box-shadow: 0 0 0 3px rgba(218,30,40,0.10) !important;
+}
+
+.mts-form-group__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mts-form-group__char-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+.mts-form-group__char-count.near-limit  { color: var(--cta-primary); }
+.mts-form-group__char-count.over-limit  { color: var(--red-50); font-weight: 700; }
+
+/* ══════════════════════════════════════════════════════════════
+   RANGE SLIDER (styled)
+════════════════════════════════════════════════════════════════ */
+.mts-range {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mts-range__track {
+  position: relative;
+  height: 4px;
+  background: var(--border-subtle);
+  cursor: pointer;
+}
+
+.mts-range__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--interactive);
+}
+
+input[type="range"].mts-range-input {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 8px 0;
+}
+input[type="range"].mts-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--interactive);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: box-shadow 150ms;
+}
+input[type="range"].mts-range-input::-webkit-slider-runnable-track {
+  background: var(--border-subtle);
+  height: 4px;
+}
+input[type="range"].mts-range-input:focus {
+  outline: none;
+}
+input[type="range"].mts-range-input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.20);
+}
+input[type="range"].mts-range-input::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--interactive);
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+input[type="range"].mts-range-input::-moz-range-track {
+  background: var(--border-subtle);
+  height: 4px;
+}
+
+.mts-range__labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.mts-range__value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--interactive);
+  text-align: center;
+}

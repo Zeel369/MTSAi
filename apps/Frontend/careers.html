@@ -19,6 +19,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -26,11 +29,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -72,7 +103,7 @@
     .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
     
     
-     50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); } }
+
 
     /* HERO */
     
@@ -90,7 +121,9 @@
     
 
     /* HIRING BADGE */
-    .hiring-panel { background: rgba(83,170,0,0.12); border: 1px solid rgba(83,170,0,0.30); padding: var(--space-6); }
+    .hiring-panel { background: rgba(0,0,0,0.40); border: 1px solid rgba(110,220,140,0.28); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .hiring-cell { padding: var(--space-6); border-bottom: 1px solid rgba(110,220,140,0.14); }
+    .hiring-cell:last-child { border-bottom: none; }
     .hiring-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(110,220,140,0.8); margin-bottom: var(--space-3); display: block; }
     .hiring-city { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #6FDC8C; margin-bottom: var(--space-2); }
     .hiring-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
@@ -205,45 +238,86 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--split mts-hero--green" aria-label="Careers at MTSAi">
+    <section class="mts-hero mts-hero--split mts-hero--green" aria-label="Careers at MTSAi" style="background-image: linear-gradient(150deg, rgba(0,26,0,0.45) 0%, rgba(0,21,0,0.55) 55%, rgba(0,8,0,0.68) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
         <div>
           <div style="margin-bottom:var(--space-5);">
-            <span class="mts-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.20);font-family:var(--font-mono);font-size:11px;">Careers · Placeholder</span>
+            <span class="mts-tag" style="background:rgba(110,220,140,0.18);color:#6FDC8C;border:1px solid rgba(110,220,140,0.35);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;">Now Hiring · Founding Team</span>
           </div>
-          <h1 class="mts-hero__headline">Careers:<br><span class="headline-green">Founding Team<br>Hiring in India.</span></h1>
-          <p class="mts-hero__subline mts-hero__subline--bordered">MTSAi is actively hiring founding team members in India. This is a temporary careers page while full role descriptions and hiring content are being finalized.</p>
+          <h1 class="mts-hero__headline">Build India's First<br><span class="headline-green">Incentive-Based<br>Mobility Platform.</span></h1>
+          <p class="mts-hero__subline mts-hero__subline--bordered">Three founding team roles open in Bangalore. Engineering, Government Relations, and Product. Equity opportunity with global R&amp;D backing across India, EU, and Canada.</p>
+          <div class="mts-hero__stats" role="list" style="margin-top:var(--space-8);margin-bottom:var(--space-8);">
+            <div class="mts-hero__stat" role="listitem">
+              <span class="mts-hero__stat-num" style="color:#6FDC8C;">3</span>
+              <span class="mts-hero__stat-label">Open roles</span>
+            </div>
+            <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+            <div class="mts-hero__stat" role="listitem">
+              <span class="mts-hero__stat-num">4</span>
+              <span class="mts-hero__stat-label">Global jurisdictions</span>
+            </div>
+            <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+            <div class="mts-hero__stat" role="listitem">
+              <span class="mts-hero__stat-num" style="color:var(--cta-primary);">Q2 '26</span>
+              <span class="mts-hero__stat-label">Pilot launch</span>
+            </div>
+          </div>
           <div class="mts-hero__ctas">
             <a href="mailto:ssg@miracletraffic.ai" class="mts-btn btn-green mts-btn--lg">Apply via Email →</a>
             <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Contact MTSAi</a>
           </div>
         </div>
         <div class="hiring-panel">
-          <span class="hiring-label">Current Hiring Location</span>
-          <div class="hiring-city">Bangalore, India</div>
-          <p class="hiring-desc">Founding team equity opportunity. Build India's first incentive-based congestion platform with global R&amp;D backing.</p>
+          <div class="hiring-cell">
+            <span class="hiring-label">Hiring Location</span>
+            <div class="hiring-city">Bangalore, India</div>
+            <p class="hiring-desc">Primary operational hub. Work at the intersection of government procurement, smart city policy, and AI platform engineering.</p>
+          </div>
+          <div class="hiring-cell">
+            <span class="hiring-label">Package</span>
+            <div class="hiring-city" style="font-size:18px;">Equity + Salary</div>
+            <p class="hiring-desc">Founding team equity stake. Competitive salary commensurate with experience and seniority.</p>
+          </div>
+          <div class="hiring-cell">
+            <span class="hiring-label">R&amp;D Environment</span>
+            <div class="hiring-city" style="font-size:18px;">EU + India</div>
+            <p class="hiring-desc">BME Budapest collaboration, Adaptive Recognition ANPR partnership, EU Inference Chip Lab access.</p>
+          </div>
+          <div class="hiring-cell">
+            <span class="hiring-label">Pilot Timeline</span>
+            <div class="hiring-city" style="font-size:18px;color:var(--cta-primary);">Q2 2026</div>
+            <p class="hiring-desc">Join before first city deployment. Shape the platform that will scale to 300+ Indian cities.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee-section" aria-hidden="true">
-      <div>
-        <div class="marquee-content">
-          <span>Founding Team Hiring</span><span class="sep"> /// </span>
-          <span>India Operations</span><span class="sep"> /// </span>
-          <span>Bangalore HQ</span><span class="sep"> /// </span>
-          <span>GovTech Pioneer</span><span class="sep"> /// </span>
-          <span>Pilot Ready 2026</span><span class="sep"> /// </span>
-          <span>Founding Team Hiring</span><span class="sep"> /// </span>
-          <span>India Operations</span><span class="sep"> /// </span>
-          <span>Bangalore HQ</span><span class="sep"> /// </span>
-          <span>GovTech Pioneer</span><span class="sep"> /// </span>
-          <span>Pilot Ready 2026</span><span class="sep"> /// </span>
-        </div>
+    <!-- KPI STRIP -->
+    <div class="mts-kpi-strip" role="list">
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val" style="color:#53AA00;">3</span>
+        <span class="mts-kpi-label">Founding Roles Open</span>
       </div>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val saffron">Bangalore</span>
+        <span class="mts-kpi-label">Hiring Location</span>
+      </div>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val">Equity</span>
+        <span class="mts-kpi-label">Founding Team Package</span>
+      </div>
+      <div class="mts-kpi-cell" role="listitem">
+        <span class="mts-kpi-val">Q2 '26</span>
+        <span class="mts-kpi-label">Pilot Launch Target</span>
+      </div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="mts-announce-bar mts-announce-bar--green" role="status">
+      <span class="mts-announce-bar__badge">Now Hiring</span>
+      <span class="mts-announce-bar__msg">Founding team positions open — Bangalore HQ · India Operations · GovTech Pioneer · Pilot Ready 2026</span>
     </div>
 
     <!-- OPEN ROLES -->
@@ -259,19 +333,34 @@
             <div class="role-num">01</div>
             <span class="role-dept">Engineering</span>
             <div class="role-title">Platform Engineer</div>
-            <p class="role-desc">Build the core infrastructure platform, API services, and policy engine for city deployment.</p>
+            <p class="role-desc">Build the core infrastructure platform, API services, policy engine, and ANPR integrations for Tier-2 city deployment. Own the technical architecture from data ingestion to incentive disbursement.</p>
+            <ul style="list-style:none;margin-top:var(--space-5);border-top:1px solid var(--border-subtle);padding-top:var(--space-5);">
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Backend APIs, event processing, cloud infra</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>ANPR/LPR integration with Adaptive Recognition</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Privacy-first, government-grade architecture</li>
+            </ul>
           </div>
           <div class="role-card">
             <div class="role-num">02</div>
             <span class="role-dept">BD &amp; Policy</span>
             <div class="role-title">Government Relations</div>
-            <p class="role-desc">Manage procurement relationships and government engagement across Indian smart city programs.</p>
+            <p class="role-desc">Drive procurement relationships, policy alignment, and government engagement across Indian smart city programs. Navigate GeM, Smart Cities Mission, and DPDP frameworks to bring MTSAi to deployment.</p>
+            <ul style="list-style:none;margin-top:var(--space-5);border-top:1px solid var(--border-subtle);padding-top:var(--space-5);">
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>ULB and state government stakeholder management</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Procurement routing — GeM, tender, direct</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Policy compliance: DPDP, CERT-In, GIGW</li>
+            </ul>
           </div>
           <div class="role-card">
             <div class="role-num">03</div>
             <span class="role-dept">Product</span>
             <div class="role-title">Product Manager</div>
-            <p class="role-desc">Shape the product roadmap for government-grade mobility platforms with a policy-first mindset.</p>
+            <p class="role-desc">Shape the product roadmap for a government-grade mobility platform. Translate policy requirements into platform features, manage the prioritisation process, and ensure audit-grade traceability across the incentive engine.</p>
+            <ul style="list-style:none;margin-top:var(--space-5);border-top:1px solid var(--border-subtle);padding-top:var(--space-5);">
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Government product specification and RFP alignment</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Incentive model design with equity-by-design controls</li>
+              <li style="font-size:12px;color:var(--text-secondary);padding:var(--space-2) 0;display:flex;gap:8px;"><span style="color:var(--brand-primary);">→</span>Stakeholder reporting and public accountability layer</li>
+            </ul>
           </div>
         </div>
 
@@ -285,9 +374,12 @@
           <div class="info-card">
             <h2>Why MTSAi</h2>
             <ul class="check-list">
-              <li><span class="check">✓</span> Founding team equity opportunity</li>
-              <li><span class="check check-blue">✓</span> Work on India's first incentive-based congestion platform</li>
-              <li><span class="check">✓</span> Global exposure — India, EU, Canada operations</li>
+              <li><span class="check">✓</span> Founding team equity stake — join before Series A</li>
+              <li><span class="check">✓</span> India's first government-deployed congestion incentive platform</li>
+              <li><span class="check">✓</span> Global R&amp;D — Budapest University (BME), EU Inference Chip Lab</li>
+              <li><span class="check check-blue">✓</span> Government-grade platform with procurement-ready architecture</li>
+              <li><span class="check check-blue">✓</span> Cross-jurisdictional exposure: India, Hungary, Canada, USA</li>
+              <li><span class="check">✓</span> Direct access to founder and full platform context from Day 1</li>
             </ul>
           </div>
         </div>
@@ -296,13 +388,13 @@
         <div class="stage-notice reveal delay-2">
           <span class="stage-notice-label">Stage-Truth Notice</span>
           <p>MTSAi is in a pilot-ready evaluation stage as of January 2026. This page is informational and intended for early hiring outreach while detailed role documentation is in progress.</p>
-          <p style="margin-top:var(--space-3);font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);">v0.1 placeholder · As of March 6, 2026</p>
+          <p style="margin-top:var(--space-3);font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);">Stage: Pilot-Ready Evaluation · As of Q1 2026 · ssg@miracletraffic.ai</p>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="mts-mts-section-cta" aria-label="Join the team">
+    <section class="mts-section-cta" aria-label="Join the team">
       <div class="mts-container">
         <div class="reveal">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">Join MTSAi</span>
@@ -361,5 +453,6 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

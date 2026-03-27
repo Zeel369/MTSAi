@@ -27,6 +27,9 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -34,11 +37,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -153,8 +184,26 @@
     
 
     /* SECTION BASE */
-    
-    .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+
+    .mts-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+
+    /* CONTROL AREA CARDS */
+    .ctrl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-10); }
+    .ctrl-card { padding: var(--space-9); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); position: relative; overflow: hidden; transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard); }
+    .ctrl-card:nth-child(3) { border-top-color: var(--brand-primary); }
+    .ctrl-card:nth-child(3) .ctrl-label { color: var(--brand-primary); }
+    .ctrl-card:nth-child(3) .ctrl-badge { color: var(--brand-primary); border-color: rgba(83,170,0,0.25); }
+    .ctrl-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-3px); }
+    .ctrl-bg-num { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: rgba(0,82,204,0.05); line-height: 1; position: absolute; bottom: -8px; right: var(--space-6); z-index: 0; user-select: none; pointer-events: none; }
+    .ctrl-card:nth-child(3) .ctrl-bg-num { color: rgba(83,170,0,0.06); }
+    .ctrl-icon { width: 44px; height: 44px; background: var(--blue-10); border: 1px solid var(--blue-20); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6); position: relative; z-index: 1; }
+    .ctrl-card:nth-child(3) .ctrl-icon { background: rgba(83,170,0,0.08); border-color: rgba(83,170,0,0.20); }
+    .ctrl-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--interactive); margin-bottom: var(--space-4); display: block; position: relative; z-index: 1; }
+    .ctrl-title { font-family: var(--font-display); font-size: clamp(18px,2vw,24px); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-4); line-height: 1.18; position: relative; z-index: 1; }
+    .ctrl-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.72; position: relative; z-index: 1; max-width: 420px; }
+    .ctrl-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-7); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); border: 1px solid var(--blue-20); padding: 5px 12px; position: relative; z-index: 1; }
+    .ctrl-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+    @media (max-width: 768px) { .ctrl-grid { grid-template-columns: 1fr; } }
     
     
 
@@ -171,8 +220,7 @@
     /* TWO COL LAYOUT */
     
 
-    /* CONTROL FRAMEWORK */
-    .control-list { border: 1px solid var(--blue-20); background: #fff; box-shadow: 0 4px 24px rgba(0,82,204,0.08); }
+    /* CONTROL FRAMEWORK — see .ctrl-grid above */
     
     
     
@@ -321,7 +369,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard" aria-label="Government path introduction">
+    <section class="mts-hero mts-hero--standard" aria-label="Government path introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
@@ -341,6 +389,22 @@
         <div class="mts-hero__ctas">
           <a href="#government-cta" class="mts-btn mts-btn--primary mts-btn--lg">Request Government Briefing →</a>
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">Review Platform Architecture</a>
+        </div>
+        <div class="mts-hero__stats" role="list" style="margin-top:var(--space-10);">
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">100%</span>
+            <span class="mts-hero__stat-label">Govt-controlled policy</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">4+</span>
+            <span class="mts-hero__stat-label">Implementation phases</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">0</span>
+            <span class="mts-hero__stat-label">Biometric data collected</span>
+          </div>
         </div>
       </div>
     </section>
@@ -366,7 +430,7 @@
     </div>
 
     <!-- CONTROL FRAMEWORK -->
-    <section class="section reveal-group" aria-label="Government Control Framework">
+    <section class="mts-section reveal-group" aria-label="Government Control Framework">
       <div class="mts-container">
 
         <div class="mts-photo-strip reveal">
@@ -382,39 +446,63 @@
           <h2 class="mts-section__h2 reveal">Government Control Framework</h2>
         </div>
 
-        <div class="mts-two-col">
-          <div class="reveal">
-            <p class="mts-section__body">Government authorities retain control over the public policy parameters of the system. MTSAi is designed to operate as infrastructure supporting those decisions, not as a substitute for them.</p>
-            <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">Authorities define how congestion pricing rules, incentive budgets, exemptions, equity protections, and enforcement thresholds are configured within a city programme.</p>
+        <div class="mts-two-col reveal">
+          <p class="mts-section__body">Government authorities retain full control over the public policy parameters of the system. MTSAi operates as infrastructure that executes those decisions — not as a substitute for them.</p>
+          <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">Authorities define how congestion pricing rules, incentive budgets, exemptions, equity protections, and enforcement thresholds are configured within a city programme. No parameter changes without government authorisation.</p>
+        </div>
+
+        <div class="ctrl-grid reveal delay-2">
+
+          <div class="ctrl-card">
+            <div class="ctrl-bg-num" aria-hidden="true">01</div>
+            <div class="ctrl-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="1" stroke="var(--interactive)" stroke-width="1.5"/><line x1="2" y1="8" x2="20" y2="8" stroke="var(--interactive)" stroke-width="1.5"/><line x1="7" y1="12" x2="15" y2="12" stroke="var(--interactive)" stroke-width="1.5"/></svg>
+            </div>
+            <span class="ctrl-label">Control Area 01</span>
+            <h3 class="ctrl-title">Congestion Pricing Rules</h3>
+            <p class="ctrl-desc">Zones, time bands, charging logic, and pricing conditions remain entirely under government control. MTSAi executes policy — it does not set it.</p>
+            <div class="ctrl-badge">Government-Controlled</div>
           </div>
-          <div class="control-list reveal delay-2">
-            <div class="mts-list-item">
-              <span class="mts-list-item__num">Control Area 01</span>
-              <h3>Congestion Pricing Rules</h3>
-              <p>Zones, time bands, charging logic, and pricing conditions remain under government control.</p>
+
+          <div class="ctrl-card">
+            <div class="ctrl-bg-num" aria-hidden="true">02</div>
+            <div class="ctrl-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--interactive)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--interactive)" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <div class="mts-list-item">
-              <span class="mts-list-item__num">Control Area 02</span>
-              <h3>Incentive Budgets</h3>
-              <p>Authorities determine which incentive programmes run, their budget constraints, and how rewards are structured.</p>
-            </div>
-            <div class="mts-list-item">
-              <span class="mts-list-item__num">Control Area 03</span>
-              <h3>Exemptions and Equity Protections</h3>
-              <p>Any exemptions, hardship controls, or equity protections remain policy decisions made by the city or state authority.</p>
-            </div>
-            <div class="mts-list-item">
-              <span class="mts-list-item__num">Control Area 04</span>
-              <h3>Enforcement Thresholds</h3>
-              <p>Authorities set the thresholds and conditions under which enforcement-linked actions are triggered inside the programme design.</p>
-            </div>
+            <span class="ctrl-label">Control Area 02</span>
+            <h3 class="ctrl-title">Incentive Budgets</h3>
+            <p class="ctrl-desc">Authorities determine which incentive programmes run, their budget constraints, and how rewards are structured and disbursed to commuters.</p>
+            <div class="ctrl-badge">Government-Controlled</div>
           </div>
+
+          <div class="ctrl-card">
+            <div class="ctrl-bg-num" aria-hidden="true">03</div>
+            <div class="ctrl-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v5c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V6L11 2z" stroke="var(--brand-primary)" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="var(--brand-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="ctrl-label">Control Area 03</span>
+            <h3 class="ctrl-title">Exemptions &amp; Equity Protections</h3>
+            <p class="ctrl-desc">Any exemptions, hardship controls, or equity protections remain policy decisions made by the city or state authority. No automated override.</p>
+            <div class="ctrl-badge">Government-Controlled</div>
+          </div>
+
+          <div class="ctrl-card">
+            <div class="ctrl-bg-num" aria-hidden="true">04</div>
+            <div class="ctrl-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v2M11 17v2M3 11H5M17 11h2" stroke="var(--interactive)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="5" stroke="var(--interactive)" stroke-width="1.5"/><circle cx="11" cy="11" r="2" fill="var(--interactive)"/></svg>
+            </div>
+            <span class="ctrl-label">Control Area 04</span>
+            <h3 class="ctrl-title">Enforcement Thresholds</h3>
+            <p class="ctrl-desc">Authorities set the thresholds and conditions under which enforcement-linked actions are triggered inside the programme design. Configurable at any time.</p>
+            <div class="ctrl-badge">Government-Controlled</div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- AUDITABILITY -->
-    <section class="section section-alt reveal-group" aria-label="Transparency and Auditability">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Transparency and Auditability">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Auditability</span>
@@ -443,7 +531,7 @@
     </section>
 
     <!-- PRIVACY SAFEGUARDS -->
-    <section class="section reveal-group" aria-label="Privacy Safeguards">
+    <section class="mts-section reveal-group" aria-label="Privacy Safeguards">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">03 // Privacy</span>
@@ -459,15 +547,15 @@
           </div>
           <ul class="mts-icon-list reveal delay-2">
             <li>
-              <span class="mts-icon-marker mts-mts-icon-marker--red">✗</span>
+              <span class="mts-icon-marker mts-icon-marker--red">✗</span>
               <p><strong>No biometric data:</strong> the platform is not designed around biometric identity systems.</p>
             </li>
             <li>
-              <span class="mts-icon-marker mts-mts-icon-marker--red">✗</span>
+              <span class="mts-icon-marker mts-icon-marker--red">✗</span>
               <p><strong>No continuous tracking:</strong> the system does not depend on continuous location surveillance.</p>
             </li>
             <li>
-              <span class="mts-icon-marker mts-mts-icon-marker--green">✓</span>
+              <span class="mts-icon-marker mts-icon-marker--green">✓</span>
               <p><strong>Data minimization:</strong> collection is limited to purpose-specific operational signals.</p>
             </li>
             <li>
@@ -480,34 +568,51 @@
     </section>
 
     <!-- ENFORCEMENT INTEGRATION -->
-    <section class="section section-alt reveal-group" aria-label="Enforcement Integration">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Enforcement Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">04 // Operations</span>
           <h2 class="mts-section__h2 reveal">Enforcement Integration</h2>
         </div>
-        <div class="mts-step-grid reveal delay-2">
-          <div class="step-card">
-            <span class="step-num">Integration 01</span>
-            <h3>Existing ANPR Networks</h3>
-            <p>The platform is designed for integration with existing ANPR-based environments where corridor monitoring or road-pricing enforcement logic already exists.</p>
+        <div class="mts-stepper reveal delay-2">
+          <div class="mts-stepper__step complete">
+            <div class="mts-stepper__indicator"></div>
+            <span class="mts-stepper__label">ANPR Networks</span>
+            <span class="mts-stepper__sublabel">Integration 01</span>
           </div>
-          <div class="step-card">
-            <span class="step-num">Integration 02</span>
-            <h3>Enforcement Systems</h3>
-            <p>Enforcement systems can be connected to the programme model so that government-defined rules and thresholds are reflected in operational workflows.</p>
+          <div class="mts-stepper__step complete">
+            <div class="mts-stepper__indicator"></div>
+            <span class="mts-stepper__label">Enforcement Systems</span>
+            <span class="mts-stepper__sublabel">Integration 02</span>
           </div>
-          <div class="step-card">
-            <span class="step-num">Integration 03</span>
-            <h3>Dispute Resolution</h3>
-            <p>The architecture is designed to support dispute resolution pathways so operational actions can be reviewed, challenged, and corrected through a documented process.</p>
+          <div class="mts-stepper__step active">
+            <div class="mts-stepper__indicator"><span class="mts-stepper__num">3</span></div>
+            <span class="mts-stepper__label">Dispute Resolution</span>
+            <span class="mts-stepper__sublabel">Integration 03</span>
+          </div>
+        </div>
+        <div class="mts-grid--3 reveal delay-3" style="margin-top:var(--space-8)">
+          <div class="mts-card--approach">
+            <span class="mts-card__label">Integration 01</span>
+            <h3 class="mts-card__title">Existing ANPR Networks</h3>
+            <p class="mts-card__body">The platform is designed for integration with existing ANPR-based environments where corridor monitoring or road-pricing enforcement logic already exists.</p>
+          </div>
+          <div class="mts-card--approach">
+            <span class="mts-card__label">Integration 02</span>
+            <h3 class="mts-card__title">Enforcement Systems</h3>
+            <p class="mts-card__body">Enforcement systems can be connected to the programme model so that government-defined rules and thresholds are reflected in operational workflows.</p>
+          </div>
+          <div class="mts-card--approach">
+            <span class="mts-card__label">Integration 03</span>
+            <h3 class="mts-card__title">Dispute Resolution</h3>
+            <p class="mts-card__body">The architecture is designed to support dispute resolution pathways so operational actions can be reviewed, challenged, and corrected through a documented process.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PHASED IMPLEMENTATION -->
-    <section class="section reveal-group" aria-label="Phased Implementation">
+    <section class="mts-section reveal-group" aria-label="Phased Implementation">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Delivery Model</span>
@@ -521,33 +626,33 @@
               Each phase is designed to reduce risk before the next phase begins. Pilot deployment is the last step, not the first claim.
             </div>
           </div>
-          <div class="phase-list reveal delay-2">
-            <div class="mts-list-item">
-              <span class="phase-num">01</span>
-              <div>
-                <h3>Architecture Development</h3>
-                <p>Establish the policy and technical foundation.</p>
+          <div class="mts-stepper mts-stepper--vertical reveal delay-2">
+            <div class="mts-stepper__step complete">
+              <div class="mts-stepper__indicator"></div>
+              <div class="mts-stepper__content">
+                <span class="mts-stepper__label">Architecture Development</span>
+                <p class="mts-stepper__sublabel">Establish the policy and technical foundation.</p>
               </div>
             </div>
-            <div class="mts-list-item">
-              <span class="phase-num">02</span>
-              <div>
-                <h3>System Integration</h3>
-                <p>Connect the platform to city and ecosystem interfaces.</p>
+            <div class="mts-stepper__step complete">
+              <div class="mts-stepper__indicator"></div>
+              <div class="mts-stepper__content">
+                <span class="mts-stepper__label">System Integration</span>
+                <p class="mts-stepper__sublabel">Connect the platform to city and ecosystem interfaces.</p>
               </div>
             </div>
-            <div class="mts-list-item">
-              <span class="phase-num">03</span>
-              <div>
-                <h3>Pilot Deployment</h3>
-                <p>Run a bounded programme before scale.</p>
+            <div class="mts-stepper__step active">
+              <div class="mts-stepper__indicator"><span class="mts-stepper__num">3</span></div>
+              <div class="mts-stepper__content">
+                <span class="mts-stepper__label">Pilot Deployment</span>
+                <p class="mts-stepper__sublabel">Run a bounded programme before scale.</p>
               </div>
             </div>
-            <div class="mts-list-item">
-              <span class="phase-num">04</span>
-              <div>
-                <h3>City Programme Expansion</h3>
-                <p>Extend only if evaluation supports continuation.</p>
+            <div class="mts-stepper__step">
+              <div class="mts-stepper__indicator"><span class="mts-stepper__num">4</span></div>
+              <div class="mts-stepper__content">
+                <span class="mts-stepper__label">City Programme Expansion</span>
+                <p class="mts-stepper__sublabel">Extend only if evaluation supports continuation.</p>
               </div>
             </div>
           </div>
@@ -556,7 +661,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="mts-mts-section-cta" id="government-cta" aria-label="Request Government Briefing">
+    <section class="mts-section-cta" id="government-cta" aria-label="Request Government Briefing">
       <div class="mts-container">
         <div class="reveal">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">Government Evaluation Path</span>
@@ -671,5 +776,6 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

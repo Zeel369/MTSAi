@@ -19,10 +19,10 @@
   padding: var(--space-6);
 }
 
-/* Article body layout: prose column + sticky TOC */
+/* Article body layout: sticky TOC left + prose column right */
 .mts-article-layout {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 260px 1fr;
   gap: var(--space-12);
   align-items: start;
 }

@@ -1,0 +1,306 @@
+/* ============================================================
+   MTSAi Design System — Side Navigation
+   Provides: vertical sidebar nav (fixed/sticky), nav rail,
+             collapsible tree nav, sub-navigation
+   Reference: IBM Carbon Side Navigation, Atlassian Nav
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   SIDE NAV SHELL
+   The outer container — should be positioned sticky/fixed
+   by the page layout that uses it.
+════════════════════════════════════════════════════════════════ */
+.mts-side-nav {
+  width: 256px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-right: 1px solid var(--border-subtle);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-6) 0;
+  flex-shrink: 0;
+}
+
+/* Dark variant (for app shell with dark sidebar) */
+.mts-side-nav--dark {
+  background: #161616;
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Collapsed state — icon-only rail */
+.mts-side-nav--collapsed {
+  width: 48px;
+}
+.mts-side-nav--collapsed .mts-side-nav__label,
+.mts-side-nav--collapsed .mts-side-nav__category,
+.mts-side-nav--collapsed .mts-side-nav__chevron { display: none; }
+
+/* ── Header / brand ──────────────────────────────────────── */
+.mts-side-nav__header {
+  padding: 0 var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-5);
+}
+.mts-side-nav--dark .mts-side-nav__header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Category headings ───────────────────────────────────── */
+.mts-side-nav__category {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  padding: var(--space-4) var(--space-5) var(--space-2);
+  display: block;
+}
+.mts-side-nav--dark .mts-side-nav__category { color: #525252; }
+
+/* ── Nav items ───────────────────────────────────────────── */
+.mts-side-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-5);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: color 150ms, background 150ms;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mts-side-nav__item:hover {
+  background: var(--layer-01);
+  color: var(--text-primary);
+}
+
+.mts-side-nav__item.active {
+  background: var(--blue-alpha-12);
+  color: var(--interactive);
+  font-weight: 600;
+}
+.mts-side-nav__item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--interactive);
+}
+
+/* Dark variant item states */
+.mts-side-nav--dark .mts-side-nav__item          { color: #8D8D8D; }
+.mts-side-nav--dark .mts-side-nav__item:hover     { background: rgba(255,255,255,0.05); color: #F4F4F4; }
+.mts-side-nav--dark .mts-side-nav__item.active    { background: rgba(0, 98, 255, 0.15); color: #78A9FF; }
+
+/* ── Item icon ───────────────────────────────────────────── */
+.mts-side-nav__icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.mts-side-nav__item.active .mts-side-nav__icon,
+.mts-side-nav__item:hover  .mts-side-nav__icon { opacity: 1; }
+
+/* ── Item badge/count ────────────────────────────────────── */
+.mts-side-nav__badge {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  background: var(--interactive);
+  color: #fff;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.mts-side-nav__badge--warning { background: var(--cta-primary); color: #000; }
+.mts-side-nav__badge--error   { background: var(--red-50); }
+
+/* ── Chevron for expandable items ────────────────────────── */
+.mts-side-nav__chevron {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  transition: transform 200ms;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.mts-side-nav__item[aria-expanded="true"] .mts-side-nav__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Sub-menu ────────────────────────────────────────────── */
+.mts-side-nav__sub {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 200ms ease;
+}
+.mts-side-nav__sub.open {
+  max-height: 400px;
+}
+
+.mts-side-nav__sub-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px var(--space-5) 8px calc(var(--space-5) + 20px + var(--space-3));
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 150ms, background 150ms;
+  position: relative;
+}
+.mts-side-nav__sub-item:hover   { background: var(--layer-01); color: var(--text-primary); }
+.mts-side-nav__sub-item.active  { color: var(--interactive); font-weight: 600; }
+.mts-side-nav__sub-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--interactive);
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.mts-side-nav__divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-4) var(--space-5);
+}
+.mts-side-nav--dark .mts-side-nav__divider { background: rgba(255,255,255,0.08); }
+
+/* ── Footer area ─────────────────────────────────────────── */
+.mts-side-nav__footer {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+}
+.mts-side-nav--dark .mts-side-nav__footer { border-top-color: rgba(255,255,255,0.08); }
+
+/* ══════════════════════════════════════════════════════════════
+   NAVIGATION RAIL
+   Compact icon-only sidebar (48px wide) for app layouts.
+   Labels appear as tooltips on hover.
+════════════════════════════════════════════════════════════════ */
+.mts-nav-rail {
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-right: 1px solid var(--border-subtle);
+  padding: var(--space-4) 0;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.mts-nav-rail--dark {
+  background: #161616;
+  border-right-color: rgba(255,255,255,0.08);
+}
+
+.mts-nav-rail__item {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 150ms, background 150ms;
+}
+.mts-nav-rail__item:hover  { background: var(--layer-01); color: var(--text-primary); }
+.mts-nav-rail__item.active {
+  background: var(--blue-alpha-12);
+  color: var(--interactive);
+}
+.mts-nav-rail__item.active::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--interactive);
+}
+
+.mts-nav-rail--dark .mts-nav-rail__item          { color: #8D8D8D; }
+.mts-nav-rail--dark .mts-nav-rail__item:hover     { background: rgba(255,255,255,0.06); color: #F4F4F4; }
+.mts-nav-rail--dark .mts-nav-rail__item.active    { background: rgba(0,98,255,0.15); color: #78A9FF; }
+
+/* Tooltip on hover */
+.mts-nav-rail__item::before {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #161616;
+  color: #F4F4F4;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 4px 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms;
+  z-index: 100;
+}
+.mts-nav-rail__item:hover::before { opacity: 1; }
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE LAYOUT WITH SIDE NAV
+   Convenience wrapper for app-shell layouts.
+════════════════════════════════════════════════════════════════ */
+.mts-app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.mts-app-shell__sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.mts-app-shell__main {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+}
+
+@media (max-width: 1024px) {
+  .mts-side-nav { width: 220px; }
+}
+@media (max-width: 768px) {
+  .mts-app-shell        { flex-direction: column; }
+  .mts-app-shell__sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0; bottom: 0;
+    z-index: 200;
+    transition: left 250ms ease;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+  }
+  .mts-app-shell__sidebar.open { left: 0; }
+}

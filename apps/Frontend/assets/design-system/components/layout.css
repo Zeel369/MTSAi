@@ -1,0 +1,257 @@
+/* ============================================================
+   MTSAi Design System — Layout Primitives
+   Provides: Stack, Inline, Box, Cluster, Grid, Switcher
+   Pattern: Every Layout (every-layout.dev) + Radix Themes
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   BOX
+   A generic layout box with padding and optional border/bg.
+   Replaces ad-hoc padding wrappers throughout pages.
+════════════════════════════════════════════════════════════════ */
+.mts-box {
+  padding: var(--space-5);
+}
+.mts-box--sm  { padding: var(--space-3); }
+.mts-box--md  { padding: var(--space-6); }
+.mts-box--lg  { padding: var(--space-8); }
+.mts-box--xl  { padding: var(--space-10); }
+
+.mts-box--bordered  { border: 1px solid var(--border-subtle); }
+.mts-box--filled    { background: var(--layer-01); }
+.mts-box--elevated  { background: #fff; box-shadow: 0 2px 12px rgba(0,82,204,0.07); }
+.mts-box--dark      { background: var(--navy-100); }
+
+/* ══════════════════════════════════════════════════════════════
+   STACK
+   Vertical block flow with consistent gap between children.
+   No margin collapsing surprises.
+════════════════════════════════════════════════════════════════ */
+.mts-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.mts-stack > * + * { margin-top: var(--space-5); }
+
+/* Gap modifiers — override child margin-top */
+.mts-stack--gap-1 > * + * { margin-top: var(--space-1); }
+.mts-stack--gap-2 > * + * { margin-top: var(--space-2); }
+.mts-stack--gap-3 > * + * { margin-top: var(--space-3); }
+.mts-stack--gap-4 > * + * { margin-top: var(--space-4); }
+.mts-stack--gap-5 > * + * { margin-top: var(--space-5); }
+.mts-stack--gap-6 > * + * { margin-top: var(--space-6); }
+.mts-stack--gap-7 > * + * { margin-top: var(--space-7); }
+.mts-stack--gap-8 > * + * { margin-top: var(--space-8); }
+
+/* ══════════════════════════════════════════════════════════════
+   INLINE
+   Horizontal flow, wraps to new lines, consistent gap.
+   Replaces flex-wrap containers with inconsistent margins.
+════════════════════════════════════════════════════════════════ */
+.mts-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+.mts-inline--gap-2  { gap: var(--space-2); }
+.mts-inline--gap-3  { gap: var(--space-3); }
+.mts-inline--gap-5  { gap: var(--space-5); }
+.mts-inline--gap-6  { gap: var(--space-6); }
+.mts-inline--gap-8  { gap: var(--space-8); }
+
+.mts-inline--start   { align-items: flex-start; }
+.mts-inline--end     { align-items: flex-end; }
+.mts-inline--stretch { align-items: stretch; }
+
+/* ══════════════════════════════════════════════════════════════
+   CLUSTER
+   Like Inline, but justify-content: flex-start by default —
+   used for tag groups, button clusters, metadata rows.
+════════════════════════════════════════════════════════════════ */
+.mts-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: flex-start;
+  align-items: center;
+}
+.mts-cluster--center  { justify-content: center; }
+.mts-cluster--end     { justify-content: flex-end; }
+.mts-cluster--between { justify-content: space-between; }
+
+/* ══════════════════════════════════════════════════════════════
+   FLEX
+   Low-level flex utility with explicit direction + alignment.
+   Use Inline/Cluster for most cases; Flex for custom needs.
+════════════════════════════════════════════════════════════════ */
+.mts-flex         { display: flex; }
+.mts-flex--col    { flex-direction: column; }
+.mts-flex--center { align-items: center; justify-content: center; }
+.mts-flex--between { align-items: center; justify-content: space-between; }
+.mts-flex--start  { align-items: flex-start; }
+.mts-flex--gap-3  { gap: var(--space-3); }
+.mts-flex--gap-4  { gap: var(--space-4); }
+.mts-flex--gap-5  { gap: var(--space-5); }
+.mts-flex--gap-6  { gap: var(--space-6); }
+.mts-flex--gap-8  { gap: var(--space-8); }
+.mts-flex--wrap   { flex-wrap: wrap; }
+
+/* ══════════════════════════════════════════════════════════════
+   GRID (named)
+   Semantic grid layouts used for common page patterns.
+════════════════════════════════════════════════════════════════ */
+/* 2-col equal */
+.mts-grid--2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+/* 3-col equal */
+.mts-grid--3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+/* 4-col equal */
+.mts-grid--4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+/* Auto-fill responsive: min 280px per column */
+.mts-grid--auto-sm {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+/* Auto-fill: min 360px — for larger cards */
+.mts-grid--auto-md {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--space-6);
+}
+/* Sidebar + main: 300px | 1fr */
+.mts-grid--sidebar {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-8);
+}
+/* Main + aside: 1fr | 320px */
+.mts-grid--aside {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-8);
+}
+/* 2 col: 40% | 60% */
+.mts-grid--split-4060 {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: var(--space-8);
+}
+/* Gap modifiers */
+.mts-grid--gap-4 { gap: var(--space-4); }
+.mts-grid--gap-5 { gap: var(--space-5); }
+.mts-grid--gap-7 { gap: var(--space-7); }
+.mts-grid--gap-8 { gap: var(--space-8); }
+.mts-grid--gap-10 { gap: var(--space-10); }
+
+/* ══════════════════════════════════════════════════════════════
+   SWITCHER
+   Side-by-side until breakpoint, then stacks vertically.
+   The "magic breakpoint" is set via --mts-switcher-threshold.
+════════════════════════════════════════════════════════════════ */
+.mts-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  --mts-switcher-threshold: 640px;
+}
+.mts-switcher > * {
+  flex-basis: calc((var(--mts-switcher-threshold) - 100%) * 999);
+  flex-grow: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   REEL (horizontal scroll container)
+   For logo clouds, card carousels, horizontal lists.
+════════════════════════════════════════════════════════════════ */
+.mts-reel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: var(--space-5);
+  padding-bottom: var(--space-3);
+  scrollbar-width: none;            /* Firefox */
+}
+.mts-reel::-webkit-scrollbar { display: none; }
+.mts-reel > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CENTER
+   Centres max-width block content on the page.
+════════════════════════════════════════════════════════════════ */
+.mts-center {
+  box-sizing: content-box;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+.mts-center--sm  { max-width: var(--container-sm); }
+.mts-center--md  { max-width: var(--container-md); }
+.mts-center--lg  { max-width: var(--container-lg); }
+.mts-center--2xl { max-width: var(--container-2xl); }
+
+/* ══════════════════════════════════════════════════════════════
+   COVER
+   Vertically centres a child element within a min-height block.
+   Used for hero sections and fullscreen panels.
+════════════════════════════════════════════════════════════════ */
+.mts-cover {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-5);
+}
+.mts-cover > * { margin-top: auto; margin-bottom: auto; }
+
+/* ══════════════════════════════════════════════════════════════
+   SIDEBAR LAYOUT
+   Two-column where sidebar has a fixed min-width;
+   main content takes remaining space.
+════════════════════════════════════════════════════════════════ */
+.mts-sidebar-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+.mts-sidebar-layout__sidebar {
+  flex-basis: 260px;
+  flex-grow: 1;
+}
+.mts-sidebar-layout__main {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: 50%;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKDOWNS
+════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .mts-grid--4       { grid-template-columns: repeat(2, 1fr); }
+  .mts-grid--sidebar { grid-template-columns: 1fr; }
+  .mts-grid--aside   { grid-template-columns: 1fr; }
+  .mts-grid--split-4060 { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .mts-grid--2       { grid-template-columns: 1fr; }
+  .mts-grid--3       { grid-template-columns: 1fr; }
+  .mts-grid--4       { grid-template-columns: 1fr; }
+}

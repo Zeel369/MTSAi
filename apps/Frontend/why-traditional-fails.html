@@ -19,6 +19,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -26,11 +29,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -179,7 +210,7 @@
   </nav>
 
   <main id="main-content">
-    <section class="mts-hero mts-hero--article" aria-label="Why Traditional Congestion Pricing Struggles">
+    <section class="mts-hero mts-hero--article" aria-label="Why Traditional Congestion Pricing Struggles" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.70) 0%, rgba(0,7,32,0.78) 55%, rgba(0,4,15,0.90) 100%), url('https://images.unsplash.com/photo-1573108724029-4c46571d6490?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__article-layout">
         <div>
@@ -206,17 +237,25 @@
       </div>
     </section>
 
+    <div class="mts-photo-strip">
+      <img src="https://images.unsplash.com/photo-1573108724029-4c46571d6490?w=1400&q=80&auto=format&fit=crop" alt="Aerial view of city road network at night — illuminated intersections and traffic corridors showing urban congestion patterns" loading="lazy">
+      <div class="mts-photo-strip__caption">
+        <span class="mts-photo-strip__label">Urban Road Network · Aerial Perspective · Peak-Hour Congestion Corridors</span>
+        <span class="mts-photo-strip__tag">● Context</span>
+      </div>
+    </div>
+
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
           <aside class="mts-article-toc" aria-label="Table of contents">
-            <div class="toc-label">Contents</div>
-            <ul class="toc-list">
-              <li><a href="#resistance">Political Resistance</a></li>
-              <li><a href="#behaviour">Limited Behaviour Change</a></li>
-              <li><a href="#equal-treatment">Equal Treatment Problem</a></li>
-              <li><a href="#different-approach">A Different Approach</a></li>
-            </ul>
+            <nav class="mts-side-nav" aria-label="Article contents">
+              <div class="mts-side-nav__category">Contents</div>
+              <a href="#resistance" class="mts-side-nav__item">Political Resistance</a>
+              <a href="#behaviour" class="mts-side-nav__item">Limited Behaviour Change</a>
+              <a href="#equal-treatment" class="mts-side-nav__item">Equal Treatment Problem</a>
+              <a href="#different-approach" class="mts-side-nav__item">A Different Approach</a>
+            </nav>
           </aside>
 
           <div>
@@ -273,7 +312,7 @@
       </div>
     </article>
 
-    <section class="mts-mts-section-cta" aria-label="Next steps">
+    <section class="mts-section-cta" aria-label="Next steps">
       <div class="mts-container">
         <div class="reveal">
           <div class="cta-eyebrow">Continue Reading</div>
@@ -330,13 +369,14 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
     const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.toc-list a');
+    const tocLinks = document.querySelectorAll('.mts-side-nav__item');
     const tocObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.toc-list a[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
+        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.mts-side-nav__item[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
       });
     }, { rootMargin: '-20% 0px -75% 0px' });
     sections.forEach(s => tocObs.observe(s));
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

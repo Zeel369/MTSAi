@@ -326,6 +326,8 @@
   grid-template-columns: 1fr 320px;
   gap: var(--space-12);
   align-items: start;
+  position: relative;
+  z-index: 5;
 }
 
 /* Diagram: minimal dark (diagram_cloud.html) */

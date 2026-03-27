@@ -27,6 +27,9 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -34,11 +37,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -108,7 +139,7 @@
 
     /* SECTIONS */
     
-    .section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .mts-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
     
     
 
@@ -264,7 +295,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard" aria-label="Strategic Partners introduction">
+    <section class="mts-hero mts-hero--standard" aria-label="Strategic Partners introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
@@ -283,6 +314,22 @@
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform Architecture</a>
         </div>
         <p class="mts-hero__note">No commercial relationships are implied on this page.</p>
+        <div class="mts-hero__stats" role="list" style="margin-top:var(--space-10);">
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">4</span>
+            <span class="mts-hero__stat-label">Integration categories</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">50K+</span>
+            <span class="mts-hero__stat-label">ANPR partner sites</span>
+          </div>
+          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
+          <div class="mts-hero__stat" role="listitem">
+            <span class="mts-hero__stat-num">3</span>
+            <span class="mts-hero__stat-label">Partner tiers</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -307,7 +354,7 @@
     </div>
 
     <!-- ECOSYSTEM OVERVIEW -->
-    <section class="section reveal-group" aria-label="Ecosystem Overview">
+    <section class="mts-section reveal-group" aria-label="Ecosystem Overview">
       <div class="mts-container">
 
         <div class="mts-photo-strip reveal">
@@ -350,7 +397,7 @@
     </section>
 
     <!-- SUPER APP INTEGRATION -->
-    <section class="section section-alt reveal-group" aria-label="Super App Integration">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Super App Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--saffron">02 // Digital Platform Role</span>
@@ -404,7 +451,7 @@
     </section>
 
     <!-- INFRASTRUCTURE INTEGRATION -->
-    <section class="section reveal-group" style="background:#0D1B40;" aria-label="Infrastructure Integration">
+    <section class="mts-section reveal-group" style="background:#0D1B40;" aria-label="Infrastructure Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">03 // System Compatibility</span>
@@ -427,27 +474,25 @@
     </section>
 
     <!-- MARQUEE -->
-    <div class="marquee-section" aria-hidden="true">
-      <div>
-        <div class="marquee-content">
-          <span>Open Integration Model</span><span class="sep">///</span>
-          <span>Super App Ready</span><span class="sep">///</span>
-          <span>ANPR Compatible</span><span class="sep">///</span>
-          <span>FASTag-Linked Settlement</span><span class="sep">///</span>
-          <span>UPI Ready</span><span class="sep">///</span>
-          <span>Infrastructure Compatible</span><span class="sep">///</span>
-          <span>4 Integration Categories</span><span class="sep">///</span>
-          <span>City Program Interface</span><span class="sep">///</span>
-          <span>Open Integration Model</span><span class="sep">///</span>
-          <span>Super App Ready</span><span class="sep">///</span>
-          <span>ANPR Compatible</span><span class="sep">///</span>
-          <span>FASTag-Linked Settlement</span><span class="sep">///</span>
-        </div>
+    <div class="mts-logo-cloud mts-logo-cloud--marquee" aria-hidden="true">
+      <div class="mts-logo-cloud__track">
+        <span class="mts-logo-cloud__item">Open Integration Model</span>
+        <span class="mts-logo-cloud__item">Super App Ready</span>
+        <span class="mts-logo-cloud__item">ANPR Compatible</span>
+        <span class="mts-logo-cloud__item">FASTag-Linked Settlement</span>
+        <span class="mts-logo-cloud__item">UPI Ready</span>
+        <span class="mts-logo-cloud__item">Infrastructure Compatible</span>
+        <span class="mts-logo-cloud__item">4 Integration Categories</span>
+        <span class="mts-logo-cloud__item">City Program Interface</span>
+        <span class="mts-logo-cloud__item">Open Integration Model</span>
+        <span class="mts-logo-cloud__item">Super App Ready</span>
+        <span class="mts-logo-cloud__item">ANPR Compatible</span>
+        <span class="mts-logo-cloud__item">FASTag-Linked Settlement</span>
       </div>
     </div>
 
     <!-- TECHNOLOGY DEVELOPMENT PARTNERS -->
-    <section class="section section-alt reveal-group" aria-label="Technology Development Partners">
+    <section class="mts-section mts-section--alt reveal-group" aria-label="Technology Development Partners">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">04 // Delivery Capability</span>
@@ -474,7 +519,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="mts-mts-section-cta" aria-label="Explore Integration Model">
+    <section class="mts-section-cta" aria-label="Explore Integration Model">
       <div class="mts-container">
         <div class="reveal">
           <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
@@ -580,7 +625,7 @@
         }
       });
     }, { threshold: 0.2 });
-    document.querySelectorAll('.kpi-strip').forEach(el => counterObs.observe(el));
+    document.querySelectorAll('.kpi-strip, .mts-kpi-strip, .mts-stat-row').forEach(el => counterObs.observe(el));
 
     document.querySelectorAll('.nav-has-dropdown').forEach(item => {
       const btn = item.querySelector('button');
@@ -589,5 +634,6 @@
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -19,6 +19,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -26,11 +29,39 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -176,7 +207,7 @@
   </nav>
 
   <main id="main-content">
-    <section class="mts-hero mts-hero--article" aria-label="Deployment Roadmap">
+    <section class="mts-hero mts-hero--article" aria-label="Deployment Roadmap" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.70) 0%, rgba(0,7,32,0.78) 55%, rgba(0,4,15,0.90) 100%), url('https://images.unsplash.com/photo-1566734904496-9309bb1798ae?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__article-layout">
         <div>
@@ -205,6 +236,14 @@
       </div>
     </section>
 
+    <div class="mts-photo-strip">
+      <img src="https://images.unsplash.com/photo-1566734904496-9309bb1798ae?w=1400&q=80&auto=format&fit=crop" alt="Modern city skyline at dusk — urban infrastructure ready for smart mobility integration" loading="lazy">
+      <div class="mts-photo-strip__caption">
+        <span class="mts-photo-strip__label">Smart City Deployment · Phased Urban Mobility Integration</span>
+        <span class="mts-photo-strip__tag">● Deployment Context</span>
+      </div>
+    </div>
+
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
@@ -220,60 +259,92 @@
           </aside>
 
           <div>
-            <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-9);max-width:700px;">The structure below illustrates how a typical city deployment could be sequenced over a 12-month period, subject to procurement processes, regulatory approvals, and local infrastructure readiness.</p>
+            <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-8);max-width:700px;">The structure below illustrates how a typical city deployment could be sequenced over a 12-month period, subject to procurement processes, regulatory approvals, and local infrastructure readiness.</p>
 
-            <section id="phase-1" class="content-section reveal">
-              <h2 class="content-h2">Months 1–3: Policy Design and System Integration</h2>
-              <div class="phase-card">
-                <span class="phase-period">Phase 1 · Months 1–3</span>
-                <div class="phase-title">Policy Design and System Integration</div>
-                <p class="phase-body">The first phase establishes the operational and policy framework. City leadership defines programme goals such as reducing peak-hour congestion, encouraging carpooling, promoting off-peak travel, and supporting shared mobility. Institutional coordination begins across transportation authorities, traffic management, urban planning, and digital governance teams.</p>
+            <!-- Horizontal phase progress indicator -->
+            <div class="mts-stepper reveal" style="margin-bottom:var(--space-10)">
+              <div class="mts-stepper__step complete">
+                <div class="mts-stepper__indicator"></div>
+                <span class="mts-stepper__label">Policy Design</span>
+                <span class="mts-stepper__sublabel">Months 1–3</span>
               </div>
-              <p class="content-body">MTSAi is designed to integrate with existing city infrastructure including digital tolling systems, traffic monitoring, urban command centres, and mobility data sources. At the end of this phase, the city has a defined policy model and an integrated system environment.</p>
-            </section>
+              <div class="mts-stepper__step complete">
+                <div class="mts-stepper__indicator"></div>
+                <span class="mts-stepper__label">Pilot Launch</span>
+                <span class="mts-stepper__sublabel">Months 4–6</span>
+              </div>
+              <div class="mts-stepper__step active">
+                <div class="mts-stepper__indicator"><span class="mts-stepper__num">3</span></div>
+                <span class="mts-stepper__label">Evaluation</span>
+                <span class="mts-stepper__sublabel">Months 7–9</span>
+              </div>
+              <div class="mts-stepper__step">
+                <div class="mts-stepper__indicator"><span class="mts-stepper__num">4</span></div>
+                <span class="mts-stepper__label">Expansion</span>
+                <span class="mts-stepper__sublabel">Months 10–12</span>
+              </div>
+            </div>
 
-            <section id="phase-2" class="content-section reveal">
-              <h2 class="content-h2">Months 4–6: Pilot Programme Launch</h2>
-              <div class="phase-card">
-                <span class="phase-period">Phase 2 · Months 4–6</span>
-                <div class="phase-title">Pilot Programme Launch</div>
-                <p class="phase-body">A controlled pilot begins on one or two selected high-congestion corridors. Public communication explains how incentives work, how commuters participate, and how data is used and protected. Initial incentives are configured for verified carpooling, off-peak travel, and shared mobility usage.</p>
-              </div>
-              <p class="content-body">The pilot begins generating operational data and behavioural insight on a defined, time-bounded basis.</p>
-            </section>
+            <!-- Vertical timeline of phases -->
+            <div class="mts-timeline reveal" id="phase-1" style="margin-bottom:var(--space-10)">
 
-            <section id="phase-3" class="content-section reveal">
-              <h2 class="content-h2">Months 7–9: Evaluation and Policy Adjustment</h2>
-              <div class="phase-card">
-                <span class="phase-period">Phase 3 · Months 7–9</span>
-                <div class="phase-title">Evaluation and Policy Adjustment</div>
-                <p class="phase-body">The city reviews pilot metrics such as peak-hour traffic volumes, carpool participation rates, commuter response to incentives, and corridor travel times. Policy parameters can then be adjusted — including incentive levels, eligibility conditions, and target corridors.</p>
+              <div class="mts-timeline__event mts-timeline__event--success">
+                <div class="mts-timeline__dot"></div>
+                <div class="mts-timeline__date">Phase 1 · Months 1–3</div>
+                <div class="mts-timeline__title">Policy Design and System Integration</div>
+                <div class="mts-timeline__body">
+                  <p>The first phase establishes the operational and policy framework. City leadership defines programme goals such as reducing peak-hour congestion, encouraging carpooling, promoting off-peak travel, and supporting shared mobility. Institutional coordination begins across transportation authorities, traffic management, urban planning, and digital governance teams.</p>
+                  <p style="margin-top:var(--space-4)">MTSAi is designed to integrate with existing city infrastructure including digital tolling systems, traffic monitoring, urban command centres, and mobility data sources. At the end of this phase, the city has a defined policy model and an integrated system environment.</p>
+                </div>
               </div>
-              <p class="content-body">This iterative process allows cities to improve effectiveness while maintaining public confidence.</p>
-            </section>
 
-            <section id="phase-4" class="content-section reveal">
-              <h2 class="content-h2">Months 10–12: Expansion Planning</h2>
-              <div class="phase-card">
-                <span class="phase-period">Phase 4 · Months 10–12</span>
-                <div class="phase-title">Expansion Planning</div>
-                <p class="phase-body">If pilot performance is stable and evaluation supports continuation, the city can plan expansion to additional congestion corridors, new incentive categories, shared mobility provider integration, and broader commuter participation.</p>
+              <div class="mts-timeline__event mts-timeline__event--success" id="phase-2">
+                <div class="mts-timeline__dot"></div>
+                <div class="mts-timeline__date">Phase 2 · Months 4–6</div>
+                <div class="mts-timeline__title">Pilot Programme Launch</div>
+                <div class="mts-timeline__body">
+                  <p>A controlled pilot begins on one or two selected high-congestion corridors. Public communication explains how incentives work, how commuters participate, and how data is used and protected. Initial incentives are configured for verified carpooling, off-peak travel, and shared mobility usage.</p>
+                  <p style="margin-top:var(--space-4)">The pilot begins generating operational data and behavioural insight on a defined, time-bounded basis.</p>
+                </div>
               </div>
-              <p class="content-body">At this stage the system can transition from pilot to operational demand-management tool, subject to the city's own evaluation findings and procurement decisions.</p>
-            </section>
+
+              <div class="mts-timeline__event mts-timeline__event--active" id="phase-3">
+                <div class="mts-timeline__dot"></div>
+                <div class="mts-timeline__date">Phase 3 · Months 7–9</div>
+                <div class="mts-timeline__title">Evaluation and Policy Adjustment</div>
+                <div class="mts-timeline__body">
+                  <p>The city reviews pilot metrics such as peak-hour traffic volumes, carpool participation rates, commuter response to incentives, and corridor travel times. Policy parameters can then be adjusted — including incentive levels, eligibility conditions, and target corridors.</p>
+                  <p style="margin-top:var(--space-4)">This iterative process allows cities to improve effectiveness while maintaining public confidence.</p>
+                </div>
+              </div>
+
+              <div class="mts-timeline__event" id="phase-4">
+                <div class="mts-timeline__dot"></div>
+                <div class="mts-timeline__date">Phase 4 · Months 10–12</div>
+                <div class="mts-timeline__title">Expansion Planning</div>
+                <div class="mts-timeline__body">
+                  <p>If pilot performance is stable and evaluation supports continuation, the city can plan expansion to additional congestion corridors, new incentive categories, shared mobility provider integration, and broader commuter participation.</p>
+                  <p style="margin-top:var(--space-4)">At this stage the system can transition from pilot to operational demand-management tool, subject to the city's own evaluation findings and procurement decisions.</p>
+                </div>
+              </div>
+
+            </div>
 
             <section id="oversight" class="content-section reveal">
               <h2 class="content-h2">Continuous Oversight and Accountability</h2>
               <p class="content-body">Throughout deployment the city retains:</p>
-              <ul class="oversight-list">
-                <li>Auditable policy rules with transparent incentive distribution records</li>
-                <li>Operational dashboards for traffic management teams</li>
-                <li>Appeal and due-process workflows for commuters</li>
-                <li>Adjustable policy parameters at any phase</li>
-              </ul>
+
+              <div class="mts-contained-list" style="margin:var(--space-6) 0">
+                <div class="mts-contained-list__header">Accountability Controls</div>
+                <div class="mts-contained-list__item">Auditable policy rules with transparent incentive distribution records</div>
+                <div class="mts-contained-list__item">Operational dashboards for traffic management teams</div>
+                <div class="mts-contained-list__item">Appeal and due-process workflows for commuters</div>
+                <div class="mts-contained-list__item">Adjustable policy parameters at any phase</div>
+              </div>
+
               <p class="content-body">These capabilities are designed to ensure mobility policies remain transparent, accountable, and adjustable throughout every phase.</p>
-              <div class="policy-notice">
-                <span class="policy-notice-label">Deployment Notice</span>
+              <div class="mts-callout mts-callout--blue" style="margin-top:var(--space-6)">
+                <span class="mts-callout__label">Deployment Notice</span>
                 <p>The 12-month structure above describes how MTSAi is designed to support a phased city deployment. Actual timelines, scope, and outcomes depend on procurement processes, regulatory approvals, local infrastructure readiness, and the city's own evaluation findings. MTSAi does not claim outcomes in advance of deployment.</p>
               </div>
             </section>
@@ -282,7 +353,7 @@
       </div>
     </article>
 
-    <section class="mts-mts-section-cta" aria-label="Next steps">
+    <section class="mts-section-cta" aria-label="Next steps">
       <div class="mts-container">
         <div class="reveal">
           <div class="cta-eyebrow">Ready to Start?</div>
@@ -347,5 +418,6 @@
     }, { rootMargin: '-20% 0px -75% 0px' });
     sections.forEach(s => tocObs.observe(s));
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

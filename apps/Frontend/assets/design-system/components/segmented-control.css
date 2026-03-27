@@ -1,0 +1,199 @@
+/* ============================================================
+   MTSAi Design System — Segmented Control & Button Group
+   Provides: segmented control (radio-button style selector),
+             button group (joined action buttons)
+   Reference: IBM Carbon ToggleGroup, Material SegmentedButton
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   SEGMENTED CONTROL
+   Mutually-exclusive option selector; horizontal pill container.
+   Usage: <div class="mts-segmented" role="group">
+            <button class="mts-segmented__item active">Label</button>
+          </div>
+════════════════════════════════════════════════════════════════ */
+.mts-segmented {
+  display: inline-flex;
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  padding: 3px;
+  gap: 2px;
+}
+
+.mts-segmented__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-5);
+  height: 36px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 150ms, background 150ms;
+  white-space: nowrap;
+  position: relative;
+}
+
+.mts-segmented__item:hover:not(.active) {
+  color: var(--text-primary);
+  background: var(--layer-02);
+}
+
+.mts-segmented__item.active {
+  background: var(--interactive);
+  color: #fff;
+}
+
+/* Size variants */
+.mts-segmented--sm .mts-segmented__item {
+  height: 28px;
+  font-size: 10px;
+  padding: 0 var(--space-4);
+}
+
+.mts-segmented--lg .mts-segmented__item {
+  height: 44px;
+  font-size: 12px;
+  padding: 0 var(--space-6);
+}
+
+/* Icon-only segmented control */
+.mts-segmented__item--icon-only {
+  width: 36px;
+  padding: 0;
+  justify-content: center;
+}
+.mts-segmented--sm .mts-segmented__item--icon-only { width: 28px; }
+.mts-segmented--lg .mts-segmented__item--icon-only { width: 44px; }
+
+/* Colour variants */
+.mts-segmented--green .mts-segmented__item.active {
+  background: var(--brand-primary);
+}
+
+.mts-segmented--saffron .mts-segmented__item.active {
+  background: var(--cta-primary);
+  color: #000;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BUTTON GROUP
+   Joined set of action buttons (not mutually exclusive).
+   Usage: <div class="mts-btn-group">
+            <button class="mts-btn">Left</button>
+            <button class="mts-btn">Right</button>
+          </div>
+════════════════════════════════════════════════════════════════ */
+.mts-btn-group {
+  display: inline-flex;
+}
+
+.mts-btn-group > .mts-btn {
+  border-radius: 0;
+  border-right-width: 0;
+}
+.mts-btn-group > .mts-btn:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+.mts-btn-group > .mts-btn:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-right-width: 1px;
+}
+.mts-btn-group > .mts-btn:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TAB BAR (pill-style, used inline within sections)
+   Distinct from the full .mts-tabs component.
+════════════════════════════════════════════════════════════════ */
+.mts-tab-bar {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  width: fit-content;
+}
+
+.mts-tab-bar__item {
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 150ms, background 150ms;
+}
+.mts-tab-bar__item:hover     { color: var(--text-primary); background: var(--layer-02); }
+.mts-tab-bar__item.active    { background: var(--interactive); color: #fff; }
+.mts-tab-bar__item--green.active   { background: var(--brand-primary); }
+.mts-tab-bar__item--saffron.active { background: var(--cta-primary); color: #000; }
+
+/* ══════════════════════════════════════════════════════════════
+   FILTER CHIPS ROW
+   Horizontal row of toggleable filter chips.
+   Usage: <div class="mts-filter-row">
+            <button class="mts-filter-chip active">All</button>
+          </div>
+════════════════════════════════════════════════════════════════ */
+.mts-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.mts-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: color 150ms, background 150ms, border-color 150ms;
+  white-space: nowrap;
+}
+.mts-filter-chip:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.mts-filter-chip.active {
+  background: var(--interactive);
+  border-color: var(--interactive);
+  color: #fff;
+}
+.mts-filter-chip.active--green {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #fff;
+}
+
+/* Remove button within chip */
+.mts-filter-chip__remove {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  font-size: 10px;
+}
+.mts-filter-chip__remove:hover { opacity: 1; }

@@ -1,0 +1,281 @@
+/* ============================================================
+   MTSAi Design System — Stepper / Progress Tracker
+   Provides: horizontal stepper, vertical stepper,
+             numbered process list, mini stepper
+   Reference: IBM Carbon ProgressIndicator, Atlassian Wizard
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   HORIZONTAL STEPPER
+   Used in multi-step forms, onboarding flows, checkout.
+════════════════════════════════════════════════════════════════ */
+.mts-stepper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mts-stepper__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 80px;
+  position: relative;
+}
+
+/* Connector line between steps */
+.mts-stepper__step::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: calc(-50% + 14px);
+  right: calc(50% + 14px);
+  height: 2px;
+  background: var(--border-subtle);
+  z-index: 0;
+}
+.mts-stepper__step:first-child::before { display: none; }
+
+.mts-stepper__step.complete::before,
+.mts-stepper__step.active::before   { background: var(--interactive); }
+
+/* Step indicator (circle) */
+.mts-stepper__indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+  transition: background 200ms, border-color 200ms, color 200ms;
+  flex-shrink: 0;
+}
+
+.mts-stepper__step.active .mts-stepper__indicator {
+  background: var(--interactive);
+  border-color: var(--interactive);
+  color: #fff;
+}
+
+.mts-stepper__step.complete .mts-stepper__indicator {
+  background: var(--interactive);
+  border-color: var(--interactive);
+  color: #fff;
+}
+
+/* Checkmark for completed steps — via data-icon attribute or CSS */
+.mts-stepper__step.complete .mts-stepper__indicator::after {
+  content: '✓';
+  font-size: 12px;
+}
+.mts-stepper__step.complete .mts-stepper__indicator .mts-stepper__num { display: none; }
+
+.mts-stepper__step.error .mts-stepper__indicator {
+  background: var(--red-50);
+  border-color: var(--red-50);
+  color: #fff;
+}
+
+/* Step label */
+.mts-stepper__label {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-align: center;
+  white-space: nowrap;
+}
+.mts-stepper__step.active   .mts-stepper__label { color: var(--interactive); }
+.mts-stepper__step.complete .mts-stepper__label { color: var(--text-secondary); }
+.mts-stepper__step.error    .mts-stepper__label { color: var(--red-50); }
+
+/* Optional sub-label */
+.mts-stepper__sublabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 2px;
+  font-family: inherit;
+}
+
+/* ── Compact / inline stepper (used in forms) ────────────── */
+.mts-stepper--sm .mts-stepper__indicator { width: 22px; height: 22px; font-size: 10px; }
+.mts-stepper--sm .mts-stepper__step::before { top: 11px; }
+.mts-stepper--sm .mts-stepper__label { font-size: 9px; }
+
+/* ══════════════════════════════════════════════════════════════
+   VERTICAL STEPPER
+   Used in process documentation, roadmaps, timelines.
+════════════════════════════════════════════════════════════════ */
+.mts-stepper--vertical {
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.mts-stepper--vertical .mts-stepper__step {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-5);
+  flex: none;
+  width: 100%;
+  padding-bottom: var(--space-7);
+}
+
+/* Connector line — vertical */
+.mts-stepper--vertical .mts-stepper__step::before {
+  top: 28px;
+  left: 13px;
+  right: auto;
+  bottom: 0;
+  width: 2px;
+  height: auto;
+}
+.mts-stepper--vertical .mts-stepper__step:last-child::before { display: none; }
+
+.mts-stepper--vertical .mts-stepper__label {
+  text-align: left;
+  margin-top: 4px;
+}
+
+.mts-stepper--vertical .mts-stepper__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mts-stepper--vertical .mts-stepper__content h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+.mts-stepper--vertical .mts-stepper__content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NUMBERED PROCESS LIST
+   Decorative ordered list; larger step numbers as headings.
+   Used in "How It Works" sections.
+════════════════════════════════════════════════════════════════ */
+.mts-process-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: process-step;
+}
+
+.mts-process-list__item {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  counter-increment: process-step;
+}
+.mts-process-list__item:last-child { border-bottom: none; }
+
+.mts-process-list__num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--interactive);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.mts-process-list__body h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+.mts-process-list__body p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TIMELINE
+   Vertical event sequence with date stamps on the left.
+════════════════════════════════════════════════════════════════ */
+.mts-timeline {
+  position: relative;
+  padding-left: var(--space-8);
+}
+
+/* Vertical spine */
+.mts-timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.mts-timeline__event {
+  position: relative;
+  padding-bottom: var(--space-8);
+}
+
+/* Dot on spine */
+.mts-timeline__dot {
+  position: absolute;
+  left: calc(-1 * var(--space-8) + 8px);
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--border-subtle);
+  z-index: 1;
+}
+.mts-timeline__event--active  .mts-timeline__dot { border-color: var(--interactive); background: var(--interactive); }
+.mts-timeline__event--success .mts-timeline__dot { border-color: var(--brand-primary); background: var(--brand-primary); }
+.mts-timeline__event--warning .mts-timeline__dot { border-color: var(--cta-primary); background: var(--cta-primary); }
+.mts-timeline__event--error   .mts-timeline__dot { border-color: var(--red-50); background: var(--red-50); }
+
+.mts-timeline__date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.mts-timeline__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.mts-timeline__body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

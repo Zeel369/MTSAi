@@ -276,6 +276,496 @@
   }
 
   /* ----------------------------------------------------------
+     Segmented Controls / Tab Bars / Filter Chips
+     Handles .active toggling within a group.
+  ---------------------------------------------------------- */
+  function initSegmentedControls() {
+    // Segmented controls
+    document.querySelectorAll('.mts-segmented').forEach(group => {
+      group.querySelectorAll('.mts-segmented__item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.mts-segmented__item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        });
+      });
+    });
+    // Tab bars
+    document.querySelectorAll('.mts-tab-bar').forEach(bar => {
+      bar.querySelectorAll('.mts-tab-bar__item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.mts-tab-bar__item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+    // Filter chips (multi-select by default; add data-single for radio behaviour)
+    document.querySelectorAll('.mts-filter-row').forEach(row => {
+      const single = row.dataset.single !== undefined;
+      row.querySelectorAll('.mts-filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          if (single) {
+            row.querySelectorAll('.mts-filter-chip').forEach(c => c.classList.remove('active'));
+          }
+          chip.classList.toggle('active');
+        });
+        // Remove button inside chip
+        const rm = chip.querySelector('.mts-filter-chip__remove');
+        if (rm) rm.addEventListener('click', e => {
+          e.stopPropagation();
+          chip.remove();
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Tree View
+     Expand/collapse nested .mts-tree nodes.
+  ---------------------------------------------------------- */
+  function initTreeView() {
+    document.querySelectorAll('.mts-tree').forEach(tree => {
+      tree.querySelectorAll('.mts-tree__item[aria-expanded]').forEach(trigger => {
+        const submenuId = trigger.getAttribute('aria-controls');
+        const submenu = submenuId
+          ? document.getElementById(submenuId)
+          : trigger.closest('li').querySelector('ul');
+        if (!submenu) return;
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          trigger.setAttribute('aria-expanded', String(!expanded));
+          submenu.classList.toggle('open', !expanded);
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Side Nav sub-menus
+     Expand/collapse .mts-side-nav__sub panels.
+  ---------------------------------------------------------- */
+  function initSideNav() {
+    document.querySelectorAll('.mts-side-nav__item[aria-expanded]').forEach(trigger => {
+      const submenu = trigger.nextElementSibling;
+      if (!submenu || !submenu.classList.contains('mts-side-nav__sub')) return;
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!expanded));
+        submenu.classList.toggle('open', !expanded);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Combobox / Autocomplete
+  ---------------------------------------------------------- */
+  function initComboboxes() {
+    document.querySelectorAll('.mts-combobox').forEach(box => {
+      const input   = box.querySelector('.mts-combobox__input');
+      const results = box.querySelector('.mts-combobox__results');
+      const clear   = box.querySelector('.mts-combobox__clear');
+      if (!input) return;
+
+      function openBox()  { box.classList.add('open'); }
+      function closeBox() { box.classList.remove('open'); }
+
+      input.addEventListener('focus', openBox);
+      input.addEventListener('input', () => {
+        box.classList.toggle('has-value', input.value.length > 0);
+        openBox();
+      });
+
+      if (clear) clear.addEventListener('click', () => {
+        input.value = '';
+        box.classList.remove('has-value');
+        closeBox();
+        input.focus();
+      });
+
+      // Close on outside click
+      document.addEventListener('click', e => {
+        if (!box.contains(e.target)) closeBox();
+      });
+
+      // Keyboard navigation within results
+      input.addEventListener('keydown', e => {
+        if (!results) return;
+        const opts = Array.from(results.querySelectorAll('.mts-combobox__option:not(.mts-combobox__option--disabled)'));
+        const current = results.querySelector('[aria-selected="true"]');
+        let idx = opts.indexOf(current);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          idx = Math.min(idx + 1, opts.length - 1);
+          opts.forEach(o => o.removeAttribute('aria-selected'));
+          if (opts[idx]) { opts[idx].setAttribute('aria-selected', 'true'); opts[idx].scrollIntoView({ block: 'nearest' }); }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          idx = Math.max(idx - 1, 0);
+          opts.forEach(o => o.removeAttribute('aria-selected'));
+          if (opts[idx]) { opts[idx].setAttribute('aria-selected', 'true'); opts[idx].scrollIntoView({ block: 'nearest' }); }
+        } else if (e.key === 'Enter') {
+          if (current) { current.click(); }
+        } else if (e.key === 'Escape') {
+          closeBox(); input.blur();
+        }
+      });
+
+      // Select option on click
+      if (results) results.querySelectorAll('.mts-combobox__option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          input.value = opt.dataset.value || opt.textContent.trim();
+          box.classList.add('has-value');
+          results.querySelectorAll('.mts-combobox__option').forEach(o => o.classList.remove('mts-combobox__option--selected'));
+          opt.classList.add('mts-combobox__option--selected');
+          closeBox();
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Number Stepper
+  ---------------------------------------------------------- */
+  function initNumberSteppers() {
+    document.querySelectorAll('.mts-number-stepper').forEach(stepper => {
+      const input = stepper.querySelector('.mts-number-stepper__input');
+      const dec   = stepper.querySelector('.mts-number-stepper__btn--dec');
+      const inc   = stepper.querySelector('.mts-number-stepper__btn--inc');
+      if (!input) return;
+
+      const min  = parseFloat(input.min  ?? -Infinity);
+      const max  = parseFloat(input.max  ??  Infinity);
+      const step = parseFloat(input.step ?? 1);
+
+      function update(val) {
+        val = Math.min(max, Math.max(min, val));
+        input.value = val;
+        if (dec) dec.disabled = val <= min;
+        if (inc) inc.disabled = val >= max;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+
+      if (dec) dec.addEventListener('click', () => update(parseFloat(input.value || 0) - step));
+      if (inc) inc.addEventListener('click', () => update(parseFloat(input.value || 0) + step));
+      input.addEventListener('change', () => update(parseFloat(input.value || 0)));
+
+      // Init button states
+      update(parseFloat(input.value || 0));
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Tag Input
+  ---------------------------------------------------------- */
+  function initTagInputs() {
+    document.querySelectorAll('.mts-tag-input').forEach(container => {
+      const textInput = container.querySelector('.mts-tag-input__text');
+      if (!textInput) return;
+
+      function addTag(value) {
+        value = value.trim();
+        if (!value) return;
+        const tag = document.createElement('span');
+        tag.className = 'mts-tag-input__tag';
+        tag.innerHTML = `${value}<button type="button" class="mts-tag-input__tag-remove" aria-label="Remove ${value}">×</button>`;
+        tag.querySelector('.mts-tag-input__tag-remove').addEventListener('click', () => tag.remove());
+        container.insertBefore(tag, textInput);
+        textInput.value = '';
+        container.dispatchEvent(new CustomEvent('tag:add', { detail: { value }, bubbles: true }));
+      }
+
+      textInput.addEventListener('keydown', e => {
+        if ((e.key === 'Enter' || e.key === ',') && textInput.value.trim()) {
+          e.preventDefault();
+          addTag(textInput.value);
+        } else if (e.key === 'Backspace' && !textInput.value) {
+          const tags = container.querySelectorAll('.mts-tag-input__tag');
+          if (tags.length) tags[tags.length - 1].remove();
+        }
+      });
+
+      // Allow clicking the container to focus text input
+      container.addEventListener('click', () => textInput.focus());
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Bottom Sheet
+  ---------------------------------------------------------- */
+  function initBottomSheets() {
+    document.querySelectorAll('[data-open-sheet]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const sheet = document.getElementById(trigger.dataset.openSheet);
+        if (sheet) sheet.classList.add('open');
+      });
+    });
+    document.querySelectorAll('.mts-bottom-sheet').forEach(sheet => {
+      const backdrop = sheet.querySelector('.mts-bottom-sheet__backdrop');
+      function close() { sheet.classList.remove('open'); }
+      if (backdrop) backdrop.addEventListener('click', close);
+      sheet.querySelectorAll('[data-close-sheet]').forEach(btn => btn.addEventListener('click', close));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && sheet.classList.contains('open')) close();
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Drawer
+  ---------------------------------------------------------- */
+  function initDrawers() {
+    document.querySelectorAll('[data-open-drawer]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const drawer = document.getElementById(trigger.dataset.openDrawer);
+        if (drawer) { drawer.classList.add('open'); drawer.querySelector('.mts-drawer__panel').focus?.(); }
+      });
+    });
+    document.querySelectorAll('.mts-drawer').forEach(drawer => {
+      const backdrop = drawer.querySelector('.mts-drawer__backdrop');
+      const close    = drawer.querySelector('.mts-drawer__close');
+      function closeDrawer() { drawer.classList.remove('open'); }
+      if (backdrop) backdrop.addEventListener('click', closeDrawer);
+      if (close)    close.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('[data-close-drawer]').forEach(btn => btn.addEventListener('click', closeDrawer));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Command Palette  (Cmd/Ctrl+K to open)
+  ---------------------------------------------------------- */
+  function initCommandPalette() {
+    const palette = document.querySelector('.mts-command-palette');
+    if (!palette) return;
+
+    function openPalette() {
+      palette.style.display = 'flex';
+      palette.querySelector('.mts-command-palette__input')?.focus();
+    }
+    function closePalette() {
+      palette.style.display = 'none';
+    }
+
+    // Keyboard shortcut
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        palette.style.display === 'none' ? openPalette() : closePalette();
+      }
+      if (e.key === 'Escape' && palette.style.display !== 'none') closePalette();
+    });
+
+    // Click backdrop to close
+    palette.addEventListener('click', e => {
+      if (e.target === palette) closePalette();
+    });
+
+    // Trigger buttons
+    document.querySelectorAll('[data-open-command-palette]').forEach(btn => {
+      btn.addEventListener('click', openPalette);
+    });
+
+    // Start hidden
+    palette.style.display = 'none';
+
+    // Arrow key navigation
+    const input = palette.querySelector('.mts-command-palette__input');
+    if (input) input.addEventListener('keydown', e => {
+      const items = Array.from(palette.querySelectorAll('.mts-command-palette__item'));
+      const current = palette.querySelector('.mts-command-palette__item[aria-selected="true"]');
+      let idx = items.indexOf(current);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        idx = Math.min(idx + 1, items.length - 1);
+        items.forEach(i => i.removeAttribute('aria-selected'));
+        if (items[idx]) { items[idx].setAttribute('aria-selected', 'true'); items[idx].scrollIntoView({ block: 'nearest' }); }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        idx = Math.max(idx - 1, 0);
+        items.forEach(i => i.removeAttribute('aria-selected'));
+        if (items[idx]) { items[idx].setAttribute('aria-selected', 'true'); items[idx].scrollIntoView({ block: 'nearest' }); }
+      } else if (e.key === 'Enter') {
+        if (current) current.click();
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Context Menu  (right-click on [data-context-menu])
+  ---------------------------------------------------------- */
+  function initContextMenus() {
+    document.querySelectorAll('[data-context-menu]').forEach(trigger => {
+      const menuId = trigger.dataset.contextMenu;
+      const menu = document.getElementById(menuId);
+      if (!menu) return;
+
+      trigger.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        // Position at cursor
+        const x = Math.min(e.clientX, window.innerWidth - 220);
+        const y = Math.min(e.clientY, window.innerHeight - menu.offsetHeight - 10);
+        menu.style.left = x + 'px';
+        menu.style.top  = y + 'px';
+        menu.style.display = 'block';
+      });
+
+      document.addEventListener('click', () => { menu.style.display = 'none'; });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') menu.style.display = 'none';
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Accordion (mts-accordion — add to existing accordion.css)
+  ---------------------------------------------------------- */
+  function initAccordions() {
+    document.querySelectorAll('.mts-accordion').forEach(accordion => {
+      accordion.querySelectorAll('.mts-accordion__trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item    = trigger.closest('.mts-accordion__item');
+          const content = item.querySelector('.mts-accordion__content, .accordion-content');
+          const isOpen  = trigger.getAttribute('aria-expanded') === 'true';
+
+          // Close others if data-single set on parent
+          if (accordion.dataset.single !== undefined) {
+            accordion.querySelectorAll('.mts-accordion__trigger').forEach(t => {
+              t.setAttribute('aria-expanded', 'false');
+              const c = t.closest('.mts-accordion__item').querySelector('.mts-accordion__content, .accordion-content');
+              if (c) { c.classList.remove('is-open'); c.style.maxHeight = '0'; }
+            });
+          }
+
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          if (content) {
+            content.classList.toggle('is-open', !isOpen);
+            content.style.maxHeight = isOpen ? '0' : content.scrollHeight + 'px';
+          }
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Stepper (multi-step form progression)
+  ---------------------------------------------------------- */
+  function initSteppers() {
+    document.querySelectorAll('[data-stepper]').forEach(form => {
+      const steps    = Array.from(form.querySelectorAll('.mts-stepper__step'));
+      const panels   = Array.from(form.querySelectorAll('[data-step-panel]'));
+      const nextBtns = form.querySelectorAll('[data-step-next]');
+      const prevBtns = form.querySelectorAll('[data-step-prev]');
+      let current = 0;
+
+      function goTo(n) {
+        steps.forEach((s, i) => {
+          s.classList.toggle('active',   i === n);
+          s.classList.toggle('complete', i < n);
+          s.classList.remove('active');
+          if (i === n) s.classList.add('active');
+        });
+        panels.forEach((p, i) => p.style.display = i === n ? '' : 'none');
+        current = n;
+      }
+
+      nextBtns.forEach(btn => btn.addEventListener('click', () => { if (current < steps.length - 1) goTo(current + 1); }));
+      prevBtns.forEach(btn => btn.addEventListener('click', () => { if (current > 0) goTo(current - 1); }));
+
+      if (steps.length) goTo(0);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     OTP / PIN Input  (auto-advance + backspace-retreat)
+  ---------------------------------------------------------- */
+  function initOTPInputs() {
+    document.querySelectorAll('[data-otp]').forEach(container => {
+      const cells = Array.from(container.querySelectorAll('.mts-otp__cell'));
+      if (!cells.length) return;
+
+      cells.forEach((cell, i) => {
+        cell.addEventListener('input', e => {
+          // Strip non-numeric if inputmode="numeric"
+          if (cell.inputMode === 'numeric') cell.value = cell.value.replace(/\D/g, '').slice(-1);
+          cell.classList.toggle('filled', !!cell.value);
+          if (cell.value && i < cells.length - 1) cells[i + 1].focus();
+          // Fire change on container when all filled
+          if (cells.every(c => c.value)) {
+            const code = cells.map(c => c.value).join('');
+            container.dispatchEvent(new CustomEvent('otp:complete', { detail: { code }, bubbles: true }));
+          }
+        });
+
+        cell.addEventListener('keydown', e => {
+          if (e.key === 'Backspace') {
+            if (cell.value) {
+              cell.value = '';
+              cell.classList.remove('filled');
+            } else if (i > 0) {
+              cells[i - 1].focus();
+              cells[i - 1].value = '';
+              cells[i - 1].classList.remove('filled');
+            }
+          } else if (e.key === 'ArrowLeft'  && i > 0) { e.preventDefault(); cells[i - 1].focus(); }
+          else if (e.key === 'ArrowRight' && i < cells.length - 1) { e.preventDefault(); cells[i + 1].focus(); }
+        });
+
+        // Handle paste on first cell — spread across cells
+        cell.addEventListener('paste', e => {
+          e.preventDefault();
+          const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+          text.split('').forEach((ch, j) => {
+            if (cells[j]) { cells[j].value = ch; cells[j].classList.add('filled'); }
+          });
+          const next = cells[Math.min(text.length, cells.length - 1)];
+          if (next) next.focus();
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Popover menus (button + .mts-popover-menu sibling)
+  ---------------------------------------------------------- */
+  function initPopoverMenus() {
+    document.querySelectorAll('[data-popover-menu]').forEach(trigger => {
+      const menuId = trigger.dataset.popoverMenu;
+      const menu   = menuId ? document.getElementById(menuId) : trigger.nextElementSibling;
+      if (!menu || !menu.classList.contains('mts-popover-menu')) return;
+
+      const parent = trigger.parentElement;
+      parent.style.position = parent.style.position || 'relative';
+
+      trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('open');
+        // Close all open popover menus
+        document.querySelectorAll('.mts-popover-menu.open').forEach(m => m.classList.remove('open'));
+        if (!isOpen) menu.classList.add('open');
+      });
+
+      document.addEventListener('click', () => menu.classList.remove('open'));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') menu.classList.remove('open');
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Stagger grid children
+  ---------------------------------------------------------- */
+  function initStaggerGrid() {
+    document.querySelectorAll('.stagger-grid').forEach(grid => {
+      Array.from(grid.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 80) + 'ms';
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
@@ -287,6 +777,20 @@
     initParticles();
     initParallax();
     initStaggerGrid();
+    initSegmentedControls();
+    initTreeView();
+    initSideNav();
+    initComboboxes();
+    initNumberSteppers();
+    initTagInputs();
+    initBottomSheets();
+    initDrawers();
+    initCommandPalette();
+    initContextMenus();
+    initAccordions();
+    initSteppers();
+    initPopoverMenus();
+    initOTPInputs();
   }
 
   if (document.readyState === 'loading') {

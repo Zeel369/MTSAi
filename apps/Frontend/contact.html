@@ -19,6 +19,9 @@
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
   <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
   <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
   <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
@@ -26,11 +29,35 @@
   <link rel="stylesheet" href="assets/design-system/base/reset.css">
   <link rel="stylesheet" href="assets/design-system/base/grid.css">
   <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
   <link rel="stylesheet" href="assets/design-system/base/animations.css">
   <link rel="stylesheet" href="assets/design-system/components/button.css">
   <link rel="stylesheet" href="assets/design-system/components/nav.css">
   <link rel="stylesheet" href="assets/design-system/components/card.css">
   <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
   <link rel="stylesheet" href="assets/design-system/components/progress.css">
   <link rel="stylesheet" href="assets/design-system/components/notification.css">
   <link rel="stylesheet" href="assets/design-system/components/table.css">
@@ -243,13 +270,29 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero-contact" aria-label="Contact MTSAi">
+    <section class="hero-contact" aria-label="Contact MTSAi" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="hero-contact-accent" aria-hidden="true"></div>
       <div class="mts-container">
         <div class="hero-contact-inner">
           <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">GoI-ready evaluation support</span>
           <h1 class="hero-contact-headline">Contact MTSAi<br><span class="headline-accent">for evaluation.</span></h1>
           <p class="hero-contact-sub">Choose your intent to reach the right intake team — Government, Strategic Partners, or Public Integrity — using minimal fields and plain-language notices.</p>
+          <div style="display:flex;justify-content:center;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;">3</div>
+              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Contact Paths</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;">2–3</div>
+              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Day Response</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--cta-primary);">100%</div>
+              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Audit-Logged</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -268,13 +311,13 @@
               <p>For departments, ULBs, and state agencies assessing feasibility, pilots, procurement routing, or due diligence.</p>
               <span class="mts-intent-cta">Start Government request →</span>
             </button>
-            <button class="mts-intent-card mts-mts-intent-card--green" onclick="showForm('sp')" aria-label="Start Strategic Partner request">
+            <button class="mts-intent-card mts-intent-card--green" onclick="showForm('sp')" aria-label="Start Strategic Partner request">
               <div class="intent-icon">🤝</div>
               <h3>Strategic Partners</h3>
               <p>For territory-scale operators and conveners supporting long-horizon delivery and program continuity.</p>
               <span class="mts-intent-cta" style="color:var(--brand-primary);">Start SP request →</span>
             </button>
-            <button class="mts-intent-card mts-mts-intent-card--dark" onclick="showForm('integrity')" aria-label="Report a public integrity concern">
+            <button class="mts-intent-card mts-intent-card--dark" onclick="showForm('integrity')" aria-label="Report a public integrity concern">
               <div class="intent-icon">🛡️</div>
               <h3>Public Integrity</h3>
               <p>For integrity, privacy, security, or fairness concerns relating to program conduct and safeguards.</p>
@@ -684,5 +727,6 @@
       a.click();
     }
   </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
