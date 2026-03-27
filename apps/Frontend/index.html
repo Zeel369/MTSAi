@@ -624,7 +624,7 @@
        NUMBERS SECTION — IBM Blue band
     ==================================================== */
     .section-numbers {
-      padding: clamp(64px, 10vw, 112px) 0;
+      padding: clamp(48px, 8vw, 96px) 0;
       background: #0052CC; /* brand Blue 60 — your actual blue */
       position: relative; overflow: hidden;
     }
@@ -636,6 +636,15 @@
       background-size: 80px 80px;
       pointer-events: none;
     }
+    /* Override stat colours for the dark blue band */
+    .section-numbers .mts-stat-row {
+      position: relative; z-index: 1;
+      justify-content: center;
+      gap: clamp(var(--space-8), 8vw, var(--space-16));
+    }
+    .section-numbers .mts-stat-block__val--blue { color: #fff; }
+    .section-numbers .mts-stat-block__label { color: rgba(255,255,255,0.65); }
+    .section-numbers .mts-stat-row__divider { background: rgba(255,255,255,0.20); }
 
     .numbers-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
