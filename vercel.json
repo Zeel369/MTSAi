@@ -1,0 +1,5 @@
+{
+  "outputDirectory": "apps/Frontend",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
