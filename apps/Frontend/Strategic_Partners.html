@@ -458,16 +458,24 @@
           <h2 class="mts-section__h2 reveal" style="color:#fff;">Infrastructure Integration</h2>
           <p class="mts-section__body reveal" style="color:rgba(255,255,255,0.70);">The platform is designed for compatibility with existing city infrastructure environments, reducing the need for greenfield deployments.</p>
         </div>
-        <div class="mts-dark-grid reveal delay-2">
+        <div class="mts-dark-grid reveal delay-2" style="grid-template-columns:repeat(3,1fr);">
           <div class="mts-card--dark">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);"><rect x="4" y="8" width="24" height="16" rx="2"/><circle cx="10" cy="16" r="3"/><path d="M16 12h8M16 16h6M16 20h4"/></svg>
             <span class="mts-card__num">Interface 01</span>
             <h3>ANPR / LPR Compatibility</h3>
-            <p>The platform is designed for integration with automated number plate recognition and related roadside detection environments where these systems already support enforcement or corridor management functions.</p>
+            <p>Designed for integration with automated number plate recognition and LPR environments where these systems already support enforcement or corridor management. Works with existing camera networks — no rip-and-replace.</p>
           </div>
           <div class="mts-card--dark">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);"><path d="M4 16h6l3-8 5 16 3-8h7"/></svg>
             <span class="mts-card__num">Interface 02</span>
             <h3>Traffic Management Systems</h3>
-            <p>MTSAi is also designed for integration with traffic management systems so policy settings, corridor logic, and operational data can be aligned with existing city-control environments.</p>
+            <p>Integrates with city traffic management systems so policy settings, corridor logic, and real-time operational data are aligned with existing city-control infrastructure and SCOOT/SCATS environments.</p>
+          </div>
+          <div class="mts-card--dark">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);"><rect x="6" y="6" width="20" height="14" rx="2"/><path d="M10 24h12M16 20v4"/></svg>
+            <span class="mts-card__num">Interface 03</span>
+            <h3>Government Operations Console</h3>
+            <p>City and state operators manage the programme through a government-controlled dashboard. Pricing rules, corridor configuration, and equity thresholds are set directly — no vendor intervention required.</p>
           </div>
         </div>
       </div>
@@ -500,19 +508,25 @@
         </div>
         <div class="partner-grid reveal delay-2">
           <div class="mts-card--feature">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="var(--interactive)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);opacity:0.75;"><rect x="4" y="4" width="22" height="22" rx="2"/><path d="M9 15h4l3-5 3 10 3-5h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="mts-card__num">Partner Type 01</span>
             <h3>Development Firms</h3>
-            <p>The platform may work with development firms that support implementation, productization, and environment-specific delivery work.</p>
+            <p>Engineering and product firms that support core platform implementation, feature productization, and environment-specific delivery — including API development and module extension.</p>
+            <div style="margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--blue-10);font-size:11px;color:var(--interactive);font-family:var(--font-mono);font-weight:600;">→ API, platform, module build</div>
           </div>
           <div class="mts-card--feature">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="var(--interactive)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);opacity:0.75;"><circle cx="10" cy="10" r="4"/><circle cx="20" cy="20" r="4"/><path d="M14 10h2a4 4 0 014 4v2"/></svg>
             <span class="mts-card__num">Partner Type 02</span>
             <h3>Integration Specialists</h3>
-            <p>MTSAi may work with integration specialists that connect the platform to mobility, payments, and city-system interfaces.</p>
+            <p>Specialists connecting the platform to mobility super-apps, FASTag/UPI payment rails, ANPR networks, and city-system data interfaces — with pre-defined API and webhook models.</p>
+            <div style="margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--blue-10);font-size:11px;color:var(--interactive);font-family:var(--font-mono);font-weight:600;">→ FASTag, UPI, ANPR connectors</div>
           </div>
           <div class="mts-card--feature mts-card--feature--green">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="var(--brand-primary)" stroke-width="1.5" aria-hidden="true" style="margin-bottom:var(--space-5);opacity:0.75;"><path d="M5 15l5 5 15-15"/><path d="M15 5v6M5 15h6" stroke-linecap="round"/></svg>
             <span class="mts-card__num" style="color:var(--brand-primary);">Partner Type 03</span>
             <h3>System Integrators</h3>
-            <p>System integrators may participate in delivery models where broader programme coordination and multi-system rollout are required.</p>
+            <p>Large SIs supporting government deployment coordination, multi-agency rollout, and programme management across city, state, and central procurement environments.</p>
+            <div style="margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid rgba(83,170,0,0.15);font-size:11px;color:var(--brand-primary);font-family:var(--font-mono);font-weight:600;">→ Programme-scale deployment</div>
           </div>
         </div>
       </div>
@@ -521,13 +535,38 @@
     <!-- CTA -->
     <section class="mts-section-cta" aria-label="Explore Integration Model">
       <div class="mts-container">
-        <div class="reveal">
-          <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
-          <h2 class="cta-headline">Explore the Integration Model</h2>
-          <p class="cta-body">If your organization works in mobility platforms, payments, infrastructure, or delivery, MTSAi can share the current integration model and architecture materials for review.</p>
-          <div class="cta-actions">
-            <a href="contact.html?intent=partnership" class="mts-btn mts-btn--primary mts-btn--lg">Explore Integration Opportunities →</a>
-            <a href="Government.html" class="mts-btn mts-btn--ghost mts-btn--lg">Government Path</a>
+        <div class="mts-cta-split reveal">
+          <div>
+            <span class="mts-section__eyebrow mts-section__eyebrow--white">Next Steps</span>
+            <h2 class="cta-headline">Explore the<br>Integration Model</h2>
+            <p class="cta-body">If your organization works in mobility platforms, payments, infrastructure, or delivery — MTSAi can share the current integration model and architecture materials for review.</p>
+            <div class="cta-actions">
+              <a href="contact.html?intent=partnership" class="mts-btn mts-btn--primary mts-btn--lg">Explore Integration Opportunities →</a>
+              <a href="Government.html" class="mts-btn mts-btn--ghost mts-btn--lg">Government Path</a>
+            </div>
+          </div>
+          <div class="mts-cta-checklist" aria-label="Partner benefits">
+            <div class="mts-cta-checklist-header">Partner benefits</div>
+            <div class="mts-cta-item">
+              <span class="mts-cta-item__icon">●</span>
+              <div><strong>Open API Standards</strong><span>REST + webhook integration model designed for rapid onboarding across all partner categories</span></div>
+            </div>
+            <div class="mts-cta-item">
+              <span class="mts-cta-item__icon">●</span>
+              <div><strong>Revenue Sharing Framework</strong><span>Clear revenue attribution model across data, payment, and enforcement integrations</span></div>
+            </div>
+            <div class="mts-cta-item">
+              <span class="mts-cta-item__icon">●</span>
+              <div><strong>Pilot Environment Access</strong><span>Sandbox and staging environments available for pre-deployment integration testing</span></div>
+            </div>
+            <div class="mts-cta-item">
+              <span class="mts-cta-item__icon">●</span>
+              <div><strong>Co-Development Pathway</strong><span>Joint product roadmap participation for Tier 1 technology partners</span></div>
+            </div>
+            <div class="mts-cta-item">
+              <span class="mts-cta-item__icon">●</span>
+              <div><strong>Global Deployment Potential</strong><span>Platform designed to scale beyond India — Singapore, London, and UAE corridors identified</span></div>
+            </div>
           </div>
         </div>
       </div>
