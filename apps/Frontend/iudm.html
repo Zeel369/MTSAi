@@ -80,7 +80,7 @@
     html { scroll-behavior: smooth; }
     body { overflow-x: hidden; background: var(--layer-bg); }
     .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
-    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--cta-primary), #FFAD33); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
+    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent-saffron), #FFCD80); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
     .skip-link { position: absolute; top: -40px; left: 0; background: var(--interactive); color: #fff; padding: 8px 16px; text-decoration: none; z-index: 10000; font-size: 13px; font-weight: 600; }
     .skip-link:focus { top: 0; }
 
@@ -90,7 +90,7 @@
     .mts-nav__inner { display: flex; align-items: center; padding: 0 var(--space-6); height: 64px; max-width: 1440px; margin: 0 auto; }
     .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
     .mts-nav__logo img { height: 38px; width: auto; }
-    .mts-nav__links { display: flex; list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
     .mts-nav__link { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; transition: color var(--duration-fast-02) var(--ease-standard); font-family: var(--font-body); position: relative; }
     .mts-nav__link.active { color: var(--interactive); }
     .mts-nav__link:hover { color: var(--text-primary); }
@@ -122,7 +122,7 @@
 
     /* ARTICLE BODY */
     .article-body { padding: clamp(72px,10vw,120px) 0; }
-    .article-layout { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-12); align-items: start; }
+    .article-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: start; }
     .article-toc { position: sticky; top: 80px; }
     .toc-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); margin-bottom: var(--space-5); }
     .toc-list { list-style: none; border-left: 2px solid var(--border-subtle); }
@@ -189,8 +189,11 @@
     .delay-1.reveal { transition-delay: 80ms; }
     .delay-2.reveal { transition-delay: 160ms; }
 
-    @media (max-width: 1024px) {  .article-layout { grid-template-columns: 1fr; } .article-toc { display: none; } .concept-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .mts-nav__links,    .cta-actions { flex-direction: column; } }
+    @media (min-width: 1025px) {
+  .article-layout { grid-template-columns: 220px 1fr; }
+  .article-toc { display: block; }
+} .concept-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) { .cta-actions { flex-direction: row; } }
   </style>
 </head>
 <body>
@@ -205,10 +208,8 @@
         <li><a href="Government.html" class="mts-nav__link">Government</a></li>
         <li class="nav-has-dropdown">
           <button class="mts-nav__link active" aria-expanded="false" aria-haspopup="true">How It Works ↓</button>
-          <ul class="nav-dropdown" role="menu">
-            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
-            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
-            <li role="menuitem"><a href="iudm.html" class="active" aria-current="page">Incentive-Based Demand Management</a></li>
+                    <ul class="nav-dropdown" role="menu">            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>            <li role="menuitem"><a href="iudm.html" class="active" aria-current="page">Incentive-Based Demand Management</a></li>
             <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
             <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
           </ul>
@@ -220,11 +221,26 @@
       <div class="mts-nav__actions">
         <span class="mts-nav-status"><span class="mts-status-dot" aria-hidden="true"></span><span>System Online</span></span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+      
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
   <main id="main-content">
+  <div class="hiw-strip" role="navigation" aria-label="How It Works — step 3 of 5">
+    <div class="hiw-strip__inner">
+      <span class="hiw-strip__prefix">How It Works</span>
+      <a href="congestion-coordination.html" class="hiw-step hiw-step--done" aria-current="false"><span class="hiw-step__num">01</span><span class="hiw-step__label">Coordination Problem</span></a>
+      <a href="why-traditional-fails.html" class="hiw-step hiw-step--done" aria-current="false"><span class="hiw-step__num">02</span><span class="hiw-step__label">Why Pricing Fails</span></a>
+      <a href="#" class="hiw-step hiw-step--active" aria-current="step"><span class="hiw-step__num">03</span><span class="hiw-step__label">The IUDM Model</span></a>
+      <a href="deployment-roadmap.html" class="hiw-step" aria-current="false"><span class="hiw-step__num">04</span><span class="hiw-step__label">City Deployment</span></a>
+      <a href="india-advantage.html" class="hiw-step" aria-current="false"><span class="hiw-step__num">05</span><span class="hiw-step__label">India Readiness</span></a>
+      <div class="hiw-strip__progress" style="width:60%" aria-hidden="true"></div>
+    </div>
+  </div>
 
     <!-- HERO -->
     <section class="mts-hero mts-hero--article" aria-label="IUDM Model" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.70) 0%, rgba(0,7,32,0.78) 55%, rgba(0,4,15,0.90) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
@@ -348,7 +364,7 @@
           <p class="cta-body">A phased approach designed for public accountability — from policy design to pilot evaluation in 12 months.</p>
           <div class="cta-actions">
             <a href="deployment-roadmap.html" class="mts-btn mts-btn--primary mts-btn--lg">Deployment Roadmap →</a>
-            <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Start Evaluation</a>
+            <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Request a Briefing</a>
           </div>
         </div>
       </div>
@@ -362,12 +378,18 @@
         <div>
           <a href="index.html" class="mts-footer__logo"><img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
           <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
-          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+                    <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
         </div>
         <nav class="mts-footer__links" aria-label="Footer navigation">
           <div class="mts-footer__col"><h3 class="mts-footer__col-heading">How It Works</h3><a href="why-traditional-fails.html">Why Traditional Fails</a><a href="congestion-coordination.html">Congestion Problem</a><a href="iudm.html">IUDM Model</a><a href="deployment-roadmap.html">Deployment Roadmap</a><a href="india-advantage.html">India Advantage</a></div>
           <div class="mts-footer__col"><h3 class="mts-footer__col-heading">Platform</h3><a href="technology_platform.html">Technology</a><a href="Government.html">Government</a><a href="Strategic_Partners.html">Partners</a></div>
-          <div class="mts-footer__col"><h3 class="mts-footer__col-heading">Governance</h3><a href="#">Trust Centre</a><a href="#">Privacy Policy</a></div>
+          <div class="mts-footer__col"><h3 class="mts-footer__col-heading">Governance</h3><a href="trust.html">Trust Centre</a><a href="privacy_policy.html">Privacy Policy</a></div>
           <div class="mts-footer__col"><h3 class="mts-footer__col-heading">Company</h3><a href="about.html">About</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
         </nav>
       </div>
@@ -375,7 +397,7 @@
       <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
       <div class="mts-footer__bottom">
         <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
-        <nav><a href="#">Terms</a><a href="#">Privacy Policy</a><a href="#">Hyperlinking Policy</a></nav>
+        <nav><a href="terms.html">Terms</a><a href="privacy_policy.html">Privacy Policy</a><a href="hyperlinking_policy.html">Hyperlinking Policy</a></nav>
         <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · IUDM · Jan 2026</span>
       </div>
     </div>
@@ -412,5 +434,36 @@
     sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html" class="active">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

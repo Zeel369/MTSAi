@@ -37,7 +37,7 @@
 .mts-hero__accent {
   position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--cta-primary) 0%, #FFAD33 60%, transparent 100%);
+  background: linear-gradient(90deg, var(--accent-saffron) 0%, #FFCD80 60%, transparent 100%);
   z-index: 10;
 }
 
@@ -59,9 +59,9 @@
 /* Tag override — glass style on dark bg */
 .mts-hero .mts-tag--blue,
 .mts-hero .mts-tag--white {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.20);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(8px);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -70,7 +70,7 @@
 
 .mts-hero__headline {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5.5vw, 80px);
+  font-size: clamp(32px, 5.5vw, 80px);
   font-weight: 700;
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -80,7 +80,7 @@
 }
 
 .mts-hero__headline--xl {
-  font-size: clamp(52px, 6vw, 96px);
+  font-size: clamp(40px, 6vw, 96px);
   max-width: 640px;
 }
 
@@ -89,11 +89,23 @@
 .headline-accent { color: var(--cta-primary); }
 .headline-green   { color: var(--brand-primary); }
 
+/* Mid-weight hook line — sits between headline and body copy */
+.mts-hero__subhook {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-5);
+}
+
 .mts-hero__subline {
   font-family: var(--font-body);
-  font-size: clamp(15px, 1.3vw, 18px);
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 600px;
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 580px;
   line-height: 1.72;
   margin-bottom: var(--space-8);
 }
@@ -105,6 +117,7 @@
 
 .mts-hero__ctas {
   display: flex;
+  flex-direction: column;
   gap: var(--space-4);
   flex-wrap: wrap;
   margin-bottom: var(--space-10);
@@ -125,17 +138,18 @@
 .mts-hero__note {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-top: var(--space-5);
 }
 
-/* ── Stat strip ──────────────────────────────────────────────── */
+/* ── Stat strip — stacked on mobile, row on desktop ──────────── */
 .mts-hero__stats {
   display: flex;
-  align-items: center;
-  gap: var(--space-7);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
   padding-top: var(--space-7);
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
@@ -155,7 +169,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.60);
+  color: rgba(255, 255, 255, 0.72);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-top: 4px;
@@ -201,7 +215,7 @@
   padding: 80px 0 80px var(--space-8);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   z-index: 5;
 }
@@ -248,13 +262,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--brand-primary);
-  animation: mts-hero-live-pulse 2s ease-in-out infinite;
-}
-
-@keyframes mts-hero-live-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.8); }
+  background: rgba(255, 255, 255, 0.40);
 }
 
 .mts-hero__panel-body { padding: 16px 18px; }
@@ -286,7 +294,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: 9px;
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.62);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-top: 2px;
@@ -294,31 +302,37 @@
 
 /* ── Layout modifiers ────────────────────────────────────────── */
 
-/* Split: 2-column grid with right visual panel (index.html) */
-.mts-hero--split {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 64px);
-  padding: 0;
+/* ── Height modifiers ─────────────────────────────────────── */
+
+/* Full viewport — homepage hero only */
+.mts-hero--full {
+  min-height: 100vh;
 }
 
-.mts-hero--split .mts-hero__split-container {
+/* Mid — interior marketing pages (Government, SP, tech) */
+.mts-hero--mid {
+  min-height: 60vh;
+}
+
+/* Compact — utility pages (about, careers, contact) */
+.mts-hero--compact {
+  min-height: 0;
+  padding: clamp(60px, 9vw, 100px) 0;
+}
+
+/* Split: single-column on mobile, 2-column grid on desktop */
+.mts-hero--split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 clamp(24px, 5vw, 80px);
-  margin: 0 auto;
-  position: relative;
-  z-index: 5;
+  min-height: auto;
+  padding: clamp(80px, 12vw, 120px) 0 clamp(48px, 6vw, 72px);
 }
 
 .mts-hero--split .mts-hero__inner {
-  padding: 80px var(--space-8) 80px 0;
-  max-width: 600px;
-  margin-left: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 var(--space-6);
 }
 
 /* Standard: single column, left-aligned (gov, sp, tp) */
@@ -335,8 +349,8 @@
 
 .mts-hero__article-layout {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--space-12);
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
   align-items: start;
   position: relative;
   z-index: 5;
@@ -361,40 +375,66 @@
     radial-gradient(ellipse 55% 80% at 12% 50%, rgba(83, 170, 0, 0.38) 0%, transparent 65%);
 }
 .mts-hero--green .mts-hero__accent {
-  background: linear-gradient(90deg, #53AA00 0%, #FFAD33 60%, transparent 100%);
+  background: linear-gradient(90deg, #53AA00 0%, var(--accent-saffron) 60%, transparent 100%);
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .mts-hero__article-layout {
-    grid-template-columns: 1fr;
+/* ── Stat divider + CTA buttons — hidden on mobile, shown on desktop ── */
+.mts-hero__stat-divider { display: none; }
+.mts-hero__ctas .mts-btn { width: 100%; }
+.mts-hero__visual { display: none; }
+
+/* ── Responsive — mobile-first progressive enhancement ──────── */
+
+/* Tablet (≥ 769px): restore row stats, show strip prefix */
+@media (min-width: 769px) {
+  .mts-hero__stats {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-7);
   }
+  .mts-hero__stat-divider { display: block; }
+  .mts-hero__ctas { flex-direction: row; }
+  .mts-hero__ctas .mts-btn { width: auto; }
 }
 
-@media (max-width: 900px) {
-  .mts-hero--split .mts-hero__split-container {
-    grid-template-columns: 1fr;
+/* Desktop (≥ 901px): restore split 2-col layout */
+@media (min-width: 901px) {
+  .mts-hero--split {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 64px);
+    padding: 0;
   }
   .mts-hero--split .mts-hero__inner {
-    max-width: 100%;
-    margin: 0;
-    padding: 80px 0 40px;
+    padding: 80px var(--space-6) 80px 0;
+    max-width: 640px;
+    margin-left: auto;
   }
-  .mts-hero__visual { display: none; }
+  .mts-hero__visual { display: flex; }
 }
 
-@media (max-width: 768px) {
-  .mts-hero--split {
-    min-height: auto;
+/* Wide (≥ 1025px): restore article 2-col layout */
+@media (min-width: 1025px) {
+  .mts-hero__article-layout {
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-12);
   }
-  .mts-hero__stats  { flex-direction: column; gap: var(--space-5); }
-  .mts-hero__stat-divider { display: none; }
-  .mts-hero__ctas   { flex-direction: column; }
-  .mts-hero__ctas .mts-btn { width: 100%; }
 }
 
 /* ── Reduced motion ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .mts-hero__scroll-cue     { animation: none; }
-  .mts-hero__panel-live-dot { animation: none; }
+  .mts-hero__scroll-cue { animation: none; }
+}
+
+/* ── Reduced motion — stop SVG <animate> elements ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  .city-grid-svg animate,
+  .mts-hero animate {
+    display: none;
+  }
+  .mts-hero__panel-live-dot {
+    animation: none;
+  }
+  .mts-hero__scroll-cue {
+    animation: none;
+  }
 }

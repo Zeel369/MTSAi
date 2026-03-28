@@ -62,3 +62,17 @@ fieldset {
   outline-offset: 2px;
   border-radius: var(--radius-xs);
 }
+
+/* High-visibility focus ring on dark backgrounds (heroes, dark sections, CTAs) */
+.mts-hero :focus-visible,
+.mts-section--dark :focus-visible,
+.mts-section-cta :focus-visible,
+.mts-section--dark-green :focus-visible {
+  outline-color: #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* Saffron focus ring on CTA buttons specifically */
+.mts-hero .mts-btn--primary:focus-visible {
+  outline-color: var(--cta-primary);
+}

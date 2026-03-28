@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi's commitment to transparent rules, fair treatment, and auditable decisions so programmes survive leadership changes and public scrutiny.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Public Integrity | MTSAi</title>
+  <link rel="canonical" href="https://mtsai.in/public_integrity.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Public Integrity | MTSAi">
+  <meta property="og:description" content="MTSAi's commitment to transparent rules, fair treatment, and auditable decisions so programmes survive leadership changes and public scrutiny.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/public_integrity.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Public Integrity | MTSAi">
+  <meta name="twitter:description" content="MTSAi's commitment to transparent rules, fair treatment, and auditable decisions so programmes survive leadership changes and public scrutiny.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="assets/design-system/base/reset.css">
+  <link rel="stylesheet" href="assets/design-system/base/grid.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
+  <link rel="stylesheet" href="assets/design-system/base/animations.css">
+  <link rel="stylesheet" href="assets/design-system/components/button.css">
+  <link rel="stylesheet" href="assets/design-system/components/nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/card.css">
+  <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
+  <link rel="stylesheet" href="assets/design-system/components/progress.css">
+  <link rel="stylesheet" href="assets/design-system/components/notification.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
+  <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
+  <link rel="stylesheet" href="assets/design-system/components/footer.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
+      transform: scaleX(0); transform-origin: left;
+      z-index: 9999; transition: transform 80ms linear;
+    }
+
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--interactive); color: #fff;
+      padding: 8px 16px; text-decoration: none;
+      z-index: 10000; font-size: 13px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav {
+      background: var(--layer-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky; top: 0; z-index: 100;
+      transition: box-shadow 200ms var(--ease-standard);
+    }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner {
+      display: flex; align-items: center;
+      padding: 0 var(--space-6); height: 64px;
+      max-width: 1440px; margin: 0 auto;
+    }
+    .mts-nav__logo {
+      display: flex; align-items: center; gap: var(--space-3);
+      text-decoration: none; margin-right: var(--space-9); flex-shrink: 0;
+      font-family: var(--font-display); font-size: 18px; font-weight: 700;
+      color: var(--text-primary);
+    }
+    .mts-nav__logo-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--brand-primary); flex-shrink: 0;
+      animation: statusPulse 3s ease infinite;
+    }
+    @keyframes statusPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(83,170,0,0.4); }
+      50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); }
+    }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; background: none; border: none; cursor: pointer; padding: 0;
+      transition: color var(--duration-fast-02) var(--ease-standard);
+      font-family: var(--font-body); position: relative;
+    }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 16px); left: 0;
+      background: #fff; border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px;
+      list-style: none; padding: var(--space-2) 0;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard);
+      z-index: 1000; border-radius: 2px;
+    }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02);
+    }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+    .mts-nav-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-tertiary); font-family: var(--font-mono); }
+    .mts-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-primary); }
+    .mts-status-dot.active { background: #53AA00; }
+    .mts-nav__hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .mts-nav__hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 1px; }
+    @media (min-width: 769px) {
+ .mts-nav__links { }
+      .mts-nav__hamburger { display: flex; }
+      .mts-nav-status { display: none; }
+    }
+
+    /* SECTION BASE */
+    .mts-section { padding: 72px 0; position: relative; }
+    .mts-section--alt { background: var(--layer-01); }
+    .mts-section--dark { background: #050505; }
+
+    .section-accent { display: block; width: 32px; height: 2px; background: var(--accent-saffron); margin-bottom: var(--space-6); }
+    .section-heading {
+      font-family: var(--font-display); font-size: clamp(22px,3vw,30px);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary);
+      margin-bottom: var(--space-8);
+    }
+    .section-heading--white { color: #fff; }
+    .section-narrow { max-width: 720px; margin: 0 auto; }
+
+    /* PRINCIPLES GRID (2-col) — Government.html ctrl-card quality */
+    .principles-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+    @media (min-width: 641px) { .principles-grid { grid-template-columns: repeat(2,1fr); } }
+
+    .principle-card {
+      background: #fff; padding: var(--space-7);
+      border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive);
+      position: relative; overflow: hidden;
+      transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard);
+    }
+    .principle-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-2px); }
+
+    /* Color variants per card */
+    .principle-card:nth-child(2) { border-top-color: #6554C0; }
+    .principle-card:nth-child(2) .principle-card__icon-box { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
+    .principle-card:nth-child(2) .principle-card__bg-num { color: rgba(101,84,192,0.05); }
+    .principle-card:nth-child(3) { border-top-color: var(--brand-primary); }
+    .principle-card:nth-child(3) .principle-card__icon-box { background: rgba(83,170,0,0.08); border-color: rgba(83,170,0,0.20); }
+    .principle-card:nth-child(3) .principle-card__bg-num { color: rgba(83,170,0,0.06); }
+    .principle-card:nth-child(4) { border-top-color: var(--cta-primary); }
+    .principle-card:nth-child(4) .principle-card__icon-box { background: rgba(255,153,51,0.08); border-color: rgba(255,153,51,0.20); }
+    .principle-card:nth-child(4) .principle-card__bg-num { color: rgba(255,153,51,0.06); }
+    .principle-card:nth-child(5) { border-top-color: var(--interactive); }
+    .principle-card:nth-child(6) { border-top-color: #6554C0; }
+    .principle-card:nth-child(6) .principle-card__icon-box { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
+    .principle-card:nth-child(6) .principle-card__bg-num { color: rgba(101,84,192,0.05); }
+
+    .principle-card__bg-num {
+      font-family: var(--font-display); font-size: 80px; font-weight: 700;
+      color: rgba(0,82,204,0.04); line-height: 1;
+      position: absolute; bottom: -8px; right: var(--space-5);
+      user-select: none; pointer-events: none;
+    }
+    .principle-card__icon-box {
+      width: 40px; height: 40px; background: var(--blue-10); border: 1px solid var(--blue-20);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-5); font-size: 18px; position: relative; z-index: 1;
+    }
+    .principle-card__title {
+      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-3); position: relative; z-index: 1;
+    }
+    .principle-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.7; position: relative; z-index: 1; }
+
+    /* REPORT PANEL */
+    .report-panel {
+      background: #050505; padding: var(--space-10);
+      margin-top: var(--space-8);
+    }
+    .report-panel__heading {
+      font-family: var(--font-display); font-size: 22px; font-weight: 700;
+      color: #fff; margin-bottom: var(--space-4);
+    }
+    .report-panel__body {
+      font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+    .report-panel__cta-row { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-8); }
+    .report-panel__links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .report-panel__links a {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-decoration: none; transition: color 150ms;
+    }
+    .report-panel__links a:hover { color: var(--accent-saffron); }
+
+    /* CTA BUTTONS */
+    .cta-btn-primary {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 12px 28px; background: var(--accent-saffron); color: #fff;
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+      transition: background 200ms;
+    }
+    .cta-btn-primary:hover { background: #e08820; }
+    .cta-btn-secondary {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 12px 28px; background: transparent; color: var(--text-secondary);
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+      border: 1px solid var(--border-subtle); transition: color 200ms, border-color 200ms;
+    }
+    .cta-btn-secondary:hover { color: var(--text-primary); border-color: var(--text-primary); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth,cubic-bezier(.23,1,.32,1)), transform 600ms var(--ease-smooth,cubic-bezier(.23,1,.32,1)); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1.reveal { transition-delay: 80ms; }
+    .delay-2.reveal { transition-delay: 160ms; }
+    .delay-3.reveal { transition-delay: 240ms; }
+    .delay-4.reveal { transition-delay: 320ms; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
+          <span>System Online</span>
+        </span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Public Integrity introduction">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <nav aria-label="Breadcrumb" style="margin-bottom:var(--space-6);">
+          <a href="index.html" style="font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.3);text-decoration:none;">Home</a>
+          <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.2);margin:0 8px;">/</span>
+          <a href="trust.html" style="font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.3);text-decoration:none;">Trust Center</a>
+          <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.2);margin:0 8px;">/</span>
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-saffron);">Public Integrity</span>
+        </nav>
+        <div class="mts-hero__eyebrow">
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Trust Center · Public Accountability</span>
+        </div>
+        <h1 class="mts-hero__headline reveal">Public Integrity</h1>
+        <p class="mts-hero__subline reveal delay-1">MTSAi is designed to meet the transparency and accountability standards required for public programmes. Every policy decision must be visible, every outcome traceable, every process open to review.</p>
+        <p class="mts-hero__subline reveal delay-2" style="margin-top:var(--space-4);">This page summarises the design principles that protect commuters, cities, and the integrity of the programme.</p>
+        <blockquote class="reveal delay-3" style="margin-top:var(--space-8);max-width:640px;border-left:3px solid var(--accent-saffron);padding:20px 28px;background:rgba(255,153,51,0.08);">
+          <p style="font-family:var(--font-display);font-size:clamp(18px,2vw,22px);font-weight:700;color:#fff;line-height:1.4;margin:0;">Integrity is not a feature. It is the structural requirement that makes everything else defensible.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES SECTION -->
+    <section class="mts-section" aria-label="Design Principles for Public Integrity">
+      <div class="mts-container">
+        <div class="section-narrow">
+          <span class="section-accent"></span>
+          <h2 class="section-heading reveal">Design Principles for Public Integrity</h2>
+
+          <div class="principles-grid">
+
+            <div class="principle-card reveal delay-1">
+              <div class="principle-card__bg-num" aria-hidden="true">01</div>
+              <div class="principle-card__icon-box" aria-hidden="true">◎</div>
+              <h3 class="principle-card__title">Plain-Language Transparency</h3>
+              <p class="principle-card__body">Programme policies, incentive structures, and eligibility rules are designed to be published in plain language so commuters and civil society can understand them.</p>
+            </div>
+
+            <div class="principle-card reveal delay-2">
+              <div class="principle-card__bg-num" aria-hidden="true">02</div>
+              <div class="principle-card__icon-box" aria-hidden="true">◈</div>
+              <h3 class="principle-card__title">Explicit, Versioned Policy Rules</h3>
+              <p class="principle-card__body">Every policy rule is versioned and documented. Changes are recorded with a timestamp and authorisation trail. Audit-ready exports are available at any time.</p>
+            </div>
+
+            <div class="principle-card reveal delay-1">
+              <div class="principle-card__bg-num" aria-hidden="true">03</div>
+              <div class="principle-card__icon-box" aria-hidden="true">≡</div>
+              <h3 class="principle-card__title">Auditability by Default</h3>
+              <p class="principle-card__body">Every incentive calculation is logged. Every policy change is traceable. The system is designed so a government auditor can reconstruct any decision.</p>
+            </div>
+
+            <div class="principle-card reveal delay-2">
+              <div class="principle-card__bg-num" aria-hidden="true">04</div>
+              <div class="principle-card__icon-box" aria-hidden="true">⚖</div>
+              <h3 class="principle-card__title">Equity Guardrails</h3>
+              <p class="principle-card__body">Exemption and equity provisions are designed into the policy model. Low-income commuters and essential workers can be identified and excluded from charges through government-defined criteria.</p>
+            </div>
+
+            <div class="principle-card reveal delay-1">
+              <div class="principle-card__bg-num" aria-hidden="true">05</div>
+              <div class="principle-card__icon-box" aria-hidden="true">⊞</div>
+              <h3 class="principle-card__title">Consistent Due Process</h3>
+              <p class="principle-card__body">Commuters who dispute a decision have a defined appeal pathway. The system does not impose penalties. Participation is opt-in. Incentives are earned, not enforced.</p>
+            </div>
+
+            <div class="principle-card reveal delay-2">
+              <div class="principle-card__bg-num" aria-hidden="true">06</div>
+              <div class="principle-card__icon-box" aria-hidden="true">⊟</div>
+              <h3 class="principle-card__title">Separation of Duties</h3>
+              <p class="principle-card__body">Policy definition, operational execution, and audit review are separated by design. No single actor controls all three.</p>
+            </div>
+
+          </div>
+
+          <!-- REPORT A CONCERN -->
+          <div class="report-panel reveal delay-1">
+            <h2 class="report-panel__heading">Report a Concern</h2>
+            <p class="report-panel__body">If you have a concern about programme conduct, fairness, privacy, or security, use the contact form with intent set to Public Integrity. All reports are tracked and handled through a defined review process.</p>
+            <div class="report-panel__cta-row">
+              <a href="contact.html" class="cta-btn-primary">Report Now →</a>
+            </div>
+            <nav class="report-panel__links" aria-label="Related trust pages">
+              <a href="trust_security.html">Security</a>
+              <a href="trust_privacy.html">Privacy</a>
+              <a href="trust_data.html">Data Governance</a>
+              <a href="trust_exit.html">Vendor Exit</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="mts-section mts-section--alt" aria-label="Further reading">
+      <div class="mts-container">
+        <div class="section-narrow">
+          <div class="reveal" style="display:flex;flex-wrap:wrap;gap:var(--space-4)">
+            <a href="trust.html" class="cta-btn-primary">Review Trust Center →</a>
+            <a href="governance.html" class="cta-btn-secondary">Review Governance</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mts-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="mts-footer__top">
+        <div>
+          <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
+            <span style="width:10px;height:10px;border-radius:50%;background:#fff;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            <span style="font-family:var(--font-display);font-size:18px;font-weight:700;color:#fff;">MTSAi</span>
+          </a>
+          <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
+        </div>
+        <nav class="mts-footer__links" aria-label="Footer navigation">
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="Government.html">Government</a>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">How It Works</h3>
+            <a href="why-traditional-fails.html">Why Pricing Struggles</a>
+            <a href="congestion-coordination.html">Coordination Problem</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Trust</h3>
+            <a href="trust.html">Trust Centre</a>
+            <a href="public_integrity.html" aria-current="page">Public Integrity</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="trust_security.html">Security</a>
+            <a href="trust_exit.html">Vendor Exit</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Resources</h3>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </nav>
+      </div>
+      <div class="mts-footer__divider"></div>
+      <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="mts-footer__bottom">
+        <span>© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</span>
+        <nav aria-label="Legal links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+        </nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Public Integrity · Last Updated Mar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav  = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button');
+      const dd  = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+  </script>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

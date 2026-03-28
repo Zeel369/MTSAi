@@ -28,6 +28,13 @@
   background: #F0F5FF;
 }
 
+/* Pure white — deliberate visual break in page rhythm */
+.mts-section--white {
+  background: #FFFFFF;
+  border-top: 1px solid var(--blue-20);
+  border-bottom: 1px solid var(--blue-20);
+}
+
 /* Dark navy */
 .mts-section--dark {
   background: #000C2E;
@@ -43,6 +50,11 @@
   border-top: none;
 }
 
+/* Tight — connector/transitional sections with lower visual weight */
+.mts-section--tight {
+  padding: clamp(48px, 6vw, 72px) 0;
+}
+
 /* ── Section header block ────────────────────────────────────── */
 .mts-section__header {
   margin-bottom: clamp(40px, 6vw, 72px);
@@ -53,11 +65,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
+  font-weight: 500;
   color: var(--interactive);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   margin-bottom: var(--space-4);
 }
 .mts-section__eyebrow::before {
@@ -92,8 +105,18 @@
   font-size: clamp(15px, 1.3vw, 17px);
   color: var(--text-secondary);
   line-height: 1.72;
-  max-width: 640px;
+  max-width: 65ch;
   margin-bottom: var(--space-8);
+}
+
+/* Constrain all inline prose paragraphs to readable line length */
+.mts-section p,
+.mts-section li,
+.mts-section--alt p,
+.mts-section--alt li,
+.mts-section--dark p,
+.mts-section--dark li {
+  max-width: 72ch;
 }
 
 .mts-section__body--white { color: rgba(255,255,255,0.72); }
@@ -110,7 +133,7 @@
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--cta-primary) 0%, transparent 60%);
+  background: linear-gradient(90deg, var(--accent-saffron) 0%, transparent 60%);
 }
 
 /* Decorative large arrow watermark */
@@ -136,10 +159,10 @@
   background: linear-gradient(90deg, var(--brand-primary) 0%, transparent 60%);
 }
 
-/* Split CTA layout — left: text+buttons, right: feature checklist */
+/* Split CTA layout — single col on mobile, side-by-side on desktop */
 .mts-cta-split {
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr;
   gap: clamp(48px, 6vw, 96px);
   align-items: center;
 }
@@ -199,65 +222,68 @@
   color: var(--brand-primary);
 }
 
-@media (max-width: 1024px) {
-  .mts-cta-split {
-    grid-template-columns: 1fr;
-  }
-  .mts-cta-checklist {
-    max-width: 480px;
-  }
+/* .mts-cta-checklist width cap on tablet — already single-col below 1025px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mts-cta-checklist { max-width: 480px; }
 }
 
 /* ── Grid layouts ────────────────────────────────────────────── */
 
-/* 2-column content layout */
+/* ── Grid layouts — mobile-first ─────────────────────────────── */
+
+/* 2-column content layout — stacked on mobile */
 .mts-two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
   align-items: start;
 }
 
-/* Feature card grid (2-col, tight gap) */
+/* Feature card grid — single col on mobile */
 .mts-feature-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
 }
 
-/* Step card grid (3-col) */
+/* Step card grid — single col on mobile */
 .mts-step-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-5);
 }
 
-/* Dark card grid (2-col, tighter) */
+/* Dark card grid — single col on mobile */
 .mts-dark-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
 }
 
-/* Ecosystem / integration bordered grid */
+/* Ecosystem / integration bordered grid — single col on mobile */
 .mts-eco-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0;
   border: 1px solid var(--blue-20);
   background: #fff;
   box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08);
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .mts-step-grid { grid-template-columns: 1fr 1fr; }
+/* ── Responsive — mobile-first progressive enhancement ──────── */
+
+/* Tablet (≥ 769px): 2-col for feature/dark/eco grids and step grid */
+@media (min-width: 769px) {
+  .mts-feature-grid { grid-template-columns: 1fr 1fr; }
+  .mts-dark-grid    { grid-template-columns: 1fr 1fr; }
+  .mts-eco-grid     { grid-template-columns: 1fr 1fr; }
+  .mts-step-grid    { grid-template-columns: 1fr 1fr; }
+  .mts-two-col      { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
 }
 
-@media (max-width: 768px) {
-  .mts-two-col,
-  .mts-feature-grid,
-  .mts-dark-grid,
-  .mts-eco-grid    { grid-template-columns: 1fr; }
-  .mts-step-grid   { grid-template-columns: 1fr; }
+/* Desktop (≥ 1025px): full layouts */
+@media (min-width: 1025px) {
+  .mts-cta-split  { grid-template-columns: 1fr 420px; }
+  .mts-step-grid  { grid-template-columns: repeat(3, 1fr); }
+  .mts-two-col    { gap: var(--space-12); }
 }

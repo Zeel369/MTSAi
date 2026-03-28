@@ -33,18 +33,20 @@
   --interactive-focus:     var(--blue-60);
 
   /* --- BRAND GREEN (Secondary / Trust) --- */
-  --brand-primary:         var(--green-50);  /* #53AA00 */
+  --brand-primary:         var(--green-50);  /* #53AA00 — brand identity only */
   --brand-hover:           var(--green-60);  /* #198038 */
   --brand-active:          var(--green-70);  /* #0E6027 */
   --brand-subtle:          rgba(83, 170, 0, 0.12);
   --brand-border:          rgba(83, 170, 0, 0.3);
+  --green-vivid:           var(--green-30);  /* #6FDC8C — positive data state only (panel metrics, success indicators) */
 
   /* --- SAFFRON CTA (Accent — sparse) --- */
-  --cta-primary:           var(--saffron-50); /* #FF9933 — primary CTA button */
+  --cta-primary:           var(--saffron-50); /* #FF9933 — interactive only: buttons, focus rings */
   --cta-hover:             var(--saffron-60); /* #E36A00 */
   --cta-active:            var(--saffron-70); /* #BA4E00 */
   --cta-text:              var(--gray-100);   /* dark text on saffron */
   --cta-focus:             var(--saffron-50);
+  --accent-saffron:        var(--saffron-40); /* #FFAD33 — decorative only: bars, borders, headline accents */
 
   /* --- BORDER --- */
   --border-subtle:    rgba(255, 255, 255, 0.08);

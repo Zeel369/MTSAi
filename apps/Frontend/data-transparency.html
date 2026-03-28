@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi is designed on a privacy-by-minimisation principle — no continuous GPS tracking, no biometrics, government as data controller, and full programme transparency.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Data Protection &amp; Public Transparency | MTSAi</title>
+  <link rel="canonical" href="https://mtsai.in/data-transparency.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Data Protection &amp; Public Transparency | MTSAi">
+  <meta property="og:description" content="MTSAi is designed on a privacy-by-minimisation principle — no continuous GPS tracking, no biometrics, government as data controller, and full programme transparency.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/data-transparency.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data Protection &amp; Public Transparency | MTSAi">
+  <meta name="twitter:description" content="MTSAi is designed on a privacy-by-minimisation principle — no continuous GPS tracking, no biometrics, government as data controller, and full programme transparency.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="assets/design-system/base/reset.css">
+  <link rel="stylesheet" href="assets/design-system/base/grid.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
+  <link rel="stylesheet" href="assets/design-system/base/animations.css">
+  <link rel="stylesheet" href="assets/design-system/components/button.css">
+  <link rel="stylesheet" href="assets/design-system/components/nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/card.css">
+  <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
+  <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
+  <link rel="stylesheet" href="assets/design-system/components/footer.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
+      transform: scaleX(0); transform-origin: left;
+      z-index: 9999; transition: transform 80ms linear;
+    }
+
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--interactive); color: #fff;
+      padding: 8px 16px; text-decoration: none;
+      z-index: 10000; font-size: 13px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav {
+      background: var(--layer-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky; top: 0; z-index: 100;
+      transition: box-shadow 200ms var(--ease-standard);
+    }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner {
+      display: flex; align-items: center;
+      padding: 0 var(--space-6); height: 64px;
+      max-width: 1440px; margin: 0 auto;
+    }
+    .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
+    .mts-nav__logo img { height: 38px; width: auto; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; background: none; border: none; cursor: pointer; padding: 0;
+      transition: color var(--duration-fast-02) var(--ease-standard);
+      font-family: var(--font-body); position: relative;
+    }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link.active::after {
+      content: ''; position: absolute; bottom: -22px; left: 0; right: 0;
+      height: 2px; background: var(--interactive);
+    }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 16px); left: 0;
+      background: #fff; border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px;
+      list-style: none; padding: var(--space-2) 0;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard);
+      z-index: 1000; border-radius: 2px;
+    }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02);
+    }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .nav-dropdown li a.active { color: var(--interactive); background: var(--layer-01); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+    .mts-nav-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); letter-spacing: 0.08em; }
+    .mts-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-primary); }
+    .mts-nav__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .mts-nav__hamburger span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 1px; }
+    @media (min-width: 1025px) {
+ .mts-nav__links, .mts-nav-status { display: none; } .mts-nav__hamburger { display: flex; } }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 80ms; }
+    .delay-2 { transition-delay: 160ms; }
+    .delay-3 { transition-delay: 240ms; }
+    .delay-4 { transition-delay: 320ms; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
+
+    /* HOW IT WORKS STRIP */
+    .hiw-strip {
+      background: var(--layer-01); border-bottom: 1px solid var(--border-subtle);
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .hiw-strip__inner {
+      display: flex; align-items: center; gap: 0;
+      max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6);
+      min-width: max-content;
+    }
+    .hiw-strip__prefix {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary);
+      padding: var(--space-3) var(--space-5) var(--space-3) 0;
+      border-right: 1px solid var(--border-subtle); margin-right: var(--space-4);
+      flex-shrink: 0;
+    }
+    .hiw-step {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-4); text-decoration: none;
+      border-right: 1px solid var(--border-subtle); flex-shrink: 0;
+      transition: background 150ms;
+    }
+    .hiw-step:hover { background: rgba(0,82,204,0.04); }
+    .hiw-step__num {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      color: var(--text-tertiary); letter-spacing: 0.08em;
+    }
+    .hiw-step__label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+    .hiw-step--active { background: rgba(0,82,204,0.06); }
+    .hiw-step--active .hiw-step__num, .hiw-step--active .hiw-step__label { color: var(--interactive); }
+    .hiw-step--done .hiw-step__num { color: var(--brand-primary); }
+
+    /* ARTICLE PAGE */
+    .article-page-body { background: var(--layer-bg); padding: var(--space-12) 0 var(--space-16); }
+
+    /* ARTICLE LAYOUT */
+    .mts-article-layout {
+      display: grid; grid-template-columns: 1fr;
+      gap: var(--space-12); align-items: start;
+    }
+    .mts-article-toc { display: none; }
+    @media (min-width: 901px) {
+      .mts-article-layout { grid-template-columns: 260px 1fr; }
+      .mts-article-toc { display: block; }
+    }
+    .mts-article-toc { position: sticky; top: 80px; }
+    .mts-article-toc-heading {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+    .mts-article-toc a {
+      display: block; font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; padding: 6px 0; border-left: 2px solid var(--border-subtle);
+      padding-left: var(--space-4); transition: color 150ms, border-color 150ms; line-height: 1.4;
+    }
+    .mts-article-toc a:hover { color: var(--interactive); border-left-color: var(--interactive); }
+
+    .mts-article-prose h2 {
+      font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 700; color: var(--text-primary);
+      margin-top: var(--space-12); margin-bottom: var(--space-5);
+      padding-top: var(--space-4); border-top: 1px solid var(--border-subtle);
+      scroll-margin-top: 80px;
+    }
+    .mts-article-prose h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .mts-article-prose h2::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--accent-saffron); margin-bottom: var(--space-4);
+    }
+    .mts-article-prose h2:first-child::before { display: none; }
+    .mts-article-prose p {
+      font-size: 1.0625rem; line-height: 1.8; color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+    }
+    .mts-article-prose ul, .mts-article-prose ol {
+      margin-bottom: var(--space-5); padding-left: var(--space-6);
+    }
+    .mts-article-prose ul li {
+      list-style-type: disc; font-size: 1.0625rem; line-height: 1.8;
+      color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .mts-article-prose ol li {
+      list-style-type: decimal; font-size: 1.0625rem; line-height: 1.8;
+      color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .mts-article-prose a { color: var(--interactive); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* PRINCIPLE GRID */
+    .principle-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--space-5);
+    }
+    @media (min-width: 641px) { .principle-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 901px) { .principle-grid { grid-template-columns: repeat(3,1fr); } }
+    .principle-card {
+      background: #fff; border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--interactive); position: relative; overflow: hidden;
+      padding: var(--space-7); transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard);
+    }
+    .principle-card:nth-child(2) { border-top-color: #3b5bdb; }
+    .principle-card:nth-child(3) { border-top-color: var(--brand-primary); }
+    .principle-card:nth-child(4) { border-top-color: var(--accent-saffron); }
+    .principle-card:nth-child(5) { border-top-color: #2f9e44; }
+    .principle-card:nth-child(6) { border-top-color: #ae3ec9; }
+    .principle-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.10); transform: translateY(-3px); }
+    .principle-card__bg {
+      font-size: 64px; font-weight: 700; color: rgba(0,82,204,0.04);
+      position: absolute; bottom: -4px; right: var(--space-4);
+      font-family: var(--font-display); line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+    .principle-card__title {
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-3); position: relative;
+    }
+    .principle-card__desc {
+      font-size: 13px; line-height: 1.7; color: var(--text-secondary); position: relative;
+    }
+
+    /* PULL QUOTE */
+    .mts-pull-quote {
+      border-left: 3px solid var(--accent-saffron);
+      padding: var(--space-6) var(--space-8);
+      background: rgba(255,153,51,0.05);
+      margin: var(--space-8) 0;
+    }
+    .mts-pull-quote p {
+      font-family: var(--font-display); font-size: clamp(18px,2vw,24px);
+      font-weight: 700; line-height: 1.35; color: var(--text-primary); margin: 0;
+    }
+
+    /* NOT-COLLECTED GRID */
+    .not-collected-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin: var(--space-6) 0;
+    }
+    @media (min-width: 641px) { .not-collected-grid { grid-template-columns: 1fr 1fr; } }
+    .not-collected-card {
+      padding: var(--space-6); background: var(--layer-01);
+      border: 1px solid rgba(216,43,43,0.18);
+    }
+    .not-collected-card__icon { font-size: 22px; margin-bottom: var(--space-3); display: block; color: #D82B2B; }
+    .not-collected-card h3 {
+      font-family: var(--font-display); font-size: 14px; font-weight: 600;
+      color: var(--text-primary); margin-bottom: var(--space-2);
+    }
+    .not-collected-card p {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-secondary); line-height: 1.6; margin: 0;
+    }
+
+    /* DOT LIST */
+    .mts-dot-list { list-style: none; padding: 0; margin: var(--space-4) 0; }
+    .mts-dot-list li {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);
+      line-height: 1.65; display: flex; align-items: flex-start;
+      gap: var(--space-3); margin-bottom: var(--space-3);
+    }
+    .mts-dot-list li::before {
+      content: '·'; color: var(--accent-saffron); font-size: 16px;
+      font-weight: 700; flex-shrink: 0; line-height: 1.3;
+    }
+
+    /* SURFACE ARTICLE SECTION */
+    .article-section--surface {
+      background: var(--layer-01); border: 1px solid var(--border-subtle);
+      padding: var(--space-8); margin-bottom: var(--space-10);
+    }
+
+    /* TRUST CALLOUT */
+    .trust-callout {
+      border-left: 3px solid var(--accent-saffron);
+      background: rgba(255,153,51,0.05);
+      padding: var(--space-6) var(--space-7);
+      margin: var(--space-8) 0;
+    }
+    .trust-callout__label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent-saffron); margin-bottom: var(--space-3);
+    }
+    .trust-callout p {
+      font-size: 1rem; line-height: 1.75; color: var(--text-primary); margin: 0;
+    }
+
+    /* DARK STATS SECTION */
+    .mts-section-stats-dark {
+      background: #050505; padding: var(--space-16) 0;
+    }
+    .stats-grid-dark {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8);
+    }
+    @media (min-width: 769px) {
+ .stats-grid-dark { grid-template-columns: 1fr; } }
+    .stat-item-dark {
+      border-left: 3px solid var(--accent-saffron); padding-left: var(--space-6);
+    }
+    .stat-item-dark__num {
+      font-family: var(--font-display); font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700; color: #fff; line-height: 1; margin-bottom: var(--space-2);
+    }
+    .stat-item-dark__label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5); margin-bottom: var(--space-2);
+    }
+    .stat-item-dark__desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* CTA DARK SECTION */
+    .mts-section-cta-dark { background: var(--text-primary); padding: var(--space-14) 0; }
+    .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+    /* DISCLOSURE PANEL */
+    .disclosure-panel { background: var(--layer-01); padding: var(--space-12) 0 var(--space-10); }
+    .disclosure-inner { background: #fff; border: 1px solid var(--border-subtle); padding: var(--space-8); }
+    .disclosure-label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary);
+      margin-bottom: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
+    }
+    .disclosure-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8);
+    }
+    @media (min-width: 769px) {
+ .disclosure-grid { grid-template-columns: 1fr; } }
+    .disclosure-grid h4 {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-primary); margin-bottom: var(--space-3);
+    }
+    .disclosure-grid p {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-secondary); line-height: 1.65;
+    }
+
+    /* SECTION HEADING DARK */
+    .section-kicker {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-saffron);
+      margin-bottom: var(--space-3);
+    }
+
+    /* nav links hidden on mobile via DS nav.css */
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <img src="img/mtsai-logo.png" alt="MTSAi">
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link active" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+            <li role="menuitem"><a href="governance.html">Governance &amp; Accountability</a></li>
+            <li role="menuitem"><a href="data-transparency.html" class="active">Data Protection &amp; Public Transparency</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
+          <span>System Online</span>
+        </span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOW IT WORKS SERIES STRIP -->
+  <div class="hiw-strip" role="navigation" aria-label="How It Works series navigation">
+    <div class="hiw-strip__inner">
+      <span class="hiw-strip__prefix">How It Works</span>
+      <a href="why-traditional-fails.html" class="hiw-step">
+        <span class="hiw-step__num">01</span>
+        <span class="hiw-step__label">Why Pricing Struggles</span>
+      </a>
+      <a href="congestion-coordination.html" class="hiw-step">
+        <span class="hiw-step__num">02</span>
+        <span class="hiw-step__label">Coordination Problem</span>
+      </a>
+      <a href="iudm.html" class="hiw-step">
+        <span class="hiw-step__num">03</span>
+        <span class="hiw-step__label">IUDM</span>
+      </a>
+      <a href="deployment-roadmap.html" class="hiw-step">
+        <span class="hiw-step__num">04</span>
+        <span class="hiw-step__label">Deployment</span>
+      </a>
+      <a href="india-advantage.html" class="hiw-step">
+        <span class="hiw-step__num">05</span>
+        <span class="hiw-step__label">India Advantage</span>
+      </a>
+      <a href="governance.html" class="hiw-step hiw-step--done">
+        <span class="hiw-step__num">06</span>
+        <span class="hiw-step__label">Governance</span>
+      </a>
+      <a href="data-transparency.html" class="hiw-step hiw-step--active" aria-current="page">
+        <span class="hiw-step__num">07</span>
+        <span class="hiw-step__label">Data Protection</span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Data Protection and Public Transparency" style="background: linear-gradient(160deg,#050505 0%,#0d1f40 60%,#050505 100%);">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span>
+          <a href="Government.html">How the System Works</a><span class="sep">/</span>
+          <span>Data Protection &amp; Public Transparency</span>
+        </nav>
+        <div class="mts-hero__eyebrow">
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Policy Framework · Privacy Architecture</span>
+        </div>
+        <h1 class="mts-hero__headline">Data Protection &amp; Public Transparency</h1>
+        <div class="mts-article-lead" style="margin-bottom:var(--space-6);">
+          <p>MTSAi is designed on a privacy-by-minimisation principle. The system collects only the data required to verify incentive-eligible behaviour and distribute rewards.</p>
+          <p style="margin-top:var(--space-4);">It is not designed to build commuter profiles, track individual movement continuously, or share personal data across city deployments.</p>
+        </div>
+        <div class="mts-pull-quote" style="max-width:640px;">
+          <p>The government is the data controller. MTSAi is the processor. That distinction is not a detail — it is the architecture.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLE GRID -->
+    <section style="background: var(--layer-01); padding: var(--space-16) 0;" aria-label="Privacy principles">
+      <div class="mts-container">
+        <div class="reveal" style="margin-bottom:var(--space-10);">
+          <p class="section-kicker">Privacy by Design</p>
+          <h2 style="font-family:var(--font-display);font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-primary);margin:0 0 var(--space-3);">Four Architectural Commitments</h2>
+          <p style="font-size:1.0625rem;color:var(--text-secondary);max-width:600px;line-height:1.75;">Data protection at MTSAi is structural, not policy. These four principles are built into the system — not written on top of it.</p>
+        </div>
+        <div class="principle-grid">
+          <div class="principle-card reveal delay-1">
+            <span class="principle-card__bg">01</span>
+            <h3 class="principle-card__title">Minimisation by Design</h3>
+            <p class="principle-card__desc">Only the minimum data required to verify incentive-eligible behaviour is collected — no more, no less.</p>
+          </div>
+          <div class="principle-card reveal delay-2">
+            <span class="principle-card__bg">02</span>
+            <h3 class="principle-card__title">Government Control</h3>
+            <p class="principle-card__desc">The public authority defines what is collected, how it is used, and how long it is retained. MTSAi acts only within those parameters.</p>
+          </div>
+          <div class="principle-card reveal delay-3">
+            <span class="principle-card__bg">03</span>
+            <h3 class="principle-card__title">Consent-Based Participation</h3>
+            <p class="principle-card__desc">Commuters opt in to participation and can withdraw at any time. Data collection follows explicit consent, not default enrolment.</p>
+          </div>
+          <div class="principle-card reveal delay-1">
+            <span class="principle-card__bg">04</span>
+            <h3 class="principle-card__title">No Cross-City Identity</h3>
+            <p class="principle-card__desc">Individual identity is not correlated across city deployments. Each programme operates as a data silo.</p>
+          </div>
+          <div class="principle-card reveal delay-2">
+            <span class="principle-card__bg">05</span>
+            <h3 class="principle-card__title">Aggregated Output Only</h3>
+            <p class="principle-card__desc">Programme metrics shared with authorities are anonymised and aggregated — never individually attributed.</p>
+          </div>
+          <div class="principle-card reveal delay-3">
+            <span class="principle-card__bg">06</span>
+            <h3 class="principle-card__title">Public Scrutiny Ready</h3>
+            <p class="principle-card__desc">Programme policies and governance rules are designed to be published in plain language for civil society review.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-page-body">
+      <div class="mts-container">
+        <div class="mts-article-layout">
+
+          <!-- TOC -->
+          <aside class="mts-article-toc" aria-label="Table of contents">
+            <p class="mts-article-toc-heading">On this page</p>
+            <a href="#not-collected">What the System Does Not Collect</a>
+            <a href="#collected">What the System Collects</a>
+            <a href="#data-controller">Government as Data Controller</a>
+            <a href="#transparency">Public Transparency</a>
+          </aside>
+
+          <!-- PROSE -->
+          <div class="mts-article-prose">
+
+            <!-- Section 1 -->
+            <section id="not-collected" class="reveal">
+              <h2>What the System Does Not Collect</h2>
+              <p>By design, the following data is outside the scope of what MTSAi collects:</p>
+              <div class="not-collected-grid" role="list" aria-label="Data not collected">
+                <div class="not-collected-card" role="listitem">
+                  <span class="not-collected-card__icon" aria-hidden="true">⊘</span>
+                  <h3>No Continuous GPS Tracking</h3>
+                  <p>The system does not track individual commuter location continuously.</p>
+                </div>
+                <div class="not-collected-card" role="listitem">
+                  <span class="not-collected-card__icon" aria-hidden="true">⊘</span>
+                  <h3>No Biometric Data</h3>
+                  <p>No biometric data is collected at any point in the programme.</p>
+                </div>
+                <div class="not-collected-card" role="listitem">
+                  <span class="not-collected-card__icon" aria-hidden="true">⊘</span>
+                  <h3>No Cross-City Correlation</h3>
+                  <p>Individual identity is not correlated across city deployments.</p>
+                </div>
+                <div class="not-collected-card" role="listitem">
+                  <span class="not-collected-card__icon" aria-hidden="true">⊘</span>
+                  <h3>No Commercial Data Sharing</h3>
+                  <p>No data sharing with third-party advertisers or commercial platforms.</p>
+                </div>
+              </div>
+              <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:var(--space-2);">Participation data is processed in anonymised, aggregated form for programme evaluation. Individual identity is not shared with third parties or across city deployments.</p>
+
+              <div class="trust-callout">
+                <p class="trust-callout__label">Key Commitment</p>
+                <p>The data minimisation principle is enforced at the architecture level — the system is not designed to collect data it does not need, and cannot be repurposed for profiling without government authorisation and contract amendment.</p>
+              </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="collected" class="article-section--surface reveal">
+              <h2>What the System Collects</h2>
+              <p>The system collects only the minimum data required to:</p>
+              <ul class="mts-dot-list" aria-label="Data collected">
+                <li>Verify incentive-eligible travel behaviour (occupancy or off-peak timing)</li>
+                <li>Calculate and distribute rewards through existing digital payment infrastructure</li>
+                <li>Generate anonymised, aggregated programme metrics for city authorities</li>
+              </ul>
+              <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:var(--space-6);">Data collection is consent-based. Commuters opt in to participation and can withdraw at any time.</p>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="data-controller" class="reveal">
+              <h2>Government as Data Controller</h2>
+              <p>The city or state authority is the data controller. MTSAi operates as a data processor, acting only within the parameters set by the government authority.</p>
+              <p>The public authority defines what data is collected, how it is used, and how long it is retained. This structure is designed to align with the Digital Personal Data Protection Act and ensures accountability remains with the public authority.</p>
+
+              <div class="trust-callout">
+                <p class="trust-callout__label">Structural Safeguard</p>
+                <p>This controller-processor distinction means MTSAi cannot independently expand data scope, extend retention periods, or onboard third-party data recipients without explicit government direction — embedded in contract.</p>
+              </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="transparency" class="article-section--surface reveal">
+              <h2>Public Transparency</h2>
+              <p>Programme policies — including incentive structures, eligibility conditions, and data-governance rules — are designed to be published in plain language. Cities can make programme parameters available so commuters and civil society can understand and scrutinise how the system operates.</p>
+              <p>Audit-ready documentation is available to government authorities at any time.</p>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARK STATS -->
+    <section class="mts-section-stats-dark" aria-label="Data protection metrics">
+      <div class="mts-container">
+        <div class="reveal" style="margin-bottom:var(--space-10);">
+          <p class="section-kicker" style="color:rgba(255,153,51,0.7);">Privacy Architecture</p>
+          <h2 style="font-family:var(--font-display);font-size:clamp(24px,3vw,36px);font-weight:700;color:#fff;margin:0;">By the numbers</h2>
+        </div>
+        <div class="stats-grid-dark">
+          <div class="stat-item-dark reveal delay-1">
+            <div class="stat-item-dark__num">0</div>
+            <div class="stat-item-dark__label">Biometric data points</div>
+            <div class="stat-item-dark__desc">The system collects no biometric data at any stage of programme operation.</div>
+          </div>
+          <div class="stat-item-dark reveal delay-2">
+            <div class="stat-item-dark__num">100%</div>
+            <div class="stat-item-dark__label">Consent-based enrolment</div>
+            <div class="stat-item-dark__desc">All participation is opt-in. Commuters can withdraw at any time without penalty.</div>
+          </div>
+          <div class="stat-item-dark reveal delay-3">
+            <div class="stat-item-dark__num">1</div>
+            <div class="stat-item-dark__label">Data controller per city</div>
+            <div class="stat-item-dark__desc">Each deployment operates under a single public authority as data controller. No cross-city correlation.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="mts-section-cta-dark" aria-label="Privacy call to action">
+      <div class="mts-container">
+        <div class="mts-pull-quote reveal" style="background:rgba(255,153,51,0.06);max-width:720px;margin-bottom:var(--space-8);">
+          <p style="color:#fff;">Privacy is not a compliance checkbox. It is a design constraint that shapes every decision about what data the system touches.</p>
+        </div>
+        <div class="cta-actions reveal delay-1">
+          <a href="trust.html" class="mts-btn mts-btn--primary mts-btn--lg">Review Trust Centre →</a>
+          <a href="governance.html" class="mts-btn mts-btn--ghost mts-btn--lg">Governance &amp; Accountability</a>
+          <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Start Evaluation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM STATUS DISCLOSURE -->
+    <div class="disclosure-panel">
+      <div class="mts-container">
+        <div class="disclosure-inner">
+          <div class="disclosure-label">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v5M8 5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Platform Status Disclosure
+          </div>
+          <div class="disclosure-grid">
+            <div>
+              <h4>Pre-Deployment Status (Jan 2026)</h4>
+              <p>No live city implementations are currently operational. All deployment, outcome, and operational capability references are design specifications subject to government procurement, contract execution, and implementation.</p>
+            </div>
+            <div>
+              <h4>Compliance Status</h4>
+              <p>All references to regulatory frameworks represent design intent and readiness posture. Final compliance is verified through government audit per contract scope.</p>
+            </div>
+            <div>
+              <h4>International References</h4>
+              <p>Case study outcomes cited from London, Singapore, Stockholm, and other cities are external examples from independent transportation authorities, not MTSAi deployments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mts-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="mts-footer__top">
+        <div>
+          <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
+            <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
+          </a>
+          <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
+        </div>
+        <nav class="mts-footer__links" aria-label="Footer navigation">
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="Government.html">Government</a>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">How It Works</h3>
+            <a href="why-traditional-fails.html">Why Pricing Struggles</a>
+            <a href="congestion-coordination.html">Coordination Problem</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Trust</h3>
+            <a href="trust.html">Trust Centre</a>
+            <a href="governance.html">Governance</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="trust_security.html">Security</a>
+            <a href="trust_exit.html">Vendor Exit</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Resources</h3>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </nav>
+      </div>
+      <div class="mts-footer__divider"></div>
+      <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="mts-footer__bottom">
+        <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
+        <nav aria-label="Legal links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+        </nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Data Protection · Last Updated Mar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav  = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button');
+      const dd  = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+  </script>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

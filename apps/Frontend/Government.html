@@ -93,7 +93,7 @@
     #scroll-progress {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary), #FFAD33);
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
       transform: scaleX(0); transform-origin: left;
       z-index: 9999; transition: transform 80ms linear;
     }
@@ -121,7 +121,7 @@
     }
     .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
     .mts-nav__logo img { height: 38px; width: auto; }
-    .mts-nav__links { display: flex; list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
     .mts-nav__link {
       font-size: 14px; font-weight: 500; color: var(--text-secondary);
       text-decoration: none; background: none; border: none; cursor: pointer; padding: 0;
@@ -189,21 +189,36 @@
 
     /* CONTROL AREA CARDS */
     .ctrl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-10); }
+    /* Card 01 — Blue: Policy / Infrastructure */
     .ctrl-card { padding: var(--space-9); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); position: relative; overflow: hidden; transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard); }
+    .ctrl-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-3px); }
+    /* Card 02 — Indigo: Compliance / Audit */
+    .ctrl-card:nth-child(2) { border-top-color: #6554C0; }
+    .ctrl-card:nth-child(2) .ctrl-label { color: #6554C0; }
+    .ctrl-card:nth-child(2) .ctrl-badge { color: #6554C0; border-color: rgba(101,84,192,0.25); }
+    .ctrl-card:nth-child(2) .ctrl-bg-num { color: rgba(101,84,192,0.05); }
+    .ctrl-card:nth-child(2) .ctrl-icon { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
+    /* Card 03 — Green: Equity / People */
     .ctrl-card:nth-child(3) { border-top-color: var(--brand-primary); }
     .ctrl-card:nth-child(3) .ctrl-label { color: var(--brand-primary); }
     .ctrl-card:nth-child(3) .ctrl-badge { color: var(--brand-primary); border-color: rgba(83,170,0,0.25); }
-    .ctrl-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-3px); }
-    .ctrl-bg-num { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: rgba(0,82,204,0.05); line-height: 1; position: absolute; bottom: -8px; right: var(--space-6); z-index: 0; user-select: none; pointer-events: none; }
     .ctrl-card:nth-child(3) .ctrl-bg-num { color: rgba(83,170,0,0.06); }
-    .ctrl-icon { width: 44px; height: 44px; background: var(--blue-10); border: 1px solid var(--blue-20); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6); position: relative; z-index: 1; }
     .ctrl-card:nth-child(3) .ctrl-icon { background: rgba(83,170,0,0.08); border-color: rgba(83,170,0,0.20); }
+    /* Card 04 — Saffron: Rules / Enforcement */
+    .ctrl-card:nth-child(4) { border-top-color: var(--cta-primary); }
+    .ctrl-card:nth-child(4) .ctrl-label { color: #C47800; } /* darker saffron for readability on white */
+    .ctrl-card:nth-child(4) .ctrl-badge { color: #C47800; border-color: rgba(196,120,0,0.25); }
+    .ctrl-card:nth-child(4) .ctrl-bg-num { color: rgba(255,153,51,0.06); }
+    .ctrl-card:nth-child(4) .ctrl-icon { background: rgba(255,153,51,0.08); border-color: rgba(255,153,51,0.20); }
+    .ctrl-bg-num { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: rgba(0,82,204,0.05); line-height: 1; position: absolute; bottom: -8px; right: var(--space-6); z-index: 0; user-select: none; pointer-events: none; }
+    .ctrl-icon { width: 44px; height: 44px; background: var(--blue-10); border: 1px solid var(--blue-20); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6); position: relative; z-index: 1; }
     .ctrl-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--interactive); margin-bottom: var(--space-4); display: block; position: relative; z-index: 1; }
     .ctrl-title { font-family: var(--font-display); font-size: clamp(18px,2vw,24px); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-4); line-height: 1.18; position: relative; z-index: 1; }
     .ctrl-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.72; position: relative; z-index: 1; max-width: 420px; }
     .ctrl-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-7); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); border: 1px solid var(--blue-20); padding: 5px 12px; position: relative; z-index: 1; }
     .ctrl-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
-    @media (max-width: 768px) { .ctrl-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) {
+ .ctrl-grid { grid-template-columns: 1fr; } }
     
     
 
@@ -316,14 +331,9 @@
     .delay-3.reveal { transition-delay: 240ms; }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) {   }
-    @media (max-width: 768px) {
-      .mts-nav__links, 
-      
-      
-      
-      
-      .cta-actions { flex-direction: column; }
+    .cta-actions { flex-direction: column; }
+    @media (min-width: 769px) {
+      .cta-actions { flex-direction: row; }
     }
   </style>
 </head>
@@ -341,15 +351,11 @@
         <li><a href="index.html" class="mts-nav__link">Home</a></li>
         <li><a href="Government.html" class="mts-nav__link active" aria-current="page">Government</a></li>
         <li class="nav-has-dropdown">
-          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true">How It Works ↓</button>
-          <ul class="nav-dropdown" role="menu">
-            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
-            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
-            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
             <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
             <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
-            <li role="menuitem"><a href="Government.html">Governance &amp; Accountability</a></li>
-            <li role="menuitem"><a href="Government.html">Data Protection &amp; Transparency</a></li>
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
@@ -362,6 +368,10 @@
           <span>System Online</span>
         </span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+      
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -369,11 +379,15 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard" aria-label="Government path introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Government path introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
-        <div class="mts-hero__eyebrow">
+                  <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><span class="sep">/</span>
+            <span>Government</span>
+          </nav>
+<div class="mts-hero__eyebrow">
           <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Government Policy Path</span>
         </div>
         <h1 class="mts-hero__headline">
@@ -434,7 +448,7 @@
       <div class="mts-container">
 
         <div class="mts-photo-strip reveal">
-          <img src="img/government.jpeg" alt="Government urban traffic management operations">
+          <img src="img/government.jpeg" alt="Government urban traffic management operations" loading="lazy">
           <div class="mts-photo-strip__caption">
             <span class="mts-photo-strip__label">Policy Control Framework · Urban Traffic Authority</span>
             <span class="mts-photo-strip__tag">● Government Path</span>
@@ -467,7 +481,7 @@
           <div class="ctrl-card">
             <div class="ctrl-bg-num" aria-hidden="true">02</div>
             <div class="ctrl-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--interactive)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--interactive)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#6554C0" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#6554C0" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
             <span class="ctrl-label">Control Area 02</span>
             <h3 class="ctrl-title">Incentive Budgets</h3>
@@ -489,7 +503,7 @@
           <div class="ctrl-card">
             <div class="ctrl-bg-num" aria-hidden="true">04</div>
             <div class="ctrl-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v2M11 17v2M3 11H5M17 11h2" stroke="var(--interactive)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="5" stroke="var(--interactive)" stroke-width="1.5"/><circle cx="11" cy="11" r="2" fill="var(--interactive)"/></svg>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v2M11 17v2M3 11H5M17 11h2" stroke="#C47800" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="5" stroke="#C47800" stroke-width="1.5"/><circle cx="11" cy="11" r="2" fill="#C47800"/></svg>
             </div>
             <span class="ctrl-label">Control Area 04</span>
             <h3 class="ctrl-title">Enforcement Thresholds</h3>
@@ -502,7 +516,7 @@
     </section>
 
     <!-- AUDITABILITY -->
-    <section class="mts-section mts-section--alt reveal-group" aria-label="Transparency and Auditability">
+    <section class="mts-section mts-section--white reveal-group" aria-label="Transparency and Auditability">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Auditability</span>
@@ -551,7 +565,7 @@
     </section>
 
     <!-- PRIVACY SAFEGUARDS -->
-    <section class="mts-section reveal-group" aria-label="Privacy Safeguards">
+    <section class="mts-section mts-section--tight reveal-group" aria-label="Privacy Safeguards">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">03 // Privacy</span>
@@ -588,7 +602,7 @@
     </section>
 
     <!-- ENFORCEMENT INTEGRATION -->
-    <section class="mts-section mts-section--alt reveal-group" aria-label="Enforcement Integration">
+    <section class="mts-section mts-section--alt mts-section--tight reveal-group" aria-label="Enforcement Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">04 // Operations</span>
@@ -731,20 +745,26 @@
             <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
           <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
-          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+                    <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
         </div>
         <nav class="mts-footer__links" aria-label="Footer navigation">
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Platform</h3>
             <a href="technology_platform.html">Technology Platform</a>
-            <a href="#">IUDM Model</a>
-            <a href="#">Deployment Roadmap</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Governance</h3>
-            <a href="#">Trust Centre</a>
-            <a href="#">Governance</a>
-            <a href="#">Privacy Policy</a>
+            <a href="trust.html">Trust Centre</a>
+            <a href="governance.html">Governance</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Company</h3>
@@ -754,9 +774,9 @@
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Resources</h3>
-            <a href="#">Procurement Pack</a>
+            <a href="resources.html">Procurement Pack</a>
             <a href="contact.html">Contact Us</a>
-            <a href="#">Sitemap</a>
+            <a href="sitemap.html">Sitemap</a>
           </div>
         </nav>
       </div>
@@ -765,9 +785,9 @@
       <div class="mts-footer__bottom">
         <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
         <nav aria-label="Legal links">
-          <a href="#">Terms</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Hyperlinking Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
         </nav>
         <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Gov-Path · Jan 2026</span>
       </div>
@@ -822,5 +842,36 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html" class="active">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

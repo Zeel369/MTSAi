@@ -103,7 +103,7 @@
     #scroll-progress {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--cta-primary), #FFAD33);
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
       transform: scaleX(0);
       transform-origin: left;
       z-index: 9999;
@@ -161,7 +161,7 @@
     }
 
     .mts-nav__links {
-      display: flex; list-style: none;
+      list-style: none;
       gap: var(--space-7); align-items: center; flex: 1;
     }
 
@@ -189,8 +189,8 @@
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
       box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
-      min-width: 280px; list-style: none;
-      padding: var(--space-2) 0;
+      min-width: 300px; list-style: none;
+      padding: var(--space-2) 0 var(--space-3);
       opacity: 0; visibility: hidden;
       transform: translateY(-6px);
       transition: opacity 150ms var(--ease-standard),
@@ -200,9 +200,25 @@
     }
     .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
 
+    /* Group label inside dropdown */
+    .nav-dropdown__group-label {
+      display: block;
+      padding: var(--space-4) var(--space-5) var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-placeholder);
+    }
+    .nav-dropdown__group-label:not(:first-child) {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: var(--space-2);
+    }
+
     .nav-dropdown li a {
       display: flex; align-items: center; gap: 10px;
-      padding: 10px var(--space-5);
+      padding: 9px var(--space-5);
       font-size: 13px; color: var(--text-secondary);
       text-decoration: none;
       transition: background var(--duration-fast-02), color var(--duration-fast-02);
@@ -327,9 +343,9 @@
     ==================================================== */
     .section-proposition {
       padding: clamp(80px, 12vw, 140px) 0;
-      background: var(--blue-10); /* #E6F0FD — visible brand-blue tint */
-      border-top: 3px solid var(--blue-20);
-      border-bottom: 3px solid var(--blue-20);
+      background: #FFFFFF; /* Pure white — deliberate visual break in page rhythm */
+      border-top: 1px solid var(--blue-20);
+      border-bottom: 1px solid var(--blue-20);
       position: relative; overflow: hidden;
     }
     /* Decorative giant quote mark */
@@ -409,9 +425,11 @@
       margin-bottom: var(--space-5);
       font-family: var(--font-mono);
     }
-    @media (max-width: 1024px) {
-      .proposition-inner { grid-template-columns: 1fr; }
-      .proposition-pillars { max-width: 480px; }
+    .proposition-inner { grid-template-columns: 1fr; }
+    .proposition-pillars { max-width: 480px; }
+    @media (min-width: 1025px) {
+      .proposition-inner { grid-template-columns: 1fr 380px; }
+      .proposition-pillars { max-width: none; }
     }
 
     /* ====================================================
@@ -648,8 +666,10 @@
       text-align: center;
       padding: var(--space-4) var(--space-6);
     }
-    .section-numbers .mts-stat-block__val--blue { color: #fff; }
-    .section-numbers .mts-stat-block__label { color: rgba(255,255,255,0.60); }
+    .section-numbers .mts-stat-block__val--blue    { color: #FFFFFF; }
+    .section-numbers .mts-stat-block__val--green   { color: #7DE84A; } /* 4.8:1 on #0052CC */
+    .section-numbers .mts-stat-block__val--saffron { color: #FFCD6B; } /* 5.2:1 on #0052CC */
+    .section-numbers .mts-stat-block__label { color: rgba(255,255,255,0.78); font-size: 11px; letter-spacing: 0.12em; }
     .section-numbers .mts-stat-row__divider {
       background: rgba(255,255,255,0.20);
       width: 1px;
@@ -1041,33 +1061,33 @@
     /* ====================================================
        RESPONSIVE
     ==================================================== */
-    @media (max-width: 1024px) {
-      
-      
-      
-    }
-
-    @media (max-width: 768px) {
-      .mts-nav__links, .mts-nav__actions .mts-btn { display: none; }
-      
-      .problem-layout, .iudm-layout, .arch-layout, 
+    /* Mobile defaults (≤768px) */
+    .problem-layout, .iudm-layout, .arch-layout,
+    .numbers-grid { grid-template-columns: repeat(2,1fr); }
+    .gov-controls, .privacy-matrix { grid-template-columns: 1fr; }
+    .gov-control, .privacy-col { border-right: none; }
+    .roadmap-phases { grid-template-columns: 1fr; }
+    .mts-nav__inner { padding: 0 var(--space-5); }
+    .mts-nav__logo { margin-right: auto; }
+    .number-item { border-bottom: 1px solid rgba(255,255,255,0.10); }
+    @media (min-width: 769px) {
+      .mts-nav__inner { padding: 0 var(--space-6); }
+      .mts-nav__logo { margin-right: var(--space-9); }
+      .number-item { border-bottom: none; }
+      .problem-layout { grid-template-columns: 1fr 360px; }
+      .iudm-layout { grid-template-columns: 1fr; }
+      .arch-layout { grid-template-columns: 1fr; }
       .numbers-grid { grid-template-columns: repeat(2,1fr); }
-      .gov-controls, .privacy-matrix { grid-template-columns: 1fr; }
-      .gov-control, .privacy-col { border-right: none; }
-      .roadmap-phases { grid-template-columns: 1fr; }
-      
-      
-      
-      .mts-nav__inner { padding: 0 var(--space-5); }
-      .mts-nav__logo { margin-right: auto; }
-      .number-item { border-bottom: 1px solid rgba(255,255,255,0.10); }
+      .gov-controls { grid-template-columns: 1fr; }
+      .privacy-matrix { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 480px) {
-      .numbers-grid { grid-template-columns: 1fr 1fr; }
-      
-      .cta-actions, 
-      .cta-actions .mts-btn, .mts-hero__ctas .mts-btn { width: 100%; }
+    /* Mobile defaults (≤480px) */
+    .cta-actions,
+    .cta-actions .mts-btn, .mts-hero__ctas .mts-btn { width: 100%; }
+    @media (min-width: 481px) {
+      .cta-actions,
+      .cta-actions .mts-btn, .mts-hero__ctas .mts-btn { width: auto; }
     }
 
     /* ====================================================
@@ -1103,7 +1123,9 @@
       width: 1px; height: 18px;
       background: var(--border-subtle); flex-shrink: 0;
     }
-    @media (max-width: 768px) { .trust-divider { display: none; } .trust-strip__inner { gap: var(--space-5); } }
+    .trust-divider { display: none; }
+    .trust-strip__inner { gap: var(--space-5); }
+    @media (min-width: 769px) { .trust-divider { display: inline-block; } .trust-strip__inner { gap: var(--space-8); } }
 
     /* ====================================================
        WATERMARK NUMERAL — entrance on scroll
@@ -1144,15 +1166,11 @@
         <li><a href="index.html" class="mts-nav__link active" aria-current="page">Home</a></li>
         <li><a href="Government.html" class="mts-nav__link">Government</a></li>
         <li class="nav-has-dropdown">
-          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true">How It Works <span aria-hidden="true">↓</span></button>
-          <ul class="nav-dropdown" role="menu">
-            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
-            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
-            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works <span aria-hidden="true">↓</span></button>
+          <ul class="nav-dropdown" role="menu">            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
             <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
             <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
-            <li role="menuitem"><a href="Government.html">Governance &amp; Accountability</a></li>
-            <li role="menuitem"><a href="Government.html">Data Protection &amp; Transparency</a></li>
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
@@ -1166,6 +1184,10 @@
           <span>System Online</span>
         </span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;letter-spacing:0.02em;">Start Evaluation →</a>
+      
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -1179,7 +1201,6 @@
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
 
-      <div class="mts-hero__split-container">
       <!-- Left: content -->
       <div class="mts-hero__inner">
         <div class="mts-hero__eyebrow">
@@ -1196,25 +1217,8 @@
         </p>
 
         <div class="mts-hero__ctas">
-          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Government Evaluation →</a>
+          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Evaluation →</a>
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform</a>
-        </div>
-
-        <div class="mts-hero__stats" role="list">
-          <div class="mts-hero__stat" role="listitem">
-            <span class="mts-hero__stat-num">4+</span>
-            <span class="mts-hero__stat-label">Platform phases</span>
-          </div>
-          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
-          <div class="mts-hero__stat" role="listitem">
-            <span class="mts-hero__stat-num">6+</span>
-            <span class="mts-hero__stat-label">Ecosystem integrations</span>
-          </div>
-          <div class="mts-hero__stat-divider" aria-hidden="true"></div>
-          <div class="mts-hero__stat" role="listitem">
-            <span class="mts-hero__stat-num">100%</span>
-            <span class="mts-hero__stat-label">Privacy-first design</span>
-          </div>
         </div>
       </div>
 
@@ -1257,20 +1261,21 @@
 
               <!-- Row 1 (y=60 to 108) -->
               <rect x="4"   y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
-              <!-- Highlighted: high-congestion block -->
+              <!-- Red: high-congestion block -->
               <rect x="84"  y="60" width="72" height="48" rx="2" fill="rgba(218,30,40,0.22)" stroke="rgba(218,30,40,0.40)" stroke-width="1"/>
               <rect x="164" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
-              <!-- Active IUDM block (saffron) -->
-              <rect x="244" y="60" width="72" height="48" rx="2" fill="rgba(255,153,51,0.20)" stroke="rgba(255,153,51,0.45)" stroke-width="1"/>
+              <!-- Blue: active IUDM managed zone -->
+              <rect x="244" y="60" width="72" height="48" rx="2" fill="rgba(0,82,204,0.28)" stroke="rgba(0,82,204,0.55)" stroke-width="1"/>
               <rect x="324" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
               <rect x="404" y="60" width="76" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
 
               <!-- Row 2 (y=116 to 164) — central business district -->
               <rect x="4"   y="116" width="72" height="48" rx="2" fill="rgba(255,255,255,0.14)"/>
               <rect x="84"  y="116" width="72" height="48" rx="2" fill="rgba(218,30,40,0.18)" stroke="rgba(218,30,40,0.30)" stroke-width="1"/>
-              <!-- Core: green (managed, cleared) -->
+              <!-- Green: incentive-cleared zone -->
               <rect x="164" y="116" width="72" height="48" rx="2" fill="rgba(83,170,0,0.22)" stroke="rgba(83,170,0,0.45)" stroke-width="1"/>
-              <rect x="244" y="116" width="72" height="48" rx="2" fill="rgba(255,153,51,0.16)" stroke="rgba(255,153,51,0.30)" stroke-width="1"/>
+              <!-- Blue: IUDM managed zone -->
+              <rect x="244" y="116" width="72" height="48" rx="2" fill="rgba(0,82,204,0.18)" stroke="rgba(0,82,204,0.32)" stroke-width="1"/>
               <rect x="324" y="116" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
               <rect x="404" y="116" width="76" height="48" rx="2" fill="rgba(255,255,255,0.08)"/>
 
@@ -1299,10 +1304,11 @@
               <circle cx="400" cy="56"  r="3" fill="rgba(255,255,255,0.20)"/>
 
               <circle cx="80"  cy="112" r="3" fill="rgba(218,30,40,0.70)"/>
-              <circle cx="160" cy="112" r="4" fill="rgba(255,153,51,0.90)">
+              <!-- Blue managed node — pulsing -->
+              <circle cx="160" cy="112" r="4" fill="rgba(0,82,204,0.90)">
                 <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="240" cy="112" r="3" fill="rgba(255,153,51,0.70)"/>
+              <circle cx="240" cy="112" r="3" fill="rgba(0,82,204,0.70)"/>
               <circle cx="320" cy="112" r="3" fill="rgba(255,255,255,0.25)"/>
               <circle cx="400" cy="112" r="3" fill="rgba(255,255,255,0.20)"/>
 
@@ -1312,7 +1318,7 @@
                 <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
                 <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="240" cy="168" r="3" fill="rgba(255,153,51,0.55)"/>
+              <circle cx="240" cy="168" r="3" fill="rgba(0,82,204,0.55)"/>
               <circle cx="320" cy="168" r="3" fill="rgba(255,255,255,0.20)"/>
               <circle cx="400" cy="168" r="3" fill="rgba(255,255,255,0.15)"/>
 
@@ -1323,25 +1329,26 @@
 
               <!-- Flow arrows on main corridors -->
               <!-- Horizontal flow on row 2 corridor (y=112 road) -->
-              <path d="M100 109 L108 112 L100 115" stroke="rgba(255,153,51,0.6)" stroke-width="1.5" fill="none"/>
+              <path d="M100 109 L108 112 L100 115" stroke="rgba(218,30,40,0.55)" stroke-width="1.5" fill="none"/>
               <path d="M180 109 L188 112 L180 115" stroke="rgba(83,170,0,0.7)" stroke-width="1.5" fill="none"/>
-              <path d="M260 109 L268 112 L260 115" stroke="rgba(255,153,51,0.5)" stroke-width="1.5" fill="none"/>
+              <path d="M260 109 L268 112 L260 115" stroke="rgba(0,82,204,0.65)" stroke-width="1.5" fill="none"/>
 
               <!-- Vertical flow on col 2 corridor (x=160 road) -->
               <path d="M157 134 L160 142 L163 134" stroke="rgba(83,170,0,0.6)" stroke-width="1.5" fill="none"/>
               <path d="M157 190 L160 198 L163 190" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
 
-              <!-- Data label floating over hot zone -->
-              <rect x="88" y="64" width="64" height="18" rx="2" fill="rgba(218,30,40,0.70)"/>
+              <!-- Data label: red congestion zone -->
+              <rect x="88" y="64" width="64" height="18" rx="2" fill="rgba(218,30,40,0.80)"/>
               <text x="120" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">HIGH · 94%</text>
 
-              <!-- Data label over saffron zone -->
-              <rect x="248" y="64" width="64" height="18" rx="2" fill="rgba(255,153,51,0.70)"/>
-              <text x="280" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(0,0,0,0.85)" text-anchor="middle" letter-spacing="0.5">IUDM · ON</text>
+              <!-- Data label: blue IUDM managed zone -->
+              <rect x="248" y="64" width="64" height="18" rx="2" fill="rgba(0,82,204,0.80)"/>
+              <text x="280" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">IUDM · ON</text>
 
-              <!-- Data label over green zone -->
-              <rect x="168" y="120" width="64" height="18" rx="2" fill="rgba(83,170,0,0.70)"/>
+              <!-- Data label: green cleared zone -->
+              <rect x="168" y="120" width="64" height="18" rx="2" fill="rgba(83,170,0,0.80)"/>
               <text x="200" y="133" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">CLEAR · 23%</text>
+
 
             </svg>
           </div>
@@ -1363,7 +1370,6 @@
           </div>
         </div>
       </div>
-      </div><!-- /.mts-hero__split-container -->
 
       <div class="mts-hero__scroll-cue" aria-hidden="true">↓ SCROLL FOR PLATFORM LOGIC</div>
     </section>
@@ -1446,7 +1452,7 @@
 
         <!-- Cinematic image — Indian city intersection with AI governance overlay -->
         <div class="problem-photo reveal">
-          <img src="img/government.jpeg" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="problem-photo__img">
+          <img src="img/government.jpeg" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="problem-photo__img" loading="lazy">
           <div class="problem-photo__caption">
             <span class="problem-photo__label">Urban Traffic Corridor · AI Governance Overlay · India</span>
             <span class="problem-photo__tag">● System Active</span>
@@ -1570,7 +1576,7 @@
 
         <!-- Cinematic image — data infrastructure / partner network -->
         <div class="arch-photo reveal">
-          <img src="img/partners.jpeg" alt="Enterprise data infrastructure — interconnected platform nodes representing MTSAi's partner integration architecture" class="arch-photo__img">
+          <img src="img/partners.jpeg" alt="Enterprise data infrastructure — interconnected platform nodes representing MTSAi's partner integration architecture" class="arch-photo__img" loading="lazy">
           <div class="arch-photo__overlay" aria-hidden="true"></div>
           <span class="arch-photo__caption">Enterprise Integration Layer · Multi-Party Data Infrastructure</span>
         </div>
@@ -1862,7 +1868,7 @@
             <h2 class="cta-headline">Ready to explore what<br>MTSAi can do for your city?</h2>
             <p class="cta-body">Whether you're a government decision-maker, a technology partner, or an investor — there's a structured evaluation path for you.</p>
             <div class="cta-actions">
-              <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Government Evaluation →</a>
+              <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Evaluation →</a>
               <a href="Government.html" class="mts-btn mts-btn--ghost mts-btn--lg">Government Overview</a>
               <a href="Strategic_Partners.html" class="mts-btn mts-btn--ghost mts-btn--lg">Partner Paths</a>
             </div>
@@ -1907,22 +1913,28 @@
             <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
           <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
-          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
         </div>
         <nav class="mts-footer__links" aria-label="Footer navigation">
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Platform</h3>
             <a href="technology_platform.html">Technology Platform</a>
-            <a href="#">IUDM Model</a>
-            <a href="#">Deployment Roadmap</a>
-            <a href="#">India Advantage</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Governance</h3>
-            <a href="#">Trust Centre</a>
-            <a href="#">Governance</a>
-            <a href="#">Data Transparency</a>
-            <a href="#">Privacy Policy</a>
+            <a href="trust.html">Trust Centre</a>
+            <a href="governance.html">Governance</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Company</h3>
@@ -1933,10 +1945,10 @@
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Resources</h3>
-            <a href="#">Procurement Pack</a>
-            <a href="#">Implementation Playbook</a>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="resources.html">Implementation Playbook</a>
             <a href="contact.html">Contact Us</a>
-            <a href="#">Sitemap</a>
+            <a href="sitemap.html">Sitemap</a>
           </div>
         </nav>
       </div>
@@ -1948,10 +1960,10 @@
       <div class="mts-footer__bottom">
         <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
         <nav aria-label="Legal links">
-          <a href="#">Terms</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Hyperlinking Policy</a>
-          <a href="#">Copyright Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+          <a href="copyright_policy.html">Copyright Policy</a>
         </nav>
         <span class="mts-footer__mono-tag">v1.0 · Jan 2026</span>
       </div>
@@ -2040,5 +2052,36 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

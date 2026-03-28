@@ -10,10 +10,10 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ── Top: brand + nav grid ───────────────────────────────────── */
+/* ── Top: brand + nav grid — stacked on mobile, side-by-side on desktop ── */
 .mts-footer__top {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-10);
   margin-bottom: var(--space-9);
 }
@@ -35,7 +35,7 @@
 
 .mts-footer__logo-mark {
   width: 28px; height: 28px;
-  background: var(--cta-primary);
+  background: var(--accent-saffron);
   border-radius: 4px;
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; font-weight: 800; color: #000; flex-shrink: 0;
@@ -48,10 +48,52 @@
   margin-bottom: var(--space-5);
 }
 
-/* ── Nav link grid ───────────────────────────────────────────── */
+/* Trust badge row — compliance indicators in brand column */
+.mts-footer__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.mts-footer__trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+}
+
+.mts-footer__trust-badge--active {
+  border-color: rgba(83, 170, 0, 0.30);
+  color: rgba(111, 220, 140, 0.80);
+  background: rgba(83, 170, 0, 0.07);
+}
+
+.mts-footer__trust-badge--active::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Nav link grid — 2-col on mobile, 4-col on desktop ──────── */
 .mts-footer__links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-5);
 }
 
@@ -94,11 +136,11 @@
   border-left: 2px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ── Bottom bar ──────────────────────────────────────────────── */
+/* ── Bottom bar — stacked on mobile, row on desktop ─────────── */
 .mts-footer__bottom {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding: var(--space-6) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 12px;
@@ -126,9 +168,9 @@
   font-family: var(--font-mono);
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .mts-footer__top   { grid-template-columns: 1fr; }
-  .mts-footer__links { grid-template-columns: repeat(2, 1fr); }
-  .mts-footer__bottom { flex-direction: column; align-items: flex-start; }
+/* ── Responsive — mobile-first progressive enhancement ──────── */
+@media (min-width: 769px) {
+  .mts-footer__top    { grid-template-columns: 300px 1fr; }
+  .mts-footer__links  { grid-template-columns: repeat(4, 1fr); }
+  .mts-footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
 }

@@ -89,7 +89,7 @@
     body { overflow-x: hidden; background: var(--layer-bg); }
     .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
 
-    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--cta-primary), #FFAD33); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
+    #scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent-saffron), #FFCD80); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 80ms linear; }
     .skip-link { position: absolute; top: -40px; left: 0; background: var(--interactive); color: #fff; padding: 8px 16px; text-decoration: none; z-index: 10000; font-size: 13px; font-weight: 600; }
     .skip-link:focus { top: 0; }
 
@@ -99,7 +99,7 @@
     .mts-nav__inner { display: flex; align-items: center; padding: 0 var(--space-6); height: 64px; max-width: 1440px; margin: 0 auto; }
     .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
     .mts-nav__logo img { height: 38px; width: auto; }
-    .mts-nav__links { display: flex; list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
     .mts-nav__link { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; transition: color var(--duration-fast-02) var(--ease-standard); font-family: var(--font-body); position: relative; }
     .mts-nav__link.active { color: var(--interactive); }
     .mts-nav__link.active::after { content: ''; position: absolute; bottom: -22px; left: 0; right: 0; height: 2px; background: var(--interactive); }
@@ -267,8 +267,10 @@
     .delay-3.reveal { transition-delay: 240ms; }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) { .two-col, .engine-grid, .flow-steps, .privacy-matrix { grid-template-columns: 1fr; } .arch-stats { gap: var(--space-5); } }
-    @media (max-width: 768px) { .mts-nav__links,     .cta-actions { flex-direction: column; } .deploy-banner { flex-direction: column; } }
+    @media (min-width: 1025px) {
+ .two-col, .engine-grid, .flow-steps, .privacy-matrix { grid-template-columns: 1fr; } .arch-stats { gap: var(--space-5); } }
+    @media (min-width: 769px) {
+ .mts-nav__links,     .cta-actions { flex-direction: column; } .deploy-banner { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -285,15 +287,11 @@
         <li><a href="index.html" class="mts-nav__link">Home</a></li>
         <li><a href="Government.html" class="mts-nav__link">Government</a></li>
         <li class="nav-has-dropdown">
-          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true">How It Works ↓</button>
-          <ul class="nav-dropdown" role="menu">
-            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
-            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
-            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
             <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
             <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
-            <li role="menuitem"><a href="Government.html">Governance &amp; Accountability</a></li>
-            <li role="menuitem"><a href="Government.html">Data Protection &amp; Transparency</a></li>
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
@@ -306,6 +304,10 @@
           <span>System Online</span>
         </span>
         <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+      
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -313,10 +315,14 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard" aria-label="Technology Platform introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Technology Platform introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span>
+          <span>Technology Platform</span>
+        </nav>
         <div>
           <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Platform Architecture</span>
         </div>
@@ -437,7 +443,7 @@
     </section>
 
     <!-- POLICY LAYER -->
-    <section class="mts-section mts-section--alt reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
+    <section class="mts-section mts-section--white reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Government Control</span>
@@ -575,7 +581,7 @@
     </section>
 
     <!-- ECOSYSTEM -->
-    <section class="mts-section reveal-group" id="ecosystem" aria-label="Digital Mobility Ecosystem Integration">
+    <section class="mts-section mts-section--tight reveal-group" id="ecosystem" aria-label="Digital Mobility Ecosystem Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">05 // Super App Gateway</span>
@@ -684,7 +690,7 @@
       </div>
     </div>
 
-    <section class="mts-section mts-section--alt reveal-group" id="deployment" aria-label="Infrastructure and Deployment">
+    <section class="mts-section mts-section--alt mts-section--tight reveal-group" id="deployment" aria-label="Infrastructure and Deployment">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Cloud Posture</span>
@@ -780,22 +786,28 @@
             <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
           <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
-          <span class="mts-tag mts-tag--green mts-tag--sm">GIGW 3.0 Compliant</span>
+                    <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
         </div>
         <nav class="mts-footer__links" aria-label="Footer navigation">
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Platform</h3>
             <a href="technology_platform.html">Technology Platform</a>
-            <a href="#">IUDM Model</a>
-            <a href="#">Deployment Roadmap</a>
-            <a href="#">India Advantage</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Governance</h3>
-            <a href="#">Trust Centre</a>
-            <a href="#">Governance</a>
-            <a href="#">Data Transparency</a>
-            <a href="#">Privacy Policy</a>
+            <a href="trust.html">Trust Centre</a>
+            <a href="governance.html">Governance</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Company</h3>
@@ -806,10 +818,10 @@
           </div>
           <div class="mts-footer__col">
             <h3 class="mts-footer__col-heading">Resources</h3>
-            <a href="#">Procurement Pack</a>
-            <a href="#">Implementation Playbook</a>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="resources.html">Implementation Playbook</a>
             <a href="contact.html">Contact Us</a>
-            <a href="#">Sitemap</a>
+            <a href="sitemap.html">Sitemap</a>
           </div>
         </nav>
       </div>
@@ -818,10 +830,10 @@
       <div class="mts-footer__bottom">
         <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
         <nav aria-label="Legal links">
-          <a href="#">Terms</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Hyperlinking Policy</a>
-          <a href="#">Copyright Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+          <a href="copyright_policy.html">Copyright Policy</a>
         </nav>
         <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Platform · Jan 2026</span>
       </div>
@@ -876,5 +888,36 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

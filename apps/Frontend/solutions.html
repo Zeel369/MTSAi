@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Solutions: policy-configurable congestion management with audit trails, equity guardrails, and procurement-ready architecture for government deployment.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Solutions — MTSAi | Policy-Led Congestion Management</title>
+  <link rel="canonical" href="https://mtsai.in/solutions.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Solutions — MTSAi | Policy-Led Congestion Management">
+  <meta property="og:description" content="Policy-led congestion management designed for auditability — configurable rules, due process workflows, equity protections, and trust center evidence.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/solutions.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solutions — MTSAi | Policy-Led Congestion Management">
+  <meta name="twitter:description" content="Policy-led congestion management designed for auditability — configurable rules, due process workflows, equity protections.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="assets/design-system/base/reset.css">
+  <link rel="stylesheet" href="assets/design-system/base/grid.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
+  <link rel="stylesheet" href="assets/design-system/base/animations.css">
+  <link rel="stylesheet" href="assets/design-system/components/button.css">
+  <link rel="stylesheet" href="assets/design-system/components/nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/card.css">
+  <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
+  <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/footer.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
+      transform: scaleX(0); transform-origin: left;
+      z-index: 9999; transition: transform 80ms linear;
+    }
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--interactive); color: #fff;
+      padding: 8px 16px; text-decoration: none;
+      z-index: 10000; font-size: 13px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav {
+      background: var(--layer-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky; top: 0; z-index: 100;
+      transition: box-shadow 200ms var(--ease-standard);
+    }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner {
+      display: flex; align-items: center;
+      padding: 0 var(--space-6); height: 64px;
+      max-width: 1440px; margin: 0 auto;
+    }
+    .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
+    .mts-nav__logo img { height: 38px; width: auto; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; background: none; border: none; cursor: pointer; padding: 0;
+      transition: color var(--duration-fast-02) var(--ease-standard);
+      font-family: var(--font-body); position: relative;
+    }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 16px); left: 0;
+      background: #fff; border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px;
+      list-style: none; padding: var(--space-2) 0;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard);
+      z-index: 1000; border-radius: 2px;
+    }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1.reveal { transition-delay: 60ms; }
+    .delay-2.reveal { transition-delay: 120ms; }
+    .delay-3.reveal { transition-delay: 180ms; }
+    .delay-4.reveal { transition-delay: 240ms; }
+
+    /* SECTION BASE */
+    .sol-section { padding: var(--space-20) 0; position: relative; }
+    .sol-section--alt { background: var(--layer-01); }
+    .sol-section--dark { background: #050505; }
+    .sol-accent { display: block; width: 32px; height: 2px; background: var(--cta-primary); margin-bottom: var(--space-6); }
+    .sol-eyebrow { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-secondary); display: block; margin-bottom: var(--space-4); }
+    .sol-eyebrow--light { color: rgba(255,255,255,0.30); }
+    .sol-h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; color: var(--text-primary); line-height: 1.0; }
+    .sol-h2--light { color: #fff; }
+    .sol-h2-accent { color: var(--interactive); }
+    .sol-h2-accent--gold { color: var(--cta-primary); }
+
+    /* BRIEF PANEL */
+    .sol-brief-panel { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: var(--space-6); }
+    .sol-brief-panel__header { display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--space-4); margin-bottom: var(--space-4); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .sol-brief-panel__label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.50); }
+    .sol-brief-item { display: flex; align-items: center; gap: var(--space-4); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: var(--space-3); margin-bottom: var(--space-3); transition: transform 0.3s, box-shadow 0.3s; }
+    .sol-brief-item:hover { transform: translateY(-2px); }
+    .sol-brief-item__icon { color: var(--cta-primary); flex-shrink: 0; font-size: 13px; font-family: var(--font-mono); font-weight: 700; }
+    .sol-brief-item__title { color: #fff; font-size: 12px; font-weight: 600; display: block; }
+    .sol-brief-item__meta { color: rgba(255,255,255,0.30); font-family: var(--font-mono); font-size: 10px; }
+    .sol-brief-panel__footer { margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgba(255,255,255,0.07); }
+    .sol-brief-panel__footer p { color: rgba(255,255,255,0.25); font-family: var(--font-mono); font-size: 10px; line-height: 1.6; }
+    /* Hero checklist (used inside mts-hero) */
+    .sol-hero__checklist { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-10); }
+    .sol-hero__check-item { display: flex; align-items: flex-start; gap: var(--space-3); }
+    .sol-hero__check-icon { color: var(--cta-primary); flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+    .sol-hero__check-text { color: rgba(255,255,255,0.60); font-size: 14px; line-height: 1.6; }
+
+    /* DOT BG */
+    .dot-bg-overlay { position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.10) 1px, transparent 1px); background-size: 32px 32px; opacity: 0.4; pointer-events: none; }
+    .grid-bg-overlay { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,82,204,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,82,204,.04) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.5; pointer-events: none; }
+
+    /* OVERVIEW GRID */
+    .sol-overview-grid { display: grid; gap: var(--space-5); }
+    .sol-overview-card { background: #fff; padding: var(--space-8); border: 1px solid var(--border-subtle); transition: transform 0.3s, box-shadow 0.3s; }
+    .sol-overview-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+    .sol-overview-card--dark { background: #050505; }
+    .sol-overview-card__icon-wrap { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); }
+    .sol-overview-card__icon-wrap--blue { background: rgba(0,82,204,0.08); }
+    .sol-overview-card__icon-wrap--orange { background: rgba(255,153,51,0.10); }
+    .sol-overview-card__eyebrow { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-secondary); display: block; margin-bottom: var(--space-2); }
+    .sol-overview-card__eyebrow--light { color: rgba(255,255,255,0.40); }
+    .sol-overview-card__h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); letter-spacing: -0.01em; }
+    .sol-overview-card__h3--light { color: #fff; }
+    .sol-overview-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .sol-overview-card__body--light { color: rgba(255,255,255,0.45); }
+
+    /* MODULE STATUS BADGES */
+    .status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; }
+    .status-designed { background: rgba(0,82,204,0.08); color: var(--interactive); border: 1px solid rgba(0,82,204,0.20); }
+    .status-build { background: rgba(255,153,51,0.08); color: var(--cta-primary); border: 1px solid rgba(255,153,51,0.20); }
+    .status-verifiable { background: rgba(83,170,0,0.08); color: #16a34a; border: 1px solid rgba(83,170,0,0.20); }
+
+    /* MODULES GRID */
+    .sol-modules-grid { display: grid; gap: var(--space-5); }
+    .sol-module-card { background: #fff; padding: var(--space-8); border: 1px solid var(--border-subtle); transition: transform 0.3s, box-shadow 0.3s; }
+    .sol-module-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+    .sol-module-card__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--space-5); }
+    .sol-module-card__icon-wrap { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .sol-module-card__icon-wrap--blue { background: rgba(0,82,204,0.08); }
+    .sol-module-card__icon-wrap--orange { background: rgba(255,153,51,0.10); }
+    .sol-module-card__icon-wrap--green { background: rgba(83,170,0,0.10); }
+    .sol-module-card__h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-2); letter-spacing: -0.01em; }
+    .sol-module-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-4); }
+    .sol-module-card__footer { padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); }
+    .sol-module-card__why { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: block; }
+    .sol-module-card__evidence { display: inline-block; margin-top: var(--space-3); padding: 3px 12px; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; }
+    .sol-module-card__evidence--blue { background: rgba(0,82,204,0.06); color: var(--interactive); }
+    .sol-module-card__evidence--orange { background: rgba(255,153,51,0.06); color: var(--cta-primary); }
+    .sol-module-card__evidence--green { background: rgba(83,170,0,0.08); color: #16a34a; }
+
+    /* INTEGRATIONS */
+    .sol-integrations-grid { display: grid; gap: var(--space-4); }
+    .sol-integration-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.05); padding: var(--space-6); transition: background 0.2s; }
+    .sol-integration-card:hover { background: rgba(255,255,255,0.05); }
+    .sol-integration-card__icon { color: var(--cta-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4); }
+    .sol-integration-card__h3 { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: var(--space-2); }
+    .sol-integration-card__sub { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.30); line-height: 1.6; }
+
+    /* HOW SOLUTIONS WORK TOGETHER */
+    .sol-steps { border-left: 2px solid rgba(0,82,204,0.20); margin-left: var(--space-4); }
+    .sol-step { position: relative; padding-left: var(--space-10); padding-bottom: var(--space-12); }
+    .sol-step__dot { position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--cta-primary); border: 4px solid var(--layer-bg); }
+    .sol-step__dot--muted { background: var(--border-subtle); }
+    .sol-step__num { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cta-primary); font-weight: 700; display: block; margin-bottom: var(--space-1); }
+    .sol-step__num--muted { color: var(--text-secondary); }
+    .sol-step__h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-2); letter-spacing: -0.01em; }
+    .sol-step__h3--muted { color: rgba(26,28,28,0.60); }
+    .sol-step__body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 520px; }
+    .sol-step__body--muted { color: rgba(115,118,133,0.60); }
+    .sol-step:last-child { padding-bottom: 0; }
+
+    /* USE CASES ACCORDION */
+    .sol-accordion { border: 1px solid var(--border-subtle); }
+    .sol-acc-item { border-bottom: 1px solid var(--border-subtle); }
+    .sol-acc-item:last-child { border-bottom: none; }
+    .sol-acc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: var(--space-5) var(--space-6); background: none; border: none; cursor: pointer; text-align: left; transition: background 150ms; }
+    .sol-acc-trigger:hover { background: var(--layer-01); }
+    .sol-acc-trigger[aria-expanded="true"] { background: var(--layer-01); }
+    .sol-acc-trigger-inner { display: flex; align-items: center; gap: var(--space-4); }
+    .sol-acc-scenario { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); flex-shrink: 0; }
+    .sol-acc-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); }
+    .sol-acc-icon { font-family: var(--font-mono); font-size: 18px; color: var(--text-secondary); transition: transform 150ms; flex-shrink: 0; }
+    .sol-acc-trigger[aria-expanded="true"] .sol-acc-icon { transform: rotate(45deg); }
+    .sol-acc-body { display: none; padding: var(--space-6) var(--space-6) var(--space-8); }
+    .sol-acc-body.open { display: block; }
+    .sol-acc-scenario-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-6); }
+    .sol-acc-grid { display: grid; gap: var(--space-6); }
+    /* .sol-acc-grid--3 mobile default: 1fr (set in responsive block below) */
+    .sol-acc-col-label { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); font-weight: 600; display: block; margin-bottom: var(--space-2); }
+    .sol-acc-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+    .sol-acc-col li { font-size: 14px; color: var(--text-secondary); }
+
+    /* VERIFY GRID */
+    .sol-verify-grid { display: grid; gap: var(--space-5); }
+    .sol-verify-card { background: #fff; padding: var(--space-8); border: 1px solid var(--border-subtle); transition: transform 0.3s, box-shadow 0.3s; }
+    .sol-verify-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+    .sol-verify-card__icon { color: var(--interactive); font-size: 13px; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4); }
+    .sol-verify-card__h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); letter-spacing: -0.01em; }
+    .sol-verify-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* WHO THIS IS FOR */
+    .sol-pathways-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+    .sol-pathway-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.05); padding: var(--space-10); transition: background 0.2s; }
+    .sol-pathway-card:hover { background: rgba(255,255,255,0.04); }
+    .sol-pathway-card__icon { font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cta-primary); display: block; margin-bottom: var(--space-5); }
+    .sol-pathway-card__h3 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: var(--space-4); letter-spacing: -0.02em; }
+    .sol-pathway-card__body { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: var(--space-6); }
+    .sol-pathway-card__sub { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: var(--space-5); }
+    .sol-pathway-card__link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--cta-primary); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; transition: gap 0.2s; }
+    .sol-pathway-card__link:hover { gap: var(--space-3); }
+    .sol-pathway-card__actions { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    /* FAQ ACCORDION */
+    .sol-faq { border: 1px solid var(--border-subtle); }
+    .sol-faq-item { border-bottom: 1px solid var(--border-subtle); }
+    .sol-faq-item:last-child { border-bottom: none; }
+    .sol-faq-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: var(--space-5) var(--space-6); background: none; border: none; cursor: pointer; text-align: left; transition: background 150ms; }
+    .sol-faq-trigger:hover { background: var(--layer-01); }
+    .sol-faq-trigger[aria-expanded="true"] { background: var(--layer-01); }
+    .sol-faq-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); }
+    .sol-faq-icon { font-family: var(--font-mono); font-size: 18px; color: var(--text-secondary); transition: transform 150ms; flex-shrink: 0; }
+    .sol-faq-trigger[aria-expanded="true"] .sol-faq-icon { transform: rotate(45deg); }
+    .sol-faq-body { display: none; padding: 0 var(--space-6) var(--space-6); }
+    .sol-faq-body.open { display: block; }
+    .sol-faq-body p { font-size: 15px; color: var(--text-secondary); line-height: 1.72; }
+
+    /* CTA SECTION */
+    .sol-cta { padding: var(--space-20) 0; background: linear-gradient(160deg, #050505 0%, #0d1f40 50%, #050505 100%); position: relative; overflow: hidden; }
+    .sol-cta__inner { max-width: 760px; margin: 0 auto; padding: 0 var(--space-6); text-align: center; }
+    .sol-cta__h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; color: #fff; margin-bottom: var(--space-6); line-height: 1.0; }
+    .sol-cta__body { font-size: 20px; color: rgba(255,255,255,0.40); line-height: 1.6; margin-bottom: var(--space-12); max-width: 520px; margin-left: auto; margin-right: auto; }
+    .sol-cta__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
+
+    @media (min-width: 1025px) {
+ .sol-overview-grid { grid-template-columns: repeat(2, 1fr); }
+      .sol-modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .sol-integrations-grid { grid-template-columns: repeat(3, 1fr); }
+      .sol-verify-grid { grid-template-columns: repeat(2, 1fr); }
+      .sol-pathways-grid { grid-template-columns: 1fr; }
+      .sol-acc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* Mobile defaults for ≤768px */
+    .sol-overview-grid { grid-template-columns: 1fr; }
+    .sol-modules-grid { grid-template-columns: 1fr; }
+    .sol-integrations-grid { grid-template-columns: repeat(2, 1fr); }
+    .sol-verify-grid { grid-template-columns: 1fr; }
+    .sol-acc-grid { grid-template-columns: 1fr; }
+    .sol-acc-grid--3 { grid-template-columns: 1fr; }
+      @media (min-width: 769px) { .mts-nav__links { display: flex; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <img src="img/mtsai-logo.png" alt="MTSAi">
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="solutions.html" class="mts-nav__link active" aria-current="page">Solutions</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
+          <span>System Online</span>
+        </span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════
+         HERO
+    ══════════════════════════ -->
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Solutions hero">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <div class="mts-hero__eyebrow">
+          <span class="mts-tag mts-tag--blue">Solutions</span>
+        </div>
+        <h1 class="mts-hero__headline reveal">
+          Policy-led congestion management,<br>
+          <span class="headline-accent">built for auditability.</span>
+        </h1>
+        <p class="mts-hero__subline reveal delay-1">
+          Policy-configurable rules across corridors, zones, and peak scenarios — with audit trails, due process workflows, equity guardrails, and procurement-ready architecture.
+        </p>
+        <div class="sol-hero__checklist reveal delay-1">
+          <div class="sol-hero__check-item">
+            <span class="sol-hero__check-icon" aria-hidden="true">✓</span>
+            <span class="sol-hero__check-text">Policy-configurable rules across corridors, zones, and peak scenarios</span>
+          </div>
+          <div class="sol-hero__check-item">
+            <span class="sol-hero__check-icon" aria-hidden="true">✓</span>
+            <span class="sol-hero__check-text">Audit trails + due process for exceptions, disputes, and refunds</span>
+          </div>
+          <div class="sol-hero__check-item">
+            <span class="sol-hero__check-icon" aria-hidden="true">✓</span>
+            <span class="sol-hero__check-text">Equity guardrails + incentives to support adoption and fairness</span>
+          </div>
+          <div class="sol-hero__check-item">
+            <span class="sol-hero__check-icon" aria-hidden="true">✓</span>
+            <span class="sol-hero__check-text">Security/privacy posture supported by Trust Center evidence</span>
+          </div>
+        </div>
+        <div class="mts-hero__ctas reveal delay-2">
+          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Request Feasibility Assessment →</a>
+          <a href="#modules" class="mts-btn mts-btn--ghost mts-btn--lg">View Modules</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         OVERVIEW GRID
+    ══════════════════════════ -->
+    <section class="sol-section sol-section--alt" id="overview" aria-label="Overview">
+      <div class="dot-bg-overlay" aria-hidden="true"></div>
+      <div class="mts-container" style="position:relative;z-index:1;">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">Overview</span>
+          <h2 class="mts-section__h2">Who, what, evidence,<br><span class="sol-h2-accent">and what happens next.</span></h2>
+        </div>
+        <div class="sol-overview-grid">
+          <div class="sol-overview-card reveal delay-1">
+            <div class="sol-overview-card__icon-wrap sol-overview-card__icon-wrap--blue">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="7" cy="5" r="3" stroke="var(--interactive)" stroke-width="1.4"/><circle cx="14" cy="7" r="2.5" stroke="var(--interactive)" stroke-width="1.4"/><path d="M1 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="var(--interactive)" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sol-overview-card__eyebrow">Who it's for</span>
+            <h3 class="sol-overview-card__h3">Government &amp; Partners</h3>
+            <p class="sol-overview-card__body">Evaluating governed road pricing with policy-led rules and procurement-ready architecture.</p>
+          </div>
+          <div class="sol-overview-card reveal delay-2">
+            <div class="sol-overview-card__icon-wrap sol-overview-card__icon-wrap--orange">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="var(--cta-primary)" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="9" r="7" stroke="var(--cta-primary)" stroke-width="1.4"/></svg>
+            </div>
+            <span class="sol-overview-card__eyebrow">What it does</span>
+            <h3 class="sol-overview-card__h3">Configurable Pricing</h3>
+            <p class="sol-overview-card__body">Policy-led rules configurable by government authorities — not consumer defaults or vendor-set parameters.</p>
+          </div>
+          <div class="sol-overview-card reveal delay-3">
+            <div class="sol-overview-card__icon-wrap sol-overview-card__icon-wrap--blue">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="1" stroke="var(--interactive)" stroke-width="1.4"/><path d="M5 9h8M5 6h8M5 12h5" stroke="var(--interactive)" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sol-overview-card__eyebrow">Evidence available</span>
+            <h3 class="sol-overview-card__h3">Briefs &amp; Packs</h3>
+            <p class="sol-overview-card__body">Versioned documentation — architecture briefs, data flow diagrams, compliance templates, and pilot checklists.</p>
+          </div>
+          <div class="sol-overview-card sol-overview-card--dark reveal delay-4">
+            <div class="sol-overview-card__icon-wrap sol-overview-card__icon-wrap--orange">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z" stroke="var(--cta-primary)" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="sol-overview-card__eyebrow sol-overview-card__eyebrow--light">What happens next</span>
+            <h3 class="sol-overview-card__h3 sol-overview-card__h3--light">Feasibility → Pilot</h3>
+            <p class="sol-overview-card__body sol-overview-card__body--light">Feasibility assessment → pilot scoping → procurement. No RFP required for initial evaluation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         SOLUTION MODULES
+    ══════════════════════════ -->
+    <section class="sol-section" id="modules" aria-label="Solution Modules" style="background:var(--layer-01);">
+      <div class="grid-bg-overlay" aria-hidden="true"></div>
+      <div class="mts-container" style="position:relative;z-index:1;">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">Solution Modules</span>
+          <h2 class="mts-section__h2">Every module maps<br><span class="sol-h2-accent">to an audit artifact.</span></h2>
+        </div>
+        <div class="sol-modules-grid">
+
+          <!-- Policy Rules Engine -->
+          <div class="sol-module-card reveal delay-1">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--blue">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 5h12M3 9h8M3 13h10" stroke="var(--interactive)" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <span class="status-badge status-designed">Designed</span>
+            </div>
+            <h3 class="sol-module-card__h3">Policy Rules Engine</h3>
+            <p class="sol-module-card__body">Configures pricing and policy rules as explicit, versioned program parameters.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Keeps programs governable and reviewable.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--blue">Config Spec available</span>
+            </div>
+          </div>
+
+          <!-- Equity & Exemptions -->
+          <div class="sol-module-card reveal delay-2">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--blue">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2l7 4v4c0 4-3 7.5-7 8C2 17 -1 13.5 2 9.5" stroke="var(--interactive)" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <span class="status-badge status-designed">Designed</span>
+            </div>
+            <h3 class="sol-module-card__h3">Equity &amp; Exemptions</h3>
+            <p class="sol-module-card__body">Supports exemptions, caps, hardship pathways, and role-based approvals.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Protects fairness and political survivability.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--blue">Workflows available</span>
+            </div>
+          </div>
+
+          <!-- Incentives & Credits -->
+          <div class="sol-module-card reveal delay-3">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--orange">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="6" width="14" height="9" rx="1" stroke="var(--cta-primary)" stroke-width="1.4"/><path d="M6 6V5a3 3 0 016 0v1" stroke="var(--cta-primary)" stroke-width="1.4"/></svg>
+              </div>
+              <span class="status-badge status-build">In Build</span>
+            </div>
+            <h3 class="sol-module-card__h3">Incentives &amp; Credits</h3>
+            <p class="sol-module-card__body">Supports credits/rewards structures aligned to policy objectives.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Helps shift behavior without coercion.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--orange">Logic Spec available</span>
+            </div>
+          </div>
+
+          <!-- Payments & Settlement -->
+          <div class="sol-module-card reveal delay-1">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--orange">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1" stroke="var(--cta-primary)" stroke-width="1.4"/><path d="M2 8h14" stroke="var(--cta-primary)" stroke-width="1.4"/></svg>
+              </div>
+              <span class="status-badge status-build">In Build</span>
+            </div>
+            <h3 class="sol-module-card__h3">Payments &amp; Settlement</h3>
+            <p class="sol-module-card__body">Supports payment integrations where applicable and contracted.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Enables practical rollout with admin controls.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--orange">Integration Brief available</span>
+            </div>
+          </div>
+
+          <!-- Due Process Workflows -->
+          <div class="sol-module-card reveal delay-2">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--blue">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2v5l3 3" stroke="var(--interactive)" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="9" r="7" stroke="var(--interactive)" stroke-width="1.4"/></svg>
+              </div>
+              <span class="status-badge status-designed">Designed</span>
+            </div>
+            <h3 class="sol-module-card__h3">Due Process Workflows</h3>
+            <p class="sol-module-card__body">Supports exceptions, disputes, appeals, refunds, and evidence capture.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Reduces backlash and improves legitimacy.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--blue">Workflows available</span>
+            </div>
+          </div>
+
+          <!-- Audit Trails & Reporting -->
+          <div class="sol-module-card reveal delay-3">
+            <div class="sol-module-card__top">
+              <div class="sol-module-card__icon-wrap sol-module-card__icon-wrap--green">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6 9l2 2 4-4" stroke="var(--brand-primary)" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="9" r="7" stroke="var(--brand-primary)" stroke-width="1.4"/></svg>
+              </div>
+              <span class="status-badge status-verifiable">Verifiable</span>
+            </div>
+            <h3 class="sol-module-card__h3">Audit Trails &amp; Reporting</h3>
+            <p class="sol-module-card__body">Produces audit logs and exportable reporting for oversight.</p>
+            <div class="sol-module-card__footer">
+              <span class="sol-module-card__why">Why: Enables defensible decision-making.</span>
+              <span class="sol-module-card__evidence sol-module-card__evidence--green">Sample Log (Redacted) available</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         INTEGRATION SURFACES
+    ══════════════════════════ -->
+    <section class="sol-section sol-section--dark" id="integrations" aria-label="Integration Surfaces">
+      <div class="mts-container">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Integration Surfaces</span>
+          <h2 class="mts-section__h2 mts-section__h2--white">High-level<br>integration points.</h2>
+        </div>
+        <div class="sol-integrations-grid">
+          <div class="sol-integration-card reveal delay-1">
+            <span class="sol-integration-card__icon">IAM</span>
+            <h3 class="sol-integration-card__h3">Identity &amp; Access</h3>
+            <p class="sol-integration-card__sub">RBAC / SSO / Parichay</p>
+          </div>
+          <div class="sol-integration-card reveal delay-2">
+            <span class="sol-integration-card__icon">PAY</span>
+            <h3 class="sol-integration-card__h3">Payments</h3>
+            <p class="sol-integration-card__sub">Tolling / Gateway Interfaces</p>
+          </div>
+          <div class="sol-integration-card reveal delay-3">
+            <span class="sol-integration-card__icon">ENF</span>
+            <h3 class="sol-integration-card__h3">Enforcement</h3>
+            <p class="sol-integration-card__sub">Challan / Evidence Workflow</p>
+          </div>
+          <div class="sol-integration-card reveal delay-2">
+            <span class="sol-integration-card__icon">EXP</span>
+            <h3 class="sol-integration-card__h3">Data Export</h3>
+            <p class="sol-integration-card__sub">Reporting / Audit Dumps</p>
+          </div>
+          <div class="sol-integration-card reveal delay-3">
+            <span class="sol-integration-card__icon">OBS</span>
+            <h3 class="sol-integration-card__h3">Observability</h3>
+            <p class="sol-integration-card__sub">Logs / Metrics / Traces</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         HOW SOLUTIONS WORK TOGETHER
+    ══════════════════════════ -->
+    <section class="sol-section" id="how-it-works" aria-label="How Solutions Work Together">
+      <div class="dot-bg-overlay" aria-hidden="true"></div>
+      <div class="mts-container" style="max-width:900px;position:relative;z-index:1;">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">How Solutions Work Together</span>
+          <h2 class="mts-section__h2">Six steps from<br><span class="sol-h2-accent">objectives to operation.</span></h2>
+        </div>
+        <div class="sol-steps">
+          <div class="sol-step reveal">
+            <div class="sol-step__dot" aria-hidden="true"></div>
+            <span class="sol-step__num">Step 01</span>
+            <h3 class="sol-step__h3">Define Objectives</h3>
+            <p class="sol-step__body">Agree outcomes, constraints, and governance. Establish which corridors, policies, and equity guardrails apply.</p>
+          </div>
+          <div class="sol-step reveal delay-1">
+            <div class="sol-step__dot" aria-hidden="true"></div>
+            <span class="sol-step__num">Step 02</span>
+            <h3 class="sol-step__h3">Configure Policy</h3>
+            <p class="sol-step__body">Encode rules explicitly — corridor logic, time-of-day windows, exemption categories, and incentive parameters.</p>
+          </div>
+          <div class="sol-step reveal delay-2">
+            <div class="sol-step__dot" aria-hidden="true"></div>
+            <span class="sol-step__num">Step 03</span>
+            <h3 class="sol-step__h3">Run Pilot</h3>
+            <p class="sol-step__body">Bounded scope operations — single corridor or zone with full audit trail and evidence capture from day one.</p>
+          </div>
+          <div class="sol-step reveal delay-1">
+            <div class="sol-step__dot" aria-hidden="true"></div>
+            <span class="sol-step__num">Step 04</span>
+            <h3 class="sol-step__h3">Measure &amp; Report</h3>
+            <p class="sol-step__body">Review-ready evidence — exportable audit logs, demand shift metrics, and compliance reports for public oversight.</p>
+          </div>
+          <div class="sol-step reveal delay-2">
+            <div class="sol-step__dot" aria-hidden="true"></div>
+            <span class="sol-step__num">Step 05</span>
+            <h3 class="sol-step__h3">Adjust Governance</h3>
+            <p class="sol-step__body">Iterate guardrails — update exemption rules, revise pricing windows, respond to due process outcomes.</p>
+          </div>
+          <div class="sol-step reveal delay-3">
+            <div class="sol-step__dot sol-step__dot--muted" aria-hidden="true"></div>
+            <span class="sol-step__num sol-step__num--muted">Step 06</span>
+            <h3 class="sol-step__h3 sol-step__h3--muted">Scale &amp; Operate</h3>
+            <p class="sol-step__body sol-step__body--muted">Citywide expansion with validated governance, documented equity outcomes, and procurement record.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         USE CASE LIBRARY
+    ══════════════════════════ -->
+    <section class="sol-section sol-section--alt" id="use-cases" aria-label="Use Case Library">
+      <div class="mts-container">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">Use Case Library</span>
+          <h2 class="mts-section__h2">Four deployment<br><span class="sol-h2-accent">scenarios.</span></h2>
+        </div>
+
+        <div class="sol-accordion reveal delay-1" id="use-cases-accordion">
+
+          <div class="sol-acc-item">
+            <button class="sol-acc-trigger" aria-expanded="false" aria-controls="acc-1-body">
+              <span class="sol-acc-trigger-inner">
+                <span class="sol-acc-scenario">Scenario 01</span>
+                <span class="sol-acc-title">Corridor Pilot (Commuter Artery)</span>
+              </span>
+              <span class="sol-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-acc-body" id="acc-1-body" role="region">
+              <p class="sol-acc-scenario-desc"><strong>Scenario:</strong> High-congestion corridor affecting service delivery and travel reliability.</p>
+              <div class="sol-acc-grid">
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Objectives</span>
+                  <ul>
+                    <li>Reduce bottlenecks</li>
+                    <li>Improve reliability</li>
+                    <li>Create defensible reporting</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Policy Controls</span>
+                  <ul>
+                    <li>Time-of-day pricing</li>
+                    <li>Occupancy/eligibility rules</li>
+                    <li>Exception approvals</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Equity</span>
+                  <ul>
+                    <li>Hardship pathway</li>
+                    <li>Essential services rules</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Due Process</span>
+                  <ul>
+                    <li>Dispute + refund workflow</li>
+                    <li>Evidence capture</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sol-acc-item">
+            <button class="sol-acc-trigger" aria-expanded="false" aria-controls="acc-2-body">
+              <span class="sol-acc-trigger-inner">
+                <span class="sol-acc-scenario">Scenario 02</span>
+                <span class="sol-acc-title">School-Zone Congestion Management</span>
+              </span>
+              <span class="sol-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-acc-body" id="acc-2-body" role="region">
+              <p class="sol-acc-scenario-desc"><strong>Scenario:</strong> Peak bursts around schools with safety and access considerations.</p>
+              <div class="sol-acc-grid sol-acc-grid--3">
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Objectives</span>
+                  <ul>
+                    <li>Reduce unsafe congestion</li>
+                    <li>Support parent options</li>
+                    <li>Preserve fairness</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Policy Controls</span>
+                  <ul>
+                    <li>Limited-time windows</li>
+                    <li>Exemption logic</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Equity</span>
+                  <ul>
+                    <li>Exemptions for essential transport</li>
+                    <li>Low-income protections</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sol-acc-item">
+            <button class="sol-acc-trigger" aria-expanded="false" aria-controls="acc-3-body">
+              <span class="sol-acc-trigger-inner">
+                <span class="sol-acc-scenario">Scenario 03</span>
+                <span class="sol-acc-title">CBD Zone Pilot</span>
+              </span>
+              <span class="sol-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-acc-body" id="acc-3-body" role="region">
+              <p class="sol-acc-scenario-desc"><strong>Scenario:</strong> Central business district congestion affecting freight, public services, and commuter travel.</p>
+              <div class="sol-acc-grid sol-acc-grid--3">
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Objectives</span>
+                  <ul>
+                    <li>Manage demand</li>
+                    <li>Improve reliability</li>
+                    <li>Establish governance</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Policy Controls</span>
+                  <ul>
+                    <li>Zone entry rules</li>
+                    <li>Tiered policies by vehicle class</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Equity</span>
+                  <ul>
+                    <li>Caps + hardship pathways</li>
+                    <li>Essential worker protections</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sol-acc-item">
+            <button class="sol-acc-trigger" aria-expanded="false" aria-controls="acc-4-body">
+              <span class="sol-acc-trigger-inner">
+                <span class="sol-acc-scenario">Scenario 04</span>
+                <span class="sol-acc-title">Event Surge Management</span>
+              </span>
+              <span class="sol-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-acc-body" id="acc-4-body" role="region">
+              <p class="sol-acc-scenario-desc"><strong>Scenario:</strong> Stadium/festival events cause temporary spikes and emergency access concerns.</p>
+              <div class="sol-acc-grid sol-acc-grid--3">
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Objectives</span>
+                  <ul>
+                    <li>Maintain access</li>
+                    <li>Support public safety</li>
+                    <li>Reduce gridlock risk</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Policy Controls</span>
+                  <ul>
+                    <li>Temporary event policies</li>
+                    <li>Emergency overrides</li>
+                  </ul>
+                </div>
+                <div class="sol-acc-col">
+                  <span class="sol-acc-col-label">Due Process</span>
+                  <ul>
+                    <li>Post-event dispute handling</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         VERIFY IN 5 MINUTES
+    ══════════════════════════ -->
+    <section class="sol-section" id="verify" aria-label="Verify: Trust + Procurement">
+      <div class="dot-bg-overlay" aria-hidden="true"></div>
+      <div class="mts-container" style="position:relative;z-index:1;">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">Verify: Trust + Procurement</span>
+          <h2 class="mts-section__h2">In 5 minutes,<br><span class="sol-h2-accent">you can verify.</span></h2>
+        </div>
+        <div class="sol-verify-grid">
+          <div class="sol-verify-card reveal delay-1">
+            <span class="sol-verify-card__icon">PROC</span>
+            <h3 class="sol-verify-card__h3">Procurement Path</h3>
+            <p class="sol-verify-card__body">GeM when applicable; tenders via eProc where required. Full procurement route documentation available.</p>
+          </div>
+          <div class="sol-verify-card reveal delay-2">
+            <span class="sol-verify-card__icon">PRIV</span>
+            <h3 class="sol-verify-card__h3">Privacy Posture</h3>
+            <p class="sol-verify-card__body">DPDP-aligned notices, rights, grievance contact. Privacy architecture documentation and templates available.</p>
+          </div>
+          <div class="sol-verify-card reveal delay-3">
+            <span class="sol-verify-card__icon">SEC</span>
+            <h3 class="sol-verify-card__h3">Security Posture</h3>
+            <p class="sol-verify-card__body">Audit logging, incident readiness expectations. Security design documentation aligned to CERT-In standards.</p>
+          </div>
+          <div class="sol-verify-card reveal delay-4">
+            <span class="sol-verify-card__icon">EXIT</span>
+            <h3 class="sol-verify-card__h3">Vendor Exit</h3>
+            <p class="sol-verify-card__body">Portability and long-horizon survivability. Exit provisions and data portability documented in contract templates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         WHO THIS IS FOR
+    ══════════════════════════ -->
+    <section class="sol-section sol-section--dark" id="pathways" aria-label="Who This Is For">
+      <div class="mts-container">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow mts-section__eyebrow--white">Who This Is For</span>
+          <h2 class="mts-section__h2 mts-section__h2--white">Three partner<br><span class="sol-h2-accent--gold">pathways.</span></h2>
+        </div>
+        <div class="sol-pathways-grid">
+
+          <div class="sol-pathway-card reveal delay-1">
+            <span class="sol-pathway-card__icon">GOV</span>
+            <h3 class="sol-pathway-card__h3">Government</h3>
+            <p class="sol-pathway-card__body">Understand program options, verify trust posture, and procure/deploy with clear governance.</p>
+            <a href="Government.html" class="sol-pathway-card__link">Enter Government path →</a>
+          </div>
+
+          <div class="sol-pathway-card reveal delay-2">
+            <span class="sol-pathway-card__icon">PART</span>
+            <h3 class="sol-pathway-card__h3">Strategic Partners</h3>
+            <p class="sol-pathway-card__body">Support stakeholder convening, procurement success, rollout discipline, and continuity.</p>
+            <a href="Strategic_Partners.html" class="sol-pathway-card__link">Enter Strategic Partners path →</a>
+          </div>
+
+          <div class="sol-pathway-card reveal delay-3">
+            <span class="sol-pathway-card__icon">DEV</span>
+            <h3 class="sol-pathway-card__h3">Delivery Integrations</h3>
+            <p class="sol-pathway-card__body">Build and integrate greenfield modules with portability, security-by-design, and evidence.</p>
+            <p class="sol-pathway-card__sub">Includes: module map, acceptance gates, evidence checklist.</p>
+            <div class="sol-pathway-card__actions">
+              <a href="contact.html" class="mts-btn mts-btn--primary" style="font-size:11px;padding:10px 20px;text-align:center;">Propose Integration</a>
+              <button class="mts-btn mts-btn--ghost" style="font-size:11px;padding:10px 20px;color:rgba(255,255,255,0.40);">Download Delivery Standards</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         FAQ
+    ══════════════════════════ -->
+    <section class="sol-section" id="faq" aria-label="Common Questions" style="background:#fff;">
+      <div class="mts-container" style="max-width:900px;">
+        <div class="mts-section__header reveal">
+          <span class="mts-section__eyebrow">Common Questions</span>
+          <h2 class="mts-section__h2">Straight answers<br><span class="sol-h2-accent">on governance.</span></h2>
+        </div>
+
+        <div class="sol-faq reveal delay-1" id="faq-accordion">
+
+          <div class="sol-faq-item">
+            <button class="sol-faq-trigger" aria-expanded="false" aria-controls="faq-1-body">
+              <span class="sol-faq-title">Is this surveillance?</span>
+              <span class="sol-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-faq-body" id="faq-1-body" role="region">
+              <p>MTSAi is positioned as a governed policy program with minimization, due process, and documented oversight. Use cases must remain defensible under public integrity review. The platform does not support continuous location tracking, biometric collection, or cross-city identity correlation. Every collection decision maps to a stated policy purpose with documented retention and deletion.</p>
+            </div>
+          </div>
+
+          <div class="sol-faq-item">
+            <button class="sol-faq-trigger" aria-expanded="false" aria-controls="faq-2-body">
+              <span class="sol-faq-title">Who owns the data?</span>
+              <span class="sol-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-faq-body" id="faq-2-body" role="region">
+              <p>Government ownership is expected. MTSAi operates per contract-defined processing and access controls. The city authority acts as data controller; MTSAi acts as data processor. Data retention, deletion schedules, and access permissions are defined through policy, not vendor defaults. Full data portability and exit provisions are documented in contract templates.</p>
+            </div>
+          </div>
+
+          <div class="sol-faq-item">
+            <button class="sol-faq-trigger" aria-expanded="false" aria-controls="faq-3-body">
+              <span class="sol-faq-title">How do we procure?</span>
+              <span class="sol-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sol-faq-body" id="faq-3-body" role="region">
+              <p>Procurement can route via GeM when applicable/available, and via tender/eProc routes where required. No RFP is required for an initial feasibility assessment or pilot evaluation. Engagement typically begins with a feasibility conversation → pilot scoping → formal procurement under the city's existing IT procurement framework. Full procurement documentation is available on request.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════
+         CTA
+    ══════════════════════════ -->
+    <section class="sol-cta" aria-label="Ready to proceed">
+      <div class="sol-cta__inner reveal">
+        <span class="sol-accent" style="margin:0 auto var(--space-6);" aria-hidden="true"></span>
+        <h2 class="sol-cta__h2">Ready to proceed?</h2>
+        <p class="sol-cta__body">Request a feasibility assessment or download the procurement pack to start your evaluation.</p>
+        <div class="sol-cta__actions">
+          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Request Feasibility Assessment →</a>
+          <a href="Government.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Procurement Pack</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mts-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="mts-footer__top">
+        <div>
+          <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
+            <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
+          </a>
+          <p class="mts-footer__tagline">Defining the standard for government-grade AI in urban mobility. Built for public trust and operational excellence.</p>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
+        </div>
+        <nav class="mts-footer__links" aria-label="Footer navigation">
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+            <a href="Government.html">Government</a>
+            <a href="about.html">About</a>
+            <a href="solutions.html">Solutions</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Trust</h3>
+            <a href="trust.html">Trust Centre</a>
+            <a href="public_integrity.html">Public Integrity</a>
+            <a href="trust_privacy.html">Privacy</a>
+            <a href="trust_security.html">Security</a>
+            <a href="trust_data.html">Data Governance</a>
+            <a href="trust_exit.html">Vendor Exit</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Company</h3>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Resources</h3>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </nav>
+      </div>
+      <div class="mts-footer__divider"></div>
+      <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="mts-footer__bottom">
+        <span>© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</span>
+        <nav aria-label="Legal links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+        </nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Solutions · Last Updated Mar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav  = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button');
+      const dd  = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+
+    // Accordion (use cases + FAQ) — single open
+    function initAccordion(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return;
+      container.querySelectorAll('button[aria-expanded]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          // Close all in this accordion
+          container.querySelectorAll('button[aria-expanded]').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            const bodyId = b.getAttribute('aria-controls');
+            if (bodyId) document.getElementById(bodyId).classList.remove('open');
+          });
+          // Toggle clicked
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            const bodyId = btn.getAttribute('aria-controls');
+            if (bodyId) document.getElementById(bodyId).classList.add('open');
+          }
+        });
+      });
+    }
+    initAccordion('#use-cases-accordion');
+    initAccordion('#faq-accordion');
+  </script>
+  <script src="assets/js/site.js" defer></script>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="solutions.html" class="active">Solutions</a></li>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

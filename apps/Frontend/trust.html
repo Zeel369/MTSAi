@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Evidence-first approach to governance, security, privacy, data sovereignty, and vendor exit — designed for government-grade evaluation.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Trust Center | MTSAi</title>
+  <link rel="canonical" href="https://mtsai.in/trust.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Trust Center | MTSAi">
+  <meta property="og:description" content="Evidence-first approach to governance, security, privacy, data sovereignty, and vendor exit — designed for government-grade evaluation.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/trust.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Trust Center | MTSAi">
+  <meta name="twitter:description" content="Evidence-first approach to governance, security, privacy, data sovereignty, and vendor exit — designed for government-grade evaluation.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="assets/design-system/base/reset.css">
+  <link rel="stylesheet" href="assets/design-system/base/grid.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
+  <link rel="stylesheet" href="assets/design-system/base/animations.css">
+  <link rel="stylesheet" href="assets/design-system/components/button.css">
+  <link rel="stylesheet" href="assets/design-system/components/nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/card.css">
+  <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
+  <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
+  <link rel="stylesheet" href="assets/design-system/components/footer.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
+      transform: scaleX(0); transform-origin: left;
+      z-index: 9999; transition: transform 80ms linear;
+    }
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--interactive); color: #fff;
+      padding: 8px 16px; text-decoration: none;
+      z-index: 10000; font-size: 13px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav { background: var(--layer-bg); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; transition: box-shadow 200ms var(--ease-standard); }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner { display: flex; align-items: center; padding: 0 var(--space-6); height: 64px; max-width: 1440px; margin: 0 auto; }
+    .mts-nav__logo { display: flex; align-items: center; text-decoration: none; margin-right: var(--space-9); flex-shrink: 0; }
+    .mts-nav__logo img { height: 38px; width: auto; }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; transition: color var(--duration-fast-02) var(--ease-standard); font-family: var(--font-body); position: relative; }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link.active::after { content: ''; position: absolute; bottom: -22px; left: 0; right: 0; height: 2px; background: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown { position: absolute; top: calc(100% + 16px); left: 0; background: #fff; border: 1px solid var(--border-subtle); box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px; list-style: none; padding: var(--space-2) 0; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard); z-index: 1000; border-radius: 2px; }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02); }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth), transform 600ms var(--ease-smooth); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1.reveal { transition-delay: 80ms; }
+    .delay-2.reveal { transition-delay: 160ms; }
+    .delay-3.reveal { transition-delay: 240ms; }
+    .delay-4.reveal { transition-delay: 320ms; }
+
+    /* STATUS LEGEND */
+    .trust-body-section { background: #fff; padding: var(--space-14) 0; }
+    .status-legend { background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-7); margin-bottom: var(--space-12); max-width: 780px; }
+    .status-legend h2 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-5); }
+    .status-legend-pills { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; }
+    .status-pill-group { display: flex; flex-direction: column; gap: 6px; }
+    .status-pill { display: inline-block; padding: 5px 14px; font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }
+    .status-pill--designed { background: rgba(0,82,204,0.08); color: var(--interactive); }
+    .status-pill--in-build { background: rgba(255,153,51,0.10); color: #C47800; }
+    .status-pill--pilot { background: rgba(83,170,0,0.10); color: #3D8000; }
+    .status-pill--live { background: var(--text-primary); color: #fff; }
+    .status-pill-desc { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); max-width: 160px; line-height: 1.5; }
+
+    /* HEADINGS */
+    .trust-section-heading { font-family: var(--font-display); font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: var(--space-4); }
+    .trust-section-lead { font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: var(--space-7); max-width: 580px; }
+    .trust-section-divider { width: 32px; height: 2px; background: var(--accent-saffron); margin-bottom: var(--space-7); }
+
+    /* FAST LANE */
+    .fast-lane-item { display: flex; align-items: flex-start; gap: var(--space-5); background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-3); text-decoration: none; transition: border-color 200ms, background 200ms; }
+    .fast-lane-item:hover { border-color: var(--accent-saffron); background: rgba(255,153,51,0.03); }
+    .fast-lane-icon { font-size: 20px; color: var(--accent-saffron); flex-shrink: 0; margin-top: 2px; }
+    .fast-lane-item__title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 4px; }
+    .fast-lane-item__desc { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px; }
+    .fast-lane-item__link { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-saffron); text-decoration: none; }
+
+    /* TRUST DOMAIN CARDS — upgraded ctrl-card pattern */
+    .trust-domain-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-6); }
+    @media (min-width: 641px) { .trust-domain-grid { grid-template-columns: 1fr 1fr; } }
+    .trust-domain-card {
+      display: block; text-decoration: none;
+      background: #fff; border: 1px solid var(--border-subtle); border-top: 3px solid var(--interactive);
+      padding: var(--space-9); position: relative; overflow: hidden;
+      transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard);
+    }
+    .trust-domain-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-3px); }
+    .trust-domain-card.full-row { grid-column: span 1; max-width: none; }
+    @media (min-width: 641px) { .trust-domain-card.full-row { grid-column: span 2; max-width: 460px; } }
+
+    /* per-domain colours */
+    .trust-domain-card--blue  { border-top-color: var(--interactive); }
+    .trust-domain-card--blue  .tdc-label { color: var(--interactive); }
+    .trust-domain-card--blue  .tdc-badge { color: var(--interactive); border-color: rgba(0,82,204,0.25); }
+    .trust-domain-card--blue  .tdc-watermark { color: rgba(0,82,204,0.05); }
+    .trust-domain-card--blue  .tdc-icon-box { background: rgba(0,82,204,0.07); border-color: rgba(0,82,204,0.20); }
+
+    .trust-domain-card--green { border-top-color: var(--brand-primary); }
+    .trust-domain-card--green .tdc-label { color: var(--brand-primary); }
+    .trust-domain-card--green .tdc-badge { color: #3D8000; border-color: rgba(83,170,0,0.25); }
+    .trust-domain-card--green .tdc-watermark { color: rgba(83,170,0,0.05); }
+    .trust-domain-card--green .tdc-icon-box { background: rgba(83,170,0,0.07); border-color: rgba(83,170,0,0.20); }
+
+    .trust-domain-card--indigo { border-top-color: #6554C0; }
+    .trust-domain-card--indigo .tdc-label { color: #6554C0; }
+    .trust-domain-card--indigo .tdc-badge { color: #6554C0; border-color: rgba(101,84,192,0.25); }
+    .trust-domain-card--indigo .tdc-watermark { color: rgba(101,84,192,0.05); }
+    .trust-domain-card--indigo .tdc-icon-box { background: rgba(101,84,192,0.07); border-color: rgba(101,84,192,0.20); }
+
+    .trust-domain-card--saffron { border-top-color: var(--cta-primary); }
+    .trust-domain-card--saffron .tdc-label { color: #C47800; }
+    .trust-domain-card--saffron .tdc-badge { color: #C47800; border-color: rgba(196,120,0,0.25); }
+    .trust-domain-card--saffron .tdc-watermark { color: rgba(255,153,51,0.06); }
+    .trust-domain-card--saffron .tdc-icon-box { background: rgba(255,153,51,0.07); border-color: rgba(255,153,51,0.20); }
+
+    .trust-domain-card--teal { border-top-color: #00897B; }
+    .trust-domain-card--teal .tdc-label { color: #00695C; }
+    .trust-domain-card--teal .tdc-badge { color: #00695C; border-color: rgba(0,137,123,0.25); }
+    .trust-domain-card--teal .tdc-watermark { color: rgba(0,137,123,0.05); }
+    .trust-domain-card--teal .tdc-icon-box { background: rgba(0,137,123,0.07); border-color: rgba(0,137,123,0.20); }
+
+    .tdc-watermark { font-family: var(--font-display); font-size: 96px; font-weight: 700; line-height: 1; position: absolute; bottom: -8px; right: var(--space-6); z-index: 0; user-select: none; pointer-events: none; }
+    .tdc-icon-box { width: 44px; height: 44px; border: 1px solid; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); position: relative; z-index: 1; font-size: 22px; }
+    .tdc-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-3); display: block; position: relative; z-index: 1; }
+    .trust-domain-card h3 { font-family: var(--font-display); font-size: clamp(16px,1.8vw,22px); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); line-height: 1.18; position: relative; z-index: 1; }
+    .trust-domain-card p { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); line-height: 1.65; margin: 0; position: relative; z-index: 1; max-width: 380px; }
+    .tdc-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-7); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid; padding: 5px 12px; position: relative; z-index: 1; }
+    .tdc-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 50% { opacity: 0.4; } }
+
+    /* WHY TRUST MATTERS — dark section */
+    .trust-why-dark { background: #050505; padding: var(--space-16) 0; }
+    .trust-why-dark .section-eyebrow { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-saffron); margin-bottom: var(--space-5); display: block; }
+    .trust-why-dark h2 { font-family: var(--font-display); font-size: clamp(26px,3vw,40px); font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: var(--space-10); }
+    .trust-stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8); }
+    @media (min-width: 769px) {
+ .trust-stats-row { grid-template-columns: 1fr; } }
+    .trust-stat-item { border-left: 3px solid var(--accent-saffron); padding-left: var(--space-6); }
+    .trust-stat-item__num { font-family: var(--font-display); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1; display: block; margin-bottom: var(--space-3); }
+    .trust-stat-item__label { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.6; display: block; }
+
+    /* DISCLOSURE PANEL */
+    .disclosure-panel { background: var(--layer-01); padding: var(--space-12) 0 var(--space-10); }
+    .disclosure-inner { background: #fff; border: 1px solid var(--border-subtle); padding: var(--space-8); }
+    .disclosure-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); margin-bottom: var(--space-6); display: flex; align-items: center; gap: var(--space-3); }
+    .disclosure-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8); }
+    @media (min-width: 769px) {
+ .disclosure-grid { grid-template-columns: 1fr; } }
+    .disclosure-grid h4 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: var(--space-3); }
+    .disclosure-grid p { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* CTA DARK */
+    .mts-section-cta-dark { background: var(--text-primary); padding: var(--space-14) 0; }
+    .cta-headline { font-family: var(--font-display); font-size: clamp(24px,4vw,42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin: 0 0 var(--space-6); max-width: 640px; }
+    .cta-lead { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-10); }
+    .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+    /* nav links hidden on mobile via DS nav.css */
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <img src="img/mtsai-logo.png" alt="MTSAi">
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+            <li role="menuitem"><a href="governance.html">Governance &amp; Accountability</a></li>
+            <li role="menuitem"><a href="data-transparency.html">Data Protection &amp; Public Transparency</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
+          <span>System Online</span>
+        </span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Trust Center" style="background: linear-gradient(160deg,#050505 0%,#0d1f40 60%,#050505 100%);">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span>
+          <span>Trust Center</span>
+        </nav>
+        <div class="mts-hero__eyebrow">
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Evidence First · Government-Grade</span>
+        </div>
+        <h1 class="mts-hero__headline">Trust, Governance &amp; Operational Survivability</h1>
+        <p class="mts-article-lead">MTSAi's Trust Center is designed for government procurement review. Each domain provides a claims-safe posture summary and an index of versioned evidence available under NDA/RFP.</p>
+      </div>
+    </section>
+
+    <!-- STATUS LEGEND + FAST LANE — white section -->
+    <div class="trust-body-section">
+      <div class="mts-container">
+
+        <div class="status-legend reveal" aria-label="Status legend">
+          <h2>Status Legend</h2>
+          <div class="status-legend-pills" role="list">
+            <div class="status-pill-group" role="listitem">
+              <span class="status-pill status-pill--designed">Designed</span>
+              <span class="status-pill-desc">Documented design intent and control descriptions exist.</span>
+            </div>
+            <div class="status-pill-group" role="listitem">
+              <span class="status-pill status-pill--in-build">In Build</span>
+              <span class="status-pill-desc">Implementation underway; evidence may be partial and versioned.</span>
+            </div>
+            <div class="status-pill-group" role="listitem">
+              <span class="status-pill status-pill--pilot">Pilot (if contracted)</span>
+              <span class="status-pill-desc">Verification only under a defined SOW/contract.</span>
+            </div>
+            <div class="status-pill-group" role="listitem">
+              <span class="status-pill status-pill--live">Live (if contracted)</span>
+              <span class="status-pill-desc">Production only under contract and governed change control.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GoI Reviewer Fast Lane -->
+        <div style="max-width:680px;margin-bottom:var(--space-16);">
+          <div class="trust-section-divider" aria-hidden="true"></div>
+          <h2 class="trust-section-heading reveal">GoI Reviewer Fast Lane</h2>
+          <p class="trust-section-lead reveal delay-1">Use these direct routes to reach the material relevant to your role:</p>
+
+          <a href="resources.html" class="fast-lane-item reveal delay-1" aria-label="Program Owner — Solutions and Evidence Pack">
+            <span class="fast-lane-icon" aria-hidden="true">▣</span>
+            <div>
+              <span class="fast-lane-item__title">Program Owner</span>
+              <span class="fast-lane-item__desc">Solutions + Evidence Pack</span>
+              <span class="fast-lane-item__link">→ resources.html</span>
+            </div>
+          </a>
+
+          <a href="trust_security.html" class="fast-lane-item reveal delay-2" aria-label="IT and Security — security posture and evidence">
+            <span class="fast-lane-icon" aria-hidden="true">▣</span>
+            <div>
+              <span class="fast-lane-item__title">IT / Security</span>
+              <span class="fast-lane-item__desc">Security posture and evidence</span>
+              <span class="fast-lane-item__link">→ trust_security.html</span>
+            </div>
+          </a>
+
+          <a href="trust_privacy.html" class="fast-lane-item reveal delay-2" aria-label="Privacy and Legal — DPDP-informed posture">
+            <span class="fast-lane-icon" aria-hidden="true">▣</span>
+            <div>
+              <span class="fast-lane-item__title">Privacy / Legal</span>
+              <span class="fast-lane-item__desc">DPDP-informed posture</span>
+              <span class="fast-lane-item__link">→ trust_privacy.html</span>
+            </div>
+          </a>
+
+          <a href="government.html" class="fast-lane-item reveal delay-3" aria-label="Procurement and Finance — GeM and tender routes">
+            <span class="fast-lane-icon" aria-hidden="true">▣</span>
+            <div>
+              <span class="fast-lane-item__title">Procurement / Finance</span>
+              <span class="fast-lane-item__desc">GeM/tender routes + evaluation materials</span>
+              <span class="fast-lane-item__link">→ government.html</span>
+            </div>
+          </a>
+
+          <a href="public_integrity.html" class="fast-lane-item reveal delay-3" aria-label="Integrity and Public Trust — due process and transparency">
+            <span class="fast-lane-icon" aria-hidden="true">▣</span>
+            <div>
+              <span class="fast-lane-item__title">Integrity / Public Trust</span>
+              <span class="fast-lane-item__desc">Due process, transparency</span>
+              <span class="fast-lane-item__link">→ public_integrity.html</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Trust Center Domains — upgraded card grid -->
+        <div>
+          <div class="trust-section-divider" aria-hidden="true"></div>
+          <h2 class="trust-section-heading reveal">Trust Center Domains</h2>
+
+          <div class="trust-domain-grid" role="list" aria-label="Trust domains">
+
+            <a href="governance.html" class="trust-domain-card trust-domain-card--blue reveal delay-1" role="listitem" aria-label="Governance and Policy Control">
+              <div class="tdc-watermark" aria-hidden="true">01</div>
+              <div class="tdc-icon-box" aria-hidden="true">⬡</div>
+              <span class="tdc-label">Domain 01</span>
+              <h3>Governance &amp; Policy Control</h3>
+              <p>Auditable policy rules, city authority control, commuter due process</p>
+              <div class="tdc-badge">Designed</div>
+            </a>
+
+            <a href="trust_security.html" class="trust-domain-card trust-domain-card--indigo reveal delay-2" role="listitem" aria-label="Security Posture">
+              <div class="tdc-watermark" aria-hidden="true">02</div>
+              <div class="tdc-icon-box" aria-hidden="true">⬡</div>
+              <span class="tdc-label">Domain 02</span>
+              <h3>Security Posture</h3>
+              <p>IAM, encryption, audit trails, incident response, CERT-In readiness</p>
+              <div class="tdc-badge">Designed</div>
+            </a>
+
+            <a href="trust_privacy.html" class="trust-domain-card trust-domain-card--green reveal delay-2" role="listitem" aria-label="Privacy Posture">
+              <div class="tdc-watermark" aria-hidden="true">03</div>
+              <div class="tdc-icon-box" aria-hidden="true">⬡</div>
+              <span class="tdc-label">Domain 03</span>
+              <h3>Privacy Posture</h3>
+              <p>DPDP-informed, privacy-by-minimisation, consent patterns</p>
+              <div class="tdc-badge">Designed</div>
+            </a>
+
+            <a href="trust_data.html" class="trust-domain-card trust-domain-card--blue reveal delay-3" role="listitem" aria-label="Data Governance and Sovereignty">
+              <div class="tdc-watermark" aria-hidden="true">04</div>
+              <div class="tdc-icon-box" aria-hidden="true">⬡</div>
+              <span class="tdc-label">Domain 04</span>
+              <h3>Data Governance &amp; Sovereignty</h3>
+              <p>Contract-defined ownership, access logging, export posture</p>
+              <div class="tdc-badge">Designed</div>
+            </a>
+
+            <a href="trust_exit.html" class="trust-domain-card trust-domain-card--saffron full-row reveal delay-4" role="listitem" aria-label="Vendor Exit and Continuity">
+              <div class="tdc-watermark" aria-hidden="true">05</div>
+              <div class="tdc-icon-box" aria-hidden="true">⬡</div>
+              <span class="tdc-label">Domain 05</span>
+              <h3>Vendor Exit &amp; Continuity</h3>
+              <p>Documented interfaces, exportable data, handover pack discipline</p>
+              <div class="tdc-badge">Designed</div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WHY TRUST MATTERS — dark section -->
+    <section class="trust-why-dark" aria-label="Why trust matters">
+      <div class="mts-container">
+        <span class="section-eyebrow reveal">Trust Framework</span>
+        <h2 class="reveal delay-1">Why Trust Matters for Urban Systems</h2>
+        <div class="trust-stats-row">
+          <div class="trust-stat-item reveal delay-1">
+            <span class="trust-stat-item__num">100%</span>
+            <span class="trust-stat-item__label">Government-controlled policy — no algorithmic override of city decisions</span>
+          </div>
+          <div class="trust-stat-item reveal delay-2">
+            <span class="trust-stat-item__num">0</span>
+            <span class="trust-stat-item__label">Biometric data collected at any point in the programme design</span>
+          </div>
+          <div class="trust-stat-item reveal delay-3">
+            <span class="trust-stat-item__num">5+</span>
+            <span class="trust-stat-item__label">Documented trust domains with versioned evidence available under RFP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="mts-section-cta-dark" aria-label="Start due diligence">
+      <div class="mts-container">
+        <h2 class="cta-headline reveal">Start Your Due Diligence</h2>
+        <p class="cta-lead reveal delay-1">The Trust Center is designed to support government procurement review. Use the resources below to access versioned materials.</p>
+        <div class="cta-actions reveal delay-2">
+          <a href="resources.html" class="mts-btn mts-btn--primary mts-btn--lg">Open Procurement &amp; Evaluation Pack →</a>
+          <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Request due diligence access</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM STATUS DISCLOSURE -->
+    <div class="disclosure-panel">
+      <div class="mts-container">
+        <div class="disclosure-inner reveal">
+          <div class="disclosure-label">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v5M8 5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Platform Status Disclosure
+          </div>
+          <div class="disclosure-grid">
+            <div>
+              <h4>Pre-Deployment Status (Jan 2026)</h4>
+              <p>No live city implementations are currently operational. All deployment, outcome, and operational capability references are design specifications subject to government procurement, contract execution, and implementation.</p>
+            </div>
+            <div>
+              <h4>Compliance Status</h4>
+              <p>All references to regulatory frameworks represent design intent and readiness posture. Final compliance is verified through government audit per contract scope.</p>
+            </div>
+            <div>
+              <h4>International References</h4>
+              <p>Case study outcomes cited from London, Singapore, Stockholm, and other cities are external examples from independent transportation authorities, not MTSAi deployments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mts-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="mts-footer__top">
+        <div>
+          <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
+            <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
+          </a>
+          <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
+        </div>
+        <nav class="mts-footer__links" aria-label="Footer navigation">
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="Government.html">Government</a>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">How It Works</h3>
+            <a href="why-traditional-fails.html">Why Pricing Struggles</a>
+            <a href="congestion-coordination.html">Coordination Problem</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Trust</h3>
+            <a href="trust.html">Trust Centre</a>
+            <a href="governance.html">Governance</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="trust_security.html">Security</a>
+            <a href="trust_privacy.html">Privacy</a>
+            <a href="trust_data.html">Data Governance</a>
+            <a href="trust_exit.html">Vendor Exit</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Resources</h3>
+            <a href="resources.html">Procurement Pack</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </nav>
+      </div>
+      <div class="mts-footer__divider"></div>
+      <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="mts-footer__bottom">
+        <span>© 2026 Miracle Traffic Solutions AI · All rights reserved</span>
+        <nav aria-label="Legal links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+        </nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Trust Centre · Last Updated Mar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav  = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button');
+      const dd  = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+  </script>
+
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo"><span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi</a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

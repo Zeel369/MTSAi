@@ -19,12 +19,25 @@
   border: 1px solid var(--blue-20);
   border-top: 3px solid var(--interactive);
   box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06);
-  transition: box-shadow 200ms, transform 200ms;
+  transition: box-shadow 200ms ease, transform 200ms ease;
 }
 .mts-card--feature:hover {
   box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
+
+/* Primary feature card — prominent, coloured top border + stronger shadow */
+.mts-card--feature--primary {
+  border-top: 4px solid var(--interactive);
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+  background: var(--blue-10);
+}
+.mts-card--feature--primary:hover {
+  box-shadow: 0 12px 32px rgba(0, 82, 204, 0.18);
+  transform: translateY(-2px);
+}
+.mts-card--feature--primary .mts-card__label { color: var(--interactive); }
+.mts-card--feature--primary .mts-card__num   { color: var(--interactive); }
 
 /* Green top-border variant */
 .mts-card--feature--green {

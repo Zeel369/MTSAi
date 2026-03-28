@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Versioned procurement packs, technical briefs, security overview, privacy brief, and evaluation materials for government file review.">
+  <meta name="theme-color" content="#0052CC">
+  <title>Resources | MTSAi Procurement &amp; Evaluation Materials</title>
+  <link rel="canonical" href="https://mtsai.in/resources.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MTSAi">
+  <meta property="og:title" content="Resources | MTSAi Procurement &amp; Evaluation Materials">
+  <meta property="og:description" content="Versioned procurement packs, technical briefs, security overview, privacy brief, and evaluation materials for government file review.">
+  <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
+  <meta property="og:url" content="https://mtsai.in/resources.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Resources | MTSAi Procurement &amp; Evaluation Materials">
+  <meta name="twitter:description" content="Versioned procurement packs, technical briefs, security overview, privacy brief, and evaluation materials for government file review.">
+  <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
+  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
+  <link rel="stylesheet" href="assets/design-system/base/reset.css">
+  <link rel="stylesheet" href="assets/design-system/base/grid.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
+  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
+  <link rel="stylesheet" href="assets/design-system/base/animations.css">
+  <link rel="stylesheet" href="assets/design-system/components/button.css">
+  <link rel="stylesheet" href="assets/design-system/components/nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/card.css">
+  <link rel="stylesheet" href="assets/design-system/components/tag.css">
+  <link rel="stylesheet" href="assets/design-system/components/layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
+  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
+  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
+  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
+  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
+  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
+  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
+  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
+  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
+  <link rel="stylesheet" href="assets/design-system/components/modal.css">
+  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
+  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
+  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
+  <link rel="stylesheet" href="assets/design-system/components/input.css">
+  <link rel="stylesheet" href="assets/design-system/components/select.css">
+  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
+  <link rel="stylesheet" href="assets/design-system/components/radio.css">
+  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
+  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
+  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
+  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
+  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
+  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
+  <link rel="stylesheet" href="assets/design-system/components/popover.css">
+  <link rel="stylesheet" href="assets/design-system/components/progress.css">
+  <link rel="stylesheet" href="assets/design-system/components/notification.css">
+  <link rel="stylesheet" href="assets/design-system/components/table.css">
+  <link rel="stylesheet" href="assets/design-system/base/premium.css">
+  <link rel="stylesheet" href="assets/design-system/components/hero.css">
+  <link rel="stylesheet" href="assets/design-system/components/status.css">
+  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
+  <link rel="stylesheet" href="assets/design-system/components/article.css">
+  <link rel="stylesheet" href="assets/design-system/components/callout.css">
+  <link rel="stylesheet" href="assets/design-system/components/media.css">
+  <link rel="stylesheet" href="assets/design-system/components/footer.css">
+  <link rel="stylesheet" href="assets/design-system/components/section.css">
+  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--layer-bg); }
+
+    .mts-container { max-width: 1320px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
+      transform: scaleX(0); transform-origin: left;
+      z-index: 9999; transition: transform 80ms linear;
+    }
+
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--interactive); color: #fff;
+      padding: 8px 16px; text-decoration: none;
+      z-index: 10000; font-size: 13px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* NAV */
+    .mts-nav {
+      background: var(--layer-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky; top: 0; z-index: 100;
+      transition: box-shadow 200ms var(--ease-standard);
+    }
+    .mts-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .mts-nav__inner {
+      display: flex; align-items: center;
+      padding: 0 var(--space-6); height: 64px;
+      max-width: 1440px; margin: 0 auto;
+    }
+    .mts-nav__logo {
+      display: flex; align-items: center; gap: var(--space-3);
+      text-decoration: none; margin-right: var(--space-9); flex-shrink: 0;
+      font-family: var(--font-display); font-size: 18px; font-weight: 700;
+      color: var(--text-primary);
+    }
+    .mts-nav__logo-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--brand-primary); flex-shrink: 0;
+      animation: statusPulse 3s ease infinite;
+    }
+    @keyframes statusPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(83,170,0,0.4); }
+      50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); }
+    }
+    .mts-nav__links { list-style: none; gap: var(--space-7); align-items: center; flex: 1; }
+    .mts-nav__link {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; background: none; border: none; cursor: pointer; padding: 0;
+      transition: color var(--duration-fast-02) var(--ease-standard);
+      font-family: var(--font-body); position: relative;
+    }
+    .mts-nav__link.active { color: var(--interactive); }
+    .mts-nav__link:hover { color: var(--text-primary); }
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 16px); left: 0;
+      background: #fff; border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10); min-width: 280px;
+      list-style: none; padding: var(--space-2) 0;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard);
+      z-index: 1000; border-radius: 2px;
+    }
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px var(--space-5); font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; transition: background var(--duration-fast-02), color var(--duration-fast-02);
+    }
+    .nav-dropdown li a:hover { background: var(--layer-01); color: var(--interactive); }
+    .mts-nav__actions { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+    .mts-nav-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-tertiary); font-family: var(--font-mono); }
+    .mts-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-primary); }
+    .mts-status-dot.active { background: #53AA00; }
+    .mts-nav__hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .mts-nav__hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 1px; }
+    @media (min-width: 769px) {
+ .mts-nav__links { }
+      .mts-nav__hamburger { display: flex; }
+      .mts-nav-status { display: none; }
+    }
+
+    /* SECTION BASE */
+    .mts-section { padding: 72px 0; position: relative; }
+    .mts-section--alt { background: var(--layer-01); }
+    .mts-section--dark { background: #050505; }
+
+    .section-accent { display: block; width: 32px; height: 2px; background: var(--accent-saffron); margin-bottom: var(--space-6); }
+    .section-heading {
+      font-family: var(--font-display); font-size: clamp(22px,3vw,30px);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary);
+      margin-bottom: var(--space-7);
+    }
+    .section-heading--white { color: #fff; }
+
+    /* RESOURCE CARD GRID (3-col) — Government.html ctrl-card quality */
+    .resource-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+    @media (min-width: 561px) { .resource-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 901px) { .resource-grid { grid-template-columns: repeat(3,1fr); } }
+
+    /* Color mapping: 1=Blue, 2=Indigo, 3=Green, 4=Saffron, 5=Blue, 6=Indigo */
+    .resource-card {
+      background: #fff; padding: var(--space-8);
+      border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard);
+    }
+    .resource-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-2px); }
+    .resource-card:nth-child(2) { border-top-color: #6554C0; }
+    .resource-card:nth-child(2) .resource-card__label { color: #6554C0; }
+    .resource-card:nth-child(2) .resource-card__version { color: #6554C0; border-color: rgba(101,84,192,0.25); background: rgba(101,84,192,0.06); }
+    .resource-card:nth-child(2) .resource-card__icon-box { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
+    .resource-card:nth-child(2) .resource-card__bg-num { color: rgba(101,84,192,0.05); }
+    .resource-card:nth-child(3) { border-top-color: var(--brand-primary); }
+    .resource-card:nth-child(3) .resource-card__label { color: var(--brand-primary); }
+    .resource-card:nth-child(3) .resource-card__version { color: var(--brand-primary); border-color: rgba(83,170,0,0.25); background: rgba(83,170,0,0.06); }
+    .resource-card:nth-child(3) .resource-card__icon-box { background: rgba(83,170,0,0.08); border-color: rgba(83,170,0,0.20); }
+    .resource-card:nth-child(3) .resource-card__bg-num { color: rgba(83,170,0,0.06); }
+    .resource-card:nth-child(4) { border-top-color: var(--cta-primary); }
+    .resource-card:nth-child(4) .resource-card__label { color: #C47800; }
+    .resource-card:nth-child(4) .resource-card__version { color: #C47800; border-color: rgba(196,120,0,0.25); background: rgba(255,153,51,0.06); }
+    .resource-card:nth-child(4) .resource-card__icon-box { background: rgba(255,153,51,0.08); border-color: rgba(255,153,51,0.20); }
+    .resource-card:nth-child(4) .resource-card__bg-num { color: rgba(255,153,51,0.06); }
+    .resource-card:nth-child(5) { border-top-color: var(--interactive); }
+    .resource-card:nth-child(6) { border-top-color: #6554C0; }
+    .resource-card:nth-child(6) .resource-card__label { color: #6554C0; }
+    .resource-card:nth-child(6) .resource-card__version { color: #6554C0; border-color: rgba(101,84,192,0.25); background: rgba(101,84,192,0.06); }
+    .resource-card:nth-child(6) .resource-card__icon-box { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
+    .resource-card:nth-child(6) .resource-card__bg-num { color: rgba(101,84,192,0.05); }
+
+    .resource-card__bg-num {
+      font-family: var(--font-display); font-size: 80px; font-weight: 700;
+      color: rgba(0,82,204,0.04); line-height: 1;
+      position: absolute; bottom: -8px; right: var(--space-5);
+      user-select: none; pointer-events: none;
+    }
+    .resource-card__icon-box {
+      width: 40px; height: 40px; background: var(--blue-10); border: 1px solid var(--blue-20);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-5); font-size: 18px; position: relative; z-index: 1; flex-shrink: 0;
+    }
+    .resource-card__label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--interactive); margin-bottom: var(--space-3);
+      display: block; position: relative; z-index: 1;
+    }
+    .resource-card__title {
+      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-3);
+      position: relative; z-index: 1;
+    }
+    .resource-card__body {
+      font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: var(--space-5); flex: 1; position: relative; z-index: 1;
+    }
+    .resource-card__version {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(0,82,204,0.07); color: var(--interactive);
+      border: 1px solid var(--blue-20);
+      padding: 4px 10px; margin-bottom: var(--space-5);
+      display: inline-block; align-self: flex-start;
+      position: relative; z-index: 1;
+    }
+    .resource-card__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; background: var(--accent-saffron); color: #fff;
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+      transition: background 200ms; align-self: flex-start;
+      position: relative; z-index: 1;
+    }
+    .resource-card__cta:hover { background: #e08820; }
+
+    /* PATHWAY GRID */
+    .pathway-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+    @media (min-width: 641px) { .pathway-grid { grid-template-columns: repeat(2,1fr); } }
+    .pathway-card {
+      background: #fff; padding: var(--space-7);
+      border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive);
+      transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard);
+    }
+    .pathway-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-2px); }
+    .pathway-card:nth-child(2) { border-top-color: #6554C0; }
+    .pathway-card__title {
+      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-3);
+    }
+    .pathway-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* CHECKLIST */
+    .checklist { display: flex; flex-direction: column; gap: var(--space-4); max-width: 680px; }
+    .checklist-item { display: flex; align-items: flex-start; gap: var(--space-4); }
+    .checklist-item__icon { color: var(--accent-saffron); flex-shrink: 0; margin-top: 2px; font-size: 15px; font-weight: 700; }
+    .checklist-item__text { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-10); }
+    .cta-btn-primary {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 12px 28px; background: var(--accent-saffron); color: #fff;
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+      transition: background 200ms;
+    }
+    .cta-btn-primary:hover { background: #e08820; }
+    .cta-btn-secondary {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 12px 28px; background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15); transition: color 200ms, border-color 200ms;
+    }
+    .cta-btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-smooth,cubic-bezier(.23,1,.32,1)), transform 600ms var(--ease-smooth,cubic-bezier(.23,1,.32,1)); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .delay-1.reveal { transition-delay: 80ms; }
+    .delay-2.reveal { transition-delay: 160ms; }
+    .delay-3.reveal { transition-delay: 240ms; }
+    .delay-4.reveal { transition-delay: 320ms; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li class="nav-has-dropdown">
+          <button class="mts-nav__link" aria-expanded="false" aria-haspopup="true" aria-label="How It Works — expand navigation">How It Works ↓</button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="menuitem"><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+            <li role="menuitem"><a href="congestion-coordination.html">Congestion as a Coordination Problem</a></li>
+            <li role="menuitem"><a href="iudm.html">Incentive-Based Demand Management</a></li>
+            <li role="menuitem"><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+            <li role="menuitem"><a href="india-advantage.html">Why India Can Lead at Scale</a></li>
+          </ul>
+        </li>
+        <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+        <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
+      </ul>
+      <div class="mts-nav__actions">
+        <span class="mts-nav-status">
+          <span class="mts-status-dot active" aria-hidden="true"></span>
+          <span>System Online</span>
+        </span>
+        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Resources introduction">
+      <div class="mts-hero__pattern" aria-hidden="true"></div>
+      <div class="mts-hero__accent" aria-hidden="true"></div>
+      <div class="mts-container mts-hero__inner">
+        <nav aria-label="Breadcrumb" style="margin-bottom:var(--space-6);">
+          <a href="index.html" style="font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.3);text-decoration:none;">Home</a>
+          <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.2);margin:0 8px;">/</span>
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-saffron);">Resources</span>
+        </nav>
+        <div class="mts-hero__eyebrow">
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Procurement Ready · Versioned Artefacts</span>
+        </div>
+        <h1 class="mts-hero__headline reveal">Procurement &amp; Evaluation Materials</h1>
+        <p class="mts-hero__subline reveal delay-1">All materials are versioned and designed for government file review. Some are shared via controlled distribution to maintain version discipline. Use the request form for access.</p>
+        <p class="reveal delay-2" style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.35);margin-top:var(--space-5);">v0.9 · February 10, 2026 — Pre-launch evaluation versions</p>
+      </div>
+    </section>
+
+    <!-- RESOURCE CARDS -->
+    <section class="mts-section" aria-label="Procurement and evaluation documents">
+      <div class="mts-container">
+        <div class="resource-grid">
+
+          <div class="resource-card reveal">
+            <div class="resource-card__bg-num" aria-hidden="true">01</div>
+            <div class="resource-card__icon-box" aria-hidden="true">📦</div>
+            <span class="resource-card__label">Document 01</span>
+            <h3 class="resource-card__title">Procurement Pack (Draft)</h3>
+            <p class="resource-card__body">Evaluation scope template, acceptance gates outline, roles/RACI overview, and artefacts list.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+          <div class="resource-card reveal delay-1">
+            <div class="resource-card__bg-num" aria-hidden="true">02</div>
+            <div class="resource-card__icon-box" aria-hidden="true">📄</div>
+            <span class="resource-card__label">Document 02</span>
+            <h3 class="resource-card__title">Technical Brief (Public-Safe)</h3>
+            <p class="resource-card__body">High-level platform overview and lifecycle narrative.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+          <div class="resource-card reveal delay-2">
+            <div class="resource-card__bg-num" aria-hidden="true">03</div>
+            <div class="resource-card__icon-box" aria-hidden="true">🔒</div>
+            <span class="resource-card__label">Document 03</span>
+            <h3 class="resource-card__title">Security Overview (Public-Safe)</h3>
+            <p class="resource-card__body">Controls summary and evidence-you-can-request index.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+          <div class="resource-card reveal delay-1">
+            <div class="resource-card__bg-num" aria-hidden="true">04</div>
+            <div class="resource-card__icon-box" aria-hidden="true">🛡</div>
+            <span class="resource-card__label">Document 04</span>
+            <h3 class="resource-card__title">Privacy / DPDP Brief (Public-Safe)</h3>
+            <p class="resource-card__body">DPDP-informed posture, rights/grievance cues.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+          <div class="resource-card reveal delay-2">
+            <div class="resource-card__bg-num" aria-hidden="true">05</div>
+            <div class="resource-card__icon-box" aria-hidden="true">✅</div>
+            <span class="resource-card__label">Document 05</span>
+            <h3 class="resource-card__title">Implementation Playbook (Draft)</h3>
+            <p class="resource-card__body">Pilot evaluation approach, verification motion, and operational readiness outline.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+          <div class="resource-card reveal delay-3">
+            <div class="resource-card__bg-num" aria-hidden="true">06</div>
+            <div class="resource-card__icon-box" aria-hidden="true">↗</div>
+            <span class="resource-card__label">Document 06</span>
+            <h3 class="resource-card__title">Vendor Exit &amp; Continuity Brief (Draft)</h3>
+            <p class="resource-card__body">Portability, handover pack index, and RFP requirements checklist.</p>
+            <span class="resource-card__version">v0.9 · Feb 2026</span>
+            <a href="contact.html" class="resource-card__cta">Request via Contact →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCUREMENT PATHWAYS -->
+    <section class="mts-section mts-section--alt" aria-label="Procurement Pathways">
+      <div class="mts-container">
+        <span class="section-accent"></span>
+        <h2 class="section-heading reveal">Procurement Pathways</h2>
+        <div class="pathway-grid">
+
+          <div class="pathway-card reveal delay-1">
+            <h3 class="pathway-card__title">GeM Route (Where Available)</h3>
+            <p class="pathway-card__body">Procurement may be routed via GeM where applicable and where listing/category conditions are met. This website does not imply GeM listing unless explicitly stated in a listing artefact.</p>
+          </div>
+
+          <div class="pathway-card reveal delay-2">
+            <h3 class="pathway-card__title">Tender Route (CPPP/eProcure)</h3>
+            <p class="pathway-card__body">Procurement may be routed via tendering processes consistent with buyer policy and applicable rules.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TENDER CHECKLIST -->
+    <section class="mts-section mts-section--dark" aria-label="Tender Support Checklist">
+      <div class="mts-container">
+        <h2 class="section-heading section-heading--white reveal">Tender Support Checklist</h2>
+        <div class="checklist">
+          <div class="checklist-item reveal delay-1">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Scope boundary (pilot vs scale) and success criteria</span>
+          </div>
+          <div class="checklist-item reveal delay-2">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Governance owners: Programme, IT/Security, Privacy/Legal, Procurement</span>
+          </div>
+          <div class="checklist-item reveal delay-1">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Hosting model selection: buyer policy-driven</span>
+          </div>
+          <div class="checklist-item reveal delay-2">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Integrations list: identity, payments, reporting, enforcement workflows</span>
+          </div>
+          <div class="checklist-item reveal delay-3">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Required artefacts: packs, runbooks, audit exports, change control</span>
+          </div>
+          <div class="checklist-item reveal delay-4">
+            <span class="checklist-item__icon" aria-hidden="true">✓</span>
+            <span class="checklist-item__text">Evaluation outputs: what evidence constitutes acceptance</span>
+          </div>
+        </div>
+        <div class="cta-row reveal delay-2">
+          <a href="contact.html" class="cta-btn-primary">Contact to request materials →</a>
+          <a href="trust.html" class="cta-btn-secondary">Open Trust Center</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mts-footer" aria-label="Site footer">
+    <div class="mts-container">
+      <div class="mts-footer__top">
+        <div>
+          <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
+            <span style="width:10px;height:10px;border-radius:50%;background:#fff;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            <span style="font-family:var(--font-display);font-size:18px;font-weight:700;color:#fff;">MTSAi</span>
+          </a>
+          <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
+          <div class="mts-footer__trust" aria-label="Compliance indicators">
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">DPDP Aligned</span>
+            <span class="mts-footer__trust-badge mts-footer__trust-badge--active">CERT-In Ready</span>
+            <span class="mts-footer__trust-badge">AWS Mumbai</span>
+            <span class="mts-footer__trust-badge">Pre-Deployment</span>
+          </div>
+        </div>
+        <nav class="mts-footer__links" aria-label="Footer navigation">
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="Government.html">Government</a>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="Strategic_Partners.html">Strategic Partners</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">How It Works</h3>
+            <a href="why-traditional-fails.html">Why Pricing Struggles</a>
+            <a href="congestion-coordination.html">Coordination Problem</a>
+            <a href="iudm.html">IUDM Model</a>
+            <a href="deployment-roadmap.html">Deployment Roadmap</a>
+            <a href="india-advantage.html">India Advantage</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Trust</h3>
+            <a href="trust.html">Trust Centre</a>
+            <a href="public_integrity.html">Public Integrity</a>
+            <a href="data-transparency.html">Data Transparency</a>
+            <a href="trust_security.html">Security</a>
+            <a href="trust_exit.html">Vendor Exit</a>
+          </div>
+          <div class="mts-footer__col">
+            <h3 class="mts-footer__col-heading">Resources</h3>
+            <a href="resources.html" aria-current="page">Procurement Pack</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </nav>
+      </div>
+      <div class="mts-footer__divider"></div>
+      <p class="mts-footer__disclaimer">Information on this website is provided for evaluation and planning. Capabilities, deployment models, timelines, and compliance measures are finalized through RFP/contract and may vary by department requirements. No deployments, government approvals, certifications, listings, or operational performance outcomes are claimed unless explicitly published in a versioned evidence document.</p>
+      <div class="mts-footer__bottom">
+        <span>© 2026 MTSAi Infrastructure · Advanced mobility for civic excellence.</span>
+        <nav aria-label="Legal links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy_policy.html">Privacy Policy</a>
+          <a href="hyperlinking_policy.html">Hyperlinking Policy</a>
+        </nav>
+        <span style="font-size:10px;color:#393939;font-family:var(--font-mono);">v1.0 · Resources · Last Updated Mar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mts-mobile-nav__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mts-mobile-nav__panel" id="mobile-menu-panel">
+      <div class="mts-mobile-nav__header">
+        <a href="index.html" class="mts-nav__logo">
+          <span class="mts-nav__logo-dot" aria-hidden="true"></span>MTSAi
+        </a>
+        <button class="mts-mobile-nav__close" id="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <ul class="mts-mobile-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Government.html">Government</a></li>
+        <span class="mts-mobile-nav__group-label">How It Works</span>
+        <div class="mts-mobile-nav__sub">
+          <li><a href="why-traditional-fails.html">Why Traditional Pricing Struggles</a></li>
+          <li><a href="congestion-coordination.html">Congestion as Coordination Problem</a></li>
+          <li><a href="iudm.html">IUDM Model</a></li>
+          <li><a href="deployment-roadmap.html">How a City Deploys MTSAi</a></li>
+          <li><a href="india-advantage.html">Why India Can Lead</a></li>
+        </div>
+        <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <div class="mts-mobile-nav__footer">
+        <a href="contact.html" class="mts-btn mts-btn--primary" style="width:100%;justify-content:center;display:flex;">Start Evaluation →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollBar = document.getElementById('scroll-progress');
+    const siteNav  = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const btn = item.querySelector('button');
+      const dd  = item.querySelector('.nav-dropdown');
+      btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
+      document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
+    });
+  </script>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

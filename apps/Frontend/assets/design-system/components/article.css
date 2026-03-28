@@ -4,6 +4,130 @@
    why-traditional-fails.
    ============================================================ */
 
+/* ── How It Works — Journey Progress Strip ───────────────────
+   A thin sequential nav bar placed between the site nav and the
+   article hero. Shows the reader their position in the 5-page
+   "How It Works" briefing pathway.
+──────────────────────────────────────────────────────────────── */
+.hiw-strip {
+  background: #00040F;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  z-index: 90;
+  overflow: hidden;
+}
+
+.hiw-strip__inner {
+  display: flex;
+  align-items: stretch;
+  height: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Label before the steps */
+.hiw-strip__prefix {
+  display: flex;
+  align-items: center;
+  padding-right: var(--space-5);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  margin-right: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Individual step link */
+.hiw-step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 16px;
+  height: 100%;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 150ms ease, background 150ms ease;
+  white-space: nowrap;
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.hiw-step:hover {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hiw-step__num {
+  font-size: 8px;
+  font-weight: 700;
+  opacity: 0.55;
+  letter-spacing: 0.1em;
+}
+
+/* Active step — current page */
+.hiw-step--active {
+  color: var(--accent-saffron);
+  background: rgba(255, 173, 51, 0.06);
+}
+
+.hiw-step--active .hiw-step__num {
+  opacity: 1;
+}
+
+/* Saffron underline on active step */
+.hiw-step--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-saffron);
+}
+
+/* Completed steps — reader has passed them */
+.hiw-step--done {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.hiw-step--done .hiw-step__num::after {
+  content: ' ✓';
+  font-size: 7px;
+  opacity: 0.6;
+}
+
+/* Progress fill — thin line behind all steps */
+.hiw-strip__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(255, 173, 51, 0.25);
+  transition: width 600ms ease;
+}
+
+/* hiw strip — labels/prefix hidden on mobile by default */
+.hiw-step__label  { display: none; }
+.hiw-step         { padding: 0 12px; }
+.hiw-strip__prefix { display: none; }
+
+/* Tablet (≥ 769px): restore labels and prefix */
+@media (min-width: 769px) {
+  .hiw-step__label   { display: inline; }
+  .hiw-step          { padding: 0 16px; }
+  .hiw-strip__prefix { display: flex; }
+}
+
 /* Lead paragraph — large intro text in dark hero */
 .mts-article-lead {
   font-size: clamp(16px, 1.4vw, 20px);
@@ -19,15 +143,16 @@
   padding: var(--space-6);
 }
 
-/* Article body layout: sticky TOC left + prose column right */
+/* Article body layout: single-col on mobile, TOC+prose on desktop */
 .mts-article-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: var(--space-12);
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
   align-items: start;
 }
 
 .mts-article-toc {
+  display: none;
   position: sticky;
   top: 80px;
 }
@@ -88,7 +213,8 @@
 
 .mts-article-prose strong { color: var(--text-primary); }
 
-@media (max-width: 1024px) {
-  .mts-article-layout { grid-template-columns: 1fr; }
-  .mts-article-toc { display: none; }
+/* Desktop (≥ 1025px): restore TOC + prose 2-col layout */
+@media (min-width: 1025px) {
+  .mts-article-layout { grid-template-columns: 260px 1fr; gap: var(--space-12); }
+  .mts-article-toc    { display: block; }
 }
