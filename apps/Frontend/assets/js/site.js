@@ -110,11 +110,23 @@
     const panel = document.getElementById('mobile-menu-panel');
     if (!menu || !toggle || !panel) return;
 
+    const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    function getFocusable() {
+      return Array.from(panel.querySelectorAll(FOCUSABLE)).filter(el => !el.closest('[hidden]') && !el.closest('.hidden'));
+    }
+
     function open() {
       menu.classList.remove('hidden');
-      requestAnimationFrame(() => panel.classList.remove('translate-x-full'));
+      requestAnimationFrame(() => {
+        panel.classList.remove('translate-x-full');
+        // Move focus into panel after animation frame
+        const first = getFocusable()[0];
+        if (first) first.focus();
+      });
       document.body.style.overflow = 'hidden';
       toggle.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
     }
 
     function closeMenu() {
@@ -122,9 +134,26 @@
       setTimeout(() => {
         menu.classList.add('hidden');
         document.body.style.overflow = '';
+        menu.setAttribute('aria-hidden', 'true');
       }, 300);
       toggle.setAttribute('aria-expanded', 'false');
+      // Return focus to the toggle that opened the menu
+      toggle.focus();
     }
+
+    // Focus trap: keep Tab/Shift+Tab inside the panel while open
+    menu.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+      }
+    });
 
     toggle.addEventListener('click', open);
     if (close) close.addEventListener('click', closeMenu);

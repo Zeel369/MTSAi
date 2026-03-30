@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate IBM Carbon Stack — White Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* IBM Carbon Design Tokens — White Theme (Light) */
+  --cds-background: #ffffff;
+  --cds-background-hover: #e8e8e8;
+  --cds-background-active: #c6c6c6;
+  --cds-layer-01: #f4f4f4;
+  --cds-layer-02: #ffffff;
+  --cds-layer-03: #f4f4f4;
+  --cds-layer-accent-01: #e0e0e0;
+  --cds-field-01: #f4f4f4;
+  --cds-field-02: #ffffff;
+  --cds-border-subtle-01: #e0e0e0;
+  --cds-border-subtle-02: #c6c6c6;
+  --cds-border-strong-01: #8d8d8d;
+  --cds-border-interactive: #0f62fe;
+  --cds-text-primary: #161616;
+  --cds-text-secondary: #525252;
+  --cds-text-placeholder: #a8a8a8;
+  --cds-text-disabled: #c6c6c6;
+  --cds-text-on-color: #ffffff;
+  --cds-text-inverse: #ffffff;
+  --cds-icon-primary: #161616;
+  --cds-icon-secondary: #525252;
+  --cds-icon-inverse: #ffffff;
+  /* IBM Blue */
+  --cds-interactive: #0f62fe;
+  --cds-button-primary: #0f62fe;
+  --cds-button-primary-hover: #0353e9;
+  --cds-button-primary-active: #002d9c;
+  --cds-button-secondary: #393939;
+  --cds-button-secondary-hover: #474747;
+  --cds-button-danger: #da1e28;
+  /* Semantic */
+  --cds-support-success: #198038;
+  --cds-support-warning: #f1c21b;
+  --cds-support-error: #da1e28;
+  --cds-support-info: #0043ce;
+  --cds-support-success-bg: #defbe6;
+  --cds-support-warning-bg: #fdf6dd;
+  --cds-support-error-bg: #fff1f1;
+  --cds-support-info-bg: #edf5ff;
+  /* Type scale */
+  --cds-font-family-sans: 'IBM Plex Sans', sans-serif;
+  --cds-font-family-mono: 'IBM Plex Mono', monospace;
+  --cds-font-family-serif: 'IBM Plex Serif', serif;
+  /* Spacing */
+  --cds-spacing-01: 2px;
+  --cds-spacing-02: 4px;
+  --cds-spacing-03: 8px;
+  --cds-spacing-04: 12px;
+  --cds-spacing-05: 16px;
+  --cds-spacing-06: 24px;
+  --cds-spacing-07: 32px;
+  --cds-spacing-08: 40px;
+  --cds-spacing-09: 48px;
+  --cds-spacing-10: 64px;
+  /* Motion */
+  --cds-motion-duration-fast-01: 70ms;
+  --cds-motion-duration-fast-02: 110ms;
+  --cds-motion-duration-moderate-01: 150ms;
+  --cds-motion-duration-slow-01: 400ms;
+  --cds-motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --cds-motion-easing-entrance: cubic-bezier(0, 0, 0.38, 0.9);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--cds-font-family-sans);
+  background: var(--cds-background);
+  color: var(--cds-text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   HEADER / NAV
+   ============================================ */
+.c-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 48px;
+  background: var(--cds-button-primary);
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+.c-header__name {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--cds-spacing-05);
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.c-header__logo {
+  width: 20px; height: 20px;
+  margin-right: var(--cds-spacing-03);
+  fill: #ffffff;
+}
+.c-header__nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--cds-spacing-03);
+  flex: 1;
+}
+.c-header__menu-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--cds-spacing-05);
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--cds-motion-duration-fast-02) var(--cds-motion-easing-standard),
+              border-color var(--cds-motion-duration-fast-02) var(--cds-motion-easing-standard),
+              background var(--cds-motion-duration-fast-02);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.c-header__menu-item:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+.c-header__menu-item.active { color: #ffffff; border-bottom-color: #ffffff; }
+.c-header__actions { display: flex; align-items: center; height: 100%; margin-left: auto; }
+.c-header__action {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: rgba(255,255,255,0.7);
+  transition: background var(--cds-motion-duration-fast-02), color var(--cds-motion-duration-fast-02);
+}
+.c-header__action:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.main-wrapper {
+  padding-top: 48px;
+  display: flex;
+  min-height: 100vh;
+}
+.c-side-nav {
+  width: 256px;
+  min-height: calc(100vh - 48px);
+  background: var(--cds-layer-01);
+  border-right: 1px solid var(--cds-border-subtle-01);
+  padding: var(--cds-spacing-06) 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+.c-side-nav__title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cds-text-secondary);
+  padding: var(--cds-spacing-05) var(--cds-spacing-05) var(--cds-spacing-03);
+}
+.c-side-nav__item {
+  display: flex;
+  align-items: center;
+  padding: var(--cds-spacing-03) var(--cds-spacing-05);
+  font-size: 14px;
+  color: var(--cds-text-secondary);
+  cursor: pointer;
+  transition: background var(--cds-motion-duration-fast-02), color var(--cds-motion-duration-fast-02);
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+.c-side-nav__item:hover { background: var(--cds-background-hover); color: var(--cds-text-primary); }
+.c-side-nav__item.active {
+  background: #e8f1ff;
+  color: var(--cds-interactive);
+  border-left-color: var(--cds-interactive);
+  font-weight: 500;
+}
+.c-side-nav__divider { height: 1px; background: var(--cds-border-subtle-01); margin: var(--cds-spacing-05) 0; }
+.c-side-nav__icon { width: 16px; height: 16px; margin-right: var(--cds-spacing-03); flex-shrink: 0; opacity: 0.6; }
+
+.content {
+  flex: 1;
+  padding: var(--cds-spacing-07) var(--cds-spacing-07);
+  max-width: 1200px;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   PAGE HEADER / HERO
+   ============================================ */
+.page-hero {
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  padding-bottom: var(--cds-spacing-09);
+  margin-bottom: var(--cds-spacing-09);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -60px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(15,98,254,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eyebrow {
+  font-family: var(--cds-font-family-mono);
+  font-size: 11px;
+  color: var(--cds-interactive);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--cds-spacing-04);
+}
+.hero-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--cds-text-primary);
+  margin-bottom: var(--cds-spacing-05);
+  letter-spacing: -0.01em;
+}
+.hero-title strong { font-weight: 600; }
+.hero-desc {
+  font-size: 16px;
+  color: var(--cds-text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: var(--cds-spacing-07);
+}
+.hero-actions { display: flex; gap: var(--cds-spacing-03); flex-wrap: wrap; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.cds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cds-spacing-04);
+  padding: 0 var(--cds-spacing-07) 0 var(--cds-spacing-05);
+  height: 48px;
+  font-family: var(--cds-font-family-sans);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background var(--cds-motion-duration-fast-02) var(--cds-motion-easing-standard),
+              color var(--cds-motion-duration-fast-02);
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 180px;
+}
+.cds-btn--primary { background: var(--cds-button-primary); color: #ffffff; border-color: var(--cds-button-primary); }
+.cds-btn--primary:hover { background: var(--cds-button-primary-hover); }
+.cds-btn--secondary { background: var(--cds-button-secondary); color: #ffffff; border-color: var(--cds-button-secondary); }
+.cds-btn--secondary:hover { background: var(--cds-button-secondary-hover); }
+.cds-btn--tertiary { background: transparent; color: var(--cds-interactive); border-color: var(--cds-interactive); }
+.cds-btn--tertiary:hover { background: #e8f1ff; }
+.cds-btn--ghost { background: transparent; color: var(--cds-interactive); border-color: transparent; padding-right: var(--cds-spacing-05); min-width: auto; }
+.cds-btn--ghost:hover { background: #e8f1ff; }
+.cds-btn--sm { height: 32px; font-size: 12px; padding: 0 var(--cds-spacing-05) 0 var(--cds-spacing-04); min-width: auto; }
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cds-text-secondary);
+  margin-bottom: var(--cds-spacing-06);
+  display: flex;
+  align-items: center;
+  gap: var(--cds-spacing-03);
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--cds-border-subtle-01); }
+
+/* ============================================
+   STACK CARDS
+   ============================================ */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--cds-border-subtle-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  margin-bottom: var(--cds-spacing-09);
+}
+.stack-card {
+  background: var(--cds-layer-02);
+  padding: var(--cds-spacing-06);
+  transition: background var(--cds-motion-duration-moderate-01) var(--cds-motion-easing-standard);
+  position: relative;
+}
+.stack-card:hover { background: #f4f8ff; }
+.stack-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--accent, var(--cds-button-primary));
+  opacity: 0;
+  transition: opacity var(--cds-motion-duration-moderate-01);
+}
+.stack-card:hover::before { opacity: 1; }
+.stack-card__layer {
+  font-family: var(--cds-font-family-mono);
+  font-size: 10px;
+  color: var(--cds-text-placeholder);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--cds-spacing-03);
+}
+.stack-card__name { font-size: 18px; font-weight: 600; color: var(--cds-text-primary); margin-bottom: var(--cds-spacing-02); }
+.stack-card__role { font-size: 12px; color: var(--accent, var(--cds-interactive)); font-weight: 500; margin-bottom: var(--cds-spacing-04); }
+.stack-card__desc { font-size: 13px; color: var(--cds-text-secondary); line-height: 1.55; margin-bottom: var(--cds-spacing-05); }
+.stack-card__tags { display: flex; flex-wrap: wrap; gap: var(--cds-spacing-02); }
+
+.cds-tag {
+  font-family: var(--cds-font-family-mono);
+  font-size: 11px;
+  padding: 2px var(--cds-spacing-03);
+  background: var(--cds-layer-01);
+  color: var(--cds-text-secondary);
+  border: 1px solid var(--cds-border-subtle-02);
+}
+.cds-tag--blue { background: #e8f1ff; color: #0043ce; border-color: #a6c8ff; }
+.cds-tag--green { background: #defbe6; color: #0e6027; border-color: #a7f0ba; }
+
+/* ============================================
+   SHOWCASE PANELS
+   ============================================ */
+.showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--cds-spacing-05); margin-bottom: var(--cds-spacing-09); }
+.showcase-panel {
+  background: var(--cds-layer-02);
+  border: 1px solid var(--cds-border-subtle-01);
+  padding: var(--cds-spacing-06);
+}
+.showcase-panel__label {
+  font-family: var(--cds-font-family-mono);
+  font-size: 11px;
+  color: var(--cds-text-placeholder);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--cds-spacing-05);
+  padding-bottom: var(--cds-spacing-04);
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+.showcase-panel--full { grid-column: 1 / -1; }
+
+/* INPUTS */
+.cds-form-item { margin-bottom: var(--cds-spacing-05); }
+.cds-label { font-size: 12px; color: var(--cds-text-secondary); display: block; margin-bottom: var(--cds-spacing-02); }
+.cds-text-input {
+  width: 100%;
+  height: 40px;
+  background: var(--cds-field-01);
+  border: none;
+  border-bottom: 1px solid var(--cds-border-strong-01);
+  color: var(--cds-text-primary);
+  font-family: var(--cds-font-family-sans);
+  font-size: 14px;
+  padding: 0 var(--cds-spacing-04);
+  outline: none;
+  transition: border-color var(--cds-motion-duration-fast-02);
+}
+.cds-text-input::placeholder { color: var(--cds-text-placeholder); }
+.cds-text-input:focus { border-bottom-color: var(--cds-interactive); box-shadow: inset 0 -2px 0 var(--cds-interactive); }
+.cds-select {
+  width: 100%;
+  height: 40px;
+  background: var(--cds-field-01);
+  border: none;
+  border-bottom: 1px solid var(--cds-border-strong-01);
+  color: var(--cds-text-primary);
+  font-family: var(--cds-font-family-sans);
+  font-size: 14px;
+  padding: 0 var(--cds-spacing-04);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+.cds-select:focus { border-bottom: 2px solid var(--cds-interactive); }
+
+/* TOGGLES */
+.cds-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cds-spacing-04) 0;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+.cds-toggle-row:last-child { border-bottom: none; }
+.cds-toggle-label { font-size: 14px; color: var(--cds-text-primary); }
+.cds-toggle-hint { font-size: 12px; color: var(--cds-text-secondary); margin-top: 2px; }
+.cds-toggle { position: relative; width: 48px; height: 24px; cursor: pointer; }
+.cds-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.cds-toggle__track {
+  position: absolute; inset: 0;
+  background: #8d8d8d;
+  transition: background var(--cds-motion-duration-fast-02);
+}
+.cds-toggle input:checked + .cds-toggle__track { background: var(--cds-interactive); }
+.cds-toggle__thumb {
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 16px; height: 16px;
+  background: white;
+  transition: transform var(--cds-motion-duration-fast-02) var(--cds-motion-easing-standard);
+}
+.cds-toggle input:checked ~ .cds-toggle__thumb { transform: translateX(24px); }
+
+/* NOTIFICATIONS */
+.cds-notification {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cds-spacing-04);
+  padding: var(--cds-spacing-04) var(--cds-spacing-05);
+  border-left: 3px solid;
+  margin-bottom: var(--cds-spacing-03);
+}
+.cds-notification--info { background: var(--cds-support-info-bg); border-left-color: var(--cds-support-info); }
+.cds-notification--success { background: var(--cds-support-success-bg); border-left-color: var(--cds-support-success); }
+.cds-notification--warning { background: var(--cds-support-warning-bg); border-left-color: #8e6a00; }
+.cds-notification--error { background: var(--cds-support-error-bg); border-left-color: var(--cds-support-error); }
+.cds-notification__icon { margin-top: 1px; flex-shrink: 0; }
+.cds-notification__title { font-size: 14px; font-weight: 600; margin-bottom: 2px; color: var(--cds-text-primary); }
+.cds-notification__subtitle { font-size: 13px; color: var(--cds-text-secondary); }
+
+/* METRIC TILES */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--cds-border-subtle-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  margin-bottom: var(--cds-spacing-09);
+}
+.metric-tile {
+  background: var(--cds-layer-01);
+  padding: var(--cds-spacing-06) var(--cds-spacing-06) var(--cds-spacing-07);
+  position: relative;
+  overflow: hidden;
+  transition: background var(--cds-motion-duration-moderate-01);
+}
+.metric-tile:hover { background: #e8f1ff; }
+.metric-tile__label { font-size: 12px; color: var(--cds-text-secondary); margin-bottom: var(--cds-spacing-04); }
+.metric-tile__value {
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--cds-text-primary);
+  line-height: 1;
+  margin-bottom: var(--cds-spacing-03);
+  letter-spacing: -0.02em;
+}
+.metric-tile__value span { font-size: 24px; color: var(--cds-text-secondary); }
+.metric-tile__trend { font-size: 12px; color: var(--cds-support-success); font-family: var(--cds-font-family-mono); }
+.metric-tile__trend.down { color: var(--cds-support-error); }
+.metric-tile__bg-num {
+  position: absolute;
+  bottom: -12px; right: 8px;
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--cds-border-subtle-02);
+  line-height: 1;
+  pointer-events: none;
+  font-family: var(--cds-font-family-mono);
+  opacity: 0.5;
+}
+
+/* DATA TABLE */
+.cds-data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.cds-data-table thead tr {
+  background: var(--cds-layer-01);
+  border-bottom: 1px solid var(--cds-border-strong-01);
+}
+.cds-data-table th {
+  padding: var(--cds-spacing-04) var(--cds-spacing-05);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cds-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.cds-data-table td {
+  padding: var(--cds-spacing-04) var(--cds-spacing-05);
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  color: var(--cds-text-primary);
+}
+.cds-data-table tr:hover td { background: #f4f8ff; }
+.cds-data-table tbody tr:last-child td { border-bottom: none; }
+
+.status-dot { display: inline-flex; align-items: center; gap: var(--cds-spacing-02); font-size: 12px; }
+.status-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.status-dot--active { color: var(--cds-support-success); }
+.status-dot--pending { color: #8e6a00; }
+.status-dot--inactive { color: var(--cds-text-placeholder); }
+.status-dot--error { color: var(--cds-support-error); }
+
+/* CHART BARS */
+.chart-bar { display: flex; align-items: flex-end; gap: 3px; height: 80px; }
+.chart-bar__bar {
+  flex: 1;
+  background: var(--cds-interactive);
+  opacity: 0.25;
+  transition: opacity var(--cds-motion-duration-fast-02);
+  min-width: 6px;
+}
+.chart-bar__bar:hover { opacity: 0.7; }
+.chart-bar__bar.accent { opacity: 0.85; }
+
+/* PROGRESS */
+.cds-progress { display: flex; gap: 0; margin-bottom: var(--cds-spacing-07); }
+.cds-progress__step { display: flex; flex-direction: column; align-items: flex-start; flex: 1; position: relative; }
+.cds-progress__step::before {
+  content: '';
+  position: absolute;
+  top: 12px; left: 24px; right: 0;
+  height: 1px;
+  background: var(--cds-border-subtle-02);
+}
+.cds-progress__step:last-child::before { display: none; }
+.cds-progress__step.complete::before { background: var(--cds-interactive); }
+.cds-progress__circle {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cds-border-strong-01);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: var(--cds-text-secondary);
+  background: var(--cds-background);
+  z-index: 1;
+  font-family: var(--cds-font-family-mono);
+  margin-bottom: var(--cds-spacing-03);
+  transition: all var(--cds-motion-duration-moderate-01);
+}
+.cds-progress__step.complete .cds-progress__circle { background: var(--cds-interactive); border-color: var(--cds-interactive); color: white; }
+.cds-progress__step.current .cds-progress__circle { border-color: var(--cds-interactive); color: var(--cds-interactive); }
+.cds-progress__label { font-size: 12px; color: var(--cds-text-secondary); }
+.cds-progress__step.complete .cds-progress__label,
+.cds-progress__step.current .cds-progress__label { color: var(--cds-text-primary); }
+
+/* CODE BLOCK */
+.cds-code-block {
+  background: #f4f4f4;
+  border: 1px solid var(--cds-border-subtle-02);
+  overflow: hidden;
+  margin-bottom: var(--cds-spacing-09);
+}
+.cds-code-block__header {
+  background: #e0e0e0;
+  padding: var(--cds-spacing-03) var(--cds-spacing-05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cds-border-subtle-02);
+}
+.cds-code-block__lang { font-family: var(--cds-font-family-mono); font-size: 11px; color: var(--cds-text-secondary); }
+.cds-code-block__copy { font-size: 11px; color: var(--cds-interactive); cursor: pointer; background: none; border: none; font-family: var(--cds-font-family-sans); padding: 0; }
+.cds-code-block pre {
+  padding: var(--cds-spacing-05);
+  font-family: var(--cds-font-family-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: #161616;
+}
+.c-kw  { color: #0043ce; }
+.c-str { color: #198038; }
+.c-fn  { color: #6929c4; }
+.c-cm  { color: #6f6f6f; font-style: italic; }
+.c-num { color: #b12424; }
+.c-prop{ color: #005d5d; }
+.c-type{ color: #6929c4; }
+
+/* BREADCRUMB */
+.cds-breadcrumb { display: flex; align-items: center; gap: var(--cds-spacing-03); font-size: 12px; color: var(--cds-text-secondary); margin-bottom: var(--cds-spacing-06); }
+.cds-breadcrumb a { color: var(--cds-interactive); text-decoration: none; }
+.cds-breadcrumb a:hover { text-decoration: underline; }
+.cds-breadcrumb__sep { color: var(--cds-text-placeholder); }
+
+/* FOOTER */
+.stack-footer {
+  border-top: 1px solid var(--cds-border-subtle-01);
+  padding-top: var(--cds-spacing-07);
+  margin-top: var(--cds-spacing-09);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cds-text-secondary);
+  font-size: 12px;
+  font-family: var(--cds-font-family-mono);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp var(--cds-motion-duration-slow-01) var(--cds-motion-easing-entrance) both; }
+.fade-up:nth-child(1) { animation-delay: 0ms; }
+.fade-up:nth-child(2) { animation-delay: 80ms; }
+.fade-up:nth-child(3) { animation-delay: 160ms; }
+.fade-up:nth-child(4) { animation-delay: 240ms; }
+
+@media (max-width: 900px) {
+  .c-side-nav { display: none; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .content { padding: var(--cds-spacing-05); }
+}
+@media (max-width: 600px) {
+  .metric-grid { grid-template-columns: 1fr; }
+  .cds-progress { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER (IBM Blue bar — Carbon White theme standard) -->
+<header class="c-header">
+  <div class="c-header__name">
+    <svg class="c-header__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h32v32H0z" fill="none"/>
+      <path d="M6 6h20v4H6zM6 14h20v4H6zM6 22h20v4H6z"/>
+    </svg>
+    Ultimate Carbon Stack
+  </div>
+  <nav class="c-header__nav">
+    <a class="c-header__menu-item active" href="#stack">Stack</a>
+    <a class="c-header__menu-item" href="#components">Components</a>
+    <a class="c-header__menu-item" href="#patterns">Patterns</a>
+    <a class="c-header__menu-item" href="#code">Code</a>
+  </nav>
+  <div class="c-header__actions">
+    <div class="c-header__action" title="Notifications">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.63-16h45.26A24,24,0,0,1,128,216Z"/></svg>
+    </div>
+    <div class="c-header__action" title="Settings">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.9,123.66Z"/></svg>
+    </div>
+    <div class="c-header__action" title="User">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg>
+    </div>
+  </div>
+</header>
+
+<div class="main-wrapper">
+  <!-- SIDE NAV -->
+  <nav class="c-side-nav">
+    <p class="c-side-nav__title">Foundation</p>
+    <a class="c-side-nav__item active" href="#stack">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>
+      Stack Layers
+    </a>
+    <a class="c-side-nav__item" href="#metrics">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8V112a8,8,0,0,1-16,0V91.31L133.66,149.66a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z"/></svg>
+      Metrics
+    </a>
+    <a class="c-side-nav__item" href="#components">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V96H40ZM40,200V112H96V200Zm72,0V112H216V200Z"/></svg>
+      Components
+    </a>
+    <a class="c-side-nav__item" href="#code">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.71-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg>
+      Code Snippets
+    </a>
+    <div class="c-side-nav__divider"></div>
+    <p class="c-side-nav__title">Packages</p>
+    <a class="c-side-nav__item" href="#stack">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44Zm0,88L47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm96,129.57V133.82L136,128l80,45.43v1.39Z"/></svg>
+      @carbon/react
+    </a>
+    <a class="c-side-nav__item" href="#stack">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg>
+      @carbon/icons
+    </a>
+    <a class="c-side-nav__item" href="#stack">
+      <svg class="c-side-nav__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a16,16,0,1,1,16,16A16,16,0,0,1,112,84Z"/></svg>
+      @carbon/tokens
+    </a>
+    <div class="c-side-nav__divider"></div>
+    <p class="c-side-nav__title">Integrations</p>
+    <a class="c-side-nav__item" href="#stack">React 18+</a>
+    <a class="c-side-nav__item" href="#stack">Next.js 14+</a>
+    <a class="c-side-nav__item" href="#stack">@react-spring/web</a>
+    <a class="c-side-nav__item" href="#stack">useTransition</a>
+    <a class="c-side-nav__item" href="#stack">useChain</a>
+    <a class="c-side-nav__item" href="#stack">@use-gesture/react</a>
+    <a class="c-side-nav__item" href="#stack">Recharts / D3</a>
+    <a class="c-side-nav__item" href="#stack">Zustand / Redux</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- BREADCRUMB -->
+    <nav class="cds-breadcrumb">
+      <a href="#">Home</a>
+      <span class="cds-breadcrumb__sep">/</span>
+      <a href="#">Design Systems</a>
+      <span class="cds-breadcrumb__sep">/</span>
+      <span style="color: var(--cds-text-primary);">Carbon Stack</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero" id="stack">
+      <p class="eyebrow">IBM Carbon · Ultimate Stack · White Theme · React Spring · v11</p>
+      <h1 class="hero-title">
+        <strong>Production-ready</strong><br>
+        design system stack
+      </h1>
+      <p class="hero-desc">
+        A complete, enterprise-grade frontend architecture built on IBM Carbon — now with React Spring physics animations. Four animation packages: <code style="font-family:var(--cds-font-family-mono);font-size:13px;background:rgba(0,0,0,0.05);padding:1px 5px;">@react-spring/web</code>, <code style="font-family:var(--cds-font-family-mono);font-size:13px;background:rgba(0,0,0,0.05);padding:1px 5px;">useTransition</code>, <code style="font-family:var(--cds-font-family-mono);font-size:13px;background:rgba(0,0,0,0.05);padding:1px 5px;">useChain</code>, and <code style="font-family:var(--cds-font-family-mono);font-size:13px;background:rgba(0,0,0,0.05);padding:1px 5px;">@use-gesture/react</code>.
+      </p>
+      <div class="hero-actions">
+        <button class="cds-btn cds-btn--primary">
+          Get started
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>
+        </button>
+        <button class="cds-btn cds-btn--secondary">
+          View on GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24,40,40,0,0,0-40-40,8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v32a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68Z"/></svg>
+        </button>
+        <button class="cds-btn cds-btn--tertiary">
+          Documentation
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- PROGRESS -->
+    <div class="cds-progress fade-up">
+      <div class="cds-progress__step complete">
+        <div class="cds-progress__circle">✓</div>
+        <span class="cds-progress__label">Foundation</span>
+      </div>
+      <div class="cds-progress__step complete">
+        <div class="cds-progress__circle">✓</div>
+        <span class="cds-progress__label">Components</span>
+      </div>
+      <div class="cds-progress__step current">
+        <div class="cds-progress__circle">3</div>
+        <span class="cds-progress__label">Animations</span>
+      </div>
+      <div class="cds-progress__step">
+        <div class="cds-progress__circle">4</div>
+        <span class="cds-progress__label">Data Layer</span>
+      </div>
+      <div class="cds-progress__step">
+        <div class="cds-progress__circle">5</div>
+        <span class="cds-progress__label">Deploy</span>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div id="metrics" class="metric-grid fade-up">
+      <div class="metric-tile">
+        <p class="metric-tile__label">Components</p>
+        <p class="metric-tile__value">300<span>+</span></p>
+        <p class="metric-tile__trend">↑ Carbon + extensions</p>
+        <span class="metric-tile__bg-num">3</span>
+      </div>
+      <div class="metric-tile">
+        <p class="metric-tile__label">WCAG Compliance</p>
+        <p class="metric-tile__value">AA</p>
+        <p class="metric-tile__trend">✓ Fully accessible</p>
+        <span class="metric-tile__bg-num">A</span>
+      </div>
+      <div class="metric-tile">
+        <p class="metric-tile__label">Bundle size</p>
+        <p class="metric-tile__value">42<span>kb</span></p>
+        <p class="metric-tile__trend down">Tree-shaken</p>
+        <span class="metric-tile__bg-num">k</span>
+      </div>
+      <div class="metric-tile">
+        <p class="metric-tile__label">GitHub stars</p>
+        <p class="metric-tile__value">7.7<span>k</span></p>
+        <p class="metric-tile__trend">↑ Active community</p>
+        <span class="metric-tile__bg-num">★</span>
+      </div>
+    </div>
+
+    <!-- STACK CARDS -->
+    <p class="section-title" id="stack-layers">Stack layers</p>
+    <div class="stack-grid" id="stack">
+      <div class="stack-card fade-up" style="--accent:#0f62fe;">
+        <p class="stack-card__layer">Layer 01 · Core</p>
+        <p class="stack-card__name">IBM Carbon</p>
+        <p class="stack-card__role">Base design system</p>
+        <p class="stack-card__desc">300+ accessible, production-ready components. Design tokens, theming, WCAG AA, full Figma kit. The non-negotiable foundation.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">@carbon/react</span>
+          <span class="cds-tag">@carbon/tokens</span>
+          <span class="cds-tag">@carbon/icons</span>
+        </div>
+      </div>
+      <div class="stack-card fade-up" style="--accent:#198038;">
+        <p class="stack-card__layer">Layer 02 · Styling</p>
+        <p class="stack-card__name">SASS + CSS Tokens</p>
+        <p class="stack-card__role" style="color:#198038;">Theming engine</p>
+        <p class="stack-card__desc">Carbon's SASS system with design tokens for all colors, spacing, motion, and type. White/Gray 10/Dark themes out of the box.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">sass</span>
+          <span class="cds-tag">css custom properties</span>
+          <span class="cds-tag">theming</span>
+        </div>
+      </div>
+      <div class="stack-card fade-up" style="--accent:#9f1853;">
+        <p class="stack-card__layer">Layer 03 · Animation</p>
+        <p class="stack-card__name">React Spring</p>
+        <p class="stack-card__role" style="color:#9f1853;">Physics motion layer</p>
+        <p class="stack-card__desc">Physics-based spring animations for Carbon. No durations — springs settle naturally, mirroring Carbon's "lightweight material" motion philosophy. Four packages cover every animation need.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">@react-spring/web</span>
+          <span class="cds-tag">useTransition</span>
+          <span class="cds-tag">useChain</span>
+          <span class="cds-tag">@use-gesture/react</span>
+        </div>
+      </div>
+      <div class="stack-card fade-up" style="--accent:#8a3800;">
+        <p class="stack-card__layer">Layer 04 · Data Viz</p>
+        <p class="stack-card__name">Carbon Charts</p>
+        <p class="stack-card__role" style="color:#8a3800;">Visualization</p>
+        <p class="stack-card__desc">IBM's own charting library, fully Carbon-themed. Bar, line, scatter, donut, geo maps. Accessible, responsive, framework-ready.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">@carbon/charts-react</span>
+          <span class="cds-tag">D3</span>
+          <span class="cds-tag">recharts alt</span>
+        </div>
+      </div>
+      <div class="stack-card fade-up" style="--accent:#6929c4;">
+        <p class="stack-card__layer">Layer 05 · State</p>
+        <p class="stack-card__name">Zustand</p>
+        <p class="stack-card__role" style="color:#6929c4;">State management</p>
+        <p class="stack-card__desc">Lightweight global state. Pairs perfectly with Carbon's controlled components. No boilerplate, or use Redux Toolkit for enterprise scale.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">zustand</span>
+          <span class="cds-tag">immer</span>
+          <span class="cds-tag">redux-toolkit (alt)</span>
+        </div>
+      </div>
+      <div class="stack-card fade-up" style="--accent:#005d5d;">
+        <p class="stack-card__layer">Layer 06 · Framework</p>
+        <p class="stack-card__name">Next.js 14+</p>
+        <p class="stack-card__role" style="color:#005d5d;">App framework</p>
+        <p class="stack-card__desc">App Router, RSC, server actions. Carbon components work seamlessly with Next.js client components. ISR and edge-ready.</p>
+        <div class="stack-card__tags">
+          <span class="cds-tag">next.js</span>
+          <span class="cds-tag">app router</span>
+          <span class="cds-tag">RSC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <p class="section-title" id="components">Notification patterns</p>
+    <div class="showcase-grid" style="margin-bottom: var(--cds-spacing-09);">
+      <div class="showcase-panel showcase-panel--full">
+        <p class="showcase-panel__label">carbon · inline notifications</p>
+        <div class="cds-notification cds-notification--info">
+          <svg class="cds-notification__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0043ce" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a16,16,0,1,1,16,16A16,16,0,0,1,112,84Z"/></svg>
+          <div><p class="cds-notification__title">Stack configured</p><p class="cds-notification__subtitle">All Carbon layers installed and ready. Run <code style="font-family:var(--cds-font-family-mono);font-size:12px;background:rgba(0,0,0,0.06);padding:1px 4px;">npm run dev</code> to start.</p></div>
+        </div>
+        <div class="cds-notification cds-notification--success">
+          <svg class="cds-notification__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#198038" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>
+          <div><p class="cds-notification__title">Accessibility passed</p><p class="cds-notification__subtitle">WCAG 2.1 AA compliance verified across all components.</p></div>
+        </div>
+        <div class="cds-notification cds-notification--warning">
+          <svg class="cds-notification__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8e6a00" viewBox="0 0 256 256"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>
+          <div><p class="cds-notification__title">Peer dependency warning</p><p class="cds-notification__subtitle">React 18 required for Carbon v11. Update if on React 17.</p></div>
+        </div>
+        <div class="cds-notification cds-notification--error">
+          <svg class="cds-notification__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#da1e28" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+          <div><p class="cds-notification__title">Build failed</p><p class="cds-notification__subtitle">SASS compilation error in <code style="font-family:var(--cds-font-family-mono);font-size:12px;background:rgba(0,0,0,0.06);padding:1px 4px;">_overrides.scss</code> — check line 42.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM + TOGGLES -->
+    <div class="showcase-grid">
+      <div class="showcase-panel">
+        <p class="showcase-panel__label">carbon · form inputs</p>
+        <div class="cds-form-item">
+          <label class="cds-label">Project name</label>
+          <input class="cds-text-input" type="text" placeholder="my-carbon-app">
+        </div>
+        <div class="cds-form-item">
+          <label class="cds-label">Framework</label>
+          <select class="cds-select">
+            <option>Next.js 14 (App Router)</option>
+            <option>Remix 2</option>
+            <option>Vite + React</option>
+            <option>Astro</option>
+          </select>
+        </div>
+        <div class="cds-form-item">
+          <label class="cds-label">Description</label>
+          <input class="cds-text-input" type="text" placeholder="Enterprise dashboard...">
+        </div>
+        <div style="display:flex;gap:var(--cds-spacing-03);margin-top:var(--cds-spacing-05);">
+          <button class="cds-btn cds-btn--primary cds-btn--sm">Create project</button>
+          <button class="cds-btn cds-btn--ghost cds-btn--sm">Cancel</button>
+        </div>
+      </div>
+      <div class="showcase-panel">
+        <p class="showcase-panel__label">carbon · toggles &amp; settings</p>
+        <div class="cds-toggle-row">
+          <div>
+            <p class="cds-toggle-label">Light mode</p>
+            <p class="cds-toggle-hint">White theme active</p>
+          </div>
+          <label class="cds-toggle">
+            <input type="checkbox" checked>
+            <div class="cds-toggle__track"></div>
+            <div class="cds-toggle__thumb"></div>
+          </label>
+        </div>
+        <div class="cds-toggle-row">
+          <div>
+            <p class="cds-toggle-label">Animations</p>
+            <p class="cds-toggle-hint">React Spring enabled</p>
+          </div>
+          <label class="cds-toggle">
+            <input type="checkbox" checked>
+            <div class="cds-toggle__track"></div>
+            <div class="cds-toggle__thumb"></div>
+          </label>
+        </div>
+        <div class="cds-toggle-row">
+          <div>
+            <p class="cds-toggle-label">Analytics</p>
+            <p class="cds-toggle-hint">Event tracking</p>
+          </div>
+          <label class="cds-toggle">
+            <input type="checkbox">
+            <div class="cds-toggle__track"></div>
+            <div class="cds-toggle__thumb"></div>
+          </label>
+        </div>
+        <div class="cds-toggle-row">
+          <div>
+            <p class="cds-toggle-label">Accessibility audit</p>
+            <p class="cds-toggle-hint">axe-core in dev mode</p>
+          </div>
+          <label class="cds-toggle">
+            <input type="checkbox" checked>
+            <div class="cds-toggle__track"></div>
+            <div class="cds-toggle__thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA TABLE -->
+    <p class="section-title" style="margin-top:var(--cds-spacing-07);">Data table</p>
+    <div class="showcase-panel" style="padding:0;margin-bottom:var(--cds-spacing-09);">
+      <div style="padding: var(--cds-spacing-05) var(--cds-spacing-06); border-bottom: 1px solid var(--cds-border-subtle-01); display:flex; align-items:center; justify-content:space-between; background:var(--cds-layer-01);">
+        <span style="font-size:14px;font-weight:600;color:var(--cds-text-primary);">Packages — Carbon Stack</span>
+        <button class="cds-btn cds-btn--primary cds-btn--sm">Add package</button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="cds-data-table">
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Version</th>
+              <th>Layer</th>
+              <th>Status</th>
+              <th>Weekly DLs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">@carbon/react</strong></td>
+              <td><span class="cds-tag cds-tag--blue">v1.73</span></td>
+              <td>Core</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:50%"></div><div class="chart-bar__bar" style="height:65%"></div><div class="chart-bar__bar" style="height:45%"></div><div class="chart-bar__bar" style="height:70%"></div><div class="chart-bar__bar" style="height:80%"></div><div class="chart-bar__bar accent" style="height:90%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">@react-spring/web</strong></td>
+              <td><span class="cds-tag cds-tag--blue">v9.x</span></td>
+              <td>Animation</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:55%"></div><div class="chart-bar__bar" style="height:65%"></div><div class="chart-bar__bar" style="height:72%"></div><div class="chart-bar__bar" style="height:80%"></div><div class="chart-bar__bar" style="height:88%"></div><div class="chart-bar__bar accent" style="height:94%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">useTransition</strong></td>
+              <td><span class="cds-tag">built-in</span></td>
+              <td>Animation</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:40%"></div><div class="chart-bar__bar" style="height:50%"></div><div class="chart-bar__bar" style="height:58%"></div><div class="chart-bar__bar" style="height:65%"></div><div class="chart-bar__bar" style="height:72%"></div><div class="chart-bar__bar accent" style="height:78%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">useChain</strong></td>
+              <td><span class="cds-tag">built-in</span></td>
+              <td>Animation</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:30%"></div><div class="chart-bar__bar" style="height:38%"></div><div class="chart-bar__bar" style="height:45%"></div><div class="chart-bar__bar" style="height:52%"></div><div class="chart-bar__bar" style="height:60%"></div><div class="chart-bar__bar accent" style="height:68%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">@use-gesture/react</strong></td>
+              <td><span class="cds-tag">v10.x</span></td>
+              <td>Gesture</td>
+              <td><span class="status-dot status-dot--pending">Optional</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:35%"></div><div class="chart-bar__bar" style="height:42%"></div><div class="chart-bar__bar" style="height:50%"></div><div class="chart-bar__bar" style="height:58%"></div><div class="chart-bar__bar" style="height:66%"></div><div class="chart-bar__bar accent" style="height:74%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">@carbon/charts-react</strong></td>
+              <td><span class="cds-tag cds-tag--blue">v1.x</span></td>
+              <td>Data Viz</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:40%"></div><div class="chart-bar__bar" style="height:50%"></div><div class="chart-bar__bar" style="height:45%"></div><div class="chart-bar__bar" style="height:55%"></div><div class="chart-bar__bar" style="height:60%"></div><div class="chart-bar__bar accent" style="height:65%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">zustand</strong></td>
+              <td><span class="cds-tag">v4.x</span></td>
+              <td>State</td>
+              <td><span class="status-dot status-dot--pending">Pending</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:55%"></div><div class="chart-bar__bar" style="height:65%"></div><div class="chart-bar__bar" style="height:80%"></div><div class="chart-bar__bar" style="height:85%"></div><div class="chart-bar__bar" style="height:90%"></div><div class="chart-bar__bar accent" style="height:98%"></div></div></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--cds-font-family-mono);font-size:13px;">next</strong></td>
+              <td><span class="cds-tag cds-tag--green">v14.x</span></td>
+              <td>Framework</td>
+              <td><span class="status-dot status-dot--active">Active</span></td>
+              <td><div class="chart-bar" style="height:32px;gap:2px;"><div class="chart-bar__bar" style="height:70%"></div><div class="chart-bar__bar" style="height:75%"></div><div class="chart-bar__bar" style="height:80%"></div><div class="chart-bar__bar" style="height:85%"></div><div class="chart-bar__bar" style="height:95%"></div><div class="chart-bar__bar accent" style="height:100%"></div></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CODE BLOCK -->
+    <p class="section-title" id="code">Setup code</p>
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">bash · install all layers</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-cm"># 1. Create Next.js app</span>
+npx create-next-app@latest my-carbon-app --typescript --tailwind=false
+
+<span class="c-cm"># 2. Install Carbon core + icons + tokens</span>
+npm install @carbon/react @carbon/icons-react @carbon/tokens sass
+
+<span class="c-cm"># 3. Install React Spring animation layer (all four packages)</span>
+npm install @react-spring/web
+npm install @use-gesture/react     <span class="c-cm"># optional: drag/scroll gestures</span>
+
+<span class="c-cm"># 4. Install Carbon charts for data viz</span>
+npm install @carbon/charts-react @carbon/charts d3
+
+<span class="c-cm"># 5. Install state management</span>
+npm install zustand immer</pre>
+    </div>
+
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">tsx · app/layout.tsx</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-kw">import</span> <span class="c-str">'@carbon/react/scss/globals/scss/styles.scss'</span><span class="c-cm">  // Carbon base</span>
+<span class="c-kw">import</span> <span class="c-str">'@carbon/charts/styles.css'</span>              <span class="c-cm">  // Carbon charts</span>
+<span class="c-kw">import</span> { <span class="c-prop">Theme</span> } <span class="c-kw">from</span> <span class="c-str">'@carbon/react'</span>
+
+<span class="c-kw">export default function</span> <span class="c-fn">RootLayout</span>({ children }: { children: <span class="c-type">React.ReactNode</span> }) {
+  <span class="c-kw">return</span> (
+    &lt;<span class="c-type">html</span> lang=<span class="c-str">"en"</span>&gt;
+      &lt;<span class="c-type">body</span>&gt;
+        <span class="c-cm">{/* Carbon white = light theme */}</span>
+        &lt;<span class="c-type">Theme</span> theme=<span class="c-str">"white"</span>&gt;
+          {children}
+        &lt;/<span class="c-type">Theme</span>&gt;
+      &lt;/<span class="c-type">body</span>&gt;
+    &lt;/<span class="c-type">html</span>&gt;
+  )
+}</pre>
+    </div>
+
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">ts · lib/springs.ts — shared spring configs</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-cm">// Map Carbon's two motion modes to React Spring physics</span>
+<span class="c-kw">export const</span> <span class="c-prop">carbonSprings</span> = {
+  <span class="c-cm">// Productive — fast, task-focused, no bounce</span>
+  productive: { tension: <span class="c-num">300</span>, friction: <span class="c-num">30</span>, mass: <span class="c-num">0.8</span> },
+  <span class="c-cm">// Expressive — noticeable, smooth, for page moments</span>
+  expressive: { tension: <span class="c-num">180</span>, friction: <span class="c-num">26</span>, mass: <span class="c-num">1</span> },
+  <span class="c-cm">// Micro — instant, tight, button/icon feedback</span>
+  micro:      { tension: <span class="c-num">500</span>, friction: <span class="c-num">40</span>, mass: <span class="c-num">0.5</span> },
+}</pre>
+    </div>
+
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">tsx · useSpring — animated Carbon modal</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-str">'use client'</span>
+<span class="c-kw">import</span> { <span class="c-prop">animated</span>, <span class="c-prop">useSpring</span> } <span class="c-kw">from</span> <span class="c-str">'@react-spring/web'</span>
+<span class="c-kw">import</span> { <span class="c-prop">carbonSprings</span> } <span class="c-kw">from</span> <span class="c-str">'@/lib/springs'</span>
+
+<span class="c-kw">export function</span> <span class="c-fn">AnimatedPanel</span>({ open }: { open: <span class="c-type">boolean</span> }) {
+  <span class="c-kw">const</span> spring = <span class="c-fn">useSpring</span>({
+    opacity:   open ? <span class="c-num">1</span> : <span class="c-num">0</span>,
+    transform: open ? <span class="c-str">'translateX(0px)'</span> : <span class="c-str">'translateX(32px)'</span>,
+    config: carbonSprings.expressive,
+  })
+  <span class="c-kw">return</span> &lt;<span class="c-type">animated.div</span> style={spring}&gt;{<span class="c-cm">/* Carbon panel content */</span>}&lt;/<span class="c-type">animated.div</span>&gt;
+}</pre>
+    </div>
+
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">tsx · useTransition — notification stack enter/leave</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-str">'use client'</span>
+<span class="c-kw">import</span> { <span class="c-prop">animated</span>, <span class="c-prop">useTransition</span> } <span class="c-kw">from</span> <span class="c-str">'@react-spring/web'</span>
+<span class="c-kw">import</span> { <span class="c-prop">InlineNotification</span> } <span class="c-kw">from</span> <span class="c-str">'@carbon/react'</span>
+<span class="c-kw">import</span> { <span class="c-prop">carbonSprings</span> } <span class="c-kw">from</span> <span class="c-str">'@/lib/springs'</span>
+
+<span class="c-kw">export function</span> <span class="c-fn">NotificationStack</span>({ items }: { items: <span class="c-type">string</span>[] }) {
+  <span class="c-kw">const</span> transitions = <span class="c-fn">useTransition</span>(items, {
+    from:  { opacity: <span class="c-num">0</span>, height: <span class="c-num">0</span>, transform: <span class="c-str">'translateY(-8px)'</span> },
+    enter: { opacity: <span class="c-num">1</span>, height: <span class="c-num">48</span>, transform: <span class="c-str">'translateY(0px)'</span> },
+    leave: { opacity: <span class="c-num">0</span>, height: <span class="c-num">0</span>, transform: <span class="c-str">'translateY(-8px)'</span> },
+    config: carbonSprings.productive,
+  })
+  <span class="c-kw">return</span> (
+    &lt;&gt;{transitions((style, item) =&gt;
+      &lt;<span class="c-type">animated.div</span> style={style}&gt;
+        &lt;<span class="c-type">InlineNotification</span> kind=<span class="c-str">"info"</span> title={item} /&gt;
+      &lt;/<span class="c-type">animated.div</span>&gt;
+    )}&lt;/&gt;
+  )
+}</pre>
+    </div>
+
+    <div class="cds-code-block">
+      <div class="cds-code-block__header">
+        <span class="cds-code-block__lang">tsx · useChain + useGesture — stagger + drag</span>
+        <button class="cds-code-block__copy" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+      <pre><span class="c-str">'use client'</span>
+<span class="c-kw">import</span> { <span class="c-prop">animated</span>, <span class="c-prop">useTrail</span>, <span class="c-prop">useChain</span>, <span class="c-prop">useSpringRef</span> } <span class="c-kw">from</span> <span class="c-str">'@react-spring/web'</span>
+<span class="c-kw">import</span> { <span class="c-prop">useDrag</span> } <span class="c-kw">from</span> <span class="c-str">'@use-gesture/react'</span>
+<span class="c-kw">import</span> { <span class="c-prop">Tile</span> } <span class="c-kw">from</span> <span class="c-str">'@carbon/react'</span>
+
+<span class="c-kw">const</span> tiles = [<span class="c-str">'Revenue'</span>, <span class="c-str">'Users'</span>, <span class="c-str">'Uptime'</span>, <span class="c-str">'Errors'</span>]
+
+<span class="c-kw">export function</span> <span class="c-fn">DashboardTiles</span>() {
+  <span class="c-kw">const</span> trailRef = <span class="c-fn">useSpringRef</span>()
+  <span class="c-kw">const</span> trail = <span class="c-fn">useTrail</span>(tiles.length, {
+    ref: trailRef,
+    from: { opacity: <span class="c-num">0</span>, y: <span class="c-num">16</span> },
+    to:   { opacity: <span class="c-num">1</span>, y: <span class="c-num">0</span>  },
+  })
+  <span class="c-cm">// useChain sequences: trail starts at t=0, next anim at t=0.5</span>
+  <span class="c-fn">useChain</span>([trailRef], [<span class="c-num">0</span>])
+
+  <span class="c-kw">return</span> (
+    &lt;<span class="c-type">div</span> style={{ display: <span class="c-str">'grid'</span>, gridTemplateColumns: <span class="c-str">'repeat(4,1fr)'</span>, gap: <span class="c-num">1</span> }}&gt;
+      {trail.map((style, i) =&gt; (
+        &lt;<span class="c-type">animated.div</span> key={tiles[i]} style={style}&gt;
+          &lt;<span class="c-type">Tile</span>&gt;{tiles[i]}&lt;/<span class="c-type">Tile</span>&gt;
+        &lt;/<span class="c-type">animated.div</span>&gt;
+      ))}
+    &lt;/<span class="c-type">div</span>&gt;
+  )
+}</pre>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="stack-footer">
+      <span>IBM Carbon Design System · Ultimate Stack · White Theme · React Spring</span>
+      <span>carbondesignsystem.com</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.stack-card, .metric-tile').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(12px)';
+  el.style.transition = `opacity 400ms cubic-bezier(0,0,.38,.9) ${i * 60}ms, transform 400ms cubic-bezier(0,0,.38,.9) ${i * 60}ms`;
+  observer.observe(el);
+});
+
+const sections = ['stack', 'metrics', 'components', 'code'];
+const navLinks = document.querySelectorAll('.c-header__menu-item');
+window.addEventListener('scroll', () => {
+  let current = 'stack';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 80) current = id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+const sideItems = document.querySelectorAll('.c-side-nav__item');
+window.addEventListener('scroll', () => {
+  sideItems.forEach(item => {
+    const href = item.getAttribute('href');
+    if (href) {
+      const id = href.replace('#','');
+      const el = document.getElementById(id);
+      if (el) {
+        const active = window.scrollY >= el.offsetTop - 100 && window.scrollY < el.offsetTop + el.offsetHeight;
+        item.classList.toggle('active', active);
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
