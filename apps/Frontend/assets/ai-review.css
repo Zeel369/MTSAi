@@ -1,0 +1,51 @@
+/* ============================================================
+   AI Review Mode — visible markers for AI-authored content
+   Remove this stylesheet (and its <link> tags) once review
+   is complete and decisions are made.
+   ============================================================ */
+
+/* Any element with data-ai-authored gets an outline + badge */
+[data-ai-authored] {
+  position: relative;
+  outline: 2px dashed rgba(255, 100, 0, 0.55) !important;
+  outline-offset: -2px;
+}
+
+[data-ai-authored]::after {
+  content: attr(data-ai-authored);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 9999;
+  background: #FF6400;
+  color: #fff;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* Page-level banner for fully AI-created pages */
+.ai-page-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #FF6400;
+  color: #fff;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 6px 16px;
+  pointer-events: none;
+}
