@@ -190,24 +190,24 @@
     .mts-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,82,204,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
 
     /* CONTROL AREA CARDS */
-    .ctrl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-10); }
+    .ctrl-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); margin-top: var(--space-10); }
     /* Card 01 — Blue: Policy / Infrastructure */
-    .ctrl-card { padding: var(--space-9); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); position: relative; overflow: hidden; transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard); }
+    .ctrl-card { padding: var(--space-9); background: #fff; border: 1px solid var(--blue-20); border-top: 3px solid var(--interactive); border-left: 3px solid var(--interactive); position: relative; overflow: hidden; transition: box-shadow 240ms var(--ease-standard), transform 240ms var(--ease-standard); }
     .ctrl-card:hover { box-shadow: 0 12px 40px rgba(0,82,204,0.12); transform: translateY(-3px); }
     /* Card 02 — Indigo: Compliance / Audit */
-    .ctrl-card:nth-child(2) { border-top-color: #6554C0; }
+    .ctrl-card:nth-child(2) { border-top-color: #6554C0; border-left-color: #6554C0; }
     .ctrl-card:nth-child(2) .ctrl-label { color: #6554C0; }
     .ctrl-card:nth-child(2) .ctrl-badge { color: #6554C0; border-color: rgba(101,84,192,0.25); }
     .ctrl-card:nth-child(2) .ctrl-bg-num { color: rgba(101,84,192,0.05); }
     .ctrl-card:nth-child(2) .ctrl-icon { background: rgba(101,84,192,0.08); border-color: rgba(101,84,192,0.20); }
     /* Card 03 — Green: Equity / People */
-    .ctrl-card:nth-child(3) { border-top-color: var(--brand-primary); }
+    .ctrl-card:nth-child(3) { border-top-color: var(--brand-primary); border-left-color: var(--brand-primary); }
     .ctrl-card:nth-child(3) .ctrl-label { color: var(--brand-primary); }
     .ctrl-card:nth-child(3) .ctrl-badge { color: var(--brand-primary); border-color: rgba(83,170,0,0.25); }
     .ctrl-card:nth-child(3) .ctrl-bg-num { color: rgba(83,170,0,0.06); }
     .ctrl-card:nth-child(3) .ctrl-icon { background: rgba(83,170,0,0.08); border-color: rgba(83,170,0,0.20); }
     /* Card 04 — Saffron: Rules / Enforcement */
-    .ctrl-card:nth-child(4) { border-top-color: var(--cta-primary); }
+    .ctrl-card:nth-child(4) { border-top-color: var(--cta-primary); border-left-color: var(--cta-primary); }
     .ctrl-card:nth-child(4) .ctrl-label { color: #C47800; } /* darker saffron for readability on white */
     .ctrl-card:nth-child(4) .ctrl-badge { color: #C47800; border-color: rgba(196,120,0,0.25); }
     .ctrl-card:nth-child(4) .ctrl-bg-num { color: rgba(255,153,51,0.06); }
@@ -220,7 +220,7 @@
     .ctrl-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-7); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--interactive); border: 1px solid var(--blue-20); padding: 5px 12px; position: relative; z-index: 1; }
     .ctrl-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
     @media (min-width: 769px) {
- .ctrl-grid { grid-template-columns: 1fr; } }
+      .ctrl-grid { grid-template-columns: 1fr 1fr; } }
     
     
 
@@ -337,6 +337,33 @@
     @media (min-width: 769px) {
       .cta-actions { flex-direction: row; }
     }
+
+    /* 2.1 — Hero headline */
+    .mts-hero__headline { font-size: clamp(42px, 5vw, 68px); font-weight: 300; }
+    .headline-accent { font-weight: 700; color: var(--cta-primary); }
+    .mts-hero__subline { font-size: clamp(16px, 1.4vw, 20px); font-weight: 300; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.7; margin-top: var(--space-5); margin-bottom: var(--space-7); }
+
+    /* 2.2 — CTA section saffron framing */
+    .mts-section-cta { border-top: 1px solid var(--cta-primary); border-bottom: 1px solid var(--cta-primary); }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* 2.3 — Audit status indicators */
+    .audit-status { display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--font-mono); font-weight: 600; }
+    .audit-status .mts-status-dot { flex-shrink: 0; }
+
+    /* 2.5 — Stepper active phase left accent */
+    .mts-stepper--vertical .mts-stepper__step.active .mts-stepper__content { border-left: 3px solid var(--cta-primary); padding-left: var(--space-4); margin-left: -3px; }
+
+    /* 2.6 — Pre-CTA announce strip */
+    .gov-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .gov-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-government { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-government a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -398,6 +425,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-government" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">GOV</span>
+    Government briefings available now — <a href="contact.html?intent=government">Request a structured briefing →</a>
+  </div>
 
   <!-- NAV -->
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
@@ -588,7 +621,7 @@
             <h3 style="font-size:15px;font-weight:600;margin-bottom:var(--space-3);">Pricing Calculations</h3>
             <p>Every charge is generated as a traceable record — timestamped, policy-referenced, and queryable against the rules configured by the city authority.</p>
             <div style="margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--blue-10);">
-              <span style="font-size:11px;color:var(--interactive);font-family:var(--font-mono);font-weight:600;">● CAG-retrievable within 48hrs</span>
+              <span class="audit-status"><span class="mts-status-dot active" aria-hidden="true"></span>CAG-retrievable within 48hrs</span>
             </div>
           </div>
           <div class="mts-card--feature mts-card--feature--green">
@@ -597,7 +630,7 @@
             <h3 style="font-size:15px;font-weight:600;margin-bottom:var(--space-3);">Enforcement Actions</h3>
             <p>Enforcement-linked actions produce records stating which rule was applied, the triggering condition, the corridor, and the operational process — all retrievable for review.</p>
             <div style="margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid rgba(83,170,0,0.15);">
-              <span style="font-size:11px;color:var(--brand-primary);font-family:var(--font-mono);font-weight:600;">● RTI-compliant response ready</span>
+              <span class="audit-status" style="color:var(--brand-primary);"><span class="mts-status-dot active-green" aria-hidden="true"></span>RTI-compliant response ready</span>
             </div>
           </div>
           <div class="mts-card--feature">
@@ -606,7 +639,7 @@
             <h3 style="font-size:15px;font-weight:600;margin-bottom:var(--space-3);">Reward Distributions</h3>
             <p>Each incentive payout is recorded with sufficient detail for programme reconciliation, policy review, and cross-reference against the configured eligibility rules.</p>
             <div style="margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--blue-10);">
-              <span style="font-size:11px;color:var(--interactive);font-family:var(--font-mono);font-weight:600;">● Budget reconciliation-ready</span>
+              <span class="audit-status"><span class="mts-status-dot active" aria-hidden="true"></span>Budget reconciliation-ready</span>
             </div>
           </div>
           <div class="mts-card--feature mts-card--feature--green">
@@ -615,7 +648,7 @@
             <h3 style="font-size:15px;font-weight:600;margin-bottom:var(--space-3);">Public Accountability</h3>
             <p>The full audit architecture supports parliamentary review, procurement assessment, and public disclosure — built to meet the accountability standards expected of Indian government programmes.</p>
             <div style="margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid rgba(83,170,0,0.15);">
-              <span style="font-size:11px;color:var(--brand-primary);font-family:var(--font-mono);font-weight:600;">● Parliament-briefing ready</span>
+              <span class="audit-status" style="color:var(--brand-primary);"><span class="mts-status-dot active-green" aria-hidden="true"></span>Parliament-briefing ready</span>
             </div>
           </div>
         </div>
@@ -751,6 +784,11 @@
         </div>
       </div>
     </section>
+
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="gov-pre-cta-announce" role="status">
+      This platform is in pre-deployment evaluation. Government briefings available now. — <a href="contact.html?intent=government">Schedule a briefing →</a>
+    </div>
 
     <!-- CTA -->
     <section class="mts-section-cta" id="government-cta" aria-label="Request Government Briefing">
