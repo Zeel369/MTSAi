@@ -178,7 +178,48 @@
     }
     .mts-textarea { resize: vertical; min-height: 80px; line-height: 1.55; padding: 10px 14px; }
     .mts-helper { font-size: 11px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 0.02em; }
-    .mts-error-msg { font-size: 11px; color: var(--red-60); margin-top: 4px; }
+    .mts-error-msg { font-size: 11px; color: var(--red-60); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+    .mts-error-msg::before { content: '!'; font-weight: 700; font-size: 10px; width: 14px; height: 14px; border-radius: 50%; background: var(--red-60); color: #fff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* Error state on inputs */
+    .mts-input.error, .mts-select.error, .mts-textarea.error {
+      border-color: var(--red-60);
+      border-bottom-color: var(--red-60);
+      background: #FFF8F8;
+    }
+    .mts-input.error:focus, .mts-select.error:focus, .mts-textarea.error:focus {
+      border-bottom-color: var(--red-60);
+      box-shadow: 0 2px 0 0 var(--red-60);
+      background: #FFF8F8;
+    }
+
+    /* Valid state */
+    .mts-input.valid, .mts-select.valid, .mts-textarea.valid {
+      border-bottom-color: var(--brand-primary);
+    }
+
+    /* Shake animation on invalid fields */
+    @keyframes fieldShake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-5px); }
+      40%       { transform: translateX(5px); }
+      60%       { transform: translateX(-3px); }
+      80%       { transform: translateX(3px); }
+    }
+    .mts-form-group.shake { animation: fieldShake 320ms ease; }
+
+    /* Button loading state */
+    .mts-btn--loading { pointer-events: none; opacity: 0.75; position: relative; }
+    .mts-btn--loading::after {
+      content: '';
+      position: absolute; right: 14px; top: 50%;
+      width: 14px; height: 14px; margin-top: -7px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: btnSpin 600ms linear infinite;
+    }
+    @keyframes btnSpin { to { transform: rotate(360deg); } }
     /* Intent cards hover lift */
     .mts-intent-card {
       cursor: pointer;
@@ -272,6 +313,7 @@
       @media (min-width: 769px) { .mts-nav__links { display: flex; } }
   </style>
 
+  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -320,6 +362,7 @@
   ]
 }
   </script>
+  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -467,40 +510,40 @@
                 <div class="mts-form-row">
                   <div class="mts-form-group">
                     <label for="full-name" class="mts-label">Full Name <span class="mts-form-required">*</span></label>
-                    <input type="text" id="full-name" name="full_name" required autocomplete="name" class="mts-input" placeholder="e.g. Aditi Rao">
-                    <span class="mts-error-msg hidden" id="err-full-name">Name is required</span>
+                    <input type="text" id="full-name" name="full_name" required autocomplete="name" class="mts-input" placeholder="e.g. Aditi Rao" aria-required="true" aria-describedby="err-full-name" aria-invalid="false">
+                    <span class="mts-error-msg hidden" id="err-full-name" role="alert">Name is required</span>
                   </div>
                   <div class="mts-form-group">
                     <label for="org-name" class="mts-label">Organization <span class="mts-form-required">*</span></label>
-                    <input type="text" id="org-name" name="organization" required autocomplete="organization" class="mts-input" placeholder="e.g. Department of Transport">
-                    <span class="mts-error-msg hidden" id="err-org-name">Organization is required</span>
+                    <input type="text" id="org-name" name="organization" required autocomplete="organization" class="mts-input" placeholder="e.g. Department of Transport" aria-required="true" aria-describedby="err-org-name" aria-invalid="false">
+                    <span class="mts-error-msg hidden" id="err-org-name" role="alert">Organization is required</span>
                   </div>
                 </div>
                 <div class="mts-form-row mts-form-row--full">
                   <div class="mts-form-group">
                     <label for="work-email" class="mts-label">Work Email <span class="mts-form-required">*</span></label>
-                    <input type="email" id="work-email" name="email" required autocomplete="email" class="mts-input" placeholder="name@organization.com">
+                    <input type="email" id="work-email" name="email" required autocomplete="email" class="mts-input" placeholder="name@organization.com" aria-required="true" aria-describedby="err-work-email" aria-invalid="false">
                     <span class="mts-helper">We'll send a receipt and reference ID here.</span>
-                    <span class="mts-error-msg hidden" id="err-work-email">Valid work email is required</span>
+                    <span class="mts-error-msg hidden" id="err-work-email" role="alert">Valid work email is required</span>
                   </div>
                 </div>
                 <div class="mts-form-row mts-form-row--full">
                   <div class="mts-form-group">
                     <label for="intent-select" class="mts-label">Intent <span class="mts-form-required">*</span></label>
-                    <select id="intent-select" name="intent" required class="mts-select">
+                    <select id="intent-select" name="intent" required class="mts-select" aria-required="true" aria-describedby="err-intent" aria-invalid="false">
                       <option value="" disabled selected>Select your objective...</option>
                       <option value="gov">Government: Evaluation / Packet request</option>
                       <option value="sp">Strategic Partner: Territory / Long-horizon</option>
                       <option value="integrity">Public Integrity: Report a concern</option>
                     </select>
-                    <span class="mts-error-msg hidden" id="err-intent">Please select an intent</span>
+                    <span class="mts-error-msg hidden" id="err-intent" role="alert">Please select an intent</span>
                   </div>
                 </div>
                 <div class="mts-form-row mts-form-row--full">
                   <div class="mts-form-group">
                     <label for="objective" class="mts-label">One-sentence objective <span class="mts-form-required">*</span></label>
-                    <textarea id="objective" name="objective" rows="2" required class="mts-textarea" placeholder="Briefly describe what you are looking to achieve..."></textarea>
-                    <span class="mts-error-msg hidden" id="err-objective">Please provide a brief objective</span>
+                    <textarea id="objective" name="objective" rows="2" required class="mts-textarea" placeholder="Briefly describe what you are looking to achieve..." aria-required="true" aria-describedby="err-objective" aria-invalid="false"></textarea>
+                    <span class="mts-error-msg hidden" id="err-objective" role="alert">Please provide a brief objective</span>
                   </div>
                 </div>
               </div>
@@ -731,6 +774,73 @@
     });
 
     let currentIntent = null;
+
+    // ── Field validation rules ─────────────────────────────────
+    const STEP1_FIELDS = [
+      { id: 'full-name',     err: 'err-full-name',    fn: v => v.trim().length > 0 },
+      { id: 'org-name',      err: 'err-org-name',     fn: v => v.trim().length > 0 },
+      { id: 'work-email',    err: 'err-work-email',   fn: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+      { id: 'intent-select', err: 'err-intent',       fn: v => v !== '' },
+      { id: 'objective',     err: 'err-objective',    fn: v => v.trim().length > 0 },
+    ];
+    const LANE_FIELDS = {
+      gov:       [{ id: 'gov-city',       err: null, fn: v => v.trim().length > 0 }],
+      sp:        [{ id: 'sp-territory',   err: null, fn: v => v.trim().length > 0 }],
+      integrity: [
+        { id: 'concern-type',   err: null, fn: v => v !== '' },
+        { id: 'concern-detail', err: null, fn: v => v.trim().length > 0 },
+      ],
+    };
+
+    // ── Helpers ────────────────────────────────────────────────
+    function setFieldState(el, valid) {
+      el.classList.toggle('error', !valid);
+      el.classList.toggle('valid',  valid);
+      el.setAttribute('aria-invalid', String(!valid));
+      const errId = el.getAttribute('aria-describedby');
+      if (errId) {
+        const errEl = document.getElementById(errId);
+        if (errEl) errEl.classList.toggle('hidden', valid);
+      }
+      if (!valid) shakeField(el);
+    }
+
+    function shakeField(el) {
+      const group = el.closest('.mts-form-group');
+      if (!group) return;
+      group.classList.remove('shake');
+      void group.offsetWidth; // reflow to restart animation
+      group.classList.add('shake');
+      group.addEventListener('animationend', () => group.classList.remove('shake'), { once: true });
+    }
+
+    function validateFields(fields) {
+      let ok = true;
+      fields.forEach(f => {
+        const el = document.getElementById(f.id);
+        if (!el) return;
+        const valid = f.fn(el.value);
+        setFieldState(el, valid);
+        if (!valid) ok = false;
+      });
+      return ok;
+    }
+
+    // ── Real-time blur validation (step 1) ────────────────────
+    STEP1_FIELDS.forEach(f => {
+      const el = document.getElementById(f.id);
+      if (!el) return;
+      el.addEventListener('blur', () => {
+        if (el.value !== '' || el.classList.contains('error')) {
+          setFieldState(el, f.fn(el.value));
+        }
+      });
+      el.addEventListener('input', () => {
+        if (el.classList.contains('error')) setFieldState(el, f.fn(el.value));
+      });
+    });
+
+    // ── Form flow ──────────────────────────────────────────────
     function showForm(intent) {
       currentIntent = intent;
       document.getElementById('intent-section').classList.add('hidden');
@@ -750,20 +860,21 @@
     }
     function resetForm() {
       document.getElementById('main-form').reset();
+      document.querySelectorAll('.mts-input,.mts-select,.mts-textarea').forEach(el => {
+        el.classList.remove('error','valid');
+        el.setAttribute('aria-invalid','false');
+      });
+      document.querySelectorAll('.mts-error-msg').forEach(el => el.classList.add('hidden'));
       showStep(1);
     }
     function showStep(n) {
-      const s1 = document.getElementById('step-1');
-      const s2 = document.getElementById('step-2');
-      const i1 = document.getElementById('step-ind-1');
-      const i2 = document.getElementById('step-ind-2');
-      const btnNext = document.getElementById('btn-next');
-      const btnBack = document.getElementById('btn-back');
-      const btnSub = document.getElementById('btn-submit');
+      const s1 = document.getElementById('step-1'), s2 = document.getElementById('step-2');
+      const i1 = document.getElementById('step-ind-1'), i2 = document.getElementById('step-ind-2');
+      const btnNext = document.getElementById('btn-next'), btnBack = document.getElementById('btn-back'), btnSub = document.getElementById('btn-submit');
       if (n === 1) {
         s1.classList.remove('hidden'); s2.classList.add('hidden');
         i1.classList.add('active'); i1.classList.remove('done');
-        i2.classList.remove('active', 'done');
+        i2.classList.remove('active','done');
         btnNext.classList.remove('hidden'); btnSub.classList.add('hidden'); btnBack.classList.add('hidden');
       } else {
         s1.classList.add('hidden'); s2.classList.remove('hidden');
@@ -775,45 +886,50 @@
         btnNext.classList.add('hidden'); btnSub.classList.remove('hidden'); btnBack.classList.remove('hidden');
       }
     }
-    function validateStep1() {
-      let ok = true;
-      const fields = [
-        { id: 'full-name', err: 'err-full-name', fn: v => v.trim().length > 0 },
-        { id: 'org-name', err: 'err-org-name', fn: v => v.trim().length > 0 },
-        { id: 'work-email', err: 'err-work-email', fn: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
-        { id: 'intent-select', err: 'err-intent', fn: v => v !== '' },
-        { id: 'objective', err: 'err-objective', fn: v => v.trim().length > 0 },
-      ];
-      fields.forEach(f => {
-        const el = document.getElementById(f.id);
-        const err = document.getElementById(f.err);
-        if (!f.fn(el.value)) { el.classList.add('error'); err.classList.remove('hidden'); ok = false; }
-        else { el.classList.remove('error'); err.classList.add('hidden'); }
-      });
-      return ok;
-    }
     function goNext() {
-      if (!validateStep1()) return;
+      if (!validateFields(STEP1_FIELDS)) return;
       if (!currentIntent) currentIntent = document.getElementById('intent-select').value;
       showStep(2);
     }
     function goBack() { showStep(1); }
+
     document.getElementById('main-form').addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Validate consent
       const consent = document.getElementById('consent');
-      const err = document.getElementById('err-consent');
-      if (!consent.checked) { err.classList.remove('hidden'); return; }
-      err.classList.add('hidden');
-      const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
-      document.getElementById('receipt-id').textContent = id;
-      document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
-      const intent = document.getElementById('intent-select').value;
-      const name = document.getElementById('full-name').value;
-      const org = document.getElementById('org-name').value;
-      const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
-      document.getElementById('receipt-summary').textContent = `${summaryMap[intent] || 'Request'} — ${name}, ${org}`;
-      document.getElementById('form-section').classList.add('hidden');
-      document.getElementById('success-section').classList.remove('hidden');
+      const errConsent = document.getElementById('err-consent');
+      if (!consent.checked) { errConsent.classList.remove('hidden'); shakeField(consent); return; }
+      errConsent.classList.add('hidden');
+
+      // Validate lane-required fields
+      const lane = document.getElementById('intent-select').value || currentIntent;
+      const laneFields = LANE_FIELDS[lane] || [];
+      if (!validateFields(laneFields)) return;
+
+      // Loading state
+      const btnSub = document.getElementById('btn-submit');
+      const originalText = btnSub.textContent;
+      btnSub.classList.add('mts-btn--loading');
+      btnSub.disabled = true;
+      btnSub.textContent = 'Submitting…';
+
+      // Simulate async submission (replace with real fetch when backend is ready)
+      setTimeout(() => {
+        btnSub.classList.remove('mts-btn--loading');
+        btnSub.disabled = false;
+        btnSub.textContent = originalText;
+
+        const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
+        document.getElementById('receipt-id').textContent = id;
+        document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+        const name = document.getElementById('full-name').value;
+        const org = document.getElementById('org-name').value;
+        const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
+        document.getElementById('receipt-summary').textContent = `${summaryMap[lane] || 'Request'} — ${name}, ${org}`;
+        document.getElementById('form-section').classList.add('hidden');
+        document.getElementById('success-section').classList.remove('hidden');
+      }, 1200);
     });
     function downloadReceipt() {
       const id = document.getElementById('receipt-id').textContent;
