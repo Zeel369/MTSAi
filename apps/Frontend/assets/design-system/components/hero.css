@@ -71,9 +71,9 @@
 .mts-hero__headline {
   font-family: var(--font-display);
   font-size: clamp(32px, 5.5vw, 80px);
-  font-weight: 300;
-  line-height: 1.06;
-  letter-spacing: -0.016em;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
   color: #FFFFFF;
   margin: var(--space-6) 0;
   max-width: 820px;
@@ -225,7 +225,7 @@
   max-width: 520px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 0;
+  border-radius: 4px;
   backdrop-filter: blur(4px);
   overflow: hidden;
 }

@@ -20,11 +20,11 @@
   white-space: nowrap;
   cursor: pointer;
   border: 2px solid transparent;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   padding: 0 var(--space-6);
   height: var(--btn-height-md);
   min-width: 80px;
-  transition: var(--transition-color), background var(--duration-fast-01) var(--ease-standard);
+  transition: var(--transition-color), transform var(--duration-fast-01) var(--ease-standard), box-shadow var(--duration-fast-02) var(--ease-standard);
   position: relative;
   overflow: hidden;
   -webkit-user-select: none;
@@ -66,9 +66,12 @@
 .mts-btn--primary:hover {
   background-color: var(--cta-hover);
   border-color: var(--cta-hover);
+  box-shadow: var(--shadow-saffron);
+  transform: translateY(-1px);
 }
 .mts-btn--primary:active {
   background-color: var(--cta-active);
+  transform: translateY(0);
 }
 .mts-btn--primary:focus-visible {
   outline-color: var(--saffron-50);
@@ -83,9 +86,12 @@
 .mts-btn--secondary:hover {
   background-color: var(--interactive-hover);
   border-color: var(--interactive-hover);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-1px);
 }
 .mts-btn--secondary:active {
   background-color: var(--interactive-active);
+  transform: translateY(0);
 }
 
 /* === GHOST (Blue outlined) === */
@@ -96,9 +102,11 @@
 }
 .mts-btn--ghost:hover {
   background-color: var(--btn-ghost-hover-bg);
+  transform: translateY(-1px);
 }
 .mts-btn--ghost:active {
   background-color: var(--blue-alpha-20);
+  transform: translateY(0);
 }
 
 /* === BRAND (Green secondary action) === */
@@ -110,9 +118,12 @@
 .mts-btn--brand:hover {
   background-color: var(--green-alpha-20);
   border-color: var(--brand-primary);
+  box-shadow: var(--shadow-green);
+  transform: translateY(-1px);
 }
 .mts-btn--brand:active {
   background-color: var(--green-alpha-30);
+  transform: translateY(0);
 }
 
 /* === DANGER === */
@@ -124,6 +135,7 @@
 .mts-btn--danger:hover {
   background-color: var(--btn-danger-hover, #A2191F);
   border-color: var(--btn-danger-hover, #A2191F);
+  transform: translateY(-1px);
 }
 
 /* === TERTIARY (no border, text only) === */
@@ -148,7 +160,7 @@
   padding: 0;
   width: var(--btn-height-md);
   min-width: unset;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
 }
 .mts-btn--icon.mts-btn--sm { width: var(--btn-height-sm); }
 .mts-btn--icon.mts-btn--lg { width: var(--btn-height-lg); }
@@ -177,5 +189,5 @@
   gap: 0;
 }
 .mts-btn-group .mts-btn { border-radius: 0; border-right-width: 0; }
-.mts-btn-group .mts-btn:first-child { border-radius: 0; }
-.mts-btn-group .mts-btn:last-child  { border-radius: 0; border-right-width: 2px; }
+.mts-btn-group .mts-btn:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.mts-btn-group .mts-btn:last-child  { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; border-right-width: 2px; }

@@ -5,14 +5,16 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #0f62fe;
-  border-bottom: none;
+  background: var(--layer-bg);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .mts-nav__inner {
   max-width: var(--container-xl);
   margin: 0 auto;
   padding: 0 var(--space-6);
-  height: 48px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,13 +26,9 @@
   gap: var(--space-3);
   font-family: var(--font-display);
   font-size: 18px;
-  font-weight: var(--weight-semibold);
-  color: #ffffff;
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
   text-decoration: none;
-}
-/* Make logo white on blue nav background */
-.mts-nav .mts-nav__logo img {
-  filter: brightness(0) invert(1);
 }
 .mts-nav__logo-dot {
   width: 10px;
@@ -49,18 +47,17 @@
 .mts-nav__link {
   display: inline-flex;
   align-items: center;
-  padding: 0 var(--space-4);
-  height: 48px;
+  padding: var(--space-2) var(--space-3);
   font-size: var(--type-body-01);
-  font-weight: var(--weight-regular);
-  color: rgba(255, 255, 255, 0.75);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
   text-decoration: none;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   transition: var(--transition-color);
   cursor: pointer;
 }
-.mts-nav__link:hover { color: #ffffff; background: rgba(255, 255, 255, 0.1); }
-.mts-nav__link.active { color: #ffffff; background: rgba(255, 255, 255, 0.15); border-bottom: 3px solid #ffffff; }
+.mts-nav__link:hover { color: var(--text-primary); background: var(--layer-01); }
+.mts-nav__link.active { color: var(--interactive); background: rgba(15, 98, 254, 0.08); }
 .mts-nav__actions { display: flex; align-items: center; gap: var(--space-3); }
 
 /* ── Mobile hamburger toggle — visible by default (mobile-first) */
@@ -69,23 +66,22 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 48px;
-  height: 48px;
-  padding: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
   background: none;
-  border: none;
-  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
   cursor: pointer;
   flex-shrink: 0;
 }
-.mts-nav__hamburger:hover { background: rgba(255, 255, 255, 0.1); }
 
 .mts-nav__hamburger span {
   display: block;
   width: 100%;
   height: 1.5px;
-  background: #ffffff;
-  border-radius: 0;
+  background: var(--text-primary);
+  border-radius: 1px;
   transition: transform 200ms ease, opacity 150ms ease;
 }
 
