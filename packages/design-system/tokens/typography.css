@@ -5,7 +5,7 @@
    Mono: JetBrains Mono (code, IDs, data)
    ============================================================ */
 
-/* Note: font @import handled by the consuming page's <link> tag in <head> */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* --- Font Families --- */
@@ -66,6 +66,8 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -97,3 +99,17 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
 .type-body       { font-size: var(--type-body-02); line-height: var(--lh-normal); }
 .type-mono       { font-family: var(--font-mono); font-size: 0.875em; }
 .type-display    { font-family: var(--font-display); font-size: var(--type-display-01); font-weight: var(--weight-bold); letter-spacing: var(--ls-tighter); }
+
+/* ── Mono font usage constraint ─────────────────────────────────
+   JetBrains Mono is reserved for: live data values, system status
+   indicators, technical IDs, and inline code. Section labels and
+   navigation micro-copy use IBM Plex Sans with wide letter-spacing
+   instead. Override .font-mono--ui for the permitted exceptions.
+   ────────────────────────────────────────────────────────────── */
+.type-label-ui {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}

@@ -21,9 +21,11 @@
   <meta name="twitter:description" content="Policy-led congestion management designed for auditability — configurable rules, due process workflows, equity protections.">
   <meta name="twitter:image" content="https://mtsai.in/img/og-cover.png">
 
+  <!-- Fonts: async load to eliminate render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 
   <!-- Design System -->
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
@@ -374,7 +376,7 @@
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="mts-nav__inner">
       <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
-        <img src="img/mtsai-logo.png" alt="MTSAi">
+        <img src="img/mtsai-logo.png" alt="MTSAi" width="151" height="38" loading="eager" fetchpriority="high" decoding="async">
       </a>
       <ul class="mts-nav__links" role="list">
         <li><a href="index.html" class="mts-nav__link">Home</a></li>
@@ -1015,7 +1017,7 @@
       <div class="mts-footer__top">
         <div>
           <a href="index.html" class="mts-footer__logo" aria-label="MTSAi">
-            <img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);">
+            <img src="img/mtsai-logo.png" alt="MTSAi" width="143" height="36" loading="eager" decoding="async" style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
           <p class="mts-footer__tagline">Defining the standard for government-grade AI in urban mobility. Built for public trust and operational excellence.</p>
           <div class="mts-footer__trust" aria-label="Compliance indicators">

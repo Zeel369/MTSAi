@@ -13,9 +13,11 @@
   <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Fonts: async load to eliminate render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 
   <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
   <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
@@ -178,6 +180,7 @@
     @media (min-width: 769px) { .cta-actions { flex-direction: row; } }
   </style>
 
+  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -238,6 +241,7 @@
   ]
 }
   </script>
+  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -245,7 +249,7 @@
 
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="mts-nav__inner">
-      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage"><img src="img/mtsai-logo.png" alt="MTSAi"></a>
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage"><img src="img/mtsai-logo.png" alt="MTSAi" width="151" height="38" loading="eager" fetchpriority="high" decoding="async"></a>
       <ul class="mts-nav__links" role="list">
         <li><a href="index.html" class="mts-nav__link">Home</a></li>
         <li><a href="Government.html" class="mts-nav__link">Government</a></li>
@@ -441,7 +445,7 @@
     <div class="mts-container">
       <div class="mts-footer__top">
         <div>
-          <a href="index.html" class="mts-footer__logo"><img src="img/mtsai-logo.png" alt="MTSAi" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
+          <a href="index.html" class="mts-footer__logo"><img src="img/mtsai-logo.png" alt="MTSAi" width="143" height="36" loading="eager" decoding="async" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
           <p class="mts-footer__tagline">A mobility platform company preparing for government deployment through policy control, auditability, and integration readiness.</p>
           <div class="mts-footer__trust" aria-label="Compliance indicators">
             <span class="mts-footer__trust-badge mts-footer__trust-badge--active">GIGW 3.0</span>
