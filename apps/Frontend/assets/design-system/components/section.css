@@ -91,9 +91,9 @@
 .mts-section__h2 {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 52px);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.025em;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.016em;
   color: var(--text-primary);
   margin-bottom: var(--space-5);
 }
