@@ -379,13 +379,23 @@
     .proposition-label { margin-bottom: var(--space-6); }
     .proposition-statement {
       font-family: var(--font-display);
-      font-size: clamp(22px, 2.8vw, 36px);
-      font-weight: 600; line-height: 1.28;
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 300; line-height: 1.35;
+      font-style: italic;
       color: var(--text-primary);
       margin: var(--space-6) 0;
-      letter-spacing: -0.02em;
-      border-left: 3px solid var(--interactive);
-      padding-left: var(--space-7);
+      letter-spacing: -0.01em;
+      border-left: 4px solid var(--cta-primary);
+      padding-left: var(--space-8);
+    }
+    .proposition-attribution {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      margin-top: var(--space-4);
+      padding-left: calc(var(--space-8) + 4px);
     }
     .proposition-body {
       font-size: clamp(14px, 1.2vw, 16px);
@@ -465,9 +475,9 @@
       font-family: var(--font-mono); letter-spacing: 0.03em;
     }
     .metric-value {
-      font-family: var(--font-display); font-size: 24px;
-      font-weight: 700; color: var(--text-primary);
-      letter-spacing: -0.02em;
+      font-family: var(--font-display); font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300; color: var(--text-primary);
+      letter-spacing: -0.03em; line-height: 1;
     }
     .metric-note {
       font-size: 13px; color: var(--text-secondary);
@@ -1233,6 +1243,95 @@
     .compliance-card__desc {
       font-size: 13px; color: var(--text-secondary); line-height: 1.65;
     }
+
+    /* ====================================================
+       VISUAL IMPROVEMENT PLAN v1.0
+    ==================================================== */
+
+    /* 1.1 — Hero headline XL (homepage-specific override) */
+    .mts-hero__headline { font-size: clamp(42px, 5.5vw, 72px); }
+    .mts-hero__headline--xl { font-size: clamp(52px, 6.5vw, 84px); max-width: 720px; }
+
+    /* 1.2 — Hero subline */
+    .mts-hero__subline {
+      font-size: clamp(16px, 1.4vw, 20px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-7);
+    }
+
+    /* 1.4 — Trust strip inside hero (below CTAs) */
+    .trust-strip--hero {
+      display: flex; flex-wrap: wrap; gap: var(--space-5);
+      margin-top: var(--space-6);
+      padding-top: var(--space-5);
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+    .trust-strip--hero .trust-item {
+      font-size: 11px; color: rgba(255,255,255,0.60);
+      letter-spacing: 0.10em; text-transform: uppercase;
+      font-family: var(--font-mono); font-weight: 500;
+    }
+    .trust-strip--hero .trust-item::before { background: rgba(255,255,255,0.35); }
+    .trust-strip--hero .trust-item--green::before { background: var(--brand-primary); }
+    .trust-strip--hero .trust-item--saffron::before { background: var(--cta-primary); }
+
+    /* 1.5 — Hero panel metric numbers */
+    .mts-hero__panel-metric-val {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+    .mts-hero__panel-metric-val.saffron { color: var(--cta-primary); }
+    .mts-hero__panel-metric-val.green   { color: #6FDC8C; }
+
+    /* 1.5 — LIVE dot: green pulse */
+    .mts-hero__panel-live-dot {
+      background: var(--brand-primary) !important;
+      animation: statusPulse 2s ease infinite;
+    }
+
+    /* 1.7 — Metric item alignment for large numbers */
+    .metric-header { align-items: flex-end; margin-bottom: var(--space-4); }
+    .metric-label { font-size: 11px; color: var(--text-secondary); letter-spacing: 0.10em; text-transform: uppercase; }
+
+    /* 1.8 — Architecture layer border colors by tier */
+    .arch-layer--public   { border-left-color: var(--text-disabled); }
+    .arch-layer--platform { border-left-color: var(--interactive); }
+    .arch-layer--api      { border-left-color: var(--interactive); }
+    .arch-layer--engine   { border-left-color: var(--brand-primary); }
+    .arch-layer--ai       { border-left-color: var(--border-subtle); opacity: 0.5; }
+
+    /* 1.10 — CTA section saffron framing */
+    .mts-section-cta {
+      border-top: 1px solid var(--cta-primary);
+      border-bottom: 1px solid var(--cta-primary);
+    }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* G6 — Footer disclaimer: subordinate legal footnote */
+    .mts-footer__disclaimer {
+      font-size: 11px; color: var(--text-disabled);
+      line-height: 1.6; max-width: 760px;
+    }
+
+    /* G7 — Announce bar (homepage) */
+    .announce-homepage {
+      background: var(--layer-01);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px var(--space-5);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .announce-homepage a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+    .announce-homepage a:hover { text-decoration: underline; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -1288,6 +1387,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- G7 — Announce bar -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-homepage" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">NEW</span>
+    Pilot deployment target: Q2 2026 — <a href="contact.html">Request government briefing →</a>
+  </div>
 
   <!-- =============================================
        NAV
@@ -1357,6 +1462,15 @@
         <div class="mts-hero__ctas">
           <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Evaluation →</a>
           <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform</a>
+        </div>
+
+        <!-- 1.4 — Compliance trust strip below CTAs -->
+        <div class="trust-strip--hero">
+          <span class="trust-item trust-item--green">✓ GIGW 3.0</span>
+          <span class="trust-item trust-item--green">✓ DPDP 2023</span>
+          <span class="trust-item">ISO 27001 posture</span>
+          <span class="trust-item">NIC Cloud ready</span>
+          <span class="trust-item trust-item--saffron">Pilot Q2 '26</span>
         </div>
       </div>
 
@@ -1633,6 +1747,7 @@
             </div>
             <blockquote class="proposition-statement">
               "Cities don't need another penalty-based toll system. They need a platform that makes the right commuting choice feel like the obvious one."
+              <cite class="proposition-attribution">— Platform philosophy · MTSAi</cite>
             </blockquote>
             <p class="proposition-body">
               Traditional congestion pricing programs rely heavily on penalties and infrastructure deployment. Cities increasingly require tools that influence commuter behavior while maintaining public trust and policy transparency. Congestion is not only a road-capacity problem — it is a repeated coordination problem created by large numbers of commuters making similar route and timing decisions during peak periods.
@@ -1692,9 +1807,9 @@
             <div class="metric-item">
               <div class="metric-header">
                 <span class="metric-label">Public trust gap</span>
-                <span class="metric-value">82%</span>
               </div>
-              <div class="mts-progress">
+              <span class="metric-value">82%</span>
+              <div class="mts-progress" style="margin-top:var(--space-4);">
                 <div class="mts-progress__track">
                   <div class="mts-progress__fill mts-progress__fill--red bar-animate" style="--bar-w:82%"></div>
                 </div>
@@ -1705,9 +1820,9 @@
             <div class="metric-item">
               <div class="metric-header">
                 <span class="metric-label">Infrastructure cost pressure</span>
-                <span class="metric-value">91%</span>
               </div>
-              <div class="mts-progress">
+              <span class="metric-value">91%</span>
+              <div class="mts-progress" style="margin-top:var(--space-4);">
                 <div class="mts-progress__track">
                   <div class="mts-progress__fill mts-progress__fill--saffron bar-animate" style="--bar-w:91%"></div>
                 </div>
@@ -1718,9 +1833,9 @@
             <div class="metric-item">
               <div class="metric-header">
                 <span class="metric-label">Policy complexity</span>
-                <span class="metric-value">64%</span>
               </div>
-              <div class="mts-progress">
+              <span class="metric-value">64%</span>
+              <div class="mts-progress" style="margin-top:var(--space-4);">
                 <div class="mts-progress__track">
                   <div class="mts-progress__fill bar-animate" style="--bar-w:64%"></div>
                 </div>
