@@ -271,6 +271,55 @@
  .intent-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: 1fr; } .process-connector { display: none; } .shortcut-grid { grid-template-columns: 1fr; } }
       @media (min-width: 769px) { .mts-nav__links { display: flex; } }
   </style>
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "MTSAi",
+      "url": "https://mtsai.in",
+      "logo": "https://mtsai.in/img/mtsai-logo.png",
+      "description": "Incentive-Based Urban Demand Management platform enabling governments to manage urban congestion through fair, transparent, and governable systems.",
+      "foundingDate": "2023",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "ssg@miracletraffic.ai",
+        "contactType": "sales",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "ContactPage",
+      "name": "Contact MTSAi",
+      "url": "https://mtsai.in/contact.html",
+      "description": "Get in touch with MTSAi for government evaluations, partnerships, or inquiries."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mtsai.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://mtsai.in/contact.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <div id="scroll-progress"></div>
