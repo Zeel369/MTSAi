@@ -599,7 +599,13 @@
     ==================================================== */
     .section-numbers {
       padding: clamp(48px, 8vw, 96px) 0;
-      background: #0052CC; /* brand Blue 60 — your actual blue */
+      background: linear-gradient(
+        to bottom,
+        #F0F5FF 0px,          /* matches section-privacy bg above */
+        #0052CC 80px,         /* full blue starts */
+        #0052CC calc(100% - 64px), /* full blue ends */
+        #FFFFFF 100%          /* matches section-gov bg below */
+      );
       position: relative; overflow: hidden;
     }
     /* Subtle large grid texture */
@@ -1263,6 +1269,29 @@
     .mts-footer__disclaimer {
       font-size: 11px; color: var(--text-disabled);
       line-height: 1.6; max-width: 760px;
+    }
+
+    /* ====================================================
+       SECTION TRANSITIONS
+    ==================================================== */
+    /* T1: Hero (dark) → compliance section — fade hero bottom edge */
+    .mts-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(248,250,255,0.55));
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* T3: section-ecosystem (white) → CTA (#000C2E) — shadow drop */
+    .section-ecosystem::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 64px;
+      background: linear-gradient(to bottom, transparent, rgba(0,12,46,0.10));
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* G7 — Announce bar (homepage) */
@@ -2142,6 +2171,11 @@
         </div>
       </div>
     </section>
+
+    <!-- Pre-CTA saffron announce strip -->
+    <div class="gov-pre-cta-announce" style="background:rgba(255,153,51,0.06);border-top:1px solid rgba(255,153,51,0.22);border-bottom:1px solid rgba(255,153,51,0.22);padding:12px var(--space-5);text-align:center;font-size:13px;color:var(--text-secondary);">
+      Structured government evaluation paths available — <a href="contact.html" style="color:var(--interactive);text-decoration:none;font-weight:500;">Request a briefing →</a>
+    </div>
 
     <!-- =============================================
          CTA — Deepest blue + large arrow watermark
