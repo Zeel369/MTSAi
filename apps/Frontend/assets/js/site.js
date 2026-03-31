@@ -64,14 +64,31 @@
   }
 
   /* ----------------------------------------------------------
-     Scroll Reveal
+     Scroll Reveal — Smart auto-classification
   ---------------------------------------------------------- */
+  function classifyReveal(el) {
+    // Headlines → blur reveal
+    if (el.matches('h1, h2, h3, .mts-section__h2, .mts-hero__headline, .article-headline, .cta-headline, .mts-section__eyebrow'))
+      return 'reveal-blur';
+    // Cards / grid items → spring
+    if (el.matches('.mts-card--feature, .ctrl-card, .engine-cell, .mts-card--approach, .mts-card--kpi, .partner-card, .step-card, .flow-step, .privacy-col, .mts-metric-card'))
+      return 'reveal-spring';
+    // Images / media → clip
+    if (el.matches('img, .mts-photo-strip, figure, .mts-hero__photo, .arch-stack'))
+      return 'reveal-clip';
+    // Numbers / stats → stat spring
+    if (el.matches('.metric-value, .arch-stat-num, .mts-hero__stat-num, .mts-kpi-val, .mts-hero__panel-metric-val, .cta-stat-num'))
+      return 'reveal-stat';
+    // Badges / tags / trust items → slide left
+    if (el.matches('.mts-tag, .trust-item, .ctrl-badge, .mts-footer__trust-badge, .mts-announce-bar__badge'))
+      return 'reveal-left';
+    // Default: standard fade-up (keep existing behaviour)
+    return null;
+  }
+
   function initScrollReveal() {
-    // Group observer — adds .visible to parent, CSS cascades to .reveal children
     const groupSelectors = ['.fade-section', '.blur-fade-in', '.blur-fade-left', '.blur-fade-right', '.reveal-group'];
     const groups = document.querySelectorAll(groupSelectors.join(','));
-
-    // Individual element observer — .reveal / .scroll-reveal / .scroll-reveal-blur / .scroll-reveal-scale
     const itemSelectors = ['.reveal:not(.reveal-group)', '.scroll-reveal', '.scroll-reveal-blur', '.scroll-reveal-scale'];
     const items = document.querySelectorAll(itemSelectors.join(','));
 
@@ -80,6 +97,12 @@
       items.forEach(el => el.classList.add('visible', 'is-visible'));
       return;
     }
+
+    // Auto-classify each reveal element
+    items.forEach(el => {
+      const variant = classifyReveal(el);
+      if (variant) el.classList.add(variant);
+    });
 
     const groupObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
