@@ -10616,3 +10616,35 @@ body {
     transition: none !important;
   }
 }
+
+/* ── Hover state upgrades — agency-level interactions ──────── */
+
+/* Approach card — lateral slide (matches arch-layer behaviour) */
+.mts-card--approach {
+  transition: transform 200ms var(--ease-smooth),
+              border-left-color 200ms,
+              box-shadow 200ms;
+}
+.mts-card--approach:hover {
+  transform: translateX(4px);
+  border-left-color: var(--brand-primary);
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+}
+
+/* List item — inset left indicator without layout shift */
+.mts-list-item {
+  transition: background 150ms, box-shadow 150ms;
+}
+.mts-list-item:hover {
+  background: var(--layer-01);
+  box-shadow: inset 3px 0 0 var(--interactive);
+}
+
+/* Metric card — lift on hover */
+.mts-metric-card {
+  transition: transform 200ms var(--ease-smooth), box-shadow 200ms;
+}
+.mts-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 82, 204, 0.10);
+}
