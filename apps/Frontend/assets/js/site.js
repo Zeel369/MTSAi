@@ -818,10 +818,36 @@
   }
 
   /* ----------------------------------------------------------
+     Smooth Scroll — Lenis inertia scroll
+     Loads Lenis from CDN, falls back silently if unavailable.
+     Disabled automatically when prefers-reduced-motion is set.
+  ---------------------------------------------------------- */
+  function initSmoothScroll() {
+    if (prefersReducedMotion) return;
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
+    script.async = true;
+    script.onload = function () {
+      var lenis = new Lenis({
+        duration: 1.2,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        smooth: true,
+        smoothTouch: false,
+        touchMultiplier: 2,
+      });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      window.__lenis = lenis;
+    };
+    document.head.appendChild(script);
+  }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
     initScrollProgress();
+    initSmoothScroll();
     initCounters();
     initScrollReveal();
     initMobileMenu();
