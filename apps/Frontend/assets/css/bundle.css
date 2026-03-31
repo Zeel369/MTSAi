@@ -9101,9 +9101,96 @@ button:focus-visible {
 
 .mts-footer {
   background: #000C2E;
-  padding: clamp(60px, 8vw, 96px) 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 0 0;
+  border-top: 3px solid var(--accent-saffron, #FF9933);
 }
+
+/* ── Footer banner — large typographic headline + contact CTA ── */
+.mts-footer__banner {
+  padding: clamp(56px, 7vw, 88px) 0 clamp(48px, 6vw, 72px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  align-items: flex-start;
+}
+
+.mts-footer__banner-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-saffron, #FF9933);
+  opacity: 0.80;
+}
+
+.mts-footer__banner-headline {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.mts-footer__banner-headline strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+.mts-footer__banner-contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.mts-footer__banner-email {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding-bottom: 2px;
+  transition: color 200ms, border-color 200ms;
+}
+.mts-footer__banner-email:hover {
+  color: rgba(255, 255, 255, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.40);
+}
+
+@media (min-width: 769px) {
+  .mts-footer__banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mts-footer__banner > :first-child,
+  .mts-footer__banner > :nth-child(2) { flex: 0 0 auto; }
+}
+
+/* ── Col headings — better contrast on dark bg ───────────────── */
+.mts-footer__col-heading {
+  color: #8D8D8D;  /* upgraded from #525252 */
+}
+
+/* ── Col links — underline animation on hover ────────────────── */
+.mts-footer__col a {
+  position: relative;
+  padding-bottom: 1px;
+}
+.mts-footer__col a::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: width 200ms var(--ease-smooth, cubic-bezier(0.4,0,0.2,1));
+}
+.mts-footer__col a:hover::after { width: 100%; }
 
 /* ── Top: brand + nav grid — stacked on mobile, side-by-side on desktop ── */
 .mts-footer__top {
