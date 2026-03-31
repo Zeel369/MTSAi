@@ -169,6 +169,20 @@
       .trust-grid-2 { grid-template-columns: 1fr 1fr; }
       .platform-status__grid { grid-template-columns: repeat(3, 1fr); }
     }
+
+    /* Hero headline */
+    .mts-hero__headline { font-size: clamp(38px, 4.8vw, 64px); font-weight: 300; }
+
+    /* Pre-CTA announce strip */
+    .common-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .common-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-page { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-page a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -239,6 +253,12 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- NAV -->
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-page" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">TRUST</span>
+    Data governance architecture documentation available for evaluation — <a href="contact.html?intent=government">Request access →</a>
+  </div>
+
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="mts-nav__inner">
       <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
@@ -458,7 +478,12 @@
       </section>
 
       <!-- CLOSING CTA -->
-      <section class="trust-cta" aria-label="Procurement materials">
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="common-pre-cta-announce" role="status">
+      Full data governance specification available for qualified procurement teams. — <a href="contact.html?intent=government">Request documentation →</a>
+    </div>
+
+    <section class="trust-cta" aria-label="Procurement materials">
         <div class="trust-cta__inner mts-container">
           <h2 class="trust-cta__h2 reveal">Review Procurement Materials</h2>
           <p class="trust-cta__body reveal delay-1">Access versioned data governance documentation through the procurement and evaluation pack.</p>
