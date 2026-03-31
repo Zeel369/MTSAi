@@ -176,8 +176,26 @@
     @media (min-width: 1025px) {
   .article-layout { grid-template-columns: 220px 1fr; }
   .article-toc { display: block; }
-} }
+}
     @media (min-width: 769px) { .cta-actions { flex-direction: row; } }
+
+    /* 8.1 — Article headline */
+    .article-headline { font-weight: 300; }
+
+    /* 8.3 — CTA saffron framing */
+    .mts-section-cta { border-top: 1px solid var(--cta-primary); border-bottom: 1px solid var(--cta-primary); }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* Pre-CTA announce strip */
+    .article-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .article-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-article { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-article a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -246,6 +264,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-article" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">HOW IT WORKS</span>
+    Platform in pre-deployment evaluation — <a href="Government.html">Government evaluation path →</a>
+  </div>
 
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="mts-nav__inner">
@@ -425,6 +449,11 @@
         </div>
       </div>
     </article>
+
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="article-pre-cta-announce" role="status">
+      This platform is in pre-deployment evaluation. Government briefings available now. — <a href="contact.html?intent=government">Request briefing →</a>
+    </div>
 
     <section class="mts-section-cta" aria-label="Next steps">
       <div class="mts-container">

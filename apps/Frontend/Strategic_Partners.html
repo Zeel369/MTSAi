@@ -253,7 +253,26 @@
     /* RESPONSIVE */
     .partner-grid { grid-template-columns: 1fr; }
     @media (min-width: 1025px) { .partner-grid { grid-template-columns: repeat(3,1fr); } }
-      @media (min-width: 769px) { .mts-nav__links { display: flex; } }
+
+    /* 5.1 — Hero headline */
+    .mts-hero__headline { font-size: clamp(38px, 4.8vw, 64px); font-weight: 300; }
+    .headline-accent { font-weight: 700; color: var(--cta-primary); }
+    .mts-hero__subline { font-size: clamp(16px, 1.4vw, 20px); font-weight: 300; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.7; margin-top: var(--space-5); margin-bottom: var(--space-7); }
+
+    /* 5.3 — CTA saffron framing */
+    .mts-section-cta { border-top: 1px solid var(--cta-primary); border-bottom: 1px solid var(--cta-primary); }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* Pre-CTA announce strip */
+    .partners-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .partners-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-partners { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-partners a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -315,6 +334,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-partners" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">PARTNERS</span>
+    Integration partnerships open for Q2 2026 pilot evaluation — <a href="contact.html?intent=partner">Explore partnership →</a>
+  </div>
 
   <!-- NAV -->
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
@@ -596,6 +621,11 @@
     </section>
 
     <!-- CTA -->
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="partners-pre-cta-announce" role="status">
+      Integration partnerships are evaluated on a case-by-case basis for the Q2 2026 pilot programme. — <a href="contact.html?intent=partner">Submit partnership inquiry →</a>
+    </div>
+
     <section class="mts-section-cta" aria-label="Explore Integration Model">
       <div class="mts-container">
         <div class="mts-cta-split reveal">

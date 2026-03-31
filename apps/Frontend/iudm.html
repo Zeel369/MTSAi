@@ -192,10 +192,29 @@
     .delay-2.reveal { transition-delay: 160ms; }
 
     @media (min-width: 1025px) {
-  .article-layout { grid-template-columns: 220px 1fr; }
-  .article-toc { display: block; }
-} .concept-grid { grid-template-columns: 1fr; } }
+      .article-layout { grid-template-columns: 220px 1fr; }
+      .article-toc { display: block; }
+    }
+    @media (max-width: 1024px) { .concept-grid { grid-template-columns: 1fr; } }
     @media (min-width: 769px) { .cta-actions { flex-direction: row; } }
+
+    /* 4.1 — Article headline */
+    .article-headline { font-weight: 300; }
+
+    /* 4.3 — CTA saffron framing */
+    .mts-section-cta { border-top: 1px solid var(--cta-primary); border-bottom: 1px solid var(--cta-primary); }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* Pre-CTA announce strip */
+    .iudm-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .iudm-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-iudm { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-iudm a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -264,6 +283,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-iudm" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">HOW IT WORKS</span>
+    IUDM: rewarding commuters who reduce congestion rather than penalising everyone — <a href="Government.html">Government path →</a>
+  </div>
 
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
     <div class="mts-nav__inner">
@@ -421,6 +446,11 @@
     </article>
 
     <!-- CTA -->
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="iudm-pre-cta-announce" role="status">
+      IUDM is a design specification in pre-deployment evaluation. Government briefings available. — <a href="contact.html?intent=government">Request briefing →</a>
+    </div>
+
     <section class="mts-section-cta" aria-label="Next steps">
       <div class="mts-container">
         <div class="reveal">
