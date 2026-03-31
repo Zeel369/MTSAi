@@ -10626,25 +10626,25 @@ body {
    Auto-classified by site.js initSmartReveal()
    ══════════════════════════════════════════════════════════════ */
 
-/* — Blur reveal (headlines, eyebrows) */
+/* — Blur reveal (headlines, eyebrows) — filter removed: too GPU-heavy */
 .reveal.reveal-blur {
   opacity: 0;
-  filter: blur(10px);
-  transform: translateY(8px);
-  transition: opacity 750ms var(--ease-smooth),
-              filter  750ms var(--ease-smooth),
-              transform 750ms var(--ease-smooth);
+  transform: translateY(10px);
+  transition: opacity 600ms var(--ease-smooth),
+              transform 600ms var(--ease-smooth);
+  will-change: opacity, transform;
 }
 .reveal.reveal-blur.visible {
-  opacity: 1; filter: blur(0); transform: none;
+  opacity: 1; transform: none;
 }
 
-/* — Spring reveal (cards, grid items) */
+/* — Spring reveal (cards, grid items) — scale removed: forces composite layer */
 .reveal.reveal-spring {
   opacity: 0;
-  transform: translateY(28px) scale(0.97);
-  transition: opacity 600ms var(--ease-smooth),
-              transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(24px);
+  transition: opacity 500ms var(--ease-smooth),
+              transform 550ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
 }
 .reveal.reveal-spring.visible {
   opacity: 1; transform: none;
@@ -10653,9 +10653,10 @@ body {
 /* — Clip reveal (images, photo strips) */
 .reveal.reveal-clip {
   opacity: 0;
-  clip-path: inset(24px 0 0 0);
-  transition: opacity 700ms var(--ease-smooth),
-              clip-path 700ms var(--ease-smooth);
+  clip-path: inset(20px 0 0 0);
+  transition: opacity 600ms var(--ease-smooth),
+              clip-path 600ms var(--ease-smooth);
+  will-change: opacity, clip-path;
 }
 .reveal.reveal-clip.visible {
   opacity: 1; clip-path: inset(0 0 0 0);
@@ -10664,9 +10665,10 @@ body {
 /* — Stat reveal (numbers, KPI values) */
 .reveal.reveal-stat {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 500ms var(--ease-smooth),
-              transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(10px);
+  transition: opacity 450ms var(--ease-smooth),
+              transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
 }
 .reveal.reveal-stat.visible {
   opacity: 1; transform: none;
@@ -10675,9 +10677,10 @@ body {
 /* — Slide-left (badges, tags, list items) */
 .reveal.reveal-left {
   opacity: 0;
-  transform: translateX(-18px);
-  transition: opacity 600ms var(--ease-smooth),
-              transform 600ms var(--ease-smooth);
+  transform: translateX(-14px);
+  transition: opacity 500ms var(--ease-smooth),
+              transform 500ms var(--ease-smooth);
+  will-change: opacity, transform;
 }
 .reveal.reveal-left.visible {
   opacity: 1; transform: none;

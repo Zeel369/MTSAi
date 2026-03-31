@@ -108,7 +108,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('revealed', 'visible');
       });
-    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
     groups.forEach(el => groupObs.observe(el));
 
     const itemObs = new IntersectionObserver(entries => {
@@ -118,7 +118,7 @@
           itemObs.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.15 });
     items.forEach(el => itemObs.observe(el));
   }
 
@@ -829,11 +829,12 @@
     script.async = true;
     script.onload = function () {
       var lenis = new Lenis({
-        duration: 1.2,
-        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        duration: 0.8,
+        easing: function (t) { return 1 - Math.pow(1 - t, 3); },
         smooth: true,
         smoothTouch: false,
-        touchMultiplier: 2,
+        touchMultiplier: 1.5,
+        wheelMultiplier: 1.0,
       });
       function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
       requestAnimationFrame(raf);
