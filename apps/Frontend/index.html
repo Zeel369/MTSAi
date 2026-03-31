@@ -688,19 +688,26 @@
       pointer-events: none; user-select: none;
     }
     .gov-controls {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
       gap: 0; margin-top: var(--space-8);
       border: 1px solid var(--blue-20);
       box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
     }
     .gov-control {
       padding: var(--space-7);
-      border-right: 1px solid var(--border-subtle);
       border-top: 3px solid var(--interactive);
+      border-right: none; border-bottom: none;
       transition: background 200ms, border-top-color 200ms;
     }
     .gov-control:hover { background: var(--layer-01); border-top-color: var(--brand-primary); }
-    .gov-control:last-child { border-right: none; }
+    /* Bento: [narrow][  wide  ] / [  wide  ][narrow] */
+    .gov-control:nth-child(2) { grid-column: 2 / 4; }
+    .gov-control:nth-child(3) { grid-column: 1 / 3; }
+    /* Cell borders */
+    .gov-control:nth-child(1) { border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+    .gov-control:nth-child(2) { border-bottom: 1px solid var(--border-subtle); }
+    .gov-control:nth-child(3) { border-right: 1px solid var(--border-subtle); }
     .gov-num {
       display: block; font-size: 11px;
       color: var(--interactive); letter-spacing: 0.12em;
@@ -1344,6 +1351,36 @@
       z-index: 0;
     }
 
+    /* ── Hero rotating use-cases ──────────────────────────── */
+    .hero-usecases {
+      position: relative;
+      height: 22px;
+      overflow: hidden;
+      margin-bottom: var(--space-7);
+    }
+    .hero-usecase {
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 400ms ease, transform 400ms ease;
+    }
+    .hero-usecase::before {
+      content: '→ ';
+      color: var(--cta-primary);
+      opacity: 0.7;
+    }
+    .hero-usecase--active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* G7 — Announce bar (homepage) */
     .announce-homepage {
       background: var(--layer-01);
@@ -1469,21 +1506,29 @@
       <!-- Left: content -->
       <div class="mts-hero__inner">
         <div class="mts-hero__eyebrow">
-          <span class="mts-tag mts-tag--blue">Incentive-Based Urban Demand Management</span>
+          <span class="mts-tag mts-tag--blue">Built for Indian Government · Q2 2026 Pilot</span>
         </div>
 
         <h1 class="mts-hero__headline mts-hero__headline--xl">
-          Incentive-Based Urban Demand Management<br>
-          for <span class="headline-accent">Modern Cities.</span>
+          Cut urban congestion.<br>
+          Give cities <span class="headline-accent">full policy control.</span>
         </h1>
 
         <p class="mts-hero__subline">
-          A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.
+          MTSAi gives governments a live policy engine to reward better commuter behaviour — reducing peak congestion without enforcement, tolls, or surveillance.
         </p>
 
+        <!-- Rotating use-case strip -->
+        <div class="hero-usecases" aria-hidden="true">
+          <span class="hero-usecase hero-usecase--active">Configure corridor incentive rules</span>
+          <span class="hero-usecase">Set reward budgets per commuter segment</span>
+          <span class="hero-usecase">Monitor shift-to-off-peak in real time</span>
+          <span class="hero-usecase">Export full audit trail to CAG</span>
+        </div>
+
         <div class="mts-hero__ctas">
-          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Start Evaluation →</a>
-          <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">View Platform</a>
+          <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--lg">Request Government Briefing →</a>
+          <a href="technology_platform.html" class="mts-btn mts-btn--ghost mts-btn--lg">See the Platform</a>
         </div>
 
         <!-- 1.4 — Compliance trust strip below CTAs -->
@@ -2041,23 +2086,23 @@
       <div class="mts-container">
         <div class="mts-stat-row reveal">
           <div class="mts-stat-block">
-            <div class="mts-stat-block__val mts-stat-block__val--blue" data-counter data-target="2019" data-duration="1400">2019</div>
-            <div class="mts-stat-block__label">Est. Founded</div>
+            <div class="mts-stat-block__val mts-stat-block__val--green" data-counter data-target="40" data-suffix="%" data-duration="1200">40%</div>
+            <div class="mts-stat-block__label">Target peak-hour corridor shift</div>
           </div>
           <div class="mts-stat-row__divider" aria-hidden="true"></div>
           <div class="mts-stat-block">
-            <div class="mts-stat-block__val mts-stat-block__val--green" data-counter data-target="4" data-duration="900">4</div>
-            <div class="mts-stat-block__label">Global jurisdictions</div>
+            <div class="mts-stat-block__val mts-stat-block__val--saffron">₹1.2L Cr</div>
+            <div class="mts-stat-block__label">Annual congestion cost — top 10 Indian cities</div>
           </div>
           <div class="mts-stat-row__divider" aria-hidden="true"></div>
           <div class="mts-stat-block">
-            <div class="mts-stat-block__val mts-stat-block__val--blue" data-counter data-target="6" data-suffix="+" data-duration="1000">6+</div>
-            <div class="mts-stat-block__label">Platform modules</div>
+            <div class="mts-stat-block__val mts-stat-block__val--blue" data-counter data-target="100" data-suffix="%" data-duration="1000">100%</div>
+            <div class="mts-stat-block__label">Government control over pricing rules</div>
           </div>
           <div class="mts-stat-row__divider" aria-hidden="true"></div>
           <div class="mts-stat-block">
             <div class="mts-stat-block__val mts-stat-block__val--saffron">Q2 '26</div>
-            <div class="mts-stat-block__label">Pilot deployment target</div>
+            <div class="mts-stat-block__label">Government pilot deployment</div>
           </div>
         </div>
       </div>

@@ -828,11 +828,27 @@
   }
 
   /* ----------------------------------------------------------
+     Hero use-case rotator
+  ---------------------------------------------------------- */
+  function initHeroRotator() {
+    if (prefersReducedMotion) return;
+    var items = document.querySelectorAll('.hero-usecase');
+    if (!items.length) return;
+    var current = 0;
+    setInterval(function () {
+      items[current].classList.remove('hero-usecase--active');
+      current = (current + 1) % items.length;
+      items[current].classList.add('hero-usecase--active');
+    }, 2800);
+  }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
     initScrollProgress();
     initSmoothScroll();
+    initHeroRotator();
     initCounters();
     initScrollReveal();
     initMobileMenu();
