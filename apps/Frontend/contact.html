@@ -870,6 +870,27 @@
     }
     function goBack() { showStep(1); }
 
+    // ── Form backend ────────────────────────────────────────────
+    // Using Formspree (https://formspree.io) — free up to 50 submissions/month.
+    // SETUP: sign in at formspree.io → New Form → copy your endpoint URL below.
+    const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+
+    const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
+
+    function showSubmitError(btn, originalText) {
+      btn.classList.remove('mts-btn--loading');
+      btn.disabled = false;
+      btn.textContent = originalText;
+      const existing = document.getElementById('submit-error-msg');
+      if (!existing) {
+        const msg = document.createElement('p');
+        msg.id = 'submit-error-msg';
+        msg.style.cssText = 'color:#da1e28;font-size:13px;margin-top:12px;text-align:center;';
+        msg.textContent = 'Submission failed — please try again or email ssg@miracletraffic.ai directly.';
+        btn.parentNode.appendChild(msg);
+      }
+    }
+
     document.getElementById('main-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -884,6 +905,27 @@
       const laneFields = LANE_FIELDS[lane] || [];
       if (!validateFields(laneFields)) return;
 
+      // Collect form data
+      const name = document.getElementById('full-name').value;
+      const org  = document.getElementById('org-name').value;
+      const payload = {
+        _subject: '[MTSAi] ' + (summaryMap[lane] || 'Contact') + ' — ' + name + ', ' + org,
+        _replyto: document.getElementById('work-email').value,
+        lane:         lane === 'gov' ? 'Government' : lane === 'sp' ? 'Strategic Partner' : 'Public Integrity',
+        name:         name,
+        organization: org,
+        email:        document.getElementById('work-email').value,
+        role:         (document.getElementById('role-title') || {}).value || '',
+        objective:    (document.getElementById('objective') || {}).value || '',
+      };
+      if (lane === 'sp') {
+        payload.sp_territory   = (document.getElementById('sp-territory') || {}).value || '';
+        payload.sp_experience  = (document.getElementById('sp-exp') || {}).value || '';
+      }
+      if (lane === 'integrity') {
+        payload.concern_detail = (document.getElementById('concern-detail') || {}).value || '';
+      }
+
       // Loading state
       const btnSub = document.getElementById('btn-submit');
       const originalText = btnSub.textContent;
@@ -891,22 +933,27 @@
       btnSub.disabled = true;
       btnSub.textContent = 'Submitting…';
 
-      // Simulate async submission (replace with real fetch when backend is ready)
-      setTimeout(() => {
-        btnSub.classList.remove('mts-btn--loading');
-        btnSub.disabled = false;
-        btnSub.textContent = originalText;
-
-        const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
-        document.getElementById('receipt-id').textContent = id;
-        document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
-        const name = document.getElementById('full-name').value;
-        const org = document.getElementById('org-name').value;
-        const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
-        document.getElementById('receipt-summary').textContent = `${summaryMap[lane] || 'Request'} — ${name}, ${org}`;
-        document.getElementById('form-section').classList.add('hidden');
-        document.getElementById('success-section').classList.remove('hidden');
-      }, 1200);
+      // Submit to Formspree
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          btnSub.classList.remove('mts-btn--loading');
+          const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
+          document.getElementById('receipt-id').textContent = id;
+          document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+          document.getElementById('receipt-summary').textContent = (summaryMap[lane] || 'Request') + ' — ' + name + ', ' + org;
+          document.getElementById('form-section').classList.add('hidden');
+          document.getElementById('success-section').classList.remove('hidden');
+        } else {
+          showSubmitError(btnSub, originalText);
+        }
+      })
+      .catch(function() { showSubmitError(btnSub, originalText); });
     });
     function downloadReceipt() {
       const id = document.getElementById('receipt-id').textContent;
