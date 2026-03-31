@@ -823,24 +823,8 @@
      Disabled automatically when prefers-reduced-motion is set.
   ---------------------------------------------------------- */
   function initSmoothScroll() {
-    if (prefersReducedMotion) return;
-    var script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
-    script.async = true;
-    script.onload = function () {
-      var lenis = new Lenis({
-        duration: 0.8,
-        easing: function (t) { return 1 - Math.pow(1 - t, 3); },
-        smooth: true,
-        smoothTouch: false,
-        touchMultiplier: 1.5,
-        wheelMultiplier: 1.0,
-      });
-      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
-      window.__lenis = lenis;
-    };
-    document.head.appendChild(script);
+    // Native scroll only — Lenis removed (caused unnatural scroll pause).
+    // Anchor-link smooth scrolling handled by CSS scroll-behavior: smooth.
   }
 
   /* ----------------------------------------------------------
