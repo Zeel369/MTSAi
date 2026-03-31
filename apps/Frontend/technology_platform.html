@@ -269,10 +269,40 @@
     .delay-3.reveal { transition-delay: 240ms; }
 
     /* RESPONSIVE */
-    @media (min-width: 1025px) {
- .two-col, .engine-grid, .flow-steps, .privacy-matrix { grid-template-columns: 1fr; } .arch-stats { gap: var(--space-5); } }
-    @media (min-width: 769px) {
- .mts-nav__links,     .cta-actions { flex-direction: column; } .deploy-banner { flex-direction: column; } }
+    @media (max-width: 1024px) {
+      .engine-grid, .flow-steps { grid-template-columns: 1fr; }
+      .privacy-matrix { grid-template-columns: 1fr; }
+      .arch-stats { gap: var(--space-5); }
+    }
+    @media (max-width: 768px) {
+      .cta-actions { flex-direction: column; }
+      .deploy-banner { flex-direction: column; }
+    }
+
+    /* 3.1 — Hero headline */
+    .mts-hero__headline { font-size: clamp(38px, 4.8vw, 64px); font-weight: 300; }
+    .headline-accent { font-weight: 700; color: var(--cta-primary); }
+    .mts-hero__subline { font-size: clamp(16px, 1.4vw, 20px); font-weight: 300; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.7; margin-top: var(--space-5); margin-bottom: var(--space-7); }
+
+    /* 3.3 — Engine grid: top border accent per engine */
+    .engine-cell:nth-child(1) { border-top: 3px solid var(--interactive); }
+    .engine-cell:nth-child(2) { border-top: 3px solid var(--brand-primary); }
+    .engine-cell:nth-child(3) { border-top: 3px solid var(--cta-primary); }
+
+    /* 3.5 — CTA saffron framing */
+    .mts-section-cta { border-top: 1px solid var(--cta-primary); border-bottom: 1px solid var(--cta-primary); }
+    .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
+
+    /* 3.5 — Pre-CTA announce strip */
+    .tech-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .tech-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* G6 — Footer disclaimer */
+    .mts-footer__disclaimer { font-size: 11px; color: var(--text-disabled); line-height: 1.6; max-width: 760px; }
+
+    /* G7 — Announce bar */
+    .announce-tech { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .announce-tech a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -334,6 +364,12 @@
 <body>
   <div id="scroll-progress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="mts-announce-bar mts-announce-bar--dark announce-tech" role="status" aria-live="polite">
+    <span class="mts-announce-bar__badge">PLATFORM</span>
+    Architecture documentation available for government evaluation — <a href="contact.html?intent=government">Request access →</a>
+  </div>
 
   <!-- NAV -->
   <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
@@ -791,6 +827,11 @@
         </div>
       </div>
     </section>
+
+    <!-- PRE-CTA ANNOUNCE STRIP -->
+    <div class="tech-pre-cta-announce" role="status">
+      Platform architecture documentation is available under NDA for qualified government evaluation teams. — <a href="contact.html?intent=government">Request documentation →</a>
+    </div>
 
     <!-- CTA -->
     <section class="mts-section-cta" aria-label="Call to action">
