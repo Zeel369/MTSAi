@@ -8130,6 +8130,46 @@ button:focus-visible {
   }
 }
 
+/* ── Button micro-interactions ─────────────────────────────── */
+
+/* Extend base transition to include border-radius for morph */
+.mts-btn {
+  transition: color var(--duration-fast-02) var(--ease-standard),
+    background-color var(--duration-fast-02) var(--ease-standard),
+    border-color var(--duration-fast-02) var(--ease-standard),
+    transform 150ms var(--ease-smooth),
+    box-shadow var(--duration-fast-02) var(--ease-standard),
+    border-radius 220ms var(--ease-smooth);
+}
+
+/* Radius morph on hover: 4px → 10px (professional, not full-pill) */
+.mts-btn--primary:hover,
+.mts-btn--ghost:hover {
+  border-radius: 10px;
+}
+
+/* Tactile press feedback */
+.mts-btn:active                { transform: scale(0.97); }
+.mts-btn--primary:active       { transform: scale(0.97) translateY(0); }
+.mts-btn--ghost:active         { transform: scale(0.97) translateY(0); }
+
+/* Ghost fill sweep from left */
+.mts-btn--ghost { isolation: isolate; }
+.mts-btn--ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--btn-ghost-hover-bg);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--ease-smooth);
+  z-index: -1;
+  pointer-events: none;
+}
+.mts-btn--ghost:hover::before { transform: scaleX(1); }
+/* Keep background transparent so only the sweep is visible */
+.mts-btn--ghost:hover { background-color: transparent; }
+
 /* ── Reduced motion — master guard ───────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
