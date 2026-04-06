@@ -25,9 +25,9 @@
   /* Utility / UI */
   --type-label-01:    0.75rem;    /* 12px — labels, captions */
   --type-label-02:    0.875rem;   /* 14px — helper text, small UI */
-  --type-body-01:     0.875rem;   /* 14px — compact body */
+  --type-body-01:     0.9375rem;  /* 15px — compact body (GIGW floor) */
   --type-body-02:     1rem;       /* 16px — standard body */
-  --type-body-compact-01: 0.875rem;
+  --type-body-compact-01: 0.9375rem;
   --type-body-compact-02: 1rem;
 
   /* Headings */
