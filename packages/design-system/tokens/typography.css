@@ -1,18 +1,18 @@
 /* ============================================================
-   MTSAi × IBM Carbon — Typography Tokens
-   Display/Heading: Space Grotesk (MTSAi brand)
-   Body/UI: IBM Plex Sans (Carbon base)
+   MTSAi Typography Tokens
+   Display/Heading: Lexend (enterprise, accessible, government-grade)
+   Body/UI: Source Sans 3 (warm, readable, public-sector proven)
    Mono: JetBrains Mono (code, IDs, data)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* --- Font Families --- */
-  --font-display:  'Space Grotesk', 'IBM Plex Sans', sans-serif;
-  --font-body:     'IBM Plex Sans', system-ui, sans-serif;
-  --font-ui:       'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono:     'JetBrains Mono', 'IBM Plex Mono', monospace;
+  --font-display:  'Lexend', system-ui, sans-serif;
+  --font-body:     'Source Sans 3', system-ui, sans-serif;
+  --font-ui:       'Source Sans 3', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
 
   /* --- Font Weights --- */
   --weight-light:    300;

@@ -1,5 +1,5 @@
 /* MTSAi Design System Bundle — 59 files concatenated */
-/* Generated: 2026-03-31 */
+/* Generated: 2026-04-06 */
 
 /* ── assets/design-system/tokens/colors.css ─────────────────────────────── */
 /* ============================================================
@@ -298,10 +298,12 @@
   --brand-subtle:    rgba(83, 170, 0, 0.08);
   --brand-border:    rgba(83, 170, 0, 0.3);
 
-  /* CTA */
-  --cta-primary:  var(--saffron-60);
-  --cta-hover:    var(--saffron-70);
+  /* CTA — cobalt blue for govtech authority */
+  --cta-primary:  #1D4ED8;
+  --cta-hover:    #1E40AF;
   --cta-text:     #FFFFFF;
+  /* India identity accent — saffron reserved for cultural/regional callouts */
+  --accent-india: var(--saffron-50);
 
   /* Borders */
   --border-subtle:      #E0E0E0;
@@ -328,9 +330,9 @@
   --input-helper:       #6F6F6F;
 
   /* Buttons */
-  --btn-primary-bg:      var(--saffron-60);
+  --btn-primary-bg:      #1D4ED8;
   --btn-primary-text:    #FFFFFF;
-  --btn-primary-hover:   var(--saffron-70);
+  --btn-primary-hover:   #1E40AF;
   --btn-secondary-bg:    var(--blue-60);
   --btn-secondary-text:  #FFFFFF;
   --btn-secondary-hover: var(--blue-70);
@@ -926,18 +928,20 @@
 
 /* ── assets/design-system/tokens/typography.css ─────────────────────────────── */
 /* ============================================================
-   MTSAi × IBM Carbon — Typography Tokens
-   Display/Heading: Space Grotesk (MTSAi brand)
-   Body/UI: IBM Plex Sans (Carbon base)
+   MTSAi Typography Tokens
+   Display/Heading: Lexend (enterprise, accessible, government-grade)
+   Body/UI: Source Sans 3 (warm, readable, public-sector proven)
    Mono: JetBrains Mono (code, IDs, data)
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 :root {
   /* --- Font Families --- */
-  --font-display:  'Space Grotesk', 'IBM Plex Sans', sans-serif;
-  --font-body:     'IBM Plex Sans', system-ui, sans-serif;
-  --font-ui:       'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono:     'JetBrains Mono', 'IBM Plex Mono', monospace;
+  --font-display:  'Lexend', system-ui, sans-serif;
+  --font-body:     'Source Sans 3', system-ui, sans-serif;
+  --font-ui:       'Source Sans 3', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
 
   /* --- Font Weights --- */
   --weight-light:    300;
@@ -1003,7 +1007,7 @@ body {
   color: var(--text-primary);
 }
 
-/* Display headings use Space Grotesk */
+/* Display headings use Lexend */
 h1, h2, h3, .display, .heading {
   font-family: var(--font-display);
   line-height: var(--lh-tight);
@@ -8128,46 +8132,6 @@ button:focus-visible {
   }
 }
 
-/* ── Button micro-interactions ─────────────────────────────── */
-
-/* Extend base transition to include border-radius for morph */
-.mts-btn {
-  transition: color var(--duration-fast-02) var(--ease-standard),
-    background-color var(--duration-fast-02) var(--ease-standard),
-    border-color var(--duration-fast-02) var(--ease-standard),
-    transform 150ms var(--ease-smooth),
-    box-shadow var(--duration-fast-02) var(--ease-standard),
-    border-radius 220ms var(--ease-smooth);
-}
-
-/* Radius morph on hover: 4px → 10px (professional, not full-pill) */
-.mts-btn--primary:hover,
-.mts-btn--ghost:hover {
-  border-radius: 10px;
-}
-
-/* Tactile press feedback */
-.mts-btn:active                { transform: scale(0.97); }
-.mts-btn--primary:active       { transform: scale(0.97) translateY(0); }
-.mts-btn--ghost:active         { transform: scale(0.97) translateY(0); }
-
-/* Ghost fill sweep from left */
-.mts-btn--ghost { isolation: isolate; }
-.mts-btn--ghost::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--btn-ghost-hover-bg);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 260ms var(--ease-smooth);
-  z-index: -1;
-  pointer-events: none;
-}
-.mts-btn--ghost:hover::before { transform: scaleX(1); }
-/* Keep background transparent so only the sweep is visible */
-.mts-btn--ghost:hover { background-color: transparent; }
-
 /* ── Reduced motion — master guard ───────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -8344,11 +8308,11 @@ button:focus-visible {
 /* Ghost button always white on dark hero bg */
 .mts-hero .mts-btn--ghost {
   color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 .mts-hero .mts-btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.65);
   color: #FFFFFF;
 }
 
@@ -9139,96 +9103,9 @@ button:focus-visible {
 
 .mts-footer {
   background: #000C2E;
-  padding: 0 0 0;
-  border-top: 3px solid var(--accent-saffron, #FF9933);
+  padding: clamp(60px, 8vw, 96px) 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
-
-/* ── Footer banner — large typographic headline + contact CTA ── */
-.mts-footer__banner {
-  padding: clamp(56px, 7vw, 88px) 0 clamp(48px, 6vw, 72px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-7);
-  align-items: flex-start;
-}
-
-.mts-footer__banner-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-saffron, #FF9933);
-  opacity: 0.80;
-}
-
-.mts-footer__banner-headline {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5.5vw, 72px);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.92);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0;
-}
-
-.mts-footer__banner-headline strong {
-  font-weight: 700;
-  color: #fff;
-}
-
-.mts-footer__banner-contact {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-
-.mts-footer__banner-email {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  padding-bottom: 2px;
-  transition: color 200ms, border-color 200ms;
-}
-.mts-footer__banner-email:hover {
-  color: rgba(255, 255, 255, 0.88);
-  border-bottom-color: rgba(255, 255, 255, 0.40);
-}
-
-@media (min-width: 769px) {
-  .mts-footer__banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .mts-footer__banner > :first-child,
-  .mts-footer__banner > :nth-child(2) { flex: 0 0 auto; }
-}
-
-/* ── Col headings — better contrast on dark bg ───────────────── */
-.mts-footer__col-heading {
-  color: #8D8D8D;  /* upgraded from #525252 */
-}
-
-/* ── Col links — underline animation on hover ────────────────── */
-.mts-footer__col a {
-  position: relative;
-  padding-bottom: 1px;
-}
-.mts-footer__col a::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: rgba(255, 255, 255, 0.35);
-  transition: width 200ms var(--ease-smooth, cubic-bezier(0.4,0,0.2,1));
-}
-.mts-footer__col a:hover::after { width: 100%; }
 
 /* ── Top: brand + nav grid — stacked on mobile, side-by-side on desktop ── */
 .mts-footer__top {

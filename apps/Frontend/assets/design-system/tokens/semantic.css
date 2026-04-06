@@ -204,10 +204,12 @@
   --brand-subtle:    rgba(83, 170, 0, 0.08);
   --brand-border:    rgba(83, 170, 0, 0.3);
 
-  /* CTA */
-  --cta-primary:  var(--saffron-60);
-  --cta-hover:    var(--saffron-70);
+  /* CTA — cobalt blue for govtech authority */
+  --cta-primary:  #1D4ED8;
+  --cta-hover:    #1E40AF;
   --cta-text:     #FFFFFF;
+  /* India identity accent — saffron reserved for cultural/regional callouts */
+  --accent-india: var(--saffron-50);
 
   /* Borders */
   --border-subtle:      #E0E0E0;
@@ -234,9 +236,9 @@
   --input-helper:       #6F6F6F;
 
   /* Buttons */
-  --btn-primary-bg:      var(--saffron-60);
+  --btn-primary-bg:      #1D4ED8;
   --btn-primary-text:    #FFFFFF;
-  --btn-primary-hover:   var(--saffron-70);
+  --btn-primary-hover:   #1E40AF;
   --btn-secondary-bg:    var(--blue-60);
   --btn-secondary-text:  #FFFFFF;
   --btn-secondary-hover: var(--blue-70);
