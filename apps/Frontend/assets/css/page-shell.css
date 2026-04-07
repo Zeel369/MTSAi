@@ -220,3 +220,67 @@ body {
     transition: none;
   }
 }
+
+/* ============================================================
+   Hero media slot (shared)
+   - Works with existing .mts-hero variants in bundle.css
+   - Adds an optional right-side visual for standard heroes
+   - Adds an optional visual block for article heroes
+   ============================================================ */
+
+.mts-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-9);
+  align-items: center;
+}
+
+@media (min-width: 901px) {
+  .mts-hero__layout {
+    grid-template-columns: minmax(320px, 1fr) minmax(320px, 520px);
+    gap: var(--space-12);
+  }
+}
+
+.mts-hero__copy {
+  min-width: 0;
+}
+
+.mts-hero__media {
+  min-width: 0;
+}
+
+.mts-hero__media-frame {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.30);
+  overflow: hidden;
+}
+
+.mts-hero__media-frame img,
+.mts-hero__media-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mts-hero__media-caption {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Article heroes: allow an optional visual block inside the meta column */
+.mts-hero__article-media {
+  margin-bottom: var(--space-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-hero__media-frame {
+    box-shadow: none;
+  }
+}
