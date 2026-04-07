@@ -308,6 +308,29 @@
     /* G7 — Announce bar */
     .announce-government { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-government a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* ── Kinetic hero entrance ──────────────────────────── */
+    .breadcrumb          { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.0s  both; }
+    .mts-hero__eyebrow   { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .mts-hero__headline  { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .mts-hero__subline   { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    .mts-hero__callout   { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.50s both; }
+    .mts-hero__ctas      { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.62s both; }
+    .mts-hero__stats     { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.76s both; }
+    .mts-hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,40,120,0.018) 3px, rgba(0,40,120,0.018) 4px);
+    }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .breadcrumb, .mts-hero__eyebrow, .mts-hero__headline, .mts-hero__subline,
+      .mts-hero__callout, .mts-hero__ctas, .mts-hero__stats { animation: none; }
+      .mts-hero::after { display: none; }
+    }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -414,7 +437,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Government path introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.52) 0%, rgba(0,7,32,0.62) 55%, rgba(0,4,15,0.72) 100%), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Government path introduction">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
@@ -423,7 +446,7 @@
             <span>Government</span>
           </nav>
 <div class="mts-hero__eyebrow">
-          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Government Policy Path</span>
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-ui);font-size:11px;">Government Policy Path</span>
         </div>
         <h1 class="mts-hero__headline">
           A Policy Platform for Managing<br>
@@ -491,7 +514,7 @@
         </div>
 
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">01 // Governance</span>
+          <span class="mts-section__eyebrow">Governance</span>
           <h2 class="mts-section__h2 reveal">Government Control Framework</h2>
         </div>
 
@@ -554,7 +577,7 @@
     <section class="mts-section mts-section--white reveal-group" aria-label="Transparency and Auditability">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">02 // Auditability</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">Auditability</span>
           <h2 class="mts-section__h2 reveal">Transparency and Auditability</h2>
           <p class="mts-section__body reveal">This auditability posture is intended to support government accountability, procurement review, and the ability to explain programme operation in public-sector terms.</p>
         </div>
@@ -603,7 +626,7 @@
     <section class="mts-section mts-section--tight reveal-group" aria-label="Privacy Safeguards">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">03 // Privacy</span>
+          <span class="mts-section__eyebrow">Privacy</span>
           <h2 class="mts-section__h2 reveal">Privacy Safeguards</h2>
         </div>
         <div class="mts-two-col">
@@ -640,7 +663,7 @@
     <section class="mts-section mts-section--alt mts-section--tight reveal-group" aria-label="Enforcement Integration">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">04 // Operations</span>
+          <span class="mts-section__eyebrow">Operations</span>
           <h2 class="mts-section__h2 reveal">Enforcement Integration</h2>
         </div>
         <div class="mts-stepper reveal delay-2">
@@ -684,7 +707,7 @@
     <section class="mts-section reveal-group" aria-label="Phased Implementation">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Delivery Model</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">Delivery Model</span>
           <h2 class="mts-section__h2 reveal">Phased Implementation</h2>
         </div>
         <div class="mts-two-col">

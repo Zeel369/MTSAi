@@ -150,7 +150,7 @@
     .nav-dropdown__group-label {
       display: block;
       padding: var(--space-4) var(--space-5) var(--space-2);
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -379,7 +379,7 @@
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--interactive);
       margin-bottom: var(--space-5);
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
     }
     .proposition-inner { grid-template-columns: 1fr; }
     .proposition-pillars { max-width: 480px; }
@@ -779,7 +779,7 @@
       display: flex; gap: var(--space-6);
       white-space: nowrap;
       animation: marquee 28s linear infinite;
-      font-family: var(--font-mono); font-size: 12px;
+      font-family: var(--font-ui); font-size: 12px;
       color: var(--text-secondary); letter-spacing: 0.05em;
     }
     .marquee-content:hover { animation-play-state: paused; }
@@ -1375,7 +1375,7 @@
     }
     .audience-eyebrow {
       text-align: center;
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--interactive); margin-bottom: var(--space-4);
@@ -1409,7 +1409,7 @@
       transform: translateY(-2px);
     }
     .audience-card__role {
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--interactive);
@@ -1444,7 +1444,7 @@
     }
     .trust-badges-eyebrow {
       text-align: center;
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--text-secondary); margin-bottom: var(--space-4);
@@ -1478,7 +1478,7 @@
     }
     .trust-badge__icon svg { width: 18px; height: 18px; color: var(--interactive); }
     .trust-badge__label {
-      font-family: var(--font-mono);
+      font-family: var(--font-ui);
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--interactive);
@@ -1494,6 +1494,194 @@
     .trust-badge--green .trust-badge__icon { background: rgba(83,170,0,0.08); }
     .trust-badge--green .trust-badge__icon svg { color: var(--brand-primary); }
     .trust-badge--green .trust-badge__label { color: var(--brand-primary); }
+
+    /* ====================================================
+       KINETIC HERO — staggered entrance
+    ==================================================== */
+    .mts-hero__eyebrow  { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
+    .mts-hero__headline { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .mts-hero__subline  { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.42s both; }
+    .mts-hero__ctas     { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.60s both; }
+    .trust-strip--hero  { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.76s both; }
+    .mts-hero__visual   { animation: panel-in  0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both; }
+
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Hero scanline CRT overlay */
+    .mts-hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 40, 120, 0.018) 3px,
+        rgba(0, 40, 120, 0.018) 4px
+      );
+    }
+
+    /* Subtle hero background pulse */
+    @keyframes hero-bg-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.92; }
+    }
+    .mts-hero::before { animation: hero-bg-pulse 8s ease-in-out infinite; }
+
+    /* ====================================================
+       LIVE EVENT FEED — hero panel
+    ==================================================== */
+    .hero-event-feed {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden; height: 80px;
+      position: relative;
+      background: rgba(0,4,16,0.40);
+    }
+    .hero-event-feed__label {
+      position: absolute; top: 8px; right: 10px; z-index: 2;
+      font-family: var(--font-ui);
+      font-size: 8px; font-weight: 700; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.25); text-transform: uppercase;
+    }
+    .hero-event-feed__wrap {
+      overflow: hidden; height: 100%;
+      -webkit-mask-image: linear-gradient(transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+    .hero-event-feed__ticker {
+      display: flex; flex-direction: column;
+      animation: feed-scroll 14s linear infinite;
+    }
+    @keyframes feed-scroll {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .event-row {
+      padding: 6px 12px;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.04em; white-space: nowrap;
+      color: rgba(255,255,255,0.40);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .event-row::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.20); flex-shrink: 0;
+    }
+    .event-row--green { color: rgba(111,220,140,0.65); }
+    .event-row--green::before { background: rgba(83,170,0,0.7); }
+    .event-row--blue  { color: rgba(130,170,255,0.65); }
+    .event-row--blue::before  { background: rgba(0,82,204,0.8); }
+    .event-row--red   { color: rgba(255,120,120,0.60); }
+    .event-row--red::before   { background: rgba(218,30,40,0.7); }
+    .event-row--saffron { color: rgba(255,185,90,0.65); }
+    .event-row--saffron::before { background: rgba(255,153,51,0.7); }
+
+    /* ====================================================
+       FLOATING SCHEDULE DEMO CTA
+    ==================================================== */
+    .floating-cta-chip {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      display: flex; align-items: center; gap: 4px;
+      opacity: 0; transform: translateY(14px) scale(0.97);
+      transition: opacity 380ms cubic-bezier(0.22,1,0.36,1),
+                  transform 380ms cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+    }
+    .floating-cta-chip.visible {
+      opacity: 1; transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .floating-cta-chip__btn {
+      display: flex; align-items: center; gap: 10px;
+      background: #000C2E;
+      border: 1px solid rgba(15,98,254,0.55);
+      color: #fff;
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 12px 20px; border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), 0 0 0 1px rgba(15,98,254,0.20);
+      transition: border-color 200ms, box-shadow 200ms, transform 150ms;
+      cursor: pointer;
+    }
+    .floating-cta-chip__btn:hover {
+      border-color: rgba(15,98,254,0.85);
+      box-shadow: 0 6px 32px rgba(15,98,254,0.20), 0 0 0 1px rgba(15,98,254,0.40);
+      transform: translateY(-1px);
+    }
+    .floating-cta-chip__close {
+      background: none; border: none; color: rgba(255,255,255,0.4);
+      font-size: 16px; cursor: pointer; padding: 0 0 0 4px; line-height: 1;
+    }
+    .floating-cta-chip__close:hover { color: rgba(255,255,255,0.75); }
+    .floating-cta-chip__pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--brand-primary);
+      position: relative; flex-shrink: 0;
+    }
+    .floating-cta-chip__pulse::after {
+      content: ''; position: absolute; inset: -3px; border-radius: 50%;
+      border: 1px solid var(--brand-primary);
+      animation: pulse-ring 1.8s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* ====================================================
+       ENHANCED SECTION REVEALS
+    ==================================================== */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 700ms var(--ease-smooth), transform 700ms var(--ease-smooth);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1.reveal { transition-delay: 100ms; }
+    .delay-2.reveal { transition-delay: 200ms; }
+    .delay-3.reveal { transition-delay: 300ms; }
+    /* auto-stagger within reveal-group */
+    .reveal-group .reveal:nth-child(1)  { transition-delay:  0ms; }
+    .reveal-group .reveal:nth-child(2)  { transition-delay:  80ms; }
+    .reveal-group .reveal:nth-child(3)  { transition-delay: 160ms; }
+    .reveal-group .reveal:nth-child(4)  { transition-delay: 240ms; }
+    .reveal-group .reveal:nth-child(5)  { transition-delay: 320ms; }
+    .reveal-group .reveal:nth-child(6)  { transition-delay: 400ms; }
+
+    /* Card hover glow: audience cards */
+    .audience-card {
+      transition: border-top-color 220ms, box-shadow 220ms, transform 220ms;
+    }
+    .audience-card:hover {
+      box-shadow: 0 6px 32px rgba(15,98,254,0.12), 0 0 0 1px rgba(15,98,254,0.10);
+    }
+
+    /* Hero panel metrics animate */
+    .mts-hero__panel-metric-val {
+      animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 1.0s both;
+    }
+
+    /* numbers-grid — glow on visible */
+    .number-item.visible {
+      box-shadow: inset 0 0 40px rgba(15,98,254,0.04);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mts-hero__eyebrow, .mts-hero__headline, .mts-hero__subline,
+      .mts-hero__ctas, .trust-strip--hero, .mts-hero__visual,
+      .mts-hero__panel-metric-val { animation: none; }
+      .mts-hero::before { animation: none; }
+      .mts-hero::after { display: none; }
+      .hero-event-feed__ticker { animation: none; }
+      .floating-cta-chip__pulse::after { animation: none; }
+    }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -1601,7 +1789,7 @@
     <!-- =============================================
          HERO — IBM Deep Blue, two-column
     ============================================= -->
-    <section class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.62) 0%, rgba(0,7,32,0.70) 50%, rgba(0,4,15,0.85) 100%), url('https://images.unsplash.com/photo-1573108724029-4c46571d6490?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <section class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
 
@@ -1762,6 +1950,31 @@
               <rect x="168" y="120" width="64" height="18" rx="2" fill="rgba(83,170,0,0.80)"/>
               <text x="200" y="133" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">CLEAR · 23%</text>
 
+              <!-- ── Animated vehicles (animateMotion) ── -->
+              <!-- Vehicle A: eastbound on congested corridor (y=112) — red -->
+              <circle r="3.5" fill="rgba(218,30,40,0.95)">
+                <animateMotion path="M-6 112 L490 112" dur="4.2s" repeatCount="indefinite" begin="0s"/>
+              </circle>
+              <!-- Vehicle B: westbound on green corridor (y=168) — green -->
+              <circle r="3" fill="rgba(83,170,0,0.95)">
+                <animateMotion path="M490 168 L-6 168" dur="5.5s" repeatCount="indefinite" begin="-1.8s"/>
+              </circle>
+              <!-- Vehicle C: southbound on IUDM managed column (x=240) — blue -->
+              <circle r="2.5" fill="rgba(0,82,204,0.90)">
+                <animateMotion path="M240 -6 L240 286" dur="6.0s" repeatCount="indefinite" begin="-3.0s"/>
+              </circle>
+              <!-- Vehicle D: northbound on green column (x=160) — green -->
+              <circle r="2.5" fill="rgba(83,170,0,0.80)">
+                <animateMotion path="M160 286 L160 -6" dur="7.2s" repeatCount="indefinite" begin="-5.0s"/>
+              </circle>
+              <!-- Vehicle E: second eastbound (y=56) — dim white -->
+              <circle r="2" fill="rgba(255,255,255,0.45)">
+                <animateMotion path="M-6 56 L490 56" dur="8.5s" repeatCount="indefinite" begin="-4.2s"/>
+              </circle>
+              <!-- Vehicle F: second westbound (y=112) — offset -->
+              <circle r="3" fill="rgba(218,30,40,0.70)">
+                <animateMotion path="M490 112 L-6 112" dur="5.0s" repeatCount="indefinite" begin="-2.5s"/>
+              </circle>
 
             </svg>
           </div>
@@ -1781,6 +1994,33 @@
               <span class="mts-hero__panel-metric-label">Policy compliance</span>
             </div>
           </div>
+
+          <!-- Live event feed -->
+          <div class="hero-event-feed" aria-hidden="true">
+            <span class="hero-event-feed__label">EVENT LOG</span>
+            <div class="hero-event-feed__wrap">
+              <div class="hero-event-feed__ticker">
+                <div class="event-row event-row--green">KA-05-HG-4892 · incentive claimed · ₹12 · off-peak route B2→B1</div>
+                <div class="event-row event-row--blue">Zone CBD-03 · IUDM policy updated · demand threshold 85%</div>
+                <div class="event-row event-row--red">Corridor NH-48 · demand spike detected · rerouting active</div>
+                <div class="event-row event-row--green">MH-02-CA-1234 · peak window avoided · UPI settlement queued</div>
+                <div class="event-row event-row--blue">Policy audit triggered · CAG rule engine · status: compliant</div>
+                <div class="event-row">DL-01-AB-5678 · FASTag scan · Zone B2 · incentive eligible ₹8</div>
+                <div class="event-row event-row--saffron">Equity exemption applied · Essential worker · Vehicle TN-09-XX-2231</div>
+                <div class="event-row event-row--green">Congestion index Zone A3 · 94% → 67% · incentive active 14 min</div>
+                <!-- duplicate for seamless loop -->
+                <div class="event-row event-row--green">KA-05-HG-4892 · incentive claimed · ₹12 · off-peak route B2→B1</div>
+                <div class="event-row event-row--blue">Zone CBD-03 · IUDM policy updated · demand threshold 85%</div>
+                <div class="event-row event-row--red">Corridor NH-48 · demand spike detected · rerouting active</div>
+                <div class="event-row event-row--green">MH-02-CA-1234 · peak window avoided · UPI settlement queued</div>
+                <div class="event-row event-row--blue">Policy audit triggered · CAG rule engine · status: compliant</div>
+                <div class="event-row">DL-01-AB-5678 · FASTag scan · Zone B2 · incentive eligible ₹8</div>
+                <div class="event-row event-row--saffron">Equity exemption applied · Essential worker · Vehicle TN-09-XX-2231</div>
+                <div class="event-row event-row--green">Congestion index Zone A3 · 94% → 67% · incentive active 14 min</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1947,7 +2187,7 @@
         <div class="proposition-inner reveal">
           <div>
             <div class="proposition-label">
-              <span class="mts-section__eyebrow" style="color:var(--interactive);">01 // Platform Philosophy</span>
+              <span class="mts-section__eyebrow" style="color:var(--interactive);">Our Approach</span>
             </div>
             <blockquote class="proposition-statement">
               "Cities don't need another penalty-based toll system. They need a platform that makes the right commuting choice feel like the obvious one."
@@ -1993,7 +2233,7 @@
     <section class="mts-section reveal-group" aria-label="The congestion problem">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">02 // Public Problem</span>
+          <span class="mts-section__eyebrow">The Challenge</span>
           <h2 class="mts-section__h2 reveal">02. The Urban Congestion Problem</h2>
         </div>
 
@@ -2068,7 +2308,7 @@
     <section class="section-iudm reveal-group" aria-label="The IUDM Model">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">03 // Core Differentiator</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">What Sets Us Apart</span>
           <h2 class="mts-section__h2 reveal">03. The IUDM Model</h2>
         </div>
 
@@ -2130,7 +2370,7 @@
 
         <div class="arch-layout">
           <div class="arch-intro reveal">
-            <span class="mts-section__eyebrow">04 // System Credibility</span>
+            <span class="mts-section__eyebrow">Proven at Scale</span>
             <h2 class="mts-section__h2">04. Platform Architecture Overview</h2>
             <p class="mts-section__body">The platform architecture enables cities to configure incentive programs and policy logic through a structured operational system rather than a standalone consumer app.</p>
             <div class="arch-stats">
@@ -2173,7 +2413,7 @@
     ============================================= -->
     <section class="section-privacy reveal-group" aria-label="Privacy by Design">
       <div class="mts-container">
-        <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Trust Foundation</span>
+        <span class="mts-section__eyebrow mts-section__eyebrow--green">Compliance & Trust</span>
         <h2 class="mts-section__h2 reveal">05. Privacy by Design</h2>
         <p class="mts-section__body reveal">MTSAi is designed to minimize collection while preserving policy visibility and operational auditability.</p>
 
@@ -2250,7 +2490,7 @@
     ============================================= -->
     <section class="section-gov reveal-group" aria-label="Government Control">
       <div class="mts-container">
-        <span class="mts-section__eyebrow">07 // Policy Governance</span>
+        <span class="mts-section__eyebrow">Policy Governance</span>
         <h2 class="mts-section__h2 reveal">07. Government Control</h2>
         <div class="gov-controls reveal delay-2">
           <div class="gov-control">
@@ -2286,7 +2526,7 @@
     ============================================= -->
     <section class="section-roadmap reveal-group" aria-label="Platform Roadmap">
       <div class="mts-container">
-        <span class="mts-section__eyebrow">08 // Phased Implementation</span>
+        <span class="mts-section__eyebrow">Implementation Roadmap</span>
         <h2 class="mts-section__h2 reveal">08. Platform Development Roadmap</h2>
         <p class="mts-section__body reveal">The platform development model is phased to reduce implementation risk.</p>
 
@@ -2359,7 +2599,7 @@
     ============================================= -->
     <section class="section-ecosystem reveal-group" aria-label="Super App Ecosystem">
       <div class="mts-container">
-        <span class="mts-section__eyebrow mts-section__eyebrow--saffron">06 // India Deployment Strategy</span>
+        <span class="mts-section__eyebrow mts-section__eyebrow--saffron">India Deployment</span>
         <h2 class="mts-section__h2 reveal">06. Super App Ecosystem</h2>
         <p class="mts-section__body reveal">Incentives are delivered through partner platforms where commuters already transact. This integration model reduces adoption friction by using digital channels that are already part of daily mobility and payment behavior.</p>
 
@@ -2495,23 +2735,23 @@
           <div class="mts-cta-checklist" aria-label="Platform highlights">
             <div class="mts-cta-checklist-header">What you get</div>
             <div class="mts-cta-item">
-              <span class="mts-cta-item__icon">●</span>
+              <span class="mts-cta-item__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div><strong>Government-Controlled Policy Layer</strong><span>Every congestion rule, tariff, and exemption set by your authority — not our algorithms</span></div>
             </div>
             <div class="mts-cta-item">
-              <span class="mts-cta-item__icon">●</span>
+              <span class="mts-cta-item__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div><strong>Multi-Modal ANPR Integration</strong><span>Works with existing camera networks across all vehicle categories</span></div>
             </div>
             <div class="mts-cta-item">
-              <span class="mts-cta-item__icon">●</span>
+              <span class="mts-cta-item__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div><strong>Real-Time Congestion Analytics</strong><span>Live dashboards for traffic, revenue, and equity metrics</span></div>
             </div>
             <div class="mts-cta-item">
-              <span class="mts-cta-item__icon">●</span>
+              <span class="mts-cta-item__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div><strong>Audit-Ready Architecture</strong><span>Every transaction logged, explainable, and retrievable for CAG review</span></div>
             </div>
             <div class="mts-cta-item">
-              <span class="mts-cta-item__icon">●</span>
+              <span class="mts-cta-item__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div><strong>Phased Deployment Model</strong><span>Pilot-ready in 90 days — no full-city commitment required to start</span></div>
             </div>
           </div>
@@ -2520,6 +2760,15 @@
     </section>
 
   </main>
+
+  <!-- Floating demo CTA -->
+  <div class="floating-cta-chip" id="floatingCta" role="complementary" aria-label="Schedule a platform evaluation">
+    <a href="contact.html" class="floating-cta-chip__btn">
+      <span class="floating-cta-chip__pulse" aria-hidden="true"></span>
+      Schedule Evaluation
+    </a>
+    <button class="floating-cta-chip__close" id="floatingCtaClose" aria-label="Dismiss">×</button>
+  </div>
 
   <!-- =============================================
        FOOTER — explicitly dark, premium
@@ -2662,6 +2911,27 @@
       });
     }, { threshold: 0.2 });
     document.querySelectorAll('.numbers-grid, .mts-stat-row, .kpi-strip').forEach(el => counterObs.observe(el));
+
+    // Floating evaluation CTA
+    (function() {
+      const chip = document.getElementById('floatingCta');
+      const closeBtn = document.getElementById('floatingCtaClose');
+      if (!chip) return;
+      let dismissed = false;
+      let shown = false;
+      function maybeShow() {
+        if (dismissed) return;
+        if (window.scrollY > 480 && !shown) {
+          chip.classList.add('visible'); shown = true;
+        } else if (window.scrollY <= 480 && shown) {
+          chip.classList.remove('visible'); shown = false;
+        }
+      }
+      window.addEventListener('scroll', maybeShow, { passive: true });
+      if (closeBtn) closeBtn.addEventListener('click', () => {
+        chip.classList.remove('visible'); dismissed = true;
+      });
+    })();
 
     // Dropdown
     document.querySelectorAll('.nav-has-dropdown').forEach(item => {

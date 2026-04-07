@@ -264,6 +264,32 @@
     /* G7 — Announce bar */
     .announce-about { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-about a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* ── Kinetic hero entrance ──────────────────────────── */
+    .hero-about .breadcrumb      { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .hero-about .mts-tag         { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .hero-about-headline         { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .hero-about-sub              { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    .hero-about .hero-about-ctas { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.54s both; }
+    .status-panel                { animation: panel-in  0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both; }
+    .hero-about::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,40,120,0.018) 3px, rgba(0,40,120,0.018) 4px);
+    }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-about .breadcrumb, .hero-about .mts-tag, .hero-about-headline,
+      .hero-about-sub, .hero-about .hero-about-ctas, .status-panel { animation: none; }
+      .hero-about::after { display: none; }
+    }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -366,7 +392,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero-about" aria-label="About MTSAi" style="background-image: linear-gradient(150deg, rgba(0,12,46,0.58) 0%, rgba(0,7,32,0.68) 50%, rgba(0,4,15,0.82) 100%), url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center top;">
+    <section class="hero-about" aria-label="About MTSAi">
       <div class="hero-about-pattern" aria-hidden="true"></div>
       <div class="hero-about-accent" aria-hidden="true"></div>
       <div class="mts-container hero-about-inner">
@@ -376,15 +402,15 @@
           <span>About</span>
         </nav>
         <div>
-          <div style="margin-bottom:var(--space-5);"><span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.28);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;">About MTSAi</span></div>
+          <div style="margin-bottom:var(--space-5);"><span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.28);font-family:var(--font-ui);font-size:11px;letter-spacing:0.08em;">About MTSAi</span></div>
           <h1 class="hero-about-headline">Transforming Cities Through<br><span class="headline-accent">AI-Powered Mobility.</span></h1>
           <p class="hero-about-sub">MTSAi brings international best practices to Indian cities through procurement-ready architecture, audit-grade transparency, and equity-by-design controls that put citizens first.</p>
           <div style="display:flex;gap:var(--space-5);margin-top:var(--space-4);flex-wrap:wrap;">
-            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Founded</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">2019</span></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Founded</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">2019</span></div>
             <div style="width:1px;background:rgba(255,255,255,0.18);"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Jurisdictions</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">4</span></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Jurisdictions</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">4</span></div>
             <div style="width:1px;background:rgba(255,255,255,0.18);"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Pilot Target</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--cta-primary);">Q2 2026</span></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);"><span style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">Pilot Target</span><span style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--cta-primary);">Q2 2026</span></div>
           </div>
           <div class="hero-about-ctas" style="margin-top:var(--space-8);">
             <a href="Government.html" class="mts-btn mts-btn--primary mts-btn--lg">Government Solutions →</a>
@@ -427,7 +453,7 @@
     <section class="mts-section reveal-group" aria-label="Company Journey">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">02 // Building the Foundation</span>
+          <span class="mts-section__eyebrow">Building the Foundation</span>
           <h2 class="mts-section__h2 reveal">Our Journey</h2>
           <p class="mts-section__body reveal">From a single vision in Vancouver to a procurement-ready platform serving Indian cities — seven years of deliberate, verifiable progress.</p>
         </div>
@@ -470,7 +496,7 @@
     <section class="mts-section mts-section--white reveal-group" aria-label="Mission and Approach">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">03 // What We Stand For</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">What We Stand For</span>
           <h2 class="mts-section__h2 reveal">Mission, Approach &amp; Outcome</h2>
         </div>
         <div class="mission-grid reveal delay-2">
@@ -497,7 +523,7 @@
     <section class="mts-section reveal-group" aria-label="Founder and Leadership">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">04 // Leadership</span>
+          <span class="mts-section__eyebrow">Leadership</span>
           <h2 class="mts-section__h2 reveal">Founder &amp; Leadership</h2>
         </div>
         <div class="founder-grid reveal delay-2">
@@ -524,7 +550,7 @@
     <section class="mts-section mts-section--alt reveal-group" aria-label="Capital Structure">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">05 // Financing Posture</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">Financing Posture</span>
           <h2 class="mts-section__h2 reveal">Capital Structure &amp; Funding</h2>
           <p class="mts-section__body reveal">Founder-backed with committed capital for initial pilots, R&amp;D partnerships, and platform development.</p>
         </div>
@@ -550,7 +576,7 @@
     <section class="mts-section reveal-group" aria-label="Strategic Partnerships and R&D">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">06 // Research Network</span>
+          <span class="mts-section__eyebrow">Research Network</span>
           <h2 class="mts-section__h2 reveal">Strategic Partnerships &amp; R&amp;D</h2>
         </div>
         <div class="partner-rows reveal delay-2">
@@ -606,7 +632,7 @@
     <section class="mts-section mts-section--alt reveal-group" aria-label="Multi-Jurisdiction Structure">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow mts-section__eyebrow--green">07 // Global Operations</span>
+          <span class="mts-section__eyebrow mts-section__eyebrow--green">Global Operations</span>
           <h2 class="mts-section__h2 reveal">Multi-Jurisdiction Structure</h2>
           <p class="mts-section__body reveal">MTSAi operates across four jurisdictions to optimize IP protection, R&amp;D partnerships, market access, and procurement delivery.</p>
         </div>
@@ -657,7 +683,7 @@
     <section class="mts-section reveal-group" aria-label="Platform Status Disclosure">
       <div class="mts-container">
         <div class="mts-section__header">
-          <span class="mts-section__eyebrow">08 // Transparency</span>
+          <span class="mts-section__eyebrow">Transparency</span>
           <h2 class="mts-section__h2 reveal">Platform Status Disclosure</h2>
         </div>
         <div class="disclosure-grid reveal delay-2">

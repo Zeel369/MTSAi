@@ -807,17 +807,6 @@
   }
 
   /* ----------------------------------------------------------
-     Stagger grid children
-  ---------------------------------------------------------- */
-  function initStaggerGrid() {
-    document.querySelectorAll('.stagger-grid').forEach(grid => {
-      Array.from(grid.children).forEach((child, i) => {
-        child.style.transitionDelay = (i * 80) + 'ms';
-      });
-    });
-  }
-
-  /* ----------------------------------------------------------
      Smooth Scroll — Lenis inertia scroll
      Loads Lenis from CDN, falls back silently if unavailable.
      Disabled automatically when prefers-reduced-motion is set.
