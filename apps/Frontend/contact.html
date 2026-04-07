@@ -274,6 +274,28 @@
     /* G7 — Announce bar */
     .announce-contact { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-contact a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* ── Kinetic hero entrance ──────────────────────────── */
+    .hero-contact .breadcrumb      { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .hero-contact .mts-tag         { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .hero-contact-headline         { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .hero-contact-sub              { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    .hero-contact .hero-contact-stats { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
+    .hero-contact::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,40,120,0.018) 3px, rgba(0,40,120,0.018) 4px);
+    }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-contact .breadcrumb, .hero-contact .mts-tag,
+      .hero-contact-headline, .hero-contact-sub,
+      .hero-contact .hero-contact-stats { animation: none; }
+      .hero-contact::after { display: none; }
+    }
   </style>
 
   <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
@@ -382,20 +404,20 @@
           <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">GoI-ready evaluation support</span>
           <h1 class="hero-contact-headline">Contact MTSAi<br><span class="headline-accent">for evaluation.</span></h1>
           <p class="hero-contact-sub">Choose your intent to reach the right intake team — Government, Strategic Partners, or Public Integrity — using minimal fields and plain-language notices.</p>
-          <div style="display:flex;justify-content:center;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap;">
+          <div class="hero-contact-stats" style="display:flex;justify-content:center;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap;">
             <div style="text-align:center;">
               <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;">3</div>
-              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Contact Paths</div>
+              <div style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Contact Paths</div>
             </div>
             <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
             <div style="text-align:center;">
               <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;">2–3</div>
-              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Day Response</div>
+              <div style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Day Response</div>
             </div>
             <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
             <div style="text-align:center;">
               <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--cta-primary);">100%</div>
-              <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Audit-Logged</div>
+              <div style="font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Audit-Logged</div>
             </div>
           </div>
         </div>
