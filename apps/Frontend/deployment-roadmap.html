@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -260,7 +261,7 @@
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
-          <aside class="mts-article-toc" aria-label="Table of contents">
+          <aside class="mts-article-toc" aria-label="Table of contents" data-engagement="toc-spy">
             <div class="toc-label">Contents</div>
             <ul class="toc-list">
               <li><a href="#phase-1">Phase 1: Policy Design</a></li>
@@ -273,6 +274,53 @@
 
           <div>
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-8);max-width:700px;">The structure below illustrates how a typical city deployment could be sequenced over a 12-month period, subject to procurement processes, regulatory approvals, and local infrastructure readiness.</p>
+
+            <div class="eng-phase-strip reveal" data-engagement="phase-strip" aria-labelledby="phase-strip-label">
+              <div class="eng-phase-strip__label" id="phase-strip-label">Focal phase</div>
+              <div class="eng-phase-strip__row" role="group" aria-label="Deployment phases">
+                <button type="button" class="eng-phase-strip__btn" id="roadmap-phase-btn-0"
+                  data-phase-title-text="Policy design and system integration"
+                  data-phase-meta-text="Phase 1 · Months 1–3"
+                  data-phase-body-text="Define programme goals, align institutions, and integrate MTSAi with tolling, traffic monitoring, and mobility data sources so the city starts from a published policy model and a connected environment."
+                  data-phase-scroll-target="#phase-1">
+                  <span class="eng-phase-strip__num">01</span>
+                  <span class="eng-phase-strip__name">Policy design</span>
+                  <span class="eng-phase-strip__meta">Months 1–3</span>
+                </button>
+                <button type="button" class="eng-phase-strip__btn" id="roadmap-phase-btn-1"
+                  data-phase-title-text="Pilot programme launch"
+                  data-phase-meta-text="Phase 2 · Months 4–6"
+                  data-phase-body-text="Run a bounded pilot on selected corridors with clear public communication, initial incentives for carpooling and off-peak travel, and operational metrics the city can review without committing to city-wide scale."
+                  data-phase-scroll-target="#phase-2">
+                  <span class="eng-phase-strip__num">02</span>
+                  <span class="eng-phase-strip__name">Pilot launch</span>
+                  <span class="eng-phase-strip__meta">Months 4–6</span>
+                </button>
+                <button type="button" class="eng-phase-strip__btn" id="roadmap-phase-btn-2"
+                  data-phase-title-text="Evaluation and policy adjustment"
+                  data-phase-meta-text="Phase 3 · Months 7–9"
+                  data-phase-body-text="Review corridor metrics, participation, and commuter response; adjust incentive levels, eligibility, and target corridors while keeping audit trails and appeal pathways intact."
+                  data-phase-scroll-target="#phase-3">
+                  <span class="eng-phase-strip__num">03</span>
+                  <span class="eng-phase-strip__name">Evaluation</span>
+                  <span class="eng-phase-strip__meta">Months 7–9</span>
+                </button>
+                <button type="button" class="eng-phase-strip__btn" id="roadmap-phase-btn-3"
+                  data-phase-title-text="Expansion planning"
+                  data-phase-meta-text="Phase 4 · Months 10–12"
+                  data-phase-body-text="If evaluation supports continuation, plan broader corridors, categories, and integrations—still subject to the city’s procurement cycle and explicit go / no-go decisions."
+                  data-phase-scroll-target="#phase-4">
+                  <span class="eng-phase-strip__num">04</span>
+                  <span class="eng-phase-strip__name">Expansion</span>
+                  <span class="eng-phase-strip__meta">Months 10–12</span>
+                </button>
+              </div>
+              <div class="eng-phase-panel" data-phase-panel aria-live="polite" aria-atomic="true">
+                <div class="eng-phase-panel__meta" data-phase-meta>Phase 1 · Months 1–3</div>
+                <h3 class="eng-phase-panel__title" data-phase-title>Policy design and system integration</h3>
+                <p class="eng-phase-panel__body" data-phase-body>Select a phase to read a concise summary and jump to the matching timeline section.</p>
+              </div>
+            </div>
 
             <!-- Horizontal phase progress indicator -->
             <div class="mts-stepper reveal" style="margin-bottom:var(--space-10)">
@@ -445,16 +493,9 @@
       btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
-    const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.toc-list a');
-    const tocObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.toc-list a[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
-    sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

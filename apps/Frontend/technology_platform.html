@@ -29,6 +29,7 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -411,28 +412,51 @@
             <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">The platform combines deterministic policy engines, incentive management systems, and digital ecosystem integrations to support government-controlled traffic demand programmes.</p>
           </div>
           <div class="reveal delay-2">
-            <div class="arch-stack" role="img" aria-label="MTSAi platform layer overview">
-              <div class="arch-layer">
-                <span class="arch-layer__label">Public Web Layer</span>
-                <span class="arch-layer__desc">public pages · onboarding · partner access</span>
+            <p id="tech-arch-explorer-label" class="visually-hidden">Select a platform layer to read how it fits in the stack.</p>
+            <div class="eng-arch-explorer" data-engagement="toggle-detail" aria-labelledby="tech-arch-explorer-label">
+              <div class="eng-arch-stack" data-toggle-stack role="group" aria-labelledby="tech-arch-explorer-label">
+                <button type="button" class="eng-arch-layer-btn" id="tech-arch-tab-public" aria-pressed="true" aria-controls="tech-arch-detail"
+                  data-eng-kicker="Citizen &amp; partner surface"
+                  data-eng-heading="Public Web Layer"
+                  data-eng-body="Published information, onboarding, and controlled access for commuters and integration partners. Keeps sensitive administration and policy authoring off the public edge while still supporting programmes that need verified participation.">
+                  <span class="arch-layer__label">Public Web Layer</span>
+                  <span class="arch-layer__desc">public pages · onboarding · partner access</span>
+                </button>
+                <button type="button" class="eng-arch-layer-btn" id="tech-arch-tab-app" aria-pressed="false" aria-controls="tech-arch-detail"
+                  data-eng-kicker="City operations"
+                  data-eng-heading="Platform Application"
+                  data-eng-body="Where programme managers configure corridors, interpret demand signals, and run city-specific workflows—with roles aligned to how transport departments and smart-city teams typically divide responsibility.">
+                  <span class="arch-layer__label">Platform Application</span>
+                  <span class="arch-layer__desc">operator workflows · city programmes · admin tools</span>
+                </button>
+                <button type="button" class="eng-arch-layer-btn" id="tech-arch-tab-api" aria-pressed="false" aria-controls="tech-arch-detail"
+                  data-eng-kicker="Integration fabric"
+                  data-eng-heading="API &amp; Policy Services"
+                  data-eng-body="Identity, payments, trip events, and policy evaluation exposed as services so FASTag, mobility apps, and transit systems can participate without one-off bespoke integrations for every city.">
+                  <span class="arch-layer__label">API &amp; Policy Services</span>
+                  <span class="arch-layer__desc">identity · payments · events · policy APIs</span>
+                </button>
+                <button type="button" class="eng-arch-layer-btn eng-arch-layer-btn--engine" id="tech-arch-tab-engine" aria-pressed="false" aria-controls="tech-arch-detail"
+                  data-eng-kicker="Policy execution core"
+                  data-eng-heading="Incentive Engine + Data"
+                  data-eng-body="Evaluates eligible behaviour against published rules, calculates rewards or charges according to city policy, and records outcomes in forms suitable for audit, dispute review, and statistical reporting.">
+                  <span class="arch-layer__label">Incentive Engine + Data</span>
+                  <span class="arch-layer__desc">evaluate behavior · calculate rewards · audit records</span>
+                  <span class="mts-tag mts-tag--blue mts-tag--sm" style="margin-top:8px;display:inline-flex;">Core</span>
+                </button>
+                <button type="button" class="eng-arch-layer-btn eng-arch-layer-btn--ai" id="tech-arch-tab-ai" aria-pressed="false" aria-controls="tech-arch-detail"
+                  data-eng-kicker="Assistive layer"
+                  data-eng-heading="AI Augmentation"
+                  data-eng-body="Optional analytics and detection to support human decision-making—not autonomous road pricing. Scope stays explicit in procurement documents and city policy; humans remain accountable for incentives and exemptions.">
+                  <span class="arch-layer__label">AI Augmentation</span>
+                  <span class="arch-layer__desc">assistive analytics · pattern detection · decision support</span>
+                  <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
+                </button>
               </div>
-              <div class="arch-layer">
-                <span class="arch-layer__label">Platform Application</span>
-                <span class="arch-layer__desc">operator workflows · city programmes · admin tools</span>
-              </div>
-              <div class="arch-layer">
-                <span class="arch-layer__label">API &amp; Policy Services</span>
-                <span class="arch-layer__desc">identity · payments · events · policy APIs</span>
-              </div>
-              <div class="arch-layer arch-layer--engine">
-                <span class="arch-layer__label">Incentive Engine + Data</span>
-                <span class="arch-layer__desc">evaluate behavior · calculate rewards · audit records</span>
-                <span class="mts-tag mts-tag--blue mts-tag--sm" style="margin-top:8px;display:inline-flex;">Core</span>
-              </div>
-              <div class="arch-layer arch-layer--ai">
-                <span class="arch-layer__label">AI Augmentation</span>
-                <span class="arch-layer__desc">assistive analytics · pattern detection · decision support</span>
-                <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
+              <div class="eng-arch-detail" id="tech-arch-detail" data-toggle-panel aria-live="polite" aria-relevant="text" aria-atomic="true" aria-labelledby="tech-arch-tab-public">
+                <p class="eng-arch-detail__kicker" data-eng-panel-kicker>Layer detail</p>
+                <h3 class="eng-arch-detail__title" data-eng-panel-heading>Public Web Layer</h3>
+                <p class="eng-arch-detail__body" data-eng-panel-body>Select a layer to see how it functions in the MTSAi stack.</p>
               </div>
             </div>
             <div style="display:flex;gap:var(--space-5);margin-top:var(--space-7);">
@@ -980,6 +1004,7 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

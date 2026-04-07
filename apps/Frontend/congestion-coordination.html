@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -259,7 +260,7 @@
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
-          <aside class="mts-article-toc" aria-label="Table of contents">
+          <aside class="mts-article-toc" aria-label="Table of contents" data-engagement="toc-spy">
             <nav class="mts-side-nav" aria-label="Article contents">
               <div class="mts-side-nav__category">Contents</div>
               <a href="#more-roads" class="mts-side-nav__item">Why More Roads Don't Solve It</a>
@@ -290,12 +291,12 @@
               <h2 class="content-h2">Why Traditional Congestion Pricing Is Only a Partial Solution</h2>
               <p class="content-body">Some cities have introduced congestion pricing systems that charge drivers for entering busy areas. While these programmes can reduce traffic volumes, they also create political resistance because they are perceived as penalties for mobility.</p>
               <p class="content-body">In addition, traditional systems typically treat all vehicles equally. A car carrying three people is charged the same as a car carrying one. But those vehicles do not contribute equally to congestion.</p>
-              <div class="concept-grid">
-                <div class="concept-card">
+              <div class="concept-grid" data-engagement="inview-list" data-inview-threshold="0.45" aria-label="Compare approaches — scroll to highlight each model">
+                <div class="concept-card" data-inview-item>
                   <h3>Traditional Congestion Pricing</h3>
                   <p>Charges for road access. Reduces volumes but creates fairness objections. Treats all vehicles the same regardless of occupancy.</p>
                 </div>
-                <div class="concept-card">
+                <div class="concept-card" data-inview-item>
                   <h3>Coordination-First Approach</h3>
                   <p>Rewards behaviour that reduces congestion. Focuses on aligning individual choices with network efficiency. Distinguishes high-occupancy vehicles.</p>
                 </div>
@@ -404,16 +405,9 @@
       btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
-    const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.mts-side-nav__item');
-    const tocObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.mts-side-nav__item[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
-    sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -261,7 +262,7 @@
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
-          <aside class="mts-article-toc" aria-label="Table of contents">
+          <aside class="mts-article-toc" aria-label="Table of contents" data-engagement="toc-spy">
             <nav class="mts-side-nav" aria-label="Article contents">
               <div class="mts-side-nav__category">Contents</div>
               <a href="#resistance" class="mts-side-nav__item">Political Resistance</a>
@@ -274,6 +275,29 @@
           <div>
             <div style="background:var(--layer-01);border:1px solid var(--blue-20);border-left:3px solid #DA1E28;padding:var(--space-6) var(--space-7);margin-bottom:var(--space-10);">
               <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin:0;">This page is designed to <strong style="color:var(--text-primary);">answer the political-risk question before it is asked</strong>: why conventional congestion pricing is vulnerable to backlash, and why MTSAi is framed differently.</p>
+            </div>
+
+            <div class="eng-framing reveal" data-engagement="toggle-detail">
+              <p class="eng-framing__intro">The same demand-management intent can read as a <strong>penalty on driving</strong> or as <strong>recognition for efficient trips</strong>. Compare the framing commuters hear—and the political risk that follows.</p>
+              <div class="eng-framing__stack" data-toggle-stack role="group" aria-label="Policy framing comparison">
+                <button type="button" class="eng-framing__btn" id="wtp-frame-penalty" aria-pressed="true" aria-controls="wtp-frame-panel"
+                  data-eng-kicker="Penalty / charge framing"
+                  data-eng-heading="“Why am I being charged to use the road?”"
+                  data-eng-body="Programmes are experienced as a new cost on everyday mobility. Fairness debates dominate: charges hit commuters who have few alternatives, peak rules feel punitive, and opposition can force rollback before benefits are visible. Technical success does not guarantee political durability when the story is about taking money away.">
+                  Penalty framing
+                </button>
+                <button type="button" class="eng-framing__btn" id="wtp-frame-incentive" aria-pressed="false" aria-controls="wtp-frame-panel"
+                  data-eng-kicker="Incentive / recognition framing"
+                  data-eng-heading="“How can I earn the reward?”"
+                  data-eng-body="The conversation shifts toward optional behaviours the city wants more of: carpooling, off-peak travel, shared mobility. Commuters compare routes and times to qualify instead of organising against a fee. Incentive programmes are still serious policy—but they are easier to explain as opt-in recognition than as blanket penalties.">
+                  Incentive framing
+                </button>
+              </div>
+              <div class="eng-framing__panel" id="wtp-frame-panel" data-toggle-panel aria-live="polite" aria-atomic="true" aria-labelledby="wtp-frame-penalty">
+                <p class="eng-framing__kicker" data-eng-panel-kicker>Penalty / charge framing</p>
+                <h3 class="eng-framing__title" data-eng-panel-heading>“Why am I being charged to use the road?”</h3>
+                <p class="eng-framing__body" data-eng-panel-body>Programmes are experienced as a new cost on everyday mobility. Fairness debates dominate: charges hit commuters who have few alternatives, peak rules feel punitive, and opposition can force rollback before benefits are visible. Technical success does not guarantee political durability when the story is about taking money away.</p>
+              </div>
             </div>
 
             <section id="resistance" class="content-section reveal" aria-label="Challenge 1: Political Resistance">
@@ -404,16 +428,9 @@
       btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
-    const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.mts-side-nav__item');
-    const tocObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('active')); const match = document.querySelector(`.mts-side-nav__item[href="#${e.target.id}"]`); if (match) match.classList.add('active'); }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
-    sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

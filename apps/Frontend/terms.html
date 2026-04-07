@@ -30,6 +30,7 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -214,7 +215,7 @@
         <div class="mts-article-layout">
 
           <!-- TOC -->
-          <nav class="mts-article-toc" aria-label="Contents">
+          <nav class="mts-article-toc" aria-label="Contents" data-engagement="toc-spy" data-toc-root-margin="-12% 0px -70% 0px">
             <p class="mts-article-toc-heading">Contents</p>
             <a href="#nature-of-website">Nature of This Website</a>
             <a href="#no-certification-claims">No Certification Claims</a>
@@ -225,35 +226,63 @@
             <a href="#governing-law">Governing Law</a>
           </nav>
 
-          <!-- PROSE -->
-          <div class="mts-article-prose">
+          <!-- PROSE (progressive disclosure) -->
+          <div data-engagement="exclusive-details" class="mts-article-prose mts-policy-disclosure">
 
-            <h2 id="nature-of-website">Nature of This Website</h2>
-            <p>MTSAi.org is an informational website for the Miracle Traffic Systems AI platform, which is currently in pre-deployment build phase. Nothing on this website constitutes a live product offering, a tender, a procurement award, or a binding commitment of any kind.</p>
+            <details id="nature-of-website" class="policy-fold">
+              <summary class="policy-fold__summary">Nature of This Website</summary>
+              <div class="policy-fold__panel">
+                <p>MTSAi.org is an informational website for the Miracle Traffic Systems AI platform, which is currently in pre-deployment build phase. Nothing on this website constitutes a live product offering, a tender, a procurement award, or a binding commitment of any kind.</p>
+              </div>
+            </details>
 
-            <h2 id="no-certification-claims">No Certification Claims</h2>
-            <p>References to standards compliance (WCAG, GIGW, DPDP, CERT-In) describe our design intent and posture. They do not constitute third-party certification unless explicitly stated with a certification reference number.</p>
+            <details id="no-certification-claims" class="policy-fold">
+              <summary class="policy-fold__summary">No Certification Claims</summary>
+              <div class="policy-fold__panel">
+                <p>References to standards compliance (WCAG, GIGW, DPDP, CERT-In) describe our design intent and posture. They do not constitute third-party certification unless explicitly stated with a certification reference number.</p>
+              </div>
+            </details>
 
-            <h2 id="acceptable-use">Acceptable Use</h2>
-            <p>You may access and use this website for lawful purposes, including:</p>
-            <ul>
-              <li>Evaluating the platform for potential procurement</li>
-              <li>Reviewing our trust and governance posture</li>
-              <li>Requesting further information via the contact form</li>
-            </ul>
-            <p>You must not: attempt to access non-public systems, scrape or systematically harvest content for commercial resale, or misrepresent your identity or organisation in any contact form submission.</p>
+            <details id="acceptable-use" class="policy-fold">
+              <summary class="policy-fold__summary">Acceptable Use</summary>
+              <div class="policy-fold__panel">
+                <p>You may access and use this website for lawful purposes, including:</p>
+                <ul>
+                  <li>Evaluating the platform for potential procurement</li>
+                  <li>Reviewing our trust and governance posture</li>
+                  <li>Requesting further information via the contact form</li>
+                </ul>
+                <p>You must not: attempt to access non-public systems, scrape or systematically harvest content for commercial resale, or misrepresent your identity or organisation in any contact form submission.</p>
+              </div>
+            </details>
 
-            <h2 id="third-party-links">Third-Party Links</h2>
-            <p>This website may contain links to external resources. We do not control third-party sites and are not responsible for their content, accuracy, or privacy practices.</p>
+            <details id="third-party-links" class="policy-fold">
+              <summary class="policy-fold__summary">Third-Party Links</summary>
+              <div class="policy-fold__panel">
+                <p>This website may contain links to external resources. We do not control third-party sites and are not responsible for their content, accuracy, or privacy practices.</p>
+              </div>
+            </details>
 
-            <h2 id="procurement-precedence">Procurement Precedence</h2>
-            <p>In any formal procurement process, the terms of the applicable Request for Proposal (RFP) and the signed contract take precedence over anything stated on this website.</p>
+            <details id="procurement-precedence" class="policy-fold">
+              <summary class="policy-fold__summary">Procurement Precedence</summary>
+              <div class="policy-fold__panel">
+                <p>In any formal procurement process, the terms of the applicable Request for Proposal (RFP) and the signed contract take precedence over anything stated on this website.</p>
+              </div>
+            </details>
 
-            <h2 id="intellectual-property">Intellectual Property</h2>
-            <p>All content on this website — including text, graphics, the MTSAi name, and the MTSA system architecture descriptions — is the intellectual property of Miracle Traffic Systems AI Pvt. Ltd. (or its licensors). Content may not be reproduced without written permission except as permitted under the Copyright Policy.</p>
+            <details id="intellectual-property" class="policy-fold">
+              <summary class="policy-fold__summary">Intellectual Property</summary>
+              <div class="policy-fold__panel">
+                <p>All content on this website — including text, graphics, the MTSAi name, and the MTSA system architecture descriptions — is the intellectual property of Miracle Traffic Systems AI Pvt. Ltd. (or its licensors). Content may not be reproduced without written permission except as permitted under the Copyright Policy.</p>
+              </div>
+            </details>
 
-            <h2 id="governing-law">Governing Law</h2>
-            <p>These terms are governed by the laws of India. Any disputes are subject to the exclusive jurisdiction of the courts of [City], India.</p>
+            <details id="governing-law" class="policy-fold">
+              <summary class="policy-fold__summary">Governing Law</summary>
+              <div class="policy-fold__panel">
+                <p>These terms are governed by the laws of India. Any disputes are subject to the exclusive jurisdiction of the courts of [City], India.</p>
+              </div>
+            </details>
 
           </div>
         </div>
@@ -400,6 +429,7 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <div class="ai-page-banner">✦ AI-Created Page — text from trial/, structure by AI — review before publishing</div>
 </body>

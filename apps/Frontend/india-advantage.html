@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -280,7 +281,7 @@
     <article class="article-body" id="article">
       <div class="mts-container">
         <div class="mts-article-layout">
-          <aside class="mts-article-toc" aria-label="Table of contents">
+          <aside class="mts-article-toc" aria-label="Table of contents" data-engagement="toc-spy">
             <nav class="mts-side-nav" aria-label="Article contents">
               <div class="mts-side-nav__category">Contents</div>
               <a href="#aadhaar" class="mts-side-nav__item">Aadhaar</a>
@@ -295,23 +296,23 @@
           <div>
             <div class="content-section reveal" style="border-top:none;margin-bottom:var(--space-9);">
               <p class="content-body">These systems make it possible to manage road demand and commuter incentives at national scale. MTSAi is designed to operate on top of that infrastructure.</p>
-              <div class="infra-grid">
-                <div class="infra-card" id="aadhaar">
+              <div class="infra-grid" data-engagement="inview-list" data-inview-threshold="0.35" aria-label="Infrastructure pillars — scroll highlights each card">
+                <div class="infra-card" id="aadhaar" data-inview-item>
                   <div class="infra-name">Aadhaar</div>
                   <h3>Secure Identity at Scale</h3>
                   <p>Secure identity verification for over a billion residents, enabling trusted digital participation in public programmes.</p>
                 </div>
-                <div class="infra-card" id="upi">
+                <div class="infra-card" id="upi" data-inview-item>
                   <div class="infra-name">UPI</div>
                   <h3>Real-Time Payments</h3>
                   <p>Real-time digital payments at massive scale, making it possible to distribute incentives directly to commuters. More than 20 billion transactions are processed every month.</p>
                 </div>
-                <div class="infra-card" id="fastag">
+                <div class="infra-card" id="fastag" data-inview-item>
                   <div class="infra-name">FASTag</div>
                   <h3>Nationwide Electronic Tolling</h3>
                   <p>Nationwide electronic tolling connecting more than 8 crore vehicles to road infrastructure, allowing automated vehicle identification without additional roadside hardware.</p>
                 </div>
-                <div class="infra-card" id="icccs">
+                <div class="infra-card" id="icccs" data-inview-item>
                   <div class="infra-name">ICCCs</div>
                   <h3>Smart City Command Centres</h3>
                   <p>Integrated Command and Control Centres are operational across multiple Smart Cities, providing real-time urban traffic monitoring and coordination infrastructure.</p>
@@ -424,20 +425,9 @@
       btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
-    const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.mts-side-nav__item');
-    const tocObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          tocLinks.forEach(a => a.classList.remove('active'));
-          const match = document.querySelector(`.mts-side-nav__item[href="#${e.target.id}"]`);
-          if (match) match.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
-    sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

@@ -30,6 +30,7 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -219,7 +220,7 @@
         <div class="mts-article-layout">
 
           <!-- TOC -->
-          <nav class="mts-article-toc" aria-label="Contents">
+          <nav class="mts-article-toc" aria-label="Contents" data-engagement="toc-spy" data-toc-root-margin="-12% 0px -70% 0px">
             <p class="mts-article-toc-heading">Contents</p>
             <a href="#what-we-collect">What We Collect</a>
             <a href="#how-we-use-it">How We Use It</a>
@@ -230,58 +231,86 @@
             <a href="#contact">Contact</a>
           </nav>
 
-          <!-- PROSE -->
-          <div class="mts-article-prose">
+          <!-- PROSE (progressive disclosure: one section open at a time) -->
+          <div data-engagement="exclusive-details" class="mts-article-prose mts-policy-disclosure">
 
-            <h2 id="what-we-collect">What We Collect</h2>
-            <p>When you submit a form on this website (Contact, Procurement Pack request, Public Integrity report), we may collect:</p>
-            <ul>
-              <li>Full name</li>
-              <li>Email address</li>
-              <li>Organisation name and role</li>
-              <li>The content of your message or request</li>
-              <li>Browser and device metadata (server logs: IP address, user agent, timestamp)</li>
-            </ul>
-            <p>We do not use cookies for tracking. We do not use third-party analytics scripts. We do not collect any data from passive browsing.</p>
+            <details id="what-we-collect" class="policy-fold">
+              <summary class="policy-fold__summary">What We Collect</summary>
+              <div class="policy-fold__panel">
+                <p>When you submit a form on this website (Contact, Procurement Pack request, Public Integrity report), we may collect:</p>
+                <ul>
+                  <li>Full name</li>
+                  <li>Email address</li>
+                  <li>Organisation name and role</li>
+                  <li>The content of your message or request</li>
+                  <li>Browser and device metadata (server logs: IP address, user agent, timestamp)</li>
+                </ul>
+                <p>We do not use cookies for tracking. We do not use third-party analytics scripts. We do not collect any data from passive browsing.</p>
+              </div>
+            </details>
 
-            <h2 id="how-we-use-it">How We Use It</h2>
-            <p>Information submitted via contact forms is used solely to:</p>
-            <ol>
-              <li>Respond to your enquiry</li>
-              <li>Process a procurement or partnership request</li>
-              <li>Investigate a public integrity concern</li>
-            </ol>
-            <p>We do not use your information for marketing, profiling, or sale to third parties.</p>
+            <details id="how-we-use-it" class="policy-fold">
+              <summary class="policy-fold__summary">How We Use It</summary>
+              <div class="policy-fold__panel">
+                <p>Information submitted via contact forms is used solely to:</p>
+                <ol>
+                  <li>Respond to your enquiry</li>
+                  <li>Process a procurement or partnership request</li>
+                  <li>Investigate a public integrity concern</li>
+                </ol>
+                <p>We do not use your information for marketing, profiling, or sale to third parties.</p>
+              </div>
+            </details>
 
-            <h2 id="data-sharing">Data Sharing</h2>
-            <p>We do not sell or share personal data with third parties except:</p>
-            <ul>
-              <li>Where required by law or a government order</li>
-              <li>With professional advisors (legal, security) under strict confidentiality obligations</li>
-              <li>With the relevant city authority in connection with a procurement process you have initiated</li>
-            </ul>
+            <details id="data-sharing" class="policy-fold">
+              <summary class="policy-fold__summary">Data Sharing</summary>
+              <div class="policy-fold__panel">
+                <p>We do not sell or share personal data with third parties except:</p>
+                <ul>
+                  <li>Where required by law or a government order</li>
+                  <li>With professional advisors (legal, security) under strict confidentiality obligations</li>
+                  <li>With the relevant city authority in connection with a procurement process you have initiated</li>
+                </ul>
+              </div>
+            </details>
 
-            <h2 id="retention">Retention</h2>
-            <p>Contact form submissions are retained for 12 months from the date of submission, then deleted. Server logs are retained for 90 days.</p>
+            <details id="retention" class="policy-fold">
+              <summary class="policy-fold__summary">Retention</summary>
+              <div class="policy-fold__panel">
+                <p>Contact form submissions are retained for 12 months from the date of submission, then deleted. Server logs are retained for 90 days.</p>
+              </div>
+            </details>
 
-            <h2 id="your-rights">Your Rights</h2>
-            <p>Under the DPDP Act 2023, you have the right to:</p>
-            <ul>
-              <li>Access your data</li>
-              <li>Correct inaccurate data</li>
-              <li>Withdraw consent</li>
-              <li>Request erasure (subject to legal holds)</li>
-              <li>Nominate a person to exercise rights on your behalf</li>
-            </ul>
-            <p>To exercise any right, email: <a href="mailto:privacy@mtsai.co">privacy@mtsai.co</a></p>
+            <details id="your-rights" class="policy-fold">
+              <summary class="policy-fold__summary">Your Rights</summary>
+              <div class="policy-fold__panel">
+                <p>Under the DPDP Act 2023, you have the right to:</p>
+                <ul>
+                  <li>Access your data</li>
+                  <li>Correct inaccurate data</li>
+                  <li>Withdraw consent</li>
+                  <li>Request erasure (subject to legal holds)</li>
+                  <li>Nominate a person to exercise rights on your behalf</li>
+                </ul>
+                <p>To exercise any right, email: <a href="mailto:privacy@mtsai.co">privacy@mtsai.co</a></p>
+              </div>
+            </details>
 
-            <h2 id="grievance-officer">Grievance Officer</h2>
-            <p><strong>Name:</strong> To be appointed</p>
-            <p><strong>Email:</strong> <a href="mailto:grievance@mtsai.co">grievance@mtsai.co</a></p>
-            <p><strong>Response time:</strong> 30 days as required by the DPDP Act</p>
+            <details id="grievance-officer" class="policy-fold">
+              <summary class="policy-fold__summary">Grievance Officer</summary>
+              <div class="policy-fold__panel">
+                <p><strong>Name:</strong> To be appointed</p>
+                <p><strong>Email:</strong> <a href="mailto:grievance@mtsai.co">grievance@mtsai.co</a></p>
+                <p><strong>Response time:</strong> 30 days as required by the DPDP Act</p>
+              </div>
+            </details>
 
-            <h2 id="contact">Contact</h2>
-            <p>For all privacy matters: <a href="mailto:privacy@mtsai.co">privacy@mtsai.co</a></p>
+            <details id="contact" class="policy-fold">
+              <summary class="policy-fold__summary">Contact</summary>
+              <div class="policy-fold__panel">
+                <p>For all privacy matters: <a href="mailto:privacy@mtsai.co">privacy@mtsai.co</a></p>
+              </div>
+            </details>
 
           </div>
         </div>
@@ -439,6 +468,7 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <div class="ai-page-banner">✦ AI-Created Page — text from trial/, structure by AI — review before publishing</div>
 </body>

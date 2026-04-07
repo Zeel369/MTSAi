@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -284,7 +285,7 @@
         <div class="mts-article-layout">
 
           <!-- TOC -->
-          <aside class="mts-article-toc" aria-label="Table of contents">
+          <aside class="mts-article-toc" aria-label="Table of contents" data-engagement="toc-spy">
             <nav class="mts-side-nav" aria-label="Article contents">
               <div class="mts-side-nav__category">Contents</div>
               <a href="#occupancy" class="mts-side-nav__item">The Occupancy Distinction</a>
@@ -319,11 +320,11 @@
             <section id="rewards" class="content-section reveal" aria-label="What the System Rewards">
               <h2 class="content-h2">What the System Rewards</h2>
               <p class="content-body">IUDM creates positive signals for behaviour that reduces congestion on the road network. The framework rewards:</p>
-              <ul style="list-style:none;margin-bottom:var(--space-7);">
-                <li style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Verified carpooling</strong> — vehicles confirmed to carry 2+ occupants on congestion corridors</span></li>
-                <li style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Off-peak travel</strong> — trips made outside the defined peak congestion window</span></li>
-                <li style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Shared mobility</strong> — usage of registered shared transport services</span></li>
-                <li style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Alternative routing</strong> — trips routed away from the highest-congestion corridors</span></li>
+              <ul style="list-style:none;margin-bottom:var(--space-7);" data-engagement="inview-list" data-inview-threshold="0.42" aria-label="Reward categories — scroll highlights each row">
+                <li data-inview-item style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Verified carpooling</strong> — vehicles confirmed to carry 2+ occupants on congestion corridors</span></li>
+                <li data-inview-item style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Off-peak travel</strong> — trips made outside the defined peak congestion window</span></li>
+                <li data-inview-item style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-subtle);font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Shared mobility</strong> — usage of registered shared transport services</span></li>
+                <li data-inview-item style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;font-size:15px;color:var(--text-secondary);"><span style="color:var(--cta-primary);font-weight:700;flex-shrink:0;">→</span><span><strong style="color:var(--text-primary);">Alternative routing</strong> — trips routed away from the highest-congestion corridors</span></li>
               </ul>
             </section>
 
@@ -443,20 +444,9 @@
       btn.addEventListener('click', e => { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !open); dd.classList.toggle('open'); });
       document.addEventListener('click', e => { if (!item.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('open'); } });
     });
-    const sections = document.querySelectorAll('.content-section[id]');
-    const tocLinks = document.querySelectorAll('.mts-side-nav__item');
-    const tocObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          tocLinks.forEach(a => a.classList.remove('active'));
-          const match = document.querySelector(`.mts-side-nav__item[href="#${e.target.id}"]`);
-          if (match) match.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
-    sections.forEach(s => tocObs.observe(s));
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
