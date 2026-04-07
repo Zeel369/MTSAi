@@ -28,261 +28,15 @@
 
   <!-- Design System — ORDER MATTERS -->
   <link rel="stylesheet" href="assets/css/bundle.css">
+  <link rel="stylesheet" href="assets/css/page-shell.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
-    /* ====================================================
-       BASE
-    ==================================================== */
-    html { scroll-behavior: smooth; }
-    body { overflow-x: hidden; background: var(--layer-bg); }
-
-    .mts-container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-    }
-
-    /* ====================================================
-       SCROLL PROGRESS
-    ==================================================== */
-    #scroll-progress {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--accent-saffron), #FFCD80);
-      transform: scaleX(0);
-      transform-origin: left;
-      z-index: 9999;
-      transition: transform 80ms linear;
-    }
-
-    /* ====================================================
-       SKIP LINK
-    ==================================================== */
-    .skip-link {
-      position: absolute; top: -40px; left: 0;
-      background: var(--interactive); color: #FFFFFF;
-      padding: 8px 16px; text-decoration: none;
-      z-index: 10000; font-size: 13px; font-weight: 600;
-    }
-    .skip-link:focus { top: 0; }
-
-    /* ====================================================
-       LOGO MARK — 3×3 city-grid, saffron center hub
-    ==================================================== */
-    .logo-mark {
-      display: inline-flex;
-      flex-shrink: 0;
-    }
-
-    /* ====================================================
-       NAV
-    ==================================================== */
-    .mts-nav {
-      background: var(--layer-bg);
-      border-bottom: 1px solid var(--border-subtle);
-      position: sticky; top: 0; z-index: 100;
-      transition: box-shadow 200ms var(--ease-standard);
-    }
-    .mts-nav.scrolled {
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    }
-
-    .mts-nav__inner {
-      display: flex; align-items: center;
-      padding: 0 var(--space-6);
-      height: 64px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-
-    .mts-nav__logo {
-      display: flex; align-items: center;
-      text-decoration: none;
-      margin-right: var(--space-9);
-      flex-shrink: 0;
-    }
-    .mts-nav__logo img {
-      height: 38px; width: auto; display: block;
-    }
-
-    .mts-nav__links {
-      list-style: none;
-      gap: var(--space-7); align-items: center; flex: 1;
-    }
-
-    .mts-nav__link {
-      font-size: 14px; font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none; background: none;
-      border: none; cursor: pointer; padding: 0;
-      transition: color var(--duration-fast-02) var(--ease-standard);
-      font-family: var(--font-body);
-      position: relative;
-    }
-    .mts-nav__link.active { color: var(--interactive); }
-    .mts-nav__link.active::after {
-      content: '';
-      position: absolute; bottom: -22px; left: 0; right: 0;
-      height: 2px; background: var(--interactive);
-    }
-    .mts-nav__link:hover { color: var(--text-primary); }
-
-    .nav-has-dropdown { position: relative; }
-
-    .nav-dropdown {
-      position: absolute; top: calc(100% + 16px); left: 0;
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
-      min-width: 300px; list-style: none;
-      padding: var(--space-2) 0 var(--space-3);
-      opacity: 0; visibility: hidden;
-      transform: translateY(-6px);
-      transition: opacity 150ms var(--ease-standard),
-                  visibility 150ms, transform 150ms var(--ease-standard);
-      z-index: 1000;
-      border-radius: 2px;
-    }
-    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
-
-    /* Group label inside dropdown */
-    .nav-dropdown__group-label {
-      display: block;
-      padding: var(--space-4) var(--space-5) var(--space-2);
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-placeholder);
-    }
-    .nav-dropdown__group-label:not(:first-child) {
-      border-top: 1px solid var(--border-subtle);
-      margin-top: var(--space-2);
-    }
-
-    .nav-dropdown li a {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px var(--space-5);
-      font-size: 13px; color: var(--text-secondary);
-      text-decoration: none;
-      transition: background var(--duration-fast-02), color var(--duration-fast-02);
-    }
-    .nav-dropdown li a::before {
-      content: '→';
-      font-size: 11px;
-      color: var(--interactive);
-      opacity: 0;
-      transition: opacity 100ms;
-    }
-    .nav-dropdown li a:hover {
-      background: var(--layer-01);
-      color: var(--interactive);
-    }
-    .nav-dropdown li a:hover::before { opacity: 1; }
-
-    .mts-nav__actions {
-      display: flex; align-items: center;
-      gap: var(--space-5); margin-left: auto;
-    }
-
-    
-
-    
-    
-    
-      50% { box-shadow: 0 0 0 6px rgba(83,170,0,0.06); }
-    }
-
-    /* ====================================================
-       HERO — Deep Navy derived from brand Blue 60 (#0052CC)
-       #0052CC is the glow source — brand-true, not IBM's
-    ==================================================== */
-    
-
-    /* Trust Blue (#0052CC) as the atmospheric glow source */
-    
-
-    /* City-grid dot pattern */
-    
-
-    /* Saffron top bar */
-    
-
-    /* ── Hero left ── */
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-    
-
-    /* ── Hero right — visualization panel ── */
-    
-
-    
-
-    
-    
-    
-    
-    
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    
-
-    /* City grid within the panel */
+    /* Home — page-specific (shell + DS in bundle / page-shell.css) */
     .city-grid-svg {
       width: 100%; height: auto;
       display: block;
     }
-
-    
-    
-    
-    
-    
-    
-    
-
-    /* Scroll cue */
-    
-    
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
-
-    /* ====================================================
-       SECTION EYEBROW — global saffron tick
-    ==================================================== */
-    
-    
-
-    /* Override for green eyebrows */
-    
-    
-    
-    
-
-    
-    
-    
 
     /* ====================================================
        PROPOSITION SECTION — richer blue tint
@@ -760,8 +514,8 @@
     }
     .animate-blue-glow { animation: blue-pulse 2s var(--ease-smooth) infinite; }
     @keyframes blue-pulse {
-      0%, 100% { box-shadow: 0 0 0 0px rgba(0,82,204,0); }
-      50% { box-shadow: 0 0 0 6px rgba(0,82,204,0.22); }
+      0%, 100% { box-shadow: 0 0 0 0px rgba(0, 82, 204, 0); }
+      50% { box-shadow: 0 0 0 10px rgba(0, 82, 204, 0.12); }
     }
 
     /* ====================================================
@@ -1530,7 +1284,7 @@
     /* Subtle hero background pulse */
     @keyframes hero-bg-pulse {
       0%, 100% { opacity: 1; }
-      50%       { opacity: 0.92; }
+      50% { opacity: 0.88; }
     }
     .mts-hero::before { animation: hero-bg-pulse 8s ease-in-out infinite; }
 
@@ -2239,7 +1993,7 @@
 
         <!-- Cinematic image — Indian city intersection with AI governance overlay -->
         <div class="problem-photo reveal">
-          <img src="img/government.jpeg" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="problem-photo__img" decoding="async" width="3168" height="1344" loading="lazy">
+          <img src="img/government.jpeg" alt="AI governance system active over a congested Indian city corridor — traffic nodes, speed indicators, and demand zones overlaid on a real intersection" class="problem-photo__img" decoding="async" width="3168" height="1344" loading="lazy" sizes="(max-width: 1024px) 100vw, min(50vw, 720px)">
           <div class="problem-photo__caption">
             <span class="problem-photo__label">Urban Traffic Corridor · AI Governance Overlay · India</span>
             <span class="problem-photo__tag">● System Active</span>
@@ -2363,7 +2117,7 @@
 
         <!-- Cinematic image — data infrastructure / partner network -->
         <div class="arch-photo reveal">
-          <img src="img/partners.jpeg" alt="Enterprise data infrastructure — interconnected platform nodes representing MTSAi's partner integration architecture" class="arch-photo__img" decoding="async" width="3168" height="1344" loading="lazy">
+          <img src="img/partners.jpeg" alt="Enterprise data infrastructure — interconnected platform nodes representing MTSAi's partner integration architecture" class="arch-photo__img" decoding="async" width="3168" height="1344" loading="lazy" sizes="(max-width: 1024px) 100vw, min(50vw, 720px)">
           <div class="arch-photo__overlay" aria-hidden="true"></div>
           <span class="arch-photo__caption">Enterprise Integration Layer · Multi-Party Data Infrastructure</span>
         </div>

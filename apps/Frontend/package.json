@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "build:css": "python3 ../../scripts/build_frontend_bundle.py"
   },
   "devDependencies": {
     "vite": "^7.1.0"

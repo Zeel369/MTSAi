@@ -14,69 +14,13 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 
-  <link rel="stylesheet" href="assets/design-system/tokens/colors.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/semantic.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/brand-visual.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/density.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/data-viz.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/typography.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/motion.css">
-  <link rel="stylesheet" href="assets/design-system/tokens/elevation.css">
-  <link rel="stylesheet" href="assets/design-system/base/reset.css">
-  <link rel="stylesheet" href="assets/design-system/base/grid.css">
-  <link rel="stylesheet" href="assets/design-system/base/utilities.css">
-  <link rel="stylesheet" href="assets/design-system/base/utilities-extended.css">
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <link rel="stylesheet" href="assets/css/page-shell.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
-  <link rel="stylesheet" href="assets/design-system/base/animations.css">
-  <link rel="stylesheet" href="assets/design-system/components/button.css">
-  <link rel="stylesheet" href="assets/design-system/components/nav.css">
-  <link rel="stylesheet" href="assets/design-system/components/card.css">
-  <link rel="stylesheet" href="assets/design-system/components/tag.css">
-  <link rel="stylesheet" href="assets/design-system/components/layout.css">
-  <link rel="stylesheet" href="assets/design-system/components/segmented-control.css">
-  <link rel="stylesheet" href="assets/design-system/components/side-nav.css">
-  <link rel="stylesheet" href="assets/design-system/components/stepper.css">
-  <link rel="stylesheet" href="assets/design-system/components/marketing.css">
-  <link rel="stylesheet" href="assets/design-system/components/data-display.css">
-  <link rel="stylesheet" href="assets/design-system/components/overlay.css">
-  <link rel="stylesheet" href="assets/design-system/components/combobox.css">
-  <link rel="stylesheet" href="assets/design-system/components/otp-input.css">
-  <link rel="stylesheet" href="assets/design-system/components/accordion.css">
-  <link rel="stylesheet" href="assets/design-system/components/modal.css">
-  <link rel="stylesheet" href="assets/design-system/components/tabs.css">
-  <link rel="stylesheet" href="assets/design-system/components/tooltip.css">
-  <link rel="stylesheet" href="assets/design-system/components/skeleton.css">
-  <link rel="stylesheet" href="assets/design-system/components/input.css">
-  <link rel="stylesheet" href="assets/design-system/components/select.css">
-  <link rel="stylesheet" href="assets/design-system/components/checkbox.css">
-  <link rel="stylesheet" href="assets/design-system/components/radio.css">
-  <link rel="stylesheet" href="assets/design-system/components/toggle.css">
-  <link rel="stylesheet" href="assets/design-system/components/pagination.css">
-  <link rel="stylesheet" href="assets/design-system/components/breadcrumb.css">
-  <link rel="stylesheet" href="assets/design-system/components/avatar.css">
-  <link rel="stylesheet" href="assets/design-system/components/form-layout.css">
-  <link rel="stylesheet" href="assets/design-system/components/empty-state.css">
-  <link rel="stylesheet" href="assets/design-system/components/dropdown.css">
-  <link rel="stylesheet" href="assets/design-system/components/popover.css">
-  <link rel="stylesheet" href="assets/design-system/components/progress.css">
-  <link rel="stylesheet" href="assets/design-system/components/notification.css">
-  <link rel="stylesheet" href="assets/design-system/components/table.css">
-  <link rel="stylesheet" href="assets/design-system/base/premium.css">
-  <link rel="stylesheet" href="assets/design-system/components/hero.css">
-  <link rel="stylesheet" href="assets/design-system/components/status.css">
-  <link rel="stylesheet" href="assets/design-system/components/kpi.css">
-  <link rel="stylesheet" href="assets/design-system/components/article.css">
-  <link rel="stylesheet" href="assets/design-system/components/callout.css">
-  <link rel="stylesheet" href="assets/design-system/components/media.css">
-  <link rel="stylesheet" href="assets/design-system/components/footer.css">
-  <link rel="stylesheet" href="assets/design-system/components/section.css">
-  <link rel="stylesheet" href="assets/design-system/components/content-card.css">
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { overflow-x: hidden; background: #0f1117; color: #F4F4F4; min-height: 100vh; }
     * { box-sizing: border-box; }
+    body { overflow-x: hidden; background: #0f1117; color: #F4F4F4; min-height: 100vh; }
 
     /* TOP BAR */
     .db-topbar { display: flex; align-items: center; justify-content: space-between; background: #161616; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 var(--space-6); height: 60px; position: sticky; top: 0; z-index: 100; }
@@ -164,6 +108,10 @@
 
     @media (max-width: 1200px) { .db-layout { grid-template-columns: 1fr; } .db-sidebar { display: none; } .metric-grid { grid-template-columns: repeat(2,1fr); } .db-bottom-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .metric-grid { grid-template-columns: 1fr; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .db-status-dot { animation: none; }
+    }
   </style>
 </head>
 <body>

@@ -1,8 +1,23 @@
 /* ============================================================
-   MTSAi Page Shell Overrides
-   Unifies shared page chrome so standalone pages stop drifting.
-   Loaded after page-level inline styles.
+   MTSAi — shared page shell (load after bundle.css)
+   Nav chrome, scroll progress, skip link. Does NOT define
+   .mts-nav.scrolled — that stays in premium.css for glass state.
    ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--layer-bg);
+}
+
+.mts-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
 
 #scroll-progress {
   position: fixed;
@@ -13,9 +28,8 @@
   background: linear-gradient(90deg, var(--accent-saffron), #ffcd80);
   transform: scaleX(0);
   transform-origin: left;
-  z-index: 9999;
+  z-index: var(--z-scroll-progress, 9999);
   transition: transform 80ms linear;
-  will-change: transform;
 }
 
 .skip-link {
@@ -23,20 +37,21 @@
   top: -40px;
   left: 0;
   background: var(--interactive);
-  color: #fff;
+  color: var(--text-on-color, #fff);
   padding: 8px 16px;
   text-decoration: none;
-  z-index: 10000;
+  z-index: var(--z-skip-link, 10000);
   font-size: 13px;
   font-weight: 600;
-  font-family: var(--font-ui);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-radius: 0 0 4px 0;
 }
 
 .skip-link:focus {
   top: 0;
+}
+
+.logo-mark {
+  display: inline-flex;
+  flex-shrink: 0;
 }
 
 .mts-nav {
@@ -44,12 +59,8 @@
   border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-sticky-nav, 100);
   transition: box-shadow 200ms var(--ease-standard);
-}
-
-.mts-nav.scrolled {
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .mts-nav__inner {
@@ -94,17 +105,10 @@
   transition: color var(--duration-fast-02) var(--ease-standard);
   font-family: var(--font-body);
   position: relative;
-  border-radius: 0;
-}
-
-.mts-nav__link:hover {
-  color: var(--text-primary);
-  background: none;
 }
 
 .mts-nav__link.active {
   color: var(--interactive);
-  background: none;
 }
 
 .mts-nav__link.active::after {
@@ -117,11 +121,8 @@
   background: var(--interactive);
 }
 
-.mts-nav__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-  margin-left: auto;
+.mts-nav__link:hover {
+  color: var(--text-primary);
 }
 
 .nav-has-dropdown {
@@ -134,15 +135,20 @@
   left: 0;
   background: #fff;
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  min-width: 280px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  min-width: 300px;
   list-style: none;
-  padding: var(--space-2) 0;
+  padding: var(--space-2) 0 var(--space-3);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
-  transition: opacity 150ms, visibility 150ms, transform 150ms var(--ease-standard);
-  z-index: 1000;
+  transition:
+    opacity 150ms var(--ease-standard),
+    visibility 150ms,
+    transform 150ms var(--ease-standard);
+  z-index: var(--z-dropdown, 1000);
   border-radius: 2px;
 }
 
@@ -172,11 +178,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px var(--space-5);
+  padding: 9px var(--space-5);
   font-size: 13px;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: background var(--duration-fast-02), color var(--duration-fast-02);
+  transition:
+    background var(--duration-fast-02),
+    color var(--duration-fast-02);
 }
 
 .nav-dropdown li a::before {
@@ -184,8 +192,7 @@
   font-size: 11px;
   color: var(--interactive);
   opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 100ms, transform 120ms var(--ease-standard);
+  transition: opacity 100ms;
 }
 
 .nav-dropdown li a:hover {
@@ -195,32 +202,21 @@
 
 .nav-dropdown li a:hover::before {
   opacity: 1;
-  transform: translateX(0);
 }
 
-.mts-footer__disclaimer {
-  font-size: 11px;
-  color: var(--text-disabled);
-  line-height: 1.6;
-  max-width: 760px;
+.mts-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-left: auto;
 }
 
-.announce-page,
-.about-pre-cta-announce,
-.common-pre-cta-announce {
-  background: rgba(255, 153, 51, 0.08);
-  border-top: 1px solid rgba(255, 153, 51, 0.24);
-  border-bottom: 1px solid rgba(255, 153, 51, 0.24);
-  padding: 12px var(--space-5);
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-secondary);
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.announce-page a,
-.about-pre-cta-announce a,
-.common-pre-cta-announce a {
-  color: var(--interactive);
-  text-decoration: none;
-  font-weight: 500;
+  #scroll-progress {
+    transition: none;
+  }
 }

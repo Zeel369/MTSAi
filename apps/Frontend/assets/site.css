@@ -13,14 +13,12 @@
   --brand-green: #53AA00;
   --brand-blue:  #0052CC;
   --alert-red:   #D82B2B;
-  --font-display: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
-  --font-mono:    'JetBrains Mono', 'IBM Plex Mono', monospace;
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-display);
+  background: var(--layer-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
 /* ----------------------------------------------------------
@@ -30,10 +28,10 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--interactive);
+  color: var(--text-on-color, #fff);
   padding: 8px 16px;
-  z-index: 10000;
+  z-index: var(--z-skip-link, 10000);
   transition: top 0.2s;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -52,7 +50,7 @@ body {
   background: var(--brand-green);
   transform-origin: left;
   transform: scaleX(0);
-  z-index: 9999;
+  z-index: var(--z-scroll-progress, 9999);
   transition: transform 80ms linear;
 }
 
