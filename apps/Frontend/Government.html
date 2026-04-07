@@ -29,6 +29,7 @@
   <!-- Design System -->
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <link rel="stylesheet" href="assets/css/engagement.css">
   <link rel="stylesheet" href="assets/design-system/base/print.css" media="print">
 
   <style>
@@ -429,7 +430,7 @@
     </div>
 
     <!-- CONTROL FRAMEWORK -->
-    <section class="mts-section reveal-group" aria-label="Government Control Framework">
+    <section class="mts-section reveal-group" id="control-framework" aria-label="Government Control Framework">
       <div class="mts-container">
 
         <div class="mts-photo-strip reveal">
@@ -445,63 +446,58 @@
           <h2 class="mts-section__h2 reveal">Government Control Framework</h2>
         </div>
 
-        <div class="mts-two-col reveal">
-          <p class="mts-section__body">Government authorities retain full control over the public policy parameters of the system. MTSAi operates as infrastructure that executes those decisions — not as a substitute for them.</p>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">Authorities define how congestion pricing rules, incentive budgets, exemptions, equity protections, and enforcement thresholds are configured within a city programme. No parameter changes without government authorisation.</p>
+        <div class="mts-callout mts-callout--blue reveal" style="margin-bottom:var(--space-8);">
+          <strong style="display:block;margin-bottom:6px;">Decision ownership</strong>
+          <p style="margin:0;">Authorities define the policy model; the platform executes it. Explore what is controlled, then jump to the supporting audit, privacy, and enforcement sections.</p>
         </div>
 
-        <div class="ctrl-grid reveal delay-2">
-
-          <div class="ctrl-card">
-            <div class="ctrl-bg-num" aria-hidden="true">01</div>
-            <div class="ctrl-icon" aria-hidden="true">
-              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="1" stroke="var(--interactive)" stroke-width="1.5"/><line x1="2" y1="8" x2="20" y2="8" stroke="var(--interactive)" stroke-width="1.5"/><line x1="7" y1="12" x2="15" y2="12" stroke="var(--interactive)" stroke-width="1.5"/></svg>
-            </div>
-            <span class="ctrl-label">Control Area 01</span>
-            <h3 class="ctrl-title">Congestion Pricing Rules</h3>
-            <p class="ctrl-desc">Zones, time bands, charging logic, and pricing conditions remain entirely under government control. MTSAi executes policy — it does not set it.</p>
-            <div class="ctrl-badge">Government-Controlled</div>
+        <div class="eng-arch-explorer reveal delay-2" data-engagement="toggle-detail" aria-label="Government control areas">
+          <div class="eng-arch-stack" data-toggle-stack role="group" aria-label="Control areas">
+            <button class="eng-arch-layer-btn" aria-pressed="true" aria-controls="gov-control-detail"
+              data-eng-kicker="Control area 01"
+              data-eng-heading="Congestion pricing rules"
+              data-eng-body="Zones, time bands, charging logic, and pricing conditions remain under government control. The platform executes published rules and records outcomes for audit and public accountability.">
+              <span class="arch-layer__label">Pricing rules</span>
+              <span class="arch-layer__desc">zones · time bands · charging logic</span>
+            </button>
+            <button class="eng-arch-layer-btn" aria-pressed="false" aria-controls="gov-control-detail"
+              data-eng-kicker="Control area 02"
+              data-eng-heading="Incentive budgets"
+              data-eng-body="Authorities decide which programmes run, the budget constraints, and how rewards are structured and disbursed. Financial traceability is treated as a governance requirement, not an afterthought.">
+              <span class="arch-layer__label">Incentive budgets</span>
+              <span class="arch-layer__desc">programmes · caps · payout rules</span>
+            </button>
+            <button class="eng-arch-layer-btn eng-arch-layer-btn--engine" aria-pressed="false" aria-controls="gov-control-detail"
+              data-eng-kicker="Control area 03"
+              data-eng-heading="Exemptions & equity protections"
+              data-eng-body="Exemptions, hardship controls, and equity protections remain policy decisions. Eligibility logic is configurable and reviewable so equity choices can be governed and explained.">
+              <span class="arch-layer__label">Equity protections</span>
+              <span class="arch-layer__desc">exemptions · hardship · eligibility</span>
+            </button>
+            <button class="eng-arch-layer-btn" aria-pressed="false" aria-controls="gov-control-detail"
+              data-eng-kicker="Control area 04"
+              data-eng-heading="Enforcement thresholds"
+              data-eng-body="Authorities set thresholds and conditions under which enforcement-linked actions are triggered. Dispute resolution is supported so actions can be reviewed and corrected through due process.">
+              <span class="arch-layer__label">Enforcement thresholds</span>
+              <span class="arch-layer__desc">rules · triggers · dispute pathways</span>
+            </button>
           </div>
-
-          <div class="ctrl-card">
-            <div class="ctrl-bg-num" aria-hidden="true">02</div>
-            <div class="ctrl-icon" aria-hidden="true">
-              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#6554C0" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#6554C0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="eng-arch-detail" id="gov-control-detail" data-toggle-panel aria-live="polite" aria-atomic="true">
+            <p class="eng-arch-detail__kicker" data-eng-panel-kicker>Control area 01</p>
+            <h3 class="eng-arch-detail__title" data-eng-panel-heading>Congestion pricing rules</h3>
+            <p class="eng-arch-detail__body" data-eng-panel-body>Select a control area to read what remains government-defined.</p>
+            <div style="margin-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-3);">
+              <a class="mts-btn mts-btn--secondary" href="#auditability" style="height:40px;">See audit artefacts →</a>
+              <a class="mts-btn mts-btn--ghost" href="#privacy" style="height:40px;">See privacy posture →</a>
+              <a class="mts-btn mts-btn--ghost" href="#enforcement" style="height:40px;">See enforcement integration →</a>
             </div>
-            <span class="ctrl-label">Control Area 02</span>
-            <h3 class="ctrl-title">Incentive Budgets</h3>
-            <p class="ctrl-desc">Authorities determine which incentive programmes run, their budget constraints, and how rewards are structured and disbursed to commuters.</p>
-            <div class="ctrl-badge">Government-Controlled</div>
           </div>
-
-          <div class="ctrl-card">
-            <div class="ctrl-bg-num" aria-hidden="true">03</div>
-            <div class="ctrl-icon" aria-hidden="true">
-              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v5c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V6L11 2z" stroke="var(--brand-primary)" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="var(--brand-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <span class="ctrl-label">Control Area 03</span>
-            <h3 class="ctrl-title">Exemptions &amp; Equity Protections</h3>
-            <p class="ctrl-desc">Any exemptions, hardship controls, or equity protections remain policy decisions made by the city or state authority. No automated override.</p>
-            <div class="ctrl-badge">Government-Controlled</div>
-          </div>
-
-          <div class="ctrl-card">
-            <div class="ctrl-bg-num" aria-hidden="true">04</div>
-            <div class="ctrl-icon" aria-hidden="true">
-              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v2M11 17v2M3 11H5M17 11h2" stroke="#C47800" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="5" stroke="#C47800" stroke-width="1.5"/><circle cx="11" cy="11" r="2" fill="#C47800"/></svg>
-            </div>
-            <span class="ctrl-label">Control Area 04</span>
-            <h3 class="ctrl-title">Enforcement Thresholds</h3>
-            <p class="ctrl-desc">Authorities set the thresholds and conditions under which enforcement-linked actions are triggered inside the programme design. Configurable at any time.</p>
-            <div class="ctrl-badge">Government-Controlled</div>
-          </div>
-
         </div>
       </div>
     </section>
 
     <!-- AUDITABILITY -->
-    <section class="mts-section mts-section--white reveal-group" aria-label="Transparency and Auditability">
+    <section class="mts-section mts-section--white reveal-group" id="auditability" aria-label="Transparency and Auditability">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">Auditability</span>
@@ -550,7 +546,7 @@
     </section>
 
     <!-- PRIVACY SAFEGUARDS -->
-    <section class="mts-section mts-section--tight reveal-group" aria-label="Privacy Safeguards">
+    <section class="mts-section mts-section--tight reveal-group" id="privacy" aria-label="Privacy Safeguards">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">Privacy</span>
@@ -587,7 +583,7 @@
     </section>
 
     <!-- ENFORCEMENT INTEGRATION -->
-    <section class="mts-section mts-section--alt mts-section--tight reveal-group" aria-label="Enforcement Integration">
+    <section class="mts-section mts-section--alt mts-section--tight reveal-group" id="enforcement" aria-label="Enforcement Integration">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">Operations</span>
@@ -631,7 +627,7 @@
     </section>
 
     <!-- PHASED IMPLEMENTATION -->
-    <section class="mts-section reveal-group" aria-label="Phased Implementation">
+    <section class="mts-section reveal-group" id="phased" aria-label="Phased Implementation">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">Delivery Model</span>
@@ -843,6 +839,7 @@
     });
   </script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/engagement.js" defer></script>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mts-mobile-nav" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">

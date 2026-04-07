@@ -390,6 +390,7 @@
     <nav class="mts-tab-bar" aria-label="Platform sections" style="position:sticky;top:64px;z-index:90;background:#fff;border-bottom:1px solid var(--blue-20);">
       <a href="#overview" class="mts-tab-bar__item active">Overview</a>
       <a href="#policy-layer" class="mts-tab-bar__item">Policy Layer</a>
+      <a href="#capabilities" class="mts-tab-bar__item">Capability Map</a>
       <a href="#core-engines" class="mts-tab-bar__item">Core Engines</a>
       <a href="#data-events" class="mts-tab-bar__item">Data Processing</a>
       <a href="#ecosystem" class="mts-tab-bar__item">Ecosystem</a>
@@ -407,9 +408,15 @@
         <div class="mts-two-col">
           <div class="reveal">
             <h3 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:var(--space-5);">Incentive-Based Urban Demand Management Platform</h3>
-            <p class="mts-section__body">Urban congestion management requires more than isolated tools. It requires an integrated system that connects policy configuration, traffic data, commuter engagement, and digital mobility ecosystems.</p>
-            <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;margin-bottom:var(--space-5);">The MTSAi platform is designed as a multi-tenant mobility management architecture that allows multiple cities to operate independent congestion management programmes within a shared infrastructure environment.</p>
-            <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">The platform combines deterministic policy engines, incentive management systems, and digital ecosystem integrations to support government-controlled traffic demand programmes.</p>
+            <p class="mts-section__body">Built for government deployment: configurable policy engines, incentive delivery, event processing, and integrations—structured so cities can evaluate, adjust, and scale without losing auditability.</p>
+            <div class="mts-callout mts-callout--blue" style="margin-top:var(--space-6);">
+              <strong style="display:block;margin-bottom:6px;">At a glance</strong>
+              <ul style="margin:0;padding-left:18px;line-height:1.7;">
+                <li><strong>City-owned rules</strong> (pricing, incentives, exemptions, enforcement thresholds)</li>
+                <li><strong>Traceable outcomes</strong> (every charge/reward can be explained and retrieved)</li>
+                <li><strong>Integration-first</strong> (FASTag/UPI, ANPR, ICCCs, mobility partners)</li>
+              </ul>
+            </div>
           </div>
           <div class="reveal delay-2">
             <p id="tech-arch-explorer-label" class="visually-hidden">Select a platform layer to read how it fits in the stack.</p>
@@ -475,6 +482,61 @@
       </div>
     </section>
 
+    <!-- CAPABILITY MAP -->
+    <section class="mts-section mts-section--white reveal-group" id="capabilities" aria-label="Capability map">
+      <div class="mts-container">
+        <div class="mts-section__header">
+          <span class="mts-section__eyebrow">Explore</span>
+          <h2 class="mts-section__h2 reveal">Capability Map</h2>
+          <p class="mts-section__body reveal">Filter by the question a government team is trying to answer, then review the capabilities that support it.</p>
+        </div>
+
+        <div class="eng-filter reveal delay-2" data-engagement="filter-chips" aria-label="Capability filters">
+          <div class="eng-filter__label">Filter</div>
+          <div class="eng-filter__chips" role="group" aria-label="Capability categories">
+            <button class="eng-chip" data-filter="all" aria-pressed="true">All</button>
+            <button class="eng-chip" data-filter="policy" aria-pressed="false">Policy</button>
+            <button class="eng-chip" data-filter="audit" aria-pressed="false">Audit</button>
+            <button class="eng-chip" data-filter="privacy" aria-pressed="false">Privacy</button>
+            <button class="eng-chip" data-filter="integrations" aria-pressed="false">Integrations</button>
+          </div>
+
+          <div class="eng-filter__grid" aria-label="Capabilities">
+            <div class="eng-cap-card" data-filter-item data-tags="policy,audit">
+              <div class="eng-cap-kicker">Policy</div>
+              <h3 class="eng-cap-title">Configurable corridors and rules</h3>
+              <p class="eng-cap-body">Define zones, peak windows, eligibility, exemptions, and enforcement thresholds through an authority-controlled interface—no vendor code change required for policy updates.</p>
+            </div>
+            <div class="eng-cap-card" data-filter-item data-tags="audit">
+              <div class="eng-cap-kicker">Audit</div>
+              <h3 class="eng-cap-title">Explainable charge &amp; reward records</h3>
+              <p class="eng-cap-body">Every outcome is timestamped and policy-referenced so teams can answer “what rule applied?” and retrieve artefacts for review, reconciliation, or due process.</p>
+            </div>
+            <div class="eng-cap-card" data-filter-item data-tags="privacy,policy">
+              <div class="eng-cap-kicker">Privacy</div>
+              <h3 class="eng-cap-title">Minimised collection by design</h3>
+              <p class="eng-cap-body">Operational signals are purpose-scoped. The architecture is designed to avoid biometric dependence and continuous location surveillance while still supporting eligibility verification.</p>
+            </div>
+            <div class="eng-cap-card" data-filter-item data-tags="integrations">
+              <div class="eng-cap-kicker">Integrations</div>
+              <h3 class="eng-cap-title">Ecosystem connectors</h3>
+              <p class="eng-cap-body">Integrate with tolling/payment rails, enforcement systems, command centres, and mobility providers using a service layer designed for city-by-city onboarding.</p>
+            </div>
+            <div class="eng-cap-card" data-filter-item data-tags="audit,policy">
+              <div class="eng-cap-kicker">Governance</div>
+              <h3 class="eng-cap-title">Appeals and dispute pathways</h3>
+              <p class="eng-cap-body">Support documented review, correction, and due process so programmes remain defensible in procurement review and public accountability contexts.</p>
+            </div>
+            <div class="eng-cap-card" data-filter-item data-tags="integrations,privacy">
+              <div class="eng-cap-kicker">Operations</div>
+              <h3 class="eng-cap-title">Role-separated integration posture</h3>
+              <p class="eng-cap-body">Separate data handling and operational roles (authority, operator, partner) so integrations are controllable and responsibilities are legible in contracts and audits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- POLICY LAYER -->
     <section class="mts-section mts-section--white reveal-group" id="policy-layer" aria-label="City Policy and Operations Layer">
       <div class="mts-container">
@@ -484,11 +546,16 @@
         </div>
         <div class="mts-two-col">
           <div class="reveal">
-            <p class="mts-section__body">At the top of the platform is the City Administration and Policy Layer. This is where government authorities manage congestion programmes through a structured operational interface.</p>
-            <p style="font-size:16px;color:var(--text-secondary);line-height:1.72;">City administrators can configure congestion pricing policies, peak and off-peak definitions, incentive programmes and reward budgets, exemption categories and equity protections, and enforcement thresholds and escalation rules.</p>
-            <div style="margin-top:var(--space-7);">
-              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;font-style:italic;">This layer ensures that policy authority remains entirely with the government authority, not the technology provider.</p>
+            <p class="mts-section__body">This is the government-controlled surface where cities publish and adjust programme rules.</p>
+            <div class="mts-callout mts-callout--green" style="margin-top:var(--space-6);">
+              <strong style="display:block;margin-bottom:6px;">Authorities control</strong>
+              <ul style="margin:0;padding-left:18px;line-height:1.7;">
+                <li>Pricing bands and corridor definitions</li>
+                <li>Incentive programmes and reward budgets</li>
+                <li>Exemptions, equity protections, and enforcement thresholds</li>
+              </ul>
             </div>
+            <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:var(--space-5);font-style:italic;">Policy authority stays with the government authority; the platform executes what is published.</p>
           </div>
           <div class="attr-rows reveal delay-2">
             <div class="attr-row">
