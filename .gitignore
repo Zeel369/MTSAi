@@ -12,3 +12,7 @@ dist/
 *.log
 *.lock
 .vercel
+
+# Python
+**/__pycache__/
+*.pyc
