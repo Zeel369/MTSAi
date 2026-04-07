@@ -9,7 +9,7 @@
   height: 300px;
   overflow: hidden;
   border: 1px solid var(--blue-20);
-  box-shadow: 0 4px 32px rgba(0, 82, 204, 0.10);
+  box-shadow: 0 4px 32px rgba(37, 99, 235,  0.10);
   margin-bottom: var(--space-10);
 }
 
@@ -67,9 +67,9 @@
 }
 
 .mts-photo-strip__tag--blue {
-  color: rgba(0,82,204,0.9);
-  background: rgba(0,82,204,0.10);
-  border: 1px solid rgba(0,82,204,0.25);
+  color: rgba(37, 99, 235, 0.9);
+  background: rgba(37, 99, 235, 0.10);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 /* Reduced motion — disable the hover zoom */

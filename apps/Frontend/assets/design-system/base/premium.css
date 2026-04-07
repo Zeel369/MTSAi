@@ -38,7 +38,7 @@ button:focus-visible {
   color: #fff;
 }
 [data-nav-dark] .mts-nav:not(.scrolled) .status-dot.active {
-  box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.30);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94,  0.32);
 }
 
 /* ── Button micro-states ──────────────────────────────────── */
@@ -168,7 +168,7 @@ button:focus-visible {
     transform 200ms var(--ease-standard);
 }
 .arch-layer:hover {
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.12);
 }
 
 /* ── Section eyebrow — tick animate on visibility ─────────── */
@@ -215,7 +215,7 @@ button:focus-visible {
 
 /* ── Selection color — brand-aligned ─────────────────────── */
 ::selection {
-  background: rgba(0, 82, 204, 0.18);
+  background: rgba(37, 99, 235,  0.18);
   color: var(--text-primary);
 }
 

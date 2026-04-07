@@ -1,88 +1,89 @@
 /* ============================================================
-   MTSAi Brand Color Palette
-   Trust Blue:  #0052CC  (primary interactive)
-   Trust Green: #53AA00  (brand / secondary)
-   Saffron:     #FF9933  (CTA accent — max 1 per view)
-   Alert Red:   #D82B2B  (danger / error)
+   Design tokens — derived from MTSAi logo (mtsai-logo.png)
+   Primary: royal blue (M, T, A core, I) · Trust: logo green (S, A arch)
+   Accent: logo red reserved for alerts / sparse emphasis (see --red-*)
+   Pilot / warm UI accent: amber (legacy --saffron-* token names)
+   Neutrals: cool slate (government / civic readability)
    ============================================================ */
 
 :root {
-  /* === BLUE (Primary Interactive — MTSAi Trust Blue) === */
-  --blue-100: #00112E;
-  --blue-90:  #001A4D;
-  --blue-80:  #002B80;
-  --blue-70:  #0040AA;  /* dark interactive — hover states */
-  --blue-60:  #0052CC;  /* MTSAi Trust Blue — primary brand */
-  --blue-50:  #1A6ADB;  /* medium interactive */
-  --blue-40:  #4D8FE8;  /* lighter interactive */
-  --blue-30:  #80B3F2;
-  --blue-20:  #B3D1F9;
-  --blue-10:  #E6F0FD;
+  /* === ROYAL BLUE (maps to --blue-* — primary interactive, links) === */
+  --blue-100: #172554;
+  --blue-90:  #1e3a8a;
+  --blue-80:  #1e40af;
+  --blue-70:  #1d4ed8;
+  --blue-60:  #2563eb;
+  --blue-50:  #3b82f6;
+  --blue-40:  #60a5fa;
+  --blue-30:  #93c5fd;
+  --blue-20:  #bfdbfe;
+  --blue-10:  #eff6ff;
 
-  /* === GREEN (Brand Secondary / Trust) === */
-  --green-90: #071908;
-  --green-80: #022D0D;
-  --green-70: #0E6027;
-  --green-60: #198038;
-  --green-50: #53AA00;   /* MTSAi Trust Green */
-  --green-40: #42BE65;
-  --green-30: #6FDC8C;
-  --green-20: #A7F0BA;
-  --green-10: #DEFBE6;
+  /* === LOGO GREEN (maps to --green-* — trust, success, brand identity) === */
+  --green-100: #14532d;
+  --green-90:  #166534;
+  --green-80:  #15803d;
+  --green-70:  #16a34a;
+  --green-60:  #22c55e;
+  --green-50:  #4ade80;
+  --green-40:  #86efac;
+  --green-30:  #bbf7d0;
+  --green-20:  #dcfce7;
+  --green-10:  #f0fdf4;
 
-  /* === SAFFRON (Accent — VERY SPARSE) === */
-  --saffron-100: #3D1500;
-  --saffron-90:  #5E1F00;
-  --saffron-80:  #8A3800;
-  --saffron-70:  #BA4E00;
-  --saffron-60:  #E36A00;
-  --saffron-50:  #FF9933;   /* Indian flag saffron — primary CTA */
-  --saffron-40:  #FFB366;
-  --saffron-30:  #FFCC99;
-  --saffron-20:  #FFE5CC;
-  --saffron-10:  #FFF5EB;
+  /* === AMBER (legacy --saffron-* — pilot, highlights, not primary CTA) === */
+  --saffron-100: #451a03;
+  --saffron-90:  #78350f;
+  --saffron-80:  #92400e;
+  --saffron-70:  #b45309;
+  --saffron-60:  #d97706;
+  --saffron-50:  #ea580c;
+  --saffron-40:  #fb923c;
+  --saffron-30:  #fdba74;
+  --saffron-20:  #fed7aa;
+  --saffron-10:  #ffedd5;
 
-  /* === RED (Alert — MTSAi Alert Red) === */
-  --red-100: #2D0709;
-  --red-90:  #520408;
-  --red-80:  #750E13;
-  --red-70:  #A82020;
-  --red-60:  #D82B2B;  /* MTSAi Alert Red */
-  --red-50:  #E85555;
-  --red-40:  #F28080;
-  --red-30:  #F8ADAD;
-  --red-20:  #FBCFCF;
-  --red-10:  #FEF0F0;
+  /* === RED (alerts, errors — logo dot colour used sparingly in UI) === */
+  --red-100: #450a0a;
+  --red-90:  #7f1d1d;
+  --red-80:  #991b1b;
+  --red-70:  #b91c1c;
+  --red-60:  #dc2626;
+  --red-50:  #ef4444;
+  --red-40:  #f87171;
+  --red-30:  #fca5a5;
+  --red-20:  #fecaca;
+  --red-10:  #fee2e2;
 
-  /* === GRAY (Neutral) === */
-  --gray-100: #161616;
-  --gray-90:  #262626;
-  --gray-80:  #393939;
-  --gray-70:  #525252;
-  --gray-60:  #6F6F6F;
-  --gray-50:  #8D8D8D;
-  --gray-40:  #A8A8A8;
-  --gray-30:  #C6C6C6;
-  --gray-20:  #E0E0E0;
-  --gray-10:  #F4F4F4;
-  --white:    #FFFFFF;
+  /* === SLATE (cool neutral — maps to --gray-*) === */
+  --gray-100: #0f172a;
+  --gray-90:  #1e293b;
+  --gray-80:  #334155;
+  --gray-70:  #475569;
+  --gray-60:  #64748b;
+  --gray-50:  #94a3b8;
+  --gray-40:  #cbd5e1;
+  --gray-30:  #e2e8f0;
+  --gray-20:  #f1f5f9;
+  --gray-10:  #f8fafc;
+  --white:    #ffffff;
   --black:    #000000;
 
-  /* === CYAN (Informational) === */
-  --cyan-70: #00539A;
-  --cyan-60: #0072C3;
-  --cyan-50: #1192E8;
-  --cyan-40: #33B1FF;
-  --cyan-30: #82CFFF;
-  --cyan-20: #BAE6FF;
-  --cyan-10: #E5F6FF;
+  /* === CYAN (informational) === */
+  --cyan-70: #164e63;
+  --cyan-60: #155e75;
+  --cyan-50: #0891b2;
+  --cyan-40: #22d3ee;
+  --cyan-30: #67e8f9;
+  --cyan-20: #a5f3fc;
+  --cyan-10:  #cffafe;
 
-  /* === YELLOW (Warning) === */
-  --yellow-70: #684E00;
-  --yellow-60: #8E6A00;
-  --yellow-50: #B28600;
-  --yellow-40: #D4A017;
-  --yellow-30: #F1C21B;
-  --yellow-20: #FDDC69;
-  --yellow-10: #FCF4D6;
+  /* === YELLOW (warning) === */
+  --yellow-70: #713f12;
+  --yellow-60: #854d0e;
+  --yellow-50: #a16207;
+  --yellow-40: #ca8a04;
+  --yellow-30: #eab308;
+  --yellow-20: #fde047;
+  --yellow-10: #fef9c3;
 }

@@ -18,22 +18,22 @@
   background: #fff;
   border: 1px solid var(--blue-20);
   border-top: 3px solid var(--interactive);
-  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06);
+  box-shadow: 0 2px 8px rgba(37, 99, 235,  0.06);
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
 .mts-card--feature:hover {
-  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 8px 24px rgba(37, 99, 235,  0.12);
   transform: translateY(-2px);
 }
 
 /* Primary feature card — prominent, coloured top border + stronger shadow */
 .mts-card--feature--primary {
   border-top: 4px solid var(--interactive);
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.12);
   background: var(--blue-10);
 }
 .mts-card--feature--primary:hover {
-  box-shadow: 0 12px 32px rgba(0, 82, 204, 0.18);
+  box-shadow: 0 12px 32px rgba(37, 99, 235,  0.18);
   transform: translateY(-2px);
 }
 .mts-card--feature--primary .mts-card__label { color: var(--interactive); }
@@ -105,7 +105,7 @@
 }
 .mts-card--insight:hover {
   background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.08);
 }
 
 .mts-card--insight--green { border-top-color: var(--brand-primary); }

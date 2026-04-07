@@ -15,7 +15,7 @@
 .mts-form-card {
   background: #fff;
   border: 1px solid var(--blue-20);
-  box-shadow: 0 8px 40px rgba(0, 82, 204, 0.10);
+  box-shadow: 0 8px 40px rgba(37, 99, 235,  0.10);
   padding: var(--space-9);
 }
 
@@ -210,14 +210,14 @@
   background: #fff;
   border: 1px solid var(--blue-20);
   border-top: 3px solid var(--interactive);
-  box-shadow: 0 2px 8px rgba(0,82,204,0.06);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
   text-align: left;
   cursor: pointer;
   transition: box-shadow 200ms, transform 200ms, background 150ms, color 150ms;
 }
 .mts-intent-card:hover,
 .mts-intent-card.active {
-  box-shadow: 0 8px 24px rgba(0,82,204,0.14);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.14);
   transform: translateY(-3px);
   background: var(--interactive);
   color: #fff;

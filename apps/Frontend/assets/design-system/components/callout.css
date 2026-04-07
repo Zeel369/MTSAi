@@ -12,7 +12,7 @@
 
 /* Blue — trust / governance */
 .mts-callout--blue {
-  background: rgba(0, 82, 204, 0.05);
+  background: rgba(37, 99, 235,  0.05);
   border: 1px solid var(--blue-20);
   border-left: 3px solid var(--interactive);
   color: var(--text-primary);
@@ -20,16 +20,16 @@
 
 /* Green — sustainability / compliance */
 .mts-callout--green {
-  background: rgba(83, 170, 0, 0.05);
-  border: 1px solid rgba(83, 170, 0, 0.18);
+  background: rgba(34, 197, 94,  0.06);
+  border: 1px solid rgba(34, 197, 94,  0.20);
   border-left: 3px solid var(--brand-primary);
   color: var(--text-primary);
 }
 
 /* Saffron — CTA / highlight */
 .mts-callout--saffron {
-  background: rgba(255, 153, 51, 0.05);
-  border: 1px solid rgba(255, 153, 51, 0.18);
+  background: rgba(234, 88, 12, 0.06);
+  border: 1px solid rgba(234, 88, 12, 0.20);
   border-left: 3px solid var(--cta-primary);
   color: var(--text-primary);
 }

@@ -38,7 +38,7 @@ button:focus-visible {
   color: #fff;
 }
 [data-nav-dark] .mts-nav:not(.scrolled) .status-dot.active {
-  box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.30);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.32);
 }
 
 /* ── Button micro-states ──────────────────────────────────── */

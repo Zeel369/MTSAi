@@ -1,15 +1,13 @@
 /* ============================================================
-   MTSAi Typography Tokens
-   Display/Heading: Space Grotesk
-   Body/UI: IBM Plex Sans (loaded async from page <head>, not @import)
-   Mono: JetBrains Mono (code, IDs, data)
+   Typography tokens — Fraunces + DM Sans + JetBrains Mono
+   (fonts loaded async from page <head>, not @import)
    ============================================================ */
 
 :root {
   /* --- Font Families --- */
-  --font-display:  'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
-  --font-body:     'IBM Plex Sans', system-ui, sans-serif;
-  --font-ui:       'IBM Plex Sans', system-ui, sans-serif;
+  --font-display:  'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-ui:       'DM Sans', system-ui, sans-serif;
   --font-mono:     'JetBrains Mono', 'IBM Plex Mono', monospace;
 
   /* --- Font Weights --- */
@@ -23,9 +21,9 @@
   /* Utility / UI */
   --type-label-01:    0.75rem;    /* 12px — labels, captions */
   --type-label-02:    0.875rem;   /* 14px — helper text, small UI */
-  --type-body-01:     0.9375rem;  /* 15px — compact body (GIGW floor) */
+  --type-body-01:     0.875rem;   /* 14px — compact body */
   --type-body-02:     1rem;       /* 16px — standard body */
-  --type-body-compact-01: 0.9375rem;
+  --type-body-compact-01: 0.875rem;
   --type-body-compact-02: 1rem;
 
   /* Headings */
@@ -101,7 +99,7 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
 /* ── Mono font usage constraint ─────────────────────────────────
    JetBrains Mono is reserved for: live data values, system status
    indicators, technical IDs, and inline code. Section labels and
-   navigation micro-copy use IBM Plex Sans with wide letter-spacing
+   navigation micro-copy use DM Sans with wide letter-spacing
    instead. Override .font-mono--ui for the permitted exceptions.
    ────────────────────────────────────────────────────────────── */
 .type-label-ui {

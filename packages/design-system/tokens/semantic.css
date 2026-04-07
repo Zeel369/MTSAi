@@ -17,7 +17,7 @@
   --text-placeholder: var(--gray-50);   /* #8D8D8D */
   --text-disabled:   var(--gray-60);    /* #6F6F6F */
   --text-on-color:   var(--white);
-  --text-on-saffron: var(--gray-100);   /* dark text on saffron bg */
+  --text-on-saffron: var(--white);      /* on-primary CTA (blue) */
   --text-error:      var(--red-40);
   --text-success:    var(--green-30);
   --text-warning:    var(--yellow-30);
@@ -25,28 +25,28 @@
   --text-brand:      var(--green-40);   /* brand green for labels */
   --text-link:       var(--blue-40);
 
-  /* --- INTERACTIVE / PRIMARY (Blue) --- */
-  --interactive:           var(--blue-60);   /* #0F62FE */
-  --interactive-hover:     var(--blue-70);   /* #0043CE */
-  --interactive-active:    var(--blue-80);   /* #002D9C */
-  --interactive-selected:  var(--blue-90);   /* #001D6C */
+  /* --- INTERACTIVE (royal blue — logo primary) --- */
+  --interactive:           var(--blue-60);
+  --interactive-hover:     var(--blue-70);
+  --interactive-active:    var(--blue-80);
+  --interactive-selected:  var(--blue-90);
   --interactive-focus:     var(--blue-60);
 
-  /* --- BRAND GREEN (Secondary / Trust) --- */
-  --brand-primary:         var(--green-50);  /* #53AA00 — brand identity only */
-  --brand-hover:           var(--green-60);  /* #198038 */
-  --brand-active:          var(--green-70);  /* #0E6027 */
-  --brand-subtle:          rgba(83, 170, 0, 0.12);
-  --brand-border:          rgba(83, 170, 0, 0.3);
-  --green-vivid:           var(--green-30);  /* #6FDC8C — positive data state only (panel metrics, success indicators) */
+  /* --- BRAND TRUST (logo green) --- */
+  --brand-primary:         var(--green-60);
+  --brand-hover:           var(--green-70);
+  --brand-active:          var(--green-80);
+  --brand-subtle:          rgba(34, 197, 94, 0.14);
+  --brand-border:          rgba(34, 197, 94, 0.32);
+  --green-vivid:           var(--green-40);
 
-  /* --- SAFFRON CTA (Accent — sparse) --- */
-  --cta-primary:           var(--saffron-50); /* #FF9933 — interactive only: buttons, focus rings */
-  --cta-hover:             var(--saffron-60); /* #E36A00 */
-  --cta-active:            var(--saffron-70); /* #BA4E00 */
-  --cta-text:              var(--gray-100);   /* dark text on saffron */
-  --cta-focus:             var(--saffron-50);
-  --accent-saffron:        var(--saffron-40); /* #FFAD33 — decorative only: bars, borders, headline accents */
+  /* --- PRIMARY CTA (government: credible blue, not novelty accent) --- */
+  --cta-primary:           var(--blue-70);
+  --cta-hover:             var(--blue-80);
+  --cta-active:            var(--blue-90);
+  --cta-text:              var(--white);
+  --cta-focus:             var(--blue-60);
+  --accent-saffron:        var(--green-50); /* decorative: second logo colour */
 
   /* --- BORDER --- */
   --border-subtle:    rgba(255, 255, 255, 0.08);
@@ -72,17 +72,17 @@
   --status-error:     var(--red-60);
   --status-info:      var(--cyan-50);
   --status-neutral:   var(--gray-50);
-  --status-pilot:     var(--saffron-50);   /* pilot/beta state — saffron */
+  --status-pilot:     var(--saffron-50);   /* pilot / notice — amber scale */
 
   /* --- BUTTON TOKENS --- */
-  --btn-primary-bg:     var(--cta-primary);   /* saffron — main CTA */
+  --btn-primary-bg:     var(--cta-primary);
   --btn-primary-text:   var(--cta-text);
   --btn-primary-hover:  var(--cta-hover);
   --btn-secondary-bg:   var(--interactive);   /* blue — secondary interactive */
   --btn-secondary-text: var(--white);
   --btn-secondary-hover: var(--interactive-hover);
   --btn-ghost-text:     var(--interactive);
-  --btn-ghost-hover-bg: rgba(15, 98, 254, 0.12);
+  --btn-ghost-hover-bg: rgba(37, 99, 235, 0.12);
   --btn-danger-bg:      var(--red-60);
   --btn-danger-hover:   var(--red-70, #A2191F);
   --btn-disabled-bg:    var(--gray-80);
@@ -100,12 +100,12 @@
   --input-height:       48px;   /* 44px minimum + breathing room */
 
   /* --- TAG TOKENS --- */
-  --tag-blue-bg:     rgba(15, 98, 254, 0.15);
+  --tag-blue-bg:     rgba(37, 99, 235, 0.18);
   --tag-blue-text:   var(--blue-30);
-  --tag-green-bg:    rgba(83, 170, 0, 0.15);
+  --tag-green-bg:    rgba(34, 197, 94, 0.18);
   --tag-green-text:  var(--green-30);
-  --tag-saffron-bg:  rgba(255, 153, 51, 0.15);
-  --tag-saffron-text: var(--saffron-40);
+  --tag-saffron-bg:  rgba(234, 88, 12, 0.16);
+  --tag-saffron-text: var(--saffron-30);
   --tag-red-bg:      rgba(218, 30, 40, 0.15);
   --tag-red-text:    var(--red-30);
   --tag-gray-bg:     var(--gray-80);
@@ -118,32 +118,32 @@
   --notif-error-border: var(--red-60);
   --notif-warning-bg:  rgba(241, 194, 27, 0.1);
   --notif-warning-border: var(--yellow-30);
-  --notif-success-bg:  rgba(83, 170, 0, 0.1);
+  --notif-success-bg:  rgba(34, 197, 94, 0.12);
   --notif-success-border: var(--green-50);
   --notif-info-bg:     rgba(17, 146, 232, 0.1);
   --notif-info-border: var(--cyan-50);
 
   /* --- ALPHA / TRANSPARENCY TOKENS --- */
   /* Blue alpha */
-  --blue-alpha-08: rgba(15, 98, 254, 0.08);   /* ghost button hover bg */
-  --blue-alpha-12: rgba(15, 98, 254, 0.12);   /* interactive selection bg */
-  --blue-alpha-15: rgba(15, 98, 254, 0.15);   /* tag background */
-  --blue-alpha-20: rgba(15, 98, 254, 0.20);   /* active state overlay */
-  --blue-alpha-25: rgba(15, 98, 254, 0.25);   /* shadow tint */
+  --blue-alpha-08: rgba(37, 99, 235, 0.09);
+  --blue-alpha-12: rgba(37, 99, 235, 0.14);
+  --blue-alpha-15: rgba(37, 99, 235, 0.18);
+  --blue-alpha-20: rgba(37, 99, 235, 0.22);
+  --blue-alpha-25: rgba(37, 99, 235, 0.28);
 
   /* Green alpha */
-  --green-alpha-08: rgba(83, 170, 0, 0.08);
-  --green-alpha-12: rgba(83, 170, 0, 0.12);
-  --green-alpha-15: rgba(83, 170, 0, 0.15);   /* tag background */
-  --green-alpha-20: rgba(83, 170, 0, 0.20);
-  --green-alpha-30: rgba(83, 170, 0, 0.30);   /* border on green elements */
+  --green-alpha-08: rgba(34, 197, 94, 0.09);
+  --green-alpha-12: rgba(34, 197, 94, 0.14);
+  --green-alpha-15: rgba(34, 197, 94, 0.18);
+  --green-alpha-20: rgba(34, 197, 94, 0.22);
+  --green-alpha-30: rgba(34, 197, 94, 0.32);
 
-  /* Saffron alpha */
-  --saffron-alpha-05: rgba(255, 153, 51, 0.05);
-  --saffron-alpha-08: rgba(255, 153, 51, 0.08);
-  --saffron-alpha-15: rgba(255, 153, 51, 0.15);  /* tag background */
-  --saffron-alpha-20: rgba(255, 153, 51, 0.20);
-  --saffron-alpha-30: rgba(255, 153, 51, 0.30);  /* shadow tint */
+  /* Amber alpha (legacy saffron token names) */
+  --saffron-alpha-05: rgba(234, 88, 12, 0.06);
+  --saffron-alpha-08: rgba(234, 88, 12, 0.10);
+  --saffron-alpha-15: rgba(234, 88, 12, 0.16);
+  --saffron-alpha-20: rgba(234, 88, 12, 0.22);
+  --saffron-alpha-30: rgba(234, 88, 12, 0.28);
 
   /* Red alpha */
   --red-alpha-08: rgba(218, 30, 40, 0.08);
@@ -172,17 +172,17 @@
 /* --- LIGHT THEME OVERRIDE --- */
 [data-theme="light"] {
   /* Layers */
-  --layer-bg:       #FFFFFF;
-  --layer-01:       #F4F4F4;
-  --layer-02:       #E0E0E0;
-  --layer-03:       #C6C6C6;
+  --layer-bg:       #f8fafc;
+  --layer-01:       #f1f5f9;
+  --layer-02:       #e2e8f0;
+  --layer-03:       #cbd5e1;
   --overlay:        rgba(0, 0, 0, 0.50);
 
   /* Text */
-  --text-primary:    #161616;
-  --text-secondary:  #525252;
-  --text-placeholder: #8D8D8D;
-  --text-disabled:   #C6C6C6;
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-placeholder: #64748b;
+  --text-disabled:   #94a3b8;
   --text-on-color:   #FFFFFF;
   --text-error:      var(--red-60);
   --text-success:    var(--green-70);
@@ -201,60 +201,59 @@
   /* Brand */
   --brand-primary:   var(--green-60);
   --brand-hover:     var(--green-70);
-  --brand-subtle:    rgba(83, 170, 0, 0.08);
-  --brand-border:    rgba(83, 170, 0, 0.3);
+  --brand-subtle:    rgba(34, 197, 94, 0.10);
+  --brand-border:    rgba(34, 197, 94, 0.28);
 
-  /* CTA — cobalt blue for govtech authority */
-  --cta-primary:  #1D4ED8;
-  --cta-hover:    #1E40AF;
-  --cta-text:     #FFFFFF;
-  /* India identity accent — saffron reserved for cultural/regional callouts */
-  --accent-india: var(--saffron-50);
+  /* CTA — primary actions (credible blue) */
+  --cta-primary:  var(--blue-70);
+  --cta-hover:    var(--blue-80);
+  --cta-text:     #ffffff;
+  --accent-india: var(--green-60);
 
   /* Borders */
-  --border-subtle:      #E0E0E0;
-  --border-strong:      #8D8D8D;
+  --border-subtle:      #e2e8f0;
+  --border-strong:      #64748b;
   --border-interactive: var(--blue-60);
   --border-error:       var(--red-60);
   --border-brand:       var(--green-60);
 
   /* Icons */
-  --icon-primary:     #161616;
-  --icon-secondary:   #525252;
-  --icon-disabled:    #C6C6C6;
+  --icon-primary:     #0f172a;
+  --icon-secondary:   #475569;
+  --icon-disabled:    #94a3b8;
   --icon-interactive: var(--blue-60);
   --icon-brand:       var(--green-60);
 
   /* Inputs */
-  --input-bg:           #FFFFFF;
-  --input-border:       #8D8D8D;
+  --input-bg:           #ffffff;
+  --input-border:       #94a3b8;
   --input-border-focus: var(--blue-60);
   --input-border-error: var(--red-60);
-  --input-text:         #161616;
-  --input-placeholder:  #8D8D8D;
-  --input-label:        #525252;
-  --input-helper:       #6F6F6F;
+  --input-text:         #0f172a;
+  --input-placeholder:  #64748b;
+  --input-label:        #475569;
+  --input-helper:       #64748b;
 
   /* Buttons */
-  --btn-primary-bg:      #1D4ED8;
-  --btn-primary-text:    #FFFFFF;
-  --btn-primary-hover:   #1E40AF;
+  --btn-primary-bg:      var(--blue-70);
+  --btn-primary-text:    #ffffff;
+  --btn-primary-hover:   var(--blue-80);
   --btn-secondary-bg:    var(--blue-60);
   --btn-secondary-text:  #FFFFFF;
   --btn-secondary-hover: var(--blue-70);
   --btn-ghost-text:      var(--blue-60);
-  --btn-ghost-hover-bg:  rgba(15, 98, 254, 0.08);
+  --btn-ghost-hover-bg:  rgba(37, 99, 235, 0.08);
   --btn-danger-bg:       var(--red-60);
   --btn-danger-hover:    var(--red-70, #A2191F);
   --btn-disabled-bg:     #E0E0E0;
   --btn-disabled-text:   #8D8D8D;
 
   /* Tags */
-  --tag-blue-bg:      rgba(15, 98, 254, 0.12);
-  --tag-blue-text:    var(--blue-70);
-  --tag-green-bg:     rgba(83, 170, 0, 0.12);
-  --tag-green-text:   var(--green-70);
-  --tag-saffron-bg:   rgba(255, 153, 51, 0.12);
+  --tag-blue-bg:      rgba(37, 99, 235, 0.12);
+  --tag-blue-text:    var(--blue-80);
+  --tag-green-bg:     rgba(34, 197, 94, 0.12);
+  --tag-green-text:   var(--green-80);
+  --tag-saffron-bg:   rgba(234, 88, 12, 0.12);
   --tag-saffron-text: var(--saffron-70);
   --tag-red-bg:       rgba(218, 30, 40, 0.10);
   --tag-red-text:     var(--red-70, #A2191F);
@@ -268,7 +267,7 @@
   --notif-error-border:   var(--red-60);
   --notif-warning-bg:     rgba(241, 194, 27, 0.10);
   --notif-warning-border: var(--yellow-50, #B28600);
-  --notif-success-bg:     rgba(83, 170, 0, 0.08);
+  --notif-success-bg:     rgba(34, 197, 94, 0.10);
   --notif-success-border: var(--green-60);
   --notif-info-bg:        rgba(17, 146, 232, 0.08);
   --notif-info-border:    var(--cyan-60, #0072C3);

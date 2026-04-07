@@ -3,92 +3,93 @@
 
 /* ── assets/design-system/tokens/colors.css ─────────────────────────────── */
 /* ============================================================
-   MTSAi Brand Color Palette
-   Trust Blue:  #0052CC  (primary interactive)
-   Trust Green: #53AA00  (brand / secondary)
-   Saffron:     #FF9933  (CTA accent — max 1 per view)
-   Alert Red:   #D82B2B  (danger / error)
+   Design tokens — derived from MTSAi logo (mtsai-logo.png)
+   Primary: royal blue (M, T, A core, I) · Trust: logo green (S, A arch)
+   Accent: logo red reserved for alerts / sparse emphasis (see --red-*)
+   Pilot / warm UI accent: amber (legacy --saffron-* token names)
+   Neutrals: cool slate (government / civic readability)
    ============================================================ */
 
 :root {
-  /* === BLUE (Primary Interactive — MTSAi Trust Blue) === */
-  --blue-100: #00112E;
-  --blue-90:  #001A4D;
-  --blue-80:  #002B80;
-  --blue-70:  #0040AA;  /* dark interactive — hover states */
-  --blue-60:  #0052CC;  /* MTSAi Trust Blue — primary brand */
-  --blue-50:  #1A6ADB;  /* medium interactive */
-  --blue-40:  #4D8FE8;  /* lighter interactive */
-  --blue-30:  #80B3F2;
-  --blue-20:  #B3D1F9;
-  --blue-10:  #E6F0FD;
+  /* === ROYAL BLUE (maps to --blue-* — primary interactive, links) === */
+  --blue-100: #172554;
+  --blue-90:  #1e3a8a;
+  --blue-80:  #1e40af;
+  --blue-70:  #1d4ed8;
+  --blue-60:  #2563eb;
+  --blue-50:  #3b82f6;
+  --blue-40:  #60a5fa;
+  --blue-30:  #93c5fd;
+  --blue-20:  #bfdbfe;
+  --blue-10:  #eff6ff;
 
-  /* === GREEN (Brand Secondary / Trust) === */
-  --green-90: #071908;
-  --green-80: #022D0D;
-  --green-70: #0E6027;
-  --green-60: #198038;
-  --green-50: #53AA00;   /* MTSAi Trust Green */
-  --green-40: #42BE65;
-  --green-30: #6FDC8C;
-  --green-20: #A7F0BA;
-  --green-10: #DEFBE6;
+  /* === LOGO GREEN (maps to --green-* — trust, success, brand identity) === */
+  --green-100: #14532d;
+  --green-90:  #166534;
+  --green-80:  #15803d;
+  --green-70:  #16a34a;
+  --green-60:  #22c55e;
+  --green-50:  #4ade80;
+  --green-40:  #86efac;
+  --green-30:  #bbf7d0;
+  --green-20:  #dcfce7;
+  --green-10:  #f0fdf4;
 
-  /* === SAFFRON (Accent — VERY SPARSE) === */
-  --saffron-100: #3D1500;
-  --saffron-90:  #5E1F00;
-  --saffron-80:  #8A3800;
-  --saffron-70:  #BA4E00;
-  --saffron-60:  #E36A00;
-  --saffron-50:  #FF9933;   /* Indian flag saffron — primary CTA */
-  --saffron-40:  #FFB366;
-  --saffron-30:  #FFCC99;
-  --saffron-20:  #FFE5CC;
-  --saffron-10:  #FFF5EB;
+  /* === AMBER (legacy --saffron-* — pilot, highlights, not primary CTA) === */
+  --saffron-100: #451a03;
+  --saffron-90:  #78350f;
+  --saffron-80:  #92400e;
+  --saffron-70:  #b45309;
+  --saffron-60:  #d97706;
+  --saffron-50:  #ea580c;
+  --saffron-40:  #fb923c;
+  --saffron-30:  #fdba74;
+  --saffron-20:  #fed7aa;
+  --saffron-10:  #ffedd5;
 
-  /* === RED (Alert — MTSAi Alert Red) === */
-  --red-100: #2D0709;
-  --red-90:  #520408;
-  --red-80:  #750E13;
-  --red-70:  #A82020;
-  --red-60:  #D82B2B;  /* MTSAi Alert Red */
-  --red-50:  #E85555;
-  --red-40:  #F28080;
-  --red-30:  #F8ADAD;
-  --red-20:  #FBCFCF;
-  --red-10:  #FEF0F0;
+  /* === RED (alerts, errors — logo dot colour used sparingly in UI) === */
+  --red-100: #450a0a;
+  --red-90:  #7f1d1d;
+  --red-80:  #991b1b;
+  --red-70:  #b91c1c;
+  --red-60:  #dc2626;
+  --red-50:  #ef4444;
+  --red-40:  #f87171;
+  --red-30:  #fca5a5;
+  --red-20:  #fecaca;
+  --red-10:  #fee2e2;
 
-  /* === GRAY (Neutral) === */
-  --gray-100: #161616;
-  --gray-90:  #262626;
-  --gray-80:  #393939;
-  --gray-70:  #525252;
-  --gray-60:  #6F6F6F;
-  --gray-50:  #8D8D8D;
-  --gray-40:  #A8A8A8;
-  --gray-30:  #C6C6C6;
-  --gray-20:  #E0E0E0;
-  --gray-10:  #F4F4F4;
-  --white:    #FFFFFF;
+  /* === SLATE (cool neutral — maps to --gray-*) === */
+  --gray-100: #0f172a;
+  --gray-90:  #1e293b;
+  --gray-80:  #334155;
+  --gray-70:  #475569;
+  --gray-60:  #64748b;
+  --gray-50:  #94a3b8;
+  --gray-40:  #cbd5e1;
+  --gray-30:  #e2e8f0;
+  --gray-20:  #f1f5f9;
+  --gray-10:  #f8fafc;
+  --white:    #ffffff;
   --black:    #000000;
 
-  /* === CYAN (Informational) === */
-  --cyan-70: #00539A;
-  --cyan-60: #0072C3;
-  --cyan-50: #1192E8;
-  --cyan-40: #33B1FF;
-  --cyan-30: #82CFFF;
-  --cyan-20: #BAE6FF;
-  --cyan-10: #E5F6FF;
+  /* === CYAN (informational) === */
+  --cyan-70: #164e63;
+  --cyan-60: #155e75;
+  --cyan-50: #0891b2;
+  --cyan-40: #22d3ee;
+  --cyan-30: #67e8f9;
+  --cyan-20: #a5f3fc;
+  --cyan-10:  #cffafe;
 
-  /* === YELLOW (Warning) === */
-  --yellow-70: #684E00;
-  --yellow-60: #8E6A00;
-  --yellow-50: #B28600;
-  --yellow-40: #D4A017;
-  --yellow-30: #F1C21B;
-  --yellow-20: #FDDC69;
-  --yellow-10: #FCF4D6;
+  /* === YELLOW (warning) === */
+  --yellow-70: #713f12;
+  --yellow-60: #854d0e;
+  --yellow-50: #a16207;
+  --yellow-40: #ca8a04;
+  --yellow-30: #eab308;
+  --yellow-20: #fde047;
+  --yellow-10: #fef9c3;
 }
 
 /* ── assets/design-system/tokens/semantic.css ─────────────────────────────── */
@@ -111,7 +112,7 @@
   --text-placeholder: var(--gray-50);   /* #8D8D8D */
   --text-disabled:   var(--gray-60);    /* #6F6F6F */
   --text-on-color:   var(--white);
-  --text-on-saffron: var(--gray-100);   /* dark text on saffron bg */
+  --text-on-saffron: var(--white);      /* on-primary CTA (blue) */
   --text-error:      var(--red-40);
   --text-success:    var(--green-30);
   --text-warning:    var(--yellow-30);
@@ -119,28 +120,28 @@
   --text-brand:      var(--green-40);   /* brand green for labels */
   --text-link:       var(--blue-40);
 
-  /* --- INTERACTIVE / PRIMARY (Blue) --- */
-  --interactive:           var(--blue-60);   /* #0F62FE */
-  --interactive-hover:     var(--blue-70);   /* #0043CE */
-  --interactive-active:    var(--blue-80);   /* #002D9C */
-  --interactive-selected:  var(--blue-90);   /* #001D6C */
+  /* --- INTERACTIVE (royal blue — logo primary) --- */
+  --interactive:           var(--blue-60);
+  --interactive-hover:     var(--blue-70);
+  --interactive-active:    var(--blue-80);
+  --interactive-selected:  var(--blue-90);
   --interactive-focus:     var(--blue-60);
 
-  /* --- BRAND GREEN (Secondary / Trust) --- */
-  --brand-primary:         var(--green-50);  /* #53AA00 — brand identity only */
-  --brand-hover:           var(--green-60);  /* #198038 */
-  --brand-active:          var(--green-70);  /* #0E6027 */
-  --brand-subtle:          rgba(83, 170, 0, 0.12);
-  --brand-border:          rgba(83, 170, 0, 0.3);
-  --green-vivid:           var(--green-30);  /* #6FDC8C — positive data state only (panel metrics, success indicators) */
+  /* --- BRAND TRUST (logo green) --- */
+  --brand-primary:         var(--green-60);
+  --brand-hover:           var(--green-70);
+  --brand-active:          var(--green-80);
+  --brand-subtle:          rgba(34, 197, 94, 0.14);
+  --brand-border:          rgba(34, 197, 94, 0.32);
+  --green-vivid:           var(--green-40);
 
-  /* --- SAFFRON CTA (Accent — sparse) --- */
-  --cta-primary:           var(--saffron-50); /* #FF9933 — interactive only: buttons, focus rings */
-  --cta-hover:             var(--saffron-60); /* #E36A00 */
-  --cta-active:            var(--saffron-70); /* #BA4E00 */
-  --cta-text:              var(--gray-100);   /* dark text on saffron */
-  --cta-focus:             var(--saffron-50);
-  --accent-saffron:        var(--saffron-40); /* #FFAD33 — decorative only: bars, borders, headline accents */
+  /* --- PRIMARY CTA (government: credible blue, not novelty accent) --- */
+  --cta-primary:           var(--blue-70);
+  --cta-hover:             var(--blue-80);
+  --cta-active:            var(--blue-90);
+  --cta-text:              var(--white);
+  --cta-focus:             var(--blue-60);
+  --accent-saffron:        var(--green-50); /* decorative: second logo colour */
 
   /* --- BORDER --- */
   --border-subtle:    rgba(255, 255, 255, 0.08);
@@ -166,17 +167,17 @@
   --status-error:     var(--red-60);
   --status-info:      var(--cyan-50);
   --status-neutral:   var(--gray-50);
-  --status-pilot:     var(--saffron-50);   /* pilot/beta state — saffron */
+  --status-pilot:     var(--saffron-50);   /* pilot / notice — amber scale */
 
   /* --- BUTTON TOKENS --- */
-  --btn-primary-bg:     var(--cta-primary);   /* saffron — main CTA */
+  --btn-primary-bg:     var(--cta-primary);
   --btn-primary-text:   var(--cta-text);
   --btn-primary-hover:  var(--cta-hover);
   --btn-secondary-bg:   var(--interactive);   /* blue — secondary interactive */
   --btn-secondary-text: var(--white);
   --btn-secondary-hover: var(--interactive-hover);
   --btn-ghost-text:     var(--interactive);
-  --btn-ghost-hover-bg: rgba(15, 98, 254, 0.12);
+  --btn-ghost-hover-bg: rgba(37, 99, 235, 0.12);
   --btn-danger-bg:      var(--red-60);
   --btn-danger-hover:   var(--red-70, #A2191F);
   --btn-disabled-bg:    var(--gray-80);
@@ -194,12 +195,12 @@
   --input-height:       48px;   /* 44px minimum + breathing room */
 
   /* --- TAG TOKENS --- */
-  --tag-blue-bg:     rgba(15, 98, 254, 0.15);
+  --tag-blue-bg:     rgba(37, 99, 235, 0.18);
   --tag-blue-text:   var(--blue-30);
-  --tag-green-bg:    rgba(83, 170, 0, 0.15);
+  --tag-green-bg:    rgba(34, 197, 94, 0.18);
   --tag-green-text:  var(--green-30);
-  --tag-saffron-bg:  rgba(255, 153, 51, 0.15);
-  --tag-saffron-text: var(--saffron-40);
+  --tag-saffron-bg:  rgba(234, 88, 12, 0.16);
+  --tag-saffron-text: var(--saffron-30);
   --tag-red-bg:      rgba(218, 30, 40, 0.15);
   --tag-red-text:    var(--red-30);
   --tag-gray-bg:     var(--gray-80);
@@ -212,32 +213,32 @@
   --notif-error-border: var(--red-60);
   --notif-warning-bg:  rgba(241, 194, 27, 0.1);
   --notif-warning-border: var(--yellow-30);
-  --notif-success-bg:  rgba(83, 170, 0, 0.1);
+  --notif-success-bg:  rgba(34, 197, 94, 0.12);
   --notif-success-border: var(--green-50);
   --notif-info-bg:     rgba(17, 146, 232, 0.1);
   --notif-info-border: var(--cyan-50);
 
   /* --- ALPHA / TRANSPARENCY TOKENS --- */
   /* Blue alpha */
-  --blue-alpha-08: rgba(15, 98, 254, 0.08);   /* ghost button hover bg */
-  --blue-alpha-12: rgba(15, 98, 254, 0.12);   /* interactive selection bg */
-  --blue-alpha-15: rgba(15, 98, 254, 0.15);   /* tag background */
-  --blue-alpha-20: rgba(15, 98, 254, 0.20);   /* active state overlay */
-  --blue-alpha-25: rgba(15, 98, 254, 0.25);   /* shadow tint */
+  --blue-alpha-08: rgba(37, 99, 235, 0.09);
+  --blue-alpha-12: rgba(37, 99, 235, 0.14);
+  --blue-alpha-15: rgba(37, 99, 235, 0.18);
+  --blue-alpha-20: rgba(37, 99, 235, 0.22);
+  --blue-alpha-25: rgba(37, 99, 235, 0.28);
 
   /* Green alpha */
-  --green-alpha-08: rgba(83, 170, 0, 0.08);
-  --green-alpha-12: rgba(83, 170, 0, 0.12);
-  --green-alpha-15: rgba(83, 170, 0, 0.15);   /* tag background */
-  --green-alpha-20: rgba(83, 170, 0, 0.20);
-  --green-alpha-30: rgba(83, 170, 0, 0.30);   /* border on green elements */
+  --green-alpha-08: rgba(34, 197, 94, 0.09);
+  --green-alpha-12: rgba(34, 197, 94, 0.14);
+  --green-alpha-15: rgba(34, 197, 94, 0.18);
+  --green-alpha-20: rgba(34, 197, 94, 0.22);
+  --green-alpha-30: rgba(34, 197, 94, 0.32);
 
-  /* Saffron alpha */
-  --saffron-alpha-05: rgba(255, 153, 51, 0.05);
-  --saffron-alpha-08: rgba(255, 153, 51, 0.08);
-  --saffron-alpha-15: rgba(255, 153, 51, 0.15);  /* tag background */
-  --saffron-alpha-20: rgba(255, 153, 51, 0.20);
-  --saffron-alpha-30: rgba(255, 153, 51, 0.30);  /* shadow tint */
+  /* Amber alpha (legacy saffron token names) */
+  --saffron-alpha-05: rgba(234, 88, 12, 0.06);
+  --saffron-alpha-08: rgba(234, 88, 12, 0.10);
+  --saffron-alpha-15: rgba(234, 88, 12, 0.16);
+  --saffron-alpha-20: rgba(234, 88, 12, 0.22);
+  --saffron-alpha-30: rgba(234, 88, 12, 0.28);
 
   /* Red alpha */
   --red-alpha-08: rgba(218, 30, 40, 0.08);
@@ -266,17 +267,17 @@
 /* --- LIGHT THEME OVERRIDE --- */
 [data-theme="light"] {
   /* Layers */
-  --layer-bg:       #FFFFFF;
-  --layer-01:       #F4F4F4;
-  --layer-02:       #E0E0E0;
-  --layer-03:       #C6C6C6;
+  --layer-bg:       #f8fafc;
+  --layer-01:       #f1f5f9;
+  --layer-02:       #e2e8f0;
+  --layer-03:       #cbd5e1;
   --overlay:        rgba(0, 0, 0, 0.50);
 
   /* Text */
-  --text-primary:    #161616;
-  --text-secondary:  #525252;
-  --text-placeholder: #8D8D8D;
-  --text-disabled:   #C6C6C6;
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-placeholder: #64748b;
+  --text-disabled:   #94a3b8;
   --text-on-color:   #FFFFFF;
   --text-error:      var(--red-60);
   --text-success:    var(--green-70);
@@ -295,60 +296,59 @@
   /* Brand */
   --brand-primary:   var(--green-60);
   --brand-hover:     var(--green-70);
-  --brand-subtle:    rgba(83, 170, 0, 0.08);
-  --brand-border:    rgba(83, 170, 0, 0.3);
+  --brand-subtle:    rgba(34, 197, 94, 0.10);
+  --brand-border:    rgba(34, 197, 94, 0.28);
 
-  /* CTA — cobalt blue for govtech authority */
-  --cta-primary:  #1D4ED8;
-  --cta-hover:    #1E40AF;
-  --cta-text:     #FFFFFF;
-  /* India identity accent — saffron reserved for cultural/regional callouts */
-  --accent-india: var(--saffron-50);
+  /* CTA — primary actions (credible blue) */
+  --cta-primary:  var(--blue-70);
+  --cta-hover:    var(--blue-80);
+  --cta-text:     #ffffff;
+  --accent-india: var(--green-60);
 
   /* Borders */
-  --border-subtle:      #E0E0E0;
-  --border-strong:      #8D8D8D;
+  --border-subtle:      #e2e8f0;
+  --border-strong:      #64748b;
   --border-interactive: var(--blue-60);
   --border-error:       var(--red-60);
   --border-brand:       var(--green-60);
 
   /* Icons */
-  --icon-primary:     #161616;
-  --icon-secondary:   #525252;
-  --icon-disabled:    #C6C6C6;
+  --icon-primary:     #0f172a;
+  --icon-secondary:   #475569;
+  --icon-disabled:    #94a3b8;
   --icon-interactive: var(--blue-60);
   --icon-brand:       var(--green-60);
 
   /* Inputs */
-  --input-bg:           #FFFFFF;
-  --input-border:       #8D8D8D;
+  --input-bg:           #ffffff;
+  --input-border:       #94a3b8;
   --input-border-focus: var(--blue-60);
   --input-border-error: var(--red-60);
-  --input-text:         #161616;
-  --input-placeholder:  #8D8D8D;
-  --input-label:        #525252;
-  --input-helper:       #6F6F6F;
+  --input-text:         #0f172a;
+  --input-placeholder:  #64748b;
+  --input-label:        #475569;
+  --input-helper:       #64748b;
 
   /* Buttons */
-  --btn-primary-bg:      #1D4ED8;
-  --btn-primary-text:    #FFFFFF;
-  --btn-primary-hover:   #1E40AF;
+  --btn-primary-bg:      var(--blue-70);
+  --btn-primary-text:    #ffffff;
+  --btn-primary-hover:   var(--blue-80);
   --btn-secondary-bg:    var(--blue-60);
   --btn-secondary-text:  #FFFFFF;
   --btn-secondary-hover: var(--blue-70);
   --btn-ghost-text:      var(--blue-60);
-  --btn-ghost-hover-bg:  rgba(15, 98, 254, 0.08);
+  --btn-ghost-hover-bg:  rgba(37, 99, 235, 0.08);
   --btn-danger-bg:       var(--red-60);
   --btn-danger-hover:    var(--red-70, #A2191F);
   --btn-disabled-bg:     #E0E0E0;
   --btn-disabled-text:   #8D8D8D;
 
   /* Tags */
-  --tag-blue-bg:      rgba(15, 98, 254, 0.12);
-  --tag-blue-text:    var(--blue-70);
-  --tag-green-bg:     rgba(83, 170, 0, 0.12);
-  --tag-green-text:   var(--green-70);
-  --tag-saffron-bg:   rgba(255, 153, 51, 0.12);
+  --tag-blue-bg:      rgba(37, 99, 235, 0.12);
+  --tag-blue-text:    var(--blue-80);
+  --tag-green-bg:     rgba(34, 197, 94, 0.12);
+  --tag-green-text:   var(--green-80);
+  --tag-saffron-bg:   rgba(234, 88, 12, 0.12);
   --tag-saffron-text: var(--saffron-70);
   --tag-red-bg:       rgba(218, 30, 40, 0.10);
   --tag-red-text:     var(--red-70, #A2191F);
@@ -362,7 +362,7 @@
   --notif-error-border:   var(--red-60);
   --notif-warning-bg:     rgba(241, 194, 27, 0.10);
   --notif-warning-border: var(--yellow-50, #B28600);
-  --notif-success-bg:     rgba(83, 170, 0, 0.08);
+  --notif-success-bg:     rgba(34, 197, 94, 0.10);
   --notif-success-border: var(--green-60);
   --notif-info-bg:        rgba(17, 146, 232, 0.08);
   --notif-info-border:    var(--cyan-60, #0072C3);
@@ -377,65 +377,51 @@
 
 /* ── assets/design-system/tokens/brand-visual.css ─────────────────────────────── */
 /* ============================================================
-   MTSAi × IBM Carbon — Brand Visual Language
-   Signature: Deep Blue gradient mesh + geometric grid overlay
-   MTSAi's visual identity: city-grid-from-above meets
-   government-grade data infrastructure
+   Brand visual language — aligned to mtsai-logo.png
+   Royal blue + logo green (+ red reserved for alerts in --red-*)
    ============================================================ */
 
 :root {
   /* ─── SIGNATURE GRADIENTS ──────────────────────────────── */
 
-  /* Hero mesh gradient — deep navy base with layered radials */
   --gradient-hero:
-    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(15, 98, 254, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(83, 170, 0, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 50% 90%, rgba(15, 98, 254, 0.10) 0%, transparent 50%),
-    linear-gradient(160deg, #080d1a 0%, #0d1420 40%, #080d1a 100%);
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(37, 99, 235, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(34, 197, 94, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 90%, rgba(29, 78, 216, 0.12) 0%, transparent 50%),
+    linear-gradient(160deg, #0c1224 0%, #0f172a 40%, #0c1224 100%);
 
-  /* Subtle hero with saffron trace — for CTA sections */
   --gradient-hero-cta:
-    radial-gradient(ellipse 70% 50% at 15% 40%, rgba(255, 153, 51, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 45% at 85% 60%, rgba(15, 98, 254, 0.15) 0%, transparent 55%),
-    linear-gradient(150deg, #080d1a 0%, #0c1220 100%);
+    radial-gradient(ellipse 70% 50% at 15% 40%, rgba(34, 197, 94, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 60%, rgba(37, 99, 235, 0.16) 0%, transparent 55%),
+    linear-gradient(150deg, #0f1419 0%, #0f172a 100%);
 
-  /* Section band — blue tinted */
   --gradient-band-blue:
-    linear-gradient(135deg, #050c1f 0%, #0a1535 50%, #050c1f 100%);
+    linear-gradient(135deg, #0a1628 0%, #0f1f3a 50%, #0a1628 100%);
 
-  /* Section band — subtle green trust */
   --gradient-band-green:
-    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(83, 170, 0, 0.06) 0%, transparent 70%),
-    linear-gradient(180deg, #0c1208 0%, #080d0a 100%);
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(34, 197, 94, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #0c1810 0%, #0a120c 100%);
 
-  /* Pure dark — for alternating sections */
-  --gradient-section-dark: linear-gradient(180deg, #0d0d0d 0%, #111111 100%);
+  --gradient-section-dark: linear-gradient(180deg, #111111 0%, #171717 100%);
 
-  /* Masterbrand — the MTSAi signature horizontal gradient */
-  --gradient-masterbrand: linear-gradient(90deg, #0F62FE 0%, #4589FF 40%, #53AA00 100%);
+  --gradient-masterbrand: linear-gradient(90deg, #1e40af 0%, #2563eb 42%, #22c55e 100%);
 
-  /* CTA gradient — saffron to orange */
-  --gradient-cta: linear-gradient(135deg, #FF9933 0%, #E36A00 100%);
+  --gradient-cta: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
 
-  /* Data highlight gradient — for stat numbers */
-  --gradient-data: linear-gradient(135deg, #78A9FF 0%, #53AA00 100%);
+  --gradient-data: linear-gradient(135deg, #60a5fa 0%, #4ade80 100%);
 
   /* ─── GEOMETRY / PATTERN ───────────────────────────────── */
 
-  /* Dot grid — the MTSAi city-grid motif (SVG encoded) */
   --pattern-dot-grid: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E");
 
-  /* Fine grid — for technical/platform sections */
   --pattern-fine-grid: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='0.5'/%3E%3C/svg%3E");
 
-  /* Cross hatch — for data sections */
-  --pattern-cross: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(15,98,254,0.08)'/%3E%3C/svg%3E");
+  --pattern-cross: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(37,99,235,0.10)'/%3E%3C/svg%3E");
 
   /* ─── DISPLAY TYPOGRAPHY EXPANSION ─────────────────────── */
-  /* Extends the base type scale to cinematic hero sizes */
-  --type-display-hero:    6rem;     /*  96px — Fortune 500 hero */
-  --type-display-epic:    7.5rem;   /* 120px — Apple/IBM style */
-  --type-display-cinematic: 9rem;   /* 144px — reserved for single-word hero */
+  --type-display-hero:    6rem;
+  --type-display-epic:    7.5rem;
+  --type-display-cinematic: 9rem;
 
   /* ─── GLASS SURFACE ────────────────────────────────────── */
   --glass-bg:         rgba(255, 255, 255, 0.03);
@@ -445,33 +431,30 @@
   --glass-shadow:     0 8px 32px rgba(0, 0, 0, 0.4);
   --glass-blur:       blur(12px);
   --glass-blur-heavy: blur(24px);
-  --glass-blue-tint:  rgba(15, 98, 254, 0.06);
-  --glass-green-tint: rgba(83, 170, 0, 0.05);
+  --glass-blue-tint:  rgba(37, 99, 235, 0.08);
+  --glass-green-tint: rgba(34, 197, 94, 0.06);
 
   /* ─── SECTION RHYTHM SYSTEM ─────────────────────────────── */
-  /* Use these background tokens to alternate sections */
-  --section-hero:       var(--gradient-hero);             /* 1. Cinematic opener */
-  --section-dark:       #0d0d0d;                          /* 2. Pure dark */
-  --section-raised:     #111111;                          /* 3. Slightly raised */
-  --section-card-grid:  #0a0a0a;                          /* 4. Darkest — for card grids */
-  --section-band-blue:  var(--gradient-band-blue);        /* 5. Blue tinted band */
-  --section-band-green: var(--gradient-band-green);       /* 6. Green trust band */
-  --section-cta:        var(--gradient-hero-cta);         /* 7. Pre-footer CTA */
+  --section-hero:       var(--gradient-hero);
+  --section-dark:       #111111;
+  --section-raised:     #171717;
+  --section-card-grid:  #0d0d0d;
+  --section-band-blue:  var(--gradient-band-blue);
+  --section-band-green: var(--gradient-band-green);
+  --section-cta:        var(--gradient-hero-cta);
 
-  /* Section padding rhythm */
   --section-pad-sm:   clamp(48px, 8vw, 80px);
   --section-pad-md:   clamp(80px, 12vw, 128px);
   --section-pad-lg:   clamp(120px, 16vw, 192px);
 }
 
-/* ─── GLASS SURFACE COMPONENT ─────────────────────────────── */
 .glass-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-shadow);
-  border-radius: 12px;
+  border-radius: 14px;
   transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 .glass-card:hover {
@@ -481,27 +464,25 @@
 }
 .glass-card--blue {
   background: var(--glass-blue-tint);
-  border-color: rgba(15, 98, 254, 0.15);
+  border-color: rgba(37, 99, 235, 0.18);
 }
 .glass-card--blue:hover {
-  border-color: rgba(15, 98, 254, 0.3);
-  box-shadow: 0 8px 32px rgba(15, 98, 254, 0.15);
+  border-color: rgba(37, 99, 235, 0.32);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.16);
 }
 .glass-card--green {
   background: var(--glass-green-tint);
-  border-color: rgba(83, 170, 0, 0.15);
+  border-color: rgba(34, 197, 94, 0.18);
 }
 .glass-card--green:hover {
-  border-color: rgba(83, 170, 0, 0.3);
-  box-shadow: 0 8px 32px rgba(83, 170, 0, 0.12);
+  border-color: rgba(34, 197, 94, 0.32);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.14);
 }
 
-/* ─── DISPLAY TYPE UTILITIES ───────────────────────────────── */
 .type-hero    { font-size: var(--type-display-hero);     font-family: var(--font-display); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; }
 .type-epic    { font-size: var(--type-display-epic);     font-family: var(--font-display); font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; }
 .type-cinematic { font-size: var(--type-display-cinematic); font-family: var(--font-display); font-weight: 700; line-height: 0.9;  letter-spacing: -0.05em; }
 
-/* Fluid hero type — scales with viewport */
 .type-hero-fluid {
   font-family: var(--font-display);
   font-weight: 700;
@@ -510,7 +491,6 @@
   font-size: clamp(52px, 8vw, 112px);
 }
 
-/* ─── GRADIENT TEXT UTILITIES ───────────────────────────────── */
 .text-gradient-masterbrand {
   background: var(--gradient-masterbrand);
   -webkit-background-clip: text;
@@ -530,7 +510,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* ─── PATTERN OVERLAY UTILITY ───────────────────────────────── */
 .pattern-overlay {
   position: relative;
 }
@@ -548,7 +527,6 @@
   background-image: var(--pattern-fine-grid);
 }
 
-/* ─── SECTION DIVIDER ───────────────────────────────────────── */
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.08) 70%, transparent 100%);
@@ -556,7 +534,6 @@
   margin: 0;
 }
 
-/* ─── MASTERBRAND ACCENT LINE ────────────────────────────────── */
 .accent-line {
   display: block;
   width: 40px;
@@ -671,9 +648,9 @@
 
   /* ── Categorical palette (up to 14 series) ─────────────── */
   /* Use in order: cat-01 → cat-02 → ... for sequential series */
-  --viz-cat-01: #0052CC;   /* MTSAi Blue   — primary data series */
-  --viz-cat-02: #53AA00;   /* MTSAi Green  — secondary series */
-  --viz-cat-03: #FF9933;   /* MTSAi Saffron — third series */
+  --viz-cat-01: #2563eb;   /* Logo royal blue — primary series */
+  --viz-cat-02: #22c55e;   /* Logo green — secondary series */
+  --viz-cat-03: #ea580c;   /* Amber — tertiary (distinct from red alerts) */
   --viz-cat-04: #1192E8;   /* Cyan         — fourth series */
   --viz-cat-05: #9B59B6;   /* Purple       — fifth series */
   --viz-cat-06: #E74C3C;   /* Coral Red    — sixth series */
@@ -692,34 +669,34 @@
 
   /* ── Sequential palettes (single-hue intensity scales) ─── */
   /* Blue sequential (low → high intensity) */
-  --viz-seq-blue-01: #E6F0FD;
-  --viz-seq-blue-02: #B3D1F9;
-  --viz-seq-blue-03: #80B3F2;
-  --viz-seq-blue-04: #4D8FE8;
-  --viz-seq-blue-05: #1A6ADB;
-  --viz-seq-blue-06: #0052CC;
-  --viz-seq-blue-07: #0040AA;
-  --viz-seq-blue-08: #002B80;
+  --viz-seq-blue-01: #eff6ff;
+  --viz-seq-blue-02: #bfdbfe;
+  --viz-seq-blue-03: #93c5fd;
+  --viz-seq-blue-04: #60a5fa;
+  --viz-seq-blue-05: #3b82f6;
+  --viz-seq-blue-06: #2563eb;
+  --viz-seq-blue-07: #1d4ed8;
+  --viz-seq-blue-08: #1e3a8a;
 
   /* Green sequential */
   --viz-seq-green-01: #DEFBE6;
   --viz-seq-green-02: #A7F0BA;
   --viz-seq-green-03: #6FDC8C;
   --viz-seq-green-04: #42BE65;
-  --viz-seq-green-05: #53AA00;
+  --viz-seq-green-05: #22c55e;
   --viz-seq-green-06: #198038;
   --viz-seq-green-07: #0E6027;
   --viz-seq-green-08: #022D0D;
 
   /* Saffron/Orange sequential */
-  --viz-seq-saffron-01: #FFF5EB;
-  --viz-seq-saffron-02: #FFE5CC;
-  --viz-seq-saffron-03: #FFCC99;
-  --viz-seq-saffron-04: #FFB366;
-  --viz-seq-saffron-05: #FF9933;
-  --viz-seq-saffron-06: #E36A00;
-  --viz-seq-saffron-07: #BA4E00;
-  --viz-seq-saffron-08: #8A3800;
+  --viz-seq-saffron-01: #ffedd5;
+  --viz-seq-saffron-02: #fed7aa;
+  --viz-seq-saffron-03: #fdba74;
+  --viz-seq-saffron-04: #fb923c;
+  --viz-seq-saffron-05: #ea580c;
+  --viz-seq-saffron-06: #c2410c;
+  --viz-seq-saffron-07: #9a3412;
+  --viz-seq-saffron-08: #7c2d12;
 
   /* ── Diverging palettes (negative ↔ neutral ↔ positive) ── */
   /* Blue–Red (performance below/above target) */
@@ -728,24 +705,24 @@
   --viz-div-neg-light:  #F28080;
   --viz-div-neutral:    #E0E0E0;
   --viz-div-pos-light:  #6FDC8C;
-  --viz-div-pos-mid:    #53AA00;
+  --viz-div-pos-mid:    #22c55e;
   --viz-div-pos-strong: #0E6027;
 
   /* Blue–Orange (for maps, heatmaps) */
-  --viz-div2-neg-strong: #002B80;
-  --viz-div2-neg-mid:    #0052CC;
-  --viz-div2-neg-light:  #80B3F2;
+  --viz-div2-neg-strong: #1e3a8a;
+  --viz-div2-neg-mid:    #2563eb;
+  --viz-div2-neg-light:  #93c5fd;
   --viz-div2-neutral:    #F4F4F4;
-  --viz-div2-pos-light:  #FFB366;
-  --viz-div2-pos-mid:    #FF9933;
-  --viz-div2-pos-strong: #BA4E00;
+  --viz-div2-pos-light:  #86efac;
+  --viz-div2-pos-mid:    #22c55e;
+  --viz-div2-pos-strong: #15803d;
 
   /* ── Status / traffic-light colours (for KPI charts) ───── */
-  --viz-status-good:    #53AA00;
-  --viz-status-warning: #FF9933;
+  --viz-status-good:    #22c55e;
+  --viz-status-warning: #ca8a04;
   --viz-status-critical: #D82B2B;
   --viz-status-neutral: #8D8D8D;
-  --viz-status-info:    #0052CC;
+  --viz-status-info:    #2563eb;
 
   /* ── Chart UI tokens ────────────────────────────────────── */
   --viz-axis-line:      var(--border-subtle);
@@ -756,8 +733,8 @@
   --viz-tooltip-text:   #F4F4F4;
   --viz-tooltip-border: rgba(255,255,255,0.08);
   --viz-legend-text:    var(--text-secondary);
-  --viz-highlight:      rgba(0, 82, 204, 0.15);   /* hover highlight overlay */
-  --viz-selection:      rgba(0, 82, 204, 0.25);   /* selected region overlay */
+  --viz-highlight:      rgba(37, 99, 235, 0.16);
+  --viz-selection:      rgba(37, 99, 235, 0.26);
 
   /* ── Chart sizing tokens ────────────────────────────────── */
   --viz-bar-min-width:  4px;
@@ -928,17 +905,15 @@
 
 /* ── assets/design-system/tokens/typography.css ─────────────────────────────── */
 /* ============================================================
-   MTSAi Typography Tokens
-   Display/Heading: Space Grotesk
-   Body/UI: IBM Plex Sans (loaded async from page <head>, not @import)
-   Mono: JetBrains Mono (code, IDs, data)
+   Typography tokens — Fraunces + DM Sans + JetBrains Mono
+   (fonts loaded async from page <head>, not @import)
    ============================================================ */
 
 :root {
   /* --- Font Families --- */
-  --font-display:  'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
-  --font-body:     'IBM Plex Sans', system-ui, sans-serif;
-  --font-ui:       'IBM Plex Sans', system-ui, sans-serif;
+  --font-display:  'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-ui:       'DM Sans', system-ui, sans-serif;
   --font-mono:     'JetBrains Mono', 'IBM Plex Mono', monospace;
 
   /* --- Font Weights --- */
@@ -952,9 +927,9 @@
   /* Utility / UI */
   --type-label-01:    0.75rem;    /* 12px — labels, captions */
   --type-label-02:    0.875rem;   /* 14px — helper text, small UI */
-  --type-body-01:     0.9375rem;  /* 15px — compact body (GIGW floor) */
+  --type-body-01:     0.875rem;   /* 14px — compact body */
   --type-body-02:     1rem;       /* 16px — standard body */
-  --type-body-compact-01: 0.9375rem;
+  --type-body-compact-01: 0.875rem;
   --type-body-compact-02: 1rem;
 
   /* Headings */
@@ -1030,7 +1005,7 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
 /* ── Mono font usage constraint ─────────────────────────────────
    JetBrains Mono is reserved for: live data values, system status
    indicators, technical IDs, and inline code. Section labels and
-   navigation micro-copy use IBM Plex Sans with wide letter-spacing
+   navigation micro-copy use DM Sans with wide letter-spacing
    instead. Override .font-mono--ui for the permitted exceptions.
    ────────────────────────────────────────────────────────────── */
 .type-label-ui {
@@ -1084,11 +1059,11 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
   /* --- Border Radius --- */
   --radius-none:  0;
   --radius-xs:    2px;
-  --radius-sm:    4px;
-  --radius-md:    6px;
-  --radius-lg:    8px;
-  --radius-xl:    12px;
-  --radius-2xl:   16px;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --radius-xl:    16px;
+  --radius-2xl:   20px;
   --radius-full:  9999px;  /* pill */
 
   /* --- Layout --- */
@@ -1281,16 +1256,16 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
 
 /* ─── STATUS / PULSE indicators ─────────────────────────── */
 @keyframes statusPulse {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(83, 170, 0, 0.5); }
-  50%       { box-shadow: 0 0 0 6px rgba(83, 170, 0, 0); }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(34, 197, 94, 0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
 }
 @keyframes saffronGlow {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(255, 153, 51, 0.5); }
-  50%       { box-shadow: 0 0 0 8px rgba(255, 153, 51, 0); }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(234, 88, 12, 0.45); }
+  50%       { box-shadow: 0 0 0 8px rgba(234, 88, 12, 0); }
 }
 @keyframes blueGlow {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(15, 98, 254, 0.4); }
-  50%       { box-shadow: 0 0 0 6px rgba(15, 98, 254, 0); }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(37, 99, 235, 0.45); }
+  50%       { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
@@ -1419,9 +1394,9 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
   --shadow-2xl:   0 24px 48px rgba(0, 0, 0, 0.6);
 
   /* --- Brand-tinted shadows --- */
-  --shadow-blue:    0 4px 24px rgba(15, 98, 254, 0.25);
-  --shadow-green:   0 4px 24px rgba(83, 170, 0, 0.2);
-  --shadow-saffron: 0 4px 24px rgba(255, 153, 51, 0.3);
+  --shadow-blue:    0 4px 24px rgba(37, 99, 235, 0.28);
+  --shadow-green:   0 4px 24px rgba(34, 197, 94, 0.22);
+  --shadow-saffron: 0 4px 24px rgba(234, 88, 12, 0.22);
   --shadow-red:     0 4px 24px rgba(218, 30, 40, 0.25);
 
   /* --- Focus Ring --- */
@@ -2016,7 +1991,7 @@ fieldset {
 .shadow-md    { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 .shadow-lg    { box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
 .shadow-xl    { box-shadow: 0 16px 48px rgba(0,0,0,0.14); }
-.shadow-blue  { box-shadow: 0 8px 32px rgba(0,82,204,0.16); }
+.shadow-blue  { box-shadow: 0 8px 32px rgba(37, 99, 235, 0.16); }
 .shadow-green { box-shadow: 0 8px 32px rgba(83,170,0,0.18); }
 
 /* ── Backgrounds (extended) ──────────────────────────────── */
@@ -2199,7 +2174,7 @@ fieldset {
 }
 .btn-gradient-flow:hover {
   animation-duration: 1.5s;
-  box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.28);
 }
 
 /* Ripple container */
@@ -2675,7 +2650,7 @@ fieldset {
   cursor: pointer;
 }
 .mts-nav__link:hover { color: var(--text-primary); background: var(--layer-01); }
-.mts-nav__link.active { color: var(--interactive); background: rgba(15, 98, 254, 0.08); }
+.mts-nav__link.active { color: var(--interactive); background: var(--blue-alpha-08); }
 .mts-nav__actions { display: flex; align-items: center; gap: var(--space-3); }
 
 /* ── Mobile hamburger toggle — visible by default (mobile-first) */
@@ -2871,7 +2846,7 @@ fieldset {
   border-left: 3px solid transparent;
 }
 .mts-sidebar__link:hover { color: var(--text-primary); background: var(--layer-02); border-left-color: var(--border-subtle); }
-.mts-sidebar__link.active { color: var(--interactive); background: rgba(15, 98, 254, 0.08); border-left-color: var(--interactive); font-weight: var(--weight-semibold); }
+.mts-sidebar__link.active { color: var(--interactive); background: var(--blue-alpha-08); border-left-color: var(--interactive); font-weight: var(--weight-semibold); }
 
 /* ── assets/design-system/components/card.css ─────────────────────────────── */
 /* MTSAi × IBM Carbon — Card */
@@ -3041,7 +3016,7 @@ fieldset {
 
 .mts-box--bordered  { border: 1px solid var(--border-subtle); }
 .mts-box--filled    { background: var(--layer-01); }
-.mts-box--elevated  { background: #fff; box-shadow: 0 2px 12px rgba(0,82,204,0.07); }
+.mts-box--elevated  { background: #fff; box-shadow: 0 2px 12px rgba(37, 99, 235, 0.07); }
 .mts-box--dark      { background: var(--navy-100); }
 
 /* ══════════════════════════════════════════════════════════════
@@ -3586,7 +3561,7 @@ fieldset {
 /* Dark variant item states */
 .mts-side-nav--dark .mts-side-nav__item          { color: #8D8D8D; }
 .mts-side-nav--dark .mts-side-nav__item:hover     { background: rgba(255,255,255,0.05); color: #F4F4F4; }
-.mts-side-nav--dark .mts-side-nav__item.active    { background: rgba(0, 98, 255, 0.15); color: #78A9FF; }
+.mts-side-nav--dark .mts-side-nav__item.active    { background: rgba(37, 99, 235, 0.18); color: #93c5fd; }
 
 /* ── Item icon ───────────────────────────────────────────── */
 .mts-side-nav__icon {
@@ -3726,7 +3701,7 @@ fieldset {
 
 .mts-nav-rail--dark .mts-nav-rail__item          { color: #8D8D8D; }
 .mts-nav-rail--dark .mts-nav-rail__item:hover     { background: rgba(255,255,255,0.06); color: #F4F4F4; }
-.mts-nav-rail--dark .mts-nav-rail__item.active    { background: rgba(0,98,255,0.15); color: #78A9FF; }
+.mts-nav-rail--dark .mts-nav-rail__item.active    { background: rgba(37, 99, 235, 0.18); color: #93c5fd; }
 
 /* Tooltip on hover */
 .mts-nav-rail__item::before {
@@ -4208,14 +4183,14 @@ fieldset {
   position: relative;
 }
 .mts-pricing-card:hover {
-  box-shadow: 0 8px 32px rgba(0,82,204,0.10);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.10);
 }
 
 /* Featured tier */
 .mts-pricing-card--featured {
   border-color: var(--interactive);
   border-width: 2px;
-  box-shadow: 0 8px 32px rgba(0,82,204,0.12);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
 }
 
 .mts-pricing-card__badge {
@@ -4433,7 +4408,7 @@ fieldset {
 /* Large featured testimonial */
 .mts-testimonial--featured {
   border-top: 3px solid var(--interactive);
-  box-shadow: 0 8px 32px rgba(0,82,204,0.10);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.10);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -4516,7 +4491,7 @@ fieldset {
   transition: box-shadow 200ms, transform 200ms;
 }
 .mts-blog-card:hover {
-  box-shadow: 0 8px 32px rgba(0,82,204,0.10);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.10);
   transform: translateY(-2px);
 }
 
@@ -4605,7 +4580,7 @@ fieldset {
   text-align: center;
   transition: box-shadow 200ms;
 }
-.mts-team-card:hover { box-shadow: 0 6px 24px rgba(0,82,204,0.10); }
+.mts-team-card:hover { box-shadow: 0 6px 24px rgba(37, 99, 235, 0.10); }
 
 .mts-team-card__photo {
   width: 80px;
@@ -4690,7 +4665,7 @@ fieldset {
 }
 .mts-newsletter__form input[type="email"]:focus {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 .mts-newsletter__disclaimer {
   font-size: 11px;
@@ -5769,7 +5744,7 @@ fieldset {
 }
 .mts-combobox__input:focus {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .mts-combobox__chevron {
@@ -5841,7 +5816,7 @@ fieldset {
 .mts-combobox__option--disabled { opacity: 0.4; pointer-events: none; }
 
 /* Highlight matched text */
-.mts-combobox__match { background: rgba(0,82,204,0.12); font-weight: 600; }
+.mts-combobox__match { background: rgba(37, 99, 235, 0.12); font-weight: 600; }
 
 .mts-combobox__empty {
   padding: var(--space-5);
@@ -5863,7 +5838,7 @@ fieldset {
 }
 .mts-number-stepper:focus-within {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .mts-number-stepper__btn {
@@ -5930,7 +5905,7 @@ fieldset {
 }
 .mts-tag-input:focus-within {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .mts-tag-input__tag {
@@ -5939,7 +5914,7 @@ fieldset {
   gap: 4px;
   padding: 2px var(--space-3);
   background: var(--blue-alpha-12);
-  border: 1px solid rgba(0,82,204,0.2);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
@@ -6014,7 +5989,7 @@ fieldset {
 }
 .mts-search-field__input:focus {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 .mts-search-field__input::placeholder { color: var(--text-secondary); opacity: 0.6; }
 
@@ -6142,7 +6117,7 @@ input[type="range"].mts-range-input:focus {
   outline: none;
 }
 input[type="range"].mts-range-input:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px rgba(0,82,204,0.20);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.20);
 }
 input[type="range"].mts-range-input::-moz-range-thumb {
   width: 18px; height: 18px;
@@ -6218,7 +6193,7 @@ input[type="range"].mts-range-input::-moz-range-track {
 
 .mts-otp__cell:focus {
   border-color: var(--interactive);
-  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.14);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235,  0.14);
   z-index: 1;
 }
 
@@ -6231,7 +6206,7 @@ input[type="range"].mts-range-input::-moz-range-track {
 .mts-otp--error   .mts-otp__cell { border-color: var(--red-50); }
 .mts-otp--error   .mts-otp__cell:focus { box-shadow: 0 0 0 3px rgba(218, 30, 40, 0.12); }
 .mts-otp--success .mts-otp__cell { border-color: var(--brand-primary); }
-.mts-otp--success .mts-otp__cell:focus { box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.14); }
+.mts-otp--success .mts-otp__cell:focus { box-shadow: 0 0 0 3px rgba(34, 197, 94,  0.18); }
 
 /* ── Separator (e.g. dash between groups) ─────────────────── */
 .mts-otp__sep {
@@ -6457,7 +6432,7 @@ input[type="range"].mts-range-input::-moz-range-track {
   font-size: 11px;
   font-weight: var(--weight-bold);
 }
-.mts-tab.active .mts-tab__count { background: rgba(15, 98, 254, 0.2); color: var(--blue-30); }
+.mts-tab.active .mts-tab__count { background: var(--blue-alpha-20); color: var(--blue-30); }
 .mts-tab-panel { padding: var(--space-6) 0; animation: fadeIn var(--duration-moderate-01) var(--ease-entrance) both; }
 .mts-tab-panel[hidden] { display: none; }
 
@@ -7219,7 +7194,7 @@ input[type="range"].mts-range-input::-moz-range-track {
 .mts-form-card {
   background: #fff;
   border: 1px solid var(--blue-20);
-  box-shadow: 0 8px 40px rgba(0, 82, 204, 0.10);
+  box-shadow: 0 8px 40px rgba(37, 99, 235,  0.10);
   padding: var(--space-9);
 }
 
@@ -7414,14 +7389,14 @@ input[type="range"].mts-range-input::-moz-range-track {
   background: #fff;
   border: 1px solid var(--blue-20);
   border-top: 3px solid var(--interactive);
-  box-shadow: 0 2px 8px rgba(0,82,204,0.06);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
   text-align: left;
   cursor: pointer;
   transition: box-shadow 200ms, transform 200ms, background 150ms, color 150ms;
 }
 .mts-intent-card:hover,
 .mts-intent-card.active {
-  box-shadow: 0 8px 24px rgba(0,82,204,0.14);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.14);
   transform: translateY(-3px);
   background: var(--interactive);
   color: #fff;
@@ -7986,7 +7961,7 @@ button:focus-visible {
   color: #fff;
 }
 [data-nav-dark] .mts-nav:not(.scrolled) .status-dot.active {
-  box-shadow: 0 0 0 3px rgba(83, 170, 0, 0.30);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94,  0.32);
 }
 
 /* ── Button micro-states ──────────────────────────────────── */
@@ -8116,7 +8091,7 @@ button:focus-visible {
     transform 200ms var(--ease-standard);
 }
 .arch-layer:hover {
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.12);
 }
 
 /* ── Section eyebrow — tick animate on visibility ─────────── */
@@ -8163,7 +8138,7 @@ button:focus-visible {
 
 /* ── Selection color — brand-aligned ─────────────────────── */
 ::selection {
-  background: rgba(0, 82, 204, 0.18);
+  background: rgba(37, 99, 235,  0.18);
   color: var(--text-primary);
 }
 
@@ -8203,8 +8178,8 @@ button:focus-visible {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(0, 82, 204, 0.45) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 50% at 80%  8%, rgba(0, 82, 204, 0.12) 0%, transparent 55%);
+    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(37, 99, 235,  0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 38% 50% at 80%  8%, rgba(37, 99, 235,  0.12) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -8372,7 +8347,7 @@ button:focus-visible {
 .mts-hero__callout {
   padding: var(--space-5) var(--space-6);
   border-left: 3px solid var(--cta-primary);
-  background: rgba(255, 153, 51, 0.06);
+  background: rgba(234, 88, 12, 0.07);
   margin-bottom: var(--space-8);
 }
 
@@ -8558,10 +8533,10 @@ button:focus-visible {
 }
 .mts-hero--green::before {
   background:
-    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(83, 170, 0, 0.38) 0%, transparent 65%);
+    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(34, 197, 94,  0.36) 0%, transparent 65%);
 }
 .mts-hero--green .mts-hero__accent {
-  background: linear-gradient(90deg, #53AA00 0%, var(--accent-saffron) 60%, transparent 100%);
+  background: linear-gradient(90deg, #10b981 0%, var(--accent-saffron) 60%, transparent 100%);
 }
 
 /* ── Stat divider + CTA buttons — hidden on mobile, shown on desktop ── */
@@ -8966,7 +8941,7 @@ button:focus-visible {
 
 /* Blue — trust / governance */
 .mts-callout--blue {
-  background: rgba(0, 82, 204, 0.05);
+  background: rgba(37, 99, 235,  0.05);
   border: 1px solid var(--blue-20);
   border-left: 3px solid var(--interactive);
   color: var(--text-primary);
@@ -8974,16 +8949,16 @@ button:focus-visible {
 
 /* Green — sustainability / compliance */
 .mts-callout--green {
-  background: rgba(83, 170, 0, 0.05);
-  border: 1px solid rgba(83, 170, 0, 0.18);
+  background: rgba(34, 197, 94,  0.06);
+  border: 1px solid rgba(34, 197, 94,  0.20);
   border-left: 3px solid var(--brand-primary);
   color: var(--text-primary);
 }
 
 /* Saffron — CTA / highlight */
 .mts-callout--saffron {
-  background: rgba(255, 153, 51, 0.05);
-  border: 1px solid rgba(255, 153, 51, 0.18);
+  background: rgba(234, 88, 12, 0.06);
+  border: 1px solid rgba(234, 88, 12, 0.20);
   border-left: 3px solid var(--cta-primary);
   color: var(--text-primary);
 }
@@ -9029,7 +9004,7 @@ button:focus-visible {
   height: 300px;
   overflow: hidden;
   border: 1px solid var(--blue-20);
-  box-shadow: 0 4px 32px rgba(0, 82, 204, 0.10);
+  box-shadow: 0 4px 32px rgba(37, 99, 235,  0.10);
   margin-bottom: var(--space-10);
 }
 
@@ -9087,9 +9062,9 @@ button:focus-visible {
 }
 
 .mts-photo-strip__tag--blue {
-  color: rgba(0,82,204,0.9);
-  background: rgba(0,82,204,0.10);
-  border: 1px solid rgba(0,82,204,0.25);
+  color: rgba(37, 99, 235, 0.9);
+  background: rgba(37, 99, 235, 0.10);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 /* Reduced motion — disable the hover zoom */
@@ -9177,9 +9152,9 @@ button:focus-visible {
 }
 
 .mts-footer__trust-badge--active {
-  border-color: rgba(83, 170, 0, 0.30);
+  border-color: rgba(34, 197, 94,  0.32);
   color: rgba(111, 220, 140, 0.80);
-  background: rgba(83, 170, 0, 0.07);
+  background: rgba(34, 197, 94,  0.08);
 }
 
 .mts-footer__trust-badge--active::before {
@@ -9297,7 +9272,7 @@ button:focus-visible {
 .mts-section::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(0, 82, 204, 0.045) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 99, 235,  0.045) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
 }
@@ -9546,7 +9521,7 @@ button:focus-visible {
   gap: 0;
   border: 1px solid var(--blue-20);
   background: #fff;
-  box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08);
+  box-shadow: 0 4px 24px rgba(37, 99, 235,  0.08);
 }
 
 /* ── Responsive — mobile-first progressive enhancement ──────── */
@@ -9588,22 +9563,22 @@ button:focus-visible {
   background: #fff;
   border: 1px solid var(--blue-20);
   border-top: 3px solid var(--interactive);
-  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.06);
+  box-shadow: 0 2px 8px rgba(37, 99, 235,  0.06);
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
 .mts-card--feature:hover {
-  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 8px 24px rgba(37, 99, 235,  0.12);
   transform: translateY(-2px);
 }
 
 /* Primary feature card — prominent, coloured top border + stronger shadow */
 .mts-card--feature--primary {
   border-top: 4px solid var(--interactive);
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.12);
   background: var(--blue-10);
 }
 .mts-card--feature--primary:hover {
-  box-shadow: 0 12px 32px rgba(0, 82, 204, 0.18);
+  box-shadow: 0 12px 32px rgba(37, 99, 235,  0.18);
   transform: translateY(-2px);
 }
 .mts-card--feature--primary .mts-card__label { color: var(--interactive); }
@@ -9675,7 +9650,7 @@ button:focus-visible {
 }
 .mts-card--insight:hover {
   background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+  box-shadow: 0 4px 16px rgba(37, 99, 235,  0.08);
 }
 
 .mts-card--insight--green { border-top-color: var(--brand-primary); }
@@ -9866,8 +9841,8 @@ button:focus-visible {
 :root {
   --ink:         #000000;
   --paper:       #FFFFFF;
-  --brand-green: #53AA00;
-  --brand-blue:  #0052CC;
+  --brand-green: #22c55e;
+  --brand-blue:  #2563eb;
   --alert-red:   #D82B2B;
 }
 

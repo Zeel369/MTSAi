@@ -123,7 +123,7 @@
 }
 .btn-gradient-flow:hover {
   animation-duration: 1.5s;
-  box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.28);
 }
 
 /* Ripple container */

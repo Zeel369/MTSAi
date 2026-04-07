@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MTSAi — Incentive-Based Urban Demand Management platform for cities managing congestion through fair, transparent, and governable systems.">
-  <meta name="theme-color" content="#0052CC">
+  <meta name="theme-color" content="#1d4ed8">
   <title>MTSAi — Urban Demand Management Platform</title>
 
   <!-- Open Graph -->
@@ -23,8 +23,8 @@
   <!-- Fonts: async load to eliminate render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 
   <!-- Design System — ORDER MATTERS -->
   <link rel="stylesheet" href="assets/css/bundle.css">
@@ -62,7 +62,7 @@
     .section-proposition::after {
       content: '';
       position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(0, 82, 204, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(13, 148, 136, 0.08) 1px, transparent 1px);
       background-size: 24px 24px;
       pointer-events: none;
     }
@@ -112,7 +112,7 @@
     .proposition-pillar:last-child { border-bottom: none; }
     .proposition-pillar-icon {
       width: 32px; height: 32px;
-      background: rgba(0,82,204,0.08);
+      background: rgba(13,148,136,0.08);
       border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: var(--space-4);
@@ -150,7 +150,7 @@
     .mts-section::before {
       content: '';
       position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(0, 82, 204, 0.045) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(13, 148, 136, 0.045) 1px, transparent 1px);
       background-size: 32px 32px;
       pointer-events: none;
     }
@@ -273,22 +273,22 @@
       border-left: 3px solid var(--interactive);
       background: #FFFFFF;
       margin-bottom: 3px;
-      box-shadow: 0 1px 4px rgba(0, 82, 204, 0.06);
+      box-shadow: 0 1px 4px rgba(13, 148, 136, 0.06);
       transition: border-left-color 200ms, background 200ms, box-shadow 200ms, transform 150ms;
       cursor: default;
     }
     .arch-layer:hover {
       background: var(--blue-10);
       border-left-color: var(--brand-primary);
-      box-shadow: 0 4px 16px rgba(0, 82, 204, 0.12);
+      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.12);
       transform: translateX(4px);
     }
     .arch-layer--engine {
       border-left-color: var(--brand-primary);
-      background: rgba(83, 170, 0, 0.04);
-      border-color: rgba(83, 170, 0, 0.25);
+      background: rgba(16, 185, 129, 0.04);
+      border-color: rgba(16, 185, 129, 0.25);
     }
-    .arch-layer--engine:hover { background: rgba(83, 170, 0, 0.08); border-left-color: var(--interactive); }
+    .arch-layer--engine:hover { background: rgba(16, 185, 129, 0.08); border-left-color: var(--interactive); }
     .arch-layer--ai { border-left-color: var(--gray-40, #A8A8A8); opacity: 0.60; box-shadow: none; }
     .arch-layer__label {
       display: block; font-size: 13px; font-weight: 600;
@@ -323,7 +323,7 @@
       border: 1px solid var(--blue-20);
       margin-top: var(--space-8);
       background: #FFFFFF;
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(13, 148, 136, 0.08), 0 1px 4px rgba(0,0,0,0.04);
     }
     .privacy-col {
       padding: var(--space-7);
@@ -349,16 +349,16 @@
     .privacy-list li:last-child { border-bottom: none; }
 
     /* ====================================================
-       NUMBERS SECTION — IBM Blue band
+       NUMBERS SECTION — logo blue band
     ==================================================== */
     .section-numbers {
       padding: clamp(48px, 8vw, 96px) 0;
       background: linear-gradient(
         to bottom,
-        #F0F5FF 0px,          /* matches section-privacy bg above */
-        #0052CC 80px,         /* full blue starts */
-        #0052CC calc(100% - 64px), /* full blue ends */
-        #FFFFFF 100%          /* matches section-gov bg below */
+        #eff6ff 0px,
+        #1e40af 80px,
+        #1e40af calc(100% - 64px),
+        #FFFFFF 100%
       );
       position: relative; overflow: hidden;
     }
@@ -370,7 +370,7 @@
       background-size: 80px 80px;
       pointer-events: none;
     }
-    /* Override stat colours for the dark blue band */
+    /* Override stat colours for the blue band */
     .section-numbers .mts-stat-row {
       position: relative; z-index: 1;
       display: grid;
@@ -383,8 +383,8 @@
       padding: var(--space-4) var(--space-6);
     }
     .section-numbers .mts-stat-block__val--blue    { color: #FFFFFF; }
-    .section-numbers .mts-stat-block__val--green   { color: #7DE84A; } /* 4.8:1 on #0052CC */
-    .section-numbers .mts-stat-block__val--saffron { color: #FFCD6B; } /* 5.2:1 on #0052CC */
+    .section-numbers .mts-stat-block__val--green   { color: #bbf7d0; }
+    .section-numbers .mts-stat-block__val--saffron { color: #fde68a; }
     .section-numbers .mts-stat-block__label { color: rgba(255,255,255,0.78); font-size: 11px; letter-spacing: 0.12em; }
     .section-numbers .mts-stat-row__divider {
       background: rgba(255,255,255,0.20);
@@ -445,7 +445,7 @@
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 0; margin-top: var(--space-8);
       border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(13, 148, 136, 0.08), 0 1px 4px rgba(0,0,0,0.04);
     }
     .gov-control {
       padding: var(--space-7);
@@ -514,8 +514,8 @@
     }
     .animate-blue-glow { animation: blue-pulse 2s var(--ease-smooth) infinite; }
     @keyframes blue-pulse {
-      0%, 100% { box-shadow: 0 0 0 0px rgba(0, 82, 204, 0); }
-      50% { box-shadow: 0 0 0 10px rgba(0, 82, 204, 0.12); }
+      0%, 100% { box-shadow: 0 0 0 0px rgba(13, 148, 136, 0); }
+      50% { box-shadow: 0 0 0 10px rgba(13, 148, 136, 0.12); }
     }
 
     /* ====================================================
@@ -565,7 +565,7 @@
       border: 1px solid var(--blue-20);
       margin-top: var(--space-7);
       background: #FFFFFF;
-      box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(13, 148, 136, 0.08), 0 1px 4px rgba(0,0,0,0.04);
     }
     .ecosystem-row {
       display: flex; gap: var(--space-6);
@@ -601,7 +601,7 @@
       position: absolute;
       top: 50%; left: -20%;
       width: 600px; height: 600px;
-      background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0,82,204,0.22) 0%, transparent 70%);
+      background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(13,148,136,0.22) 0%, transparent 70%);
       transform: translateY(-50%);
       pointer-events: none;
       z-index: -1;
@@ -663,7 +663,7 @@
       overflow: hidden;
       margin-bottom: var(--space-10);
       border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 32px rgba(0,82,204,0.10);
+      box-shadow: 0 4px 32px rgba(13,148,136,0.10);
     }
     .problem-photo__img {
       width: 100%; height: 100%;
@@ -707,7 +707,7 @@
       position: relative; overflow: hidden;
       height: 280px;
       border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 24px rgba(0,82,204,0.10);
+      box-shadow: 0 4px 24px rgba(13,148,136,0.10);
       flex-shrink: 0;
     }
     .privacy-visual__img {
@@ -719,7 +719,7 @@
     .privacy-visual__overlay {
       position: absolute; inset: 0;
       background: linear-gradient(135deg,
-        rgba(0,82,204,0.18) 0%, transparent 60%);
+        rgba(13,148,136,0.18) 0%, transparent 60%);
       pointer-events: none;
     }
     .privacy-visual__badge {
@@ -741,7 +741,7 @@
       overflow: hidden;
       margin-bottom: var(--space-10);
       border: 1px solid var(--blue-20);
-      box-shadow: 0 4px 32px rgba(0,82,204,0.10);
+      box-shadow: 0 4px 32px rgba(13,148,136,0.10);
     }
     .arch-photo__img {
       width: 100%; height: 100%;
@@ -911,8 +911,8 @@
       transition: box-shadow 220ms ease, border-color 220ms ease;
     }
     .compliance-card:hover {
-      box-shadow: 0 6px 24px rgba(0,82,204,0.10);
-      border-color: rgba(0,82,204,0.25);
+      box-shadow: 0 6px 24px rgba(13,148,136,0.10);
+      border-color: rgba(13,148,136,0.25);
     }
     .compliance-card--verified { border-top: 2px solid var(--brand-primary); }
     .compliance-card--aligned  { border-top: 2px solid var(--interactive); }
@@ -942,8 +942,8 @@
       border: 1px solid rgba(83,170,0,0.20);
     }
     .compliance-card__badge--blue {
-      background: rgba(0,82,204,0.06); color: var(--interactive);
-      border: 1px solid rgba(0,82,204,0.15);
+      background: rgba(13,148,136,0.06); color: var(--interactive);
+      border: 1px solid rgba(13,148,136,0.15);
     }
     .compliance-card__badge--amber {
       background: rgba(255,173,51,0.08); color: #B45309;
@@ -1047,21 +1047,21 @@
       background: var(--layer-01);
       border-top-color: var(--brand-primary);
       transform: translateY(-4px);
-      box-shadow: 0 10px 28px rgba(0, 82, 204, 0.12);
+      box-shadow: 0 10px 28px rgba(13, 148, 136, 0.12);
     }
 
     /* iudm-feature: inset left indicator (currently no hover) */
     .iudm-feature { transition: background 150ms, box-shadow 150ms; }
     .iudm-feature:hover {
-      background: rgba(0, 82, 204, 0.03);
+      background: rgba(13, 148, 136, 0.03);
       box-shadow: inset 3px 0 0 var(--interactive);
     }
 
     /* proposition-pillar: border glow */
     .proposition-pillar { transition: background 200ms, box-shadow 200ms; }
     .proposition-pillar:hover {
-      background: rgba(0, 82, 204, 0.025);
-      box-shadow: inset 0 0 0 1px rgba(0, 82, 204, 0.14);
+      background: rgba(13, 148, 136, 0.025);
+      box-shadow: inset 0 0 0 1px rgba(13, 148, 136, 0.14);
     }
 
     /* ecosystem-row: inset left indicator (was only background swap) */
@@ -1159,7 +1159,7 @@
     }
     .audience-card:hover {
       border-top-color: var(--interactive);
-      box-shadow: 0 4px 24px rgba(0,82,204,0.10);
+      box-shadow: 0 4px 24px rgba(13,148,136,0.10);
       transform: translateY(-2px);
     }
     .audience-card__role {
@@ -1226,7 +1226,7 @@
     }
     .trust-badge__icon {
       width: 36px; height: 36px;
-      background: rgba(0,82,204,0.07);
+      background: rgba(13,148,136,0.07);
       border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
     }
@@ -1312,6 +1312,9 @@
       display: flex; flex-direction: column;
       animation: feed-scroll 14s linear infinite;
     }
+    @media (hover: hover) and (pointer: fine) {
+      .hero-event-feed:hover .hero-event-feed__ticker { animation-play-state: paused; }
+    }
     @keyframes feed-scroll {
       0%   { transform: translateY(0); }
       100% { transform: translateY(-50%); }
@@ -1331,7 +1334,7 @@
     .event-row--green { color: rgba(111,220,140,0.65); }
     .event-row--green::before { background: rgba(83,170,0,0.7); }
     .event-row--blue  { color: rgba(130,170,255,0.65); }
-    .event-row--blue::before  { background: rgba(0,82,204,0.8); }
+    .event-row--blue::before  { background: rgba(13,148,136,0.8); }
     .event-row--red   { color: rgba(255,120,120,0.60); }
     .event-row--red::before   { background: rgba(218,30,40,0.7); }
     .event-row--saffron { color: rgba(255,185,90,0.65); }
@@ -1435,6 +1438,278 @@
       .mts-hero::after { display: none; }
       .hero-event-feed__ticker { animation: none; }
       .floating-cta-chip__pulse::after { animation: none; }
+      .story-journey__panel,
+      .story-journey__visual-bar { transition: none; }
+      .iudm-feature { transition: none; }
+    }
+
+    /* Section anchor offset under sticky nav */
+    #story-intro, #story-standards, #story-paths, #story-approach, #story-challenge,
+    #story-iudm, #story-architecture, #story-privacy, #story-journey {
+      scroll-margin-top: 88px;
+    }
+
+    /* ── Interactive story journey ───────────────────────── */
+    .section-story-journey {
+      padding: clamp(64px, 10vw, 112px) 0;
+      background: linear-gradient(180deg, var(--gray-10) 0%, #fff 45%, #fff 100%);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .story-journey__head {
+      max-width: 40rem;
+      margin-bottom: var(--space-10);
+    }
+    .story-journey__eyebrow {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--interactive);
+      margin-bottom: var(--space-3);
+    }
+    .story-journey__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin: 0 0 var(--space-4);
+    }
+    .story-journey__lede {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .story-journey__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+    @media (min-width: 900px) {
+      .story-journey__grid {
+        grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+        gap: clamp(32px, 5vw, 64px);
+      }
+    }
+    .story-journey__tabs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .story-journey__tab {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      width: 100%;
+      text-align: left;
+      padding: var(--space-5) var(--space-5);
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    }
+    .story-journey__tab:hover {
+      border-color: var(--blue-alpha-20);
+      box-shadow: var(--shadow-sm);
+    }
+    .story-journey__tab:focus-visible {
+      outline: 2px solid var(--interactive);
+      outline-offset: 2px;
+    }
+    .story-journey__tab[aria-selected="true"] {
+      border-color: var(--interactive);
+      box-shadow: var(--shadow-blue);
+      transform: translateX(4px);
+    }
+    .story-journey__tab-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background: var(--blue-alpha-12);
+      color: var(--interactive);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .story-journey__tab[aria-selected="true"] .story-journey__tab-num {
+      background: var(--interactive);
+      color: #fff;
+    }
+    .story-journey__tab-kicker {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-placeholder);
+      margin-bottom: 4px;
+    }
+    .story-journey__tab-title {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .story-journey__panel-wrap {
+      position: relative;
+      min-height: 280px;
+    }
+    .story-journey__panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 280ms ease, visibility 280ms;
+      padding: var(--space-8);
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+    .story-journey__panel.is-active {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
+    .story-journey__panel h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 var(--space-4);
+      color: var(--text-primary);
+    }
+    .story-journey__panel p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-5);
+    }
+    .story-journey__panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .story-journey__visual-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--gray-20);
+      margin-bottom: var(--space-6);
+      overflow: hidden;
+    }
+    .story-journey__visual-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--interactive), var(--brand-primary));
+      transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .story-journey__panel.is-active .story-journey__visual-fill { width: 100%; }
+
+    /* ── Architecture explorer ─────────────────────────────── */
+    .arch-explorer {
+      display: grid;
+      gap: var(--space-6);
+    }
+    @media (min-width: 900px) {
+      .arch-explorer {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+        align-items: start;
+      }
+    }
+    .arch-stack--interactive {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .arch-layer-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      background: var(--layer-01, #fff);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6);
+      transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    }
+    .arch-layer-btn:hover {
+      border-color: var(--blue-alpha-20);
+      box-shadow: var(--shadow-sm);
+    }
+    .arch-layer-btn:focus-visible {
+      outline: 2px solid var(--interactive);
+      outline-offset: 2px;
+    }
+    .arch-layer-btn[aria-pressed="true"] {
+      border-color: var(--interactive);
+      box-shadow: var(--shadow-blue);
+      transform: translateX(6px);
+    }
+    .arch-layer-btn.arch-layer--ai:not([aria-pressed="true"]) { opacity: 0.68; }
+    .arch-layer-btn.arch-layer--ai[aria-pressed="true"] { opacity: 1; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .arch-layer-btn .arch-layer__label { display: block; margin-bottom: 4px; }
+    .arch-layer-btn .arch-layer__desc { opacity: 0.85; }
+    .arch-detail-panel {
+      padding: var(--space-7);
+      background: var(--gray-10);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      min-height: 200px;
+    }
+    .arch-detail-panel__tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--interactive);
+      margin-bottom: var(--space-3);
+    }
+    .arch-detail-panel h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      margin: 0 0 var(--space-4);
+    }
+    .arch-detail-panel p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* ── IUDM scroll-linked highlight ─────────────────────── */
+    .iudm-feature {
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin: calc(var(--space-2) * -1);
+      transition: background 240ms ease, box-shadow 240ms ease;
+    }
+    .iudm-feature.iudm-feature--active {
+      background: rgba(34, 197, 94, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.2);
     }
   </style>
 
@@ -1543,7 +1818,7 @@
     <!-- =============================================
          HERO — IBM Deep Blue, two-column
     ============================================= -->
-    <section class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction">
+    <section id="story-intro" class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
 
@@ -1620,7 +1895,7 @@
               <rect x="84"  y="60" width="72" height="48" rx="2" fill="rgba(218,30,40,0.22)" stroke="rgba(218,30,40,0.40)" stroke-width="1"/>
               <rect x="164" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
               <!-- Blue: active IUDM managed zone -->
-              <rect x="244" y="60" width="72" height="48" rx="2" fill="rgba(0,82,204,0.28)" stroke="rgba(0,82,204,0.55)" stroke-width="1"/>
+              <rect x="244" y="60" width="72" height="48" rx="2" fill="rgba(13,148,136,0.28)" stroke="rgba(13,148,136,0.55)" stroke-width="1"/>
               <rect x="324" y="60" width="72" height="48" rx="2" fill="rgba(255,255,255,0.10)"/>
               <rect x="404" y="60" width="76" height="48" rx="2" fill="rgba(255,255,255,0.06)"/>
 
@@ -1630,7 +1905,7 @@
               <!-- Green: incentive-cleared zone -->
               <rect x="164" y="116" width="72" height="48" rx="2" fill="rgba(83,170,0,0.22)" stroke="rgba(83,170,0,0.45)" stroke-width="1"/>
               <!-- Blue: IUDM managed zone -->
-              <rect x="244" y="116" width="72" height="48" rx="2" fill="rgba(0,82,204,0.18)" stroke="rgba(0,82,204,0.32)" stroke-width="1"/>
+              <rect x="244" y="116" width="72" height="48" rx="2" fill="rgba(13,148,136,0.18)" stroke="rgba(13,148,136,0.32)" stroke-width="1"/>
               <rect x="324" y="116" width="72" height="48" rx="2" fill="rgba(255,255,255,0.16)"/>
               <rect x="404" y="116" width="76" height="48" rx="2" fill="rgba(255,255,255,0.08)"/>
 
@@ -1660,10 +1935,10 @@
 
               <circle cx="80"  cy="112" r="3" fill="rgba(218,30,40,0.70)"/>
               <!-- Blue managed node — pulsing -->
-              <circle cx="160" cy="112" r="4" fill="rgba(0,82,204,0.90)">
+              <circle cx="160" cy="112" r="4" fill="rgba(13,148,136,0.90)">
                 <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="240" cy="112" r="3" fill="rgba(0,82,204,0.70)"/>
+              <circle cx="240" cy="112" r="3" fill="rgba(13,148,136,0.70)"/>
               <circle cx="320" cy="112" r="3" fill="rgba(255,255,255,0.25)"/>
               <circle cx="400" cy="112" r="3" fill="rgba(255,255,255,0.20)"/>
 
@@ -1673,7 +1948,7 @@
                 <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
                 <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="240" cy="168" r="3" fill="rgba(0,82,204,0.55)"/>
+              <circle cx="240" cy="168" r="3" fill="rgba(13,148,136,0.55)"/>
               <circle cx="320" cy="168" r="3" fill="rgba(255,255,255,0.20)"/>
               <circle cx="400" cy="168" r="3" fill="rgba(255,255,255,0.15)"/>
 
@@ -1686,7 +1961,7 @@
               <!-- Horizontal flow on row 2 corridor (y=112 road) -->
               <path d="M100 109 L108 112 L100 115" stroke="rgba(218,30,40,0.55)" stroke-width="1.5" fill="none"/>
               <path d="M180 109 L188 112 L180 115" stroke="rgba(83,170,0,0.7)" stroke-width="1.5" fill="none"/>
-              <path d="M260 109 L268 112 L260 115" stroke="rgba(0,82,204,0.65)" stroke-width="1.5" fill="none"/>
+              <path d="M260 109 L268 112 L260 115" stroke="rgba(13,148,136,0.65)" stroke-width="1.5" fill="none"/>
 
               <!-- Vertical flow on col 2 corridor (x=160 road) -->
               <path d="M157 134 L160 142 L163 134" stroke="rgba(83,170,0,0.6)" stroke-width="1.5" fill="none"/>
@@ -1697,7 +1972,7 @@
               <text x="120" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">HIGH · 94%</text>
 
               <!-- Data label: blue IUDM managed zone -->
-              <rect x="248" y="64" width="64" height="18" rx="2" fill="rgba(0,82,204,0.80)"/>
+              <rect x="248" y="64" width="64" height="18" rx="2" fill="rgba(13,148,136,0.80)"/>
               <text x="280" y="77" font-family="JetBrains Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="0.5">IUDM · ON</text>
 
               <!-- Data label: green cleared zone -->
@@ -1714,7 +1989,7 @@
                 <animateMotion path="M490 168 L-6 168" dur="5.5s" repeatCount="indefinite" begin="-1.8s"/>
               </circle>
               <!-- Vehicle C: southbound on IUDM managed column (x=240) — blue -->
-              <circle r="2.5" fill="rgba(0,82,204,0.90)">
+              <circle r="2.5" fill="rgba(13,148,136,0.90)">
                 <animateMotion path="M240 -6 L240 286" dur="6.0s" repeatCount="indefinite" begin="-3.0s"/>
               </circle>
               <!-- Vehicle D: northbound on green column (x=160) — green -->
@@ -1804,7 +2079,7 @@
     <!-- =============================================
          COMPLIANCE & STANDARDS
     ============================================= -->
-    <section class="compliance-section reveal-group" aria-label="Standards and compliance frameworks" data-ai-authored="✦ AI — Compliance Section">
+    <section id="story-standards" class="compliance-section reveal-group" aria-label="Standards and compliance frameworks" data-ai-authored="✦ AI — Compliance Section">
       <div class="mts-container">
         <div class="compliance-header">
           <p class="compliance-eyebrow">Standards &amp; Compliance</p>
@@ -1893,7 +2168,7 @@
     <!-- =============================================
          AUDIENCE PATH SELECTOR
     ============================================= -->
-    <section class="section-audience reveal-group" aria-label="Find your path">
+    <section id="story-paths" class="section-audience reveal-group" aria-label="Find your path">
       <div class="mts-container">
         <p class="audience-eyebrow">Who are you?</p>
         <h2 class="audience-heading reveal">Find the right starting point</h2>
@@ -1934,9 +2209,94 @@
     </section>
 
     <!-- =============================================
+         INTERACTIVE STORY JOURNEY
+    ============================================= -->
+    <section id="story-journey" class="section-story-journey reveal-group" aria-labelledby="story-journey-title">
+      <div class="mts-container">
+        <header class="story-journey__head reveal">
+          <p class="story-journey__eyebrow">How cities evaluate MTSAi</p>
+          <h2 id="story-journey-title" class="story-journey__title">From congestion signal to governed incentives — in four moves</h2>
+          <p class="story-journey__lede">Use the steps to see how the platform story unfolds. Keyboard: Tab into the list, then use ↑ ↓ to change steps.</p>
+        </header>
+
+        <div class="story-journey__grid">
+          <div class="story-journey__tabs reveal" role="tablist" aria-label="Story steps" aria-orientation="vertical" id="journey-tablist">
+            <button type="button" class="story-journey__tab" role="tab" id="journey-tab-0" aria-selected="true" aria-controls="journey-panel-0" tabindex="0">
+              <span class="story-journey__tab-num" aria-hidden="true">1</span>
+              <span>
+                <span class="story-journey__tab-kicker">Diagnose</span>
+                <span class="story-journey__tab-title">See the coordination problem</span>
+              </span>
+            </button>
+            <button type="button" class="story-journey__tab" role="tab" id="journey-tab-1" aria-selected="false" aria-controls="journey-panel-1" tabindex="-1">
+              <span class="story-journey__tab-num" aria-hidden="true">2</span>
+              <span>
+                <span class="story-journey__tab-kicker">Design</span>
+                <span class="story-journey__tab-title">Set policy you control</span>
+              </span>
+            </button>
+            <button type="button" class="story-journey__tab" role="tab" id="journey-tab-2" aria-selected="false" aria-controls="journey-panel-2" tabindex="-1">
+              <span class="story-journey__tab-num" aria-hidden="true">3</span>
+              <span>
+                <span class="story-journey__tab-kicker">Operate</span>
+                <span class="story-journey__tab-title">Run incentives, not just charges</span>
+              </span>
+            </button>
+            <button type="button" class="story-journey__tab" role="tab" id="journey-tab-3" aria-selected="false" aria-controls="journey-panel-3" tabindex="-1">
+              <span class="story-journey__tab-num" aria-hidden="true">4</span>
+              <span>
+                <span class="story-journey__tab-kicker">Assure</span>
+                <span class="story-journey__tab-title">Prove it to auditors &amp; citizens</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="story-journey__panel-wrap reveal delay-1">
+            <div class="story-journey__panel is-active" role="tabpanel" id="journey-panel-0" aria-labelledby="journey-tab-0">
+              <div class="story-journey__visual-bar" aria-hidden="true"><div class="story-journey__visual-fill"></div></div>
+              <h3>Congestion is millions of timing decisions colliding</h3>
+              <p>Peak load is not only infrastructure — it is repeated coordination. MTSAi starts from live demand signals and corridor behavior so your team can discuss interventions in operational language, not abstract mode-share targets alone.</p>
+              <div class="story-journey__panel-actions">
+                <a href="congestion-coordination.html" class="mts-btn mts-btn--secondary">Congestion as coordination →</a>
+                <a href="why-traditional-fails.html" class="mts-btn mts-btn--ghost">Why traditional pricing struggles →</a>
+              </div>
+            </div>
+            <div class="story-journey__panel" role="tabpanel" id="journey-panel-1" aria-labelledby="journey-tab-1" hidden>
+              <div class="story-journey__visual-bar" aria-hidden="true"><div class="story-journey__visual-fill"></div></div>
+              <h3>Rules, budgets, and exemptions stay with government</h3>
+              <p>Cities configure incentive windows, equity carve-outs, and program budgets. The platform enforces published policy — it does not substitute for democratic or administrative decision-making.</p>
+              <div class="story-journey__panel-actions">
+                <a href="Government.html" class="mts-btn mts-btn--secondary">Government overview →</a>
+                <a href="governance.html" class="mts-btn mts-btn--ghost">Governance →</a>
+              </div>
+            </div>
+            <div class="story-journey__panel" role="tabpanel" id="journey-panel-2" aria-labelledby="journey-tab-2" hidden>
+              <div class="story-journey__visual-bar" aria-hidden="true"><div class="story-journey__visual-fill"></div></div>
+              <h3>IUDM rewards better choices instead of only punishing bad ones</h3>
+              <p>Off-peak travel, higher occupancy, transit use, and smarter route choices can be recognized in one incentive fabric — integrated with payments and identity where your procurement model allows.</p>
+              <div class="story-journey__panel-actions">
+                <a href="iudm.html" class="mts-btn mts-btn--secondary">IUDM model →</a>
+                <a href="technology_platform.html" class="mts-btn mts-btn--ghost">Platform architecture →</a>
+              </div>
+            </div>
+            <div class="story-journey__panel" role="tabpanel" id="journey-panel-3" aria-labelledby="journey-tab-3" hidden>
+              <div class="story-journey__visual-bar" aria-hidden="true"><div class="story-journey__visual-fill"></div></div>
+              <h3>Every incentive line ties back to an auditable record</h3>
+              <p>Designed for GIGW-aligned publishing, DPDP-conscious minimization, and evidence packs procurement teams can review — without claiming certifications this site does not publish.</p>
+              <div class="story-journey__panel-actions">
+                <a href="trust.html" class="mts-btn mts-btn--secondary">Trust centre →</a>
+                <a href="data-transparency.html" class="mts-btn mts-btn--ghost">Data transparency →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
          PROPOSITION — #EDF5FF, decorative quote mark
     ============================================= -->
-    <section class="section-proposition" aria-label="Platform proposition">
+    <section id="story-approach" class="section-proposition" aria-label="Platform proposition">
       <div class="mts-container">
         <div class="proposition-inner reveal">
           <div>
@@ -1984,7 +2344,7 @@
     <!-- =============================================
          PROBLEM METRICS — white
     ============================================= -->
-    <section class="mts-section reveal-group" aria-label="The congestion problem">
+    <section id="story-challenge" class="mts-section reveal-group" aria-label="The congestion problem">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow">The Challenge</span>
@@ -2059,7 +2419,7 @@
     <!-- =============================================
          IUDM — light gray
     ============================================= -->
-    <section class="section-iudm reveal-group" aria-label="The IUDM Model">
+    <section id="story-iudm" class="section-iudm reveal-group" aria-label="The IUDM Model">
       <div class="mts-container">
         <div class="mts-section__header">
           <span class="mts-section__eyebrow mts-section__eyebrow--green">What Sets Us Apart</span>
@@ -2112,7 +2472,7 @@
     <!-- =============================================
          ARCHITECTURE — white
     ============================================= -->
-    <section class="mts-section reveal-group" aria-label="Platform Architecture">
+    <section id="story-architecture" class="mts-section reveal-group" aria-label="Platform Architecture">
       <div class="mts-container">
 
         <!-- Cinematic image — data infrastructure / partner network -->
@@ -2134,28 +2494,36 @@
             <p class="arch-note" style="margin-top:var(--space-7);">Government retains policy control. MTSAi provides configurable infrastructure, integrations, and incentive delivery.</p>
           </div>
 
-          <div class="arch-stack reveal delay-3" role="img" aria-label="MTSAi 4-layer platform architecture diagram">
-            <div class="arch-layer arch-layer--public">
-              <span class="arch-layer__label">Public Web Layer</span>
-              <span class="arch-layer__desc">public pages · onboarding · partner access</span>
+          <div class="arch-explorer reveal delay-3">
+            <p id="arch-explorer-label" class="visually-hidden">Explore each platform layer. Details update when you select a layer.</p>
+            <div class="arch-stack arch-stack--interactive" role="group" aria-labelledby="arch-explorer-label">
+              <button type="button" class="arch-layer-btn arch-layer--public" aria-pressed="true" aria-controls="arch-detail-box" id="arch-tab-public">
+                <span class="arch-layer__label">Public Web Layer</span>
+                <span class="arch-layer__desc">public pages · onboarding · partner access</span>
+              </button>
+              <button type="button" class="arch-layer-btn arch-layer--platform" aria-pressed="false" aria-controls="arch-detail-box" id="arch-tab-platform">
+                <span class="arch-layer__label">Platform Application</span>
+                <span class="arch-layer__desc">operator workflows · city programs · admin tools</span>
+              </button>
+              <button type="button" class="arch-layer-btn arch-layer--api" aria-pressed="false" aria-controls="arch-detail-box" id="arch-tab-api">
+                <span class="arch-layer__label">API &amp; Policy Services</span>
+                <span class="arch-layer__desc">identity · payments · events · policy APIs</span>
+              </button>
+              <button type="button" class="arch-layer-btn arch-layer--engine" aria-pressed="false" aria-controls="arch-detail-box" id="arch-tab-engine">
+                <span class="arch-layer__label">Incentive Engine + Data</span>
+                <span class="arch-layer__desc">evaluate behavior · calculate rewards · audit records</span>
+                <span class="mts-tag mts-tag--blue mts-tag--sm" style="margin-top:8px;display:inline-flex;">Core</span>
+              </button>
+              <button type="button" class="arch-layer-btn arch-layer--ai" aria-pressed="false" aria-controls="arch-detail-box" id="arch-tab-ai">
+                <span class="arch-layer__label">AI Augmentation</span>
+                <span class="arch-layer__desc">assistive analytics · pattern detection · decision support</span>
+                <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
+              </button>
             </div>
-            <div class="arch-layer arch-layer--platform">
-              <span class="arch-layer__label">Platform Application</span>
-              <span class="arch-layer__desc">operator workflows · city programs · admin tools</span>
-            </div>
-            <div class="arch-layer arch-layer--api">
-              <span class="arch-layer__label">API &amp; Policy Services</span>
-              <span class="arch-layer__desc">identity · payments · events · policy APIs</span>
-            </div>
-            <div class="arch-layer arch-layer--engine">
-              <span class="arch-layer__label">Incentive Engine + Data</span>
-              <span class="arch-layer__desc">evaluate behavior · calculate rewards · audit records</span>
-              <span class="mts-tag mts-tag--blue mts-tag--sm" style="margin-top:8px;display:inline-flex;">Core</span>
-            </div>
-            <div class="arch-layer arch-layer--ai">
-              <span class="arch-layer__label">AI Augmentation</span>
-              <span class="arch-layer__desc">assistive analytics · pattern detection · decision support</span>
-              <span class="mts-tag mts-tag--gray mts-tag--sm" style="margin-top:8px;display:inline-flex;">Under Development</span>
+            <div class="arch-detail-panel" id="arch-detail-box" aria-live="polite" aria-relevant="text" aria-atomic="true" aria-labelledby="arch-tab-public">
+              <p class="arch-detail-panel__tag" id="arch-detail-kicker">Layer detail</p>
+              <h3 id="arch-detail-title">Public Web Layer</h3>
+              <p id="arch-detail-body">Citizens and partners reach published information, onboarding, and controlled access points. This layer stays thin by design — sensitive policy work happens deeper in the stack.</p>
             </div>
           </div>
         </div>
@@ -2165,7 +2533,7 @@
     <!-- =============================================
          PRIVACY — light gray
     ============================================= -->
-    <section class="section-privacy reveal-group" aria-label="Privacy by Design">
+    <section id="story-privacy" class="section-privacy reveal-group" aria-label="Privacy by Design">
       <div class="mts-container">
         <span class="mts-section__eyebrow mts-section__eyebrow--green">Compliance & Trust</span>
         <h2 class="mts-section__h2 reveal">05. Privacy by Design</h2>
@@ -2685,6 +3053,131 @@
       if (closeBtn) closeBtn.addEventListener('click', () => {
         chip.classList.remove('visible'); dismissed = true;
       });
+    })();
+
+    // Homepage — interactive story journey (tabs + keyboard)
+    (function () {
+      const tablist = document.getElementById('journey-tablist');
+      if (!tablist) return;
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+      const panels = tabs.map((_, i) => document.getElementById('journey-panel-' + i));
+      function selectJourney(idx) {
+        const n = Math.max(0, Math.min(idx, tabs.length - 1));
+        tabs.forEach((t, i) => {
+          const on = i === n;
+          t.setAttribute('aria-selected', on);
+          t.tabIndex = on ? 0 : -1;
+          const p = panels[i];
+          if (!p) return;
+          if (on) {
+            p.classList.add('is-active');
+            p.removeAttribute('hidden');
+          } else {
+            p.classList.remove('is-active');
+            p.setAttribute('hidden', '');
+          }
+        });
+      }
+      tabs.forEach((tab, i) => tab.addEventListener('click', () => { selectJourney(i); tab.focus(); }));
+      tablist.addEventListener('keydown', (e) => {
+        const cur = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = Math.min(cur + 1, tabs.length - 1);
+          selectJourney(next);
+          tabs[next].focus();
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = Math.max(cur - 1, 0);
+          selectJourney(prev);
+          tabs[prev].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          selectJourney(0);
+          tabs[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          selectJourney(tabs.length - 1);
+          tabs[tabs.length - 1].focus();
+        }
+      });
+      selectJourney(0);
+    })();
+
+    // Architecture layer explorer (toggle group + live region; avoids invalid multi-tab → one panel)
+    (function () {
+      const stack = document.querySelector('.arch-stack--interactive');
+      const tabs = stack ? Array.from(stack.querySelectorAll('.arch-layer-btn')) : [];
+      if (!tabs.length) return;
+      const detailBox = document.getElementById('arch-detail-box');
+      const kicker = document.getElementById('arch-detail-kicker');
+      const titleEl = document.getElementById('arch-detail-title');
+      const bodyEl = document.getElementById('arch-detail-body');
+      const copy = [
+        { kicker: 'Citizen & partner surface', title: 'Public Web Layer', body: 'Published information, onboarding, and controlled access for commuters and integration partners. Keeps sensitive configuration and policy authoring out of the public edge.' },
+        { kicker: 'City operations', title: 'Platform Application', body: 'Where program managers configure corridors, review demand signals, and run city-specific workflows — with roles aligned to how transport departments actually work.' },
+        { kicker: 'Integration fabric', title: 'API & Policy Services', body: 'Identity, payments, trip events, and policy evaluation exposed as services so FASTag, mobility apps, and transit systems can participate without bespoke one-off pipes.' },
+        { kicker: 'Policy execution core', title: 'Incentive Engine + Data', body: 'Evaluates eligible behavior against published rules, calculates rewards, and writes the immutable-style records evaluators expect for audit and dispute review.' },
+        { kicker: 'Assistive layer', title: 'AI Augmentation', body: 'Optional analytics and detection to support human decision-making — not autonomous pricing. Scope and governance remain explicit in procurement and city policy.' }
+      ];
+      function selectArch(i) {
+        const n = Math.max(0, Math.min(i, tabs.length - 1));
+        tabs.forEach((t, j) => {
+          const on = j === n;
+          t.setAttribute('aria-pressed', on);
+          t.tabIndex = on ? 0 : -1;
+        });
+        const c = copy[n];
+        if (c && kicker && titleEl && bodyEl) {
+          kicker.textContent = c.kicker;
+          titleEl.textContent = c.title;
+          bodyEl.textContent = c.body;
+        }
+        const active = tabs[n];
+        if (detailBox && active && active.id) detailBox.setAttribute('aria-labelledby', active.id);
+      }
+      tabs.forEach((tab, i) => tab.addEventListener('click', () => { selectArch(i); tab.focus(); }));
+      stack.addEventListener('keydown', (e) => {
+        const cur = tabs.findIndex((t) => t.getAttribute('aria-pressed') === 'true');
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = Math.min(cur + 1, tabs.length - 1);
+          selectArch(next);
+          tabs[next].focus();
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = Math.max(cur - 1, 0);
+          selectArch(prev);
+          tabs[prev].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          selectArch(0);
+          tabs[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          selectArch(tabs.length - 1);
+          tabs[tabs.length - 1].focus();
+        }
+      });
+      selectArch(0);
+    })();
+
+    // IUDM feature list — highlight row in view
+    (function () {
+      const feats = document.querySelectorAll('#story-iudm .iudm-feature');
+      if (!feats.length) return;
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (!en.isIntersecting) return;
+            feats.forEach((f) => f.classList.remove('iudm-feature--active'));
+            en.target.classList.add('iudm-feature--active');
+          });
+        },
+        { threshold: 0.55 }
+      );
+      feats.forEach((f) => io.observe(f));
+      feats[0].classList.add('iudm-feature--active');
     })();
 
     // Dropdown

@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 .mts-nav__link:hover { color: var(--text-primary); background: var(--layer-01); }
-.mts-nav__link.active { color: var(--interactive); background: rgba(15, 98, 254, 0.08); }
+.mts-nav__link.active { color: var(--interactive); background: var(--blue-alpha-08); }
 .mts-nav__actions { display: flex; align-items: center; gap: var(--space-3); }
 
 /* ── Mobile hamburger toggle — visible by default (mobile-first) */
@@ -253,4 +253,4 @@
   border-left: 3px solid transparent;
 }
 .mts-sidebar__link:hover { color: var(--text-primary); background: var(--layer-02); border-left-color: var(--border-subtle); }
-.mts-sidebar__link.active { color: var(--interactive); background: rgba(15, 98, 254, 0.08); border-left-color: var(--interactive); font-weight: var(--weight-semibold); }
+.mts-sidebar__link.active { color: var(--interactive); background: var(--blue-alpha-08); border-left-color: var(--interactive); font-weight: var(--weight-semibold); }

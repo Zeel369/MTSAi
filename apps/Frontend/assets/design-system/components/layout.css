@@ -19,7 +19,7 @@
 
 .mts-box--bordered  { border: 1px solid var(--border-subtle); }
 .mts-box--filled    { background: var(--layer-01); }
-.mts-box--elevated  { background: #fff; box-shadow: 0 2px 12px rgba(0,82,204,0.07); }
+.mts-box--elevated  { background: #fff; box-shadow: 0 2px 12px rgba(37, 99, 235, 0.07); }
 .mts-box--dark      { background: var(--navy-100); }
 
 /* ══════════════════════════════════════════════════════════════

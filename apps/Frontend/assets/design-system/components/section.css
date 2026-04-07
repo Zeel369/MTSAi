@@ -18,7 +18,7 @@
 .mts-section::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(0, 82, 204, 0.045) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 99, 235,  0.045) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
 }
@@ -267,7 +267,7 @@
   gap: 0;
   border: 1px solid var(--blue-20);
   background: #fff;
-  box-shadow: 0 4px 24px rgba(0, 82, 204, 0.08);
+  box-shadow: 0 4px 24px rgba(37, 99, 235,  0.08);
 }
 
 /* ── Responsive — mobile-first progressive enhancement ──────── */

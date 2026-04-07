@@ -76,9 +76,9 @@
 }
 
 .mts-footer__trust-badge--active {
-  border-color: rgba(83, 170, 0, 0.30);
+  border-color: rgba(16, 185, 129, 0.32);
   color: rgba(111, 220, 140, 0.80);
-  background: rgba(83, 170, 0, 0.07);
+  background: rgba(16, 185, 129, 0.08);
 }
 
 .mts-footer__trust-badge--active::before {

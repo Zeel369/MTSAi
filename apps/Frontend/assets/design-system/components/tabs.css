@@ -47,7 +47,7 @@
   font-size: 11px;
   font-weight: var(--weight-bold);
 }
-.mts-tab.active .mts-tab__count { background: rgba(15, 98, 254, 0.2); color: var(--blue-30); }
+.mts-tab.active .mts-tab__count { background: var(--blue-alpha-20); color: var(--blue-30); }
 .mts-tab-panel { padding: var(--space-6) 0; animation: fadeIn var(--duration-moderate-01) var(--ease-entrance) both; }
 .mts-tab-panel[hidden] { display: none; }
 
