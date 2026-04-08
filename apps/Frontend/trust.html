@@ -1,4 +1,3 @@
-<!-- ✦ AI-CREATED PAGE: HTML structure and layout written by AI. Text content sourced verbatim from trial/. Review both structure and copy before publishing. -->
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -41,7 +40,9 @@
 
     /* STATUS LEGEND */
     .trust-body-section { background: #fff; padding: var(--space-14) 0; }
-    .status-legend { background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-7); margin-bottom: var(--space-12); max-width: 780px; }
+    .trust-fast-lane-wrap { max-width: min(680px, 100%); margin-bottom: var(--space-16); }
+    .trust-domain-section { margin-top: var(--space-4); }
+    .status-legend { background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-7); margin-bottom: var(--space-12); max-width: min(680px, 100%); }
     .status-legend h2 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-5); }
     .status-legend-pills { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; }
     .status-pill-group { display: flex; flex-direction: column; gap: 6px; }
@@ -50,7 +51,7 @@
     .status-pill--in-build { background: rgba(255,153,51,0.10); color: #C47800; }
     .status-pill--pilot { background: rgba(83,170,0,0.10); color: #3D8000; }
     .status-pill--live { background: var(--text-primary); color: #fff; }
-    .status-pill-desc { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); max-width: 160px; line-height: 1.5; }
+    .status-pill-desc { font-family: var(--font-ui); font-size: 10px; color: var(--text-secondary); max-width: 160px; line-height: 1.5; }
 
     /* HEADINGS */
     .trust-section-heading { font-family: var(--font-display); font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: var(--space-4); }
@@ -62,7 +63,7 @@
     .fast-lane-item:hover { border-color: var(--accent-saffron); background: rgba(255,153,51,0.03); }
     .fast-lane-icon { font-size: 20px; color: var(--accent-saffron); flex-shrink: 0; margin-top: 2px; }
     .fast-lane-item__title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 4px; }
-    .fast-lane-item__desc { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px; }
+    .fast-lane-item__desc { font-family: var(--font-ui); font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px; }
     .fast-lane-item__link { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-saffron); text-decoration: none; }
 
     /* TRUST DOMAIN CARDS — upgraded ctrl-card pattern */
@@ -76,7 +77,9 @@
     }
     .trust-domain-card:hover { box-shadow: 0 12px 40px rgba(13,148,136,0.12); transform: translateY(-3px); }
     .trust-domain-card.full-row { grid-column: span 1; max-width: none; }
-    @media (min-width: 641px) { .trust-domain-card.full-row { grid-column: span 2; max-width: 460px; } }
+    @media (min-width: 641px) {
+      .trust-domain-card.full-row { grid-column: 1 / -1; max-width: none; width: 100%; }
+    }
 
     /* per-domain colours */
     .trust-domain-card--blue  { border-top-color: var(--interactive); }
@@ -113,34 +116,81 @@
     .tdc-icon-box { width: 44px; height: 44px; border: 1px solid; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); position: relative; z-index: 1; font-size: 22px; }
     .tdc-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-3); display: block; position: relative; z-index: 1; }
     .trust-domain-card h3 { font-family: var(--font-display); font-size: clamp(16px,1.8vw,22px); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-3); line-height: 1.18; position: relative; z-index: 1; }
-    .trust-domain-card p { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); line-height: 1.65; margin: 0; position: relative; z-index: 1; max-width: 380px; }
+    .trust-domain-card p { font-family: var(--font-ui); font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin: 0; position: relative; z-index: 1; max-width: 380px; }
     .tdc-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-7); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid; padding: 5px 12px; position: relative; z-index: 1; }
     .tdc-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; animation: pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 50% { opacity: 0.4; } }
 
     /* WHY TRUST MATTERS — dark section */
-    .trust-why-dark { background: #050505; padding: var(--space-16) 0; }
-    .trust-why-dark .section-eyebrow { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-saffron); margin-bottom: var(--space-5); display: block; }
+    .trust-why-dark {
+      --trust-why-bg: #050505;
+      background: var(--trust-why-bg);
+      padding: calc(var(--space-16) + var(--space-6)) 0 var(--space-16);
+    }
+    .trust-why-dark .section-eyebrow { font-family: var(--font-ui); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-saffron); margin-bottom: var(--space-5); display: block; }
     .trust-why-dark h2 { font-family: var(--font-display); font-size: clamp(26px,3vw,40px); font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: var(--space-10); }
-    .trust-stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8); }
+    .trust-stats-row { display: grid; grid-template-columns: 1fr; gap: var(--space-8); }
     @media (min-width: 769px) {
- .trust-stats-row { grid-template-columns: 1fr; } }
-    .trust-stat-item { border-left: 3px solid var(--accent-saffron); padding-left: var(--space-6); }
-    .trust-stat-item__num { font-family: var(--font-display); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1; display: block; margin-bottom: var(--space-3); }
-    .trust-stat-item__label { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.6; display: block; }
+      .trust-stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+    }
+    /* Accent bar in first column so numerals align with heading (same container inset) */
+    .trust-stat-item {
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      column-gap: var(--space-6);
+      row-gap: var(--space-3);
+      align-items: start;
+      min-width: 0;
+    }
+    .trust-stat-item::before {
+      content: "";
+      grid-column: 1;
+      grid-row: 1 / -1;
+      width: 3px;
+      align-self: stretch;
+      background: var(--accent-saffron);
+      border-radius: 1px;
+    }
+    .trust-stat-item__num {
+      grid-column: 2;
+      font-family: var(--font-display);
+      font-size: clamp(36px,5vw,64px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      display: block;
+      margin: 0;
+      padding: 0.04em 0 0;
+    }
+    .trust-stat-item__label {
+      grid-column: 2;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.6;
+      display: block;
+      margin: 0;
+    }
 
     /* DISCLOSURE PANEL */
     .disclosure-panel { background: var(--layer-01); padding: var(--space-12) 0 var(--space-10); }
     .disclosure-inner { background: #fff; border: 1px solid var(--border-subtle); padding: var(--space-8); }
     .disclosure-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); margin-bottom: var(--space-6); display: flex; align-items: center; gap: var(--space-3); }
-    .disclosure-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8); }
+    .disclosure-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-8); }
     @media (min-width: 769px) {
- .disclosure-grid { grid-template-columns: 1fr; } }
+      .disclosure-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     .disclosure-grid h4 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: var(--space-3); }
-    .disclosure-grid p { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); line-height: 1.65; }
+    .disclosure-grid p { font-family: var(--font-ui); font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
 
-    /* CTA DARK */
     .mts-section-cta-dark { background: var(--text-primary); padding: var(--space-14) 0; }
+    /* Trust page: same #050505 as .trust-why-dark; slightly tighter bottom padding */
+    .mts-section-cta-dark.trust-page-cta {
+      background: #050505;
+      padding: var(--space-14) 0 var(--space-10);
+    }
     .cta-headline { font-family: var(--font-display); font-size: clamp(24px,4vw,42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin: 0 0 var(--space-6); max-width: 640px; }
     .cta-lead { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-10); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
@@ -149,9 +199,25 @@
 
     /* Hero headline */
     .mts-hero__headline { font-size: clamp(38px, 4.8vw, 64px); font-weight: 300; }
+    .trust-page-hero .breadcrumb { margin-bottom: var(--space-6); }
+    .trust-page-hero .mts-hero__eyebrow { margin-top: 0; }
 
-    /* Pre-CTA announce strip */
-    .common-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    /* Pre-CTA announce strip — vertical padding + same horizontal inset as .mts-container */
+    .common-pre-cta-announce {
+      background: rgba(255,153,51,0.08);
+      border-top: 1px solid rgba(255,153,51,0.24);
+      border-bottom: 1px solid rgba(255,153,51,0.24);
+      padding: var(--space-6) 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .common-pre-cta-announce__inner {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+      text-align: center;
+      line-height: 1.55;
+    }
     .common-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
 
     /* G6 — Footer disclaimer */
@@ -160,9 +226,30 @@
     /* G7 — Announce bar */
     .announce-page { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-page a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* KINETIC HERO ENTRANCE */
+    .trust-page-hero .breadcrumb    { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .trust-page-hero .mts-hero__eyebrow { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .trust-page-hero .mts-hero__headline { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .trust-page-hero .mts-article-lead { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* CRT scanline overlay */
+    .trust-page-hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,20,40,0.025) 2px, rgba(0,20,40,0.025) 4px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .trust-page-hero .breadcrumb,
+      .trust-page-hero .mts-hero__eyebrow,
+      .trust-page-hero .mts-hero__headline,
+      .trust-page-hero .mts-article-lead { animation: none; opacity: 1; transform: none; }
+    }
   </style>
 
-  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -216,7 +303,6 @@
   ]
 }
   </script>
-  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -250,6 +336,7 @@
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="trust.html" class="mts-nav__link active" aria-current="page">Trust</a></li>
         <li><a href="about.html" class="mts-nav__link">About</a></li>
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
@@ -258,7 +345,7 @@
           <span class="mts-status-dot active" aria-hidden="true"></span>
           <span>System Online</span>
         </span>
-        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <a href="contact.html" class="mts-btn mts-btn--secondary mts-btn--nav">Start Evaluation →</a>
         <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -269,7 +356,7 @@
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="mts-hero mts-hero--standard mts-hero--mid" aria-label="Trust Center" style="background: linear-gradient(160deg,#050505 0%,#0d1f40 60%,#050505 100%);">
+    <section class="mts-hero mts-hero--standard mts-hero--mid trust-page-hero" aria-label="Trust Center" style="background: linear-gradient(160deg,#050505 0%,#0d1f40 60%,#050505 100%);">
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
       <div class="mts-container mts-hero__inner">
@@ -278,7 +365,7 @@
           <span>Trust Center</span>
         </nav>
         <div class="mts-hero__eyebrow">
-          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-mono);font-size:11px;">Evidence First · Government-Grade</span>
+          <span class="mts-tag mts-tag--blue" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.22);font-family:var(--font-ui);font-size:11px;">Evidence First · Government-Grade</span>
         </div>
         <h1 class="mts-hero__headline">Trust, Governance &amp; Operational Survivability</h1>
         <p class="mts-article-lead">MTSAi's Trust Center is designed for government procurement review. Each domain provides a claims-safe posture summary and an index of versioned evidence available under NDA/RFP.</p>
@@ -312,7 +399,7 @@
         </div>
 
         <!-- GoI Reviewer Fast Lane -->
-        <div style="max-width:680px;margin-bottom:var(--space-16);">
+        <div class="trust-fast-lane-wrap">
           <div class="trust-section-divider" aria-hidden="true"></div>
           <h2 class="trust-section-heading reveal">GoI Reviewer Fast Lane</h2>
           <p class="trust-section-lead reveal delay-1">Use these direct routes to reach the material relevant to your role:</p>
@@ -364,7 +451,7 @@
         </div>
 
         <!-- Trust Center Domains — upgraded card grid -->
-        <div>
+        <div class="trust-domain-section">
           <div class="trust-section-divider" aria-hidden="true"></div>
           <h2 class="trust-section-heading reveal">Trust Center Domains</h2>
 
@@ -446,10 +533,12 @@
     <!-- CLOSING CTA -->
     <!-- PRE-CTA ANNOUNCE STRIP -->
     <div class="common-pre-cta-announce" role="status">
-      Due diligence materials are available for qualified government and procurement teams. — <a href="contact.html?intent=government">Start due diligence →</a>
+      <div class="common-pre-cta-announce__inner">
+        Due diligence materials are available for qualified government and procurement teams. — <a href="contact.html?intent=government">Start due diligence →</a>
+      </div>
     </div>
 
-    <section class="mts-section-cta-dark" aria-label="Start due diligence">
+    <section class="mts-section-cta-dark trust-page-cta" aria-label="Start due diligence">
       <div class="mts-container">
         <h2 class="cta-headline reveal">Start Your Due Diligence</h2>
         <p class="cta-lead reveal delay-1">The Trust Center is designed to support government procurement review. Use the resources below to access versioned materials.</p>
@@ -606,6 +695,7 @@
           <li><a href="india-advantage.html">Why India Can Lead</a></li>
         </div>
         <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="trust.html" class="active">Trust</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -614,6 +704,5 @@
   </div>
   <script src="assets/js/site.js" defer></script>
 
-  <div class="ai-page-banner">✦ AI-Created Page — text from trial/, structure by AI — review before publishing</div>
 </body>
 </html>
