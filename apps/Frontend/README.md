@@ -21,8 +21,19 @@ Pages load **`assets/css/bundle.css`** then **`assets/css/page-shell.css`**. The
 | File | Purpose |
 |------|---------|
 | `robots.txt` | Crawler rules; serve at site root `/robots.txt` |
-| `sitemap.xml` | Search engines; serve at `/sitemap.xml` (URL declared in `robots.txt`) |
+| `sitemap.xml` | Search engines; serve at `/sitemap.xml` (URL declared in `robots.txt`). Canonical home is `https://mtsai.in/` only (no duplicate `index.html` entry). |
 | `404.html` | Configure the host to use as the not-found page (e.g. Cloudflare Pages **404 handling**, S3 **Error document**, nginx `error_page 404`) |
+| `img/og-cover.png` | Open Graph / Twitter card image (`1200×630`); referenced as `https://mtsai.in/img/og-cover.png` in page meta |
+
+Before deploy, run **`npm run predeploy`** (rebuilds `bundle.css` and runs internal + external link checks).
+
+## Deploy
+
+**Recommended:** Publish the **contents of this directory** (`apps/Frontend`) as the **web root** on your host (e.g. Cloudflare Pages, Netlify, S3 static website, nginx `root`). URLs must resolve as `/index.html` → `/`, `/assets/css/bundle.css`, `/img/…`, etc., with **no** extra path prefix.
+
+**Optional:** `npm run build` runs Vite and outputs a multi-page build to **`dist/`**. Use this only if you rely on Rollup’s HTML pipeline; asset paths in HTML must still match how you serve the site. Most deployments use the **folder as-is** without running Vite.
+
+After each deploy, run **manual contact QA** (see below) on the **live** origin.
 
 ## Contact form
 
@@ -33,3 +44,13 @@ Pages load **`assets/css/bundle.css`** then **`assets/css/page-shell.css`**. The
 ```
 
 Override `content` if you use a different Formspree form.
+
+### Manual QA (production)
+
+On **`https://mtsai.in`** (or your production origin), test **`contact.html`** once per release:
+
+1. **Government** — full two-step flow, required fields, consent, submit; confirm message in Formspree inbox.
+2. **Strategic Partner** — include territory + experience fields; submit; confirm delivery.
+3. **Public Integrity** — include concern detail; submit; confirm delivery.
+
+Check spam if messages are missing. On failure, the form surfaces a fallback to email **ssg@miracletraffic.ai**.

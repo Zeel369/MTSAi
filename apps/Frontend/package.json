@@ -5,7 +5,8 @@
   "scripts": {
     "build": "vite build",
     "build:css": "python3 ../../scripts/build_frontend_bundle.py",
-    "check:links": "python3 ../../scripts/check_frontend_links.py --root . --glob \"*.html\" --external"
+    "check:links": "python3 ../../scripts/check_frontend_links.py --root . --glob \"*.html\" --external",
+    "predeploy": "npm run build:css && npm run check:links"
   },
   "devDependencies": {
     "vite": "^7.1.0"

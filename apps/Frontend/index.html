@@ -14,6 +14,7 @@
   <meta property="og:description" content="A platform enabling governments to manage congestion by rewarding better commuter behavior through incentive systems, digital mobility platforms, and privacy-first architecture.">
   <meta property="og:image" content="https://mtsai.in/img/og-cover.png">
   <meta property="og:url" content="https://mtsai.in/">
+  <link rel="canonical" href="https://mtsai.in/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MTSAi — Urban Demand Management Platform">
   <meta name="twitter:description" content="Incentive-Based Urban Demand Management for modern cities. Privacy-first. Government-controlled. GIGW 3.0 compliant.">
@@ -1288,6 +1289,29 @@
     }
     .mts-hero::before { animation: hero-bg-pulse 8s ease-in-out infinite; }
 
+    /* Remotion hero loop (congestion → MTSAi → calm) — full-bleed under chrome */
+    .mts-hero--video .mts-hero__video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .mts-hero--video .mts-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .mts-hero--video .mts-hero__pattern {
+      z-index: 1;
+    }
+    .mts-hero--video::before {
+      z-index: 2;
+    }
+
     /* ====================================================
        LIVE EVENT FEED — hero panel
     ==================================================== */
@@ -1435,6 +1459,8 @@
       .mts-hero__ctas, .trust-strip--hero, .mts-hero__visual,
       .mts-hero__panel-metric-val { animation: none; }
       .mts-hero::before { animation: none; }
+      .mts-hero__video-bg { display: none; }
+      .mts-hero--video::before { opacity: 1; }
       .mts-hero::after { display: none; }
       .hero-event-feed__ticker { animation: none; }
       .floating-cta-chip__pulse::after { animation: none; }
@@ -1817,7 +1843,12 @@
     <!-- =============================================
          HERO — IBM Deep Blue, two-column
     ============================================= -->
-    <section id="story-intro" class="mts-hero mts-hero--split" aria-label="Hero — MTSAi platform introduction">
+    <section id="story-intro" class="mts-hero mts-hero--split mts-hero--video" aria-label="Hero — MTSAi platform introduction">
+      <div class="mts-hero__video-bg" aria-hidden="true">
+        <video class="mts-hero__video" autoplay muted playsinline loop preload="metadata">
+          <source src="assets/video/hero-loop.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="mts-hero__pattern" aria-hidden="true"></div>
       <div class="mts-hero__accent" aria-hidden="true"></div>
 
