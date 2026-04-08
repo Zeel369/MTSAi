@@ -8193,25 +8193,72 @@ input[type="range"].mts-range-input::-moz-range-track {
   padding: clamp(80px, 12vw, 140px) 0;
 }
 
-/* Blue atmospheric glow (default) */
+/* ── Aurora mesh gradient — animated, 3 blobs, offset timing ─── */
+/* Blob 1: teal + blue, left-anchor, 14s cycle */
 .mts-hero::before {
   content: '';
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: -25%;          /* overflows so movement doesn't show hard edges */
+  width: 150%; height: 150%;
   background:
-    radial-gradient(ellipse 55% 80% at 12% 50%, rgba(37, 99, 235,  0.45) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 50% at 80%  8%, rgba(37, 99, 235,  0.12) 0%, transparent 55%);
+    radial-gradient(ellipse 55% 70% at 18% 52%, rgba(13,148,136, 0.42) 0%, transparent 58%),
+    radial-gradient(ellipse 42% 55% at 78% 14%, rgba(37, 99,235,  0.32) 0%, transparent 52%),
+    radial-gradient(ellipse 30% 42% at 88% 82%, rgba(255,153, 51, 0.13) 0%, transparent 48%);
+  animation: aurora-1 14s ease-in-out infinite alternate;
   pointer-events: none;
+  will-change: transform, opacity;
+}
+@keyframes aurora-1 {
+  0%   { transform: translate(0,    0)    scale(1.00); opacity: 0.75; }
+  35%  { transform: translate(5%,   3%)   scale(1.08); opacity: 1.00; }
+  70%  { transform: translate(-3%,  6%)   scale(0.95); opacity: 0.85; }
+  100% { transform: translate(4%,  -2%)   scale(1.04); opacity: 0.80; }
 }
 
 /* ── Sub-elements ────────────────────────────────────────────── */
 
-/* City-grid dot pattern */
+/* City-grid dot pattern + Blob 2 & 3 as pseudo-elements */
 .mts-hero__pattern {
   position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='0'  cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='0'  r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0'  cy='30' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255%2C255%2C255%2C0.15)'/%3E%3Ccircle cx='60' cy='30' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='0'  cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='30' cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3Ccircle cx='60' cy='60' r='1'   fill='rgba(255%2C255%2C255%2C0.10)'/%3E%3C%2Fsvg%3E");
   background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
+}
+/* Blob 2: indigo, top-right, 19s cycle (slower, offset) */
+.mts-hero__pattern::before {
+  content: '';
+  position: absolute; inset: -30%;
+  width: 160%; height: 160%;
+  background: radial-gradient(ellipse 55% 65% at 88% 18%, rgba(101,84,192, 0.28) 0%, transparent 55%);
+  animation: aurora-2 19s ease-in-out infinite alternate;
+  pointer-events: none;
+  will-change: transform;
+}
+@keyframes aurora-2 {
+  0%   { transform: translate(0,    0)    scale(1.00); }
+  45%  { transform: translate(-7%,  5%)   scale(1.12); }
+  100% { transform: translate(5%,  -4%)   scale(0.93); }
+}
+/* Blob 3: teal bottom-centre, 24s cycle (slowest, most subtle) */
+.mts-hero__pattern::after {
+  content: '';
+  position: absolute; inset: -20%;
+  width: 140%; height: 140%;
+  background: radial-gradient(ellipse 48% 58% at 52% 95%, rgba(13,148,136, 0.20) 0%, transparent 52%);
+  animation: aurora-3 24s ease-in-out infinite alternate;
+  pointer-events: none;
+  will-change: transform;
+}
+@keyframes aurora-3 {
+  0%   { transform: translate(0,   0)    scale(1.00); }
+  40%  { transform: translate(6%,  -5%)  scale(1.10); }
+  100% { transform: translate(-4%,  3%)  scale(0.96); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mts-hero::before,
+  .mts-hero__pattern::before,
+  .mts-hero__pattern::after { animation: none; }
 }
 
 /* Saffron top accent bar */
