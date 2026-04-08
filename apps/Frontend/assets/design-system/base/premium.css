@@ -5,18 +5,8 @@
    Load AFTER all other design-system CSS.
    ============================================================ */
 
-/* ── Focus visible — globally applied using token ─────────── */
-:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring-offset);
-  border-radius: 2px;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring-offset);
-}
+/* Focus: reset.css outline + section overrides (dark heroes). No global box-shadow here —
+   it overrode high-contrast rings on dark surfaces. */
 
 /* ── Nav glass effect when scrolled ──────────────────────── */
 .mts-nav.scrolled {
@@ -56,11 +46,6 @@ button:focus-visible {
 .mts-btn:active {
   transform: translateY(1px);
   box-shadow: none !important;
-}
-
-.mts-btn:focus-visible {
-  box-shadow: var(--focus-ring);
-  outline: none;
 }
 
 /* Primary button — shimmer on hover */

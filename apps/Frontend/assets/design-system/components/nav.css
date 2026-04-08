@@ -66,9 +66,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
+  padding: 10px;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
@@ -137,8 +139,10 @@
 }
 
 .mts-mobile-nav__close {
-  width: 36px;
-  height: 36px;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
   display: flex;
   align-items: center;
   justify-content: center;

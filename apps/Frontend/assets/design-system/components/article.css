@@ -20,8 +20,8 @@
 .hiw-strip__inner {
   display: flex;
   align-items: stretch;
-  height: 40px;
-  max-width: 1440px;
+  min-height: var(--size-touch-target);
+  max-width: var(--container-xl);
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
@@ -184,6 +184,10 @@
 }
 
 /* Prose content */
+.mts-article-prose {
+  max-width: var(--prose-max-width, 68ch);
+}
+
 .mts-article-prose h2 {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.5vw, 32px);

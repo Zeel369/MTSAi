@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "vite build",
-    "build:css": "python3 ../../scripts/build_frontend_bundle.py"
+    "build:css": "python3 ../../scripts/build_frontend_bundle.py",
+    "check:links": "python3 ../../scripts/check_frontend_links.py --root . --glob \"*.html\" --external"
   },
   "devDependencies": {
     "vite": "^7.1.0"

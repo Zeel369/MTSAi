@@ -61,6 +61,7 @@ fieldset {
   outline: 3px solid var(--interactive-focus);
   outline-offset: 2px;
   border-radius: var(--radius-xs);
+  box-shadow: none; /* outline is canonical; avoids double ring with layered focus utilities */
 }
 
 /* High-visibility focus ring on dark backgrounds (heroes, dark sections, CTAs) */

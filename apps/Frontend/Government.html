@@ -226,8 +226,15 @@
     /* 2.5 — Stepper active phase left accent */
     .mts-stepper--vertical .mts-stepper__step.active .mts-stepper__content { border-left: 3px solid var(--cta-primary); padding-left: var(--space-4); margin-left: -3px; }
 
-    /* 2.6 — Pre-CTA announce strip */
-    .gov-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    /* 2.6 — Pre-CTA announce strip (aligned to page container) */
+    .gov-pre-cta-announce {
+      background: rgba(255,153,51,0.08);
+      border-top: 1px solid rgba(255,153,51,0.24);
+      border-bottom: 1px solid rgba(255,153,51,0.24);
+      padding: var(--space-6) 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
     .gov-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
 
     /* G6 — Footer disclaimer */
@@ -261,7 +268,6 @@
     }
   </style>
 
-  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -315,7 +321,6 @@
   ]
 }
   </script>
-  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -345,6 +350,7 @@
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="trust.html" class="mts-nav__link">Trust</a></li>
         <li><a href="about.html" class="mts-nav__link">About</a></li>
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
@@ -353,7 +359,7 @@
           <span class="mts-status-dot active" aria-hidden="true"></span>
           <span>System Online</span>
         </span>
-        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <a href="contact.html" class="mts-btn mts-btn--secondary mts-btn--nav">Start Evaluation →</a>
       
         <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -709,7 +715,9 @@
 
     <!-- PRE-CTA ANNOUNCE STRIP -->
     <div class="gov-pre-cta-announce" role="status">
-      This platform is in pre-deployment evaluation. Government briefings available now. — <a href="contact.html?intent=government">Schedule a briefing →</a>
+      <div class="mts-announce-inner">
+        This platform is in pre-deployment evaluation. Government briefings available now. — <a href="contact.html?intent=government">Schedule a briefing →</a>
+      </div>
     </div>
 
     <!-- CTA -->
@@ -895,6 +903,7 @@
           <li><a href="india-advantage.html">Why India Can Lead</a></li>
         </div>
         <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="trust.html">Trust</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>

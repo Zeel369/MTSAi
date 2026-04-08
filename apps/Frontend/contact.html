@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact MTSAi — Reach the right team for government evaluation, strategic partnership, or public integrity enquiries.">
   <meta name="theme-color" content="#1d4ed8">
+  <!-- Intake form POST URL (Formspree). Override content if you use a different form. -->
+  <meta name="mtsai:form-endpoint" content="https://formspree.io/f/xojpvekz">
   <title>Contact | MTSAi</title>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MTSAi">
@@ -270,7 +272,6 @@
     }
   </style>
 
-  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -319,7 +320,6 @@
   ]
 }
   </script>
-  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -348,12 +348,13 @@
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="trust.html" class="mts-nav__link">Trust</a></li>
         <li><a href="about.html" class="mts-nav__link">About</a></li>
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
       <div class="mts-nav__actions">
         <span class="mts-nav-status"><span class="mts-status-dot active" aria-hidden="true"></span><span>System Online</span></span>
-        <a href="contact.html" class="mts-btn mts-btn--primary" style="height:40px;padding:0 20px;font-size:13px;" aria-current="page">Contact →</a>
+        <a href="contact.html" class="mts-btn mts-btn--primary mts-btn--nav" aria-current="page">Contact →</a>
       
         <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -867,10 +868,12 @@
     }
     function goBack() { showStep(1); }
 
-    // ── Form backend ────────────────────────────────────────────
-    // Using Formspree (https://formspree.io) — free up to 50 submissions/month.
-    // SETUP: sign in at formspree.io → New Form → copy your endpoint URL below.
-    const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+    // ── Form backend (Formspree) — URL from <meta name="mtsai:form-endpoint"> or default below
+    const FORM_ENDPOINT = (function () {
+      var m = document.querySelector('meta[name="mtsai:form-endpoint"]');
+      var u = m && m.getAttribute('content');
+      return (u && u.indexOf('formspree.io') !== -1) ? u : 'https://formspree.io/f/xojpvekz';
+    })();
 
     const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
 
@@ -987,6 +990,7 @@
           <li><a href="india-advantage.html">Why India Can Lead</a></li>
         </div>
         <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="trust.html">Trust</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>

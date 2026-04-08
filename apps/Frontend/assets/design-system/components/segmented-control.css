@@ -123,6 +123,10 @@
 }
 
 .mts-tab-bar__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size-touch-target);
   padding: var(--space-2) var(--space-5);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -133,7 +137,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: color 150ms, background 150ms;
+  transition: color var(--duration-moderate-01) var(--ease-standard),
+    background var(--duration-moderate-01) var(--ease-standard);
 }
 .mts-tab-bar__item:hover     { color: var(--text-primary); background: var(--layer-02); }
 .mts-tab-bar__item.active    { background: var(--interactive); color: #fff; }

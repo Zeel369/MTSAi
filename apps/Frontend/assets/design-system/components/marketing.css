@@ -59,7 +59,12 @@
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
   padding: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .mts-announce-bar__close:hover { opacity: 1; }
 

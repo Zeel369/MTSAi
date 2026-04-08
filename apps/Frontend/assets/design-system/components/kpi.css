@@ -17,12 +17,19 @@
 .mts-kpi-cell {
   padding: var(--space-7);
   border-right: 1px solid rgba(255,255,255,0.12);
-  transition: background 150ms, transform 200ms;
+  transition:
+    background var(--duration-moderate-01) var(--ease-standard),
+    transform var(--duration-moderate-02) var(--ease-smooth);
 }
 .mts-kpi-cell:last-child { border-right: none; }
 .mts-kpi-cell:hover {
   background: rgba(255,255,255,0.05);
   transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-kpi-cell { transition: background var(--duration-moderate-01) var(--ease-standard); }
+  .mts-kpi-cell:hover { transform: none; }
 }
 
 .mts-kpi-val {

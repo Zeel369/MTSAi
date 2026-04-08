@@ -56,4 +56,7 @@
   --grid-columns:  16;
   --grid-gutter:   var(--space-5);  /* 16px */
   --grid-margin:   var(--space-5);  /* 16px — expanded to 32px at lg */
+
+  /* Sticky nav + anchor offset (used by scroll-padding / scroll-margin) */
+  --nav-sticky-offset: 5.75rem; /* ~92px — 64px bar + breathing room */
 }

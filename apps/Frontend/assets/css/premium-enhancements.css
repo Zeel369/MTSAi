@@ -1,0 +1,32 @@
+/* ============================================================
+   MTSAi — Premium enhancements (shell hook)
+   Loaded via page-shell.css after bundle. Token-driven, small.
+   ============================================================ */
+
+/* Anchor jumps clear sticky nav */
+html {
+  scroll-padding-top: var(--nav-sticky-offset, 5.75rem);
+}
+
+/* Prose: avoid horizontal overflow from tables / pre / code */
+.mts-article-prose pre,
+.mts-article-prose table,
+.mts-article-prose .code-block {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mts-article-prose a {
+  text-underline-offset: 2px;
+}
+
+/* KPI strip: subtle top edge on light-adjacent pages */
+.mts-kpi-strip {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* How It Works strip: clearer separation from nav */
+.hiw-strip {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}

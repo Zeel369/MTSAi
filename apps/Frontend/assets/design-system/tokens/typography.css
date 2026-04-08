@@ -55,6 +55,9 @@
   --ls-wide:    0.04em;
   --ls-wider:   0.08em;
   --ls-widest:  0.16em;
+
+  /* Long-form readability (trust, policies, articles) */
+  --prose-max-width: 68ch;
 }
 
 /* --- Base Typography Styles --- */

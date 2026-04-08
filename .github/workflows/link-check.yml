@@ -1,0 +1,33 @@
+name: Link check (Frontend)
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  link_check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run link checker
+        working-directory: apps/Frontend
+        run: |
+          python3 ../../scripts/check_frontend_links.py --root . --glob "*.html" --external --timeout 8 --workers 10 --json /tmp/frontend-link-report.json
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-link-report
+          path: /tmp/frontend-link-report.json
+

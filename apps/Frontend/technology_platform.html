@@ -56,7 +56,6 @@
 
     /* PAGE NAV (sticky sub-nav) */
     .page-nav { position: sticky; top: 64px; z-index: 90; background: #fff; border-bottom: 1px solid var(--blue-20); overflow-x: auto; }
-    .page-nav__inner { display: flex; align-items: center; gap: var(--space-7); padding: 0 var(--space-6); height: 48px; max-width: 1440px; margin: 0 auto; white-space: nowrap; }
     .page-nav a { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--text-secondary); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color var(--duration-fast-02); }
     .page-nav a:hover { color: var(--interactive); }
 
@@ -210,7 +209,14 @@
     .cta-headline { font-weight: 300; letter-spacing: -0.02em; }
 
     /* 3.5 — Pre-CTA announce strip */
-    .tech-pre-cta-announce { background: rgba(255,153,51,0.08); border-top: 1px solid rgba(255,153,51,0.24); border-bottom: 1px solid rgba(255,153,51,0.24); padding: 12px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
+    .tech-pre-cta-announce {
+      background: rgba(255,153,51,0.08);
+      border-top: 1px solid rgba(255,153,51,0.24);
+      border-bottom: 1px solid rgba(255,153,51,0.24);
+      padding: var(--space-6) 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
     .tech-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
 
     /* G6 — Footer disclaimer */
@@ -221,7 +227,6 @@
     .announce-tech a { color: var(--interactive); text-decoration: none; font-weight: 500; }
   </style>
 
-  <!-- ✦ AI: Structured data (JSON-LD Schema.org) — written by AI. Invisible to users, read by search engines. -->
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -275,7 +280,6 @@
   ]
 }
   </script>
-  <!-- /AI -->
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -305,6 +309,7 @@
           </ul>
         </li>
         <li><a href="Strategic_Partners.html" class="mts-nav__link">Strategic Partners</a></li>
+        <li><a href="trust.html" class="mts-nav__link">Trust</a></li>
         <li><a href="about.html" class="mts-nav__link">About</a></li>
         <li><a href="careers.html" class="mts-nav__link">Careers</a></li>
       </ul>
@@ -313,7 +318,7 @@
           <span class="mts-status-dot active" aria-hidden="true"></span>
           <span>System Online</span>
         </span>
-        <a href="contact.html" class="mts-btn mts-btn--secondary" style="height:40px;padding:0 20px;font-size:13px;">Start Evaluation →</a>
+        <a href="contact.html" class="mts-btn mts-btn--secondary mts-btn--nav">Start Evaluation →</a>
       
         <button class="mts-nav__hamburger" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -945,7 +950,9 @@
 
     <!-- PRE-CTA ANNOUNCE STRIP -->
     <div class="tech-pre-cta-announce" role="status">
-      Platform architecture documentation is available under NDA for qualified government evaluation teams. — <a href="contact.html?intent=government">Request documentation →</a>
+      <div class="mts-announce-inner">
+        Platform architecture documentation is available under NDA for qualified government evaluation teams. — <a href="contact.html?intent=government">Request documentation →</a>
+      </div>
     </div>
 
     <!-- CTA -->
@@ -1137,6 +1144,7 @@
           <li><a href="india-advantage.html">Why India Can Lead</a></li>
         </div>
         <li><a href="Strategic_Partners.html">Strategic Partners</a></li>
+        <li><a href="trust.html">Trust</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>

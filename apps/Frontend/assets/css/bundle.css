@@ -1,5 +1,5 @@
 /* MTSAi Design System Bundle — 59 files concatenated */
-/* Generated: 2026-04-06 */
+/* Generated: 2026-04-07 */
 
 /* ── assets/design-system/tokens/colors.css ─────────────────────────────── */
 /* ============================================================
@@ -961,6 +961,9 @@
   --ls-wide:    0.04em;
   --ls-wider:   0.08em;
   --ls-widest:  0.16em;
+
+  /* Long-form readability (trust, policies, articles) */
+  --prose-max-width: 68ch;
 }
 
 /* --- Base Typography Styles --- */
@@ -1075,6 +1078,9 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
   --grid-columns:  16;
   --grid-gutter:   var(--space-5);  /* 16px */
   --grid-margin:   var(--space-5);  /* 16px — expanded to 32px at lg */
+
+  /* Sticky nav + anchor offset (used by scroll-padding / scroll-margin) */
+  --nav-sticky-offset: 5.75rem; /* ~92px — 64px bar + breathing room */
 }
 
 /* ── assets/design-system/tokens/motion.css ─────────────────────────────── */
@@ -1148,6 +1154,10 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
 
 /* ─── REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   :root {
     --duration-micro:        0ms;
     --duration-fast-01:      0ms;
@@ -1384,24 +1394,25 @@ h6 { font-size: var(--type-heading-01); font-weight: var(--weight-semibold); fon
   --z-scroll-progress:  9999;
   --z-skip-link:        10000;
 
-  /* --- Shadows (Carbon elevation model) --- */
+  /* --- Shadows (layered: soft ambient + key light, light-surface tuned) --- */
   --shadow-none:  none;
-  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-sm:    0 2px 4px rgba(0, 0, 0, 0.45);
-  --shadow-md:    0 4px 8px rgba(0, 0, 0, 0.5);
-  --shadow-lg:    0 8px 16px rgba(0, 0, 0, 0.5);
-  --shadow-xl:    0 16px 32px rgba(0, 0, 0, 0.55);
-  --shadow-2xl:   0 24px 48px rgba(0, 0, 0, 0.6);
+  --shadow-xs:    0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm:    0 1px 2px rgba(15, 23, 42, 0.05), 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md:    0 2px 4px rgba(15, 23, 42, 0.04), 0 12px 28px rgba(15, 23, 42, 0.09);
+  --shadow-lg:    0 4px 8px rgba(15, 23, 42, 0.05), 0 20px 40px rgba(15, 23, 42, 0.11);
+  --shadow-xl:    0 8px 16px rgba(15, 23, 42, 0.06), 0 28px 56px rgba(15, 23, 42, 0.12);
+  --shadow-2xl:   0 12px 24px rgba(15, 23, 42, 0.07), 0 40px 72px rgba(15, 23, 42, 0.14);
 
   /* --- Brand-tinted shadows --- */
-  --shadow-blue:    0 4px 24px rgba(37, 99, 235, 0.28);
-  --shadow-green:   0 4px 24px rgba(34, 197, 94, 0.22);
-  --shadow-saffron: 0 4px 24px rgba(234, 88, 12, 0.22);
-  --shadow-red:     0 4px 24px rgba(218, 30, 40, 0.25);
+  --shadow-blue:    0 2px 8px rgba(37, 99, 235, 0.12), 0 12px 32px rgba(37, 99, 235, 0.2);
+  --shadow-green:   0 2px 8px rgba(34, 197, 94, 0.1), 0 12px 32px rgba(34, 197, 94, 0.16);
+  --shadow-saffron: 0 2px 8px rgba(234, 88, 12, 0.1), 0 12px 32px rgba(234, 88, 12, 0.16);
+  --shadow-red:     0 2px 8px rgba(218, 30, 40, 0.12), 0 12px 32px rgba(218, 30, 40, 0.18);
 
-  /* --- Focus Ring --- */
-  --focus-ring: 0 0 0 3px var(--blue-60);
-  --focus-ring-offset: 0 0 0 5px var(--layer-bg), 0 0 0 8px var(--blue-60);
+  /* --- Focus ring (semantic tokens — works on light sections) --- */
+  --focus-ring: 0 0 0 3px var(--interactive-focus);
+  --focus-ring-offset: 0 0 0 2px var(--layer-bg), 0 0 0 5px var(--interactive-focus);
+  --focus-ring-on-dark: 0 0 0 3px #ffffff;
   --focus-ring-brand: 0 0 0 3px var(--brand-primary);
   --focus-ring-saffron: 0 0 0 3px var(--saffron-50);
 }
@@ -1470,6 +1481,7 @@ fieldset {
   outline: 3px solid var(--interactive-focus);
   outline-offset: 2px;
   border-radius: var(--radius-xs);
+  box-shadow: none; /* outline is canonical; avoids double ring with layered focus utilities */
 }
 
 /* High-visibility focus ring on dark backgrounds (heroes, dark sections, CTAs) */
@@ -2553,6 +2565,15 @@ fieldset {
 .mts-btn--lg { height: var(--btn-height-lg); font-size: var(--type-body-02); padding: 0 var(--space-8); }
 .mts-btn--xl { height: var(--btn-height-xl); font-size: var(--type-heading-03); padding: 0 var(--space-10); }
 
+/* Compact toolbar / nav CTA — ≥44px touch target without full md height */
+.mts-btn--nav {
+  height: auto;
+  min-height: var(--size-touch-target);
+  padding: 10px var(--space-5);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
 /* === ICON BUTTON === */
 .mts-btn--icon {
   padding: 0;
@@ -2659,9 +2680,11 @@ fieldset {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
+  padding: 10px;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
@@ -2730,8 +2753,10 @@ fieldset {
 }
 
 .mts-mobile-nav__close {
-  width: 36px;
-  height: 36px;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3379,6 +3404,10 @@ fieldset {
 }
 
 .mts-tab-bar__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size-touch-target);
   padding: var(--space-2) var(--space-5);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -3389,7 +3418,8 @@ fieldset {
   background: none;
   border: none;
   cursor: pointer;
-  transition: color 150ms, background 150ms;
+  transition: color var(--duration-moderate-01) var(--ease-standard),
+    background var(--duration-moderate-01) var(--ease-standard);
 }
 .mts-tab-bar__item:hover     { color: var(--text-primary); background: var(--layer-02); }
 .mts-tab-bar__item.active    { background: var(--interactive); color: #fff; }
@@ -4107,7 +4137,12 @@ fieldset {
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
+  min-width: var(--size-touch-target);
+  min-height: var(--size-touch-target);
   padding: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .mts-announce-bar__close:hover { opacity: 1; }
 
@@ -7928,18 +7963,8 @@ input[type="range"].mts-range-input::-moz-range-track {
    Load AFTER all other design-system CSS.
    ============================================================ */
 
-/* ── Focus visible — globally applied using token ─────────── */
-:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring-offset);
-  border-radius: 2px;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring-offset);
-}
+/* Focus: reset.css outline + section overrides (dark heroes). No global box-shadow here —
+   it overrode high-contrast rings on dark surfaces. */
 
 /* ── Nav glass effect when scrolled ──────────────────────── */
 .mts-nav.scrolled {
@@ -7979,11 +8004,6 @@ button:focus-visible {
 .mts-btn:active {
   transform: translateY(1px);
   box-shadow: none !important;
-}
-
-.mts-btn:focus-visible {
-  box-shadow: var(--focus-ring);
-  outline: none;
 }
 
 /* Primary button — shimmer on hover */
@@ -8206,6 +8226,15 @@ button:focus-visible {
 .mts-hero__inner {
   position: relative;
   z-index: 5;
+}
+
+/* Align with .mts-container; split heroes override via .mts-hero--split rules */
+.mts-hero:not(.mts-hero--split) > .mts-hero__inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
 }
 
 /* ── Typography ──────────────────────────────────────────────── */
@@ -8670,12 +8699,19 @@ button:focus-visible {
 .mts-kpi-cell {
   padding: var(--space-7);
   border-right: 1px solid rgba(255,255,255,0.12);
-  transition: background 150ms, transform 200ms;
+  transition:
+    background var(--duration-moderate-01) var(--ease-standard),
+    transform var(--duration-moderate-02) var(--ease-smooth);
 }
 .mts-kpi-cell:last-child { border-right: none; }
 .mts-kpi-cell:hover {
   background: rgba(255,255,255,0.05);
   transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-kpi-cell { transition: background var(--duration-moderate-01) var(--ease-standard); }
+  .mts-kpi-cell:hover { transform: none; }
 }
 
 .mts-kpi-val {
@@ -8727,8 +8763,8 @@ button:focus-visible {
 .hiw-strip__inner {
   display: flex;
   align-items: stretch;
-  height: 40px;
-  max-width: 1440px;
+  min-height: var(--size-touch-target);
+  max-width: var(--container-xl);
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
@@ -8891,6 +8927,10 @@ button:focus-visible {
 }
 
 /* Prose content */
+.mts-article-prose {
+  max-width: var(--prose-max-width, 68ch);
+}
+
 .mts-article-prose h2 {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.5vw, 32px);
@@ -9184,11 +9224,14 @@ button:focus-visible {
 }
 
 .mts-footer__col a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 2.25rem;
   font-size: 13px;
   color: #6F6F6F;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  padding: 2px 0;
   transition: color var(--duration-fast-02);
 }
 .mts-footer__col a:hover { color: #F4F4F4; }
@@ -9263,11 +9306,11 @@ button:focus-visible {
 
 /* ── Base ───────────────────────────────────────────────────── */
 .mts-section {
-  padding: clamp(80px, 12vw, 140px) 0;
+  padding: clamp(72px, 11vw, 120px) 0;
   border-top: 1px solid var(--blue-20);
   position: relative;
   overflow: hidden;
-  scroll-margin-top: 112px;
+  scroll-margin-top: var(--nav-sticky-offset, 5.75rem);
 }
 .mts-section::before {
   content: '';
@@ -9306,7 +9349,7 @@ button:focus-visible {
 
 /* Tight — connector/transitional sections with lower visual weight */
 .mts-section--tight {
-  padding: clamp(48px, 6vw, 72px) 0;
+  padding: clamp(44px, 5.5vw, 68px) 0;
 }
 
 /* ── Section header block ────────────────────────────────────── */

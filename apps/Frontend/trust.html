@@ -38,11 +38,21 @@
     .delay-3.reveal { transition-delay: 240ms; }
     .delay-4.reveal { transition-delay: 320ms; }
 
-    /* STATUS LEGEND */
+    /* BODY SECTION — 2-column layout */
     .trust-body-section { background: #fff; padding: var(--space-14) 0; }
-    .trust-fast-lane-wrap { max-width: min(680px, 100%); margin-bottom: var(--space-16); }
-    .trust-domain-section { margin-top: var(--space-4); }
-    .status-legend { background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-7); margin-bottom: var(--space-12); max-width: min(680px, 100%); }
+    .trust-body-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+    @media (min-width: 900px) {
+      .trust-body-inner { grid-template-columns: 340px 1fr; column-gap: var(--space-14); }
+    }
+    .trust-left-rail { display: flex; flex-direction: column; }
+    .trust-fast-lane-wrap { margin-bottom: 0; }
+    .trust-domain-section { margin-top: 0; }
+    .status-legend { background: var(--layer-01); border: 1px solid var(--border-subtle); padding: var(--space-7); margin-bottom: var(--space-8); }
     .status-legend h2 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-5); }
     .status-legend-pills { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; }
     .status-pill-group { display: flex; flex-direction: column; gap: 6px; }
@@ -191,8 +201,8 @@
       background: #050505;
       padding: var(--space-14) 0 var(--space-10);
     }
-    .cta-headline { font-family: var(--font-display); font-size: clamp(24px,4vw,42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin: 0 0 var(--space-6); max-width: 640px; }
-    .cta-lead { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.72; max-width: 540px; margin-bottom: var(--space-10); }
+    .cta-headline { font-family: var(--font-display); font-size: clamp(24px,4vw,42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin: 0 0 var(--space-6); max-width: 600px; }
+    .cta-lead { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.72; max-width: 600px; margin-bottom: var(--space-10); }
     .cta-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 
     /* nav links hidden on mobile via DS nav.css */
@@ -210,13 +220,6 @@
       padding: var(--space-6) 0;
       font-size: 13px;
       color: var(--text-secondary);
-    }
-    .common-pre-cta-announce__inner {
-      max-width: var(--container-xl);
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-      text-align: center;
-      line-height: 1.55;
     }
     .common-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
 
@@ -372,10 +375,12 @@
       </div>
     </section>
 
-    <!-- STATUS LEGEND + FAST LANE — white section -->
+    <!-- STATUS LEGEND + FAST LANE + DOMAIN CARDS — 2-column white section -->
     <div class="trust-body-section">
       <div class="mts-container">
+        <div class="trust-body-inner">
 
+        <div class="trust-left-rail">
         <div class="status-legend reveal" aria-label="Status legend">
           <h2>Status Legend</h2>
           <div class="status-legend-pills" role="list">
@@ -449,8 +454,9 @@
             </div>
           </a>
         </div>
+        </div><!-- /trust-left-rail -->
 
-        <!-- Trust Center Domains — upgraded card grid -->
+        <!-- Trust Center Domains — right column -->
         <div class="trust-domain-section">
           <div class="trust-section-divider" aria-hidden="true"></div>
           <h2 class="trust-section-heading reveal">Trust Center Domains</h2>
@@ -505,6 +511,7 @@
           </div>
         </div>
 
+        </div><!-- /trust-body-inner -->
       </div>
     </div>
 
@@ -533,7 +540,7 @@
     <!-- CLOSING CTA -->
     <!-- PRE-CTA ANNOUNCE STRIP -->
     <div class="common-pre-cta-announce" role="status">
-      <div class="common-pre-cta-announce__inner">
+      <div class="mts-announce-inner">
         Due diligence materials are available for qualified government and procurement teams. — <a href="contact.html?intent=government">Start due diligence →</a>
       </div>
     </div>

@@ -1,0 +1,15 @@
+# MTSAi — https://mtsai.in
+# Configure your host to serve this file at the site root (e.g. /robots.txt).
+
+User-agent: *
+Allow: /
+
+# Internal / demo HTML (also use meta noindex on those pages)
+Disallow: /dashboard_analytics.html
+Disallow: /chart_gantt.html
+Disallow: /diagram_cloud.html
+Disallow: /carbon-ultimate-stack-light.html
+Disallow: /Integration_Delivery_Brief_Controlled.html
+Disallow: /Integration_Delivery_Brief_Redacted.html
+
+Sitemap: https://mtsai.in/sitemap.xml

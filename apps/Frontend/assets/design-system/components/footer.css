@@ -108,11 +108,14 @@
 }
 
 .mts-footer__col a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 2.25rem;
   font-size: 13px;
   color: #6F6F6F;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  padding: 2px 0;
   transition: color var(--duration-fast-02);
 }
 .mts-footer__col a:hover { color: #F4F4F4; }

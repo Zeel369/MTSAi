@@ -155,6 +155,15 @@
 .mts-btn--lg { height: var(--btn-height-lg); font-size: var(--type-body-02); padding: 0 var(--space-8); }
 .mts-btn--xl { height: var(--btn-height-xl); font-size: var(--type-heading-03); padding: 0 var(--space-10); }
 
+/* Compact toolbar / nav CTA — ≥44px touch target without full md height */
+.mts-btn--nav {
+  height: auto;
+  min-height: var(--size-touch-target);
+  padding: 10px var(--space-5);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
 /* === ICON BUTTON === */
 .mts-btn--icon {
   padding: 0;
