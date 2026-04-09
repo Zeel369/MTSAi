@@ -25,7 +25,7 @@ Pages load **`assets/css/bundle.css`** then **`assets/css/page-shell.css`**. The
 | `404.html` | Configure the host to use as the not-found page (e.g. Cloudflare Pages **404 handling**, S3 **Error document**, nginx `error_page 404`) |
 | `img/og-cover.png` | Open Graph / Twitter card image (`1200×630`); referenced as `https://mtsai.in/img/og-cover.png` in page meta |
 
-Before deploy, run **`npm run predeploy`** (rebuilds `bundle.css` and runs internal + external link checks).
+Before deploy, run **`npm run predeploy`** (rebuilds `bundle.css` and runs internal + external link checks). **GitHub Actions** runs the same command on pushes and PRs to **`main`** ([`.github/workflows/link-check.yml`](../../.github/workflows/link-check.yml)).
 
 ## Deploy
 

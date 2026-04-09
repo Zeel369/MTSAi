@@ -1,13 +1,13 @@
-name: Link check (Frontend)
+name: Frontend predeploy
 
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  link_check:
+  predeploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -19,15 +19,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run link checker
-        working-directory: apps/Frontend
-        run: |
-          python3 ../../scripts/check_frontend_links.py --root . --glob "*.html" --external --timeout 8 --workers 10 --json /tmp/frontend-link-report.json
-
-      - name: Upload report
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          name: frontend-link-report
-          path: /tmp/frontend-link-report.json
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/Frontend/package-lock.json
 
+      - name: Install Frontend deps
+        working-directory: apps/Frontend
+        run: npm ci
+
+      - name: Predeploy (build CSS bundle + link check)
+        working-directory: apps/Frontend
+        run: npm run predeploy

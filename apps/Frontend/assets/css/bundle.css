@@ -8193,12 +8193,12 @@ input[type="range"].mts-range-input::-moz-range-track {
   padding: clamp(80px, 12vw, 140px) 0;
 }
 
-/* ── Aurora mesh gradient — animated, 3 blobs, offset timing ─── */
-/* Blob 1: teal + blue, left-anchor, 14s cycle */
+/* ── Aurora mesh gradient — 3 animated blobs, offset timing ─── */
+/* Blob 1: teal + blue + saffron accent, left-anchor, 14s */
 .mts-hero::before {
   content: '';
   position: absolute;
-  inset: -25%;          /* overflows so movement doesn't show hard edges */
+  inset: -25%;
   width: 150%; height: 150%;
   background:
     radial-gradient(ellipse 55% 70% at 18% 52%, rgba(13,148,136, 0.42) 0%, transparent 58%),
@@ -8225,7 +8225,7 @@ input[type="range"].mts-range-input::-moz-range-track {
   pointer-events: none;
   z-index: 0;
 }
-/* Blob 2: indigo, top-right, 19s cycle (slower, offset) */
+/* Blob 2: indigo, top-right, 19s (offset) */
 .mts-hero__pattern::before {
   content: '';
   position: absolute; inset: -30%;
@@ -8240,7 +8240,7 @@ input[type="range"].mts-range-input::-moz-range-track {
   45%  { transform: translate(-7%,  5%)   scale(1.12); }
   100% { transform: translate(5%,  -4%)   scale(0.93); }
 }
-/* Blob 3: teal bottom-centre, 24s cycle (slowest, most subtle) */
+/* Blob 3: teal bottom, 24s (slowest, most subtle) */
 .mts-hero__pattern::after {
   content: '';
   position: absolute; inset: -20%;
