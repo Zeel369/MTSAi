@@ -29,28 +29,42 @@ Before deploy, run **`npm run predeploy`** (rebuilds `bundle.css` and runs inter
 
 ## Deploy
 
-**Recommended:** Publish the **contents of this directory** (`apps/Frontend`) as the **web root** on your host (e.g. Cloudflare Pages, Netlify, S3 static website, nginx `root`). URLs must resolve as `/index.html` → `/`, `/assets/css/bundle.css`, `/img/…`, etc., with **no** extra path prefix.
+**Static-only hosts (S3, nginx, some CDNs):** Publish the **contents of this directory** (`apps/Frontend`) as the **web root**. URLs must resolve as `/index.html` → `/`, `/assets/css/bundle.css`, `/img/…`, etc. For **`contact.html`** you must either deploy a separate API elsewhere and set `<meta name="mtsai:form-endpoint" content="https://…">` to that URL, or use **Vercel** below.
 
-**Optional:** `npm run build` runs Vite and outputs a multi-page build to **`dist/`**. Use this only if you rely on Rollup’s HTML pipeline; asset paths in HTML must still match how you serve the site. Most deployments use the **folder as-is** without running Vite.
+**Vercel (static + intake API):** Use the **repository root** as the Vercel project root (not `apps/Frontend` alone) so [`vercel.json`](../../vercel.json) can serve **`apps/Frontend`** as static output **and** deploy [`api/intake.js`](../../api/intake.js) at **`/api/intake`**. Set environment variables (see Contact form).
+
+**Optional:** `npm run build` runs Vite and outputs a multi-page build to **`dist/`**. Use this only if you rely on Rollup’s HTML pipeline; asset paths in HTML must still match how you serve the site.
 
 After each deploy, run **manual contact QA** (see below) on the **live** origin.
 
 ## Contact form
 
-[`contact.html`](contact.html) posts to Formspree. The endpoint is set via:
+[`contact.html`](contact.html) POSTs JSON to the URL in:
 
 ```html
-<meta name="mtsai:form-endpoint" content="https://formspree.io/f/…">
+<meta name="mtsai:form-endpoint" content="/api/intake">
 ```
 
-Override `content` if you use a different Formspree form.
+Use a **path** (same origin on Vercel) or a full **https://…** URL if the API is on another host.
+
+### Vercel + Resend (intake email)
+
+In the Vercel project, set:
+
+| Variable | Example | Purpose |
+|----------|---------|---------|
+| `RESEND_API_KEY` | `re_…` | [Resend](https://resend.com) API key |
+| `INTAKE_TO_EMAIL` | `ssg@miracletraffic.ai` | Recipient(s); comma-separated for multiple |
+| `INTAKE_FROM_EMAIL` | `MTSAi Intake <intake@yourdomain.com>` | Must use a **verified domain** in Resend |
+
+Optional **`ALLOWED_ORIGINS`**: comma-separated extra allowed `Origin` values (e.g. a staging URL). Production **`https://mtsai.in`** and **`https://www.mtsai.in`** are always allowed; Vercel preview URLs are allowed automatically when `VERCEL_URL` is present.
 
 ### Manual QA (production)
 
-On **`https://mtsai.in`** (or your production origin), test **`contact.html`** once per release:
+On the **live** origin, test **`contact.html`** once per release:
 
-1. **Government** — full two-step flow, required fields, consent, submit; confirm message in Formspree inbox.
-2. **Strategic Partner** — include territory + experience fields; submit; confirm delivery.
-3. **Public Integrity** — include concern detail; submit; confirm delivery.
+1. **Government** — full two-step flow, required fields, consent, submit; confirm email received.
+2. **Strategic Partner** — territory + experience; submit; confirm delivery.
+3. **Public Integrity** — concern detail; submit; confirm delivery.
 
 Check spam if messages are missing. On failure, the form surfaces a fallback to email **ssg@miracletraffic.ai**.

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact MTSAi — Reach the right team for government evaluation, strategic partnership, or public integrity enquiries.">
   <meta name="theme-color" content="#1d4ed8">
-  <!-- Intake form POST URL (Formspree). Override content if you use a different form. -->
-  <meta name="mtsai:form-endpoint" content="https://formspree.io/f/xojpvekz">
+  <!-- Intake POST URL: same-origin `/api/intake` on Vercel, or absolute URL to your API. -->
+  <meta name="mtsai:form-endpoint" content="/api/intake">
   <title>Contact | MTSAi</title>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MTSAi">
@@ -869,11 +869,12 @@
     }
     function goBack() { showStep(1); }
 
-    // ── Form backend (Formspree) — URL from <meta name="mtsai:form-endpoint"> or default below
+    // ── Intake API — URL from <meta name="mtsai:form-endpoint"> (default /api/intake)
     const FORM_ENDPOINT = (function () {
       var m = document.querySelector('meta[name="mtsai:form-endpoint"]');
       var u = m && m.getAttribute('content');
-      return (u && u.indexOf('formspree.io') !== -1) ? u : 'https://formspree.io/f/xojpvekz';
+      u = (u || '').trim();
+      return u || '/api/intake';
     })();
 
     const summaryMap = { gov: 'Government Evaluation Request', sp: 'Strategic Partner Request', integrity: 'Public Integrity Report' };
@@ -934,17 +935,24 @@
       btnSub.disabled = true;
       btnSub.textContent = 'Submitting…';
 
-      // Submit to Formspree
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload),
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data.ok) {
+      .then(function(res) {
+        return res.text().then(function(t) {
+          var data = {};
+          try { data = t ? JSON.parse(t) : {}; } catch (e) { data = {}; }
+          return { res: res, data: data };
+        });
+      })
+      .then(function(_ref) {
+        var res = _ref.res, data = _ref.data;
+        if (res.ok && data && data.ok) {
           btnSub.classList.remove('mts-btn--loading');
-          const id = 'MTSAI-' + Date.now().toString(36).toUpperCase();
+          var rid = (data.id && String(data.id).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 24)) || '';
+          var id = rid ? ('MTSAI-' + rid.toUpperCase()) : ('MTSAI-' + Date.now().toString(36).toUpperCase());
           document.getElementById('receipt-id').textContent = id;
           document.getElementById('receipt-time').textContent = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
           document.getElementById('receipt-summary').textContent = (summaryMap[lane] || 'Request') + ' — ' + name + ', ' + org;
