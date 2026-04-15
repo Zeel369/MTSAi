@@ -225,6 +225,27 @@
     /* G7 — Announce bar */
     .announce-tech { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-tech a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* KINETIC HERO ENTRANCE */
+    .mts-hero__copy .breadcrumb          { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .mts-hero__copy > div                { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .mts-hero__copy .mts-hero__headline  { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .mts-hero__copy .mts-hero__subline   { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    .mts-hero__copy .mts-hero__ctas      { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
+    .mts-hero__copy .mts-hero__stats     { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.66s both; }
+    .mts-hero__media                     { animation: panel-in  0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both; }
+    .mts-hero--standard::after {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+      background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,20,40,0.025) 2px,rgba(0,20,40,0.025) 4px);
+    }
+    @keyframes hero-rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes panel-in  { from { opacity:0; transform:translateX(32px); } to { opacity:1; transform:translateX(0); } }
+    @media (prefers-reduced-motion:reduce) {
+      .mts-hero__copy .breadcrumb,.mts-hero__copy > div,.mts-hero__copy .mts-hero__headline,
+      .mts-hero__copy .mts-hero__subline,.mts-hero__copy .mts-hero__ctas,
+      .mts-hero__copy .mts-hero__stats,.mts-hero__media
+      { animation:none; opacity:1; transform:none; }
+    }
   </style>
 
   <script type="application/ld+json">

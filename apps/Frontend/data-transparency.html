@@ -291,6 +291,24 @@
     }
 
     /* nav links hidden on mobile via DS nav.css */
+
+    /* KINETIC HERO ENTRANCE */
+    .mts-hero__inner > .breadcrumb       { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .mts-hero__inner .mts-hero__eyebrow  { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
+    .mts-hero__inner .mts-hero__headline { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s both; }
+    .mts-hero__inner .mts-article-lead   { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.40s both; }
+    .mts-hero__inner .mts-pull-quote     { animation: hero-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.56s both; }
+    .mts-hero--standard::after {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+      background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,20,40,0.025) 2px,rgba(0,20,40,0.025) 4px);
+    }
+    @keyframes hero-rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @media (prefers-reduced-motion:reduce) {
+      .mts-hero__inner > .breadcrumb,.mts-hero__inner .mts-hero__eyebrow,
+      .mts-hero__inner .mts-hero__headline,.mts-hero__inner .mts-article-lead,
+      .mts-hero__inner .mts-pull-quote
+      { animation:none; opacity:1; transform:none; }
+    }
   </style>
 
   <script type="application/ld+json">
