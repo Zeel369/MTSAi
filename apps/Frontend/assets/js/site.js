@@ -64,6 +64,52 @@
   }
 
   /* ----------------------------------------------------------
+     Count-Up From Existing Text (no text changes required)
+     Parses existing textContent and animates 0 → that number.
+     Preserves non-numeric prefix/suffix characters.
+     Trigger: add data-count-up attribute to any numeric element.
+  ---------------------------------------------------------- */
+  function animateCountUpFromText(el) {
+    const original = (el.dataset.countUpOriginal || el.textContent || '').trim();
+    // Match first number (allows decimals, commas); capture prefix/suffix around it
+    const match = original.match(/^([^\d.,-]*)([\d.,-]+)(.*)$/);
+    if (!match) return;
+    const [, prefix, numStr, suffix] = match;
+    const hasDecimal = /\./.test(numStr);
+    const target = parseFloat(numStr.replace(/,/g, '')) || 0;
+    const decimals = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+    el.dataset.countUpOriginal = original; // cache so reruns don't break
+    const duration = parseInt(el.dataset.countUpDuration, 10) || 1200;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = eased * target;
+      const display = decimals > 0 ? value.toFixed(decimals) : Math.round(value).toString();
+      el.textContent = prefix + display + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = original; // snap to exact original at end
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function initCountUpFromText() {
+    const els = document.querySelectorAll('[data-count-up]');
+    if (!els.length) return;
+    if (prefersReducedMotion) return; // leave text as-is
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCountUpFromText(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    els.forEach(el => observer.observe(el));
+  }
+
+  /* ----------------------------------------------------------
      Scroll Reveal — Smart auto-classification
   ---------------------------------------------------------- */
   function classifyReveal(el) {
@@ -839,6 +885,7 @@
     initSmoothScroll();
     initHeroRotator();
     initCounters();
+    initCountUpFromText();
     initScrollReveal();
     initMobileMenu();
     initNavDropdowns();
