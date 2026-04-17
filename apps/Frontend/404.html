@@ -8,17 +8,81 @@
   <title>Page not found | MTSAi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/bundle.css">
   <link rel="stylesheet" href="assets/css/page-shell.css">
+  <style>
+    .err-page {
+      min-height: 100dvh;
+      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: var(--space-12) var(--space-6); position: relative; overflow: hidden;
+    }
+    /* Aurora blobs */
+    .err-page::before {
+      content: ''; position: absolute; inset: -20%; width: 140%; height: 140%;
+      background:
+        radial-gradient(ellipse 55% 70% at 18% 52%, rgba(13,148,136,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 55% at 80% 15%, rgba(37,99,235,0.28) 0%, transparent 50%);
+      animation: aurora-1 14s ease-in-out infinite alternate; pointer-events: none;
+    }
+    @keyframes aurora-1 {
+      0%   { transform: translate(0,0) scale(1); opacity:.75; }
+      50%  { transform: translate(4%,3%) scale(1.06); opacity:1; }
+      100% { transform: translate(-2%,4%) scale(.97); opacity:.8; }
+    }
+    /* CRT scanline */
+    .err-page::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,20,40,0.025) 2px, rgba(0,20,40,0.025) 4px);
+    }
+    .err-inner { position: relative; z-index: 2; max-width: 520px; }
+    .err-logo { margin-bottom: var(--space-12); display: inline-block; }
+    .err-logo img { height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+    .err-code {
+      font-family: var(--font-display); font-size: clamp(96px, 20vw, 160px);
+      font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+      color: transparent;
+      background: linear-gradient(135deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      margin-bottom: var(--space-4);
+    }
+    .err-eyebrow {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent-saffron); margin-bottom: var(--space-5); display: block;
+    }
+    .err-headline {
+      font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; color: #fff; letter-spacing: -0.02em;
+      margin-bottom: var(--space-5); line-height: 1.2;
+    }
+    .err-body {
+      font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.72;
+      margin-bottom: var(--space-10);
+    }
+    .err-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center; }
+    @media (prefers-reduced-motion: reduce) {
+      .err-page::before { animation: none; }
+    }
+  </style>
 </head>
 <body>
-  <main id="main-content" class="mts-container" style="padding: clamp(72px, 12vw, 120px) 0; max-width: 560px; text-align: center;">
-    <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: var(--space-4);">404</p>
-    <h1 style="font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2rem); font-weight: 700; margin-bottom: var(--space-5); color: var(--text-primary);">Page not found</h1>
-    <p style="margin-bottom: var(--space-8); color: var(--text-secondary); line-height: 1.65;">
-      The page you requested does not exist or may have moved. If you followed a bookmark or external link, try starting from the home page.
-    </p>
-    <a href="index.html" class="mts-btn mts-btn--primary">Back to home</a>
+  <main id="main-content" class="err-page" aria-label="Page not found">
+    <div class="err-inner">
+      <a href="index.html" class="err-logo" aria-label="MTSAi — back to home">
+        <img src="img/mtsai-logo.png" alt="MTSAi" width="151" height="38">
+      </a>
+      <div class="err-code" aria-hidden="true">404</div>
+      <span class="err-eyebrow">Page not found</span>
+      <h1 class="err-headline">This route doesn't exist.</h1>
+      <p class="err-body">The page you requested may have moved, been renamed, or never existed. Try returning to the home page or reaching out directly.</p>
+      <div class="err-actions">
+        <a href="index.html" class="mts-btn mts-btn--primary mts-btn--lg">Back to home →</a>
+        <a href="contact.html" class="mts-btn mts-btn--ghost mts-btn--lg">Contact us</a>
+      </div>
+    </div>
   </main>
 </body>
 </html>

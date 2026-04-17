@@ -124,6 +124,26 @@
     /* G7 — Announce bar */
     .announce-article { background: var(--layer-01); border-bottom: 1px solid var(--border-subtle); padding: 10px var(--space-5); text-align: center; font-size: 13px; color: var(--text-secondary); }
     .announce-article a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+
+    /* KINETIC HERO ENTRANCE */
+    .mts-hero--article .breadcrumb       { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .mts-hero--article .article-priority { animation: hero-rise 0.5s cubic-bezier(0.22,1,0.36,1) 0.08s both; }
+    .mts-hero--article .article-headline { animation: hero-rise 0.8s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+    .mts-hero--article .article-sub      { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.36s both; }
+    .mts-hero--article .mts-article-lead { animation: hero-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.50s both; }
+    .mts-hero--article .mts-article-meta { animation: panel-in  0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both; }
+    .mts-hero::after {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+      background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,20,40,0.025) 2px,rgba(0,20,40,0.025) 4px);
+    }
+    @keyframes hero-rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes panel-in  { from { opacity:0; transform:translateX(32px); } to { opacity:1; transform:translateX(0); } }
+    @media (prefers-reduced-motion:reduce) {
+      .mts-hero--article .breadcrumb,.mts-hero--article .article-priority,
+      .mts-hero--article .article-headline,.mts-hero--article .article-sub,
+      .mts-hero--article .mts-article-lead,.mts-hero--article .mts-article-meta
+      { animation:none; opacity:1; transform:none; }
+    }
   </style>
 
   <script type="application/ld+json">
