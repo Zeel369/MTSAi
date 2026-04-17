@@ -9489,6 +9489,25 @@ input[type="range"].mts-range-input::-moz-range-track {
   overflow: hidden;
 }
 
+/* Pre-CTA announce strip — saffron-tinted rhythmic break before closing CTA */
+.common-pre-cta-announce {
+  background: rgba(255,153,51,0.08);
+  border-top: 1px solid rgba(255,153,51,0.24);
+  border-bottom: 1px solid rgba(255,153,51,0.24);
+  padding: var(--space-6) 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.common-pre-cta-announce__inner {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  text-align: center;
+  line-height: 1.55;
+}
+.common-pre-cta-announce a { color: var(--interactive); text-decoration: none; font-weight: 500; }
+.common-pre-cta-announce a:hover { text-decoration: underline; }
+
 .mts-section-cta::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
