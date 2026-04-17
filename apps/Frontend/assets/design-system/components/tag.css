@@ -26,6 +26,22 @@
 .mts-tag--cyan     { background: var(--tag-cyan-bg);    color: var(--tag-cyan-text);    border-color: var(--cyan-alpha-20); }
 .mts-tag--outline  { background: transparent; color: var(--text-secondary); border-color: var(--border-subtle); }
 
+/* Hero dark variant — used on dark hero backgrounds across all pages */
+.mts-tag--hero-dark {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.92);
+  border-color: rgba(255,255,255,0.22);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  height: 26px;
+  padding: 0 var(--space-3);
+}
+/* Per-domain tint modifiers (stack with --hero-dark) */
+.mts-tag--hero-dark.mts-tag--tint-saffron { background: rgba(255,153,51,0.18); border-color: rgba(255,153,51,0.35); }
+.mts-tag--hero-dark.mts-tag--tint-green   { background: rgba(83,170,0,0.18);   border-color: rgba(83,170,0,0.35); }
+.mts-tag--hero-dark.mts-tag--tint-indigo  { background: rgba(101,84,192,0.25); border-color: rgba(101,84,192,0.40); }
+.mts-tag--hero-dark.mts-tag--tint-teal    { background: rgba(13,148,136,0.22); border-color: rgba(13,148,136,0.42); }
+
 /* Sizes */
 .mts-tag--sm  { height: 20px; font-size: 10px; padding: 0 var(--space-2); }
 .mts-tag--lg  { height: 32px; font-size: var(--type-label-02); padding: 0 var(--space-4); }
