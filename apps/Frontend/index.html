@@ -1269,6 +1269,11 @@
       to   { opacity: 1; transform: translateX(0); }
     }
 
+    /* Freeze aurora drift on homepage hero (keep static gradient colors) */
+    .mts-hero::before,
+    .mts-hero__pattern::before,
+    .mts-hero__pattern::after { animation: none !important; }
+
     /* Subtle hero background pulse */
     @keyframes hero-bg-pulse {
       0%, 100% { opacity: 1; }
