@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MTSAi Design System — living style guide for 60+ components, 448 tokens, and 20+ interactive behaviors.">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Design System | MTSAi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <link rel="stylesheet" href="assets/css/page-shell.css">
+
+  <style>
+    /* LAYOUT */
+    .ds-shell {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+      gap: var(--space-10);
+    }
+    @media (min-width: 960px) {
+      .ds-shell { grid-template-columns: 240px 1fr; }
+    }
+
+    .ds-sidenav {
+      position: sticky;
+      top: 80px;
+      align-self: start;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding: var(--space-4) 0;
+      font-family: var(--font-ui);
+      font-size: 13px;
+    }
+    @media (max-width: 959px) { .ds-sidenav { display: none; } }
+
+    .ds-sidenav__heading {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-secondary);
+      margin: var(--space-5) 0 var(--space-2);
+    }
+    .ds-sidenav__heading:first-child { margin-top: 0; }
+    .ds-sidenav a {
+      display: block;
+      padding: 4px 0;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      padding-left: var(--space-3);
+      margin-left: -2px;
+      transition: color 150ms, border-color 150ms;
+    }
+    .ds-sidenav a:hover {
+      color: var(--interactive);
+      border-left-color: var(--interactive);
+    }
+
+    /* SECTIONS */
+    .ds-section {
+      padding: var(--space-10) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2);
+      scroll-margin-top: 96px;
+    }
+    .ds-section__lead {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 640px;
+      margin-bottom: var(--space-8);
+    }
+
+    .ds-component {
+      margin-top: var(--space-8);
+    }
+    .ds-component h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+      scroll-margin-top: 96px;
+    }
+    .ds-component__meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+    .ds-component__desc {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: var(--space-5);
+    }
+
+    .ds-demo {
+      padding: var(--space-6);
+      background: var(--layer-01);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .ds-demo--flex { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .ds-demo--dark {
+      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
+      border-color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.92);
+    }
+    .ds-demo__caption {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .ds-demo--dark .ds-demo__caption { color: rgba(255,255,255,0.55); }
+
+    /* TOKEN GRIDS */
+    .ds-tokens {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-3);
+    }
+    .ds-token {
+      padding: var(--space-4);
+      background: var(--layer-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ds-token__swatch {
+      height: 48px;
+      border-radius: var(--radius-xs, 3px);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .ds-token__name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .ds-token__value {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    /* TYPE SCALE */
+    .ds-type-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-5);
+      align-items: baseline;
+      padding: var(--space-3) 0;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+    .ds-type-row:last-child { border-bottom: none; }
+    .ds-type-row__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* SPACING VISUAL */
+    .ds-space-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-2) 0;
+    }
+    .ds-space-bar {
+      background: var(--interactive);
+      height: 12px;
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .ds-hero {
+      background: linear-gradient(150deg, #000C2E 0%, #000720 55%, #00040F 100%);
+      padding: clamp(64px, 10vw, 120px) 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .ds-hero__container { max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-6); position: relative; z-index: 2; }
+    .ds-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-4);
+      line-height: 1.1;
+    }
+    .ds-hero h1 strong { font-weight: 700; color: var(--accent-saffron); }
+    .ds-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .ds-hero__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-10);
+      max-width: 640px;
+    }
+    .ds-hero__stat {
+      border-left: 2px solid var(--accent-saffron);
+      padding-left: var(--space-4);
+    }
+    .ds-hero__stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+    .ds-hero__stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* CHIP GRID for icon sprite */
+    .ds-icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: var(--space-3);
+    }
+    .ds-icon-cell {
+      padding: var(--space-4);
+      background: var(--layer-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 150ms;
+    }
+    .ds-icon-cell:hover { border-color: var(--interactive); }
+    .ds-icon-cell svg { width: 24px; height: 24px; color: var(--text-primary); }
+    .ds-icon-cell__name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="mts-announce-bar mts-announce-bar--dark" role="status">
+    <span class="mts-announce-bar__badge">DS</span>
+    Internal design system reference — MTSAi DS v2.0 · 448 tokens · 60+ components
+  </div>
+
+  <nav class="mts-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="mts-nav__inner">
+      <a href="index.html" class="mts-nav__logo" aria-label="MTSAi homepage">
+        <img src="img/mtsai-logo.png" alt="MTSAi" width="151" height="38" loading="eager">
+      </a>
+      <ul class="mts-nav__links" role="list">
+        <li><a href="index.html" class="mts-nav__link">Home</a></li>
+        <li><a href="Government.html" class="mts-nav__link">Government</a></li>
+        <li><a href="about.html" class="mts-nav__link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="ds-hero" aria-label="Design system">
+      <div class="ds-hero__container">
+        <span class="mts-tag mts-tag--hero-dark mts-tag--tint-saffron" style="margin-bottom:24px;display:inline-flex;">v2.0 · Living Style Guide</span>
+        <h1>MTSAi <strong>Design System.</strong></h1>
+        <p>Tokens, components, and interaction patterns that power the MTSAi platform. Aligned with IBM Carbon spacing + shadows, Shopify Polaris component breadth, and GitHub Primer accessibility principles.</p>
+        <div class="ds-hero__stats">
+          <div class="ds-hero__stat">
+            <span class="ds-hero__stat-num" data-count-up>448</span>
+            <span class="ds-hero__stat-label">Design tokens</span>
+          </div>
+          <div class="ds-hero__stat">
+            <span class="ds-hero__stat-num" data-count-up>60</span>
+            <span class="ds-hero__stat-label">Components</span>
+          </div>
+          <div class="ds-hero__stat">
+            <span class="ds-hero__stat-num" data-count-up>20</span>
+            <span class="ds-hero__stat-label">JS behaviors</span>
+          </div>
+          <div class="ds-hero__stat">
+            <span class="ds-hero__stat-num" data-count-up>21</span>
+            <span class="ds-hero__stat-label">Icons</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN SHELL -->
+    <div class="ds-shell" style="padding-top:var(--space-10);padding-bottom:var(--space-14);">
+
+      <!-- SIDENAV -->
+      <aside class="ds-sidenav" aria-label="Jump to">
+        <div class="ds-sidenav__heading">Foundations</div>
+        <a href="#colors">Colors</a>
+        <a href="#typography">Typography</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#elevation">Elevation</a>
+        <a href="#motion">Motion</a>
+        <a href="#icons">Icons</a>
+
+        <div class="ds-sidenav__heading">Forms</div>
+        <a href="#buttons">Buttons</a>
+        <a href="#inputs">Inputs</a>
+        <a href="#selectors">Selectors</a>
+        <a href="#slider">Slider</a>
+        <a href="#multiselect">Multiselect</a>
+        <a href="#time-picker">Time picker</a>
+        <a href="#color-picker">Color picker</a>
+        <a href="#transfer-list">Transfer list</a>
+        <a href="#inline-edit">Inline edit</a>
+
+        <div class="ds-sidenav__heading">Data display</div>
+        <a href="#tables">Tables</a>
+        <a href="#tree-table">Tree table</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#progress-tracker">Progress tracker</a>
+        <a href="#rating">Rating</a>
+        <a href="#tags">Tags &amp; chips</a>
+        <a href="#kbd">Kbd</a>
+
+        <div class="ds-sidenav__heading">Feedback</div>
+        <a href="#modals">Modals</a>
+        <a href="#notifications">Notifications</a>
+        <a href="#blankslate">Blankslate</a>
+        <a href="#tooltips">Tooltips</a>
+
+        <div class="ds-sidenav__heading">Navigation</div>
+        <a href="#nav-bar">Nav bar</a>
+        <a href="#tabs">Tabs</a>
+        <a href="#pagination">Pagination</a>
+        <a href="#action-menu">Action menu</a>
+        <a href="#carousel">Carousel</a>
+        <a href="#bottom-nav">Bottom nav</a>
+
+        <div class="ds-sidenav__heading">Specialized</div>
+        <a href="#speed-dial">Speed dial</a>
+        <a href="#spotlight">Spotlight tour</a>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="ds-content">
+
+        <!-- COLORS -->
+        <section class="ds-section" id="colors">
+          <h2>Colors</h2>
+          <p class="ds-section__lead">Semantic tokens resolved from the base palette. Use these — never raw hex — so theming and dark mode continue to work.</p>
+
+          <div class="ds-tokens">
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#050505;"></div><span class="ds-token__name">--text-primary</span><span class="ds-token__value">#050505 · body/headings</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#475569;"></div><span class="ds-token__name">--text-secondary</span><span class="ds-token__value">#475569 · muted copy</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#f8fafc;border-color:#e2e8f0;"></div><span class="ds-token__name">--layer-01</span><span class="ds-token__value">subtle surface</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#0d9488;"></div><span class="ds-token__name">--interactive</span><span class="ds-token__value">teal · links, primary</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#53aa00;"></div><span class="ds-token__name">--brand-primary</span><span class="ds-token__value">green · brand</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#ff9933;"></div><span class="ds-token__name">--accent-saffron</span><span class="ds-token__value">saffron · CTAs</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#DA1E28;"></div><span class="ds-token__name">--support-error</span><span class="ds-token__value">danger states</span></div>
+            <div class="ds-token"><div class="ds-token__swatch" style="background:#e2e8f0;"></div><span class="ds-token__name">--border-subtle</span><span class="ds-token__value">card borders</span></div>
+          </div>
+        </section>
+
+        <!-- TYPOGRAPHY -->
+        <section class="ds-section" id="typography">
+          <h2>Typography</h2>
+          <p class="ds-section__lead">Fraunces serif for display · DM Sans for UI · JetBrains Mono for data. Labels/descriptions use UI; numbers/IDs/timestamps use mono.</p>
+
+          <div class="ds-demo">
+            <div class="ds-type-row">
+              <span class="ds-type-row__label">display-04 · 84px</span>
+              <span style="font-family:var(--font-display);font-weight:700;font-size:clamp(48px,6vw,84px);line-height:1;">Hero headline</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-row__label">heading-03 · 28px</span>
+              <span style="font-family:var(--font-display);font-weight:700;font-size:28px;">Section heading</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-row__label">body-01 · 16px</span>
+              <span style="font-family:var(--font-ui);font-size:16px;line-height:1.72;">Body copy — DM Sans for warmth with technical precision. Used across all descriptive paragraphs.</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-row__label">label · 12px UI</span>
+              <span style="font-family:var(--font-ui);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Section eyebrow</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-row__label">mono · 13px</span>
+              <span style="font-family:var(--font-mono);font-size:13px;font-variant-numeric:tabular-nums;">99.8% · v2.0.0 · 2026-04-17</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPACING -->
+        <section class="ds-section" id="spacing">
+          <h2>Spacing</h2>
+          <p class="ds-section__lead">13-step scale, 4px grid. Used consistently across padding, gaps, and margins.</p>
+          <div class="ds-demo">
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-2</span><div class="ds-space-bar" style="width:8px;"></div><span class="ds-token__value">8px</span></div>
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-4</span><div class="ds-space-bar" style="width:16px;"></div><span class="ds-token__value">16px</span></div>
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-6</span><div class="ds-space-bar" style="width:24px;"></div><span class="ds-token__value">24px</span></div>
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-8</span><div class="ds-space-bar" style="width:32px;"></div><span class="ds-token__value">32px</span></div>
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-12</span><div class="ds-space-bar" style="width:48px;"></div><span class="ds-token__value">48px</span></div>
+            <div class="ds-space-row"><span class="ds-type-row__label" style="width:80px;">--space-16</span><div class="ds-space-bar" style="width:64px;"></div><span class="ds-token__value">64px</span></div>
+          </div>
+        </section>
+
+        <!-- ELEVATION -->
+        <section class="ds-section" id="elevation">
+          <h2>Elevation (shadows)</h2>
+          <div class="ds-tokens">
+            <div class="ds-token" style="box-shadow:0 1px 2px rgba(0,0,0,0.04);"><span class="ds-token__name">shadow-xs</span></div>
+            <div class="ds-token" style="box-shadow:0 4px 8px rgba(0,0,0,0.06);"><span class="ds-token__name">shadow-sm</span></div>
+            <div class="ds-token" style="box-shadow:0 8px 16px rgba(0,0,0,0.08);"><span class="ds-token__name">shadow-md</span></div>
+            <div class="ds-token" style="box-shadow:0 12px 24px rgba(0,0,0,0.10);"><span class="ds-token__name">shadow-lg</span></div>
+            <div class="ds-token" style="box-shadow:0 16px 40px rgba(0,0,0,0.12);"><span class="ds-token__name">shadow-xl</span></div>
+            <div class="ds-token" style="box-shadow:0 12px 40px rgba(13,148,136,0.18);"><span class="ds-token__name">shadow-brand</span></div>
+          </div>
+        </section>
+
+        <!-- MOTION -->
+        <section class="ds-section" id="motion">
+          <h2>Motion</h2>
+          <p class="ds-section__lead">25+ keyframes, 9 easing curves. All animations respect <code>prefers-reduced-motion</code>.</p>
+          <div class="ds-demo ds-demo--flex">
+            <span class="mts-tag mts-tag--gray">fast: 120ms</span>
+            <span class="mts-tag mts-tag--gray">normal: 240ms</span>
+            <span class="mts-tag mts-tag--gray">slow: 400ms</span>
+            <span class="mts-tag mts-tag--gray">ease-standard</span>
+            <span class="mts-tag mts-tag--gray">cubic-bezier(0.22,1,0.36,1)</span>
+          </div>
+        </section>
+
+        <!-- ICONS -->
+        <section class="ds-section" id="icons">
+          <h2>Icons</h2>
+          <p class="ds-section__lead">21 essential icons via shared SVG sprite. Use: <code>&lt;svg&gt;&lt;use href="assets/design-system/icons/sprite.svg#NAME"/&gt;&lt;/svg&gt;</code></p>
+          <div class="ds-demo">
+            <div class="ds-icon-grid" id="icon-grid">
+              <!-- JS-injected -->
+            </div>
+          </div>
+        </section>
+
+        <!-- BUTTONS -->
+        <section class="ds-section" id="buttons">
+          <h2>Buttons</h2>
+          <p class="ds-section__lead">Primary, secondary, ghost, and link variants across 3 sizes. Always include focus rings and disabled states.</p>
+
+          <div class="ds-component">
+            <h3>Variants</h3>
+            <div class="ds-demo ds-demo--flex">
+              <button class="mts-btn mts-btn--primary">Primary</button>
+              <button class="mts-btn mts-btn--secondary">Secondary</button>
+              <button class="mts-btn mts-btn--ghost">Ghost</button>
+              <button class="mts-btn mts-btn--primary" disabled>Disabled</button>
+            </div>
+          </div>
+
+          <div class="ds-component">
+            <h3>Sizes</h3>
+            <div class="ds-demo ds-demo--flex">
+              <button class="mts-btn mts-btn--primary mts-btn--sm">Small</button>
+              <button class="mts-btn mts-btn--primary">Medium</button>
+              <button class="mts-btn mts-btn--primary mts-btn--lg">Large</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- INPUTS -->
+        <section class="ds-section" id="inputs">
+          <h2>Inputs</h2>
+          <div class="ds-component">
+            <h3>Text input</h3>
+            <div class="ds-demo" style="max-width:360px;">
+              <label style="font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--text-primary);">Email</label>
+              <input type="email" class="mts-input" placeholder="name@organization.com">
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDER -->
+        <section class="ds-section" id="slider">
+          <h2>Slider <span class="mts-tag mts-tag--outline" style="margin-left:8px;">NEW</span></h2>
+          <p class="ds-section__lead">Range input with track, thumb, labels, color variants.</p>
+          <div class="ds-demo">
+            <div class="mts-slider">
+              <div class="mts-slider__header">
+                <span class="mts-slider__label">Peak-hour congestion threshold</span>
+                <span class="mts-slider__value">40%</span>
+              </div>
+              <input type="range" class="mts-slider__input" min="0" max="100" value="40" data-suffix="%">
+              <div class="mts-slider__ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+            </div>
+          </div>
+          <div class="ds-demo">
+            <div class="mts-slider mts-slider--saffron">
+              <div class="mts-slider__header">
+                <span class="mts-slider__label">Incentive weight (saffron variant)</span>
+                <span class="mts-slider__value">60</span>
+              </div>
+              <input type="range" class="mts-slider__input" min="0" max="100" value="60">
+            </div>
+          </div>
+        </section>
+
+        <!-- MULTISELECT -->
+        <section class="ds-section" id="multiselect">
+          <h2>Multiselect <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <p class="ds-section__lead">Chip-display multi-select combobox with filter.</p>
+          <div class="ds-demo">
+            <div class="mts-multiselect" aria-expanded="false" style="max-width:420px;">
+              <div class="mts-multiselect__chips">
+                <span class="mts-multiselect__chip" data-value="bangalore">Bangalore<button class="mts-multiselect__chip-close" aria-label="Remove">×</button></span>
+                <span class="mts-multiselect__chip" data-value="mumbai">Mumbai<button class="mts-multiselect__chip-close" aria-label="Remove">×</button></span>
+                <input type="text" class="mts-multiselect__input" placeholder="Add city…">
+              </div>
+              <div class="mts-multiselect__dropdown">
+                <span class="mts-multiselect__group-label">Tier 1 cities</span>
+                <div class="mts-multiselect__option" aria-selected="true" data-value="bangalore">Bangalore</div>
+                <div class="mts-multiselect__option" aria-selected="true" data-value="mumbai">Mumbai</div>
+                <div class="mts-multiselect__option" data-value="delhi">Delhi</div>
+                <div class="mts-multiselect__option" data-value="chennai">Chennai</div>
+                <div class="mts-multiselect__option" data-value="hyderabad">Hyderabad</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIME PICKER -->
+        <section class="ds-section" id="time-picker">
+          <h2>Time picker <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo ds-demo--flex">
+            <div class="mts-time-picker" aria-expanded="false">
+              <div class="mts-time-picker__input-wrapper">
+                <input type="text" class="mts-time-picker__input" placeholder="HH:MM" value="09:30" readonly>
+                <svg class="mts-time-picker__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 2"/></svg>
+              </div>
+              <div class="mts-time-picker__panel"></div>
+            </div>
+            <div class="mts-time-picker" aria-expanded="false" data-mode="12h">
+              <div class="mts-time-picker__input-wrapper">
+                <input type="text" class="mts-time-picker__input" placeholder="HH:MM" value="09:30 AM" readonly>
+                <svg class="mts-time-picker__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 2"/></svg>
+              </div>
+              <div class="mts-time-picker__panel"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLOR PICKER -->
+        <section class="ds-section" id="color-picker">
+          <h2>Color picker <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-color-picker">
+              <span class="mts-color-picker__label">Accent color</span>
+              <div class="mts-color-picker__swatches" role="radiogroup">
+                <button class="mts-color-picker__swatch" aria-checked="true" data-color="#ff9933" style="--swatch-color:#ff9933;"></button>
+                <button class="mts-color-picker__swatch" data-color="#0d9488" style="--swatch-color:#0d9488;"></button>
+                <button class="mts-color-picker__swatch" data-color="#53aa00" style="--swatch-color:#53aa00;"></button>
+                <button class="mts-color-picker__swatch" data-color="#1d4ed8" style="--swatch-color:#1d4ed8;"></button>
+                <button class="mts-color-picker__swatch" data-color="#6554C0" style="--swatch-color:#6554C0;"></button>
+                <button class="mts-color-picker__swatch" data-color="#DA1E28" style="--swatch-color:#DA1E28;"></button>
+                <button class="mts-color-picker__swatch" data-color="#C47800" style="--swatch-color:#C47800;"></button>
+                <button class="mts-color-picker__swatch" data-color="#0f172a" style="--swatch-color:#0f172a;"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRANSFER LIST -->
+        <section class="ds-section" id="transfer-list">
+          <h2>Transfer list <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-transfer">
+              <div class="mts-transfer__list">
+                <div class="mts-transfer__header"><span class="mts-transfer__title">Available</span><span class="mts-transfer__count">5</span></div>
+                <ul class="mts-transfer__items">
+                  <li class="mts-transfer__item">Data Analyst</li>
+                  <li class="mts-transfer__item">Policy Owner</li>
+                  <li class="mts-transfer__item">Program Director</li>
+                  <li class="mts-transfer__item">IT Security</li>
+                  <li class="mts-transfer__item">Procurement</li>
+                </ul>
+              </div>
+              <div class="mts-transfer__controls">
+                <button class="mts-transfer__btn" data-transfer-action="right" aria-label="Move right">→</button>
+                <button class="mts-transfer__btn" data-transfer-action="left" aria-label="Move left">←</button>
+              </div>
+              <div class="mts-transfer__list">
+                <div class="mts-transfer__header"><span class="mts-transfer__title">Assigned</span><span class="mts-transfer__count">0</span></div>
+                <ul class="mts-transfer__items"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INLINE EDIT -->
+        <section class="ds-section" id="inline-edit">
+          <h2>Inline edit <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo ds-demo--flex">
+            <span style="font-family:var(--font-ui);font-size:14px;color:var(--text-secondary);">Program name:</span>
+            <div class="mts-inline-edit" tabindex="0">
+              <div class="mts-inline-edit__view">
+                <span class="mts-inline-edit__value">Phase 1 Deployment</span>
+                <svg class="mts-inline-edit__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.5L13.5 4 6 11.5l-2 0.5 0.5-2z"/></svg>
+              </div>
+              <div class="mts-inline-edit__form">
+                <input class="mts-inline-edit__input" type="text">
+                <button class="mts-inline-edit__btn mts-inline-edit__btn--save" aria-label="Save">✓</button>
+                <button class="mts-inline-edit__btn mts-inline-edit__btn--cancel" aria-label="Cancel">×</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="ds-section" id="timeline">
+          <h2>Timeline <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-timeline">
+              <div class="mts-timeline__item mts-timeline__item--complete">
+                <div class="mts-timeline__marker"></div>
+                <span class="mts-timeline__date">Jan 2026</span>
+                <h4 class="mts-timeline__title">Platform architecture finalized</h4>
+                <p class="mts-timeline__body">Core modules designed; security model baselined against CERT-In + GIGW 3.0.</p>
+              </div>
+              <div class="mts-timeline__item mts-timeline__item--current">
+                <div class="mts-timeline__marker"></div>
+                <span class="mts-timeline__date">Apr 2026</span>
+                <h4 class="mts-timeline__title">Trust center + procurement pack</h4>
+                <p class="mts-timeline__body">Government-grade evidence documentation under NDA/RFP review.</p>
+              </div>
+              <div class="mts-timeline__item mts-timeline__item--upcoming">
+                <div class="mts-timeline__marker"></div>
+                <span class="mts-timeline__date">Q3 2026</span>
+                <h4 class="mts-timeline__title">First-city pilot kickoff</h4>
+                <p class="mts-timeline__body">12-week evaluation period with policy configuration and measurement plan.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROGRESS TRACKER -->
+        <section class="ds-section" id="progress-tracker">
+          <h2>Progress tracker <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <span class="mts-progress-tracker__percentage">33% complete</span>
+            <div class="mts-progress-tracker__bar"><div class="mts-progress-tracker__bar-fill" style="width:33%;"></div></div>
+            <div class="mts-progress-tracker mts-progress-tracker--horizontal" style="margin-top:var(--space-6);">
+              <div class="mts-pt__step mts-pt__step--complete">
+                <div class="mts-pt__marker">1</div>
+                <div class="mts-pt__label">Policy</div>
+                <div class="mts-pt__description">City sets incentive rules</div>
+              </div>
+              <div class="mts-pt__step mts-pt__step--current">
+                <div class="mts-pt__marker">2</div>
+                <div class="mts-pt__label">Pilot</div>
+                <div class="mts-pt__description">Limited deployment</div>
+              </div>
+              <div class="mts-pt__step">
+                <div class="mts-pt__marker">3</div>
+                <div class="mts-pt__label">Evaluate</div>
+                <div class="mts-pt__description">Measure outcomes</div>
+              </div>
+              <div class="mts-pt__step">
+                <div class="mts-pt__marker">4</div>
+                <div class="mts-pt__label">Expand</div>
+                <div class="mts-pt__description">Scale w/ adjustments</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RATING -->
+        <section class="ds-section" id="rating">
+          <h2>Rating <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo ds-demo--flex">
+            <div class="mts-rating" data-value="4">
+              <button class="mts-rating__star mts-rating__star--filled"><svg viewBox="0 0 20 20"><path d="M10 1l2.5 6 6.5.5-5 4.5 1.5 6.5L10 15l-5.5 3.5L6 12 1 7.5l6.5-.5z"/></svg></button>
+              <button class="mts-rating__star mts-rating__star--filled"><svg viewBox="0 0 20 20"><path d="M10 1l2.5 6 6.5.5-5 4.5 1.5 6.5L10 15l-5.5 3.5L6 12 1 7.5l6.5-.5z"/></svg></button>
+              <button class="mts-rating__star mts-rating__star--filled"><svg viewBox="0 0 20 20"><path d="M10 1l2.5 6 6.5.5-5 4.5 1.5 6.5L10 15l-5.5 3.5L6 12 1 7.5l6.5-.5z"/></svg></button>
+              <button class="mts-rating__star mts-rating__star--filled"><svg viewBox="0 0 20 20"><path d="M10 1l2.5 6 6.5.5-5 4.5 1.5 6.5L10 15l-5.5 3.5L6 12 1 7.5l6.5-.5z"/></svg></button>
+              <button class="mts-rating__star"><svg viewBox="0 0 20 20"><path d="M10 1l2.5 6 6.5.5-5 4.5 1.5 6.5L10 15l-5.5 3.5L6 12 1 7.5l6.5-.5z"/></svg></button>
+              <span class="mts-rating__value">4.0</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAGS -->
+        <section class="ds-section" id="tags">
+          <h2>Tags &amp; chips</h2>
+          <div class="ds-component">
+            <h3>Tag variants</h3>
+            <div class="ds-demo ds-demo--flex">
+              <span class="mts-tag mts-tag--blue">Blue</span>
+              <span class="mts-tag mts-tag--green">Green</span>
+              <span class="mts-tag mts-tag--saffron">Saffron</span>
+              <span class="mts-tag mts-tag--red">Danger</span>
+              <span class="mts-tag mts-tag--gray">Neutral</span>
+              <span class="mts-tag mts-tag--outline">Outline</span>
+            </div>
+          </div>
+          <div class="ds-component">
+            <h3>Hero-dark tags (with tint modifiers)</h3>
+            <div class="ds-demo ds-demo--flex ds-demo--dark">
+              <span class="mts-tag mts-tag--hero-dark">Default</span>
+              <span class="mts-tag mts-tag--hero-dark mts-tag--tint-saffron">Saffron</span>
+              <span class="mts-tag mts-tag--hero-dark mts-tag--tint-green">Green</span>
+              <span class="mts-tag mts-tag--hero-dark mts-tag--tint-indigo">Indigo</span>
+              <span class="mts-tag mts-tag--hero-dark mts-tag--tint-teal">Teal</span>
+            </div>
+          </div>
+          <div class="ds-component">
+            <h3>Tag group <span class="mts-tag mts-tag--outline">NEW</span></h3>
+            <div class="ds-demo">
+              <div class="mts-tag-group">
+                <span class="mts-tag-group__label">Filters:</span>
+                <span class="mts-tag mts-tag--blue mts-tag--filter" aria-pressed="true">Active</span>
+                <span class="mts-tag mts-tag--blue mts-tag--filter" aria-pressed="false">Pilot</span>
+                <span class="mts-tag mts-tag--blue mts-tag--filter" aria-pressed="false">Draft</span>
+                <span class="mts-tag mts-tag--blue mts-tag--filter" aria-pressed="false">Archived</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- KBD -->
+        <section class="ds-section" id="kbd">
+          <h2>Kbd <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <p style="font-family:var(--font-ui);font-size:14px;color:var(--text-primary);">
+              Open command palette with
+              <span class="mts-kbd-group"><kbd class="mts-kbd">⌘</kbd><kbd class="mts-kbd">K</kbd></span>
+              — or
+              <span class="mts-kbd-group"><kbd class="mts-kbd">Ctrl</kbd><kbd class="mts-kbd">K</kbd></span>
+              on Windows.
+            </p>
+          </div>
+        </section>
+
+        <!-- BLANKSLATE -->
+        <section class="ds-section" id="blankslate">
+          <h2>Blankslate <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-blankslate">
+              <div class="mts-blankslate__visual">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              </div>
+              <h3 class="mts-blankslate__heading">No results found</h3>
+              <p class="mts-blankslate__body">Try adjusting your search filters or start a new evaluation.</p>
+              <div class="mts-blankslate__actions">
+                <button class="mts-btn mts-btn--primary">Reset filters</button>
+                <button class="mts-btn mts-btn--ghost">Browse all</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTION MENU -->
+        <section class="ds-section" id="action-menu">
+          <h2>Action menu <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-action-menu">
+              <button class="mts-action-menu__trigger">
+                Actions
+                <svg class="mts-action-menu__trigger-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+              </button>
+              <div class="mts-action-menu__panel">
+                <div class="mts-action-menu__section">
+                  <span class="mts-action-menu__section-label">View</span>
+                  <button class="mts-action-menu__item">Preview</button>
+                  <button class="mts-action-menu__item">Share link<span class="mts-action-menu__item-trail">⌘⇧S</span></button>
+                </div>
+                <div class="mts-action-menu__section">
+                  <span class="mts-action-menu__section-label">Edit</span>
+                  <button class="mts-action-menu__item">Duplicate</button>
+                  <button class="mts-action-menu__item">Rename</button>
+                  <button class="mts-action-menu__item mts-action-menu__item--danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CAROUSEL -->
+        <section class="ds-section" id="carousel">
+          <h2>Carousel <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <div class="ds-demo">
+            <div class="mts-carousel" style="padding:0 30px;">
+              <button class="mts-carousel__nav mts-carousel__nav--prev" aria-label="Previous">‹</button>
+              <div class="mts-carousel__viewport" tabindex="0">
+                <div class="mts-carousel__slide" style="background:var(--layer-bg);border:1px solid var(--border-subtle);padding:var(--space-6);border-radius:var(--radius-sm);"><strong style="font-family:var(--font-display);display:block;margin-bottom:8px;">Slide 1</strong><span style="color:var(--text-secondary);font-size:13px;">Scroll-snap content example with keyboard nav.</span></div>
+                <div class="mts-carousel__slide" style="background:var(--layer-bg);border:1px solid var(--border-subtle);padding:var(--space-6);border-radius:var(--radius-sm);"><strong style="font-family:var(--font-display);display:block;margin-bottom:8px;">Slide 2</strong><span style="color:var(--text-secondary);font-size:13px;">Arrow keys left/right work too.</span></div>
+                <div class="mts-carousel__slide" style="background:var(--layer-bg);border:1px solid var(--border-subtle);padding:var(--space-6);border-radius:var(--radius-sm);"><strong style="font-family:var(--font-display);display:block;margin-bottom:8px;">Slide 3</strong><span style="color:var(--text-secondary);font-size:13px;">Dots below auto-generate.</span></div>
+                <div class="mts-carousel__slide" style="background:var(--layer-bg);border:1px solid var(--border-subtle);padding:var(--space-6);border-radius:var(--radius-sm);"><strong style="font-family:var(--font-display);display:block;margin-bottom:8px;">Slide 4</strong><span style="color:var(--text-secondary);font-size:13px;">Auto-advance via data-auto-advance.</span></div>
+              </div>
+              <button class="mts-carousel__nav mts-carousel__nav--next" aria-label="Next">›</button>
+              <div class="mts-carousel__dots"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPEED DIAL demo note -->
+        <section class="ds-section" id="speed-dial">
+          <h2>Speed dial <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <p class="ds-section__lead">Floating action button (bottom-right of this page) opens action fan-out. Scroll down to see it.</p>
+        </section>
+
+        <!-- SPOTLIGHT -->
+        <section class="ds-section" id="spotlight">
+          <h2>Spotlight tour <span class="mts-tag mts-tag--outline">NEW</span></h2>
+          <p class="ds-section__lead">Programmatic onboarding tour. Call <code>MTSAiSpotlight.start([...])</code> with an array of steps.</p>
+          <div class="ds-demo">
+            <button class="mts-btn mts-btn--primary" id="start-tour">Start demo tour</button>
+          </div>
+        </section>
+
+      </div><!-- /content -->
+    </div><!-- /shell -->
+
+    <!-- Speed dial example (floating) -->
+    <div class="mts-speed-dial" id="ds-speed-dial">
+      <div class="mts-speed-dial__actions">
+        <a href="index.html" class="mts-speed-dial__action">
+          <span class="mts-speed-dial__action-label">Home</span>
+          <span class="mts-speed-dial__action-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l6-6 6 6M4 7v7h8V7"/></svg></span>
+        </a>
+        <a href="contact.html" class="mts-speed-dial__action">
+          <span class="mts-speed-dial__action-label">Contact</span>
+          <span class="mts-speed-dial__action-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12v10H2z"/><path d="M2 3l6 5 6-5"/></svg></span>
+        </a>
+        <a href="trust.html" class="mts-speed-dial__action">
+          <span class="mts-speed-dial__action-label">Trust</span>
+          <span class="mts-speed-dial__action-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l6 2v5c0 4-3 6-6 7-3-1-6-3-6-7V3z"/></svg></span>
+        </a>
+      </div>
+      <button class="mts-speed-dial__fab" aria-label="Open actions">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg>
+      </button>
+    </div>
+
+  </main>
+
+  <script>
+    // Build icon grid from sprite
+    (function() {
+      const grid = document.getElementById('icon-grid');
+      if (!grid) return;
+      const icons = ['arrow-right','arrow-left','check','close','menu','plus','minus','external-link','download','info','warning','error','success','search','filter','sort','edit','trash','copy','chevron-down','chevron-right'];
+      grid.innerHTML = icons.map(n =>
+        '<div class="ds-icon-cell">' +
+          '<svg width="24" height="24" aria-hidden="true"><use href="assets/design-system/icons/sprite.svg#' + n + '"/></svg>' +
+          '<span class="ds-icon-cell__name">' + n + '</span>' +
+        '</div>'
+      ).join('');
+    })();
+
+    // Tour demo button
+    document.getElementById('start-tour')?.addEventListener('click', function() {
+      if (window.MTSAiSpotlight) {
+        MTSAiSpotlight.start([
+          { target: '#colors', title: 'Start with tokens', body: 'Every color in the system is a semantic token — never a raw hex value.' },
+          { target: '#buttons', title: 'Buttons', body: 'Primary, secondary, ghost variants across three sizes with full focus states.' },
+          { target: '#timeline', title: 'New in v2', body: 'Timeline, slider, multiselect, carousel, and 10 more components added in DS v2.' }
+        ]);
+      }
+    });
+  </script>
+
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

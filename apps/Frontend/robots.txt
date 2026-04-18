@@ -11,5 +11,6 @@ Disallow: /diagram_cloud.html
 Disallow: /carbon-ultimate-stack-light.html
 Disallow: /Integration_Delivery_Brief_Controlled.html
 Disallow: /Integration_Delivery_Brief_Redacted.html
+Disallow: /design-system.html
 
 Sitemap: https://mtsai.in/sitemap.xml
