@@ -1269,19 +1269,6 @@
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* Hero scanline CRT overlay */
-    .mts-hero::after {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none; z-index: 2;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0, 40, 120, 0.018) 3px,
-        rgba(0, 40, 120, 0.018) 4px
-      );
-    }
-
     /* Subtle hero background pulse */
     @keyframes hero-bg-pulse {
       0%, 100% { opacity: 1; }
@@ -1896,19 +1883,6 @@
           <div class="mts-hero__panel-body">
             <!-- City grid SVG visualization -->
             <svg aria-hidden="true" class="city-grid-svg" viewBox="0 0 484 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-              <!-- Road grid lines (horizontal) -->
-              <line x1="0" y1="56"  x2="484" y2="56"  stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="112" x2="484" y2="112" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="168" x2="484" y2="168" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="0" y1="224" x2="484" y2="224" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-
-              <!-- Road grid lines (vertical) -->
-              <line x1="80"  y1="0" x2="80"  y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="160" y1="0" x2="160" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="240" y1="0" x2="240" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="320" y1="0" x2="320" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-              <line x1="400" y1="0" x2="400" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
 
               <!-- City blocks — varying opacity for density -->
               <!-- Row 0 (y=4 to 52) -->
