@@ -1,0 +1,159 @@
+/* ============================================================
+   MTSAi × Time Picker
+   Hours + minutes selection with 12h/24h mode and AM/PM toggle.
+   Uses the same input + dropdown pattern as date picker.
+   ============================================================ */
+
+.mts-time-picker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 180px;
+}
+
+.mts-time-picker__input-wrapper {
+  position: relative;
+}
+
+.mts-time-picker__input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.mts-time-picker__input:focus,
+.mts-time-picker__input:focus-within {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10);
+}
+
+.mts-time-picker__icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* Dropdown panel with hour/minute columns */
+.mts-time-picker__panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  display: none;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(0, 0, 0, 0.12));
+  padding: var(--space-3);
+  z-index: 1000;
+  min-width: 220px;
+  animation: tp-panel-in 180ms ease;
+}
+
+.mts-time-picker[aria-expanded="true"] .mts-time-picker__panel {
+  display: flex;
+  gap: var(--space-2);
+}
+
+@keyframes tp-panel-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mts-time-picker__column {
+  flex: 1;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs, 3px);
+}
+
+.mts-time-picker__column-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-2);
+  padding: 0 4px;
+}
+
+.mts-time-picker__option {
+  padding: 6px 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.mts-time-picker__option:hover {
+  background: var(--layer-01);
+}
+.mts-time-picker__option[aria-selected="true"],
+.mts-time-picker__option.is-active {
+  background: var(--interactive);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* AM/PM toggle (12h mode only) */
+.mts-time-picker__ampm {
+  flex-direction: column;
+  max-height: none;
+  width: 60px;
+  padding: 4px;
+  justify-content: flex-start;
+  padding-top: calc(var(--space-2) + 18px);
+}
+.mts-time-picker__ampm .mts-time-picker__option {
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* Compact variant */
+.mts-time-picker--compact {
+  max-width: 140px;
+}
+.mts-time-picker--compact .mts-time-picker__input {
+  font-size: 13px;
+  padding: 8px 32px 8px 10px;
+}
+
+/* Disabled */
+.mts-time-picker--disabled .mts-time-picker__input {
+  background: var(--layer-01);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Error state */
+.mts-time-picker[aria-invalid="true"] .mts-time-picker__input {
+  border-color: var(--support-error, #DA1E28);
+}
+.mts-time-picker[aria-invalid="true"] .mts-time-picker__input:focus {
+  box-shadow: 0 0 0 3px rgba(218, 30, 40, 0.10);
+}

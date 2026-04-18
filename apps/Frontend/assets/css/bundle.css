@@ -11656,3 +11656,651 @@ kbd,
   border-top: 1px dashed var(--border-subtle);
 }
 
+
+/* ============================================================
+   MTSAi DS v2: Completion Pack — Tier 2
+   4 additional components: blankslate, progress-tracker,
+   time-picker, carousel
+   ============================================================ */
+
+/* ── blankslate.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Blankslate (rich empty state)
+   Upgraded empty-state with illustration slot, headline, body,
+   primary + secondary CTAs. Use for: no search results, empty
+   lists, first-time-use placeholders, data-not-yet-loaded.
+   ============================================================ */
+
+.mts-blankslate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(var(--space-10), 6vw, var(--space-14)) var(--space-6);
+  background: var(--layer-bg);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  max-width: 560px;
+  margin: 0 auto;
+  gap: var(--space-5);
+}
+
+/* Illustration / icon slot (96×96 recommended) */
+.mts-blankslate__visual {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  background: var(--layer-01);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mts-blankslate__visual svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.7;
+}
+
+/* Smaller icon variant (e.g. no search results) */
+.mts-blankslate__visual--sm {
+  width: 64px;
+  height: 64px;
+}
+.mts-blankslate__visual--sm svg { width: 32px; height: 32px; }
+
+.mts-blankslate__heading {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.mts-blankslate__body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 420px;
+}
+
+.mts-blankslate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+
+/* Variants */
+.mts-blankslate--compact {
+  padding: var(--space-8) var(--space-5);
+  gap: var(--space-3);
+}
+.mts-blankslate--compact .mts-blankslate__visual { width: 56px; height: 56px; }
+.mts-blankslate--compact .mts-blankslate__visual svg { width: 28px; height: 28px; }
+.mts-blankslate--compact .mts-blankslate__heading { font-size: 16px; }
+.mts-blankslate--compact .mts-blankslate__body { font-size: 13px; }
+
+.mts-blankslate--left {
+  align-items: flex-start;
+  text-align: left;
+}
+.mts-blankslate--left .mts-blankslate__actions { justify-content: flex-start; }
+
+/* No border variant (for in-page embedding) */
+.mts-blankslate--plain {
+  border: none;
+  background: transparent;
+}
+
+/* Error variant (e.g. load failed) */
+.mts-blankslate--error .mts-blankslate__visual {
+  background: rgba(218, 30, 40, 0.08);
+  color: var(--support-error, #DA1E28);
+}
+
+/* Success variant */
+.mts-blankslate--success .mts-blankslate__visual {
+  background: rgba(83, 170, 0, 0.08);
+  color: var(--brand-primary);
+}
+
+/* On dark background */
+.mts-blankslate--on-dark {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.mts-blankslate--on-dark .mts-blankslate__heading { color: #fff; }
+.mts-blankslate--on-dark .mts-blankslate__body { color: rgba(255, 255, 255, 0.65); }
+.mts-blankslate--on-dark .mts-blankslate__visual {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.60);
+}
+
+/* ── progress-tracker.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Progress Tracker
+   Wider than stepper: horizontal + vertical, per-step states
+   (complete, current, pending, error), optional % bar, optional
+   description/estimate per step.
+   ============================================================ */
+
+.mts-progress-tracker {
+  position: relative;
+  display: flex;
+  gap: 0;
+}
+
+/* --- Horizontal (default) --- */
+.mts-progress-tracker--horizontal .mts-pt__step {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 36px;
+  padding-inline: var(--space-3);
+}
+.mts-progress-tracker--horizontal .mts-pt__step::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border-subtle);
+  z-index: 0;
+}
+.mts-progress-tracker--horizontal .mts-pt__step:last-child::after { display: none; }
+
+/* --- Vertical --- */
+.mts-progress-tracker--vertical {
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: var(--space-8);
+}
+.mts-progress-tracker--vertical .mts-pt__step {
+  position: relative;
+  padding-left: var(--space-2);
+}
+.mts-progress-tracker--vertical .mts-pt__marker {
+  position: absolute;
+  left: -27px;
+  top: 0;
+}
+.mts-progress-tracker--vertical .mts-pt__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 28px;
+  bottom: -24px;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+/* Marker (circle with number or checkmark) */
+.mts-pt__marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--layer-bg);
+  border: 2px solid var(--border-subtle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  z-index: 1;
+  position: relative;
+  transition: all 200ms ease;
+}
+
+.mts-progress-tracker--horizontal .mts-pt__marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Step states */
+.mts-pt__step--complete .mts-pt__marker {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #fff;
+}
+.mts-pt__step--complete .mts-pt__marker::after {
+  content: '✓';
+  font-size: 14px;
+}
+.mts-pt__step--complete .mts-pt__marker { font-size: 0; }
+
+.mts-pt__step--current .mts-pt__marker {
+  background: var(--interactive);
+  border-color: var(--interactive);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.18);
+  animation: pt-pulse 2s ease-in-out infinite;
+}
+
+.mts-pt__step--error .mts-pt__marker {
+  background: var(--support-error, #DA1E28);
+  border-color: var(--support-error, #DA1E28);
+  color: #fff;
+}
+.mts-pt__step--error .mts-pt__marker::after { content: '!'; }
+.mts-pt__step--error .mts-pt__marker { font-size: 0; }
+
+/* Connector fill (progress state) */
+.mts-pt__step--complete + .mts-pt__step::after,
+.mts-pt__step--complete::after {
+  background: var(--brand-primary);
+}
+.mts-progress-tracker--vertical .mts-pt__step--complete:not(:last-child)::after {
+  background: var(--brand-primary);
+}
+
+@keyframes pt-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.18); }
+  50%      { box-shadow: 0 0 0 8px rgba(13, 148, 136, 0.10); }
+}
+
+/* Step content */
+.mts-pt__label {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-3);
+  line-height: 1.35;
+}
+.mts-progress-tracker--vertical .mts-pt__label { margin-top: 4px; }
+
+.mts-pt__description {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+.mts-pt__estimate {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+}
+
+.mts-pt__step--current .mts-pt__label { color: var(--interactive); }
+.mts-pt__step--error .mts-pt__label { color: var(--support-error, #DA1E28); }
+
+/* Linear progress bar (optional, above step list) */
+.mts-progress-tracker__bar {
+  position: relative;
+  height: 4px;
+  background: var(--layer-02);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+.mts-progress-tracker__bar-fill {
+  height: 100%;
+  background: var(--interactive);
+  border-radius: 2px;
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mts-progress-tracker__percentage {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* On dark */
+.mts-progress-tracker--on-dark .mts-pt__marker {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.70);
+}
+.mts-progress-tracker--on-dark .mts-pt__step:not(.mts-pt__step--complete):not(.mts-pt__step--current):not(.mts-pt__step--error)::after {
+  background: rgba(255, 255, 255, 0.15);
+}
+.mts-progress-tracker--on-dark .mts-pt__label { color: #fff; }
+.mts-progress-tracker--on-dark .mts-pt__description { color: rgba(255, 255, 255, 0.60); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-pt__step--current .mts-pt__marker { animation: none; }
+  .mts-progress-tracker__bar-fill { transition: none; }
+}
+
+/* ── time-picker.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Time Picker
+   Hours + minutes selection with 12h/24h mode and AM/PM toggle.
+   Uses the same input + dropdown pattern as date picker.
+   ============================================================ */
+
+.mts-time-picker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 180px;
+}
+
+.mts-time-picker__input-wrapper {
+  position: relative;
+}
+
+.mts-time-picker__input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.mts-time-picker__input:focus,
+.mts-time-picker__input:focus-within {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10);
+}
+
+.mts-time-picker__icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* Dropdown panel with hour/minute columns */
+.mts-time-picker__panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  display: none;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(0, 0, 0, 0.12));
+  padding: var(--space-3);
+  z-index: 1000;
+  min-width: 220px;
+  animation: tp-panel-in 180ms ease;
+}
+
+.mts-time-picker[aria-expanded="true"] .mts-time-picker__panel {
+  display: flex;
+  gap: var(--space-2);
+}
+
+@keyframes tp-panel-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mts-time-picker__column {
+  flex: 1;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs, 3px);
+}
+
+.mts-time-picker__column-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-2);
+  padding: 0 4px;
+}
+
+.mts-time-picker__option {
+  padding: 6px 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.mts-time-picker__option:hover {
+  background: var(--layer-01);
+}
+.mts-time-picker__option[aria-selected="true"],
+.mts-time-picker__option.is-active {
+  background: var(--interactive);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* AM/PM toggle (12h mode only) */
+.mts-time-picker__ampm {
+  flex-direction: column;
+  max-height: none;
+  width: 60px;
+  padding: 4px;
+  justify-content: flex-start;
+  padding-top: calc(var(--space-2) + 18px);
+}
+.mts-time-picker__ampm .mts-time-picker__option {
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* Compact variant */
+.mts-time-picker--compact {
+  max-width: 140px;
+}
+.mts-time-picker--compact .mts-time-picker__input {
+  font-size: 13px;
+  padding: 8px 32px 8px 10px;
+}
+
+/* Disabled */
+.mts-time-picker--disabled .mts-time-picker__input {
+  background: var(--layer-01);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Error state */
+.mts-time-picker[aria-invalid="true"] .mts-time-picker__input {
+  border-color: var(--support-error, #DA1E28);
+}
+.mts-time-picker[aria-invalid="true"] .mts-time-picker__input:focus {
+  box-shadow: 0 0 0 3px rgba(218, 30, 40, 0.10);
+}
+
+/* ── carousel.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Carousel / Slider
+   Generic content carousel with scroll-snap, keyboard nav,
+   pagination dots, prev/next buttons, optional auto-advance.
+   Not just for hero — use for partner logos, case cards, testimonials.
+   ============================================================ */
+
+.mts-carousel {
+  position: relative;
+  width: 100%;
+}
+
+/* Slide viewport — horizontal scroll with snap */
+.mts-carousel__viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  gap: var(--space-4);
+  padding-bottom: var(--space-2); /* Space for visible scrollbar dots */
+  scroll-behavior: smooth;
+}
+.mts-carousel__viewport::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.mts-carousel__slide {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: clamp(280px, 30vw, 360px);
+}
+
+/* Slide width variants */
+.mts-carousel--wide .mts-carousel__slide { width: clamp(320px, 50vw, 560px); }
+.mts-carousel--narrow .mts-carousel__slide { width: clamp(200px, 22vw, 260px); }
+.mts-carousel--full .mts-carousel__slide { width: 100%; }
+
+/* Nav buttons */
+.mts-carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md, 0 8px 24px rgba(0, 0, 0, 0.10));
+  z-index: 2;
+  transition: background 150ms ease, transform 150ms ease, opacity 150ms ease;
+}
+.mts-carousel__nav:hover {
+  background: var(--layer-01);
+  transform: translateY(-50%) scale(1.05);
+}
+.mts-carousel__nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mts-carousel__nav--prev { left: -20px; }
+.mts-carousel__nav--next { right: -20px; }
+
+@media (max-width: 640px) {
+  .mts-carousel__nav { display: none; }
+}
+
+/* Pagination dots */
+.mts-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.mts-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms ease, width 200ms ease;
+}
+.mts-carousel__dot:hover { background: var(--text-disabled); }
+.mts-carousel__dot[aria-current="true"],
+.mts-carousel__dot.is-active {
+  background: var(--interactive);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Progress bar variant (instead of dots) */
+.mts-carousel__progress {
+  position: relative;
+  height: 2px;
+  background: var(--border-subtle);
+  border-radius: 1px;
+  margin-top: var(--space-5);
+  overflow: hidden;
+}
+.mts-carousel__progress-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--interactive);
+  border-radius: 1px;
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Caption below slide */
+.mts-carousel__caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: var(--space-3);
+  letter-spacing: 0.05em;
+}
+
+/* On dark surface */
+.mts-carousel--on-dark .mts-carousel__nav {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.20);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30);
+}
+.mts-carousel--on-dark .mts-carousel__nav:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.mts-carousel--on-dark .mts-carousel__dot { background: rgba(255, 255, 255, 0.25); }
+.mts-carousel--on-dark .mts-carousel__dot[aria-current="true"] { background: var(--accent-saffron); }
+.mts-carousel--on-dark .mts-carousel__progress { background: rgba(255, 255, 255, 0.15); }
+
+/* No-snap variant — continuous scroll (good for logo strips) */
+.mts-carousel--continuous .mts-carousel__viewport {
+  scroll-snap-type: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-carousel__viewport,
+  .mts-carousel__dot,
+  .mts-carousel__progress-fill { transition: none; scroll-behavior: auto; }
+}
+

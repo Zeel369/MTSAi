@@ -1,0 +1,201 @@
+/* ============================================================
+   MTSAi × Progress Tracker
+   Wider than stepper: horizontal + vertical, per-step states
+   (complete, current, pending, error), optional % bar, optional
+   description/estimate per step.
+   ============================================================ */
+
+.mts-progress-tracker {
+  position: relative;
+  display: flex;
+  gap: 0;
+}
+
+/* --- Horizontal (default) --- */
+.mts-progress-tracker--horizontal .mts-pt__step {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 36px;
+  padding-inline: var(--space-3);
+}
+.mts-progress-tracker--horizontal .mts-pt__step::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border-subtle);
+  z-index: 0;
+}
+.mts-progress-tracker--horizontal .mts-pt__step:last-child::after { display: none; }
+
+/* --- Vertical --- */
+.mts-progress-tracker--vertical {
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: var(--space-8);
+}
+.mts-progress-tracker--vertical .mts-pt__step {
+  position: relative;
+  padding-left: var(--space-2);
+}
+.mts-progress-tracker--vertical .mts-pt__marker {
+  position: absolute;
+  left: -27px;
+  top: 0;
+}
+.mts-progress-tracker--vertical .mts-pt__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 28px;
+  bottom: -24px;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+/* Marker (circle with number or checkmark) */
+.mts-pt__marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--layer-bg);
+  border: 2px solid var(--border-subtle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  z-index: 1;
+  position: relative;
+  transition: all 200ms ease;
+}
+
+.mts-progress-tracker--horizontal .mts-pt__marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Step states */
+.mts-pt__step--complete .mts-pt__marker {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #fff;
+}
+.mts-pt__step--complete .mts-pt__marker::after {
+  content: '✓';
+  font-size: 14px;
+}
+.mts-pt__step--complete .mts-pt__marker { font-size: 0; }
+
+.mts-pt__step--current .mts-pt__marker {
+  background: var(--interactive);
+  border-color: var(--interactive);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.18);
+  animation: pt-pulse 2s ease-in-out infinite;
+}
+
+.mts-pt__step--error .mts-pt__marker {
+  background: var(--support-error, #DA1E28);
+  border-color: var(--support-error, #DA1E28);
+  color: #fff;
+}
+.mts-pt__step--error .mts-pt__marker::after { content: '!'; }
+.mts-pt__step--error .mts-pt__marker { font-size: 0; }
+
+/* Connector fill (progress state) */
+.mts-pt__step--complete + .mts-pt__step::after,
+.mts-pt__step--complete::after {
+  background: var(--brand-primary);
+}
+.mts-progress-tracker--vertical .mts-pt__step--complete:not(:last-child)::after {
+  background: var(--brand-primary);
+}
+
+@keyframes pt-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.18); }
+  50%      { box-shadow: 0 0 0 8px rgba(13, 148, 136, 0.10); }
+}
+
+/* Step content */
+.mts-pt__label {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-3);
+  line-height: 1.35;
+}
+.mts-progress-tracker--vertical .mts-pt__label { margin-top: 4px; }
+
+.mts-pt__description {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+.mts-pt__estimate {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+}
+
+.mts-pt__step--current .mts-pt__label { color: var(--interactive); }
+.mts-pt__step--error .mts-pt__label { color: var(--support-error, #DA1E28); }
+
+/* Linear progress bar (optional, above step list) */
+.mts-progress-tracker__bar {
+  position: relative;
+  height: 4px;
+  background: var(--layer-02);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+.mts-progress-tracker__bar-fill {
+  height: 100%;
+  background: var(--interactive);
+  border-radius: 2px;
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mts-progress-tracker__percentage {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* On dark */
+.mts-progress-tracker--on-dark .mts-pt__marker {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.70);
+}
+.mts-progress-tracker--on-dark .mts-pt__step:not(.mts-pt__step--complete):not(.mts-pt__step--current):not(.mts-pt__step--error)::after {
+  background: rgba(255, 255, 255, 0.15);
+}
+.mts-progress-tracker--on-dark .mts-pt__label { color: #fff; }
+.mts-progress-tracker--on-dark .mts-pt__description { color: rgba(255, 255, 255, 0.60); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-pt__step--current .mts-pt__marker { animation: none; }
+  .mts-progress-tracker__bar-fill { transition: none; }
+}

@@ -1084,6 +1084,201 @@
   }
 
   /* ----------------------------------------------------------
+     DS v2 Tier 2 — Carousel, Time Picker
+  ---------------------------------------------------------- */
+
+  /* ---- Carousel ---- */
+  function initCarousels() {
+    var carousels = document.querySelectorAll('.mts-carousel');
+    if (!carousels.length) return;
+    carousels.forEach(function(c) {
+      var viewport = c.querySelector('.mts-carousel__viewport');
+      var slides = c.querySelectorAll('.mts-carousel__slide');
+      var prev = c.querySelector('.mts-carousel__nav--prev');
+      var next = c.querySelector('.mts-carousel__nav--next');
+      var dotsContainer = c.querySelector('.mts-carousel__dots');
+      var progress = c.querySelector('.mts-carousel__progress-fill');
+      if (!viewport || !slides.length) return;
+
+      // Build dots if container exists and is empty
+      if (dotsContainer && !dotsContainer.children.length) {
+        slides.forEach(function(_, i) {
+          var d = document.createElement('button');
+          d.className = 'mts-carousel__dot';
+          d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          if (i === 0) d.setAttribute('aria-current', 'true');
+          d.addEventListener('click', function() { scrollToSlide(i); });
+          dotsContainer.appendChild(d);
+        });
+      }
+      var dots = c.querySelectorAll('.mts-carousel__dot');
+
+      function getSlideWidth() {
+        return slides[0].getBoundingClientRect().width +
+               (parseFloat(getComputedStyle(viewport).gap) || 0);
+      }
+
+      function scrollToSlide(i) {
+        viewport.scrollTo({ left: i * getSlideWidth(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      }
+
+      function updateActive() {
+        var sw = getSlideWidth() || 1;
+        var i = Math.round(viewport.scrollLeft / sw);
+        dots.forEach(function(d, di) {
+          if (di === i) d.setAttribute('aria-current', 'true');
+          else d.removeAttribute('aria-current');
+        });
+        if (progress) {
+          var pct = (slides.length > 1)
+            ? ((i + 1) / slides.length) * 100
+            : 100;
+          progress.style.width = pct + '%';
+        }
+        if (prev) prev.disabled = (i === 0);
+        if (next) next.disabled = (i >= slides.length - 1);
+      }
+
+      if (prev) prev.addEventListener('click', function() {
+        viewport.scrollBy({ left: -getSlideWidth(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      });
+      if (next) next.addEventListener('click', function() {
+        viewport.scrollBy({ left: getSlideWidth(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      });
+
+      // Keyboard nav
+      c.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' && prev) { e.preventDefault(); prev.click(); }
+        if (e.key === 'ArrowRight' && next) { e.preventDefault(); next.click(); }
+      });
+
+      // Scroll-linked active-dot update (throttled via rAF)
+      var ticking = false;
+      viewport.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() { updateActive(); ticking = false; });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateActive();
+
+      // Auto-advance (opt-in via data-auto-advance="5000")
+      var auto = parseInt(c.dataset.autoAdvance, 10);
+      if (auto && auto > 0 && !prefersReducedMotion) {
+        setInterval(function() {
+          var sw = getSlideWidth();
+          var atEnd = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 10;
+          if (atEnd) viewport.scrollTo({ left: 0, behavior: 'smooth' });
+          else viewport.scrollBy({ left: sw, behavior: 'smooth' });
+        }, auto);
+      }
+    });
+  }
+
+  /* ---- Time Picker ---- */
+  function initTimePickers() {
+    var pickers = document.querySelectorAll('.mts-time-picker');
+    if (!pickers.length) return;
+    pickers.forEach(function(p) {
+      var input = p.querySelector('.mts-time-picker__input');
+      var panel = p.querySelector('.mts-time-picker__panel');
+      var is12h = p.dataset.mode === '12h';
+      if (!input) return;
+
+      // Build hour/minute columns if panel is empty
+      if (panel && !panel.children.length) {
+        var hourCol = document.createElement('div');
+        hourCol.className = 'mts-time-picker__column';
+        var hourLabel = document.createElement('div');
+        hourLabel.className = 'mts-time-picker__column-label';
+        hourLabel.textContent = 'HR';
+        hourCol.appendChild(hourLabel);
+        var hoursMax = is12h ? 12 : 24;
+        var hoursStart = is12h ? 1 : 0;
+        for (var h = hoursStart; h < hoursStart + hoursMax; h++) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'mts-time-picker__option';
+          b.dataset.hour = h;
+          b.textContent = String(h).padStart(2, '0');
+          hourCol.appendChild(b);
+        }
+        panel.appendChild(hourCol);
+
+        var minCol = document.createElement('div');
+        minCol.className = 'mts-time-picker__column';
+        var minLabel = document.createElement('div');
+        minLabel.className = 'mts-time-picker__column-label';
+        minLabel.textContent = 'MIN';
+        minCol.appendChild(minLabel);
+        for (var m = 0; m < 60; m += 5) {
+          var bm = document.createElement('button');
+          bm.type = 'button';
+          bm.className = 'mts-time-picker__option';
+          bm.dataset.minute = m;
+          bm.textContent = String(m).padStart(2, '0');
+          minCol.appendChild(bm);
+        }
+        panel.appendChild(minCol);
+
+        if (is12h) {
+          var ampmCol = document.createElement('div');
+          ampmCol.className = 'mts-time-picker__column mts-time-picker__ampm';
+          ['AM', 'PM'].forEach(function(x) {
+            var ba = document.createElement('button');
+            ba.type = 'button';
+            ba.className = 'mts-time-picker__option';
+            ba.dataset.ampm = x;
+            ba.textContent = x;
+            ampmCol.appendChild(ba);
+          });
+          panel.appendChild(ampmCol);
+        }
+      }
+
+      var state = { hour: '', minute: '', ampm: is12h ? 'AM' : '' };
+      function sync() {
+        var h = state.hour ? String(state.hour).padStart(2, '0') : '--';
+        var m = state.minute !== '' ? String(state.minute).padStart(2, '0') : '--';
+        input.value = h + ':' + m + (is12h ? ' ' + state.ampm : '');
+      }
+      function clearSelected(col) {
+        panel.querySelectorAll('.mts-time-picker__column:nth-child(' + col + ') .mts-time-picker__option')
+          .forEach(function(o) { o.setAttribute('aria-selected', 'false'); });
+      }
+
+      input.addEventListener('click', function() {
+        p.setAttribute('aria-expanded', p.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+      });
+      input.addEventListener('focus', function() {
+        p.setAttribute('aria-expanded', 'true');
+      });
+
+      panel && panel.addEventListener('click', function(e) {
+        var opt = e.target.closest('.mts-time-picker__option');
+        if (!opt) return;
+        if (opt.dataset.hour !== undefined) {
+          clearSelected(1);
+          state.hour = opt.dataset.hour;
+        } else if (opt.dataset.minute !== undefined) {
+          clearSelected(2);
+          state.minute = opt.dataset.minute;
+        } else if (opt.dataset.ampm) {
+          clearSelected(3);
+          state.ampm = opt.dataset.ampm;
+        }
+        opt.setAttribute('aria-selected', 'true');
+        sync();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!p.contains(e.target)) p.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
@@ -1097,6 +1292,8 @@
     initActionMenus();
     initDataTableSort();
     initRelativeTime();
+    initCarousels();
+    initTimePickers();
     initScrollReveal();
     initMobileMenu();
     initNavDropdowns();

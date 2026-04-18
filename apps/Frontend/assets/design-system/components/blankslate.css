@@ -1,0 +1,118 @@
+/* ============================================================
+   MTSAi × Blankslate (rich empty state)
+   Upgraded empty-state with illustration slot, headline, body,
+   primary + secondary CTAs. Use for: no search results, empty
+   lists, first-time-use placeholders, data-not-yet-loaded.
+   ============================================================ */
+
+.mts-blankslate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(var(--space-10), 6vw, var(--space-14)) var(--space-6);
+  background: var(--layer-bg);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  max-width: 560px;
+  margin: 0 auto;
+  gap: var(--space-5);
+}
+
+/* Illustration / icon slot (96×96 recommended) */
+.mts-blankslate__visual {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  background: var(--layer-01);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mts-blankslate__visual svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.7;
+}
+
+/* Smaller icon variant (e.g. no search results) */
+.mts-blankslate__visual--sm {
+  width: 64px;
+  height: 64px;
+}
+.mts-blankslate__visual--sm svg { width: 32px; height: 32px; }
+
+.mts-blankslate__heading {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.mts-blankslate__body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 420px;
+}
+
+.mts-blankslate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+
+/* Variants */
+.mts-blankslate--compact {
+  padding: var(--space-8) var(--space-5);
+  gap: var(--space-3);
+}
+.mts-blankslate--compact .mts-blankslate__visual { width: 56px; height: 56px; }
+.mts-blankslate--compact .mts-blankslate__visual svg { width: 28px; height: 28px; }
+.mts-blankslate--compact .mts-blankslate__heading { font-size: 16px; }
+.mts-blankslate--compact .mts-blankslate__body { font-size: 13px; }
+
+.mts-blankslate--left {
+  align-items: flex-start;
+  text-align: left;
+}
+.mts-blankslate--left .mts-blankslate__actions { justify-content: flex-start; }
+
+/* No border variant (for in-page embedding) */
+.mts-blankslate--plain {
+  border: none;
+  background: transparent;
+}
+
+/* Error variant (e.g. load failed) */
+.mts-blankslate--error .mts-blankslate__visual {
+  background: rgba(218, 30, 40, 0.08);
+  color: var(--support-error, #DA1E28);
+}
+
+/* Success variant */
+.mts-blankslate--success .mts-blankslate__visual {
+  background: rgba(83, 170, 0, 0.08);
+  color: var(--brand-primary);
+}
+
+/* On dark background */
+.mts-blankslate--on-dark {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.mts-blankslate--on-dark .mts-blankslate__heading { color: #fff; }
+.mts-blankslate--on-dark .mts-blankslate__body { color: rgba(255, 255, 255, 0.65); }
+.mts-blankslate--on-dark .mts-blankslate__visual {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.60);
+}
