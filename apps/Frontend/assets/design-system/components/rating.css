@@ -1,0 +1,101 @@
+/* ============================================================
+   MTSAi × Rating
+   Star-based rating display + interactive input. Read-only or
+   clickable. Half-star support. Color + size variants.
+   ============================================================ */
+
+.mts-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0;
+  line-height: 1;
+}
+
+.mts-rating__star {
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--border-subtle);
+  transition: color 150ms ease, transform 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mts-rating__star svg { width: 100%; height: 100%; fill: currentColor; }
+
+.mts-rating__star:hover {
+  color: var(--accent-saffron);
+  transform: scale(1.15);
+}
+.mts-rating__star:focus-visible {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.mts-rating__star--filled,
+.mts-rating__star.is-active {
+  color: var(--accent-saffron);
+}
+
+/* Half star (mask from right) */
+.mts-rating__star--half {
+  color: var(--accent-saffron);
+  position: relative;
+}
+.mts-rating__star--half::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 50%;
+  background: var(--layer-bg);
+  pointer-events: none;
+}
+
+/* Read-only variant */
+.mts-rating--readonly .mts-rating__star {
+  cursor: default;
+  pointer-events: none;
+}
+.mts-rating--readonly .mts-rating__star:hover { transform: none; }
+
+/* Sizes */
+.mts-rating--sm .mts-rating__star { width: 14px; height: 14px; }
+.mts-rating--lg .mts-rating__star { width: 28px; height: 28px; }
+
+/* Color variants */
+.mts-rating--teal .mts-rating__star--filled,
+.mts-rating--teal .mts-rating__star.is-active {
+  color: var(--interactive);
+}
+.mts-rating--teal .mts-rating__star:hover { color: var(--interactive); }
+
+.mts-rating--green .mts-rating__star--filled,
+.mts-rating--green .mts-rating__star.is-active {
+  color: var(--brand-primary);
+}
+.mts-rating--green .mts-rating__star:hover { color: var(--brand-primary); }
+
+/* Trailing numeric label */
+.mts-rating__value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hover preview (uses ~ sibling) */
+.mts-rating:not(.mts-rating--readonly) .mts-rating__star:hover ~ .mts-rating__star {
+  color: var(--border-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-rating__star { transition: color 0ms; }
+  .mts-rating__star:hover { transform: none; }
+}

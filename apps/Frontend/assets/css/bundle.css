@@ -12304,3 +12304,1108 @@ kbd,
   .mts-carousel__progress-fill { transition: none; scroll-behavior: auto; }
 }
 
+
+/* ============================================================
+   MTSAi DS v2: Completion Pack — Tier 3 (specialized patterns)
+   8 components: rating, color-picker, transfer-list, speed-dial,
+   tree-table, inline-edit, spotlight, bottom-nav
+   ============================================================ */
+
+/* ── rating.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Rating
+   Star-based rating display + interactive input. Read-only or
+   clickable. Half-star support. Color + size variants.
+   ============================================================ */
+
+.mts-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0;
+  line-height: 1;
+}
+
+.mts-rating__star {
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--border-subtle);
+  transition: color 150ms ease, transform 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mts-rating__star svg { width: 100%; height: 100%; fill: currentColor; }
+
+.mts-rating__star:hover {
+  color: var(--accent-saffron);
+  transform: scale(1.15);
+}
+.mts-rating__star:focus-visible {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.mts-rating__star--filled,
+.mts-rating__star.is-active {
+  color: var(--accent-saffron);
+}
+
+/* Half star (mask from right) */
+.mts-rating__star--half {
+  color: var(--accent-saffron);
+  position: relative;
+}
+.mts-rating__star--half::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 50%;
+  background: var(--layer-bg);
+  pointer-events: none;
+}
+
+/* Read-only variant */
+.mts-rating--readonly .mts-rating__star {
+  cursor: default;
+  pointer-events: none;
+}
+.mts-rating--readonly .mts-rating__star:hover { transform: none; }
+
+/* Sizes */
+.mts-rating--sm .mts-rating__star { width: 14px; height: 14px; }
+.mts-rating--lg .mts-rating__star { width: 28px; height: 28px; }
+
+/* Color variants */
+.mts-rating--teal .mts-rating__star--filled,
+.mts-rating--teal .mts-rating__star.is-active {
+  color: var(--interactive);
+}
+.mts-rating--teal .mts-rating__star:hover { color: var(--interactive); }
+
+.mts-rating--green .mts-rating__star--filled,
+.mts-rating--green .mts-rating__star.is-active {
+  color: var(--brand-primary);
+}
+.mts-rating--green .mts-rating__star:hover { color: var(--brand-primary); }
+
+/* Trailing numeric label */
+.mts-rating__value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hover preview (uses ~ sibling) */
+.mts-rating:not(.mts-rating--readonly) .mts-rating__star:hover ~ .mts-rating__star {
+  color: var(--border-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-rating__star { transition: color 0ms; }
+  .mts-rating__star:hover { transform: none; }
+}
+
+/* ── color-picker.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Color Picker
+   Swatch grid picker for selecting from a preset palette. Minimal
+   and accessible — not a full HSL/RGB wheel. For document theming,
+   accent selection, category coloring.
+   ============================================================ */
+
+.mts-color-picker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mts-color-picker__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mts-color-picker__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
+  gap: 6px;
+  max-width: 260px;
+}
+
+.mts-color-picker__swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--swatch-color, #ccc);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  position: relative;
+}
+.mts-color-picker__swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.mts-color-picker__swatch[aria-checked="true"],
+.mts-color-picker__swatch.is-active {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--layer-bg), 0 0 0 4px var(--text-primary);
+}
+.mts-color-picker__swatch[aria-checked="true"]::after {
+  content: '✓';
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.mts-color-picker__swatch:focus-visible {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+}
+
+/* Sizes */
+.mts-color-picker--sm .mts-color-picker__swatch { width: 20px; height: 20px; }
+.mts-color-picker--lg .mts-color-picker__swatch { width: 36px; height: 36px; }
+
+/* Square variant */
+.mts-color-picker--square .mts-color-picker__swatch {
+  border-radius: var(--radius-xs, 3px);
+}
+
+/* Current color display */
+.mts-color-picker__current {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.mts-color-picker__current-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--current-color, #ccc);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-color-picker__swatch { transition: none; }
+  .mts-color-picker__swatch:hover { transform: none; }
+}
+
+/* ── transfer-list.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Transfer List
+   Move items between two lists (available ↔ selected). Common
+   pattern for permissions, user-group assignments, selective
+   filtering.
+   ============================================================ */
+
+.mts-transfer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+  max-width: 720px;
+}
+
+@media (max-width: 640px) {
+  .mts-transfer { grid-template-columns: 1fr; }
+}
+
+.mts-transfer__list {
+  display: flex;
+  flex-direction: column;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.mts-transfer__header {
+  padding: var(--space-3) var(--space-4);
+  background: var(--layer-01);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mts-transfer__title {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+.mts-transfer__count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.mts-transfer__search {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.mts-transfer__search input {
+  width: 100%;
+  padding: 6px 10px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs, 3px);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+.mts-transfer__search input:focus { border-color: var(--interactive); }
+
+.mts-transfer__items {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2) 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.mts-transfer__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 120ms ease;
+  user-select: none;
+}
+.mts-transfer__item:hover {
+  background: var(--layer-01);
+}
+.mts-transfer__item[aria-selected="true"],
+.mts-transfer__item.is-selected {
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--interactive);
+  font-weight: 500;
+}
+.mts-transfer__item[aria-selected="true"]::before {
+  content: '✓';
+  color: var(--interactive);
+  font-weight: 700;
+  font-size: 12px;
+  width: 14px;
+}
+.mts-transfer__item:not([aria-selected="true"])::before {
+  content: '';
+  width: 14px;
+}
+
+/* Center controls (transfer buttons) */
+.mts-transfer__controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.mts-transfer__btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs, 3px);
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.mts-transfer__btn:hover:not(:disabled) {
+  background: var(--layer-01);
+  color: var(--interactive);
+  border-color: var(--interactive);
+}
+.mts-transfer__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .mts-transfer__controls {
+    flex-direction: row;
+    justify-content: center;
+    padding: var(--space-3) 0;
+  }
+}
+
+/* Empty state */
+.mts-transfer__empty {
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── speed-dial.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Speed Dial (FAB with fan-out actions)
+   Floating Action Button that expands to reveal secondary actions.
+   Material Design-inspired but toned for gov-tech aesthetic.
+   ============================================================ */
+
+.mts-speed-dial {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+/* Primary FAB trigger */
+.mts-speed-dial__fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--interactive);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.28), 0 2px 6px rgba(0, 0, 0, 0.10);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease;
+  position: relative;
+  z-index: 2;
+}
+.mts-speed-dial__fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 24px rgba(13, 148, 136, 0.35), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+.mts-speed-dial[aria-expanded="true"] .mts-speed-dial__fab {
+  transform: rotate(45deg);
+}
+
+.mts-speed-dial__fab svg { width: 20px; height: 20px; }
+
+/* Color variants */
+.mts-speed-dial--saffron .mts-speed-dial__fab {
+  background: var(--accent-saffron);
+  box-shadow: 0 6px 16px rgba(255, 153, 51, 0.30);
+}
+.mts-speed-dial--green .mts-speed-dial__fab {
+  background: var(--brand-primary);
+  box-shadow: 0 6px 16px rgba(83, 170, 0, 0.30);
+}
+
+/* Actions container */
+.mts-speed-dial__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.95);
+  transform-origin: bottom right;
+  transition: opacity 180ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mts-speed-dial[aria-expanded="true"] .mts-speed-dial__actions {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Individual action */
+.mts-speed-dial__action {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+.mts-speed-dial__action-label {
+  background: var(--text-primary);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.mts-speed-dial__action:hover .mts-speed-dial__action-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mts-speed-dial__action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+  transition: background 150ms ease, transform 150ms ease;
+}
+.mts-speed-dial__action-btn:hover {
+  background: var(--interactive);
+  color: #fff;
+  transform: scale(1.08);
+}
+.mts-speed-dial__action-btn svg { width: 16px; height: 16px; }
+
+/* Position variants */
+.mts-speed-dial--bottom-left {
+  right: auto;
+  left: var(--space-6);
+  align-items: flex-start;
+}
+.mts-speed-dial--bottom-left .mts-speed-dial__actions {
+  align-items: flex-start;
+  transform-origin: bottom left;
+}
+.mts-speed-dial--bottom-left .mts-speed-dial__action { flex-direction: row-reverse; }
+.mts-speed-dial--bottom-left .mts-speed-dial__action:hover .mts-speed-dial__action-label {
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-speed-dial__fab,
+  .mts-speed-dial__actions,
+  .mts-speed-dial__action-label,
+  .mts-speed-dial__action-btn { transition: none; }
+}
+
+/* ── tree-table.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Tree Table
+   Hierarchical table data with expand/collapse rows. Useful for
+   file systems, policy document trees, org charts, accounting breakdowns.
+   Extends existing table.css.
+   ============================================================ */
+
+.mts-tree-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.mts-tree-table thead th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  background: var(--layer-01);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mts-tree-table tbody td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.mts-tree-table tbody tr {
+  transition: background 120ms ease;
+}
+.mts-tree-table tbody tr:hover {
+  background: var(--layer-01);
+}
+
+/* Tree-specific: first cell with indent + expand chevron */
+.mts-tree-table__cell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: calc(var(--space-4) + (var(--tt-depth, 0) * 20px));
+}
+
+.mts-tree-table__toggle {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: var(--radius-xs, 3px);
+  transition: background 120ms ease, transform 200ms ease;
+  flex-shrink: 0;
+}
+.mts-tree-table__toggle:hover {
+  background: var(--layer-02);
+  color: var(--text-primary);
+}
+.mts-tree-table__toggle[aria-expanded="true"] {
+  transform: rotate(90deg);
+}
+
+/* Placeholder (for leaf rows — keep alignment) */
+.mts-tree-table__toggle-placeholder {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Depth visual hint */
+.mts-tree-table__label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.mts-tree-table tr[data-depth="0"] .mts-tree-table__label {
+  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 14px;
+}
+.mts-tree-table tr[data-depth="1"] .mts-tree-table__label { color: var(--text-primary); }
+.mts-tree-table tr[data-depth="2"] .mts-tree-table__label { color: var(--text-secondary); }
+
+/* Hidden by default; JS toggles */
+.mts-tree-table tr[data-hidden="true"] {
+  display: none;
+}
+
+/* Numeric / status cells */
+.mts-tree-table__num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.mts-tree-table__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.mts-tree-table__status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.mts-tree-table__status--active { color: var(--brand-primary); }
+.mts-tree-table__status--pending { color: var(--accent-saffron); }
+.mts-tree-table__status--inactive { color: var(--text-disabled); }
+
+/* Compact variant */
+.mts-tree-table--compact tbody td {
+  padding: var(--space-2) var(--space-3);
+  font-size: 12px;
+}
+
+/* On dark */
+.mts-tree-table--on-dark thead th {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.60);
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+.mts-tree-table--on-dark tbody td {
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.85);
+}
+.mts-tree-table--on-dark tbody tr:hover { background: rgba(255, 255, 255, 0.04); }
+.mts-tree-table--on-dark .mts-tree-table__label { color: #fff; }
+
+/* ── inline-edit.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Inline Edit
+   Click to edit in place. View → Edit → Save/Cancel.
+   Used in admin tables, settings, user profiles.
+   ============================================================ */
+
+.mts-inline-edit {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+/* View mode */
+.mts-inline-edit__view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 120ms ease, outline 120ms ease;
+  min-height: 28px;
+  min-width: 40px;
+}
+.mts-inline-edit__view:hover {
+  background: var(--layer-01);
+  outline: 1px dashed var(--border-strong);
+  outline-offset: -1px;
+}
+.mts-inline-edit__view:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+.mts-inline-edit__value {
+  flex: 1;
+  min-width: 0;
+}
+.mts-inline-edit__value--empty {
+  color: var(--text-disabled);
+  font-style: italic;
+}
+
+.mts-inline-edit__icon {
+  width: 12px;
+  height: 12px;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity 120ms ease;
+  flex-shrink: 0;
+}
+.mts-inline-edit__view:hover .mts-inline-edit__icon,
+.mts-inline-edit__view:focus-visible .mts-inline-edit__icon {
+  opacity: 1;
+}
+
+/* Edit mode */
+.mts-inline-edit[data-editing="true"] .mts-inline-edit__view { display: none; }
+.mts-inline-edit:not([data-editing="true"]) .mts-inline-edit__form { display: none; }
+
+.mts-inline-edit__form {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  animation: ie-in 150ms ease;
+}
+
+@keyframes ie-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mts-inline-edit__input {
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text-primary);
+  background: var(--layer-bg);
+  border: 1px solid var(--interactive);
+  border-radius: var(--radius-xs, 3px);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10);
+  min-width: 120px;
+}
+
+.mts-inline-edit__btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  background: var(--layer-bg);
+  color: var(--text-primary);
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.mts-inline-edit__btn:hover {
+  background: var(--layer-01);
+}
+.mts-inline-edit__btn--save:hover {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: var(--brand-primary);
+}
+.mts-inline-edit__btn--cancel:hover {
+  background: var(--support-error, #DA1E28);
+  color: #fff;
+  border-color: var(--support-error, #DA1E28);
+}
+
+/* Size variants */
+.mts-inline-edit--sm { font-size: 12px; }
+.mts-inline-edit--sm .mts-inline-edit__input { padding: 2px 6px; min-width: 80px; }
+.mts-inline-edit--sm .mts-inline-edit__btn { width: 20px; height: 20px; font-size: 12px; }
+
+.mts-inline-edit--lg {
+  font-size: 16px;
+}
+.mts-inline-edit--lg .mts-inline-edit__input { padding: 6px 10px; min-width: 160px; }
+.mts-inline-edit--lg .mts-inline-edit__btn { width: 28px; height: 28px; }
+
+/* Multiline */
+.mts-inline-edit--textarea .mts-inline-edit__input {
+  min-width: 240px;
+  min-height: 60px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Saving state */
+.mts-inline-edit[data-saving="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── spotlight.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Spotlight (Onboarding Tour)
+   Full-screen overlay that highlights a target element and
+   shows a tooltip-style popover with guided steps.
+   ============================================================ */
+
+.mts-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  display: none;
+}
+
+.mts-spotlight.is-active {
+  display: block;
+  pointer-events: auto;
+}
+
+/* Dark backdrop (everything except cutout) */
+.mts-spotlight__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.68);
+  animation: sl-fade-in 300ms ease;
+}
+
+/* Cutout — a transparent area over the target element */
+.mts-spotlight__cutout {
+  position: absolute;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 9999px rgba(5, 5, 5, 0.68), 0 0 0 4px rgba(255, 153, 51, 0.50);
+  transition: all 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sl-cutout-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sl-cutout-pulse {
+  0%, 100% { box-shadow: 0 0 0 9999px rgba(5, 5, 5, 0.68), 0 0 0 4px rgba(255, 153, 51, 0.50); }
+  50%      { box-shadow: 0 0 0 9999px rgba(5, 5, 5, 0.68), 0 0 0 8px rgba(255, 153, 51, 0.28); }
+}
+
+@keyframes sl-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Popover content */
+.mts-spotlight__popover {
+  position: absolute;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  max-width: 360px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  animation: sl-popover-in 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes sl-popover-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mts-spotlight__step {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-saffron);
+  margin-bottom: var(--space-2);
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.mts-spotlight__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3);
+  line-height: 1.3;
+}
+
+.mts-spotlight__body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 var(--space-5);
+}
+
+.mts-spotlight__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.mts-spotlight__progress-dots {
+  display: flex;
+  gap: 6px;
+}
+.mts-spotlight__progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+}
+.mts-spotlight__progress-dot.is-active {
+  background: var(--accent-saffron);
+  width: 18px;
+  border-radius: 3px;
+}
+
+.mts-spotlight__buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.mts-spotlight__btn {
+  padding: 6px 14px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+  border: 1px solid transparent;
+}
+.mts-spotlight__btn--skip {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.mts-spotlight__btn--skip:hover {
+  color: var(--text-primary);
+}
+.mts-spotlight__btn--next,
+.mts-spotlight__btn--primary {
+  background: var(--interactive);
+  color: #fff;
+  border-color: var(--interactive);
+}
+.mts-spotlight__btn--next:hover,
+.mts-spotlight__btn--primary:hover {
+  background: var(--interactive-hover, #0f766e);
+}
+
+/* Arrow pointer (optional, toggled via data-arrow) */
+.mts-spotlight__popover[data-arrow="top"]::before,
+.mts-spotlight__popover[data-arrow="bottom"]::before,
+.mts-spotlight__popover[data-arrow="left"]::before,
+.mts-spotlight__popover[data-arrow="right"]::before {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  transform: rotate(45deg);
+}
+.mts-spotlight__popover[data-arrow="top"]::before {
+  top: -7px; left: 24px;
+  border-right: none; border-bottom: none;
+}
+.mts-spotlight__popover[data-arrow="bottom"]::before {
+  bottom: -7px; left: 24px;
+  border-left: none; border-top: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-spotlight__cutout,
+  .mts-spotlight__popover,
+  .mts-spotlight__backdrop { animation: none; transition: none; }
+}
+
+/* ── bottom-nav.css ────────────────────────────────────────────── */
+/* ============================================================
+   MTSAi × Bottom Navigation
+   Mobile-friendly bottom nav bar with icons + labels. Supports
+   safe-area-inset for notched devices. Desktop hidden by default.
+   ============================================================ */
+
+.mts-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mts-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    display: flex;
+    background: var(--layer-bg);
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-2) var(--space-1)
+             calc(var(--space-2) + env(safe-area-inset-bottom, 0px))
+             var(--space-1);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mts-bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 4px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  transition: color 150ms ease;
+  border-radius: var(--radius-xs, 3px);
+  position: relative;
+}
+
+.mts-bottom-nav__item:hover {
+  color: var(--interactive);
+}
+
+.mts-bottom-nav__item[aria-current="page"],
+.mts-bottom-nav__item.is-active {
+  color: var(--interactive);
+}
+
+.mts-bottom-nav__item[aria-current="page"]::before,
+.mts-bottom-nav__item.is-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: var(--interactive);
+  border-radius: 0 0 2px 2px;
+}
+
+.mts-bottom-nav__icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mts-bottom-nav__icon svg { width: 20px; height: 20px; }
+
+.mts-bottom-nav__label {
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* Badge on icon */
+.mts-bottom-nav__badge {
+  position: absolute;
+  top: 2px;
+  right: calc(50% - 18px);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--support-error, #DA1E28);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Dark variant */
+.mts-bottom-nav--dark {
+  background: #050505;
+  border-top-color: rgba(255, 255, 255, 0.10);
+}
+.mts-bottom-nav--dark .mts-bottom-nav__item { color: rgba(255, 255, 255, 0.60); }
+.mts-bottom-nav--dark .mts-bottom-nav__item:hover,
+.mts-bottom-nav--dark .mts-bottom-nav__item[aria-current="page"] {
+  color: var(--accent-saffron);
+}
+.mts-bottom-nav--dark .mts-bottom-nav__item[aria-current="page"]::before {
+  background: var(--accent-saffron);
+}
+
+/* Utility — add extra bottom padding to body on mobile so bottom nav doesn't overlap content */
+@media (max-width: 768px) {
+  body.has-bottom-nav {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+}
+

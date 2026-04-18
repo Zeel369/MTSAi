@@ -1,0 +1,140 @@
+/* ============================================================
+   MTSAi × Inline Edit
+   Click to edit in place. View → Edit → Save/Cancel.
+   Used in admin tables, settings, user profiles.
+   ============================================================ */
+
+.mts-inline-edit {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+/* View mode */
+.mts-inline-edit__view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 120ms ease, outline 120ms ease;
+  min-height: 28px;
+  min-width: 40px;
+}
+.mts-inline-edit__view:hover {
+  background: var(--layer-01);
+  outline: 1px dashed var(--border-strong);
+  outline-offset: -1px;
+}
+.mts-inline-edit__view:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+.mts-inline-edit__value {
+  flex: 1;
+  min-width: 0;
+}
+.mts-inline-edit__value--empty {
+  color: var(--text-disabled);
+  font-style: italic;
+}
+
+.mts-inline-edit__icon {
+  width: 12px;
+  height: 12px;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity 120ms ease;
+  flex-shrink: 0;
+}
+.mts-inline-edit__view:hover .mts-inline-edit__icon,
+.mts-inline-edit__view:focus-visible .mts-inline-edit__icon {
+  opacity: 1;
+}
+
+/* Edit mode */
+.mts-inline-edit[data-editing="true"] .mts-inline-edit__view { display: none; }
+.mts-inline-edit:not([data-editing="true"]) .mts-inline-edit__form { display: none; }
+
+.mts-inline-edit__form {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  animation: ie-in 150ms ease;
+}
+
+@keyframes ie-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mts-inline-edit__input {
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text-primary);
+  background: var(--layer-bg);
+  border: 1px solid var(--interactive);
+  border-radius: var(--radius-xs, 3px);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10);
+  min-width: 120px;
+}
+
+.mts-inline-edit__btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  background: var(--layer-bg);
+  color: var(--text-primary);
+  border-radius: var(--radius-xs, 3px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.mts-inline-edit__btn:hover {
+  background: var(--layer-01);
+}
+.mts-inline-edit__btn--save:hover {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: var(--brand-primary);
+}
+.mts-inline-edit__btn--cancel:hover {
+  background: var(--support-error, #DA1E28);
+  color: #fff;
+  border-color: var(--support-error, #DA1E28);
+}
+
+/* Size variants */
+.mts-inline-edit--sm { font-size: 12px; }
+.mts-inline-edit--sm .mts-inline-edit__input { padding: 2px 6px; min-width: 80px; }
+.mts-inline-edit--sm .mts-inline-edit__btn { width: 20px; height: 20px; font-size: 12px; }
+
+.mts-inline-edit--lg {
+  font-size: 16px;
+}
+.mts-inline-edit--lg .mts-inline-edit__input { padding: 6px 10px; min-width: 160px; }
+.mts-inline-edit--lg .mts-inline-edit__btn { width: 28px; height: 28px; }
+
+/* Multiline */
+.mts-inline-edit--textarea .mts-inline-edit__input {
+  min-width: 240px;
+  min-height: 60px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Saving state */
+.mts-inline-edit[data-saving="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}

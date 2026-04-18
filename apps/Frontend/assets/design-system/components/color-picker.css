@@ -1,0 +1,97 @@
+/* ============================================================
+   MTSAi × Color Picker
+   Swatch grid picker for selecting from a preset palette. Minimal
+   and accessible — not a full HSL/RGB wheel. For document theming,
+   accent selection, category coloring.
+   ============================================================ */
+
+.mts-color-picker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mts-color-picker__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mts-color-picker__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
+  gap: 6px;
+  max-width: 260px;
+}
+
+.mts-color-picker__swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--swatch-color, #ccc);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  position: relative;
+}
+.mts-color-picker__swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.mts-color-picker__swatch[aria-checked="true"],
+.mts-color-picker__swatch.is-active {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--layer-bg), 0 0 0 4px var(--text-primary);
+}
+.mts-color-picker__swatch[aria-checked="true"]::after {
+  content: '✓';
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.mts-color-picker__swatch:focus-visible {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+}
+
+/* Sizes */
+.mts-color-picker--sm .mts-color-picker__swatch { width: 20px; height: 20px; }
+.mts-color-picker--lg .mts-color-picker__swatch { width: 36px; height: 36px; }
+
+/* Square variant */
+.mts-color-picker--square .mts-color-picker__swatch {
+  border-radius: var(--radius-xs, 3px);
+}
+
+/* Current color display */
+.mts-color-picker__current {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.mts-color-picker__current-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--current-color, #ccc);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-color-picker__swatch { transition: none; }
+  .mts-color-picker__swatch:hover { transform: none; }
+}
