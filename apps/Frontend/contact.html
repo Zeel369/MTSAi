@@ -466,7 +466,12 @@
               <div class="mts-form-sep"></div>
               <div class="mts-form-step" id="step-ind-2"><span class="mts-form-step__num">2</span> Details</div>
             </div>
-            <form id="main-form" novalidate>
+            <form id="main-form" class="mts-form" novalidate data-autosave="contact-v1" data-warn-unsaved data-error-summary data-submit-shortcut>
+              <!-- Error summary banner (populated on submit failure) -->
+              <div class="mts-form-error-summary" role="alert" aria-live="assertive" data-for="main-form">
+                <div class="mts-form-error-summary__heading"></div>
+                <ul class="mts-form-error-summary__list"></ul>
+              </div>
               <!-- Honeypot -->
               <div style="display:none;"><input type="text" name="website" autocomplete="off" tabindex="-1"></div>
 
@@ -507,7 +512,7 @@
                 <div class="mts-form-row mts-form-row--full">
                   <div class="mts-form-group">
                     <label for="objective" class="mts-label">One-sentence objective <span class="mts-form-required">*</span></label>
-                    <textarea id="objective" name="objective" rows="2" required class="mts-textarea" placeholder="Briefly describe what you are looking to achieve..." aria-required="true" aria-describedby="err-objective" aria-invalid="false"></textarea>
+                    <textarea id="objective" name="objective" rows="2" required class="mts-textarea" placeholder="Briefly describe what you are looking to achieve..." aria-required="true" aria-describedby="err-objective" aria-invalid="false" data-max-length="500"></textarea>
                     <span class="mts-error-msg hidden" id="err-objective" role="alert">Please provide a brief objective</span>
                   </div>
                 </div>
@@ -556,7 +561,7 @@
                   <div class="mts-form-row mts-form-row--full">
                     <div class="mts-form-group">
                       <label for="gov-notes" class="mts-label">Additional Notes</label>
-                      <textarea id="gov-notes" name="gov_notes" rows="2" class="mts-textarea"></textarea>
+                      <textarea id="gov-notes" name="gov_notes" rows="2" class="mts-textarea" data-max-length="400"></textarea>
                     </div>
                   </div>
                 </div>
@@ -588,7 +593,7 @@
                   <div class="mts-form-row mts-form-row--full">
                     <div class="mts-form-group">
                       <label for="sp-exp" class="mts-label">Relevant Experience</label>
-                      <textarea id="sp-exp" name="sp_exp" rows="2" class="mts-textarea" placeholder="Briefly describe similar large-scale programs..."></textarea>
+                      <textarea id="sp-exp" name="sp_exp" rows="2" class="mts-textarea" placeholder="Briefly describe similar large-scale programs..." data-max-length="400"></textarea>
                     </div>
                   </div>
                 </div>
@@ -608,7 +613,7 @@
                   <div class="mts-form-row mts-form-row--full">
                     <div class="mts-form-group">
                       <label for="concern-detail" class="mts-label">Describe Your Concern <span class="mts-form-required">*</span></label>
-                      <textarea id="concern-detail" name="concern_detail" rows="4" class="form-textarea lane-required" data-lane="integrity" placeholder="Please describe the concern in as much detail as possible..."></textarea>
+                      <textarea id="concern-detail" name="concern_detail" rows="4" class="form-textarea lane-required" data-lane="integrity" placeholder="Please describe the concern in as much detail as possible..." data-max-length="800"></textarea>
                     </div>
                   </div>
                 </div>

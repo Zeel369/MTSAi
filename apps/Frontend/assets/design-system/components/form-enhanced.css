@@ -1,0 +1,279 @@
+/* ============================================================
+   MTSAi × Enhanced Form System
+   Universal form-UX primitives (opt-in via data attributes):
+   - Character counter (.mts-char-count)
+   - Error summary banner (.mts-form-error-summary)
+   - Valid-state feedback (.mts-helper--valid)
+   - Autosave status indicator (.mts-form-autosave-status)
+   - Enhanced consent block (.mts-consent-block)
+   - Keyboard shortcut hint (.mts-form-shortcut-hint)
+   ============================================================ */
+
+/* ── Character Counter ──────────────────────────────────── */
+.mts-char-count {
+  display: block;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+  transition: color 150ms ease;
+}
+.mts-char-count--warn  { color: var(--accent-saffron); font-weight: 600; }
+.mts-char-count--error { color: var(--support-error, #DA1E28); font-weight: 600; }
+
+/* ── Error Summary Banner (shown on submit failure) ─────── */
+.mts-form-error-summary {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: rgba(218, 30, 40, 0.04);
+  border: 1px solid rgba(218, 30, 40, 0.28);
+  border-left: 3px solid var(--support-error, #DA1E28);
+  border-radius: var(--radius-xs, 3px);
+  animation: fes-shake 220ms ease;
+  display: none;
+}
+.mts-form-error-summary[data-visible="true"] { display: block; }
+
+@keyframes fes-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-3px); }
+  40%, 80% { transform: translateX(3px); }
+}
+
+.mts-form-error-summary__heading {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--support-error, #DA1E28);
+  margin: 0 0 var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mts-form-error-summary__heading::before {
+  content: '⚠';
+  font-size: 14px;
+}
+
+.mts-form-error-summary__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mts-form-error-summary__item { margin-bottom: 4px; }
+.mts-form-error-summary__item a {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--support-error, #DA1E28);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.mts-form-error-summary__item a:hover { text-decoration-thickness: 2px; }
+
+/* ── Valid-state Helper (positive feedback as user types) ── */
+.mts-helper--valid {
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mts-helper--valid::before {
+  content: '✓';
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* Valid input border (subtle green tint) */
+.mts-input--valid,
+.mts-input[data-valid="true"] {
+  border-color: rgba(83, 170, 0, 0.40);
+}
+
+/* ── Autosave Status (small badge near submit) ──────────── */
+.mts-form-autosave-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.mts-form-autosave-status[data-state="saving"]  { opacity: 1; color: var(--text-secondary); }
+.mts-form-autosave-status[data-state="saved"]   { opacity: 1; color: var(--brand-primary); }
+.mts-form-autosave-status[data-state="restored"] { opacity: 1; color: var(--interactive); }
+
+.mts-form-autosave-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.mts-form-autosave-status[data-state="saving"]::before { animation: pulse-dot 1s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  50% { opacity: 0.2; transform: scale(0.7); }
+}
+
+/* Draft-restore prompt (shown once on page load if draft exists) */
+.mts-form-draft-prompt {
+  padding: var(--space-3) var(--space-4);
+  background: rgba(13, 148, 136, 0.06);
+  border: 1px solid rgba(13, 148, 136, 0.24);
+  border-radius: var(--radius-xs, 3px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  animation: fdp-in 260ms ease;
+}
+@keyframes fdp-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mts-form-draft-prompt__text {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+.mts-form-draft-prompt__text strong { color: var(--interactive); }
+.mts-form-draft-prompt__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.mts-form-draft-prompt__btn {
+  padding: 5px 12px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-xs, 3px);
+  border: 1px solid var(--border-subtle);
+  background: var(--layer-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.mts-form-draft-prompt__btn--primary {
+  background: var(--interactive);
+  color: #fff;
+  border-color: var(--interactive);
+}
+.mts-form-draft-prompt__btn--primary:hover {
+  background: var(--interactive-hover, #0f766e);
+}
+.mts-form-draft-prompt__btn--dismiss:hover {
+  background: var(--layer-01);
+}
+
+/* ── Enhanced Consent Block ─────────────────────────────── */
+.mts-consent-block {
+  padding: var(--space-4) var(--space-5);
+  background: rgba(13, 148, 136, 0.03);
+  border: 1px solid rgba(13, 148, 136, 0.18);
+  border-radius: var(--radius-xs, 3px);
+  margin: var(--space-4) 0;
+}
+.mts-consent-block--error {
+  background: rgba(218, 30, 40, 0.04);
+  border-color: rgba(218, 30, 40, 0.28);
+}
+
+/* ── Keyboard Shortcut Hint ─────────────────────────────── */
+.mts-form-shortcut-hint {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+/* ── Field-level contextual help (helper text extended) ──── */
+.mts-helper--example {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.mts-helper--example::before {
+  content: 'e.g. ';
+  font-style: normal;
+  font-family: var(--font-mono);
+  color: var(--text-disabled);
+}
+
+/* ── Success State Timeline (post-submit next-steps) ────── */
+.mts-form-next-steps {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  background: var(--layer-01);
+  border-radius: var(--radius-sm);
+}
+.mts-form-next-steps__heading {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+.mts-form-next-steps__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: steps;
+}
+.mts-form-next-steps__item {
+  counter-increment: steps;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.mts-form-next-steps__item:last-child { border-bottom: none; }
+.mts-form-next-steps__item::before {
+  content: counter(steps);
+  width: 24px;
+  height: 24px;
+  background: var(--interactive);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.mts-form-next-steps__title {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+.mts-form-next-steps__body {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  display: block;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-form-error-summary,
+  .mts-form-draft-prompt,
+  .mts-form-autosave-status { animation: none; transition: none; }
+}

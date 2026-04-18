@@ -1598,6 +1598,234 @@
   })();
 
   /* ----------------------------------------------------------
+     Enhanced Form System — universal form-UX primitives
+     Opt-in via data attributes:
+       <textarea data-max-length="500">
+       <form data-autosave="key">
+       <form data-warn-unsaved>
+       <form data-submit-shortcut>
+       <form data-error-summary>
+  ---------------------------------------------------------- */
+
+  /* ---- Character Counters ---- */
+  function initCharCounters() {
+    var fields = document.querySelectorAll('[data-max-length]');
+    if (!fields.length) return;
+    fields.forEach(function(f) {
+      var max = parseInt(f.dataset.maxLength, 10);
+      if (!max) return;
+      f.setAttribute('maxlength', max);
+      // Append counter element after the field
+      var counter = document.createElement('span');
+      counter.className = 'mts-char-count';
+      var parent = f.parentElement;
+      parent.appendChild(counter);
+      function update() {
+        var len = (f.value || '').length;
+        counter.textContent = len + ' / ' + max;
+        counter.classList.remove('mts-char-count--warn', 'mts-char-count--error');
+        if (len >= max) counter.classList.add('mts-char-count--error');
+        else if (len >= max * 0.8) counter.classList.add('mts-char-count--warn');
+      }
+      f.addEventListener('input', update);
+      update();
+    });
+  }
+
+  /* ---- Form Autosave (localStorage) ---- */
+  function initFormAutosave() {
+    var forms = document.querySelectorAll('form[data-autosave]');
+    if (!forms.length) return;
+    forms.forEach(function(form) {
+      var key = 'mtsai-draft-' + form.dataset.autosave;
+      var status = form.querySelector('.mts-form-autosave-status');
+      var saveTimer;
+
+      // Build draft-restore prompt if draft exists
+      var raw = safeGet(key);
+      if (raw) {
+        try {
+          var draft = JSON.parse(raw);
+          if (draft && draft.savedAt && (Date.now() - draft.savedAt) < 86400000) {
+            showDraftPrompt(form, draft, key, status);
+          }
+        } catch(e) { safeRemove(key); }
+      }
+
+      // Listen for changes + debounced save
+      form.addEventListener('input', function() {
+        clearTimeout(saveTimer);
+        if (status) status.setAttribute('data-state', 'saving');
+        if (status) status.textContent = 'Saving draft…';
+        saveTimer = setTimeout(function() {
+          var data = serializeForm(form);
+          safeSet(key, JSON.stringify({ savedAt: Date.now(), data: data }));
+          if (status) {
+            status.setAttribute('data-state', 'saved');
+            status.textContent = 'Draft saved';
+          }
+        }, 800);
+      });
+
+      // Clear draft on successful submit
+      form.addEventListener('mtsai-form-success', function() { safeRemove(key); });
+    });
+  }
+
+  function showDraftPrompt(form, draft, key, status) {
+    var prompt = document.createElement('div');
+    prompt.className = 'mts-form-draft-prompt';
+    var mins = Math.round((Date.now() - draft.savedAt) / 60000);
+    var ago = mins < 1 ? 'just now' :
+              mins < 60 ? (mins + ' min ago') :
+              mins < 1440 ? (Math.round(mins/60) + ' hr ago') :
+              (Math.round(mins/1440) + ' day(s) ago');
+    prompt.innerHTML =
+      '<span class="mts-form-draft-prompt__text">' +
+        '<strong>Unsaved draft found</strong> from ' + ago + '. Restore it?' +
+      '</span>' +
+      '<span class="mts-form-draft-prompt__actions">' +
+        '<button type="button" class="mts-form-draft-prompt__btn mts-form-draft-prompt__btn--primary">Restore</button>' +
+        '<button type="button" class="mts-form-draft-prompt__btn mts-form-draft-prompt__btn--dismiss">Dismiss</button>' +
+      '</span>';
+    form.parentElement.insertBefore(prompt, form);
+    prompt.querySelector('.mts-form-draft-prompt__btn--primary').addEventListener('click', function() {
+      hydrateForm(form, draft.data);
+      prompt.remove();
+      if (status) {
+        status.setAttribute('data-state', 'restored');
+        status.textContent = 'Draft restored';
+      }
+    });
+    prompt.querySelector('.mts-form-draft-prompt__btn--dismiss').addEventListener('click', function() {
+      safeRemove(key);
+      prompt.remove();
+    });
+  }
+
+  function serializeForm(form) {
+    var data = {};
+    var fd = new FormData(form);
+    fd.forEach(function(value, name) {
+      if (data[name] !== undefined) {
+        if (!Array.isArray(data[name])) data[name] = [data[name]];
+        data[name].push(value);
+      } else { data[name] = value; }
+    });
+    // Also capture unchecked checkboxes (FormData skips them)
+    form.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      if (cb.name && !(cb.name in data)) data[cb.name] = '';
+    });
+    return data;
+  }
+
+  function hydrateForm(form, data) {
+    Object.keys(data).forEach(function(name) {
+      var val = data[name];
+      var fields = form.querySelectorAll('[name="' + name + '"]');
+      fields.forEach(function(f) {
+        if (f.type === 'checkbox' || f.type === 'radio') {
+          f.checked = Array.isArray(val) ? val.indexOf(f.value) !== -1 : f.value === val;
+        } else if (f.tagName === 'SELECT' && f.multiple) {
+          var arr = Array.isArray(val) ? val : [val];
+          Array.from(f.options).forEach(function(o) { o.selected = arr.indexOf(o.value) !== -1; });
+        } else {
+          f.value = val;
+        }
+        f.dispatchEvent(new Event('input', { bubbles: true }));
+        f.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+
+  function safeGet(k) { try { return localStorage.getItem(k); } catch(e) { return null; } }
+  function safeSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+  function safeRemove(k) { try { localStorage.removeItem(k); } catch(e) {} }
+
+  /* ---- Form Dirty-State Warning (beforeunload) ---- */
+  function initFormDirtyWarning() {
+    var forms = document.querySelectorAll('form[data-warn-unsaved]');
+    if (!forms.length) return;
+    var dirty = false;
+    forms.forEach(function(form) {
+      form.addEventListener('input', function() { dirty = true; });
+      form.addEventListener('mtsai-form-success', function() { dirty = false; });
+      form.addEventListener('submit', function() { dirty = false; });
+    });
+    window.addEventListener('beforeunload', function(e) {
+      if (!dirty) return;
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    });
+  }
+
+  /* ---- Ctrl+Enter / Cmd+Enter to Submit ---- */
+  function initFormSubmitShortcut() {
+    var forms = document.querySelectorAll('form[data-submit-shortcut], form.mts-form');
+    if (!forms.length) return;
+    forms.forEach(function(form) {
+      form.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+          e.preventDefault();
+          var submit = form.querySelector('[type="submit"]');
+          if (submit && !submit.disabled) submit.click();
+        }
+      });
+    });
+  }
+
+  /* ---- Error Summary Banner ----
+     On submit failure, populate <div class="mts-form-error-summary">
+     with links to each invalid field.
+  */
+  function initFormErrorSummary() {
+    var forms = document.querySelectorAll('form[data-error-summary]');
+    if (!forms.length) return;
+    forms.forEach(function(form) {
+      var summary = form.querySelector('.mts-form-error-summary') ||
+                    document.querySelector('.mts-form-error-summary[data-for="' + form.id + '"]');
+      if (!summary) return;
+      form.addEventListener('submit', function(e) {
+        // Find invalid fields
+        var invalids = Array.from(form.querySelectorAll('[aria-invalid="true"], :invalid'))
+          .filter(function(f) { return f.name || f.id; });
+        if (!invalids.length) {
+          summary.removeAttribute('data-visible');
+          return;
+        }
+        // Build list
+        var list = summary.querySelector('.mts-form-error-summary__list') || summary.appendChild(mkEl('ul', 'mts-form-error-summary__list'));
+        var heading = summary.querySelector('.mts-form-error-summary__heading') || summary.insertBefore(mkEl('div', 'mts-form-error-summary__heading'), list);
+        heading.textContent = invalids.length + (invalids.length === 1 ? ' field needs attention' : ' fields need attention');
+        list.innerHTML = invalids.map(function(f) {
+          var label = findLabel(f);
+          var id = f.id || f.name;
+          return '<li class="mts-form-error-summary__item"><a href="#' + id + '" data-target="' + id + '">' + label + '</a></li>';
+        }).join('');
+        // Wire up click-to-focus
+        list.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            var el = document.getElementById(a.dataset.target);
+            if (el) { el.focus(); el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' }); }
+          });
+        });
+        summary.setAttribute('data-visible', 'true');
+        summary.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }, true); // capture phase so we run before form submits
+    });
+  }
+
+  function findLabel(f) {
+    if (f.labels && f.labels.length) return f.labels[0].textContent.trim().replace(/\s*\*\s*$/, '');
+    if (f.getAttribute('aria-label')) return f.getAttribute('aria-label');
+    if (f.placeholder) return f.placeholder;
+    return f.name || 'This field';
+  }
+  function mkEl(tag, cls) { var e = document.createElement(tag); e.className = cls; return e; }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
@@ -1619,6 +1847,11 @@
     initSpeedDials();
     initTreeTables();
     initInlineEdits();
+    initCharCounters();
+    initFormAutosave();
+    initFormDirtyWarning();
+    initFormSubmitShortcut();
+    initFormErrorSummary();
     initScrollReveal();
     initMobileMenu();
     initNavDropdowns();
