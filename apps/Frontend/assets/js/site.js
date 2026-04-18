@@ -878,6 +878,212 @@
   }
 
   /* ----------------------------------------------------------
+     DS v2 Completion Pack — Sliders, Multiselect, ActionMenus,
+     DataTableSort, RelativeTime
+  ---------------------------------------------------------- */
+
+  /* ---- Slider (single + range) ---- */
+  function initSliders() {
+    var sliders = document.querySelectorAll('.mts-slider');
+    if (!sliders.length) return;
+    sliders.forEach(function(s) {
+      var input = s.querySelector('.mts-slider__input');
+      var valEl = s.querySelector('.mts-slider__value');
+      if (!input) return;
+      function updateValue() {
+        var suffix = input.dataset.suffix || '';
+        if (valEl) valEl.textContent = input.value + suffix;
+      }
+      input.addEventListener('input', updateValue);
+      updateValue();
+
+      // Range (dual-thumb) — auto-fill the track between two inputs
+      if (s.classList.contains('mts-slider--range')) {
+        var inputs = s.querySelectorAll('.mts-slider__input');
+        var fill = s.querySelector('.mts-slider__track-fill');
+        if (inputs.length === 2 && fill) {
+          function updateRange() {
+            var a = parseFloat(inputs[0].value);
+            var b = parseFloat(inputs[1].value);
+            var min = parseFloat(inputs[0].min);
+            var max = parseFloat(inputs[0].max);
+            var lo = Math.min(a, b), hi = Math.max(a, b);
+            fill.style.left  = ((lo - min) / (max - min) * 100) + '%';
+            fill.style.right = ((max - hi) / (max - min) * 100) + '%';
+          }
+          inputs.forEach(function(i) { i.addEventListener('input', updateRange); });
+          updateRange();
+        }
+      }
+    });
+  }
+
+  /* ---- Multiselect ---- */
+  function initMultiselect() {
+    var widgets = document.querySelectorAll('.mts-multiselect');
+    if (!widgets.length) return;
+    widgets.forEach(function(w) {
+      var input = w.querySelector('.mts-multiselect__input');
+      var dropdown = w.querySelector('.mts-multiselect__dropdown');
+      if (!input || !dropdown) return;
+
+      // Toggle dropdown on focus
+      input.addEventListener('focus', function() { w.setAttribute('aria-expanded', 'true'); });
+      input.addEventListener('blur', function() {
+        setTimeout(function() { w.setAttribute('aria-expanded', 'false'); }, 150);
+      });
+
+      // Remove chip
+      w.addEventListener('click', function(e) {
+        var btn = e.target.closest('.mts-multiselect__chip-close');
+        if (btn) {
+          var chip = btn.closest('.mts-multiselect__chip');
+          var opt = dropdown.querySelector('[data-value="' + (chip.dataset.value || '') + '"]');
+          if (opt) opt.setAttribute('aria-selected', 'false');
+          chip.remove();
+        }
+      });
+
+      // Click option to toggle selection
+      dropdown.addEventListener('click', function(e) {
+        var opt = e.target.closest('.mts-multiselect__option');
+        if (!opt) return;
+        var selected = opt.getAttribute('aria-selected') === 'true';
+        opt.setAttribute('aria-selected', selected ? 'false' : 'true');
+        input.focus();
+      });
+
+      // Filter options as user types
+      input.addEventListener('input', function() {
+        var q = input.value.toLowerCase();
+        dropdown.querySelectorAll('.mts-multiselect__option').forEach(function(o) {
+          var match = o.textContent.toLowerCase().indexOf(q) !== -1;
+          o.style.display = match ? '' : 'none';
+        });
+      });
+    });
+  }
+
+  /* ---- Action Menus ---- */
+  function initActionMenus() {
+    var menus = document.querySelectorAll('.mts-action-menu');
+    if (!menus.length) return;
+    menus.forEach(function(m) {
+      var trigger = m.querySelector('.mts-action-menu__trigger');
+      if (!trigger) return;
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        // Close all other open menus
+        menus.forEach(function(o) {
+          if (o !== m) {
+            var t = o.querySelector('.mts-action-menu__trigger');
+            if (t) t.setAttribute('aria-expanded', 'false');
+            o.setAttribute('aria-expanded', 'false');
+          }
+        });
+        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        m.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      menus.forEach(function(m) {
+        if (!m.contains(e.target)) {
+          var t = m.querySelector('.mts-action-menu__trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+          m.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        menus.forEach(function(m) {
+          var t = m.querySelector('.mts-action-menu__trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+          m.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
+  /* ---- Data Table Sort ---- */
+  function initDataTableSort() {
+    var tables = document.querySelectorAll('table[data-sortable]');
+    if (!tables.length) return;
+    tables.forEach(function(table) {
+      var headers = table.querySelectorAll('thead th[data-sort]');
+      headers.forEach(function(th, idx) {
+        th.style.cursor = 'pointer';
+        th.setAttribute('tabindex', '0');
+        th.setAttribute('role', 'button');
+        if (!th.hasAttribute('aria-sort')) th.setAttribute('aria-sort', 'none');
+        function sort() {
+          var dir = th.getAttribute('aria-sort');
+          var nextDir = (dir === 'ascending') ? 'descending' : 'ascending';
+          headers.forEach(function(h) { h.setAttribute('aria-sort', 'none'); });
+          th.setAttribute('aria-sort', nextDir);
+          var tbody = table.querySelector('tbody');
+          if (!tbody) return;
+          var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+          var type = th.dataset.sort; // 'number' | 'date' | 'text'
+          rows.sort(function(a, b) {
+            var cellA = a.children[idx] ? a.children[idx].textContent.trim() : '';
+            var cellB = b.children[idx] ? b.children[idx].textContent.trim() : '';
+            var valA, valB;
+            if (type === 'number') { valA = parseFloat(cellA) || 0; valB = parseFloat(cellB) || 0; }
+            else if (type === 'date') { valA = new Date(cellA).getTime() || 0; valB = new Date(cellB).getTime() || 0; }
+            else { valA = cellA.toLowerCase(); valB = cellB.toLowerCase(); }
+            if (valA < valB) return nextDir === 'ascending' ? -1 : 1;
+            if (valA > valB) return nextDir === 'ascending' ? 1 : -1;
+            return 0;
+          });
+          rows.forEach(function(r) { tbody.appendChild(r); });
+        }
+        th.addEventListener('click', sort);
+        th.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sort(); }
+        });
+      });
+    });
+  }
+
+  /* ---- Relative Time ---- */
+  function initRelativeTime() {
+    var els = document.querySelectorAll('time[data-relative]');
+    if (!els.length) return;
+    var rtf = (typeof Intl !== 'undefined' && Intl.RelativeTimeFormat)
+      ? new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
+      : null;
+    function fmt(el) {
+      var iso = el.getAttribute('datetime');
+      if (!iso) return;
+      var then = new Date(iso).getTime();
+      var now = Date.now();
+      var diff = then - now;
+      var abs = Math.abs(diff);
+      var out;
+      if (rtf) {
+        if (abs < 60000)      out = rtf.format(Math.round(diff / 1000), 'second');
+        else if (abs < 3.6e6) out = rtf.format(Math.round(diff / 60000), 'minute');
+        else if (abs < 8.64e7) out = rtf.format(Math.round(diff / 3.6e6), 'hour');
+        else if (abs < 6.048e8) out = rtf.format(Math.round(diff / 8.64e7), 'day');
+        else if (abs < 2.628e9) out = rtf.format(Math.round(diff / 6.048e8), 'week');
+        else if (abs < 3.154e10) out = rtf.format(Math.round(diff / 2.628e9), 'month');
+        else out = rtf.format(Math.round(diff / 3.154e10), 'year');
+      } else {
+        // Fallback: absolute date string
+        out = new Date(iso).toLocaleDateString();
+      }
+      el.textContent = out;
+      if (!el.title) el.title = new Date(iso).toLocaleString();
+    }
+    els.forEach(fmt);
+    // Refresh every minute
+    setInterval(function() { els.forEach(fmt); }, 60000);
+  }
+
+  /* ----------------------------------------------------------
      Init all
   ---------------------------------------------------------- */
   function init() {
@@ -886,6 +1092,11 @@
     initHeroRotator();
     initCounters();
     initCountUpFromText();
+    initSliders();
+    initMultiselect();
+    initActionMenus();
+    initDataTableSort();
+    initRelativeTime();
     initScrollReveal();
     initMobileMenu();
     initNavDropdowns();

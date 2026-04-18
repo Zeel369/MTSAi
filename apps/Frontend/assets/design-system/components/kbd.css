@@ -1,0 +1,65 @@
+/* ============================================================
+   MTSAi × Keyboard Key (kbd)
+   Display keyboard shortcuts like <kbd>Cmd</kbd><kbd>K</kbd>
+   ============================================================ */
+
+kbd,
+.mts-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-xs, 3px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-primary);
+  white-space: nowrap;
+  vertical-align: middle;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Groups of keys separated by "+" */
+.mts-kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.mts-kbd-group .mts-kbd + .mts-kbd::before,
+.mts-kbd-group kbd + kbd::before {
+  content: '+';
+  display: inline-block;
+  margin: 0 4px 0 -7px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-family: var(--font-ui);
+}
+
+/* Sizes */
+.mts-kbd--sm {
+  min-width: 18px;
+  height: 18px;
+  font-size: 10px;
+  padding: 0 4px;
+}
+.mts-kbd--lg {
+  min-width: 28px;
+  height: 28px;
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+/* On dark surface */
+.mts-kbd--on-dark,
+.mts-kbd-group--on-dark .mts-kbd {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.30);
+}

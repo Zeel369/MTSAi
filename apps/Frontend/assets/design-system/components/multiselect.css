@@ -1,0 +1,185 @@
+/* ============================================================
+   MTSAi × Multiselect (Combobox with Chip Display)
+   Extends combobox.css pattern for multi-selection use cases
+   ============================================================ */
+
+.mts-multiselect {
+  position: relative;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  background: var(--layer-bg);
+  cursor: text;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.mts-multiselect:hover { border-color: var(--border-strong); }
+
+.mts-multiselect:focus-within {
+  border-color: var(--interactive);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10);
+}
+
+.mts-multiselect[aria-invalid="true"] {
+  border-color: var(--support-error, #DA1E28);
+}
+.mts-multiselect[aria-invalid="true"]:focus-within {
+  box-shadow: 0 0 0 3px rgba(218, 30, 40, 0.10);
+}
+
+/* Chips container + inline text input */
+.mts-multiselect__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.mts-multiselect__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--interactive);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: ms-chip-in 180ms ease;
+}
+
+@keyframes ms-chip-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.mts-multiselect__chip-close {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  font-size: 14px;
+  line-height: 1;
+  transition: opacity 150ms ease;
+}
+.mts-multiselect__chip-close:hover { opacity: 1; }
+
+.mts-multiselect__input {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  outline: none;
+  padding: 4px 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  background: transparent;
+  color: var(--text-primary);
+}
+.mts-multiselect__input::placeholder {
+  color: var(--text-disabled);
+}
+
+/* Dropdown panel */
+.mts-multiselect__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--layer-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md, 0 8px 24px rgba(0, 0, 0, 0.10));
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  padding: var(--space-2) 0;
+}
+
+.mts-multiselect[aria-expanded="true"] .mts-multiselect__dropdown {
+  display: block;
+  animation: ms-drop-in 180ms ease;
+}
+
+@keyframes ms-drop-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mts-multiselect__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: background 120ms ease;
+}
+.mts-multiselect__option:hover,
+.mts-multiselect__option:focus {
+  background: var(--layer-01);
+  outline: none;
+}
+.mts-multiselect__option[aria-selected="true"] {
+  background: rgba(13, 148, 136, 0.06);
+  color: var(--interactive);
+  font-weight: 500;
+}
+.mts-multiselect__option[aria-selected="true"]::before {
+  content: '✓';
+  color: var(--interactive);
+  font-weight: 600;
+  font-size: 13px;
+  width: 14px;
+  display: inline-block;
+}
+.mts-multiselect__option:not([aria-selected="true"])::before {
+  content: '';
+  width: 14px;
+  display: inline-block;
+}
+
+.mts-multiselect__option--disabled,
+.mts-multiselect__option[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Group heading inside dropdown */
+.mts-multiselect__group-label {
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.mts-multiselect__empty {
+  padding: var(--space-4);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Disabled multiselect */
+.mts-multiselect--disabled {
+  background: var(--layer-01);
+  pointer-events: none;
+  opacity: 0.6;
+}

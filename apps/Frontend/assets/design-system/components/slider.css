@@ -1,0 +1,179 @@
+/* ============================================================
+   MTSAi × Slider / Range Input
+   Single-thumb and dual-thumb (range) variants
+   ============================================================ */
+
+.mts-slider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.mts-slider__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.mts-slider__label {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.mts-slider__value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--interactive);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Native input[type=range] styling — cross-browser */
+.mts-slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--layer-02);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+.mts-slider__input:hover { background: var(--border-subtle); }
+
+/* Thumb — WebKit */
+.mts-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--interactive);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.30);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.mts-slider__input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.15), 0 2px 6px rgba(13, 148, 136, 0.30);
+}
+.mts-slider__input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.10);
+}
+
+/* Thumb — Firefox */
+.mts-slider__input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--interactive);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.30);
+}
+
+.mts-slider__input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+}
+.mts-slider__input:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--accent-saffron);
+  outline-offset: 2px;
+}
+
+/* Ticks / labels under the track */
+.mts-slider__ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+.mts-slider__tick {
+  position: relative;
+}
+.mts-slider__tick::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 4px;
+  background: var(--border-subtle);
+}
+
+/* Helper text */
+.mts-slider__helper {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Color variants */
+.mts-slider--saffron .mts-slider__input::-webkit-slider-thumb {
+  background: var(--accent-saffron);
+  box-shadow: 0 2px 6px rgba(255, 153, 51, 0.30);
+}
+.mts-slider--saffron .mts-slider__input::-moz-range-thumb {
+  background: var(--accent-saffron);
+}
+.mts-slider--saffron .mts-slider__value { color: var(--accent-saffron); }
+
+.mts-slider--green .mts-slider__input::-webkit-slider-thumb {
+  background: var(--brand-primary);
+  box-shadow: 0 2px 6px rgba(83, 170, 0, 0.30);
+}
+.mts-slider--green .mts-slider__input::-moz-range-thumb {
+  background: var(--brand-primary);
+}
+
+/* Disabled */
+.mts-slider--disabled,
+.mts-slider__input:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Range (dual-thumb) — uses two overlaid inputs with JS coordination */
+.mts-slider--range {
+  position: relative;
+  padding-top: var(--space-3);
+}
+.mts-slider--range .mts-slider__input {
+  position: absolute;
+  left: 0; right: 0;
+  pointer-events: none;
+  background: transparent;
+}
+.mts-slider--range .mts-slider__input::-webkit-slider-thumb { pointer-events: auto; }
+.mts-slider--range .mts-slider__input::-moz-range-thumb     { pointer-events: auto; }
+.mts-slider--range .mts-slider__track {
+  position: relative;
+  height: 4px;
+  background: var(--layer-02);
+  border-radius: 2px;
+}
+.mts-slider--range .mts-slider__track-fill {
+  position: absolute;
+  top: 0; bottom: 0;
+  background: var(--interactive);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mts-slider__input,
+  .mts-slider__input::-webkit-slider-thumb,
+  .mts-slider__input::-moz-range-thumb { transition: none; }
+}
